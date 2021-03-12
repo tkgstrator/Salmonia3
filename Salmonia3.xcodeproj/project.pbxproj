@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,18 @@
 		1059416E25FA49E900C32D21 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1059416D25FA49E900C32D21 /* Preview Assets.xcassets */; };
 		1059417925FA49E900C32D21 /* Salmonia3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059417825FA49E900C32D21 /* Salmonia3Tests.swift */; };
 		1059418425FA49E900C32D21 /* Salmonia3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059418325FA49E900C32D21 /* Salmonia3UITests.swift */; };
+		1059419725FA4C0C00C32D21 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059419625FA4C0C00C32D21 /* Color.swift */; };
+		105941A025FA4E2500C32D21 /* LoginMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059419F25FA4E2500C32D21 /* LoginMenu.swift */; };
+		105941A825FA4F9500C32D21 /* SalmonLoginMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105941A725FA4F9500C32D21 /* SalmonLoginMenu.swift */; };
+		105941AD25FA500500C32D21 /* TopMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105941AC25FA500500C32D21 /* TopMenu.swift */; };
+		105941BE25FA525100C32D21 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105941BD25FA525100C32D21 /* Background.swift */; };
+		10CF098E25FB97CB00D2EEB1 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF098D25FB97CB00D2EEB1 /* BetterSafariView */; };
+		10CF099425FB97F300D2EEB1 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF099325FB97F300D2EEB1 /* SwiftUIRefresh */; };
+		10CF099A25FB980400D2EEB1 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF099925FB980400D2EEB1 /* SwiftyJSON */; };
+		10CF09A025FB984400D2EEB1 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF099F25FB984400D2EEB1 /* SwiftyStoreKit */; };
+		10CF09A625FB985200D2EEB1 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF09A525FB985200D2EEB1 /* URLImage */; };
+		10CF09AC25FB987600D2EEB1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF09AB25FB987600D2EEB1 /* Alamofire */; };
+		10CF09B225FB988800D2EEB1 /* SplatNet2 in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF09B125FB988800D2EEB1 /* SplatNet2 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +57,11 @@
 		1059417F25FA49E900C32D21 /* Salmonia3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Salmonia3UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1059418325FA49E900C32D21 /* Salmonia3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salmonia3UITests.swift; sourceTree = "<group>"; };
 		1059418525FA49E900C32D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1059419625FA4C0C00C32D21 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		1059419F25FA4E2500C32D21 /* LoginMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMenu.swift; sourceTree = "<group>"; };
+		105941A725FA4F9500C32D21 /* SalmonLoginMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonLoginMenu.swift; sourceTree = "<group>"; };
+		105941AC25FA500500C32D21 /* TopMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMenu.swift; sourceTree = "<group>"; };
+		105941BD25FA525100C32D21 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +69,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10CF099A25FB980400D2EEB1 /* SwiftyJSON in Frameworks */,
+				10CF09B225FB988800D2EEB1 /* SplatNet2 in Frameworks */,
+				10CF09A025FB984400D2EEB1 /* SwiftyStoreKit in Frameworks */,
+				10CF099425FB97F300D2EEB1 /* SwiftUIRefresh in Frameworks */,
+				10CF09AC25FB987600D2EEB1 /* Alamofire in Frameworks */,
+				10CF09A625FB985200D2EEB1 /* URLImage in Frameworks */,
+				10CF098E25FB97CB00D2EEB1 /* BetterSafariView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,8 +121,10 @@
 			children = (
 				1059416625FA49E500C32D21 /* Salmonia3App.swift */,
 				1059416825FA49E500C32D21 /* ContentView.swift */,
+				1059419E25FA4DDE00C32D21 /* LoginMenu */,
 				1059416A25FA49E900C32D21 /* Assets.xcassets */,
 				1059416F25FA49E900C32D21 /* Info.plist */,
+				1059419525FA4BF600C32D21 /* Assets */,
 				1059416C25FA49E900C32D21 /* Preview Content */,
 			);
 			path = Salmonia3;
@@ -130,6 +156,41 @@
 			path = Salmonia3UITests;
 			sourceTree = "<group>";
 		};
+		1059419425FA4BE900C32D21 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				1059419625FA4C0C00C32D21 /* Color.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		1059419525FA4BF600C32D21 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				105941B125FA519A00C32D21 /* ViewModifier */,
+				1059419425FA4BE900C32D21 /* Color */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		1059419E25FA4DDE00C32D21 /* LoginMenu */ = {
+			isa = PBXGroup;
+			children = (
+				1059419F25FA4E2500C32D21 /* LoginMenu.swift */,
+				105941A725FA4F9500C32D21 /* SalmonLoginMenu.swift */,
+				105941AC25FA500500C32D21 /* TopMenu.swift */,
+			);
+			path = LoginMenu;
+			sourceTree = "<group>";
+		};
+		105941B125FA519A00C32D21 /* ViewModifier */ = {
+			isa = PBXGroup;
+			children = (
+				105941BD25FA525100C32D21 /* Background.swift */,
+			);
+			path = ViewModifier;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,6 +207,15 @@
 			dependencies = (
 			);
 			name = Salmonia3;
+			packageProductDependencies = (
+				10CF098D25FB97CB00D2EEB1 /* BetterSafariView */,
+				10CF099325FB97F300D2EEB1 /* SwiftUIRefresh */,
+				10CF099925FB980400D2EEB1 /* SwiftyJSON */,
+				10CF099F25FB984400D2EEB1 /* SwiftyStoreKit */,
+				10CF09A525FB985200D2EEB1 /* URLImage */,
+				10CF09AB25FB987600D2EEB1 /* Alamofire */,
+				10CF09B125FB988800D2EEB1 /* SplatNet2 */,
+			);
 			productName = Salmonia3;
 			productReference = 1059416325FA49E500C32D21 /* Salmonia3.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +287,15 @@
 				Base,
 			);
 			mainGroup = 1059415A25FA49E500C32D21;
+			packageReferences = (
+				10CF098C25FB97CB00D2EEB1 /* XCRemoteSwiftPackageReference "BetterSafariView" */,
+				10CF099225FB97F300D2EEB1 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
+				10CF099825FB980400D2EEB1 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				10CF099E25FB984400D2EEB1 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
+				10CF09A425FB985200D2EEB1 /* XCRemoteSwiftPackageReference "url-image" */,
+				10CF09AA25FB987600D2EEB1 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				10CF09B025FB988800D2EEB1 /* XCRemoteSwiftPackageReference "SplatNet2" */,
+			);
 			productRefGroup = 1059416425FA49E500C32D21 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -259,8 +338,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				105941A025FA4E2500C32D21 /* LoginMenu.swift in Sources */,
+				105941BE25FA525100C32D21 /* Background.swift in Sources */,
 				1059416925FA49E500C32D21 /* ContentView.swift in Sources */,
+				105941A825FA4F9500C32D21 /* SalmonLoginMenu.swift in Sources */,
 				1059416725FA49E500C32D21 /* Salmonia3App.swift in Sources */,
+				105941AD25FA500500C32D21 /* TopMenu.swift in Sources */,
+				1059419725FA4C0C00C32D21 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,6 +664,103 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		10CF098C25FB97CB00D2EEB1 /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stleamist/BetterSafariView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.1;
+			};
+		};
+		10CF099225FB97F300D2EEB1 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUIRefresh";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.3;
+			};
+		};
+		10CF099825FB980400D2EEB1 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		10CF099E25FB984400D2EEB1 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bizz84/SwiftyStoreKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.16.3;
+			};
+		};
+		10CF09A425FB985200D2EEB1 /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.3;
+			};
+		};
+		10CF09AA25FB987600D2EEB1 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.1;
+			};
+		};
+		10CF09B025FB988800D2EEB1 /* XCRemoteSwiftPackageReference "SplatNet2" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tkgstrator/SplatNet2.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.8;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		10CF098D25FB97CB00D2EEB1 /* BetterSafariView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10CF098C25FB97CB00D2EEB1 /* XCRemoteSwiftPackageReference "BetterSafariView" */;
+			productName = BetterSafariView;
+		};
+		10CF099325FB97F300D2EEB1 /* SwiftUIRefresh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10CF099225FB97F300D2EEB1 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */;
+			productName = SwiftUIRefresh;
+		};
+		10CF099925FB980400D2EEB1 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10CF099825FB980400D2EEB1 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		10CF099F25FB984400D2EEB1 /* SwiftyStoreKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10CF099E25FB984400D2EEB1 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;
+			productName = SwiftyStoreKit;
+		};
+		10CF09A525FB985200D2EEB1 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10CF09A425FB985200D2EEB1 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+		10CF09AB25FB987600D2EEB1 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10CF09AA25FB987600D2EEB1 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		10CF09B125FB988800D2EEB1 /* SplatNet2 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10CF09B025FB988800D2EEB1 /* XCRemoteSwiftPackageReference "SplatNet2" */;
+			productName = SplatNet2;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1059415B25FA49E500C32D21 /* Project object */;
 }
