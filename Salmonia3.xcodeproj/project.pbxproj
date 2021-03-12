@@ -27,6 +27,7 @@
 		10CF09B225FB988800D2EEB1 /* SplatNet2 in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF09B125FB988800D2EEB1 /* SplatNet2 */; };
 		10CF09B825FB9AC100D2EEB1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF09B725FB9AC100D2EEB1 /* Realm */; };
 		10CF09BA25FB9AC100D2EEB1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF09B925FB9AC100D2EEB1 /* RealmSwift */; };
+		10CF09BF25FB9AEC00D2EEB1 /* LegacyNavigationViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF09BE25FB9AEC00D2EEB1 /* LegacyNavigationViewStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		105941A725FA4F9500C32D21 /* SalmonLoginMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonLoginMenu.swift; sourceTree = "<group>"; };
 		105941AC25FA500500C32D21 /* TopMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMenu.swift; sourceTree = "<group>"; };
 		105941BD25FA525100C32D21 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		10CF09BE25FB9AEC00D2EEB1 /* LegacyNavigationViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyNavigationViewStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				105941BD25FA525100C32D21 /* Background.swift */,
+				10CF09BE25FB9AEC00D2EEB1 /* LegacyNavigationViewStyle.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				105941A025FA4E2500C32D21 /* LoginMenu.swift in Sources */,
 				105941BE25FA525100C32D21 /* Background.swift in Sources */,
 				1059416925FA49E500C32D21 /* ContentView.swift in Sources */,
+				10CF09BF25FB9AEC00D2EEB1 /* LegacyNavigationViewStyle.swift in Sources */,
 				105941A825FA4F9500C32D21 /* SalmonLoginMenu.swift in Sources */,
 				1059416725FA49E500C32D21 /* Salmonia3App.swift in Sources */,
 				105941AD25FA500500C32D21 /* TopMenu.swift in Sources */,
