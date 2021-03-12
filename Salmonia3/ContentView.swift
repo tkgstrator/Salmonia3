@@ -8,9 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isLogin: Bool = false
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        switch !isLogin {
+        case true:
+            NavigationView {
+                LoginMenu()
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
+        case false:
+            NavigationView {
+                TopMenu()
+            }
+        }
     }
 }
 
