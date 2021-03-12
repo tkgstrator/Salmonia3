@@ -32,6 +32,7 @@
 		10CF09FB25FB9C6B00D2EEB1 /* CoreRealmCoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF09FA25FB9C6B00D2EEB1 /* CoreRealmCoop.swift */; };
 		10CF0A0025FBA5BC00D2EEB1 /* RealmPlayerResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF09FF25FBA5BC00D2EEB1 /* RealmPlayerResult.swift */; };
 		10CF0A0525FBA6BF00D2EEB1 /* RealmCoopWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF0A0425FBA6BF00D2EEB1 /* RealmCoopWave.swift */; };
+		10CF0A0A25FBA91800D2EEB1 /* OAuthLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF0A0925FBA91800D2EEB1 /* OAuthLogin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		10CF09FA25FB9C6B00D2EEB1 /* CoreRealmCoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreRealmCoop.swift; sourceTree = "<group>"; };
 		10CF09FF25FBA5BC00D2EEB1 /* RealmPlayerResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPlayerResult.swift; sourceTree = "<group>"; };
 		10CF0A0425FBA6BF00D2EEB1 /* RealmCoopWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopWave.swift; sourceTree = "<group>"; };
+		10CF0A0925FBA91800D2EEB1 /* OAuthLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthLogin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 		1059419525FA4BF600C32D21 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				10CF0A0925FBA91800D2EEB1 /* OAuthLogin.swift */,
 				105941B125FA519A00C32D21 /* ViewModifier */,
 				1059419425FA4BE900C32D21 /* Color */,
 				10CF09F925FB9C4900D2EEB1 /* ObservableObject */,
@@ -377,6 +380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				105941A025FA4E2500C32D21 /* LoginMenu.swift in Sources */,
+				10CF0A0A25FBA91800D2EEB1 /* OAuthLogin.swift in Sources */,
 				105941BE25FA525100C32D21 /* Background.swift in Sources */,
 				10CF09F425FB9BE100D2EEB1 /* RealmCoopResult.swift in Sources */,
 				1059416925FA49E500C32D21 /* ContentView.swift in Sources */,

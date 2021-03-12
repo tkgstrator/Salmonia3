@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 class RealmCoopResult: Object {
+    #warning("ここになんか表示")
     @objc dynamic var nsaid: String?
     let job_id = RealmOptional<Int>() // SplatNet2用のID
     let stage_id = RealmOptional<Int>()
