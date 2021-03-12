@@ -16,8 +16,8 @@ struct Salmonia3App: App {
                 .environment(\.minimumScaleFactor, 0.5)
                 .environment(\.imageScale, .large)
                 .environment(\.textCase, nil)
-//                .animation(.easeInOut)
-//                .transition(.opacity)
+                .animation(.easeInOut)
+                .transition(.opacity)
                 .listStyle(GroupedListStyle())
                 .buttonStyle(PlainButtonStyle())
         }

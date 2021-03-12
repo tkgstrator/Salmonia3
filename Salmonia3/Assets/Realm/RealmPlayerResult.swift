@@ -9,7 +9,6 @@ import Foundation
 import RealmSwift
 
 class RealmPlayerResult: Object {
-    
     @objc dynamic var name: String?
     @objc dynamic var nsaid: String?
     @objc dynamic var dead_count: Int = 0
