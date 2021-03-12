@@ -25,6 +25,8 @@
 		10CF09A625FB985200D2EEB1 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF09A525FB985200D2EEB1 /* URLImage */; };
 		10CF09AC25FB987600D2EEB1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF09AB25FB987600D2EEB1 /* Alamofire */; };
 		10CF09B225FB988800D2EEB1 /* SplatNet2 in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF09B125FB988800D2EEB1 /* SplatNet2 */; };
+		10CF09B825FB9AC100D2EEB1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF09B725FB9AC100D2EEB1 /* Realm */; };
+		10CF09BA25FB9AC100D2EEB1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF09B925FB9AC100D2EEB1 /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,9 +74,11 @@
 				10CF099A25FB980400D2EEB1 /* SwiftyJSON in Frameworks */,
 				10CF09B225FB988800D2EEB1 /* SplatNet2 in Frameworks */,
 				10CF09A025FB984400D2EEB1 /* SwiftyStoreKit in Frameworks */,
+				10CF09BA25FB9AC100D2EEB1 /* RealmSwift in Frameworks */,
 				10CF099425FB97F300D2EEB1 /* SwiftUIRefresh in Frameworks */,
 				10CF09AC25FB987600D2EEB1 /* Alamofire in Frameworks */,
 				10CF09A625FB985200D2EEB1 /* URLImage in Frameworks */,
+				10CF09B825FB9AC100D2EEB1 /* Realm in Frameworks */,
 				10CF098E25FB97CB00D2EEB1 /* BetterSafariView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,6 +219,8 @@
 				10CF09A525FB985200D2EEB1 /* URLImage */,
 				10CF09AB25FB987600D2EEB1 /* Alamofire */,
 				10CF09B125FB988800D2EEB1 /* SplatNet2 */,
+				10CF09B725FB9AC100D2EEB1 /* Realm */,
+				10CF09B925FB9AC100D2EEB1 /* RealmSwift */,
 			);
 			productName = Salmonia3;
 			productReference = 1059416325FA49E500C32D21 /* Salmonia3.app */;
@@ -295,6 +301,7 @@
 				10CF09A425FB985200D2EEB1 /* XCRemoteSwiftPackageReference "url-image" */,
 				10CF09AA25FB987600D2EEB1 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				10CF09B025FB988800D2EEB1 /* XCRemoteSwiftPackageReference "SplatNet2" */,
+				10CF09B625FB9AC100D2EEB1 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = 1059416425FA49E500C32D21 /* Products */;
 			projectDirPath = "";
@@ -722,6 +729,14 @@
 				minimumVersion = 0.1.8;
 			};
 		};
+		10CF09B625FB9AC100D2EEB1 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.7.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -759,6 +774,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 10CF09B025FB988800D2EEB1 /* XCRemoteSwiftPackageReference "SplatNet2" */;
 			productName = SplatNet2;
+		};
+		10CF09B725FB9AC100D2EEB1 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10CF09B625FB9AC100D2EEB1 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		10CF09B925FB9AC100D2EEB1 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10CF09B625FB9AC100D2EEB1 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
