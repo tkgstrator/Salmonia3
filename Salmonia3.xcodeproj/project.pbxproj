@@ -33,6 +33,7 @@
 		10CF0A0025FBA5BC00D2EEB1 /* RealmPlayerResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF09FF25FBA5BC00D2EEB1 /* RealmPlayerResult.swift */; };
 		10CF0A0525FBA6BF00D2EEB1 /* RealmCoopWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF0A0425FBA6BF00D2EEB1 /* RealmCoopWave.swift */; };
 		10CF0A0A25FBA91800D2EEB1 /* OAuthLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF0A0925FBA91800D2EEB1 /* OAuthLogin.swift */; };
+		A8C5630EBE09FDEA7BF59B1C /* Pods_Salmonia3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6419A3A4A135F484294BF5 /* Pods_Salmonia3.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,9 @@
 		10CF09FF25FBA5BC00D2EEB1 /* RealmPlayerResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPlayerResult.swift; sourceTree = "<group>"; };
 		10CF0A0425FBA6BF00D2EEB1 /* RealmCoopWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopWave.swift; sourceTree = "<group>"; };
 		10CF0A0925FBA91800D2EEB1 /* OAuthLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthLogin.swift; sourceTree = "<group>"; };
+		56AB289C0D87612FB8D00999 /* Pods-Salmonia3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salmonia3.debug.xcconfig"; path = "Target Support Files/Pods-Salmonia3/Pods-Salmonia3.debug.xcconfig"; sourceTree = "<group>"; };
+		7B6419A3A4A135F484294BF5 /* Pods_Salmonia3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Salmonia3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA0FB8B78274FB434279E074 /* Pods-Salmonia3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salmonia3.release.xcconfig"; path = "Target Support Files/Pods-Salmonia3/Pods-Salmonia3.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,7 @@
 				10CF09A625FB985200D2EEB1 /* URLImage in Frameworks */,
 				10CF09B825FB9AC100D2EEB1 /* Realm in Frameworks */,
 				10CF098E25FB97CB00D2EEB1 /* BetterSafariView in Frameworks */,
+				A8C5630EBE09FDEA7BF59B1C /* Pods_Salmonia3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +124,8 @@
 				1059417725FA49E900C32D21 /* Salmonia3Tests */,
 				1059418225FA49E900C32D21 /* Salmonia3UITests */,
 				1059416425FA49E500C32D21 /* Products */,
+				F26C9AF62F71E5A45BADB2BA /* Pods */,
+				CC3D58FA9034E515205807EE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -229,6 +236,23 @@
 			path = ObservableObject;
 			sourceTree = "<group>";
 		};
+		CC3D58FA9034E515205807EE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7B6419A3A4A135F484294BF5 /* Pods_Salmonia3.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F26C9AF62F71E5A45BADB2BA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				56AB289C0D87612FB8D00999 /* Pods-Salmonia3.debug.xcconfig */,
+				CA0FB8B78274FB434279E074 /* Pods-Salmonia3.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -236,9 +260,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1059418825FA49E900C32D21 /* Build configuration list for PBXNativeTarget "Salmonia3" */;
 			buildPhases = (
+				D7C2DF4B6924925625DD7D9F /* [CP] Check Pods Manifest.lock */,
 				1059415F25FA49E500C32D21 /* Sources */,
 				1059416025FA49E500C32D21 /* Frameworks */,
 				1059416125FA49E500C32D21 /* Resources */,
+				1AC99CC90BF85D86A9A4136F /* [CP] Embed Pods Frameworks */,
+				D3A564FF8E477763AD117613 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -373,6 +400,65 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1AC99CC90BF85D86A9A4136F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Salmonia3/Pods-Salmonia3-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Salmonia3/Pods-Salmonia3-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Salmonia3/Pods-Salmonia3-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D3A564FF8E477763AD117613 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Salmonia3/Pods-Salmonia3-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Salmonia3/Pods-Salmonia3-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Salmonia3/Pods-Salmonia3-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D7C2DF4B6924925625DD7D9F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Salmonia3-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1059415F25FA49E500C32D21 /* Sources */ = {
@@ -545,6 +631,7 @@
 		};
 		1059418925FA49E900C32D21 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56AB289C0D87612FB8D00999 /* Pods-Salmonia3.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -559,7 +646,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.Salmonia3;
+				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -568,6 +655,7 @@
 		};
 		1059418A25FA49E900C32D21 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA0FB8B78274FB434279E074 /* Pods-Salmonia3.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -582,7 +670,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.Salmonia3;
+				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
