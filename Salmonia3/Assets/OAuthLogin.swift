@@ -58,17 +58,34 @@ extension String {
         }
     }
     
+    var rawurlencode: String {
+        return self.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+    }
+     
+    var urlencode: String {
+        let charset = NSCharacterSet(charactersIn:"&:=\"#%/<>?@\\^`{|}+,! ").inverted
+        return self.addingPercentEncoding(withAllowedCharacters: charset)!
+    }
     
-    
-    
-    
-    
-    
-    
+    func hmacsha1(key: String) -> String {
+        let hash = HMAC<Insecure.SHA1>.authenticationCode(for: Data(self.data(using: .utf8)!), using: SymmetricKey(data: Data(key.data(using: .utf8)!)))
+        let hashArray: [UInt8] = Array(hash.map{ String(format: "%02x", $0) }).map{ UInt8($0, radix: 16)! }
+        let data: Data = Data(bytes: hashArray, count: hashArray.count)
+        return data.base64EncodedString()
+    }
 }
 
 extension Dictionary where Key == String, Value == String {
     var queryString: String {
-        return self.map{ "\($0.0)=\($0.1)" }.joined(separator: "&")
+        return self.sorted(by: { $0.0 < $1.0} ).map{ "\($0.0)=\($0.1)" }.joined(separator: "&")
     }
+    
+    var paramString: String {
+        return self.sorted(by: { $0.0 < $1.0} ).map{ "\($0.0)=\($0.1.urlencode)" }.joined(separator: "&")
+    }
+    
+    var query: String {
+        return self.sorted(by: { $0.0 < $1.0} ).map{ "\($0.0)=\($0.1.urlencode)" }.joined(separator: ",")
+    }
+
 }
