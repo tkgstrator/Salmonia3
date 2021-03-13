@@ -20,9 +20,9 @@ struct BackGroundColor: ViewModifier {
 struct ButtonStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .frame(width: 200, height: 60)
+            .frame(width: 200, height: 50)
             .backgroundcolor(.cloud)
-            .cornerRadius(10)
+            .cornerRadius(8)
     }
 }
 

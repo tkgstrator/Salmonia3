@@ -8,19 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var isLogin: Bool = false
-    
+    @EnvironmentObject var main: CoreAppSetting
+
     var body: some View {
-        switch !isLogin {
-        case true:
+        switch main.isLogin {
+        case false:
             NavigationView {
                 LoginMenu()
             }
             .navigationViewStyle(StackNavigationViewStyle())
-        case false:
+        case true:
             NavigationView {
                 TopMenu()
             }
+            .listStyle(GroupedListStyle())
+            .navigationViewStyle(LegacyNavigationViewStyle())
         }
     }
 }

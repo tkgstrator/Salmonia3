@@ -18,15 +18,16 @@ struct LoginMenu: View {
     
     var body: some View {
         GeometryReader { geometry in
+            Text("TEXT_WELCOME")
+                .splatfont2(size: 26)
+                .position(x: geometry.frame(in: .local).midX, y: geometry.size.height / 4)
             VStack(spacing: 40) {
-                Text("TEXT_WELCOME")
-                Spacer()
-                Button(action: { isPresented.toggle() }, label: { Text("BTN_SIGN_IN") })
+                Button(action: { isPresented.toggle() }, label: { Text("BTN_SIGN_IN").splatfont2(.black) })
                     .buttonStyle()
-                Button(action: { isActive.toggle() }, label: { Text("BTN_SIGN_UP") })
+                Button(action: { isActive.toggle() }, label: { Text("BTN_SIGN_UP").splatfont2(.black) })
                     .buttonStyle()
             }
-            .position(x: geometry.frame(in: .local).midX, y: geometry.size.height / 4)
+            .position(x: geometry.frame(in: .local).midX, y: 3 * geometry.size.height / 4)
         }
         .webAuthenticationSession(isPresented: $isPresented) {
             WebAuthenticationSession(url: verifier.oauthURL, callbackURLScheme: "npf71b963c1b7b6d119") { callbackURL, _ in
@@ -34,6 +35,7 @@ struct LoginMenu: View {
                 guard let code: String = callbackURL?.absoluteString.capture(pattern: "de=(.*)&", group: 1) else { return }
                 try? loginSplatNet2(code: code, verifier: verifier)
             }
+            .prefersEphemeralWebBrowserSession(false)
         }
         .background(BackGround)
         .navigationTitle("TITLE_LOGIN")
@@ -59,32 +61,13 @@ struct LoginMenu: View {
                 guard let nickname = response["user"]["nickname"].string else { return }
                 guard let iksm_session = response["iksm_session"].string else { return }
                 guard let nsaid = response["nsaid"].string else { return }
-//                guard let realm = try? Realm() else { return }
-                
-                let value: [String: Any?] = ["nsaid": nsaid, "name": nickname, "image": thumbnail_url, "iksm_session": iksm_session, "session_token": session_token, "isActive": true]
-                print(value)
-                #warning("SplatNet2")
-                // MainRealmの情報を更新する
-//                realm.beginWrite()
-//                switch realm.objects(UserInfoRealm.self).filter("nsaid=%@", nsaid).isEmpty {
-//                case true:
-//                    let user: UserInfoRealm = UserInfoRealm(value: value)
-//                    let uuid: String = UIDevice.current.identifierForVendor!.uuidString
-//                    guard let main: MainRealm = realm.objects(MainRealm.self).first else { return }
-//                    main.active.append(user)
-//                case false:
-//                    realm.create(UserInfoRealm.self, value: value, update: .all)
-//                }
-//                try? realm.commitWrite()
-//                // 終わったのでフラグを反転させる
-//                isActive.toggle()
+                let value: [String: Any?] = ["nsaid": nsaid, "nickname": nickname, "thumbnailURL": thumbnail_url, "iksmSession": iksm_session, "sessionToken": session_token, "isActive": true]
+                try RealmManager.addNewAccount(account: RealmUserInfo(value: value))
+                isActive.toggle()
             } catch (let error) {
+                #warning("ここにエラー処理を書く")
                 print(error)
-                // TODO: エラー発生時の処理を書く
-//                appError = error as? CustomNSError
-//                isPresented.toggle()
             }
         }
     }
 }
-og
