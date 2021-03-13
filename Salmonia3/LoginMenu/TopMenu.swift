@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import URLImage
 import SwiftUI
 import SwiftUIRefresh
 
@@ -19,7 +20,9 @@ struct TopMenu: View {
             NavigationLink(destination: LoadingView(), isActive: $isActive) { EmptyView() }
             List {
                 Section(header: Text("HEADER_OVERVIEW")) {
+                    Overview
                     Text("TEXT_WELCOME")
+                    Button(action: { AppManager.isLogin(isLogin: false) }, label: { Text("BTN_LOGOUT") })
                 }
                 Section(header: Text("HEADER_SCHEDULE")) {
                     Text("TEXT_WELCOME")
@@ -34,15 +37,35 @@ struct TopMenu: View {
         }
         .listStyle(GroupedListStyle())
         .navigationTitle("TITLE_SALMONIA")
-//        .listStyle(SidebarListStyle())
-//        VStack {
-//
-//            Text("TEXT_WELCOME")
-//            Button(action: { AppManager.isLogin(isLogin: false) }, label: { Text("BTN_LOGOUT") })
-//        }
+        //        .listStyle(SidebarListStyle())
+        //        VStack {
+        //
+        //            Text("TEXT_WELCOME")
+        //            Button(action: { AppManager.isLogin(isLogin: false) }, label: { Text("BTN_LOGOUT") })
+        //        }
     }
     
-//    var Overview: some View {
-//
-//    }
+    var Overview: some View {
+        NavigationLink(destination: LoadingView()) {
+            HStack {
+                URLImage(url: URL(string: main.account.thumbnailURL.stringValue)!) { image in image.resizable().clipShape(Circle()) }.frame(width: 70, height: 70)
+                Text(main.account.nickname.stringValue)
+                    .splatfont2(size: 22)
+                    .frame(maxWidth: .infinity)
+            }
+        }
+    }
+    
+    var Results: some View {
+        Group {
+            NavigationLink(destination: CoopResultCollection()) {
+                Text("TITLE_JOB_RESULTS")
+                    .splatfont2(size: 16)
+            }
+            //            NavigationLink(destination: WaveCollectionView()) {
+            //                Text("TITLE_WAVE_RESULTS")
+            //                    .splatfont2(size: 16)
+            //            }
+        }
+    }
 }
