@@ -11,7 +11,9 @@ import Firebase
 @main
 struct Salmonia3App: App {
     init() {
+        #warning("AppDelegateの代わり")
         FirebaseApp.configure()
+        print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
     }
     
     var body: some Scene {
@@ -23,6 +25,8 @@ struct Salmonia3App: App {
                 .environment(\.textCase, nil)
                 .animation(.easeInOut)
                 .transition(.opacity)
+                .environmentObject(CoreRealmCoop())
+                .environmentObject(CoreAppSetting())
                 .listStyle(GroupedListStyle())
                 .buttonStyle(PlainButtonStyle())
         }

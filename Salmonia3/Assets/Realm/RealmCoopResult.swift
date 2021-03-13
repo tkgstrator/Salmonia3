@@ -9,7 +9,6 @@ import Foundation
 import RealmSwift
 
 class RealmCoopResult: Object {
-    #warning("ここになんか表示")
     @objc dynamic var nsaid: String?
     let job_id = RealmOptional<Int>() // SplatNet2用のID
     let stage_id = RealmOptional<Int>()
@@ -19,7 +18,7 @@ class RealmCoopResult: Object {
     let grade_point_delta = RealmOptional<Int>()
     let failure_wave = RealmOptional<Int>()
     let danger_rate = RealmOptional<Double>()
-    @objc dynamic var play_time: Date?
+    let play_time = RealmOptional<Int>()
     @objc dynamic var end_time: Date?
     @objc dynamic var start_time: Date?
     let golden_eggs = RealmOptional<Double>()

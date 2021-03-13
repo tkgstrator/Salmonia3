@@ -9,6 +9,17 @@
 /* Begin PBXBuildFile section */
 		10377F4E25FCBF8600536A94 /* TwitterOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F4D25FCBF8600536A94 /* TwitterOAuth.swift */; };
 		10377F5325FCD32F00536A94 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10377F5225FCD32E00536A94 /* GoogleService-Info.plist */; };
+		10377F6525FCD63B00536A94 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F6425FCD63B00536A94 /* Font.swift */; };
+		10377F7525FCD8CD00536A94 /* RobotoMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10377F6125FCD5C200536A94 /* RobotoMono.ttf */; };
+		10377F7625FCD8CD00536A94 /* Splatfont1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10377F6225FCD5C800536A94 /* Splatfont1.ttf */; };
+		10377F7725FCD8CD00536A94 /* Splatfont2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10377F6325FCD5CD00536A94 /* Splatfont2.ttf */; };
+		10377F7C25FCD9E800536A94 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F7B25FCD9E800536A94 /* RealmManager.swift */; };
+		10377F8125FCDBE400536A94 /* RealmUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F8025FCDBE400536A94 /* RealmUserInfo.swift */; };
+		10377F8625FD041900536A94 /* CoreAppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F8525FD041900536A94 /* CoreAppSettings.swift */; };
+		10377F8B25FD053A00536A94 /* SettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F8A25FD053A00536A94 /* SettingManager.swift */; };
+		10377F9125FD09E800536A94 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F9025FD09E800536A94 /* LoadingView.swift */; };
+		10377F9925FD09FF00536A94 /* LoggingThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F9825FD09FF00536A94 /* LoggingThread.swift */; };
+		10377F9E25FD0A1200536A94 /* MBCirlceProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F9D25FD0A1200536A94 /* MBCirlceProgress.swift */; };
 		1059416725FA49E500C32D21 /* Salmonia3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059416625FA49E500C32D21 /* Salmonia3App.swift */; };
 		1059416925FA49E500C32D21 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059416825FA49E500C32D21 /* ContentView.swift */; };
 		1059416B25FA49E900C32D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1059416A25FA49E900C32D21 /* Assets.xcassets */; };
@@ -59,6 +70,17 @@
 /* Begin PBXFileReference section */
 		10377F4D25FCBF8600536A94 /* TwitterOAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterOAuth.swift; sourceTree = "<group>"; };
 		10377F5225FCD32E00536A94 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		10377F6125FCD5C200536A94 /* RobotoMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoMono.ttf; sourceTree = "<group>"; };
+		10377F6225FCD5C800536A94 /* Splatfont1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Splatfont1.ttf; sourceTree = "<group>"; };
+		10377F6325FCD5CD00536A94 /* Splatfont2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Splatfont2.ttf; sourceTree = "<group>"; };
+		10377F6425FCD63B00536A94 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		10377F7B25FCD9E800536A94 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		10377F8025FCDBE400536A94 /* RealmUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUserInfo.swift; sourceTree = "<group>"; };
+		10377F8525FD041900536A94 /* CoreAppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAppSettings.swift; sourceTree = "<group>"; };
+		10377F8A25FD053A00536A94 /* SettingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingManager.swift; sourceTree = "<group>"; };
+		10377F9025FD09E800536A94 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		10377F9825FD09FF00536A94 /* LoggingThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingThread.swift; sourceTree = "<group>"; };
+		10377F9D25FD0A1200536A94 /* MBCirlceProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBCirlceProgress.swift; sourceTree = "<group>"; };
 		1059416325FA49E500C32D21 /* Salmonia3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Salmonia3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1059416625FA49E500C32D21 /* Salmonia3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salmonia3App.swift; sourceTree = "<group>"; };
 		1059416825FA49E500C32D21 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -126,6 +148,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10377F6025FCD5A400536A94 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				10377F6125FCD5C200536A94 /* RobotoMono.ttf */,
+				10377F6225FCD5C800536A94 /* Splatfont1.ttf */,
+				10377F6325FCD5CD00536A94 /* Splatfont2.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		10377F8F25FD09D200536A94 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				10377F9025FD09E800536A94 /* LoadingView.swift */,
+				10377F9825FD09FF00536A94 /* LoggingThread.swift */,
+				10377F9D25FD0A1200536A94 /* MBCirlceProgress.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
 		1059415A25FA49E500C32D21 = {
 			isa = PBXGroup;
 			children = (
@@ -151,13 +193,13 @@
 		1059416525FA49E500C32D21 /* Salmonia3 */ = {
 			isa = PBXGroup;
 			children = (
-				10377F5225FCD32E00536A94 /* GoogleService-Info.plist */,
 				1059416625FA49E500C32D21 /* Salmonia3App.swift */,
 				1059416825FA49E500C32D21 /* ContentView.swift */,
-				1059419E25FA4DDE00C32D21 /* LoginMenu */,
 				1059416A25FA49E900C32D21 /* Assets.xcassets */,
 				1059416F25FA49E900C32D21 /* Info.plist */,
+				1059419E25FA4DDE00C32D21 /* LoginMenu */,
 				1059419525FA4BF600C32D21 /* Assets */,
+				10377F5225FCD32E00536A94 /* GoogleService-Info.plist */,
 				1059416C25FA49E900C32D21 /* Preview Content */,
 			);
 			path = Salmonia3;
@@ -200,12 +242,16 @@
 		1059419525FA4BF600C32D21 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				10377F8F25FD09D200536A94 /* Loading */,
 				10CF0A0925FBA91800D2EEB1 /* OAuthLogin.swift */,
+				10377F6025FCD5A400536A94 /* Fonts */,
 				105941B125FA519A00C32D21 /* ViewModifier */,
 				1059419425FA4BE900C32D21 /* Color */,
 				10CF09F925FB9C4900D2EEB1 /* ObservableObject */,
 				10CF09F825FB9BEE00D2EEB1 /* Realm */,
 				10377F4D25FCBF8600536A94 /* TwitterOAuth.swift */,
+				10377F7B25FCD9E800536A94 /* RealmManager.swift */,
+				10377F8A25FD053A00536A94 /* SettingManager.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -225,6 +271,7 @@
 			children = (
 				105941BD25FA525100C32D21 /* Background.swift */,
 				10CF09BE25FB9AEC00D2EEB1 /* LegacyNavigationViewStyle.swift */,
+				10377F6425FCD63B00536A94 /* Font.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -235,6 +282,7 @@
 				10CF09F325FB9BE100D2EEB1 /* RealmCoopResult.swift */,
 				10CF09FF25FBA5BC00D2EEB1 /* RealmPlayerResult.swift */,
 				10CF0A0425FBA6BF00D2EEB1 /* RealmCoopWave.swift */,
+				10377F8025FCDBE400536A94 /* RealmUserInfo.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -243,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				10CF09FA25FB9C6B00D2EEB1 /* CoreRealmCoop.swift */,
+				10377F8525FD041900536A94 /* CoreAppSettings.swift */,
 			);
 			path = ObservableObject;
 			sourceTree = "<group>";
@@ -395,6 +444,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10377F7525FCD8CD00536A94 /* RobotoMono.ttf in Resources */,
+				10377F7625FCD8CD00536A94 /* Splatfont1.ttf in Resources */,
+				10377F7725FCD8CD00536A94 /* Splatfont2.ttf in Resources */,
 				1059416E25FA49E900C32D21 /* Preview Assets.xcassets in Resources */,
 				1059416B25FA49E900C32D21 /* Assets.xcassets in Resources */,
 				10377F5325FCD32F00536A94 /* GoogleService-Info.plist in Resources */,
@@ -505,16 +557,24 @@
 			files = (
 				105941A025FA4E2500C32D21 /* LoginMenu.swift in Sources */,
 				10CF0A0A25FBA91800D2EEB1 /* OAuthLogin.swift in Sources */,
+				10377F6525FCD63B00536A94 /* Font.swift in Sources */,
+				10377F9E25FD0A1200536A94 /* MBCirlceProgress.swift in Sources */,
 				105941BE25FA525100C32D21 /* Background.swift in Sources */,
 				10CF09F425FB9BE100D2EEB1 /* RealmCoopResult.swift in Sources */,
 				1059416925FA49E500C32D21 /* ContentView.swift in Sources */,
+				10377F9925FD09FF00536A94 /* LoggingThread.swift in Sources */,
 				10CF09BF25FB9AEC00D2EEB1 /* LegacyNavigationViewStyle.swift in Sources */,
 				105941A825FA4F9500C32D21 /* SalmonLoginMenu.swift in Sources */,
 				1059416725FA49E500C32D21 /* Salmonia3App.swift in Sources */,
+				10377F7C25FCD9E800536A94 /* RealmManager.swift in Sources */,
 				10CF0A0525FBA6BF00D2EEB1 /* RealmCoopWave.swift in Sources */,
+				10377F8625FD041900536A94 /* CoreAppSettings.swift in Sources */,
 				10377F4E25FCBF8600536A94 /* TwitterOAuth.swift in Sources */,
+				10377F9125FD09E800536A94 /* LoadingView.swift in Sources */,
 				10CF09FB25FB9C6B00D2EEB1 /* CoreRealmCoop.swift in Sources */,
+				10377F8B25FD053A00536A94 /* SettingManager.swift in Sources */,
 				105941AD25FA500500C32D21 /* TopMenu.swift in Sources */,
+				10377F8125FCDBE400536A94 /* RealmUserInfo.swift in Sources */,
 				10CF0A0025FBA5BC00D2EEB1 /* RealmPlayerResult.swift in Sources */,
 				1059419725FA4C0C00C32D21 /* Color.swift in Sources */,
 			);
