@@ -23,7 +23,7 @@ struct LoginMenu: View {
                 Spacer()
                 Button(action: { isPresented.toggle() }, label: { Text("BTN_SIGN_IN") })
                     .buttonStyle()
-                Button(action: {}, label: { Text("BTN_SIGN_UP") })
+                Button(action: { isActive.toggle() }, label: { Text("BTN_SIGN_UP") })
                     .buttonStyle()
             }
             .position(x: geometry.frame(in: .local).midX, y: geometry.size.height / 4)
