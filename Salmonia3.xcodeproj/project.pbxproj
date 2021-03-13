@@ -20,6 +20,8 @@
 		10377F9125FD09E800536A94 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F9025FD09E800536A94 /* LoadingView.swift */; };
 		10377F9925FD09FF00536A94 /* LoggingThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F9825FD09FF00536A94 /* LoggingThread.swift */; };
 		10377F9E25FD0A1200536A94 /* MBCirlceProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F9D25FD0A1200536A94 /* MBCirlceProgress.swift */; };
+		10377FA425FD10FE00536A94 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377FA325FD10FE00536A94 /* Optional.swift */; };
+		10377FAD25FD166200536A94 /* CoopResultCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377FAC25FD166200536A94 /* CoopResultCollection.swift */; };
 		1059416725FA49E500C32D21 /* Salmonia3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059416625FA49E500C32D21 /* Salmonia3App.swift */; };
 		1059416925FA49E500C32D21 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059416825FA49E500C32D21 /* ContentView.swift */; };
 		1059416B25FA49E900C32D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1059416A25FA49E900C32D21 /* Assets.xcassets */; };
@@ -81,6 +83,8 @@
 		10377F9025FD09E800536A94 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		10377F9825FD09FF00536A94 /* LoggingThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingThread.swift; sourceTree = "<group>"; };
 		10377F9D25FD0A1200536A94 /* MBCirlceProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBCirlceProgress.swift; sourceTree = "<group>"; };
+		10377FA325FD10FE00536A94 /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
+		10377FAC25FD166200536A94 /* CoopResultCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopResultCollection.swift; sourceTree = "<group>"; };
 		1059416325FA49E500C32D21 /* Salmonia3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Salmonia3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1059416625FA49E500C32D21 /* Salmonia3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salmonia3App.swift; sourceTree = "<group>"; };
 		1059416825FA49E500C32D21 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -168,6 +172,22 @@
 			path = Loading;
 			sourceTree = "<group>";
 		};
+		10377FA225FD10EF00536A94 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				10377FA325FD10FE00536A94 /* Optional.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		10377FAB25FD165100536A94 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				10377FAC25FD166200536A94 /* CoopResultCollection.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
 		1059415A25FA49E500C32D21 = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +217,7 @@
 				1059416825FA49E500C32D21 /* ContentView.swift */,
 				1059416A25FA49E900C32D21 /* Assets.xcassets */,
 				1059416F25FA49E900C32D21 /* Info.plist */,
+				10377FAB25FD165100536A94 /* Collection */,
 				1059419E25FA4DDE00C32D21 /* LoginMenu */,
 				1059419525FA4BF600C32D21 /* Assets */,
 				10377F5225FCD32E00536A94 /* GoogleService-Info.plist */,
@@ -242,6 +263,7 @@
 		1059419525FA4BF600C32D21 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				10377FA225FD10EF00536A94 /* Extension */,
 				10377F8F25FD09D200536A94 /* Loading */,
 				10CF0A0925FBA91800D2EEB1 /* OAuthLogin.swift */,
 				10377F6025FCD5A400536A94 /* Fonts */,
@@ -557,6 +579,7 @@
 			files = (
 				105941A025FA4E2500C32D21 /* LoginMenu.swift in Sources */,
 				10CF0A0A25FBA91800D2EEB1 /* OAuthLogin.swift in Sources */,
+				10377FA425FD10FE00536A94 /* Optional.swift in Sources */,
 				10377F6525FCD63B00536A94 /* Font.swift in Sources */,
 				10377F9E25FD0A1200536A94 /* MBCirlceProgress.swift in Sources */,
 				105941BE25FA525100C32D21 /* Background.swift in Sources */,
@@ -577,6 +600,7 @@
 				10377F8125FCDBE400536A94 /* RealmUserInfo.swift in Sources */,
 				10CF0A0025FBA5BC00D2EEB1 /* RealmPlayerResult.swift in Sources */,
 				1059419725FA4C0C00C32D21 /* Color.swift in Sources */,
+				10377FAD25FD166200536A94 /* CoopResultCollection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

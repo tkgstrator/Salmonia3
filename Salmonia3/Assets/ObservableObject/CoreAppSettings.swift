@@ -11,6 +11,7 @@ import SwiftUI
 
 class CoreAppSetting: ObservableObject {
     @Published var isLogin: Bool = UserDefaults.standard.bool(forKey: "isLogin")
+    @Published var account: RealmUserInfo = realm.objects(RealmUserInfo.self).first ?? RealmUserInfo()
 
 //    var objectWillChange: ObservableObjectPublisher = .init()
     private static var realm = try! Realm()
