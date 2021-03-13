@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		10377F1825FC70C300536A94 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10377F1725FC70C300536A94 /* GoogleService-Info.plist */; };
+		10377F4E25FCBF8600536A94 /* TwitterOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F4D25FCBF8600536A94 /* TwitterOAuth.swift */; };
+		10377F5325FCD32F00536A94 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10377F5225FCD32E00536A94 /* GoogleService-Info.plist */; };
 		1059416725FA49E500C32D21 /* Salmonia3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059416625FA49E500C32D21 /* Salmonia3App.swift */; };
 		1059416925FA49E500C32D21 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059416825FA49E500C32D21 /* ContentView.swift */; };
 		1059416B25FA49E900C32D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1059416A25FA49E900C32D21 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		10CF0A0025FBA5BC00D2EEB1 /* RealmPlayerResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF09FF25FBA5BC00D2EEB1 /* RealmPlayerResult.swift */; };
 		10CF0A0525FBA6BF00D2EEB1 /* RealmCoopWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF0A0425FBA6BF00D2EEB1 /* RealmCoopWave.swift */; };
 		10CF0A0A25FBA91800D2EEB1 /* OAuthLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF0A0925FBA91800D2EEB1 /* OAuthLogin.swift */; };
+		2E38FBBA890FA31FB3591447 /* Pods_Salmonia3Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4CFAB4D922D35088435EF26 /* Pods_Salmonia3Tests.framework */; };
 		A8C5630EBE09FDEA7BF59B1C /* Pods_Salmonia3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6419A3A4A135F484294BF5 /* Pods_Salmonia3.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		10377F1725FC70C300536A94 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		10377F4D25FCBF8600536A94 /* TwitterOAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterOAuth.swift; sourceTree = "<group>"; };
+		10377F5225FCD32E00536A94 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1059416325FA49E500C32D21 /* Salmonia3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Salmonia3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1059416625FA49E500C32D21 /* Salmonia3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salmonia3App.swift; sourceTree = "<group>"; };
 		1059416825FA49E500C32D21 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -79,9 +82,12 @@
 		10CF09FF25FBA5BC00D2EEB1 /* RealmPlayerResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPlayerResult.swift; sourceTree = "<group>"; };
 		10CF0A0425FBA6BF00D2EEB1 /* RealmCoopWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopWave.swift; sourceTree = "<group>"; };
 		10CF0A0925FBA91800D2EEB1 /* OAuthLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthLogin.swift; sourceTree = "<group>"; };
+		2F2E5792249C15DC27343CA1 /* Pods-Salmonia3Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salmonia3Tests.debug.xcconfig"; path = "Target Support Files/Pods-Salmonia3Tests/Pods-Salmonia3Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		40DFE28342F9F06B5E95E99C /* Pods-Salmonia3Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salmonia3Tests.release.xcconfig"; path = "Target Support Files/Pods-Salmonia3Tests/Pods-Salmonia3Tests.release.xcconfig"; sourceTree = "<group>"; };
 		56AB289C0D87612FB8D00999 /* Pods-Salmonia3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salmonia3.debug.xcconfig"; path = "Target Support Files/Pods-Salmonia3/Pods-Salmonia3.debug.xcconfig"; sourceTree = "<group>"; };
 		7B6419A3A4A135F484294BF5 /* Pods_Salmonia3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Salmonia3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0FB8B78274FB434279E074 /* Pods-Salmonia3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salmonia3.release.xcconfig"; path = "Target Support Files/Pods-Salmonia3/Pods-Salmonia3.release.xcconfig"; sourceTree = "<group>"; };
+		F4CFAB4D922D35088435EF26 /* Pods_Salmonia3Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Salmonia3Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E38FBBA890FA31FB3591447 /* Pods_Salmonia3Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +151,7 @@
 		1059416525FA49E500C32D21 /* Salmonia3 */ = {
 			isa = PBXGroup;
 			children = (
-				10377F1725FC70C300536A94 /* GoogleService-Info.plist */,
+				10377F5225FCD32E00536A94 /* GoogleService-Info.plist */,
 				1059416625FA49E500C32D21 /* Salmonia3App.swift */,
 				1059416825FA49E500C32D21 /* ContentView.swift */,
 				1059419E25FA4DDE00C32D21 /* LoginMenu */,
@@ -198,6 +205,7 @@
 				1059419425FA4BE900C32D21 /* Color */,
 				10CF09F925FB9C4900D2EEB1 /* ObservableObject */,
 				10CF09F825FB9BEE00D2EEB1 /* Realm */,
+				10377F4D25FCBF8600536A94 /* TwitterOAuth.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -243,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				7B6419A3A4A135F484294BF5 /* Pods_Salmonia3.framework */,
+				F4CFAB4D922D35088435EF26 /* Pods_Salmonia3Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -252,6 +261,8 @@
 			children = (
 				56AB289C0D87612FB8D00999 /* Pods-Salmonia3.debug.xcconfig */,
 				CA0FB8B78274FB434279E074 /* Pods-Salmonia3.release.xcconfig */,
+				2F2E5792249C15DC27343CA1 /* Pods-Salmonia3Tests.debug.xcconfig */,
+				40DFE28342F9F06B5E95E99C /* Pods-Salmonia3Tests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -268,7 +279,6 @@
 				1059416025FA49E500C32D21 /* Frameworks */,
 				1059416125FA49E500C32D21 /* Resources */,
 				1AC99CC90BF85D86A9A4136F /* [CP] Embed Pods Frameworks */,
-				D3A564FF8E477763AD117613 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -294,9 +304,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1059418B25FA49E900C32D21 /* Build configuration list for PBXNativeTarget "Salmonia3Tests" */;
 			buildPhases = (
+				1FC1A00A1F80D4042A30983A /* [CP] Check Pods Manifest.lock */,
 				1059417025FA49E900C32D21 /* Sources */,
 				1059417125FA49E900C32D21 /* Frameworks */,
 				1059417225FA49E900C32D21 /* Resources */,
+				31EEF35EEE78608CE956C65C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -385,7 +397,7 @@
 			files = (
 				1059416E25FA49E900C32D21 /* Preview Assets.xcassets in Resources */,
 				1059416B25FA49E900C32D21 /* Assets.xcassets in Resources */,
-				10377F1825FC70C300536A94 /* GoogleService-Info.plist in Resources */,
+				10377F5325FCD32F00536A94 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,21 +435,43 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Salmonia3/Pods-Salmonia3-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D3A564FF8E477763AD117613 /* [CP] Copy Pods Resources */ = {
+		1FC1A00A1F80D4042A30983A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Salmonia3/Pods-Salmonia3-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Salmonia3/Pods-Salmonia3-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Salmonia3Tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Salmonia3/Pods-Salmonia3-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		31EEF35EEE78608CE956C65C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Salmonia3Tests/Pods-Salmonia3Tests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Salmonia3Tests/Pods-Salmonia3Tests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Salmonia3Tests/Pods-Salmonia3Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D7C2DF4B6924925625DD7D9F /* [CP] Check Pods Manifest.lock */ = {
@@ -478,6 +512,7 @@
 				105941A825FA4F9500C32D21 /* SalmonLoginMenu.swift in Sources */,
 				1059416725FA49E500C32D21 /* Salmonia3App.swift in Sources */,
 				10CF0A0525FBA6BF00D2EEB1 /* RealmCoopWave.swift in Sources */,
+				10377F4E25FCBF8600536A94 /* TwitterOAuth.swift in Sources */,
 				10CF09FB25FB9C6B00D2EEB1 /* CoreRealmCoop.swift in Sources */,
 				105941AD25FA500500C32D21 /* TopMenu.swift in Sources */,
 				10CF0A0025FBA5BC00D2EEB1 /* RealmPlayerResult.swift in Sources */,
@@ -683,6 +718,7 @@
 		};
 		1059418C25FA49E900C32D21 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F2E5792249C15DC27343CA1 /* Pods-Salmonia3Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -705,6 +741,7 @@
 		};
 		1059418D25FA49E900C32D21 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40DFE28342F9F06B5E95E99C /* Pods-Salmonia3Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
