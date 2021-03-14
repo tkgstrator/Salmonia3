@@ -46,7 +46,7 @@ struct TopMenu: View {
     }
     
     var Overview: some View {
-        NavigationLink(destination: LoadingView()) {
+        NavigationLink(destination: SettingView()) {
             HStack {
                 URLImage(url: URL(string: main.account.thumbnailURL.stringValue)!) { image in image.resizable().clipShape(Circle()) }.frame(width: 70, height: 70)
                 Text(main.account.nickname.stringValue)
