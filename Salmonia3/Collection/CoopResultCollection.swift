@@ -16,7 +16,7 @@ struct CoopResultCollection: View {
         ZStack {
             NavigationLink(destination: LoadingView(), isActive: $isActive) { EmptyView() }
             List {
-                ForEach(main.results) { result in
+                ForEach(main.results, id:\.self) { result in
                     NavigationLink(destination: CoopResult()) {
                         ResultOverview(result: result)
                     }

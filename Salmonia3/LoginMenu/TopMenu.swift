@@ -19,13 +19,15 @@ struct TopMenu: View {
         ZStack {
             NavigationLink(destination: LoadingView(), isActive: $isActive) { EmptyView() }
             List {
-                Section(header: Text("HEADER_OVERVIEW")) {
+                Section(header: Text("HEADER_OVERVIEW").splatfont2(.orange, size: 14)) {
                     Overview
                     Results
                 }
-//                Section(header: Text("HEADER_SCHEDULE")) {
-//                    Text("TEXT_WELCOME")
-//                }
+                Section(header: Text("HEADER_SCHEDULE")) {
+                    NavigationLink(destination: CoopShiftCollection()) {
+                        Text("LINK_COOP_SCHEDULE")
+                    }
+                }
 //                Section(header: Text("HEADER_RECORD")) {
 //                    Text("TEXT_WELCOME")
 //                }
