@@ -27,4 +27,5 @@ class AppManager {
         UserDefaults.standard.setValue(token, forKey: "apiToken")
     }
     
+    
 }

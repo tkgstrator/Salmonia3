@@ -22,6 +22,7 @@ class RealmManager {
                 }
             })
         Realm.Configuration.defaultConfiguration = config
+        try? RealmManager.addNewRotation()
     }
     
     public class func addNewAccount(account: RealmUserInfo) throws -> () {
@@ -37,4 +38,16 @@ class RealmManager {
         try realm.commitWrite()
     }
     
+    public class func addNewRotation() throws -> () {
+        ProductManger.getFutureRotation { response, error in
+            guard let response = response else { return }
+            
+            realm.beginWrite()
+            for (_, data) in response {
+                let value = try? JSONDecoder().decode(RealmCoopShift.self, from: data.rawData())
+                realm.create(RealmCoopShift.self, value: value, update: .all)
+            }
+            try? realm.commitWrite()
+        }
+    }
 }
