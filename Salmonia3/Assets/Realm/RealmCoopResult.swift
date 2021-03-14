@@ -59,7 +59,7 @@ class RealmCoopResult: Object, Identifiable, Decodable {
         case bossCounts         = "boss_counts"
         case bossKillCounts     = "boss_kill_counts"
         case wave               = "wave_details"
-        case player             = "other_players"
+        case player             = "other_results"
         case jobScore           = "job_score"
         case kumaPoint          = "kuma_point"
     }
