@@ -41,7 +41,8 @@ class RealmCoopResult: Object, Identifiable, Decodable {
     }
     
     private enum CodingKeys: String, CodingKey {
-        case pid              = "pid"
+        case pid                = "pid"
+        case jobId              = "job_id"
         case stageId            = "stage_id"
         case salmonId           = "salmon_id"
         case gradePoint         = "grade_point"
@@ -59,28 +60,45 @@ class RealmCoopResult: Object, Identifiable, Decodable {
         case bossCounts         = "boss_counts"
         case bossKillCounts     = "boss_kill_counts"
         case wave               = "wave_details"
-        case player             = "other_results"
+        case otherResults       = "other_results"
+        case myResult           = "my_result"
         case jobScore           = "job_score"
         case kumaPoint          = "kuma_point"
+        case jobResult          = "job_result"
+        case grade              = "grade"
+        case schedule           = "schedule"
     }
 
     required convenience public init(from decoder: Decoder) throws {
         self.init()
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        pid = try? container.decode(String.self, forKey: .pid)
-        #warning("RealmOptionalInt")
-        salmonId.value = try? container.decode(Int.self, forKey: .salmonId)
-        stageId.value = try? container.decode(Int.self, forKey: .stageId)
+        #warning("そのままデータが使えるところ")
         gradePoint.value = try container.decode(Int.self, forKey: .gradePoint)
         gradePointDelta.value = try container.decode(Int.self, forKey: .gradePointDelta)
         dangerRate.value = try container.decode(Double.self, forKey: .dangerRate)
-        goldenEggs.value = try? container.decode(Int.self, forKey: .goldenEggs)
-        powerEggs.value = try? container.decode(Int.self, forKey: .powerEggs)
-        gradeId.value = try? container.decode(Int.self, forKey: .gradeId)
-        failureReason = try? container.decode(String.self, forKey: .failureReason)
-        failureWave.value = try? container.decode(Int.self, forKey: .failureWave)
-        isClear = (try? container.decode(Bool.self, forKey: .isClear)) ?? true
+        jobScore.value = try container.decode(Int.self, forKey: .jobScore)
+        kumaPoint.value = try container.decode(Int.self, forKey: .kumaPoint)
+        
+        #warning("データ整形に処理が必要なところ")
+        pid = try? container.decode(String.self, forKey: .pid)
+        jobId.value = try? container.decode(Int.self, forKey: .jobId)
+        salmonId.value = try? container.decode(Int.self, forKey: .salmonId)
+//        stageId.value = try? container.decode(Int.self, forKey: .stageId)
+
+        let stage = try container.decode(Schedule.self, forKey: .schedule)
+        stageId.value = stage.id
+
+        #warning("バイトの結果の取得")
+        let jobResult = try container.decode(JobResult.self, forKey: .jobResult)
+        failureReason = jobResult.failure_reason
+        failureWave.value = jobResult.failure_wave
+        isClear = jobResult.is_clear
+        
+        #warning("ランクの取得")
+        let grade = try container.decode(Grade.self, forKey: .grade)
+        gradeId.value = Int(grade.id) ?? 0
+        
         #warning("DateFormatterを毎回呼び出すのはコストが重いかも")
         let dateFormatter = ISO8601DateFormatter()
         dateFormatter.timeZone = TimeZone.current
@@ -93,10 +111,55 @@ class RealmCoopResult: Object, Identifiable, Decodable {
         playTime = dateFormatter.string(from: Date(timeIntervalSince1970: _playTime))
         
         // RealmSwfit.Listの書き込み
-        let _player = try container.decodeIfPresent([RealmPlayerResult].self, forKey: .player) ?? [RealmPlayerResult()]
-        player.append(objectsIn: _player)
+        let myResult = try container.decodeIfPresent(RealmPlayerResult.self, forKey: .myResult) ?? RealmPlayerResult()
+        player.append(myResult)
+        
+        let otherResults = try container.decodeIfPresent([RealmPlayerResult].self, forKey: .otherResults) ?? [RealmPlayerResult()]
+        player.append(objectsIn: otherResults)
+        
+        // List型に対する処理
+        let _bossKillCounts = try container.decodeIfPresent([Int: BossKillCounts].self, forKey: .bossKillCounts) ?? [Int(): BossKillCounts()]
+        bossKillCounts.append(objectsIn: _bossKillCounts.sorted{ $0.0 < $1.0 }.map{ $0.value.count })
+
+        let _bossCounts = try container.decodeIfPresent([Int: BossKillCounts].self, forKey: .bossCounts) ?? [Int(): BossKillCounts()]
+        bossCounts.append(objectsIn: _bossCounts.sorted{ $0.0 < $1.0 }.map{ $0.value.count })
+
         let _wave = try container.decodeIfPresent([RealmCoopWave].self, forKey: .wave) ?? [RealmCoopWave()]
         wave.append(objectsIn: _wave)
+        
+        #warning("JSONには入っていないデータは自身から計算する")
+        goldenEggs.value = wave.sum(ofProperty: "goldenIkuraNum")
+        powerEggs.value = wave.sum(ofProperty: "ikuraNum")
+        
+    }
+    
+}
 
+#warning("定義用の構造体")
+private struct JobResult: Codable {
+    var failure_reason: String?
+    var failure_wave: Int?
+    var is_clear: Bool = false
+}
+
+private struct Grade: Codable {
+    var id: String = "0"
+    var long_name: String = ""
+    var short_name: String = ""
+    var name: String = ""
+}
+
+private struct Schedule: Codable {
+    var end_time: Int = 0
+    var start_time: Int = 0
+    var stage: [String: String] = [:]
+    var id: Int? {
+        guard let stageURL: String = self.stage["image"] else { return nil }
+        if stageURL.contains("65c68c6f0641cc5654434b78a6f10b0ad32ccdee") { return 5000 }
+        if stageURL.contains("e07d73b7d9f0c64e552b34a2e6c29b8564c63388") { return 5001 }
+        if stageURL.contains("6d68f5baa75f3a94e5e9bfb89b82e7377e3ecd2c") { return 5002 }
+        if stageURL.contains("e9f7c7b35e6d46778cd3cbc0d89bd7e1bc3be493") { return 5003 }
+        if stageURL.contains("50064ec6e97aac91e70df5fc2cfecf61ad8615fd") { return 5004 }
+        return nil
     }
 }

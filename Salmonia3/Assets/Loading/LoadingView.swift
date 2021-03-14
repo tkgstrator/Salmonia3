@@ -40,10 +40,9 @@ struct LoadingView: View {
                         let jobNumRange: Range<Int> = Range(jobNumRemote - 1 ... jobNumRemote)
 //                        #else
                         for (idx, jobId) in jobNumRange.enumerated() {
-                            data.progress += 1 / CGFloat(jobNumRange.count)
                             let result: JSON = try SplatNet2.getResult(job_id: jobId, iksm_session: iksmSession)
-                            let obj = try JSONDecoder().decode(RealmCoopResult.self, from: result.rawData())
-                            print(obj)
+                            try RealmManager.addNewResult(from: result)
+                            data.progress += 1 / CGFloat(jobNumRange.count)
                         }
                     }
                     catch {
