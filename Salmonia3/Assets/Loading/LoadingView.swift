@@ -37,7 +37,7 @@ struct LoadingView: View {
                         guard let jobNumRemote: Int = summary["summary"]["card"]["job_num"].int else { return }
                         
 //                        #if DEBUG
-                        let jobNumRange: Range<Int> = Range(jobNumRemote - 5 ... jobNumRemote)
+                        let jobNumRange: Range<Int> = Range(jobNumRemote - 1 ... jobNumRemote)
 //                        #else
                         for (idx, jobId) in jobNumRange.enumerated() {
                             data.progress += 1 / CGFloat(jobNumRange.count)
