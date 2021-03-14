@@ -19,13 +19,20 @@ struct SalmonLoginMenu: View {
     
     var body: some View {
         GeometryReader { geometry in
-            Text("TEXT_WELCOME")
-                .splatfont2(size: 26)
-                .position(x: geometry.frame(in: .local).midX, y: geometry.size.height / 4)
+            VStack {
+                Text("TEXT_SALMON_STATS")
+                    .splatfont2(size: 36)
+                Text("TEXT_WELCOME_SALMON_STATS")
+                    .splatfont2(.secondary, size: 18)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(4)
+            }
+            .padding(.horizontal, 10)
+            .position(x: geometry.frame(in: .local).midX, y: geometry.size.height / 4)
             VStack(spacing: 40) {
-                Button(action: { isPresented.toggle() }, label: { Text("BTN_SIGN_IN").splatfont2(.black) })
+                Button(action: { isPresented.toggle() }, label: { Text("BTN_SIGN_IN").splatfont2(.black, size: 20) })
                     .buttonStyle()
-                Button(action: { isActive.toggle() }, label: { Text("BTN_SIGN_UP").splatfont2(.black) })
+                Button(action: { isActive.toggle() }, label: { Text("BTN_SKIP").splatfont2(.black, size: 20) })
                     .buttonStyle()
             }
             .position(x: geometry.frame(in: .local).midX, y: 3 * geometry.size.height / 4)
@@ -35,11 +42,14 @@ struct SalmonLoginMenu: View {
                 guard let oauthToken = callbackURL?.absoluteString.capture(pattern: "token=(.*)&", group: 1) else { return }
                 guard let oauthVerifier = callbackURL?.absoluteString.capture(pattern: "verifier=(.*)", group: 1) else { return }
                 #warning("とりあえずここでSalmon Statsのトークンを取得")
-                print(oauthToken, oauthVerifier)
+                AppManager.configure(oauthToken: oauthToken, oauthVerifier: oauthVerifier)
                 #warning("ここでログイン画面に切り替わるはず")
                 AppManager.isLogin(isLogin: true)
             }
             .prefersEphemeralWebBrowserSession(false)
+        }
+        .alert(isPresented: $isActive) {
+            Alert(title: Text("ALERT_CONFIRM"), message: Text("MESSAGE_SKIP_SETUP"), primaryButton: .destructive(Text("BTN_LATER"), action: { AppManager.isLogin(isLogin: true) }), secondaryButton: .default(Text("BTN_CANCEL")))
         }
         .background(BackGround)
         .navigationTitle("TITLE_LOGIN")

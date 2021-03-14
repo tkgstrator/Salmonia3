@@ -1,0 +1,47 @@
+/* 
+  Locaziable.strings
+  Salmonia3
+
+  Created by Devonly on 3/14/21.
+  
+*/
+
+"TITLE_LOGIN" = "Welcome";
+"TITLE_SALMONIA" = "Salmonia";
+"TITLE_SETTINGS" = "Settings";
+"TITLE_LOGGING_THREAD" = "Logging Thread";
+
+"TEXT_SALMONIA" = "Salmonia";
+"TEXT_SALMON_STATS" = "Salmon Stats";
+
+"TEXT_WELCOME_SPLATNET2" = "Using Salmonia, you need sign in with Nintendo Switch Online account. Salmonia don't send any information for third party clients, services without your permission.";
+"TEXT_WELCOME_SALMON_STATS" = "Salmonia need a Twitter account uploading results to Salmon Stats. If you don't want, skip and setup later.";
+
+// アラートのタイトル
+"ALERT_ERASE_SETTING" = "Erase Data";
+"ALERT_CONFIRM" = "Confirm";
+
+// アラートのメッセージ
+"MESSAGE_WARING" = "This operaion can not undone.";
+"MESSAGE_SKIP_SETUP" = "Linking with Salmon Stats, Samonia use more conveniently.";
+
+"HEADER_USER_INFO" = "User";
+"HEADER_APPLICATION" = "Application";
+"HEADER_DEVICE" = "Device";
+"HEADER_OVERVIEW" = "Overview";
+
+"SETTING_SYSTEM" = "System Information";
+"SETTING_DEVICE" = "Device Information";
+"SETTING_APP_VERSION" = "Version";
+"ERASE_SETTING" = "Erase Data";
+
+"BTN_CONFIRM" = "Confirm";
+"BTN_LATER" = "Setup later";
+"BTN_CANCEL" = "Cancel";
+"BTN_SIGN_IN" = "Sign in";
+"BTN_SIGN_UP" = "Sign up";
+"BTN_SKIP" = "Skip";
+
+// ログ表示
+"LOG_DOWNLOAD" = "Downloading";
+"LOG_UPLOAD" = "Uploading";

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		102465F125FDDABD004DC043 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102465F025FDDABD004DC043 /* SettingView.swift */; };
+		1024660325FDE916004DC043 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1024660525FDE916004DC043 /* Localizable.strings */; };
+		1024661125FDF411004DC043 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024661025FDF411004DC043 /* String.swift */; };
 		10377F4E25FCBF8600536A94 /* TwitterOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F4D25FCBF8600536A94 /* TwitterOAuth.swift */; };
 		10377F5325FCD32F00536A94 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10377F5225FCD32E00536A94 /* GoogleService-Info.plist */; };
 		10377F6525FCD63B00536A94 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F6425FCD63B00536A94 /* Font.swift */; };
@@ -70,6 +73,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		102465F025FDDABD004DC043 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		1024660425FDE916004DC043 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1024660925FDE924004DC043 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1024661025FDF411004DC043 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		10377F4D25FCBF8600536A94 /* TwitterOAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterOAuth.swift; sourceTree = "<group>"; };
 		10377F5225FCD32E00536A94 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10377F6125FCD5C200536A94 /* RobotoMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoMono.ttf; sourceTree = "<group>"; };
@@ -152,6 +159,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		102465EF25FDDAAA004DC043 /* SettingMenu */ = {
+			isa = PBXGroup;
+			children = (
+				102465F025FDDABD004DC043 /* SettingView.swift */,
+			);
+			path = SettingMenu;
+			sourceTree = "<group>";
+		};
 		10377F6025FCD5A400536A94 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				10377FA325FD10FE00536A94 /* Optional.swift */,
+				1024661025FDF411004DC043 /* String.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -218,9 +234,11 @@
 				1059416A25FA49E900C32D21 /* Assets.xcassets */,
 				1059416F25FA49E900C32D21 /* Info.plist */,
 				10377FAB25FD165100536A94 /* Collection */,
+				102465EF25FDDAAA004DC043 /* SettingMenu */,
 				1059419E25FA4DDE00C32D21 /* LoginMenu */,
 				1059419525FA4BF600C32D21 /* Assets */,
 				10377F5225FCD32E00536A94 /* GoogleService-Info.plist */,
+				1024660525FDE916004DC043 /* Localizable.strings */,
 				1059416C25FA49E900C32D21 /* Preview Content */,
 			);
 			path = Salmonia3;
@@ -438,6 +456,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 1059415A25FA49E500C32D21;
 			packageReferences = (
@@ -468,6 +487,7 @@
 			files = (
 				10377F7525FCD8CD00536A94 /* RobotoMono.ttf in Resources */,
 				10377F7625FCD8CD00536A94 /* Splatfont1.ttf in Resources */,
+				1024660325FDE916004DC043 /* Localizable.strings in Resources */,
 				10377F7725FCD8CD00536A94 /* Splatfont2.ttf in Resources */,
 				1059416E25FA49E900C32D21 /* Preview Assets.xcassets in Resources */,
 				1059416B25FA49E900C32D21 /* Assets.xcassets in Resources */,
@@ -583,6 +603,7 @@
 				10377F6525FCD63B00536A94 /* Font.swift in Sources */,
 				10377F9E25FD0A1200536A94 /* MBCirlceProgress.swift in Sources */,
 				105941BE25FA525100C32D21 /* Background.swift in Sources */,
+				102465F125FDDABD004DC043 /* SettingView.swift in Sources */,
 				10CF09F425FB9BE100D2EEB1 /* RealmCoopResult.swift in Sources */,
 				1059416925FA49E500C32D21 /* ContentView.swift in Sources */,
 				10377F9925FD09FF00536A94 /* LoggingThread.swift in Sources */,
@@ -590,6 +611,7 @@
 				105941A825FA4F9500C32D21 /* SalmonLoginMenu.swift in Sources */,
 				1059416725FA49E500C32D21 /* Salmonia3App.swift in Sources */,
 				10377F7C25FCD9E800536A94 /* RealmManager.swift in Sources */,
+				1024661125FDF411004DC043 /* String.swift in Sources */,
 				10CF0A0525FBA6BF00D2EEB1 /* RealmCoopWave.swift in Sources */,
 				10377F8625FD041900536A94 /* CoreAppSetting.swift in Sources */,
 				10377F4E25FCBF8600536A94 /* TwitterOAuth.swift in Sources */,
@@ -634,6 +656,18 @@
 			targetProxy = 1059418025FA49E900C32D21 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1024660525FDE916004DC043 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1024660425FDE916004DC043 /* en */,
+				1024660925FDE924004DC043 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1059418625FA49E900C32D21 /* Debug */ = {

@@ -18,13 +18,20 @@ struct LoginMenu: View {
     
     var body: some View {
         GeometryReader { geometry in
-            Text("TEXT_WELCOME")
-                .splatfont2(size: 26)
-                .position(x: geometry.frame(in: .local).midX, y: geometry.size.height / 4)
+            VStack {
+                Text("TEXT_SALMONIA")
+                    .splatfont2(size: 36)
+                Text("TEXT_WELCOME_SPLATNET2")
+                    .splatfont2(.secondary, size: 18)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(4)
+            }
+            .padding(.horizontal, 10)
+            .position(x: geometry.frame(in: .local).midX, y: geometry.size.height / 4)
             VStack(spacing: 40) {
-                Button(action: { isPresented.toggle() }, label: { Text("BTN_SIGN_IN").splatfont2(.black) })
+                Button(action: { isPresented.toggle() }, label: { Text("BTN_SIGN_IN").splatfont2(.black, size: 20) })
                     .buttonStyle()
-                Button(action: { isActive.toggle() }, label: { Text("BTN_SIGN_UP").splatfont2(.black) })
+                Button(action: { isActive.toggle() }, label: { Text("BTN_SIGN_UP").splatfont2(.black, size: 20) })
                     .buttonStyle()
             }
             .position(x: geometry.frame(in: .local).midX, y: 3 * geometry.size.height / 4)

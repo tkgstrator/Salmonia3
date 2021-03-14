@@ -13,7 +13,13 @@ class AppManager {
         UserDefaults.standard.setValue(isLogin, forKey: "isLogin")
     }
     
-    public class func eraseSetting() {
+    public class func erase() {
+        UserDefaults.standard.setValue(false, forKey: "isLogin")
         UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+    }
+    
+    public class func configure(oauthToken: String, oauthVerifier: String) {
+        UserDefaults.standard.setValue(oauthToken, forKey: "oauthToken")
+        UserDefaults.standard.setValue(oauthVerifier, forKey: "oauthVerifier")
     }
 }
