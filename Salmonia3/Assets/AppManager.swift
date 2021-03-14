@@ -13,4 +13,7 @@ class AppManager {
         UserDefaults.standard.setValue(isLogin, forKey: "isLogin")
     }
     
+    public class func eraseSetting() {
+        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+    }
 }

@@ -15,7 +15,7 @@ class RealmManager {
     init() {
         // データベースのマイグレーションをする
         let config = Realm.Configuration(
-            schemaVersion: 0,
+            schemaVersion: 4,
             migrationBlock: { [self] migration, version in
                 if version < 1 {
                     // マイグレーションブロック

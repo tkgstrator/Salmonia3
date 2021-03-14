@@ -8,8 +8,8 @@
 import Foundation
 import RealmSwift
 
-class RealmCoopResult: Object, Identifiable, Codable {
-    @objc dynamic var nsaid: String?
+class RealmCoopResult: Object, Identifiable, Decodable {
+    @objc dynamic var pid: String?
     let jobId = RealmOptional<Int>() // SplatNet2用のID
     let stageId = RealmOptional<Int>()
     let salmonId = RealmOptional<Int>() // SalmonStats用のID
@@ -17,6 +17,8 @@ class RealmCoopResult: Object, Identifiable, Codable {
     let gradeId = RealmOptional<Int>()
     let gradePointDelta = RealmOptional<Int>()
     let failureWave = RealmOptional<Int>()
+    let jobScore = RealmOptional<Int>()
+    let kumaPoint = RealmOptional<Int>()
     let dangerRate = RealmOptional<Double>()
     @objc dynamic var playTime: String?
     @objc dynamic var endTime: String?
@@ -27,19 +29,19 @@ class RealmCoopResult: Object, Identifiable, Codable {
     @objc dynamic var isClear: Bool = false
     dynamic var bossCounts = List<Int>()
     dynamic var bossKillCounts = List<Int>()
-    dynamic var wave = List<RealmCoopWave>()
-    dynamic var player = List<RealmPlayerResult>()
+    var wave = List<RealmCoopWave>()
+    var player = List<RealmPlayerResult>()
     
     override static func primaryKey() -> String? {
         return "playTime"
     }
     
     override static func indexedProperties() -> [String] {
-        return ["start_time"]
+        return ["startTime"]
     }
     
     private enum CodingKeys: String, CodingKey {
-        case nsaid
+        case pid              = "pid"
         case stageId            = "stage_id"
         case salmonId           = "salmon_id"
         case gradePoint         = "grade_point"
@@ -56,35 +58,45 @@ class RealmCoopResult: Object, Identifiable, Codable {
         case isClear            = "is_clear"
         case bossCounts         = "boss_counts"
         case bossKillCounts     = "boss_kill_counts"
+        case wave               = "wave_details"
+        case player             = "other_players"
+        case jobScore           = "job_score"
+        case kumaPoint          = "kuma_point"
     }
 
     required convenience public init(from decoder: Decoder) throws {
         self.init()
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        nsaid = try container.decode(String.self, forKey: .nsaid)
+        pid = try? container.decode(String.self, forKey: .pid)
         #warning("RealmOptionalInt")
-        salmonId.value = try container.decode(Int.self, forKey: .salmonId)
-        stageId.value = try container.decode(Int.self, forKey: .stageId)
+        salmonId.value = try? container.decode(Int.self, forKey: .salmonId)
+        stageId.value = try? container.decode(Int.self, forKey: .stageId)
         gradePoint.value = try container.decode(Int.self, forKey: .gradePoint)
         gradePointDelta.value = try container.decode(Int.self, forKey: .gradePointDelta)
-        gradeId.value = try container.decode(Int.self, forKey: .gradeId)
-        failureWave.value = try container.decode(Int.self, forKey: .failureWave)
         dangerRate.value = try container.decode(Double.self, forKey: .dangerRate)
-        goldenEggs.value = try container.decode(Int.self, forKey: .goldenEggs)
-        powerEggs.value = try container.decode(Int.self, forKey: .powerEggs)
-        failureReason = try container.decode(String.self, forKey: .failureReason)
-        isClear = try container.decode(Bool.self, forKey: .isClear)
-        powerEggs.value = try container.decode(Int.self, forKey: .stageId)
+        goldenEggs.value = try? container.decode(Int.self, forKey: .goldenEggs)
+        powerEggs.value = try? container.decode(Int.self, forKey: .powerEggs)
+        gradeId.value = try? container.decode(Int.self, forKey: .gradeId)
+        failureReason = try? container.decode(String.self, forKey: .failureReason)
+        failureWave.value = try? container.decode(Int.self, forKey: .failureWave)
+        isClear = (try? container.decode(Bool.self, forKey: .isClear)) ?? true
         #warning("DateFormatterを毎回呼び出すのはコストが重いかも")
         let dateFormatter = ISO8601DateFormatter()
         dateFormatter.timeZone = TimeZone.current
         
         let _startTime = try container.decode(Double.self, forKey: .startTime)
         startTime = dateFormatter.string(from: Date(timeIntervalSince1970: _startTime))
-        let _endTime = try container.decode(Double.self, forKey: .startTime)
+        let _endTime = try container.decode(Double.self, forKey: .endTime)
         endTime = dateFormatter.string(from: Date(timeIntervalSince1970: _endTime))
-        let _playTime = try container.decode(Double.self, forKey: .startTime)
+        let _playTime = try container.decode(Double.self, forKey: .playTime)
         playTime = dateFormatter.string(from: Date(timeIntervalSince1970: _playTime))
+        
+        // RealmSwfit.Listの書き込み
+        let _player = try container.decodeIfPresent([RealmPlayerResult].self, forKey: .player) ?? [RealmPlayerResult()]
+        player.append(objectsIn: _player)
+        let _wave = try container.decodeIfPresent([RealmCoopWave].self, forKey: .wave) ?? [RealmCoopWave()]
+        wave.append(objectsIn: _wave)
+
     }
 }

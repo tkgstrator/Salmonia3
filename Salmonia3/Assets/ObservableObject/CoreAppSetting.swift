@@ -11,6 +11,7 @@ import SwiftUI
 
 class CoreAppSetting: ObservableObject {
     @Published var isLogin: Bool = UserDefaults.standard.bool(forKey: "isLogin")
+    #warning("アカウントをまるごともつか、個別にデータを持つかは悩みどころ")
     @Published var account: RealmUserInfo = realm.objects(RealmUserInfo.self).first ?? RealmUserInfo()
 
 //    var objectWillChange: ObservableObjectPublisher = .init()

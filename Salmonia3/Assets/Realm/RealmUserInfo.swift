@@ -15,6 +15,7 @@ class RealmUserInfo: Object {
     @objc dynamic var sessionToken: String?
     @objc dynamic var iksmSession: String?
     @objc dynamic var isActive: Bool = false
+    @objc dynamic var jobNum: Int = 0
     
     override static func primaryKey() -> String? {
         return "nsaid"
