@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AppManager {
+class AppManager: RealmManager {
     #warning("ダサいからそのうち消えるかも")
     public class func isLogin(isLogin: Bool) {
         UserDefaults.standard.setValue(isLogin, forKey: "isLogin")
@@ -16,6 +16,8 @@ class AppManager {
     public class func erase() {
         UserDefaults.standard.setValue(false, forKey: "isLogin")
         UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+        #warning("継承してるからこれいらないのでは疑惑")
+        try? RealmManager.eraseAllRecord()
     }
     
     public class func configure(oauthToken: String, oauthVerifier: String) {

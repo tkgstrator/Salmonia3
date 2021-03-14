@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class RealmCoopShift: Object, Decodable {
+class RealmCoopShift: Object, Decodable, Identifiable {
     @objc dynamic var startTime: String?
     @objc dynamic var endTime: String?
     let stageId = RealmOptional<Int>()

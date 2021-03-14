@@ -50,4 +50,14 @@ class RealmManager {
             try? realm.commitWrite()
         }
     }
+    
+    public class func eraseAllRecord() throws -> () {
+        autoreleasepool {
+            realm.beginWrite()
+            realm.delete(realm.objects(RealmCoopWave.self))
+            realm.delete(realm.objects(RealmCoopResult.self))
+            realm.delete(realm.objects(RealmPlayerResult.self))
+            try? realm.commitWrite()
+        }
+    }
 }
