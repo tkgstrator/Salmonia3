@@ -21,15 +21,14 @@ struct TopMenu: View {
             List {
                 Section(header: Text("HEADER_OVERVIEW")) {
                     Overview
-                    Text("TEXT_WELCOME")
-                    Button(action: { AppManager.isLogin(isLogin: false) }, label: { Text("BTN_LOGOUT") })
+                    Results
                 }
-                Section(header: Text("HEADER_SCHEDULE")) {
-                    Text("TEXT_WELCOME")
-                }
-                Section(header: Text("HEADER_RECORD")) {
-                    Text("TEXT_WELCOME")
-                }
+//                Section(header: Text("HEADER_SCHEDULE")) {
+//                    Text("TEXT_WELCOME")
+//                }
+//                Section(header: Text("HEADER_RECORD")) {
+//                    Text("TEXT_WELCOME")
+//                }
             }
             .pullToRefresh(isShowing: $isShowing) {
                 isActive.toggle()
@@ -59,7 +58,7 @@ struct TopMenu: View {
     var Results: some View {
         Group {
             NavigationLink(destination: CoopResultCollection()) {
-                Text("TITLE_JOB_RESULTS")
+                Text("LINK_RESULTS")
                     .splatfont2(size: 16)
             }
             //            NavigationLink(destination: WaveCollectionView()) {

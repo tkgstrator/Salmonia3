@@ -19,8 +19,23 @@ struct Splatfont2: ViewModifier {
     }
 }
 
+struct Splatfont: ViewModifier {
+    let color: Color
+    let size: CGFloat
+    
+    func body(content: Content) -> some View {
+            content
+                .font(.custom("Splatfont", size: size))
+                .foregroundColor(color)
+    }
+}
+
 extension View {
     func splatfont2(_ color: Color = .primary, size: CGFloat = 16) -> some View {
         return AnyView(self.modifier(Splatfont2(color: color, size: size)))
+    }
+
+    func splatfont(_ color: Color = .primary, size: CGFloat = 16) -> some View {
+        return AnyView(self.modifier(Splatfont(color: color, size: size)))
     }
 }

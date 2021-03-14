@@ -22,4 +22,9 @@ class AppManager {
         UserDefaults.standard.setValue(oauthToken, forKey: "oauthToken")
         UserDefaults.standard.setValue(oauthVerifier, forKey: "oauthVerifier")
     }
+    
+    public class func setToken(token: String) {
+        UserDefaults.standard.setValue(token, forKey: "apiToken")
+    }
+    
 }

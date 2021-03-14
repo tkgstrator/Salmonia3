@@ -10,6 +10,9 @@
 "TITLE_SALMONIA" = "Salmonia";
 "TITLE_SETTINGS" = "Settings";
 "TITLE_LOGGING_THREAD" = "Logging Thread";
+"TITLE_RESULT_COLLECTION" = "Result Collection";
+"TITLE_RESULT" = "Result";
+
 
 "TEXT_SALMONIA" = "Salmonia";
 "TEXT_SALMON_STATS" = "Salmon Stats";
@@ -30,6 +33,7 @@
 "HEADER_DEVICE" = "Device";
 "HEADER_OVERVIEW" = "Overview";
 
+"SETTING_UPLOAD" = "Upload to Salmon Stats";
 "SETTING_SYSTEM" = "System Information";
 "SETTING_DEVICE" = "Device Information";
 "SETTING_APP_VERSION" = "Version";
@@ -45,3 +49,11 @@
 // ログ表示
 "LOG_DOWNLOAD" = "Downloading";
 "LOG_UPLOAD" = "Uploading";
+
+// NavigationLink
+"LINK_RESULTS" = "Results";
+
+
+// リザルト一覧のところの翻訳
+"RESULT_CLEAR" = "Clear!";
+"RESULT_DEFEAT" = "Defeat";
