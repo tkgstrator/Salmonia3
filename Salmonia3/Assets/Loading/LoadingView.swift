@@ -35,12 +35,16 @@ struct LoadingView: View {
                         
                         let summary: JSON = try SplatNet2.getSummary(iksm_session: iksmSession)
                         guard let jobNumRemote: Int = summary["summary"]["card"]["job_num"].int else { return }
+                        if jobNumLocal == jobNumRemote { return }
                         
-//                        #if DEBUG
-                        let jobNumRange: Range<Int> = Range(jobNumRemote - 1 ... jobNumRemote)
-//                        #else
+                        #if DEBUG
+                        let jobNumRange: Range<Int> = Range(jobNumRemote - 30 ... jobNumRemote)
+                        #else
+                        let jobNumRange: Range<Int> = Range(max(jobNumRemote - 49, jobNumLocal + 1) ... jobNumRemote)
+                        #endif
                         for (idx, jobId) in jobNumRange.enumerated() {
                             let result: JSON = try SplatNet2.getResult(job_id: jobId, iksm_session: iksmSession)
+                            #warning("今は毎回書き込んでいるので遅い")
                             try RealmManager.addNewResult(from: result)
                             data.progress += 1 / CGFloat(jobNumRange.count)
                         }

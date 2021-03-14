@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import BetterSafariView
 
 struct SettingView: View {
     
     @State var isWarning: Bool = false
+    @State var isShowing: Bool = false
+    @State var token: Bool = UserDefaults.standard.string(forKey: "apiToken") != nil
     private let systemVersion: String = UIDevice.current.systemVersion
     private let systemName: String = UIDevice.current.systemName
     private let deviceName: String = UIDevice.current.name
@@ -19,9 +22,10 @@ struct SettingView: View {
         #warning("ヘッダーのフォントを固定する方法ないのかな")
         Form {
             Section(header: Text("HEADER_USER_INFO").splatfont2(.orange, size: 14)) {
-                SettingMenu(title: "API_TOKEN", value: "\(systemName) \(systemVersion)")
+                SettingMenu(title: "UPLOAD", value: token)
             }
             Section(header: Text("HEADER_APPLICATION").splatfont2(.orange, size: 14)) {
+                PrivacyButton
                 Toggle("ERASE_SETTING", isOn: $isWarning)
                 SettingMenu(title: "APP_VERSION", value: "\(appVersion)")
             }
@@ -44,6 +48,13 @@ struct SettingView: View {
             Text("")
             EmptyView()
         }
+    }
+    
+    var PrivacyButton: some View {
+        Button(action: { isShowing.toggle() }, label: { Text("SETTING_PRIVACY")})
+            .safariView(isPresented: $isShowing) {
+                SafariView(url: URL(string: "https://tkgstrator.work/?page_id=25126")!)
+            }
     }
 }
 
@@ -80,7 +91,7 @@ extension Optional where Wrapped == Any {
         case is Double:
             return "-"
         case is Bool:
-            return "-"
+            return self as! Bool ? "Enabled" : "Disabled"
         case is String:
             return self as! String
         default:
