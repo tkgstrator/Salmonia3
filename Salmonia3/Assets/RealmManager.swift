@@ -15,7 +15,7 @@ class RealmManager {
     init() {
         // データベースのマイグレーションをする
         let config = Realm.Configuration(
-            schemaVersion: 4,
+            schemaVersion: 5,
             migrationBlock: { [self] migration, version in
                 if version < 1 {
                     // マイグレーションブロック
@@ -30,7 +30,8 @@ class RealmManager {
         try realm.commitWrite()
     }
 
-    public class func addNewResult(result: RealmCoopResult) throws -> () {
+    public class func addNewResult(from data: JSON) throws -> () {
+        let result = try JSONDecoder().decode(RealmCoopResult.self, from: data.rawData())
         realm.beginWrite()
         realm.create(RealmCoopResult.self, value: result, update: .all)
         try realm.commitWrite()

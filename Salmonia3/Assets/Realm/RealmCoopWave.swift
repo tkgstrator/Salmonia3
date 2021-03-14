@@ -34,11 +34,25 @@ class RealmCoopWave: Object, Decodable {
         self.init()
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        eventType = try? container.decode(String.self, forKey: .eventType)
-        waterLevel = try? container.decode(String.self, forKey: .waterLevel)
+        let event = try container.decode(EventType.self, forKey: .eventType)
+        eventType = event.key
+        
+        let tide = try container.decode(WaterLevel.self, forKey: .waterLevel)
+        waterLevel = tide.key
+        
         goldenIkuraNum = try container.decode(Int.self, forKey: .goldenIkuraNum)
         goldenIkuraPopNum = try container.decode(Int.self, forKey: .goldenIkuraPopNum)
         quotaNum = try container.decode(Int.self, forKey: .quotaNum)
         ikuraNum = try container.decode(Int.self, forKey: .ikuraNum)
     }
+}
+
+private class EventType: Codable {
+    var key: String = ""
+    var name: String = ""
+}
+
+private class WaterLevel: Codable {
+    var key: String = ""
+    var name: String = ""
 }
