@@ -57,8 +57,10 @@ struct LoadingView: View {
                         #warning("エラー処理")
                         print(error)
                     }
+                    DispatchQueue.main.async {
+                        present.wrappedValue.dismiss()
+                    }
                 }
-                present.wrappedValue.dismiss()
             }
 //        Button(action: { present.wrappedValue.dismiss() }, label: { Text("BTN_BACK") })
     }

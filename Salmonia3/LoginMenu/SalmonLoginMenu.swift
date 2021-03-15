@@ -16,6 +16,7 @@ struct SalmonLoginMenu: View {
     @State var isActive: Bool = false
     @State var isPresented: Bool = false
     @State var oAuthURL: URL = URL(string: "https://salmon-stats-api.yuki.games/auth/twitter?redirect_to=salmon-stats://")!
+    @AppStorage("isFirstLaunch") var isFirstLaunch = true
     
     var body: some View {
         GeometryReader { geometry in
@@ -44,7 +45,8 @@ struct SalmonLoginMenu: View {
                 #warning("とりあえずここでSalmon Statsのトークンを取得")
                 AppManager.configure(oauthToken: oauthToken, oauthVerifier: oauthVerifier)
                 #warning("ここでログイン画面に切り替わるはず")
-                AppManager.isLogin(isLogin: true)
+                isFirstLaunch.toggle()
+//                AppManager.isLogin(isLogin: true)
             }
             .prefersEphemeralWebBrowserSession(false)
         }

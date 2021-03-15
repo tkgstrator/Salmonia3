@@ -14,6 +14,7 @@ import SwiftyJSON
 struct LoginMenu: View {
     @State var isActive: Bool = false
     @State var isPresented: Bool = false
+    @State var isShowing: Bool = false
     private let verifier: String = String.randomString
     
     var body: some View {
@@ -31,7 +32,15 @@ struct LoginMenu: View {
             VStack(spacing: 40) {
                 Button(action: { isPresented.toggle() }, label: { Text("BTN_SIGN_IN").splatfont2(.black, size: 20) })
                     .buttonStyle()
-                Button(action: { isActive.toggle() }, label: { Text("BTN_SIGN_UP").splatfont2(.black, size: 20) })
+                Button(action: {
+                    #if DEBUG
+                    // スキップして次に進む
+                    isActive.toggle()
+                    #else
+                    // Nintendo Switch Onlineの登録画面に進む
+                    isShowing.toggle()
+                    #endif
+                }, label: { Text("BTN_SIGN_UP").splatfont2(.black, size: 20) })
                     .buttonStyle()
             }
             .position(x: geometry.frame(in: .local).midX, y: 3 * geometry.size.height / 4)
@@ -43,6 +52,17 @@ struct LoginMenu: View {
                 try? loginSplatNet2(code: code, verifier: verifier)
             }
             .prefersEphemeralWebBrowserSession(false)
+        }
+        .safariView(isPresented: $isShowing) {
+            SafariView(url: URL(string: "https://twitter.com/signup")!,
+                       configuration: SafariView.Configuration(
+                        entersReaderIfAvailable: false,
+                        barCollapsingEnabled: true
+                       )
+            )
+            .preferredBarAccentColor(.clear)
+            .preferredControlAccentColor(.accentColor)
+            .dismissButtonStyle(.done)
         }
         .background(BackGround)
         .navigationTitle("TITLE_LOGIN")

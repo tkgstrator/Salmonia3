@@ -10,7 +10,7 @@ import RealmSwift
 import SwiftUI
 
 class CoreAppSetting: ObservableObject {
-    @Published var isLogin: Bool = UserDefaults.standard.bool(forKey: "isLogin")
+    @Published var isFirstLaunch: Bool = UserDefaults.standard.bool(forKey: "isFirstLaunch")
     #warning("アカウントをまるごともつか、個別にデータを持つかは悩みどころ")
     @Published var account: RealmUserInfo = realm.objects(RealmUserInfo.self).first ?? RealmUserInfo()
 
@@ -19,16 +19,16 @@ class CoreAppSetting: ObservableObject {
     private var token: NSKeyValueObservation?
 
     init() {
-        token = UserDefaults.standard.observe(\.isLogin, changeHandler: { [weak self] (defaults, change) in
+        token = UserDefaults.standard.observe(\.isFirstLaunch, changeHandler: { [weak self] (defaults, change) in
             #warning("変わったときにチェックできるかどうか")
-            self?.isLogin = UserDefaults.standard.bool(forKey: "isLogin")
+            self?.isFirstLaunch = UserDefaults.standard.bool(forKey: "isFirstLaunch")
         })
     }
 
 }
 
 extension UserDefaults {
-    @objc dynamic var isLogin: Bool {
-        return bool(forKey: "isLogin")
+    @objc dynamic var isFirstLaunch: Bool {
+        return bool(forKey: "isFirstLaunch")
     }
 }

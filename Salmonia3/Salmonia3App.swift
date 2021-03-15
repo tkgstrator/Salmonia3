@@ -17,9 +17,15 @@ struct Salmonia3App: App {
         print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
     }
     
+    @AppStorage("isFirstLaunch") var isFirstLaunch = true
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .sheet(isPresented: $isFirstLaunch) {
+                    NavigationView {
+                        LoginMenu()
+                    }
+                }
                 .environment(\.lineLimit, 1)
                 .environment(\.minimumScaleFactor, 0.5)
                 .environment(\.imageScale, .large)
