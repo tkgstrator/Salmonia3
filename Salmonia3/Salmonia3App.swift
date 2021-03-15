@@ -12,7 +12,7 @@ import Firebase
 struct Salmonia3App: App {
     init() {
         #warning("AppDelegateの代わり")
-        RealmManager()
+        RealmManager.migration()
         FirebaseApp.configure()
         print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
     }
