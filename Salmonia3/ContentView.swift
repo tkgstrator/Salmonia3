@@ -13,7 +13,9 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             TopMenu()
+            SettingView()
         }
+        .navigationViewStyle(LegacyNavigationViewStyle())
     }
 }
 
