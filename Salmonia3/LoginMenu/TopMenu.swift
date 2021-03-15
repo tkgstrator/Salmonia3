@@ -23,19 +23,17 @@ struct TopMenu: View {
                     Overview
                     Results
                 }
-                Section(header: Text("HEADER_SCHEDULE")) {
+                Section(header: Text("HEADER_SCHEDULE").splatfont2(.orange, size: 14)) {
                     NavigationLink(destination: CoopShiftCollection()) {
                         Text("LINK_COOP_SCHEDULE")
                     }
                 }
-//                Section(header: Text("HEADER_RECORD")) {
-//                    Text("TEXT_WELCOME")
-//                }
             }
             .pullToRefresh(isShowing: $isShowing) {
                 isActive.toggle()
             }
         }
+        .splatfont2(size: 16)
         .listStyle(GroupedListStyle())
         .navigationTitle("TITLE_SALMONIA")
         //        .listStyle(SidebarListStyle())

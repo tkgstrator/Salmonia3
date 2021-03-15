@@ -9,10 +9,8 @@ import Foundation
 import RealmSwift
 import SwiftyJSON
 
-class RealmManager {
-    static let realm = try! Realm()
-    
-    init() {
+enum RealmManager {
+    public static func migration() {
         // データベースのマイグレーションをする
         let config = Realm.Configuration(
             schemaVersion: 5,
@@ -20,28 +18,34 @@ class RealmManager {
                 if version < 1 {
                     // マイグレーションブロック
                 }
-            })
+            },
+            deleteRealmIfMigrationNeeded: true
+            )
         Realm.Configuration.defaultConfiguration = config
         try? RealmManager.addNewRotation()
     }
     
-    public class func addNewAccount(account: RealmUserInfo) throws -> () {
+    public static func addNewAccount(account: RealmUserInfo) throws -> () {
+        guard let realm = try? Realm() else { return }
         realm.beginWrite()
         realm.create(RealmUserInfo.self, value: account, update: .all)
         try realm.commitWrite()
     }
 
-    public class func addNewResult(from data: JSON) throws -> () {
-        let result = try JSONDecoder().decode(RealmCoopResult.self, from: data.rawData())
+    public static func addNewResult(from results: [JSON]) throws -> () {
+        guard let realm = try? Realm() else { return }
         realm.beginWrite()
-        realm.create(RealmCoopResult.self, value: result, update: .all)
+        for result in results {
+            let result = try JSONDecoder().decode(RealmCoopResult.self, from: result.rawData())
+            realm.create(RealmCoopResult.self, value: result, update: .all)
+        }
         try realm.commitWrite()
     }
     
-    public class func addNewRotation() throws -> () {
+    public static func addNewRotation() throws -> () {
         ProductManger.getFutureRotation { response, error in
             guard let response = response else { return }
-            
+            guard let realm = try? Realm() else { return }
             realm.beginWrite()
             for (_, data) in response {
                 let value = try? JSONDecoder().decode(RealmCoopShift.self, from: data.rawData())
@@ -51,7 +55,15 @@ class RealmManager {
         }
     }
     
-    public class func eraseAllRecord() throws -> () {
+    public static func setIksmSession(iksmSession: String, pid: String) {
+        guard let realm = try? Realm() else { return }
+        realm.beginWrite()
+        realm.objects(RealmUserInfo.self).filter("nsaid=%@", pid).setValue(iksmSession, forKey: "iksmSession")
+        try? realm.commitWrite()
+    }
+    
+    static func eraseAllRecord() throws -> () {
+        guard let realm = try? Realm() else { return }
         autoreleasepool {
             realm.beginWrite()
             realm.delete(realm.objects(RealmCoopWave.self))

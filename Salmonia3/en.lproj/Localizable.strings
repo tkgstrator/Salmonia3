@@ -12,6 +12,7 @@
 "TITLE_LOGGING_THREAD" = "Logging Thread";
 "TITLE_RESULT_COLLECTION" = "Result Collection";
 "TITLE_RESULT" = "Result";
+"TITLE_SHIFT_COLLECTION" = "Shift Schedule";
 
 
 "TEXT_SALMONIA" = "Salmonia";
@@ -32,7 +33,9 @@
 "HEADER_APPLICATION" = "Application";
 "HEADER_DEVICE" = "Device";
 "HEADER_OVERVIEW" = "Overview";
+"HEADER_SCHEDULE" = "Shift Schedule";
 
+"SETTING_PRIVACY" = "Privacy Policy";
 "SETTING_UPLOAD" = "Upload to Salmon Stats";
 "SETTING_SYSTEM" = "System Information";
 "SETTING_DEVICE" = "Device Information";
@@ -52,8 +55,12 @@
 
 // NavigationLink
 "LINK_RESULTS" = "Results";
+"LINK_COOP_SCHEDULE" = "Shift Schedule";
 
 
 // リザルト一覧のところの翻訳
 "RESULT_CLEAR" = "Clear!";
 "RESULT_DEFEAT" = "Defeat";
+
+//
+"SUPPLIED_WEAPONS" = "Supplied Weapons";

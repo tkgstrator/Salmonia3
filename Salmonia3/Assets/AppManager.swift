@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AppManager: RealmManager {
+class AppManager {
     #warning("ダサいからそのうち消えるかも")
     public class func isLogin(isLogin: Bool) {
         UserDefaults.standard.setValue(isLogin, forKey: "isLogin")
