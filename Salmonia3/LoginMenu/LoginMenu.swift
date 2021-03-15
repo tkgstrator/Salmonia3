@@ -54,7 +54,7 @@ struct LoginMenu: View {
             .prefersEphemeralWebBrowserSession(false)
         }
         .safariView(isPresented: $isShowing) {
-            SafariView(url: URL(string: "https://twitter.com/signup")!,
+            SafariView(url: URL(string: "https://my.nintendo.com/login")!,
                        configuration: SafariView.Configuration(
                         entersReaderIfAvailable: false,
                         barCollapsingEnabled: true

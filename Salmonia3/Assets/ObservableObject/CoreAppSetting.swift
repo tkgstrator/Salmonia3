@@ -17,12 +17,20 @@ class CoreAppSetting: ObservableObject {
 //    var objectWillChange: ObservableObjectPublisher = .init()
     private static var realm = try! Realm()
     private var token: NSKeyValueObservation?
+    private var publish: NotificationToken?
 
     init() {
+        guard let realm = try? Realm() else { return }
         token = UserDefaults.standard.observe(\.isFirstLaunch, changeHandler: { [weak self] (defaults, change) in
             #warning("変わったときにチェックできるかどうか")
             self?.isFirstLaunch = UserDefaults.standard.bool(forKey: "isFirstLaunch")
         })
+        
+        publish = realm.objects(RealmUserInfo.self).observe { [weak self] _ in
+            if let account = realm.objects(RealmUserInfo.self).first {
+                self?.account = account
+            }
+        }
     }
 
 }

@@ -45,13 +45,14 @@ struct SalmonLoginMenu: View {
                 #warning("とりあえずここでSalmon Statsのトークンを取得")
                 AppManager.configure(oauthToken: oauthToken, oauthVerifier: oauthVerifier)
                 #warning("ここでログイン画面に切り替わるはず")
-                isFirstLaunch.toggle()
-//                AppManager.isLogin(isLogin: true)
+                UserDefaults.standard.setValue(false, forKey: "isFirstLaunch")
             }
             .prefersEphemeralWebBrowserSession(false)
         }
         .alert(isPresented: $isActive) {
-            Alert(title: Text("ALERT_CONFIRM"), message: Text("MESSAGE_SKIP_SETUP"), primaryButton: .destructive(Text("BTN_LATER"), action: { AppManager.isLogin(isLogin: true) }), secondaryButton: .default(Text("BTN_CANCEL")))
+            Alert(title: Text("ALERT_CONFIRM"), message: Text("MESSAGE_SKIP_SETUP"), primaryButton: .destructive(Text("BTN_LATER"), action: {
+                isFirstLaunch.toggle()
+            }), secondaryButton: .default(Text("BTN_CANCEL")))
         }
         .background(BackGround)
         .navigationTitle("TITLE_LOGIN")
