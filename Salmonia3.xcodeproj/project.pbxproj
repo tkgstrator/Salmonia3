@@ -383,6 +383,7 @@
 				1059416025FA49E500C32D21 /* Frameworks */,
 				1059416125FA49E500C32D21 /* Resources */,
 				1AC99CC90BF85D86A9A4136F /* [CP] Embed Pods Frameworks */,
+				1024662E25FF80E5004DC043 /* Build Version */,
 			);
 			buildRules = (
 			);
@@ -527,6 +528,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1024662E25FF80E5004DC043 /* Build Version */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build Version";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ninfoPlistFile=\"${SRCROOT}/${INFOPLIST_FILE}\"\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${infoPlistFile}\")\nbuildNumber=$((${buildNumber%%.*} + 1))\n/usr/libexec/PlistBuddy -c \"Set:CFBundleVersion $buildNumber\" \"${infoPlistFile}\"\n";
+		};
 		1AC99CC90BF85D86A9A4136F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

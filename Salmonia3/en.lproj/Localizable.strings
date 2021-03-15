@@ -26,7 +26,7 @@
 "ALERT_CONFIRM" = "Confirm";
 
 // アラートのメッセージ
-"MESSAGE_WARING" = "This operaion can not undone.";
+"MESSAGE_WARNING" = "This operaion can not undone.";
 "MESSAGE_SKIP_SETUP" = "Linking with Salmon Stats, Samonia use more conveniently.";
 
 "HEADER_USER_INFO" = "User";
@@ -41,6 +41,7 @@
 "SETTING_DEVICE" = "Device Information";
 "SETTING_APP_VERSION" = "Version";
 "ERASE_SETTING" = "Erase Data";
+"RE_SIGN_IN" = "Re-Sign in";
 
 "BTN_CONFIRM" = "Confirm";
 "BTN_LATER" = "Setup later";

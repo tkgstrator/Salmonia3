@@ -12,6 +12,7 @@ struct SettingView: View {
     
     @State var isWarning: Bool = false
     @State var isShowing: Bool = false
+    @AppStorage("isFirstLaunch") var isFirstLaunch = true
     @State var token: Bool = UserDefaults.standard.string(forKey: "apiToken") != nil
     private let systemVersion: String = UIDevice.current.systemVersion
     private let systemName: String = UIDevice.current.systemName
@@ -23,6 +24,7 @@ struct SettingView: View {
         Form {
             Section(header: Text("HEADER_USER_INFO").splatfont2(.orange, size: 14)) {
                 SettingMenu(title: "UPLOAD", value: token)
+                Toggle("RE_SIGN_IN", isOn: $isFirstLaunch)
             }
             Section(header: Text("HEADER_APPLICATION").splatfont2(.orange, size: 14)) {
                 PrivacyButton

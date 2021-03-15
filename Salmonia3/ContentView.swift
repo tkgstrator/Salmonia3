@@ -11,18 +11,8 @@ struct ContentView: View {
     @EnvironmentObject var main: CoreAppSetting
 
     var body: some View {
-        switch main.isLogin {
-        case false:
-            NavigationView {
-                LoginMenu()
-            }
-            .navigationViewStyle(StackNavigationViewStyle())
-        case true:
-            NavigationView {
-                TopMenu()
-            }
-            .listStyle(GroupedListStyle())
-            .navigationViewStyle(LegacyNavigationViewStyle())
+        NavigationView {
+            TopMenu()
         }
     }
 }
