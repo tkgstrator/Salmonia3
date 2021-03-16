@@ -45,11 +45,18 @@ struct LoadingView: View {
                         let jobNumRange: Range<Int> = Range(max(jobNumRemote - 49, jobNumLocal + 1) ... jobNumRemote)
                         #endif
                         var results: [JSON] = []
-                        for (idx, jobId) in jobNumRange.enumerated() {
-                            let result: JSON = try SplatNet2.getResult(job_id: jobId, iksm_session: iksmSession)
-                            results.append(result)
-                            #warning("今は毎回書き込んでいるので遅い")
-                            data.progress += 1 / CGFloat(jobNumRange.count)
+                        DispatchQueue(label: "GET RESULT FROM SPLATNET2").sync {
+                            for (_, jobId) in jobNumRange.enumerated() {
+                                do {
+                                    let result: JSON = try SplatNet2.getResult(job_id: jobId, iksm_session: iksmSession)
+                                    Thread.sleep(forTimeInterval: 1)
+                                    results.append(result)
+                                    #warning("今は毎回書き込んでいるので遅い")
+                                    data.progress += 1 / CGFloat(jobNumRange.count)
+                                } catch {
+                                    #warning("今は何もエラーが起きないことを想定している")
+                                }
+                            }
                         }
                         try? RealmManager.addNewResult(from: results)
                     }
