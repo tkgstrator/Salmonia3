@@ -81,7 +81,6 @@
 /* Begin PBXFileReference section */
 		102465F025FDDABD004DC043 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		1024660425FDE916004DC043 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1024660925FDE924004DC043 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1024661025FDF411004DC043 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		1024661525FDFF0F004DC043 /* ImageResize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResize.swift; sourceTree = "<group>"; };
 		1024661A25FE0929004DC043 /* RealmCoopShift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopShift.swift; sourceTree = "<group>"; };
@@ -89,6 +88,7 @@
 		1024662425FE4012004DC043 /* CoopShiftCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftCollection.swift; sourceTree = "<group>"; };
 		1024662925FE50A0004DC043 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		1024663D26009956004DC043 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
+		102466462600CE27004DC043 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		10377F4D25FCBF8600536A94 /* TwitterOAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterOAuth.swift; sourceTree = "<group>"; };
 		10377F5225FCD32E00536A94 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10377F6125FCD5C200536A94 /* RobotoMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoMono.ttf; sourceTree = "<group>"; };
@@ -713,7 +713,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				1024660425FDE916004DC043 /* en */,
-				1024660925FDE924004DC043 /* ja */,
+				102466462600CE27004DC043 /* ja */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
