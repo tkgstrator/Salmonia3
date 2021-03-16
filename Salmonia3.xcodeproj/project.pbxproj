@@ -15,6 +15,7 @@
 		1024662025FE0CE7004DC043 /* ProductManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024661F25FE0CE7004DC043 /* ProductManager.swift */; };
 		1024662525FE4012004DC043 /* CoopShiftCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024662425FE4012004DC043 /* CoopShiftCollection.swift */; };
 		1024662A25FE50A0004DC043 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024662925FE50A0004DC043 /* Int.swift */; };
+		1024663E26009956004DC043 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024663D26009956004DC043 /* Grade.swift */; };
 		10377F4E25FCBF8600536A94 /* TwitterOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F4D25FCBF8600536A94 /* TwitterOAuth.swift */; };
 		10377F5325FCD32F00536A94 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10377F5225FCD32E00536A94 /* GoogleService-Info.plist */; };
 		10377F6525FCD63B00536A94 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F6425FCD63B00536A94 /* Font.swift */; };
@@ -87,6 +88,7 @@
 		1024661F25FE0CE7004DC043 /* ProductManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductManager.swift; sourceTree = "<group>"; };
 		1024662425FE4012004DC043 /* CoopShiftCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftCollection.swift; sourceTree = "<group>"; };
 		1024662925FE50A0004DC043 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		1024663D26009956004DC043 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		10377F4D25FCBF8600536A94 /* TwitterOAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterOAuth.swift; sourceTree = "<group>"; };
 		10377F5225FCD32E00536A94 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10377F6125FCD5C200536A94 /* RobotoMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoMono.ttf; sourceTree = "<group>"; };
@@ -175,6 +177,14 @@
 				102465F025FDDABD004DC043 /* SettingView.swift */,
 			);
 			path = SettingMenu;
+			sourceTree = "<group>";
+		};
+		1024663C26009942004DC043 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				1024663D26009956004DC043 /* Grade.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		10377F6025FCD5A400536A94 /* Fonts */ = {
@@ -293,9 +303,10 @@
 		1059419525FA4BF600C32D21 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				10CF0A0925FBA91800D2EEB1 /* OAuthLogin.swift */,
+				1024663C26009942004DC043 /* Enum */,
 				10377FA225FD10EF00536A94 /* Extension */,
 				10377F8F25FD09D200536A94 /* Loading */,
-				10CF0A0925FBA91800D2EEB1 /* OAuthLogin.swift */,
 				10377F6025FCD5A400536A94 /* Fonts */,
 				105941B125FA519A00C32D21 /* ViewModifier */,
 				1059419425FA4BE900C32D21 /* Color */,
@@ -640,6 +651,7 @@
 				10377F6525FCD63B00536A94 /* Font.swift in Sources */,
 				10377F9E25FD0A1200536A94 /* MBCirlceProgress.swift in Sources */,
 				105941BE25FA525100C32D21 /* Background.swift in Sources */,
+				1024663E26009956004DC043 /* Grade.swift in Sources */,
 				102465F125FDDABD004DC043 /* SettingView.swift in Sources */,
 				10CF09F425FB9BE100D2EEB1 /* RealmCoopResult.swift in Sources */,
 				1059416925FA49E500C32D21 /* ContentView.swift in Sources */,

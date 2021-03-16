@@ -43,8 +43,35 @@ struct ResultOverview: View {
     var body: some View {
         HStack {
             ResultJob
+            ResultGrade
             Spacer()
             ResultEggs
+        }
+    }
+    
+    var ResultGrade: some View {
+        if result.isClear {
+            return AnyView(
+                HStack {
+                    Text(SRGrade(rawValue: result.gradeId.value ?? 0)!.name)
+                    Group {
+                        Text("\(result.gradePoint.intValue)")
+                        Text("↑").splatfont(.red, size: 14)
+                    }
+                }
+                .splatfont(size: 14)
+            )
+        } else {
+            return AnyView(
+                HStack {
+                    Text(SRGrade(rawValue: result.gradeId.value ?? 0)!.name)
+                    Group {
+                        Text("\(result.gradePoint.intValue)")
+                        Text(result.gradePointDelta.intValue == 0 ? "→" : "↓")
+                    }
+                }
+                .splatfont(.gray, size: 14)
+            )
         }
     }
     
@@ -53,11 +80,13 @@ struct ResultOverview: View {
             return AnyView(
                 Text("RESULT_CLEAR")
                     .splatfont(.green, size: 14)
+                    .frame(width: 50)
             )
         } else {
             return AnyView(
                 Text("RESULT_DEFEAT")
                     .splatfont(.orange, size: 14)
+                    .frame(width: 50)
             )
         }
     }
