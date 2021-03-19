@@ -16,4 +16,6 @@ extension Color {
     static let carrot   = Color("carrot")
     static let dark     = Color("dark")
     static let silver   = Color("silver")
+    static let dust     = Color("dust")
+    static let magnet   = Color("magnet")
 }

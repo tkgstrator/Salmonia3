@@ -13,6 +13,7 @@
 "TITLE_RESULT_COLLECTION" = "リザルト一覧";
 "TITLE_RESULT" = "リザルト";
 "TITLE_SHIFT_COLLECTION" = "シフトスケジュール";
+"TITLE_RESULT_DETAIL" = "リザルト";
 
 
 "TEXT_SALMONIA" = "Salmonia";
@@ -80,3 +81,20 @@
 "ERROR_EMPTY" = "ユーザデータがありません";
 "ERROR_UNAVAILABLE" = "サーバが利用不可です";
 "ERROR_NODATA" = "新規リザルトがありません";
+
+"RESULT_BOSS_DEFEATED_%lld" = "オオモノシャケをたおした数 x%lld";
+//"RESULT_BOSS_DEFEATED_%@" = "Boss Salmonid Defeated %@";
+"RESULT_WAVE_%lld" = "WAVE %lld";
+"RESULT_HAZARD_LEVEL_MAX" = "キケン度MAX!!";
+"RESULT_APPEARANCES_%lld" = "出現数 x%lld";
+
+"normal" = "通常";
+"high" = "満潮";
+"low" = "干潮";
+"water-levels" = "-";
+"rush" = "ラッシュ";
+"goldie-seeking" = "キンシャケ探し";
+"griller" = "グリル発進";
+"the-mothership" = "ハコビヤ襲来";
+"fog" = "霧";
+"cohock-charge" = "ドスコイ大量発生";

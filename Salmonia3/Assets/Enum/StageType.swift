@@ -12,7 +12,7 @@ enum StageType: Int, CaseIterable {
     case shakeup    = 5000
     case shakeship  = 5001
     case shakehouse = 5002
-    case shakelift   = 5003
+    case shakelift  = 5003
     case shakeride  = 5004
 }
 

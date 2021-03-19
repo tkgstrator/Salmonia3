@@ -18,7 +18,6 @@
 		1024663E26009956004DC043 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024663D26009956004DC043 /* Grade.swift */; };
 		1024664B2600D55E004DC043 /* StageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024664A2600D55E004DC043 /* StageType.swift */; };
 		10377F4E25FCBF8600536A94 /* TwitterOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F4D25FCBF8600536A94 /* TwitterOAuth.swift */; };
-		10377F5325FCD32F00536A94 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10377F5225FCD32E00536A94 /* GoogleService-Info.plist */; };
 		10377F6525FCD63B00536A94 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F6425FCD63B00536A94 /* Font.swift */; };
 		10377F7525FCD8CD00536A94 /* RobotoMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10377F6125FCD5C200536A94 /* RobotoMono.ttf */; };
 		10377F7625FCD8CD00536A94 /* Splatfont1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10377F6225FCD5C800536A94 /* Splatfont1.ttf */; };
@@ -61,6 +60,7 @@
 		10CF0A0025FBA5BC00D2EEB1 /* RealmPlayerResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF09FF25FBA5BC00D2EEB1 /* RealmPlayerResult.swift */; };
 		10CF0A0525FBA6BF00D2EEB1 /* RealmCoopWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF0A0425FBA6BF00D2EEB1 /* RealmCoopWave.swift */; };
 		10CF0A0A25FBA91800D2EEB1 /* OAuthLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF0A0925FBA91800D2EEB1 /* OAuthLogin.swift */; };
+		10F29185260521CD0032C532 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10F29184260521CD0032C532 /* GoogleService-Info.plist */; };
 		2E38FBBA890FA31FB3591447 /* Pods_Salmonia3Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4CFAB4D922D35088435EF26 /* Pods_Salmonia3Tests.framework */; };
 		A8C5630EBE09FDEA7BF59B1C /* Pods_Salmonia3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6419A3A4A135F484294BF5 /* Pods_Salmonia3.framework */; };
 /* End PBXBuildFile section */
@@ -95,7 +95,6 @@
 		102466462600CE27004DC043 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1024664A2600D55E004DC043 /* StageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageType.swift; sourceTree = "<group>"; };
 		10377F4D25FCBF8600536A94 /* TwitterOAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterOAuth.swift; sourceTree = "<group>"; };
-		10377F5225FCD32E00536A94 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10377F6125FCD5C200536A94 /* RobotoMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoMono.ttf; sourceTree = "<group>"; };
 		10377F6225FCD5C800536A94 /* Splatfont1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Splatfont1.ttf; sourceTree = "<group>"; };
 		10377F6325FCD5CD00536A94 /* Splatfont2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Splatfont2.ttf; sourceTree = "<group>"; };
@@ -135,6 +134,7 @@
 		10CF09FF25FBA5BC00D2EEB1 /* RealmPlayerResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPlayerResult.swift; sourceTree = "<group>"; };
 		10CF0A0425FBA6BF00D2EEB1 /* RealmCoopWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopWave.swift; sourceTree = "<group>"; };
 		10CF0A0925FBA91800D2EEB1 /* OAuthLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthLogin.swift; sourceTree = "<group>"; };
+		10F29184260521CD0032C532 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F2E5792249C15DC27343CA1 /* Pods-Salmonia3Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salmonia3Tests.debug.xcconfig"; path = "Target Support Files/Pods-Salmonia3Tests/Pods-Salmonia3Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		40DFE28342F9F06B5E95E99C /* Pods-Salmonia3Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salmonia3Tests.release.xcconfig"; path = "Target Support Files/Pods-Salmonia3Tests/Pods-Salmonia3Tests.release.xcconfig"; sourceTree = "<group>"; };
 		56AB289C0D87612FB8D00999 /* Pods-Salmonia3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salmonia3.debug.xcconfig"; path = "Target Support Files/Pods-Salmonia3/Pods-Salmonia3.debug.xcconfig"; sourceTree = "<group>"; };
@@ -263,6 +263,7 @@
 		1059416525FA49E500C32D21 /* Salmonia3 */ = {
 			isa = PBXGroup;
 			children = (
+				10F29184260521CD0032C532 /* GoogleService-Info.plist */,
 				1059416625FA49E500C32D21 /* Salmonia3App.swift */,
 				1059416825FA49E500C32D21 /* ContentView.swift */,
 				1059416A25FA49E900C32D21 /* Assets.xcassets */,
@@ -271,7 +272,6 @@
 				102465EF25FDDAAA004DC043 /* SettingMenu */,
 				1059419E25FA4DDE00C32D21 /* LoginMenu */,
 				1059419525FA4BF600C32D21 /* Assets */,
-				10377F5225FCD32E00536A94 /* GoogleService-Info.plist */,
 				1024660525FDE916004DC043 /* Localizable.strings */,
 				1059416C25FA49E900C32D21 /* Preview Content */,
 			);
@@ -406,7 +406,6 @@
 				1059416025FA49E500C32D21 /* Frameworks */,
 				1059416125FA49E500C32D21 /* Resources */,
 				1AC99CC90BF85D86A9A4136F /* [CP] Embed Pods Frameworks */,
-				1024662E25FF80E5004DC043 /* Build Version */,
 			);
 			buildRules = (
 			);
@@ -530,7 +529,7 @@
 				10377F7725FCD8CD00536A94 /* Splatfont2.ttf in Resources */,
 				1059416E25FA49E900C32D21 /* Preview Assets.xcassets in Resources */,
 				1059416B25FA49E900C32D21 /* Assets.xcassets in Resources */,
-				10377F5325FCD32F00536A94 /* GoogleService-Info.plist in Resources */,
+				10F29185260521CD0032C532 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,24 +550,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1024662E25FF80E5004DC043 /* Build Version */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Build Version";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ninfoPlistFile=\"${SRCROOT}/${INFOPLIST_FILE}\"\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${infoPlistFile}\")\nbuildNumber=$((${buildNumber%%.*} + 1))\n/usr/libexec/PlistBuddy -c \"Set:CFBundleVersion $buildNumber\" \"${infoPlistFile}\"\n";
-		};
 		1AC99CC90BF85D86A9A4136F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -860,6 +841,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -869,7 +851,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.1;
+				MARKETING_VERSION = 0.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -884,6 +866,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -893,7 +876,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.1;
+				MARKETING_VERSION = 0.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
