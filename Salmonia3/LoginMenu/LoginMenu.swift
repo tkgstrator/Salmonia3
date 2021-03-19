@@ -30,8 +30,11 @@ struct LoginMenu: View {
             .padding(.horizontal, 10)
             .position(x: geometry.frame(in: .local).midX, y: geometry.size.height / 4)
             VStack(spacing: 40) {
-                Button(action: { isPresented.toggle() }, label: { Text("BTN_SIGN_IN").splatfont2(.black, size: 20) })
-                    .buttonStyle()
+                Button(action: { isPresented.toggle() }, label: {
+                    Text("BTN_SIGN_IN")
+                        .buttonStyle()
+                        .splatfont2(.cloud, size: 20)
+                })
                 Button(action: {
                     #if DEBUG
                     // スキップして次に進む
@@ -40,8 +43,10 @@ struct LoginMenu: View {
                     // Nintendo Switch Onlineの登録画面に進む
                     isShowing.toggle()
                     #endif
-                }, label: { Text("BTN_SIGN_UP").splatfont2(.black, size: 20) })
+                }, label: { Text("BTN_SIGN_UP")
                     .buttonStyle()
+                    .splatfont2(.cloud, size: 20)
+                })
             }
             .position(x: geometry.frame(in: .local).midX, y: 3 * geometry.size.height / 4)
         }
@@ -79,6 +84,7 @@ struct LoginMenu: View {
     func loginSplatNet2(code: String, verifier: String) throws -> (){
         DispatchQueue(label: "Login").async {
             do {
+                #warning("X-Product Versionが固定だった")
                 let version: String = "1.10.1"
                 var response: JSON = JSON()
                 response = try SplatNet2.getSessionToken(code, verifier)

@@ -81,8 +81,19 @@
 "ERROR_UNAVAILABLE" = "The server is unavailable";
 "ERROR_NODATA" = "No new results";
 
-"RESULT_BOSS_DEFEATED_%lld" = "Boss Salmonid Defeated %lld";
-//"RESULT_BOSS_DEFEATED_%@" = "Boss Salmonid Defeated %@";
+"RESULT_BOSS_DEFEATED_%lld" = "Boss Salmonid Defeated x%lld";
 "RESULT_WAVE_%lld" = "Wave %lld";
 "RESULT_HAZARD_LEVEL_MAX" = "Hazard Level Max!!";
 "RESULT_APPEARANCES_%lld" = "Appearances x%lld";
+
+// リザルト一覧の翻訳
+"normal" = "middle";
+"high" = "high tide";
+"low" = "low tide";
+"water-levels" = "-";
+"rush" = "Rush";
+"goldie-seeking" = "Goldie Seeking";
+"griller" = "Griller";
+"the-mothership" = "The Mothership";
+"fog" = "Fog";
+"cohock-charge" = "Cohock Charge";

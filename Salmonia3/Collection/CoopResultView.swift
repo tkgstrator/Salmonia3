@@ -20,7 +20,7 @@ struct CoopResultView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(trailing: SRButton)
+//        .navigationBarItems(trailing: SRButton)
         .navigationTitle("TITLE_RESULT_DETAIL")
     }
     
@@ -40,7 +40,7 @@ struct CoopResultView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 8.0))
                 .frame(height: 120)
                 .mask(Image("2ce11ebf110993621bedd8e747d7b1b").resizable())
-            VStack(spacing: 5) {
+            VStack(spacing: 0) {
                 // プレイ時間の表示
                 Text(result.playTime.stringValue)
                     .splatfont2(size: 22)
@@ -61,8 +61,8 @@ struct CoopResultView: View {
                 }
                 .shadow(color: .black, radius: 0, x: 1, y: 1)
             }
+//            .padding(.vertical, 20)
         }
-        .padding(.vertical, 10)
         .splatfont2(size: 20)
     }
     
@@ -82,10 +82,10 @@ struct CoopResultView: View {
                             .splatfont2(size: 26)
                         Text("\(result.wave[index].ikuraNum)")
                             .foregroundColor(.red)
-                        Text(result.wave[index].waterLevel.stringValue)
+                        Text(result.wave[index].waterLevel.stringValue.localized)
                             .frame(height: 24)
                             .foregroundColor(.black)
-                        Text(result.wave[index].eventType.stringValue)
+                        Text(result.wave[index].eventType.stringValue.localized)
                             .frame(height: 24)
                             .foregroundColor(.black)
                     }
@@ -99,7 +99,7 @@ struct CoopResultView: View {
                     }
                 }
             }
-            .id(UUID())
+//            .id(UUID())
         }
         .frame(height: 180)
         .splatfont2(size: 16)
@@ -110,7 +110,7 @@ struct CoopResultView: View {
         LazyHGrid(rows: Array(repeating: .init(.flexible(minimum: 80)), count: result.player.count), spacing: 0) {
             ForEach(result.player.indices, id:\.self) { index in
                 PlayerView(player: result.player[index])
-                    .id(UUID())
+//                    .id(UUID())
             }
         }
     }

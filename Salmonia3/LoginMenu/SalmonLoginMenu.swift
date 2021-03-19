@@ -31,10 +31,16 @@ struct SalmonLoginMenu: View {
             .padding(.horizontal, 10)
             .position(x: geometry.frame(in: .local).midX, y: geometry.size.height / 4)
             VStack(spacing: 40) {
-                Button(action: { isPresented.toggle() }, label: { Text("BTN_SIGN_IN").splatfont2(.black, size: 20) })
-                    .buttonStyle()
-                Button(action: { isActive.toggle() }, label: { Text("BTN_SKIP").splatfont2(.black, size: 20) })
-                    .buttonStyle()
+                Button(action: { isPresented.toggle() }, label: {
+                        Text("BTN_SIGN_IN")
+                            .buttonStyle()
+                            .splatfont2(.cloud, size: 20)
+                })
+                Button(action: { isActive.toggle() }, label: {
+                        Text("BTN_SKIP")
+                            .buttonStyle()
+                            .splatfont2(.cloud, size: 20)
+                })
             }
             .position(x: geometry.frame(in: .local).midX, y: 3 * geometry.size.height / 4)
         }

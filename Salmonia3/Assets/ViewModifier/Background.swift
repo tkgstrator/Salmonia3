@@ -21,13 +21,12 @@ struct ButtonStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
             .frame(width: 200, height: 50)
-            .backgroundcolor(.cloud)
-            .cornerRadius(8)
+            .background(RoundedRectangle(cornerRadius: 8).stroke(Color.dust, lineWidth: 3))
     }
 }
 
 extension View {
-    func backgroundcolor(_ color: Color) -> some View {
+    func backgroundColor(_ color: Color) -> some View {
         return self.modifier(BackGroundColor(color: color))
     }
     
