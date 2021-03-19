@@ -17,10 +17,9 @@ struct CoopResultCollection: View {
             NavigationLink(destination: LoadingView(), isActive: $isActive) { EmptyView() }
             List {
                 ForEach(main.results, id:\.self) { result in
-                    NavigationLink(destination: CoopResult()) {
+                    NavigationLink(destination: CoopResultView(result: result)) {
                         ResultOverview(result: result)
                     }
-                    .disabled(true)
                 }
             }
             .pullToRefresh(isShowing: $isShowing) {
@@ -94,12 +93,12 @@ struct ResultOverview: View {
     var ResultEggs: some View {
         VStack(alignment: .leading, spacing: 5) {
             HStack {
-                Image("goldenIkura").resize()
+                Image("49c944e4edf1abee295b6db7525887bd").resize()
                 Text("x\(result.goldenEggs.intValue)")
                     .frame(width: 50, height: 18, alignment: .leading)
             }
             HStack {
-                Image("ikura").resize()
+                Image("f812db3e6de0479510cd02684131e15a").resize()
                 Text("x\(result.powerEggs.intValue)")
                     .frame(width: 50, height: 18, alignment: .leading)
             }

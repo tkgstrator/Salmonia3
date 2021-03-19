@@ -17,12 +17,12 @@ class CoreRealmCoop: ObservableObject {
     private var token: [NotificationToken] = []
 
     // 実際に使いそうなデータ
-    @Published var results: RealmSwift.Results<RealmCoopResult> = realm.objects(RealmCoopResult.self).sorted(byKeyPath: "startTime", ascending: false)
+    @Published var results: RealmSwift.Results<RealmCoopResult> = realm.objects(RealmCoopResult.self).sorted(byKeyPath: "playTime", ascending: false)
     @Published var shifts: RealmSwift.Results<RealmCoopShift> = realm.objects(RealmCoopShift.self).sorted(byKeyPath: "startTime", ascending: false)
     
     init() {
         token.append(results.observe { [weak self] _ in
-            self!.results = CoreRealmCoop.realm.objects(RealmCoopResult.self).sorted(byKeyPath: "startTime", ascending: false)
+            self!.results = CoreRealmCoop.realm.objects(RealmCoopResult.self).sorted(byKeyPath: "playTime", ascending: false)
         })
 
         token.append(shifts.observe { [weak self] _ in

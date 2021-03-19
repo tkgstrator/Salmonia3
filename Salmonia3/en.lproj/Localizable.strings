@@ -13,7 +13,7 @@
 "TITLE_RESULT_COLLECTION" = "Result Collection";
 "TITLE_RESULT" = "Result";
 "TITLE_SHIFT_COLLECTION" = "Shift Schedule";
-
+"TITLE_RESULT_DETAIL" = "Result";
 
 "TEXT_SALMONIA" = "Salmonia";
 "TEXT_SALMON_STATS" = "Salmon Stats";
@@ -24,6 +24,7 @@
 // アラートのタイトル
 "ALERT_ERASE_SETTING" = "Erase Data";
 "ALERT_CONFIRM" = "Confirm";
+"ALERT_ERROR" = "Error";
 
 // アラートのメッセージ
 "MESSAGE_WARNING" = "This operaion can not undone.";
@@ -44,6 +45,7 @@
 "RE_SIGN_IN" = "Re-Sign in";
 
 "BTN_CONFIRM" = "Confirm";
+"BTN_DISMISS" = "Dismiss";
 "BTN_LATER" = "Setup later";
 "BTN_CANCEL" = "Cancel";
 "BTN_SIGN_IN" = "Sign in";
@@ -65,3 +67,22 @@
 
 //
 "SUPPLIED_WEAPONS" = "Supplied Weapons";
+
+"ERROR_UNKNOWN" = "Unknown Error";
+"ERROR_UPGRADE" = "Nintendo Changed API method";
+"ERROR_UNAUTHORIZED" = "Unauthorized session";
+"ERROR_FORBIDDEN" = "This session is forbidden";
+"ERROR_BADREQUEST" = "This request is rejected";
+"ERROR_MANY_REQUESTS" = "Too many requests";
+"ERROR_METHOD" = "Not allowed method";
+"ERROR_INVALID" = "Invalid token";
+"ERROR_EXPIRED" = "This token is expired";
+"ERROR_EMPTY" = "No user data found";
+"ERROR_UNAVAILABLE" = "The server is unavailable";
+"ERROR_NODATA" = "No new results";
+
+"RESULT_BOSS_DEFEATED_%lld" = "Boss Salmonid Defeated %lld";
+//"RESULT_BOSS_DEFEATED_%@" = "Boss Salmonid Defeated %@";
+"RESULT_WAVE_%lld" = "Wave %lld";
+"RESULT_HAZARD_LEVEL_MAX" = "Hazard Level Max!!";
+"RESULT_APPEARANCES_%lld" = "Appearances x%lld";
