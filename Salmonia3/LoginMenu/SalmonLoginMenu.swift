@@ -45,7 +45,7 @@ struct SalmonLoginMenu: View {
                 #warning("とりあえずここでSalmon Statsのトークンを取得")
                 AppManager.configure(oauthToken: oauthToken, oauthVerifier: oauthVerifier)
                 #warning("ここでログイン画面に切り替わるはず")
-                UserDefaults.standard.setValue(false, forKey: "isFirstLaunch")
+                isFirstLaunch = false
             }
             .prefersEphemeralWebBrowserSession(false)
         }

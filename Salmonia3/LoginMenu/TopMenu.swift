@@ -31,17 +31,12 @@ struct TopMenu: View {
             }
             .pullToRefresh(isShowing: $isShowing) {
                 isActive.toggle()
+                isShowing.toggle()
             }
         }
         .splatfont2(size: 16)
         .listStyle(GroupedListStyle())
         .navigationTitle("TITLE_SALMONIA")
-        //        .listStyle(SidebarListStyle())
-        //        VStack {
-        //
-        //            Text("TEXT_WELCOME")
-        //            Button(action: { AppManager.isLogin(isLogin: false) }, label: { Text("BTN_LOGOUT") })
-        //        }
     }
     
     var Overview: some View {

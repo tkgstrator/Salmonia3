@@ -39,21 +39,30 @@ struct CoopShift: View {
     }
     
     var InfoWeapon: some View {
-        VStack(alignment: .leading, spacing: 5) {
-            Text("SUPPLIED_WEAPONS")
-            LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
-                ForEach(shift.weaponList.indices) { idx in
-                    Image(String(shift.weaponList[idx]).imageURL)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: 45)
-                }
+        HStack {
+            VStack(spacing: 0) {
+                Image(StageType(rawValue: shift.stageId.intValue)!.md5)
+                    .resizable().frame(width: 112, height: 63)
+                    .clipShape(RoundedRectangle(cornerRadius: 8.0))
+                Text(StageType(rawValue: shift.stageId.intValue)!.name)
+                    .splatfont2(size: 14)
+                    .padding(.bottom, 8)
             }
-            
+            VStack(alignment: .leading, spacing: 5) {
+                Text("SUPPLIED_WEAPONS")
+                LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
+                    ForEach(shift.weaponList.indices) { idx in
+                        Image(String(shift.weaponList[idx]).imageURL)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: 45)
+                    }
+                }
+                .padding(.bottom, 20)
+                .frame(maxWidth: .infinity)
+            }
         }
     }
-    
-    
 }
 
 struct CoopShiftCollection_Previews: PreviewProvider {

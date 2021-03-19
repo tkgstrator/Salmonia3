@@ -21,7 +21,7 @@ struct Salmonia3App: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .sheet(isPresented: $isFirstLaunch) {
+                .fullScreenCover(isPresented: $isFirstLaunch) {
                     NavigationView {
                         LoginMenu()
                     }

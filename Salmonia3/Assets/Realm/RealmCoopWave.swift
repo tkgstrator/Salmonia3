@@ -56,3 +56,7 @@ private class WaterLevel: Codable {
     var key: String = ""
     var name: String = ""
 }
+
+extension RealmCoopWave: Identifiable {
+    public var id: String { UUID().uuidString }
+}
