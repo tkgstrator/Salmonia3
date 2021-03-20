@@ -10,7 +10,7 @@ import SwiftUI
 import UIKit
 import GoogleMobileAds
 
-struct AdBannerViewController: UIViewControllerRepresentable {
+struct UIGoogleMobileAdsView: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> UIViewController {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
@@ -33,9 +33,9 @@ struct AdBannerViewController: UIViewControllerRepresentable {
     
 }
 
-struct AdBannerView: View {
+struct GoobleMobileAdsView: View {
     var body: some View {
-        AdBannerViewController()
+        UIGoogleMobileAdsView()
             .frame(width: 320, height: 50)
     }
 }

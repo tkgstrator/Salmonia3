@@ -7,11 +7,17 @@
 
 import SwiftUI
 import Firebase
+import AdSupport
+import AppTrackingTransparency
+import GoogleMobileAds
 
 @main
 struct Salmonia3App: App {
     init() {
         #warning("AppDelegateの代わり")
+        ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+            GADMobileAds.sharedInstance().start(completionHandler: nil)
+        })
         RealmManager.migration()
         FirebaseApp.configure()
         print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
