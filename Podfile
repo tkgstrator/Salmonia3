@@ -3,7 +3,9 @@ use_frameworks!
 
 target "Salmonia3" do
   pod "Firebase/Analytics"
-  pod 'Google-Mobile-Ads-SDK'
+  pod "Firebase/Core"
+  pod "Firebase/Firestore"
+  pod "Google-Mobile-Ads-SDK"
 end
 
 target 'Salmonia3Tests' do

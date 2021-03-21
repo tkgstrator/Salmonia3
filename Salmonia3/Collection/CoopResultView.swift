@@ -19,6 +19,8 @@ struct CoopResultView: View {
                 ResultPlayer
             }
         }
+        .padding(.bottom, 50)
+        .backgroundColor(.black)
         .navigationBarTitleDisplayMode(.inline)
 //        .navigationBarItems(trailing: SRButton)
         .navigationTitle("TITLE_RESULT_DETAIL")
@@ -43,7 +45,7 @@ struct CoopResultView: View {
             VStack(spacing: 0) {
                 // プレイ時間の表示
                 Text(result.playTime.stringValue)
-                    .splatfont2(size: 22)
+                    .splatfont2(.white, size: 22)
                 // キケン度の表示
                 DangerRate
                 // イクラ数の表示
@@ -63,7 +65,7 @@ struct CoopResultView: View {
             }
 //            .padding(.vertical, 20)
         }
-        .splatfont2(size: 20)
+        .splatfont2(.white, size: 20)
     }
     
     var ResultWave: some View {
@@ -120,10 +122,10 @@ struct CoopResultView: View {
         switch result.dangerRate.value! == 200 {
         case true:
             return Text("RESULT_HAZARD_LEVEL_MAX")
-                .splatfont2(size: 20)
+                .splatfont2(.yellow, size: 20)
         case false:
             return Text("RESULT_HAZARD_LEVEL_\(String(result.dangerRate.value!))")
-                .splatfont2(size: 20)
+                .splatfont2(.yellow, size: 20)
         }
         
     }
@@ -137,7 +139,7 @@ struct PlayerView: View {
             HStack(alignment: .bottom) {
                 VStack(spacing: 3) {
                     Text(player.name.stringValue)
-                        .splatfont2(size: 18)
+                        .splatfont2(.white, size: 18)
                         .frame(height: 10)
                     HStack {
                         LazyVGrid(columns: Array(repeating: .init(.flexible()), count: player.weaponList.count + 1), alignment: .leading, spacing: 0, pinnedViews: []) {
@@ -192,7 +194,7 @@ struct PlayerView: View {
                 }
             }
         }
-        .splatfont2(size: 16)
+        .splatfont2(.white, size: 16)
         .frame(height: 80)
     }
 }

@@ -31,7 +31,6 @@
 		10377F9E25FD0A1200536A94 /* MBCirlceProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F9D25FD0A1200536A94 /* MBCirlceProgress.swift */; };
 		10377FA425FD10FE00536A94 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377FA325FD10FE00536A94 /* Optional.swift */; };
 		10377FAD25FD166200536A94 /* CoopResultCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377FAC25FD166200536A94 /* CoopResultCollection.swift */; };
-		104AA7D32605DF4E007BDC24 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 104AA7D22605DF4E007BDC24 /* GoogleService-Info.plist */; };
 		104AA7DC2605E0C8007BDC24 /* GoogleMobileAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104AA7DB2605E0C8007BDC24 /* GoogleMobileAds.swift */; };
 		1059416725FA49E500C32D21 /* Salmonia3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059416625FA49E500C32D21 /* Salmonia3App.swift */; };
 		1059416925FA49E500C32D21 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059416825FA49E500C32D21 /* ContentView.swift */; };
@@ -44,6 +43,8 @@
 		105941A825FA4F9500C32D21 /* SalmonLoginMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105941A725FA4F9500C32D21 /* SalmonLoginMenu.swift */; };
 		105941AD25FA500500C32D21 /* TopMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105941AC25FA500500C32D21 /* TopMenu.swift */; };
 		105941BE25FA525100C32D21 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105941BD25FA525100C32D21 /* Background.swift */; };
+		10A7DD3E260740AD00558DE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10A7DD3D260740AD00558DE3 /* GoogleService-Info.plist */; };
+		10A7DD4D2607416F00558DE3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10A7DD4F2607416F00558DE3 /* InfoPlist.strings */; };
 		10AD114D2600EB18008C0E64 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AD114C2600EB18008C0E64 /* Error.swift */; };
 		10BBBEA226049EF400DA79C9 /* CoopResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBBEA126049EF400DA79C9 /* CoopResultView.swift */; };
 		10BBBEAA2604E69300DA79C9 /* SRImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBBEA92604E69300DA79C9 /* SRImage.swift */; };
@@ -109,7 +110,6 @@
 		10377F9D25FD0A1200536A94 /* MBCirlceProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBCirlceProgress.swift; sourceTree = "<group>"; };
 		10377FA325FD10FE00536A94 /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 		10377FAC25FD166200536A94 /* CoopResultCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopResultCollection.swift; sourceTree = "<group>"; };
-		104AA7D22605DF4E007BDC24 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		104AA7DB2605E0C8007BDC24 /* GoogleMobileAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMobileAds.swift; sourceTree = "<group>"; };
 		1059416325FA49E500C32D21 /* Salmonia3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Salmonia3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1059416625FA49E500C32D21 /* Salmonia3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salmonia3App.swift; sourceTree = "<group>"; };
@@ -128,6 +128,8 @@
 		105941A725FA4F9500C32D21 /* SalmonLoginMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonLoginMenu.swift; sourceTree = "<group>"; };
 		105941AC25FA500500C32D21 /* TopMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMenu.swift; sourceTree = "<group>"; };
 		105941BD25FA525100C32D21 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		10A7DD3D260740AD00558DE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		10A7DD4E2607416F00558DE3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		10AD114C2600EB18008C0E64 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		10BBBEA126049EF400DA79C9 /* CoopResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopResultView.swift; sourceTree = "<group>"; };
 		10BBBEA92604E69300DA79C9 /* SRImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRImage.swift; sourceTree = "<group>"; };
@@ -273,7 +275,7 @@
 		1059416525FA49E500C32D21 /* Salmonia3 */ = {
 			isa = PBXGroup;
 			children = (
-				104AA7D22605DF4E007BDC24 /* GoogleService-Info.plist */,
+				10A7DD3D260740AD00558DE3 /* GoogleService-Info.plist */,
 				1059416625FA49E500C32D21 /* Salmonia3App.swift */,
 				1059416825FA49E500C32D21 /* ContentView.swift */,
 				1059416A25FA49E900C32D21 /* Assets.xcassets */,
@@ -283,6 +285,7 @@
 				102465EF25FDDAAA004DC043 /* SettingMenu */,
 				1059419E25FA4DDE00C32D21 /* LoginMenu */,
 				1059419525FA4BF600C32D21 /* Assets */,
+				10A7DD4F2607416F00558DE3 /* InfoPlist.strings */,
 				1024660525FDE916004DC043 /* Localizable.strings */,
 				1059416C25FA49E900C32D21 /* Preview Content */,
 			);
@@ -535,12 +538,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				10377F7525FCD8CD00536A94 /* RobotoMono.ttf in Resources */,
+				10A7DD4D2607416F00558DE3 /* InfoPlist.strings in Resources */,
 				10377F7625FCD8CD00536A94 /* Splatfont1.ttf in Resources */,
 				1024660325FDE916004DC043 /* Localizable.strings in Resources */,
 				10377F7725FCD8CD00536A94 /* Splatfont2.ttf in Resources */,
 				1059416E25FA49E900C32D21 /* Preview Assets.xcassets in Resources */,
 				1059416B25FA49E900C32D21 /* Assets.xcassets in Resources */,
-				104AA7D32605DF4E007BDC24 /* GoogleService-Info.plist in Resources */,
+				10A7DD3E260740AD00558DE3 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,6 +731,14 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+		10A7DD4F2607416F00558DE3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				10A7DD4E2607416F00558DE3 /* ja */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -853,7 +865,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -863,7 +875,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.2;
+				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -878,7 +890,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -888,7 +900,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.2;
+				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

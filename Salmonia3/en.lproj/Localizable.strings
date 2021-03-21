@@ -35,12 +35,14 @@
 "HEADER_DEVICE" = "Device";
 "HEADER_OVERVIEW" = "Overview";
 "HEADER_SCHEDULE" = "Shift Schedule";
+"HEADER_APPEARANCE" = "Appearance";
 
 "SETTING_PRIVACY" = "Privacy Policy";
 "SETTING_UPLOAD" = "Upload to Salmon Stats";
 "SETTING_SYSTEM" = "System Information";
 "SETTING_DEVICE" = "Device Information";
 "SETTING_APP_VERSION" = "Version";
+"SETTING_USING_DARKMODE" = "Using Darkmode";
 "ERASE_SETTING" = "Erase Data";
 "RE_SIGN_IN" = "Re-Sign in";
 
