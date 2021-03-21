@@ -40,6 +40,19 @@ class RealmCoopResult: Object, Identifiable, Decodable {
         return ["startTime"]
     }
     
+    var specialUsage: [[Int]] {
+        var usage: [[Int]] = []
+        for wave in Range(0...2) {
+            var tmp: [Int] = []
+            for player in self.player {
+                tmp += [Int](repeating: player.specialId, count: player.specialCounts[wave])
+            }
+            usage.append(tmp)
+        }
+        print(usage)
+        return usage
+    }
+    
     private enum CodingKeys: String, CodingKey {
         case pid                = "pid"
         case jobId              = "job_id"

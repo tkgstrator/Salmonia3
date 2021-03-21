@@ -15,9 +15,14 @@ struct CoopResultView: View {
         ScrollView(showsIndicators: false) {
             LazyVStack {
                 ResultOverview
+                    .padding(.bottom, 20)
                 ResultWave
+                    .padding(.bottom, 20)
                 ResultPlayer
             }
+        }
+        .onAppear() {
+            print(result.specialUsage)
         }
         .padding(.bottom, 50)
         .backgroundColor(.black)
@@ -69,7 +74,7 @@ struct CoopResultView: View {
     }
     
     var ResultWave: some View {
-        LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 140)), count: result.wave.count)) {
+        LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 140), alignment: .top), count: result.wave.count)) {
             ForEach(result.wave.indices, id:\.self) { index in
                 VStack(spacing: 0) {
                     VStack(spacing: 0) {
@@ -99,12 +104,16 @@ struct CoopResultView: View {
                             .frame(width: 15, height: 15)
                         Text("RESULT_APPEARANCES_\(result.wave[index].goldenIkuraPopNum)")
                     }
+                    LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 4), alignment: .leading, spacing: 0, pinnedViews: []) {
+                        ForEach(result.specialUsage[index].indices) { idx in
+                            SRImage(from: SRImage.ImageType(rawValue: result.specialUsage[index][idx])!, size: CGSize(width: 28, height: 28))
+                        }
+                    }
                 }
             }
-//            .id(UUID())
         }
         .frame(height: 180)
-        .splatfont2(size: 16)
+        .splatfont2(.white, size: 16)
         .padding(.horizontal, 5)
     }
     
@@ -112,7 +121,6 @@ struct CoopResultView: View {
         LazyHGrid(rows: Array(repeating: .init(.flexible(minimum: 80)), count: result.player.count), spacing: 0) {
             ForEach(result.player.indices, id:\.self) { index in
                 PlayerView(player: result.player[index])
-//                    .id(UUID())
             }
         }
     }
@@ -141,6 +149,7 @@ struct PlayerView: View {
                     Text(player.name.stringValue)
                         .splatfont2(.white, size: 18)
                         .frame(height: 10)
+                        .padding(.bottom, 5)
                     HStack {
                         LazyVGrid(columns: Array(repeating: .init(.flexible()), count: player.weaponList.count + 1), alignment: .leading, spacing: 0, pinnedViews: []) {
                             SRImage(from: SRImage.ImageType(rawValue: player.specialId)!, size: CGSize(width: 25, height: 25))
