@@ -15,7 +15,7 @@ struct ContentView: View {
             TopMenu()
             SettingView()
         }
-        .padding(.bottom, 50)
+//        .padding(.bottom, 50)
         .overlay(GoobleMobileAdsView().backgroundColor(.clear), alignment: .bottom)
         .navigationViewStyle(LegacyNavigationViewStyle())
     }

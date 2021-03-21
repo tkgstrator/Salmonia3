@@ -36,12 +36,14 @@
 "HEADER_DEVICE" = "デバイス情報";
 "HEADER_OVERVIEW" = "概要";
 "HEADER_SCHEDULE" = "シフトスケジュール";
+"HEADER_APPEARANCE" = "外観";
 
 "SETTING_PRIVACY" = "プライバシーポリシー";
 "SETTING_UPLOAD" = "Salmon Statsへのアップロード";
 "SETTING_SYSTEM" = "システム情報";
 "SETTING_DEVICE" = "デバイス情報";
 "SETTING_APP_VERSION" = "バージョン";
+"SETTING_USING_DARKMODE" = "ダークモードを使う";
 "ERASE_SETTING" = "データ消去";
 "RE_SIGN_IN" = "再ログイン";
 

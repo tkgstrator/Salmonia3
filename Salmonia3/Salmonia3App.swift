@@ -15,15 +15,16 @@ import GoogleMobileAds
 struct Salmonia3App: App {
     init() {
         #warning("AppDelegateの代わり")
+        FirebaseApp.configure()
+        RealmManager.migration()
         ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
             GADMobileAds.sharedInstance().start(completionHandler: nil)
         })
-        RealmManager.migration()
-        FirebaseApp.configure()
         print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
     }
     
     @AppStorage("isFirstLaunch") var isFirstLaunch = true
+    @AppStorage("isDarkMode") var isDarkMode = false
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -42,6 +43,7 @@ struct Salmonia3App: App {
                 .environmentObject(CoreAppSetting())
                 .listStyle(GroupedListStyle())
                 .buttonStyle(PlainButtonStyle())
+                .preferredColorScheme(isDarkMode ? .dark : .light)
         }
     }
 }

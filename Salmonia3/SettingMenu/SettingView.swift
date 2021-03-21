@@ -13,10 +13,11 @@ struct SettingView: View {
     @State var isWarning: Bool = false
     @State var isShowing: Bool = false
     @AppStorage("isFirstLaunch") var isFirstLaunch = true
+    @AppStorage("isDarkMode") var isDarkMode = false
     @State var token: Bool = UserDefaults.standard.string(forKey: "apiToken") != nil
     private let systemVersion: String = UIDevice.current.systemVersion
     private let systemName: String = UIDevice.current.systemName
-    private let deviceName: String = UIDevice.current.name
+    private let deviceName: String = UIDevice.current.localizedModel
     private let appVersion: String = "\(String(describing: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")!))(\(String(describing: Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")!)))"
     
     var body: some View {
@@ -25,6 +26,9 @@ struct SettingView: View {
             Section(header: Text("HEADER_USER_INFO").splatfont2(.orange, size: 14)) {
                 SettingMenu(title: "UPLOAD", value: token)
                 Toggle("RE_SIGN_IN", isOn: $isFirstLaunch)
+            }
+            Section(header: Text("HEADER_APPEARANCE").splatfont2(.orange, size: 14)) {
+                Toggle("SETTING_USING_DARKMODE", isOn: $isDarkMode)
             }
             Section(header: Text("HEADER_APPLICATION").splatfont2(.orange, size: 14)) {
                 PrivacyButton
