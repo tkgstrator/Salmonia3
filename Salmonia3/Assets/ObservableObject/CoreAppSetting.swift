@@ -24,9 +24,18 @@ class CoreAppSetting: ObservableObject {
         token = UserDefaults.standard.observe(\.isFirstLaunch, changeHandler: { [weak self] (defaults, change) in
             #warning("変わったときにチェックできるかどうか")
             self?.isFirstLaunch = UserDefaults.standard.bool(forKey: "isFirstLaunch")
+            if let account = realm.objects(RealmUserInfo.self).first {
+                self?.account = account
+            }
         })
         
         publish = realm.objects(RealmUserInfo.self).observe { [weak self] _ in
+            if let account = realm.objects(RealmUserInfo.self).first {
+                self?.account = account
+            }
+        }
+        
+        publish = realm.objects(RealmCoopResult.self).observe { [weak self] _ in
             if let account = realm.objects(RealmUserInfo.self).first {
                 self?.account = account
             }

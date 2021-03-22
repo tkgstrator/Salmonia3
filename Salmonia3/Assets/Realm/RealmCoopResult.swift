@@ -49,7 +49,6 @@ class RealmCoopResult: Object, Identifiable, Decodable {
             }
             usage.append(tmp)
         }
-        print(usage)
         return usage
     }
     
