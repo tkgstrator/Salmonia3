@@ -36,18 +36,18 @@ struct LoadingView: View {
                         do {
                             if !SplatNet2.isValid(iksm_session: iksmSession) {
                                 let response: JSON = try SplatNet2.genIksmSession(sessionToken)
-                                if let session = response["iksm_session"].string {
-                                    RealmManager.setIksmSession(iksmSession: session, pid: pid)
-                                    iksmSession = session
-                                }
+                                try RealmManager.setIksmSession(account: response)
                             }
                             
                             let summary: JSON = try SplatNet2.getSummary(iksm_session: iksmSession)
+                            try RealmManager.updateUserInfo(pid: pid, summary: summary)
+                            
                             guard let jobNumRemote: Int = summary["summary"]["card"]["job_num"].int else { throw APPError.unknown }
                             if jobNumLocal == jobNumRemote { throw APPError.nodata }
                             
                             #if DEBUG
-                            let jobNumRange: Range<Int> = Range(jobNumRemote - 30 ... jobNumRemote)
+//                            let jobNumRange: Range<Int> = Range(jobNumRemote - 30 ... jobNumRemote)
+                            let jobNumRange: Range<Int> = Range(max(jobNumRemote - 49, jobNumLocal + 1) ... jobNumRemote)
                             #else
                             let jobNumRange: Range<Int> = Range(max(jobNumRemote - 49, jobNumLocal + 1) ... jobNumRemote)
                             #endif

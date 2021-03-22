@@ -13,7 +13,7 @@ enum RealmManager {
     public static func migration() {
         // データベースのマイグレーションをする
         let config = Realm.Configuration(
-            schemaVersion: 5,
+            schemaVersion: 6,
             migrationBlock: { [self] migration, version in
                 if version < 1 {
                     // マイグレーションブロック
@@ -23,6 +23,20 @@ enum RealmManager {
             )
         Realm.Configuration.defaultConfiguration = config
         try? RealmManager.addNewRotation()
+    }
+
+    public static func updateUserInfo(pid: String, summary: JSON) throws -> () {
+        guard let realm = try? Realm() else { return }
+        let user = try JSONDecoder().decode(RealmUserInfo.self, from: summary["summary"]["card"].rawData())
+        let account = realm.objects(RealmUserInfo.self).filter("nsaid=%@", pid)
+        realm.beginWrite()
+        account.setValue(user.jobNum, forKey: "jobNum")
+        account.setValue(user.goldenIkuraTotal, forKey: "goldenIkuraTotal")
+        account.setValue(user.helpTotal, forKey: "helpTotal")
+        account.setValue(user.ikuraTotal, forKey: "ikuraTotal")
+        account.setValue(user.kumaPoint, forKey: "kumaPoint")
+        account.setValue(user.kumaPointTotal, forKey: "kumaPointTotal")
+        try realm.commitWrite()
     }
     
     public static func addNewAccount(account: RealmUserInfo) throws -> () {
@@ -55,10 +69,14 @@ enum RealmManager {
         }
     }
     
-    public static func setIksmSession(iksmSession: String, pid: String) {
+    public static func setIksmSession(account: JSON) throws -> () {
+        let user = try JSONDecoder().decode(RealmUserInfo.self, from: account.rawData())
         guard let realm = try? Realm() else { return }
+        let account = realm.objects(RealmUserInfo.self).filter("nsaid=%@", user.nsaid)
         realm.beginWrite()
-        realm.objects(RealmUserInfo.self).filter("nsaid=%@", pid).setValue(iksmSession, forKey: "iksmSession")
+        account.setValue(user.nickname, forKey: "nickname")
+        account.setValue(user.thumbnailURL, forKey: "thumbnailURL")
+        account.setValue(user.iksmSession, forKey: "iksmSession")
         try? realm.commitWrite()
     }
     
