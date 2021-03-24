@@ -53,7 +53,7 @@ class RealmCoopResult: Object, Identifiable, Decodable {
     }
     
     private enum CodingKeys: String, CodingKey {
-        case pid                = "pid"
+//        case pid                = "pid"
         case jobId              = "job_id"
         case stageId            = "stage_id"
         case salmonId           = "salmon_id"
@@ -93,7 +93,7 @@ class RealmCoopResult: Object, Identifiable, Decodable {
         kumaPoint.value = try container.decode(Int.self, forKey: .kumaPoint)
         
         #warning("データ整形に処理が必要なところ")
-        pid = try? container.decode(String.self, forKey: .pid)
+//        pid = try? container.decode(String.self, forKey: .pid)
         jobId.value = try? container.decode(Int.self, forKey: .jobId)
         salmonId.value = try? container.decode(Int.self, forKey: .salmonId)
 //        stageId.value = try? container.decode(Int.self, forKey: .stageId)
@@ -125,15 +125,23 @@ class RealmCoopResult: Object, Identifiable, Decodable {
         // RealmSwfit.Listの書き込み
         let myResult = try container.decodeIfPresent(RealmPlayerResult.self, forKey: .myResult) ?? RealmPlayerResult()
         player.append(myResult)
+        // 最初のユーザのpidが自分のpidとなる
+        pid = myResult.pid
         
         let otherResults = try container.decodeIfPresent([RealmPlayerResult].self, forKey: .otherResults) ?? [RealmPlayerResult()]
         player.append(objectsIn: otherResults)
         
+        #warning("もっとかっこいい書き方募集")
+        var _bossKillCounts: [Int] = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+        for p in player {
+            _bossKillCounts = Array(zip(p.bossKillCounts, _bossKillCounts)).map{ $0.0 + $0.1 }
+        }
+        bossKillCounts.append(objectsIn: _bossKillCounts)
         // List型に対する処理
-        let _bossKillCounts = try container.decodeIfPresent([Int: BossKillCounts].self, forKey: .bossKillCounts) ?? [Int(): BossKillCounts()]
-        bossKillCounts.append(objectsIn: _bossKillCounts.sorted{ $0.0 < $1.0 }.map{ $0.value.count })
+//        let _bossKillCounts = try container.decodeIfPresent([Int: BossCounts].self, forKey: .bossKillCounts) ?? [Int(): BossCounts()]
+//        bossKillCounts.append(objectsIn: _bossKillCounts.sorted{ $0.0 < $1.0 }.map{ $0.value.count })
 
-        let _bossCounts = try container.decodeIfPresent([Int: BossKillCounts].self, forKey: .bossCounts) ?? [Int(): BossKillCounts()]
+        let _bossCounts = try container.decodeIfPresent([Int: BossCounts].self, forKey: .bossCounts) ?? [Int(): BossCounts()]
         bossCounts.append(objectsIn: _bossCounts.sorted{ $0.0 < $1.0 }.map{ $0.value.count })
 
         let _wave = try container.decodeIfPresent([RealmCoopWave].self, forKey: .wave) ?? [RealmCoopWave()]

@@ -29,18 +29,19 @@ struct LoadingView: View {
                 do {
                     guard var iksmSession: String = user.account.iksmSession else { throw APPError.empty }
                     guard let sessionToken: String = user.account.sessionToken else { throw APPError.empty }
-                    guard let pid: String = user.account.nsaid else { throw APPError.empty }
+                    guard let nsaid: String = user.account.nsaid else { throw APPError.empty }
                     let jobNumLocal: Int = user.account.jobNum
                     
                     DispatchQueue(label: "Loading from SplatNet2").async {
                         do {
                             if !SplatNet2.isValid(iksm_session: iksmSession) {
                                 let response: JSON = try SplatNet2.genIksmSession(sessionToken)
-                                try RealmManager.setIksmSession(account: response)
+                                try RealmManager.setIksmSession(nsaid: nsaid, account: response)
+                                iksmSession = response["iksm_session"].stringValue
                             }
                             
                             let summary: JSON = try SplatNet2.getSummary(iksm_session: iksmSession)
-                            try RealmManager.updateUserInfo(pid: pid, summary: summary)
+                            try RealmManager.updateUserInfo(pid: nsaid, summary: summary)
                             
                             guard let jobNumRemote: Int = summary["summary"]["card"]["job_num"].int else { throw APPError.unknown }
                             if jobNumLocal == jobNumRemote { throw APPError.nodata }

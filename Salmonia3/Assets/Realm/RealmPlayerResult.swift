@@ -49,11 +49,11 @@ class RealmPlayerResult: Object, Decodable {
         goldenIkuraNum = try container.decode(Int.self, forKey: .goldenIkuraNum)
         ikuraNum = try container.decode(Int.self, forKey: .ikuraNum)
         
-        let special = try container.decode(Special.self, forKey: .specialId)
+        let special = try container.decode(SpecialWeapon.self, forKey: .specialId)
         specialId = Int(special.id) ?? 0
         
         // List型に対する処理
-        let _bossKillCounts = try container.decodeIfPresent([Int: BossKillCounts].self, forKey: .bossKillCounts) ?? [Int(): BossKillCounts()]
+        let _bossKillCounts = try container.decodeIfPresent([Int: BossCounts].self, forKey: .bossKillCounts) ?? [Int(): BossCounts()]
         bossKillCounts.append(objectsIn: _bossKillCounts.sorted{ $0.0 < $1.0 }.map{ $0.value.count })
         let _weaponList = try container.decodeIfPresent([WeaponList].self, forKey: .weaponList) ?? [WeaponList()]
         
@@ -63,16 +63,16 @@ class RealmPlayerResult: Object, Decodable {
     }
 }
 
-class WeaponList: Codable {
+fileprivate class WeaponList: Codable {
     var id: String = "0"
     var weapon: [String: String] = [:]
 }
 
-class BossKillCounts: Codable {
+class BossCounts: Codable {
     var boss: [String: String] = [:]
     var count: Int = 0
 }
 
-private class Special: Codable {
+fileprivate class SpecialWeapon: Codable {
     var id: String = "0"
 }
