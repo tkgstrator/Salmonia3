@@ -15,10 +15,20 @@ enum RealmManager {
     public static func migration() {
         // データベースのマイグレーションをする
         let config = Realm.Configuration(
-            schemaVersion: 6,
+            schemaVersion: 128,
             migrationBlock: { [self] migration, version in
-                if version < 1 {
+                print("MIGRATION NEEDED")
+                if version < 127 {
                     // マイグレーションブロック
+                    migration.enumerateObjects(ofType: RealmCoopResult.className()) { oldObject, newObject in
+                        let players = oldObject?["player"] as! RealmSwift.List<MigrationObject>
+                        var _bossKillCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+                        for player in players {
+                            let bossKillCounts: [Int] = (player["bossKillCounts"] as! RealmSwift.List<MigrationObject>).map{ $0 as! Int}
+                            _bossKillCounts = Array(zip(bossKillCounts, _bossKillCounts)).map{ $0.0 + $0.1}
+                        }
+                        newObject!["bossKillCounts"] = _bossKillCounts
+                    }
                 }
             })
         Realm.Configuration.defaultConfiguration = config
