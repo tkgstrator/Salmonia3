@@ -289,8 +289,20 @@ fileprivate struct CoopPlayerResultView: View {
                     }
                     .frame(maxWidth: .infinity)
                 }
-                .splatfont2(size: 20)
+                HStack(spacing: 0) {
+                    Text("Eggs")
+                        .frame(width: 40)
+                    LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: nil, pinnedViews: []) {
+                        ForEach(result.player.indices, id:\.self) { index in
+                            Text("\(result.player[index].goldenIkuraNum)")
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+                EmptyView()
+                    .padding(.bottom, 50)
             }
+            .splatfont2(size: 20)
         }
         
     }
@@ -308,14 +320,6 @@ fileprivate struct CoopPlayerResultView: View {
             }
         }
         .padding(.leading, 45)
-    }
-    
-    var PlayerScoreView: some View {
-        LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: nil, pinnedViews: []) {
-            ForEach(result.player.indices, id:\.self) { index in
-                Text("TEST")
-            }
-        }
     }
 }
 //struct CoopResultView_Previews: PreviewProvider {
