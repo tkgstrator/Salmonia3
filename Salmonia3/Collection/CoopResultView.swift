@@ -19,12 +19,13 @@ struct CoopResultView: View {
                 ResultWave
                     .padding(.bottom, 20)
                 ResultPlayer
+                    .padding(.bottom, 50)
             }
         }
         .onAppear() {
             print(result.specialUsage)
         }
-        .padding(.bottom, 50)
+//        .padding(.bottom, 50)
         .backgroundColor(.black)
         .navigationBarTitleDisplayMode(.inline)
 //        .navigationBarItems(trailing: SRButton)

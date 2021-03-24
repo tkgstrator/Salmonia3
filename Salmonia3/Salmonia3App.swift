@@ -25,6 +25,7 @@ struct Salmonia3App: App {
     
     @AppStorage("isFirstLaunch") var isFirstLaunch = true
     @AppStorage("isDarkMode") var isDarkMode = false
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -37,13 +38,13 @@ struct Salmonia3App: App {
                 .environment(\.minimumScaleFactor, 0.5)
                 .environment(\.imageScale, .large)
                 .environment(\.textCase, nil)
-                .animation(.easeInOut)
-                .transition(.opacity)
                 .environmentObject(CoreRealmCoop())
-                .environmentObject(CoreAppSetting())
+                .environmentObject(AppSettings())
                 .listStyle(GroupedListStyle())
                 .buttonStyle(PlainButtonStyle())
                 .preferredColorScheme(isDarkMode ? .dark : .light)
+                .animation(.easeInOut)
+                .transition(.opacity)
         }
     }
 }

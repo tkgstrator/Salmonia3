@@ -8,8 +8,10 @@
 import Foundation
 import RealmSwift
 import SwiftyJSON
+import SwiftUI
 
 enum RealmManager {
+    
     public static func migration() {
         // データベースのマイグレーションをする
         let config = Realm.Configuration(
@@ -18,13 +20,11 @@ enum RealmManager {
                 if version < 1 {
                     // マイグレーションブロック
                 }
-            },
-            deleteRealmIfMigrationNeeded: true
-            )
+            })
         Realm.Configuration.defaultConfiguration = config
         try? RealmManager.addNewRotation()
     }
-
+    
     public static func updateUserInfo(pid: String, summary: JSON) throws -> () {
         guard let realm = try? Realm() else { return }
         let user = try JSONDecoder().decode(RealmUserInfo.self, from: summary["summary"]["card"].rawData())
@@ -56,7 +56,7 @@ enum RealmManager {
         try realm.commitWrite()
     }
     
-    public static func addNewRotation() throws -> () {
+    private static func addNewRotation() throws -> () {
         ProductManger.getFutureRotation { response, error in
             guard let response = response else { return }
             guard let realm = try? Realm() else { return }
@@ -82,6 +82,7 @@ enum RealmManager {
     
     static func eraseAllRecord() throws -> () {
         guard let realm = try? Realm() else { return }
+        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
         autoreleasepool {
             realm.beginWrite()
             realm.delete(realm.objects(RealmCoopWave.self))

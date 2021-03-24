@@ -24,7 +24,7 @@
 		10377F7725FCD8CD00536A94 /* Splatfont2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10377F6325FCD5CD00536A94 /* Splatfont2.ttf */; };
 		10377F7C25FCD9E800536A94 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F7B25FCD9E800536A94 /* RealmManager.swift */; };
 		10377F8125FCDBE400536A94 /* RealmUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F8025FCDBE400536A94 /* RealmUserInfo.swift */; };
-		10377F8625FD041900536A94 /* CoreAppSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F8525FD041900536A94 /* CoreAppSetting.swift */; };
+		10377F8625FD041900536A94 /* AppSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F8525FD041900536A94 /* AppSetting.swift */; };
 		10377F8B25FD053A00536A94 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F8A25FD053A00536A94 /* AppManager.swift */; };
 		10377F9125FD09E800536A94 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F9025FD09E800536A94 /* LoadingView.swift */; };
 		10377F9925FD09FF00536A94 /* LoggingThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F9825FD09FF00536A94 /* LoggingThread.swift */; };
@@ -43,9 +43,11 @@
 		105941A825FA4F9500C32D21 /* SalmonLoginMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105941A725FA4F9500C32D21 /* SalmonLoginMenu.swift */; };
 		105941AD25FA500500C32D21 /* TopMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105941AC25FA500500C32D21 /* TopMenu.swift */; };
 		105941BE25FA525100C32D21 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105941BD25FA525100C32D21 /* Background.swift */; };
+		107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */; };
 		10A7DD3E260740AD00558DE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10A7DD3D260740AD00558DE3 /* GoogleService-Info.plist */; };
 		10A7DD4D2607416F00558DE3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10A7DD4F2607416F00558DE3 /* InfoPlist.strings */; };
 		10AD114D2600EB18008C0E64 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AD114C2600EB18008C0E64 /* Error.swift */; };
+		10B07C5F260A1463008FDE1B /* CoopShiftStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B07C5E260A1463008FDE1B /* CoopShiftStatsView.swift */; };
 		10BBBEA226049EF400DA79C9 /* CoopResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBBEA126049EF400DA79C9 /* CoopResultView.swift */; };
 		10BBBEAA2604E69300DA79C9 /* SRImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBBEA92604E69300DA79C9 /* SRImage.swift */; };
 		10CF098E25FB97CB00D2EEB1 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF098D25FB97CB00D2EEB1 /* BetterSafariView */; };
@@ -103,7 +105,7 @@
 		10377F6425FCD63B00536A94 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		10377F7B25FCD9E800536A94 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		10377F8025FCDBE400536A94 /* RealmUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUserInfo.swift; sourceTree = "<group>"; };
-		10377F8525FD041900536A94 /* CoreAppSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAppSetting.swift; sourceTree = "<group>"; };
+		10377F8525FD041900536A94 /* AppSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetting.swift; sourceTree = "<group>"; };
 		10377F8A25FD053A00536A94 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		10377F9025FD09E800536A94 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		10377F9825FD09FF00536A94 /* LoggingThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingThread.swift; sourceTree = "<group>"; };
@@ -128,9 +130,11 @@
 		105941A725FA4F9500C32D21 /* SalmonLoginMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonLoginMenu.swift; sourceTree = "<group>"; };
 		105941AC25FA500500C32D21 /* TopMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMenu.swift; sourceTree = "<group>"; };
 		105941BD25FA525100C32D21 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopStats.swift; sourceTree = "<group>"; };
 		10A7DD3D260740AD00558DE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10A7DD4E2607416F00558DE3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		10AD114C2600EB18008C0E64 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		10B07C5E260A1463008FDE1B /* CoopShiftStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftStatsView.swift; sourceTree = "<group>"; };
 		10BBBEA126049EF400DA79C9 /* CoopResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopResultView.swift; sourceTree = "<group>"; };
 		10BBBEA92604E69300DA79C9 /* SRImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRImage.swift; sourceTree = "<group>"; };
 		10CF09BE25FB9AEC00D2EEB1 /* LegacyNavigationViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyNavigationViewStyle.swift; sourceTree = "<group>"; };
@@ -238,6 +242,7 @@
 				10377FAC25FD166200536A94 /* CoopResultCollection.swift */,
 				1024662425FE4012004DC043 /* CoopShiftCollection.swift */,
 				10BBBEA126049EF400DA79C9 /* CoopResultView.swift */,
+				10B07C5E260A1463008FDE1B /* CoopShiftStatsView.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -340,8 +345,8 @@
 				10CF09F825FB9BEE00D2EEB1 /* Realm */,
 				10377F4D25FCBF8600536A94 /* TwitterOAuth.swift */,
 				10377F7B25FCD9E800536A94 /* RealmManager.swift */,
-				1024661F25FE0CE7004DC043 /* ProductManager.swift */,
 				10377F8A25FD053A00536A94 /* AppManager.swift */,
+				1024661F25FE0CE7004DC043 /* ProductManager.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -370,6 +375,7 @@
 		10CF09F825FB9BEE00D2EEB1 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
+				107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */,
 				10CF09F325FB9BE100D2EEB1 /* RealmCoopResult.swift */,
 				1024661A25FE0929004DC043 /* RealmCoopShift.swift */,
 				10CF09FF25FBA5BC00D2EEB1 /* RealmPlayerResult.swift */,
@@ -383,7 +389,7 @@
 			isa = PBXGroup;
 			children = (
 				10CF09FA25FB9C6B00D2EEB1 /* CoreRealmCoop.swift */,
-				10377F8525FD041900536A94 /* CoreAppSetting.swift */,
+				10377F8525FD041900536A94 /* AppSetting.swift */,
 			);
 			path = ObservableObject;
 			sourceTree = "<group>";
@@ -655,6 +661,7 @@
 				10CF0A0A25FBA91800D2EEB1 /* OAuthLogin.swift in Sources */,
 				10377FA425FD10FE00536A94 /* Optional.swift in Sources */,
 				1024661625FDFF0F004DC043 /* ImageResize.swift in Sources */,
+				10B07C5F260A1463008FDE1B /* CoopShiftStatsView.swift in Sources */,
 				1024662A25FE50A0004DC043 /* Int.swift in Sources */,
 				10377F6525FCD63B00536A94 /* Font.swift in Sources */,
 				10377F9E25FD0A1200536A94 /* MBCirlceProgress.swift in Sources */,
@@ -673,9 +680,10 @@
 				1024661B25FE0929004DC043 /* RealmCoopShift.swift in Sources */,
 				1024661125FDF411004DC043 /* String.swift in Sources */,
 				10CF0A0525FBA6BF00D2EEB1 /* RealmCoopWave.swift in Sources */,
-				10377F8625FD041900536A94 /* CoreAppSetting.swift in Sources */,
+				10377F8625FD041900536A94 /* AppSetting.swift in Sources */,
 				10377F4E25FCBF8600536A94 /* TwitterOAuth.swift in Sources */,
 				10377F9125FD09E800536A94 /* LoadingView.swift in Sources */,
+				107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */,
 				10CF09FB25FB9C6B00D2EEB1 /* CoreRealmCoop.swift in Sources */,
 				10377F8B25FD053A00536A94 /* AppManager.swift in Sources */,
 				10AD114D2600EB18008C0E64 /* Error.swift in Sources */,
@@ -875,7 +883,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.3;
+				MARKETING_VERSION = 0.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -900,7 +908,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.3;
+				MARKETING_VERSION = 0.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

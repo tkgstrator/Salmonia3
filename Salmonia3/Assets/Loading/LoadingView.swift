@@ -13,7 +13,7 @@ import SwiftyJSON
 
 struct LoadingView: View {
     @Environment(\.presentationMode) var present
-    @EnvironmentObject var user: CoreAppSetting
+    @EnvironmentObject var user: AppSettings
     @State var data: ProgressData = ProgressData()
     @State var isPresented: Bool = false
     @State var appError: APPError?
