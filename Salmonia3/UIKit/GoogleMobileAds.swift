@@ -37,6 +37,5 @@ struct GoobleMobileAdsView: View {
     var body: some View {
         UIGoogleMobileAdsView()
             .frame(width: 320, height: 50)
-            .backgroundColor(.clear)
     }
 }
