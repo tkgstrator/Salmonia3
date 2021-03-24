@@ -6,8 +6,25 @@
 //
 
 import SwiftUI
+import URLImage
 
 struct CoopResultView: View {
+    var result: RealmCoopResult
+    @State var isVisible: Bool = false
+    
+    var body: some View {
+        TabView {
+            CoopResultOverview(result: result)
+                .tag(0)
+            CoopPlayerResultView(result: result, isVisible: $isVisible)
+                .tag(1)
+        }
+        .tabViewStyle(PageTabViewStyle())
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+struct CoopResultOverview: View {
     var result: RealmCoopResult
     @State var isAnonymous: Bool = false
     
@@ -22,10 +39,6 @@ struct CoopResultView: View {
                     .padding(.bottom, 50)
             }
         }
-        .onAppear() {
-            print(result.specialUsage)
-        }
-//        .padding(.bottom, 50)
         .backgroundColor(.black)
         .navigationBarTitleDisplayMode(.inline)
 //        .navigationBarItems(trailing: SRButton)
@@ -107,7 +120,7 @@ struct CoopResultView: View {
                     }
                     LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 4), alignment: .leading, spacing: 0, pinnedViews: []) {
                         ForEach(result.specialUsage[index].indices) { idx in
-                            SRImage(from: SRImage.ImageType(rawValue: result.specialUsage[index][idx])!, size: CGSize(width: 28, height: 28))
+                            SRImage(from: Special(rawValue: result.specialUsage[index][idx]), size: CGSize(width: 28, height: 28))
                         }
                     }
                 }
@@ -153,7 +166,7 @@ struct PlayerView: View {
                         .padding(.bottom, 5)
                     HStack {
                         LazyVGrid(columns: Array(repeating: .init(.flexible()), count: player.weaponList.count + 1), alignment: .leading, spacing: 0, pinnedViews: []) {
-                            SRImage(from: SRImage.ImageType(rawValue: player.specialId)!, size: CGSize(width: 25, height: 25))
+                            SRImage(from: Special(rawValue: player.specialId), size: CGSize(width: 25, height: 25))
                             ForEach(player.weaponList.indices, id:\.self) { index in
                                 Image(String(player.weaponList[index]).imageURL)
                                     .resizable()
@@ -209,6 +222,102 @@ struct PlayerView: View {
     }
 }
 
+fileprivate struct CoopPlayerResultView: View {
+    var result: RealmCoopResult
+    @Binding var isVisible: Bool
+    
+    var body: some View {
+        List {
+            Section(header: Text("Players")) {
+                HStack(spacing: 0) {
+                    Text("").frame(width: 40)
+                    LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: nil, pinnedViews: []) {
+                        ForEach(result.player.indices, id:\.self) { index in
+                            VStack {
+                                Image(systemName: "circle")
+                                Text(result.player[index].name.stringValue)
+                                    .splatfont2(size: 14)
+                            }
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+            }
+            Section(header: Text("Salmonids")) {
+                ForEach(Range(0...8)) { id in
+                    if result.bossCounts[id] != 0 {
+                        HStack(spacing: 0) {
+                            VStack(spacing: 0) {
+                                SRImage(from: Salmonid(rawValue: id), size: CGSize(width: 40, height: 40))
+                                    .frame(width: 40, height: 40)
+                                if result.bossKillCounts[id] == result.bossCounts[id] {
+                                    Text("\(result.bossKillCounts[id])/\(result.bossCounts[id])")
+                                        .splatfont2(.yellow, size: 16)
+                                        .shadow(color: .black, radius: 0, x: 1, y: 1)
+                                        .frame(height: 16)
+                                } else {
+                                    Text("\(result.bossKillCounts[id])/\(result.bossCounts[id])")
+                                        .splatfont2(size: 16)
+                                        .frame(height: 16)
+                                }
+                            }
+                            LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: nil, pinnedViews: []) {
+                                ForEach(result.player.indices, id:\.self) { index in
+                                    if result.player[index].bossKillCounts[id] == result.player.map{ $0.bossKillCounts[id] }.max() {
+                                        Text("\(result.player[index].bossKillCounts[id])")
+                                            .splatfont2(.yellow, size: 22)
+                                            .shadow(color: .black, radius: 0, x: 1, y: 1)
+                                    } else {
+                                        Text("\(result.player[index].bossKillCounts[id])")
+                                            .splatfont2(size: 22)
+                                    }
+                                }
+                            }
+                            .frame(maxWidth: .infinity)
+                        }
+                    }
+                }
+            }
+            Section(header: Text("Evaluation")) {
+                HStack(spacing: 0) {
+                    Text("Kill")
+                        .frame(width: 40)
+                    LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: nil, pinnedViews: []) {
+                        ForEach(result.player.indices, id:\.self) { index in
+                            Text("\(result.player[index].bossKillCounts.sum())")
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+                .splatfont2(size: 20)
+            }
+        }
+        
+    }
+    
+    var Header: some View {
+        HStack {
+            ForEach(result.player, id:\.self) { player in
+                VStack(spacing: 0) {
+                    Image(systemName: "circle")
+                    Text(isVisible ? player.name.stringValue : "-")
+                        .lineLimit(1)
+                }
+                .font(.custom("Splatfont2", size: 12))
+                .frame(maxWidth: .infinity)
+            }
+        }
+        .padding(.leading, 45)
+    }
+    
+    var PlayerScoreView: some View {
+        LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: nil, pinnedViews: []) {
+            ForEach(result.player.indices, id:\.self) { index in
+                Text("TEST")
+            }
+        }
+    }
+}
 //struct CoopResultView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        CoopResultView()

@@ -69,10 +69,10 @@ enum RealmManager {
         }
     }
     
-    public static func setIksmSession(account: JSON) throws -> () {
+    public static func setIksmSession(nsaid: String, account: JSON) throws -> () {
         let user = try JSONDecoder().decode(RealmUserInfo.self, from: account.rawData())
         guard let realm = try? Realm() else { return }
-        let account = realm.objects(RealmUserInfo.self).filter("nsaid=%@", user.nsaid)
+        let account = realm.objects(RealmUserInfo.self).filter("nsaid=%@", nsaid)
         realm.beginWrite()
         account.setValue(user.nickname, forKey: "nickname")
         account.setValue(user.thumbnailURL, forKey: "thumbnailURL")
