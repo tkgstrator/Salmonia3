@@ -228,7 +228,7 @@ fileprivate struct CoopPlayerResultView: View {
     
     var body: some View {
         List {
-            Section(header: Text("Players")) {
+            Section(header: Text("Players").splatfont2(.orange, size: 14)) {
                 HStack(spacing: 0) {
                     Text("").frame(width: 40)
                     LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: nil, pinnedViews: []) {
@@ -243,7 +243,7 @@ fileprivate struct CoopPlayerResultView: View {
                     .frame(maxWidth: .infinity)
                 }
             }
-            Section(header: Text("Salmonids")) {
+            Section(header: Text("Salmonids").splatfont2(.orange, size: 14)) {
                 ForEach(Range(0...8)) { id in
                     if result.bossCounts[id] != 0 {
                         HStack(spacing: 0) {
@@ -278,7 +278,7 @@ fileprivate struct CoopPlayerResultView: View {
                     }
                 }
             }
-            Section(header: Text("Evaluation")) {
+            Section(header: Text("Evaluation").splatfont2(.orange, size: 14)) {
                 HStack(spacing: 0) {
                     Text("Kill")
                         .frame(width: 40)
