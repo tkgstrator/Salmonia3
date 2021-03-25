@@ -17,20 +17,9 @@ struct BackGroundColor: ViewModifier {
     }
 }
 
-struct ButtonStyle: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .frame(width: 200, height: 50)
-            .background(RoundedRectangle(cornerRadius: 8).stroke(Color.dust, lineWidth: 3))
-    }
-}
-
 extension View {
     func backgroundColor(_ color: Color) -> some View {
         return self.modifier(BackGroundColor(color: color))
     }
     
-    func buttonStyle() -> some View {
-        return self.modifier(ButtonStyle())
-    }
 }

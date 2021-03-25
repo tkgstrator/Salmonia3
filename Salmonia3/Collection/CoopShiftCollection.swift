@@ -14,9 +14,13 @@ struct CoopShiftCollection: View {
         ScrollViewReader { proxy in
             List {
                 ForEach(main.shifts.indices) { index in
+                    #if DEBUG
                     NavigationLink(destination: CoopShiftStatsView(startTime: main.shifts[index].startTime!), label: {
                         CoopShift(shift: main.shifts[index])
                     })
+                    #else
+                    CoopShift(shift: main.shifts[index])
+                    #endif
                 }
             }
         }

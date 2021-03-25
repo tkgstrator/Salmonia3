@@ -41,8 +41,7 @@ struct LoadingView: View {
                             }
                             
                             let summary: JSON = try SplatNet2.getSummary(iksm_session: iksmSession)
-                            try RealmManager.updateUserInfo(pid: nsaid, summary: summary)
-                            
+
                             guard let jobNumRemote: Int = summary["summary"]["card"]["job_num"].int else { throw APPError.unknown }
                             if jobNumLocal == jobNumRemote { throw APPError.nodata }
                             
@@ -65,6 +64,7 @@ struct LoadingView: View {
                                 }
                             }
                             try RealmManager.addNewResult(from: results)
+                            try RealmManager.updateUserInfo(pid: nsaid, summary: summary)
                             DispatchQueue.main.async {
                                 present.wrappedValue.dismiss()
                             }
