@@ -31,16 +31,19 @@
 "MESSAGE_SKIP_SETUP" = "Linking with Salmon Stats, Samonia use more conveniently.";
 
 "HEADER_USER_INFO" = "User";
+"FOOTER_USER_INFO" = "Linking for Salmon Stats is currently unavailable.";
 "HEADER_APPLICATION" = "Application";
 "HEADER_DEVICE" = "Device";
 "HEADER_OVERVIEW" = "Overview";
 "HEADER_SCHEDULE" = "Shift Schedule";
+"HEADER_APPEARANCE" = "Appearance";
 
 "SETTING_PRIVACY" = "Privacy Policy";
 "SETTING_UPLOAD" = "Upload to Salmon Stats";
 "SETTING_SYSTEM" = "System Information";
 "SETTING_DEVICE" = "Device Information";
 "SETTING_APP_VERSION" = "Version";
+"SETTING_USING_DARKMODE" = "Using Darkmode";
 "ERASE_SETTING" = "Erase Data";
 "RE_SIGN_IN" = "Re-Sign in";
 
@@ -84,6 +87,7 @@
 "RESULT_BOSS_DEFEATED_%lld" = "Boss Salmonid Defeated x%lld";
 "RESULT_WAVE_%lld" = "Wave %lld";
 "RESULT_HAZARD_LEVEL_MAX" = "Hazard Level Max!!";
+"RESULT_HAZARD_LEVEL_%@" = "Hazard Level %@%";
 "RESULT_APPEARANCES_%lld" = "Appearances x%lld";
 
 // リザルト一覧の翻訳
@@ -97,3 +101,6 @@
 "the-mothership" = "The Mothership";
 "fog" = "Fog";
 "cohock-charge" = "Cohock Charge";
+
+"ENABLED" = "Enabled";
+"DISABLED" = "Disabled";

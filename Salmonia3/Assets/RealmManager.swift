@@ -8,21 +8,45 @@
 import Foundation
 import RealmSwift
 import SwiftyJSON
+import SwiftUI
 
 enum RealmManager {
+    
     public static func migration() {
         // データベースのマイグレーションをする
         let config = Realm.Configuration(
-            schemaVersion: 5,
+            schemaVersion: 128,
             migrationBlock: { [self] migration, version in
-                if version < 1 {
+                print("MIGRATION NEEDED")
+                if version < 127 {
                     // マイグレーションブロック
+                    migration.enumerateObjects(ofType: RealmCoopResult.className()) { oldObject, newObject in
+                        let players = oldObject?["player"] as! RealmSwift.List<MigrationObject>
+                        var _bossKillCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+                        for player in players {
+                            let bossKillCounts: [Int] = (player["bossKillCounts"] as! RealmSwift.List<MigrationObject>).map{ $0 as! Int}
+                            _bossKillCounts = Array(zip(bossKillCounts, _bossKillCounts)).map{ $0.0 + $0.1}
+                        }
+                        newObject!["bossKillCounts"] = _bossKillCounts
+                    }
                 }
-            },
-            deleteRealmIfMigrationNeeded: true
-            )
+            })
         Realm.Configuration.defaultConfiguration = config
         try? RealmManager.addNewRotation()
+    }
+    
+    public static func updateUserInfo(pid: String, summary: JSON) throws -> () {
+        guard let realm = try? Realm() else { return }
+        let user = try JSONDecoder().decode(RealmUserInfo.self, from: summary["summary"]["card"].rawData())
+        let account = realm.objects(RealmUserInfo.self).filter("nsaid=%@", pid)
+        realm.beginWrite()
+        account.setValue(user.jobNum, forKey: "jobNum")
+        account.setValue(user.goldenIkuraTotal, forKey: "goldenIkuraTotal")
+        account.setValue(user.helpTotal, forKey: "helpTotal")
+        account.setValue(user.ikuraTotal, forKey: "ikuraTotal")
+        account.setValue(user.kumaPoint, forKey: "kumaPoint")
+        account.setValue(user.kumaPointTotal, forKey: "kumaPointTotal")
+        try realm.commitWrite()
     }
     
     public static func addNewAccount(account: RealmUserInfo) throws -> () {
@@ -42,7 +66,7 @@ enum RealmManager {
         try realm.commitWrite()
     }
     
-    public static func addNewRotation() throws -> () {
+    private static func addNewRotation() throws -> () {
         ProductManger.getFutureRotation { response, error in
             guard let response = response else { return }
             guard let realm = try? Realm() else { return }
@@ -55,15 +79,20 @@ enum RealmManager {
         }
     }
     
-    public static func setIksmSession(iksmSession: String, pid: String) {
+    public static func setIksmSession(nsaid: String, account: JSON) throws -> () {
+        let user = try JSONDecoder().decode(RealmUserInfo.self, from: account.rawData())
         guard let realm = try? Realm() else { return }
+        let account = realm.objects(RealmUserInfo.self).filter("nsaid=%@", nsaid)
         realm.beginWrite()
-        realm.objects(RealmUserInfo.self).filter("nsaid=%@", pid).setValue(iksmSession, forKey: "iksmSession")
+        account.setValue(user.nickname, forKey: "nickname")
+        account.setValue(user.thumbnailURL, forKey: "thumbnailURL")
+        account.setValue(user.iksmSession, forKey: "iksmSession")
         try? realm.commitWrite()
     }
     
     static func eraseAllRecord() throws -> () {
         guard let realm = try? Realm() else { return }
+        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
         autoreleasepool {
             realm.beginWrite()
             realm.delete(realm.objects(RealmCoopWave.self))

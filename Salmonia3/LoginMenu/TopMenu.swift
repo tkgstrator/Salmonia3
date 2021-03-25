@@ -11,7 +11,7 @@ import SwiftUI
 import SwiftUIRefresh
 
 struct TopMenu: View {
-    @EnvironmentObject var main: CoreAppSetting
+    @EnvironmentObject var main: AppSettings
     @State var isShowing: Bool = false
     @State var isActive: Bool = false
     
