@@ -40,12 +40,14 @@ struct ResultOverview: View {
     @ObservedObject var result: RealmCoopResult
     
     var body: some View {
-        HStack {
+        HStack(spacing: 0) {
             ResultJob
+            Spacer()
             ResultGrade
             Spacer()
             ResultEggs
         }
+        .frame(maxWidth: .infinity)
     }
     
     var ResultGrade: some View {

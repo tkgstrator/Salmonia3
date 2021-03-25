@@ -32,6 +32,7 @@
 "MESSAGE_SKIP_SETUP" = "Salmon Statsと連携すればSalmoniaはより便利になります。";
 
 "HEADER_USER_INFO" = "ユーザ情報";
+"FOOTER_USER_INFO" = "Salmon Statsへのアップロード機能は現在利用できません. 将来的なアップデートで実装予定です.";
 "HEADER_APPLICATION" = "アプリケーション";
 "HEADER_DEVICE" = "デバイス情報";
 "HEADER_OVERVIEW" = "概要";
@@ -88,6 +89,7 @@
 //"RESULT_BOSS_DEFEATED_%@" = "Boss Salmonid Defeated %@";
 "RESULT_WAVE_%lld" = "WAVE %lld";
 "RESULT_HAZARD_LEVEL_MAX" = "キケン度MAX!!";
+"RESULT_HAZARD_LEVEL_%@" = "キケン度 %@%%";
 "RESULT_APPEARANCES_%lld" = "出現数 x%lld";
 
 "normal" = "通常";
@@ -100,3 +102,13 @@
 "the-mothership" = "ハコビヤ襲来";
 "fog" = "霧";
 "cohock-charge" = "ドスコイ大量発生";
+
+"ENABLED" = "有効";
+"DISABLED" = "無効";
+
+"Intern" = "けんしゅう";
+"Apparentice" = "かけだし";
+"Part-Timer" = "はんにんまえ";
+"Go-Getter" = "いちにんまえ";
+"Overachiver" = "じゅくれん";
+"Profressional" = "たつじん";
