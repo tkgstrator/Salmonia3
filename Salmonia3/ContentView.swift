@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var main: CoreAppSetting
+    @EnvironmentObject var main: AppSettings
 
     var body: some View {
         NavigationView {
             TopMenu()
             SettingView()
         }
+        .overlay(GoobleMobileAdsView(), alignment: .bottom)
         .navigationViewStyle(LegacyNavigationViewStyle())
     }
 }

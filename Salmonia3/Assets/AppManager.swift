@@ -6,13 +6,13 @@
 //
 
 import Foundation
+import SwiftUI
 
 class AppManager {
-    #warning("ダサいからそのうち消えるかも")
-    public class func isLogin(isLogin: Bool) {
-        UserDefaults.standard.setValue(isLogin, forKey: "isLogin")
-    }
     
+    @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = true
+
+
     public class func erase() {
         UserDefaults.standard.setValue(false, forKey: "isLogin")
         UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)

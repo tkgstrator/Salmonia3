@@ -32,7 +32,6 @@ struct LoginMenu: View {
             VStack(spacing: 40) {
                 Button(action: { isPresented.toggle() }, label: {
                     Text("BTN_SIGN_IN")
-                        .buttonStyle()
                         .splatfont2(.cloud, size: 20)
                 })
                 Button(action: {
@@ -44,10 +43,10 @@ struct LoginMenu: View {
                     isShowing.toggle()
                     #endif
                 }, label: { Text("BTN_SIGN_UP")
-                    .buttonStyle()
                     .splatfont2(.cloud, size: 20)
                 })
             }
+            .buttonStyle(BlueButtonStyle())
             .position(x: geometry.frame(in: .local).midX, y: 3 * geometry.size.height / 4)
         }
         .webAuthenticationSession(isPresented: $isPresented) {

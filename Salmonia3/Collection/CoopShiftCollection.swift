@@ -13,8 +13,14 @@ struct CoopShiftCollection: View {
     var body: some View {
         ScrollViewReader { proxy in
             List {
-                ForEach(main.shifts, id:\.self) { shift in
-                    CoopShift(shift: shift)
+                ForEach(main.shifts.indices) { index in
+                    #if DEBUG
+                    NavigationLink(destination: CoopShiftStatsView(startTime: main.shifts[index].startTime!), label: {
+                        CoopShift(shift: main.shifts[index])
+                    })
+                    #else
+                    CoopShift(shift: main.shifts[index])
+                    #endif
                 }
             }
         }
@@ -27,15 +33,16 @@ struct CoopShift: View {
     var columns: [GridItem] = Array(repeating: GridItem(), count: 4)
     
     var body: some View {
-        VStack(spacing: 10) {
-            HStack {
+        HStack {
+            Spacer()
+            VStack(alignment: .leading, spacing: 10) {
                 Text(shift.startTime.stringValue)
-                Spacer()
+                    .splatfont2(size: 16)
+                InfoWeapon
             }
-            .splatfont2(size: 16)
-            InfoWeapon
+            .splatfont2(size: 14)
+            Spacer()
         }
-        .splatfont2(size: 14)
     }
     
     var InfoWeapon: some View {
@@ -59,7 +66,7 @@ struct CoopShift: View {
                     }
                 }
                 .padding(.bottom, 20)
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: 200)
             }
         }
     }

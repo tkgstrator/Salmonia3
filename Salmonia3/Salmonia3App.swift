@@ -1,4 +1,5 @@
 //
+
 //  Salmonia3App.swift
 //  Salmonia3
 //
@@ -6,18 +7,33 @@
 //
 
 import SwiftUI
+import UIKit
 import Firebase
+import AdSupport
+import AppTrackingTransparency
+import GoogleMobileAds
+
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication,didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+            GADMobileAds.sharedInstance().start(completionHandler: nil)
+            RealmManager.migration()
+            print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
+        })
+        return true
+    }
+}
+
 
 @main
 struct Salmonia3App: App {
-    init() {
-        #warning("AppDelegateの代わり")
-        RealmManager.migration()
-        FirebaseApp.configure()
-        print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
-    }
-    
+
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @AppStorage("isFirstLaunch") var isFirstLaunch = true
+    @AppStorage("isDarkMode") var isDarkMode = false
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -30,12 +46,13 @@ struct Salmonia3App: App {
                 .environment(\.minimumScaleFactor, 0.5)
                 .environment(\.imageScale, .large)
                 .environment(\.textCase, nil)
-                .animation(.easeInOut)
-                .transition(.opacity)
                 .environmentObject(CoreRealmCoop())
-                .environmentObject(CoreAppSetting())
+                .environmentObject(AppSettings())
                 .listStyle(GroupedListStyle())
                 .buttonStyle(PlainButtonStyle())
+                .preferredColorScheme(isDarkMode ? .dark : .light)
+                .animation(.easeInOut)
+                .transition(.opacity)
         }
     }
 }

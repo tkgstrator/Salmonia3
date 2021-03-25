@@ -13,19 +13,30 @@ struct SettingView: View {
     @State var isWarning: Bool = false
     @State var isShowing: Bool = false
     @AppStorage("isFirstLaunch") var isFirstLaunch = true
+    @AppStorage("isDarkMode") var isDarkMode = false
     @State var token: Bool = UserDefaults.standard.string(forKey: "apiToken") != nil
     private let systemVersion: String = UIDevice.current.systemVersion
     private let systemName: String = UIDevice.current.systemName
-    private let deviceName: String = UIDevice.current.name
+    private let deviceName: String = UIDevice.current.localizedModel
     private let appVersion: String = "\(String(describing: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")!))(\(String(describing: Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")!)))"
     
     var body: some View {
         #warning("ヘッダーのフォントを固定する方法ないのかな")
         Form {
-            Section(header: Text("HEADER_USER_INFO").splatfont2(.orange, size: 14)) {
+            Section(header: Text("HEADER_USER_INFO").splatfont2(.orange, size: 14),
+                    footer: Text("FOOTER_USER_INFO").splatfont2(.secondary, size: 14).lineLimit(2)) {
                 SettingMenu(title: "UPLOAD", value: token)
                 Toggle("RE_SIGN_IN", isOn: $isFirstLaunch)
             }
+            Section(header: Text("HEADER_APPEARANCE").splatfont2(.orange, size: 14)) {
+                Toggle("SETTING_USING_DARKMODE", isOn: $isDarkMode)
+            }
+            #if DEBUG
+            Section(header: Text("HEADER_PURCHASED").splatfont2(.orange, size: 14)) {
+                NavigationLink(destination: FreeProductView(), label: { Text("SETTING_FREE_PRODUCT") })
+                NavigationLink(destination: PaidProductView(), label: { Text("SETTING_PAID_PRODUCT") })
+            }
+            #endif
             Section(header: Text("HEADER_APPLICATION").splatfont2(.orange, size: 14)) {
                 PrivacyButton
                 Toggle("ERASE_SETTING", isOn: $isWarning)
@@ -93,7 +104,7 @@ extension Optional where Wrapped == Any {
         case is Double:
             return "-"
         case is Bool:
-            return self as! Bool ? "Enabled" : "Disabled"
+            return self as! Bool ? "ENABLED".localized : "DISABLED".localized
         case is String:
             return self as! String
         default:
