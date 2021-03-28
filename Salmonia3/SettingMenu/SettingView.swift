@@ -14,7 +14,7 @@ struct SettingView: View {
     @State var isShowing: Bool = false
     @AppStorage("isFirstLaunch") var isFirstLaunch = true
     @AppStorage("isDarkMode") var isDarkMode = false
-    @State var token: Bool = UserDefaults.standard.string(forKey: "apiToken") != nil
+    @AppStorage("apiToken") var apiToken: String?
     private let systemVersion: String = UIDevice.current.systemVersion
     private let systemName: String = UIDevice.current.systemName
     private let deviceName: String = UIDevice.current.localizedModel
@@ -25,8 +25,10 @@ struct SettingView: View {
         Form {
             Section(header: Text("HEADER_USER_INFO").splatfont2(.orange, size: 14),
                     footer: Text("FOOTER_USER_INFO").splatfont2(.secondary, size: 14).lineLimit(2)) {
-                SettingMenu(title: "UPLOAD", value: token)
+                SettingMenu(title: "UPLOAD", value: apiToken != nil)
+                NavigationLink(destination: SalmonStatsView(), label: { Text("LINK_SETTING_SALMON_STATS") })
                 Toggle("RE_SIGN_IN", isOn: $isFirstLaunch)
+                
             }
             Section(header: Text("HEADER_APPEARANCE").splatfont2(.orange, size: 14)) {
                 Toggle("SETTING_USING_DARKMODE", isOn: $isDarkMode)
