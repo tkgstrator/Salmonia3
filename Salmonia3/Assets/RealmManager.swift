@@ -8,24 +8,23 @@
 import Foundation
 import RealmSwift
 import SwiftyJSON
-import SwiftUI
 
 enum RealmManager {
     
     public static func migration() {
         // データベースのマイグレーションをする
         let config = Realm.Configuration(
-            schemaVersion: 256,
+            schemaVersion: 512,
             migrationBlock: { migration, version in
                 print("MIGRATION NEEDED")
-                if version < 255 {
+                if version < 256 {
                     // マイグレーションブロック
                     migration.enumerateObjects(ofType: RealmCoopResult.className()) { oldObject, newObject in
-                        let players = oldObject?["player"] as! RealmSwift.List<MigrationObject>
                         var _bossKillCounts = Array(repeating: 0, count: 9)
-                        for player in players {
-                            let bossKillCounts: [Int] = Array(player["bossKillCounts"] as! RealmSwift.List<Int>)
-                            _bossKillCounts = Array(zip(bossKillCounts, _bossKillCounts)).map{ $0.0 + $0.1}
+                        let results = (oldObject?["player"] as! List<MigrationObject>).map{ $0["bossKillCounts"]! }
+                        for result in results {
+                            let bossKillCounts: [Int] = (result as! List<MigrationObject>).map{ $0 as! Int }
+                            _bossKillCounts = Array(zip(bossKillCounts, _bossKillCounts)).map{ $0.0 + $0.1 }
                         }
                         newObject!["bossKillCounts"] = _bossKillCounts
                     }
