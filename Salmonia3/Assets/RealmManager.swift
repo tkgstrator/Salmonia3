@@ -22,7 +22,7 @@ enum RealmManager {
                     // マイグレーションブロック
                     migration.enumerateObjects(ofType: RealmCoopResult.className()) { oldObject, newObject in
                         let players = oldObject?["player"] as! RealmSwift.List<MigrationObject>
-                        var _bossKillCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+                        var _bossKillCounts = Array(repeating: 0, count: 9)
                         for player in players {
                             let bossKillCounts: [Int] = (player["bossKillCounts"] as! RealmSwift.List<MigrationObject>).map{ $0 as! Int}
                             _bossKillCounts = Array(zip(bossKillCounts, _bossKillCounts)).map{ $0.0 + $0.1}
@@ -62,6 +62,16 @@ enum RealmManager {
         for result in results {
             let result = try JSONDecoder().decode(RealmCoopResult.self, from: result.rawData())
             realm.create(RealmCoopResult.self, value: result, update: .all)
+        }
+        try realm.commitWrite()
+    }
+    
+    public static func updateResult(from response: SalmonStats.UploadResult) throws -> () {
+        guard let realm = try? Realm() else { return }
+        realm.beginWrite()
+        for id in response.results.map{ (splatnet2: $0.jobId, salmonstats: $0.salmonId) } {
+            let result = realm.objects(RealmCoopResult.self).filter("jobId=%@", id.splatnet2)
+            result.setValue(id.salmonstats, forKey: "salmonId")
         }
         try realm.commitWrite()
     }

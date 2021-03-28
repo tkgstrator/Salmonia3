@@ -20,6 +20,7 @@ enum APPError: Error {
     case empty
     case unavailable
     case nodata
+    case outdate
 }
 
 
@@ -50,6 +51,8 @@ extension APPError: LocalizedError {
             return "ERROR_UNAVAILABLE"
         case .nodata:
             return "ERROR_NODATA"
+        case .outdate:
+            return "ERROR_ACCOUNT_OUTDATE"
         }
     }
 }

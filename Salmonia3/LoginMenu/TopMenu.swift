@@ -31,7 +31,9 @@ struct TopMenu: View {
             }
             .pullToRefresh(isShowing: $isShowing) {
                 isActive.toggle()
-                isShowing.toggle()
+            }
+            .onChange(of: isActive) { _ in
+                isShowing = false
             }
         }
         .splatfont2(size: 16)

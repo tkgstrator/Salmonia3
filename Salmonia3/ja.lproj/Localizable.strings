@@ -21,6 +21,9 @@
 
 "TEXT_WELCOME_SPLATNET2" = "Salmoniaの利用にはNintendo Switch Onlineでのログインが必要です。Salmoniaは許可なしにあらゆる情報を第三者のサービスに提供しません。";
 "TEXT_WELCOME_SALMON_STATS" = "SalmoniaはSalmon StatsへのリザルトのアップロードにTwitterアカウントの情報を必要とします。この機能はあとから有効化することもできます。";
+"TEXT_LOGIN_SALMON_STATS" = "Salmon Statsのログインは現在利用できません。もしリザルトをSalmon Statsにアップロードしたい場合は、Twitterアカウントでログインしてトークンを入手する必要があります。";
+"TEXT_INPUT_API_TOKEN" = "APIトークンは第三者に洩らしてはいけません。もし、外部に洩れたと感じた場合は直ちにウェブサイト(https://salmon-stats-api.yuki.games/)から再発行してください。再発行はアプリから行うことができません。";
+"TEXT_INPUT_SALMON_STATS_API_TOKEN" = "Salmon Statsトークンを入力してください";
 
 // アラートのタイトル
 "ALERT_ERASE_SETTING" = "データ消去";
@@ -55,6 +58,9 @@
 "BTN_SIGN_IN" = "ログイン";
 "BTN_SIGN_UP" = "トウロク";
 "BTN_SKIP" = "スキップ";
+"BTN_OPEN_SALMON_STATS" = "ウェブサイトを開く";
+"BTN_INPUT_API_TOKEN" = "入力する";
+"BTN_SET_API_TOKEN" = "設定する";
 
 // ログ表示
 "LOG_DOWNLOAD" = "ダウンロード中";
@@ -63,7 +69,7 @@
 // NavigationLink
 "LINK_RESULTS" = "リザルト一覧";
 "LINK_COOP_SCHEDULE" = "シフトスケジュール";
-
+"LINK_SETTING_SALMON_STATS" = "Salmon Statsとの連携";
 
 // リザルト一覧のところの翻訳
 "RESULT_CLEAR" = "Clear";
