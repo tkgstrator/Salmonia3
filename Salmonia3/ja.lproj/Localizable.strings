@@ -42,6 +42,9 @@
 "HEADER_SCHEDULE" = "シフトスケジュール";
 "HEADER_APPEARANCE" = "外観";
 
+"SETTING_FREE_PRODUCT" = "無料機能";
+"SETTING_PAID_PRODUCT" = "有料機能";
+
 "SETTING_PRIVACY" = "プライバシーポリシー";
 "SETTING_UPLOAD" = "Salmon Statsへのアップロード";
 "SETTING_SYSTEM" = "システム情報";

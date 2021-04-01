@@ -53,7 +53,6 @@
 		107E117C260FBE03008E450B /* SalmonStatsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E117B260FBE03008E450B /* SalmonStatsAPI.swift */; };
 		109EF35E260CAB7F00076157 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF35D260CAB7F00076157 /* ProductView.swift */; };
 		109EF375260CB01E00076157 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF374260CB01E00076157 /* ButtonStyle.swift */; };
-		10A7DD3E260740AD00558DE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10A7DD3D260740AD00558DE3 /* GoogleService-Info.plist */; };
 		10A7DD4D2607416F00558DE3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10A7DD4F2607416F00558DE3 /* InfoPlist.strings */; };
 		10AD114D2600EB18008C0E64 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AD114C2600EB18008C0E64 /* Error.swift */; };
 		10B07C5F260A1463008FDE1B /* CoopShiftStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B07C5E260A1463008FDE1B /* CoopShiftStatsView.swift */; };
@@ -74,6 +73,7 @@
 		10CF0A0025FBA5BC00D2EEB1 /* RealmPlayerResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF09FF25FBA5BC00D2EEB1 /* RealmPlayerResult.swift */; };
 		10CF0A0525FBA6BF00D2EEB1 /* RealmCoopWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF0A0425FBA6BF00D2EEB1 /* RealmCoopWave.swift */; };
 		10CF0A0A25FBA91800D2EEB1 /* OAuthLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF0A0925FBA91800D2EEB1 /* OAuthLogin.swift */; };
+		10F97B502614DD1B0079CED0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10F97B4F2614DD1B0079CED0 /* GoogleService-Info.plist */; };
 		2E38FBBA890FA31FB3591447 /* Pods_Salmonia3Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4CFAB4D922D35088435EF26 /* Pods_Salmonia3Tests.framework */; };
 		A8C5630EBE09FDEA7BF59B1C /* Pods_Salmonia3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6419A3A4A135F484294BF5 /* Pods_Salmonia3.framework */; };
 /* End PBXBuildFile section */
@@ -149,7 +149,6 @@
 		107E117B260FBE03008E450B /* SalmonStatsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonStatsAPI.swift; sourceTree = "<group>"; };
 		109EF35D260CAB7F00076157 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		109EF374260CB01E00076157 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
-		10A7DD3D260740AD00558DE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10A7DD4E2607416F00558DE3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		10AD114C2600EB18008C0E64 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		10B07C5E260A1463008FDE1B /* CoopShiftStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftStatsView.swift; sourceTree = "<group>"; };
@@ -161,6 +160,7 @@
 		10CF09FF25FBA5BC00D2EEB1 /* RealmPlayerResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPlayerResult.swift; sourceTree = "<group>"; };
 		10CF0A0425FBA6BF00D2EEB1 /* RealmCoopWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopWave.swift; sourceTree = "<group>"; };
 		10CF0A0925FBA91800D2EEB1 /* OAuthLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthLogin.swift; sourceTree = "<group>"; };
+		10F97B4F2614DD1B0079CED0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F2E5792249C15DC27343CA1 /* Pods-Salmonia3Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salmonia3Tests.debug.xcconfig"; path = "Target Support Files/Pods-Salmonia3Tests/Pods-Salmonia3Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		40DFE28342F9F06B5E95E99C /* Pods-Salmonia3Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salmonia3Tests.release.xcconfig"; path = "Target Support Files/Pods-Salmonia3Tests/Pods-Salmonia3Tests.release.xcconfig"; sourceTree = "<group>"; };
 		56AB289C0D87612FB8D00999 /* Pods-Salmonia3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salmonia3.debug.xcconfig"; path = "Target Support Files/Pods-Salmonia3/Pods-Salmonia3.debug.xcconfig"; sourceTree = "<group>"; };
@@ -303,19 +303,21 @@
 			children = (
 				1059416625FA49E500C32D21 /* Salmonia3App.swift */,
 				1059416825FA49E500C32D21 /* ContentView.swift */,
-				1059416A25FA49E900C32D21 /* Assets.xcassets */,
-				1059416F25FA49E900C32D21 /* Info.plist */,
+				10377F8A25FD053A00536A94 /* AppManager.swift */,
+				1024661F25FE0CE7004DC043 /* ProductManager.swift */,
+				10377F7B25FCD9E800536A94 /* RealmManager.swift */,
+				10F97B4F2614DD1B0079CED0 /* GoogleService-Info.plist */,
+				107F9B3A2614A8CA001581C7 /* MenuView */,
 				10CF09F825FB9BEE00D2EEB1 /* Realm */,
 				10CF09F925FB9C4900D2EEB1 /* ObservableObject */,
-				10377F8F25FD09D200536A94 /* Loading */,
 				104AA7DA2605E0A4007BDC24 /* UIKit */,
-				10377FAB25FD165100536A94 /* Collection */,
-				102465EF25FDDAAA004DC043 /* SettingMenu */,
-				1059419E25FA4DDE00C32D21 /* LoginMenu */,
+				10377FA225FD10EF00536A94 /* Extension */,
+				107E1163260FBB94008E450B /* Networking */,
 				1059419525FA4BF600C32D21 /* Assets */,
 				10A7DD4F2607416F00558DE3 /* InfoPlist.strings */,
+				1059416F25FA49E900C32D21 /* Info.plist */,
+				1059416A25FA49E900C32D21 /* Assets.xcassets */,
 				1024660525FDE916004DC043 /* Localizable.strings */,
-				10A7DD3D260740AD00558DE3 /* GoogleService-Info.plist */,
 				1059416C25FA49E900C32D21 /* Preview Content */,
 			);
 			path = Salmonia3;
@@ -358,17 +360,12 @@
 		1059419525FA4BF600C32D21 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				107E1163260FBB94008E450B /* Networking */,
 				10CF0A0925FBA91800D2EEB1 /* OAuthLogin.swift */,
 				1024663C26009942004DC043 /* Enum */,
-				10377FA225FD10EF00536A94 /* Extension */,
 				10377F6025FCD5A400536A94 /* Fonts */,
 				105941B125FA519A00C32D21 /* ViewModifier */,
 				1059419425FA4BE900C32D21 /* Color */,
 				10377F4D25FCBF8600536A94 /* TwitterOAuth.swift */,
-				10377F7B25FCD9E800536A94 /* RealmManager.swift */,
-				10377F8A25FD053A00536A94 /* AppManager.swift */,
-				1024661F25FE0CE7004DC043 /* ProductManager.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -405,6 +402,17 @@
 				107E117B260FBE03008E450B /* SalmonStatsAPI.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		107F9B3A2614A8CA001581C7 /* MenuView */ = {
+			isa = PBXGroup;
+			children = (
+				10377FAB25FD165100536A94 /* Collection */,
+				1059419E25FA4DDE00C32D21 /* LoginMenu */,
+				102465EF25FDDAAA004DC043 /* SettingMenu */,
+				10377F8F25FD09D200536A94 /* Loading */,
+			);
+			path = MenuView;
 			sourceTree = "<group>";
 		};
 		10CF09F825FB9BEE00D2EEB1 /* Realm */ = {
@@ -579,13 +587,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				10377F7525FCD8CD00536A94 /* RobotoMono.ttf in Resources */,
+				10F97B502614DD1B0079CED0 /* GoogleService-Info.plist in Resources */,
 				10A7DD4D2607416F00558DE3 /* InfoPlist.strings in Resources */,
 				10377F7625FCD8CD00536A94 /* Splatfont1.ttf in Resources */,
 				1024660325FDE916004DC043 /* Localizable.strings in Resources */,
 				10377F7725FCD8CD00536A94 /* Splatfont2.ttf in Resources */,
 				1059416E25FA49E900C32D21 /* Preview Assets.xcassets in Resources */,
 				1059416B25FA49E900C32D21 /* Assets.xcassets in Resources */,
-				10A7DD3E260740AD00558DE3 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -834,7 +842,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -917,7 +925,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -942,7 +950,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
