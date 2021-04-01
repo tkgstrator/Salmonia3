@@ -16,10 +16,10 @@ import GoogleMobileAds
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        RealmManager.migration()
         FirebaseApp.configure()
         ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
             GADMobileAds.sharedInstance().start(completionHandler: nil)
-            RealmManager.migration()
             print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
         })
         return true

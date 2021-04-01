@@ -40,6 +40,9 @@
 "HEADER_SCHEDULE" = "Shift Schedule";
 "HEADER_APPEARANCE" = "Appearance";
 
+"SETTING_FREE_PRODUCT" = "Free";
+"SETTING_PAID_PRODUCT" = "Paid";
+
 "SETTING_PRIVACY" = "Privacy Policy";
 "SETTING_UPLOAD" = "Upload to Salmon Stats";
 "SETTING_SYSTEM" = "System Information";
@@ -109,3 +112,5 @@
 
 "ENABLED" = "Enabled";
 "DISABLED" = "Disabled";
+
+"PRODUCT_MULTI_ACCOUNT" = "Multi Account";
