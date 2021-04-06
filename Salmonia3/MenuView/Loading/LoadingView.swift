@@ -20,21 +20,21 @@ struct LoadingView: View {
     @State var isPresented: Bool = false
     @State var appError: APPError?
     @State private var task: [AnyCancellable?] = []
-    
+
     private func dismiss() {
         DispatchQueue.main.async { present.wrappedValue.dismiss() }
     }
-    
+
     var body: some View {
         LoggingThread(data: $data)
-            .onAppear() {
+            .onAppear {
                 // DispatchQueue前のエラー処理
                 do {
                     guard var iksmSession: String = user.account.iksmSession else { throw APPError.empty }
                     guard let sessionToken: String = user.account.sessionToken else { throw APPError.empty }
                     guard let nsaid: String = user.account.nsaid else { throw APPError.empty }
                     var jobId: (local: Int, remote: Int) = (user.account.jobNum, 0)
-                    
+
                     DispatchQueue(label: "Loading from SplatNet2").async {
                         do {
                             if !SplatNet2.isValid(iksm_session: iksmSession) {
@@ -42,10 +42,10 @@ struct LoadingView: View {
                                 try RealmManager.setIksmSession(nsaid: nsaid, account: response)
                                 iksmSession = response["iksm_session"].stringValue
                             }
-                            
+
                             // バイト概要を取得
                             let summary: JSON = try SplatNet2.getSummary(iksm_session: iksmSession)
-                            
+
                             if let _jobId = summary["summary"]["card"]["job_num"].int {
                                 #if DEBUG
                                 jobId.remote = _jobId
@@ -65,7 +65,7 @@ struct LoadingView: View {
                             #else
                             let jobNumRange: Range<Int> = Range(max(jobId.remote, jobId.local + 1) ... jobId.remote)
                             #endif
-                            
+
                             var results: [JSON] = []
                             for (_, jobId) in jobNumRange.enumerated() {
                                 do {
@@ -78,10 +78,10 @@ struct LoadingView: View {
                                     isPresented.toggle()
                                 }
                             }
-                            
+
                             if apiToken != nil {
                                 for result in results.chunked(by: 10) {
-                                    task.append(SalmonStatsAPI().uploadResultToSalmonStats(from: result.map{ $0.dictionaryObject! })
+                                    task.append(SalmonStatsAPI().uploadResultToSalmonStats(from: result.map { $0.dictionaryObject! })
                                         .receive(on: DispatchQueue.main)
                                         .sink(receiveCompletion: { completion in
                                             switch completion {
@@ -99,8 +99,7 @@ struct LoadingView: View {
                             try RealmManager.addNewResult(from: results)
                             try RealmManager.updateUserInfo(pid: nsaid, summary: summary)
                             DispatchQueue.main.async { present.wrappedValue.dismiss() }
-                        }
-                        catch {
+                        } catch {
                             appError = error as? APPError
                             isPresented.toggle()
                         }

@@ -10,7 +10,7 @@ import RealmSwift
 import Realm
 
 struct RealmCoopStats {
-    
+
     public var jobNum: Int?
     public var schedule: String?
     public var clearRatio: Double?
@@ -28,15 +28,15 @@ struct RealmCoopStats {
         guard let _ = results.first else { return }
         let player = realm.objects(RealmPlayerResult.self).filter("ANY result.startTime=%@ AND pid=%@", startTime, pid)
         print(player.count)
-        
+
         maxResult.goldenEggs = results.max(ofProperty: "goldenEggs")
         maxResult.powerEggs = results.max(ofProperty: "powerEggs")
         maxResult.gradePoint = results.max(ofProperty: "gradePoint")
         avgResult.goldenEggs = results.average(ofProperty: "goldenEggs")
         avgResult.powerEggs = results.average(ofProperty: "powerEggs")
-        
+
     }
-    
+
     init() {}
 }
 

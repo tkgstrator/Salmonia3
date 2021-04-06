@@ -13,7 +13,7 @@ struct MBCircleProgressBar: View {
     @State var lineWidth: CGFloat
     @State var color: [Color] = [.red, .blue]
     @State var size: CGFloat
-    
+
     var body: some View {
         Group {
             ZStack {

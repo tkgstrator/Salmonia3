@@ -19,7 +19,7 @@ class TwitterOAuth {
     private let signatureKey: String = "\(apiKeySecret.rawurlencode)&\(accessTokenSecret.rawurlencode)"
     private let timestamp: String = "\(Int(Date().timeIntervalSince1970))"
     let header: HTTPHeaders
-    
+
     // 署名情報を追加
     init() {
         var parameters: [String: String] = [
@@ -30,17 +30,17 @@ class TwitterOAuth {
             "oauth_timestamp": timestamp,
             "oauth_version": "1.0"
         ]
-        
+
         let requestParams: String = parameters.paramString
         let signatureData: String = "\(requestMethod)&\(requestURL)&\(requestParams.urlencode)"
         let signature: String = signatureData.hmacsha1(key: signatureKey)
-        
+
         // 署名を追加
         parameters["oauth_signature"] = signature
         header = ["Authorization": "OAuth \(parameters.query)"]
     }
-    
-    public func getOAuthURL(completion: @escaping([String: String]?, Error?)->()) {
+
+    public func getOAuthURL(completion: @escaping([String: String]?, Error?) -> Void) {
         AF.request("https://api.twitter.com/oauth/request_token", method: .post, headers: header)
             .validate(statusCode: 200...200)
             .responseString { response in

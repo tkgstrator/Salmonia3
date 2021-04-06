@@ -9,11 +9,11 @@ import SwiftUI
 
 struct CoopShiftStatsView: View {
     lazy var stats: RealmCoopStats = RealmCoopStats()
-    
-    init(startTime: String) {
+
+    init(startTime: Int) {
 //        stats = RealmCoopStats(startTime: startTime)
     }
-    
+
     var body: some View {
         List {
             Text("TEST TEST")
@@ -24,8 +24,8 @@ struct CoopShiftStatsView: View {
     }
 }
 
-//struct CoopShiftStatsView_Previews: PreviewProvider {
+// struct CoopShiftStatsView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        CoopShiftStatsView()
 //    }
-//}
+// }

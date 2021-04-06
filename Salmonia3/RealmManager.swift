@@ -7,23 +7,50 @@
 
 import Foundation
 import RealmSwift
+import Realm
 import SwiftyJSON
 
 enum RealmManager {
-    
+
     public static func migration() {
         // データベースのマイグレーションをする
         let config = Realm.Configuration(
-            schemaVersion: 512,
-            migrationBlock: { migration, version in
+            schemaVersion: 2048,
+            migrationBlock: { migration, schemaVersion in
+                if schemaVersion <= 512 {
+                    let formatter: ISO8601DateFormatter = {
+                        let formatter = ISO8601DateFormatter()
+                        formatter.timeZone = TimeZone.current
+                        return formatter
+                    }()
+
+                    migration.enumerateObjects(ofType: RealmCoopShift.className()) { old, new in
+                        new!["startTime"] = Int((formatter.date(from: old!["startTime"] as! String)!).timeIntervalSince1970)
+                        new!["endTime"] = Int((formatter.date(from: old!["endTime"] as! String)!).timeIntervalSince1970)
+                    }
+                }
+
+                if schemaVersion <= 1024 {
+                    let formatter: ISO8601DateFormatter = {
+                        let formatter = ISO8601DateFormatter()
+                        formatter.timeZone = TimeZone.current
+                        return formatter
+                    }()
+
+                    migration.enumerateObjects(ofType: RealmCoopResult.className()) { old, new in
+                        new!["startTime"] = Int((formatter.date(from: old!["startTime"] as! String)!).timeIntervalSince1970)
+                        new!["playTime"] = Int((formatter.date(from: old!["playTime"] as! String)!).timeIntervalSince1970)
+                        new!["endTime"] = Int((formatter.date(from: old!["endTime"] as! String)!).timeIntervalSince1970)
+                    }
+                }
                 // schemaVersionが上がると呼び出される
                 print("MIGRATION NEEDED")
             })
         Realm.Configuration.defaultConfiguration = config
         try? RealmManager.addNewRotation()
     }
-    
-    public static func updateUserInfo(pid: String, summary: JSON) throws -> () {
+
+    public static func updateUserInfo(pid: String, summary: JSON) throws {
         guard let realm = try? Realm() else { return }
         let user = try JSONDecoder().decode(RealmUserInfo.self, from: summary["summary"]["card"].rawData())
         let account = realm.objects(RealmUserInfo.self).filter("nsaid=%@", pid)
@@ -36,15 +63,15 @@ enum RealmManager {
         account.setValue(user.kumaPointTotal, forKey: "kumaPointTotal")
         try realm.commitWrite()
     }
-    
-    public static func addNewAccount(account: RealmUserInfo) throws -> () {
+
+    public static func addNewAccount(account: RealmUserInfo) throws {
         guard let realm = try? Realm() else { return }
         realm.beginWrite()
         realm.create(RealmUserInfo.self, value: account, update: .all)
         try realm.commitWrite()
     }
 
-    public static func addNewResult(from results: [JSON]) throws -> () {
+    public static func addNewResult(from results: [JSON]) throws {
         guard let realm = try? Realm() else { return }
         realm.beginWrite()
         for result in results {
@@ -53,19 +80,19 @@ enum RealmManager {
         }
         try realm.commitWrite()
     }
-    
-    public static func updateResult(from response: SalmonStats.UploadResult) throws -> () {
+
+    public static func updateResult(from response: SalmonStats.UploadResult) throws {
         guard let realm = try? Realm() else { return }
         realm.beginWrite()
-        for id in response.results.map{ (splatnet2: $0.jobId, salmonstats: $0.salmonId) } {
+        for id in response.results.map { (splatnet2: $0.jobId, salmonstats: $0.salmonId) } {
             let result = realm.objects(RealmCoopResult.self).filter("jobId=%@", id.splatnet2)
             result.setValue(id.salmonstats, forKey: "salmonId")
         }
         try realm.commitWrite()
     }
-    
-    private static func addNewRotation() throws -> () {
-        ProductManger.getFutureRotation { response, error in
+
+    private static func addNewRotation() throws {
+        ProductManger.getFutureRotation { response, _ in
             guard let response = response else { return }
             guard let realm = try? Realm() else { return }
             realm.beginWrite()
@@ -76,8 +103,8 @@ enum RealmManager {
             try? realm.commitWrite()
         }
     }
-    
-    public static func setIksmSession(nsaid: String, account: JSON) throws -> () {
+
+    public static func setIksmSession(nsaid: String, account: JSON) throws {
         let user = try JSONDecoder().decode(RealmUserInfo.self, from: account.rawData())
         guard let realm = try? Realm() else { return }
         let account = realm.objects(RealmUserInfo.self).filter("nsaid=%@", nsaid)
@@ -87,8 +114,8 @@ enum RealmManager {
         account.setValue(user.iksmSession, forKey: "iksmSession")
         try? realm.commitWrite()
     }
-    
-    static func eraseAllRecord() throws -> () {
+
+    static func eraseAllRecord() throws {
         guard let realm = try? Realm() else { return }
         UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
         autoreleasepool {

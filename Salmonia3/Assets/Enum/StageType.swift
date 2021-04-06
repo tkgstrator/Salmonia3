@@ -31,7 +31,7 @@ extension StageType {
             return "Ruins of Ark Polaris"
         }
     }
-    
+
     var md5: String {
         switch self {
         case .shakeup:

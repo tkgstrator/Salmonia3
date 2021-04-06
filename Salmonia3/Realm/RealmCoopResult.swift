@@ -20,9 +20,9 @@ class RealmCoopResult: Object, Identifiable, Decodable {
     let jobScore = RealmOptional<Int>()
     let kumaPoint = RealmOptional<Int>()
     let dangerRate = RealmOptional<Double>()
-    @objc dynamic var playTime: String?
-    @objc dynamic var endTime: String?
-    @objc dynamic var startTime: String?
+    @objc dynamic var playTime: Int = 0
+    @objc dynamic var endTime: Int = 0
+    @objc dynamic var startTime: Int = 0
     let goldenEggs = RealmOptional<Int>()
     let powerEggs = RealmOptional<Int>()
     @objc dynamic var failureReason: String?
@@ -31,15 +31,15 @@ class RealmCoopResult: Object, Identifiable, Decodable {
     dynamic var bossKillCounts = List<Int>()
     var wave = List<RealmCoopWave>()
     var player = List<RealmPlayerResult>()
-    
+
     override static func primaryKey() -> String? {
         return "playTime"
     }
-    
+
     override static func indexedProperties() -> [String] {
         return ["startTime"]
     }
-    
+
     var specialUsage: [[Int]] {
         var usage: [[Int]] = []
         for wave in Range(0...2) {
@@ -51,7 +51,7 @@ class RealmCoopResult: Object, Identifiable, Decodable {
         }
         return usage
     }
-    
+
     private enum CodingKeys: String, CodingKey {
 //        case pid                = "pid"
         case jobId              = "job_id"
@@ -84,14 +84,14 @@ class RealmCoopResult: Object, Identifiable, Decodable {
     required convenience public init(from decoder: Decoder) throws {
         self.init()
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
+
         #warning("そのままデータが使えるところ")
         gradePoint.value = try container.decode(Int.self, forKey: .gradePoint)
         gradePointDelta.value = try container.decode(Int.self, forKey: .gradePointDelta)
         dangerRate.value = try container.decode(Double.self, forKey: .dangerRate)
         jobScore.value = try container.decode(Int.self, forKey: .jobScore)
         kumaPoint.value = try container.decode(Int.self, forKey: .kumaPoint)
-        
+
         #warning("データ整形に処理が必要なところ")
 //        pid = try? container.decode(String.self, forKey: .pid)
         jobId.value = try? container.decode(Int.self, forKey: .jobId)
@@ -106,35 +106,32 @@ class RealmCoopResult: Object, Identifiable, Decodable {
         failureReason = jobResult.failure_reason
         failureWave.value = jobResult.failure_wave
         isClear = jobResult.is_clear
-        
+
         #warning("ランクの取得")
         let grade = try container.decode(Grade.self, forKey: .grade)
         gradeId.value = Int(grade.id) ?? 0
-        
+
         #warning("DateFormatterを毎回呼び出すのはコストが重いかも")
         let dateFormatter = ISO8601DateFormatter()
         dateFormatter.timeZone = TimeZone.current
-        
-        let _startTime = try container.decode(Double.self, forKey: .startTime)
-        startTime = dateFormatter.string(from: Date(timeIntervalSince1970: _startTime))
-        let _endTime = try container.decode(Double.self, forKey: .endTime)
-        endTime = dateFormatter.string(from: Date(timeIntervalSince1970: _endTime))
-        let _playTime = try container.decode(Double.self, forKey: .playTime)
-        playTime = dateFormatter.string(from: Date(timeIntervalSince1970: _playTime))
-        
+
+        startTime = try container.decode(Int.self, forKey: .startTime)
+        endTime = try container.decode(Int.self, forKey: .endTime)
+        playTime = try container.decode(Int.self, forKey: .playTime)
+
         // RealmSwfit.Listの書き込み
         let myResult = try container.decodeIfPresent(RealmPlayerResult.self, forKey: .myResult) ?? RealmPlayerResult()
         player.append(myResult)
         // 最初のユーザのpidが自分のpidとなる
         pid = myResult.pid
-        
+
         let otherResults = try container.decodeIfPresent([RealmPlayerResult].self, forKey: .otherResults) ?? [RealmPlayerResult()]
         player.append(objectsIn: otherResults)
-        
+
         #warning("もっとかっこいい書き方募集")
         var _bossKillCounts: [Int] = [0, 0, 0, 0, 0, 0, 0, 0, 0]
         for p in player {
-            _bossKillCounts = Array(zip(p.bossKillCounts, _bossKillCounts)).map{ $0.0 + $0.1 }
+            _bossKillCounts = Array(zip(p.bossKillCounts, _bossKillCounts)).map { $0.0 + $0.1 }
         }
         bossKillCounts.append(objectsIn: _bossKillCounts)
         // List型に対する処理
@@ -142,17 +139,17 @@ class RealmCoopResult: Object, Identifiable, Decodable {
 //        bossKillCounts.append(objectsIn: _bossKillCounts.sorted{ $0.0 < $1.0 }.map{ $0.value.count })
 
         let _bossCounts = try container.decodeIfPresent([Int: BossCounts].self, forKey: .bossCounts) ?? [Int(): BossCounts()]
-        bossCounts.append(objectsIn: _bossCounts.sorted{ $0.0 < $1.0 }.map{ $0.value.count })
+        bossCounts.append(objectsIn: _bossCounts.sorted { $0.0 < $1.0 }.map { $0.value.count })
 
         let _wave = try container.decodeIfPresent([RealmCoopWave].self, forKey: .wave) ?? [RealmCoopWave()]
         wave.append(objectsIn: _wave)
-        
+
         #warning("JSONには入っていないデータは自身から計算する")
         goldenEggs.value = wave.sum(ofProperty: "goldenIkuraNum")
         powerEggs.value = wave.sum(ofProperty: "ikuraNum")
-        
+
     }
-    
+
 }
 
 #warning("定義用の構造体")

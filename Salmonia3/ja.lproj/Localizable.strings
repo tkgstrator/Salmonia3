@@ -14,7 +14,8 @@
 "TITLE_RESULT" = "リザルト";
 "TITLE_SHIFT_COLLECTION" = "シフトスケジュール";
 "TITLE_RESULT_DETAIL" = "リザルト";
-
+"TITLE_FREE_PRODUCT" = "無料機能";
+"TITLE_PAID_PRODUCT" = "有料機能";
 
 "TEXT_SALMONIA" = "Salmonia";
 "TEXT_SALMON_STATS" = "Salmon Stats";
@@ -121,3 +122,11 @@
 "Go-Getter" = "いちにんまえ";
 "Overachiver" = "じゅくれん";
 "Profressional" = "たつじん";
+
+"FEATURE_FREE_01" = "クマサン印のブキ表示";
+"FEATURE_FREE_02" = "将来のシフト表示";
+"FEATURE_FREE_03" = "自分の名前も隠す";
+
+"FEATURE_FREE_01_DESC" = "支給されるランダムウエポンのレア枠を表示します";
+"FEATURE_FREE_02_DESC" = "2022年までの全シフトを表示します";
+"FEATURE_FREE_03_DESC" = "リザルト画面で自分の名前も隠します";

@@ -23,7 +23,6 @@ enum APPError: Error {
     case outdate
 }
 
-
 extension APPError: LocalizedError {
     var errorDescription: String? {
         switch self {

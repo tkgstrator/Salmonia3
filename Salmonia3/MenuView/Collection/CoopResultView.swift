@@ -6,12 +6,11 @@
 //
 
 import SwiftUI
-import URLImage
 
 struct CoopResultView: View {
     var result: RealmCoopResult
     @State var isVisible: Bool = false
-    
+
     var body: some View {
         TabView {
             CoopResultOverview(result: result)
@@ -27,7 +26,7 @@ struct CoopResultView: View {
 struct CoopResultOverview: View {
     var result: RealmCoopResult
     @State var isAnonymous: Bool = false
-    
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             LazyVStack {
@@ -44,14 +43,14 @@ struct CoopResultOverview: View {
 //        .navigationBarItems(trailing: SRButton)
         .navigationTitle("TITLE_RESULT_DETAIL")
     }
-    
+
     var SRButton: some View {
         HStack {
             Button(action: { isAnonymous.toggle() }) { Image(systemName: "person.circle.fill") }
             //            Button(action: { isEnable.toggle() }) { Image(systemName: "info.circle.fill") }
         }
     }
-    
+
     #warning("直接画像返すやつ書けばよくね？？？")
     var ResultOverview: some View {
         ZStack(alignment: .center) {
@@ -63,7 +62,7 @@ struct CoopResultOverview: View {
                 .mask(Image("2ce11ebf110993621bedd8e747d7b1b").resizable())
             VStack(spacing: 0) {
                 // プレイ時間の表示
-                Text(result.playTime.stringValue)
+                Text("\(result.playTime)")
                     .splatfont2(.white, size: 22)
                 // キケン度の表示
                 DangerRate
@@ -86,10 +85,10 @@ struct CoopResultOverview: View {
         }
         .splatfont2(.white, size: 20)
     }
-    
+
     var ResultWave: some View {
         LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 140), alignment: .top), count: result.wave.count)) {
-            ForEach(result.wave.indices, id:\.self) { index in
+            ForEach(result.wave.indices, id: \.self) { index in
                 VStack(spacing: 0) {
                     VStack(spacing: 0) {
                         Text("RESULT_WAVE_\(index + 1)")
@@ -130,16 +129,15 @@ struct CoopResultOverview: View {
         .splatfont2(.white, size: 16)
         .padding(.horizontal, 5)
     }
-    
+
     var ResultPlayer: some View {
         LazyHGrid(rows: Array(repeating: .init(.flexible(minimum: 80)), count: result.player.count), spacing: 0) {
-            ForEach(result.player.indices, id:\.self) { index in
+            ForEach(result.player.indices, id: \.self) { index in
                 PlayerView(player: result.player[index])
             }
         }
     }
-    
-    
+
     var DangerRate: some View {
         switch result.dangerRate.value! == 200 {
         case true:
@@ -149,13 +147,13 @@ struct CoopResultOverview: View {
             return Text("RESULT_HAZARD_LEVEL_\(String(result.dangerRate.value!))")
                 .splatfont2(.yellow, size: 20)
         }
-        
+
     }
 }
 
 struct PlayerView: View {
     var player: RealmPlayerResult
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(alignment: .bottom) {
@@ -167,7 +165,7 @@ struct PlayerView: View {
                     HStack {
                         LazyVGrid(columns: Array(repeating: .init(.flexible()), count: player.weaponList.count + 1), alignment: .leading, spacing: 0, pinnedViews: []) {
                             SRImage(from: Special(rawValue: player.specialId), size: CGSize(width: 25, height: 25))
-                            ForEach(player.weaponList.indices, id:\.self) { index in
+                            ForEach(player.weaponList.indices, id: \.self) { index in
                                 Image(String(player.weaponList[index]).imageURL)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
@@ -222,17 +220,17 @@ struct PlayerView: View {
     }
 }
 
-fileprivate struct CoopPlayerResultView: View {
+private struct CoopPlayerResultView: View {
     var result: RealmCoopResult
     @Binding var isVisible: Bool
-    
+
     var body: some View {
         List {
             Section(header: Text("Players").splatfont2(.orange, size: 14)) {
                 HStack(alignment: .top, spacing: 0) {
                     Text("").frame(width: 30)
                     LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: 0, pinnedViews: []) {
-                        ForEach(result.player.indices, id:\.self) { index in
+                        ForEach(result.player.indices, id: \.self) { index in
                             VStack {
                                 Image(systemName: "circle")
                                 Text(result.player[index].name.stringValue)
@@ -263,8 +261,8 @@ fileprivate struct CoopPlayerResultView: View {
                             }
                             .frame(width: 30)
                             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: nil, pinnedViews: []) {
-                                ForEach(result.player.indices, id:\.self) { index in
-                                    if result.player[index].bossKillCounts[id] == result.player.map{ $0.bossKillCounts[id] }.max() {
+                                ForEach(result.player.indices, id: \.self) { index in
+                                    if result.player[index].bossKillCounts[id] == result.player.map { $0.bossKillCounts[id] }.max() {
                                         Text("\(result.player[index].bossKillCounts[id])")
                                             .splatfont2(.yellow, size: 18)
                                             .shadow(color: .black, radius: 0, x: 1, y: 1)
@@ -284,7 +282,7 @@ fileprivate struct CoopPlayerResultView: View {
                     Text("Kill")
                         .frame(width: 30)
                     LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: nil, pinnedViews: []) {
-                        ForEach(result.player.indices, id:\.self) { index in
+                        ForEach(result.player.indices, id: \.self) { index in
                             Text("\(result.player[index].bossKillCounts.sum())")
                         }
                     }
@@ -294,7 +292,7 @@ fileprivate struct CoopPlayerResultView: View {
                     Text("Eggs")
                         .frame(width: 30)
                     LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: nil, pinnedViews: []) {
-                        ForEach(result.player.indices, id:\.self) { index in
+                        ForEach(result.player.indices, id: \.self) { index in
                             Text("\(result.player[index].goldenIkuraNum)")
                         }
                     }
@@ -305,12 +303,12 @@ fileprivate struct CoopPlayerResultView: View {
             }
             .splatfont2(size: 16)
         }
-        
+
     }
-    
+
     var Header: some View {
         HStack {
-            ForEach(result.player, id:\.self) { player in
+            ForEach(result.player, id: \.self) { player in
                 VStack(spacing: 0) {
                     Image(systemName: "circle")
                     Text(isVisible ? player.name.stringValue : "-")
@@ -323,8 +321,8 @@ fileprivate struct CoopPlayerResultView: View {
         .padding(.leading, 45)
     }
 }
-//struct CoopResultView_Previews: PreviewProvider {
+// struct CoopResultView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        CoopResultView()
 //    }
-//}
+// }

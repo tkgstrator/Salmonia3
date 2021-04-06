@@ -9,13 +9,13 @@ import SwiftUI
 
 struct CoopShiftCollection: View {
     @EnvironmentObject var main: CoreRealmCoop
-    
+
     var body: some View {
-        ScrollViewReader { proxy in
+        ScrollViewReader { _ in
             List {
                 ForEach(main.shifts.indices) { index in
                     #if DEBUG
-                    NavigationLink(destination: CoopShiftStatsView(startTime: main.shifts[index].startTime!), label: {
+                    NavigationLink(destination: CoopShiftStatsView(startTime: main.shifts[index].startTime), label: {
                         CoopShift(shift: main.shifts[index])
                     })
                     #else
@@ -31,12 +31,12 @@ struct CoopShiftCollection: View {
 struct CoopShift: View {
     @ObservedObject var shift: RealmCoopShift
     var columns: [GridItem] = Array(repeating: GridItem(), count: 4)
-    
+
     var body: some View {
         HStack {
             Spacer()
             VStack(alignment: .leading, spacing: 10) {
-                Text(shift.startTime.stringValue)
+                Text("\(shift.startTime)")
                     .splatfont2(size: 16)
                 InfoWeapon
             }
@@ -44,7 +44,7 @@ struct CoopShift: View {
             Spacer()
         }
     }
-    
+
     var InfoWeapon: some View {
         HStack {
             VStack(spacing: 0) {

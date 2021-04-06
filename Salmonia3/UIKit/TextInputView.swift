@@ -11,16 +11,16 @@ import SwiftUI
 
 struct TextInputView: UIViewRepresentable {
     private var textField = UITextField()
-    
+
     func makeUIView(context: Context) -> UITextField {
         textField.becomeFirstResponder()
         textField.font = UIFont.monospacedSystemFont(ofSize: 17, weight: .thin)
         return textField
     }
-    
+
     func updateUIView(_ uiView: UITextField, context: Context) {
     }
-    
+
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -31,7 +31,7 @@ struct InputTokenView: View {
     @Binding var isPresented: Bool
     @State var textString: String = ""
     @AppStorage("apiToken") var apiToken: String?
-    
+
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -68,12 +68,12 @@ struct InputTokenView: View {
         .background(BackGround)
         .navigationBarHidden(true)
     }
-    
+
     var BackGround: some View {
         LinearGradient(gradient: Gradient(colors: [.blue, .river]), startPoint: .top, endPoint: .bottom)
             .edgesIgnoringSafeArea(.all)
     }
-    
+
     private func validate(input: String) {
         if let validate = input.capture(pattern: "[0-9a-z].*", group: 0) {
             // 64文字なら簡易バリデーション成功
@@ -83,7 +83,6 @@ struct InputTokenView: View {
         }
     }
 }
-
 
 extension View {
     func underlineTextField() -> some View {

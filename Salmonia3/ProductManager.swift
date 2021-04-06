@@ -10,14 +10,14 @@ import Alamofire
 import SwiftyJSON
 
 class ProductManger {
-    
-    public class func getFutureRotation(competion: @escaping (JSON?, Error?) ->() ) {
+
+    public class func getFutureRotation(competion: @escaping (JSON?, Error?) -> Void ) {
         let url = "https://salmonia2-api.netlify.app/coop.json"
-        
+
         AF.request(url, method: .get)
             .validate(statusCode: 200...200)
             .validate(contentType: ["application/json"])
-            .responseJSON() { response in
+            .responseJSON { response in
                 switch response.result {
                 case .success(let value):
                     competion(JSON(value), nil)

@@ -9,10 +9,10 @@ import Foundation
 import SwiftUI
 
 struct SRImage: UIViewRepresentable {
-    
+
     let from: ImageType
     let size: CGSize
-    
+
     func makeUIView(context: Context) -> UIView {
         let uiimage = UIImage(named: from.imageURL)
         let size = CGSize(width: self.size.width, height: self.size.height)
@@ -24,13 +24,13 @@ struct SRImage: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: UIView, context: Context) { }
-    
+
 }
 
 class ImageType {
     var rawValue: Int = 0
     var imageURL: String = ""
-    
+
 //    init(rawValue: Int) {
 //        self.rawValue = rawValue
 //    }
@@ -64,7 +64,7 @@ class Special: ImageType {
 }
 
 class Salmonid: ImageType {
-    
+
     convenience init(rawValue: Int) {
         self.init()
         self.rawValue = rawValue
@@ -91,7 +91,7 @@ class Salmonid: ImageType {
             imageURL = ""
         }
     }
-    
+
     enum SalmonidType: Int, CaseIterable {
         case goldie     = 0
         case steelhead  = 1
@@ -131,7 +131,7 @@ extension Salmonid {
         }
     }
 }
-//struct ImageType {
+// struct ImageType {
 //    let imageURL: String
 //
 //    enum Special: Int, CaseIterable {
@@ -151,9 +151,9 @@ extension Salmonid {
 //        case griller    = 6
 //        case drizzler   = 7
 //    }
-//}
+// }
 //
-//extension ImageType.Special {
+// extension ImageType.Special {
 //    var imageURL: String {
 //        switch self {
 //        case .bombpitcher:
@@ -166,9 +166,9 @@ extension Salmonid {
 //            return "5c4a265d5d1dd51c7e5577f92d358cb4"
 //        }
 //    }
-//}
+// }
 //
-//extension ImageType.Salmonids {
+// extension ImageType.Salmonids {
 //    var imageURL: String {
 //        switch  self {
 //        case .goldie:
@@ -189,4 +189,4 @@ extension Salmonid {
 //        return ""
 //        }
 //    }
-//}
+// }

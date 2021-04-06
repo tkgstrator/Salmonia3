@@ -8,35 +8,25 @@
 import SwiftUI
 
 struct FreeProductView: View {
-    @AppStorage("FEATURE_FREE_01") var isEnable01: Bool = true
-    @AppStorage("FEATURE_FREE_02") var isEnable02: Bool = true
-    @AppStorage("FEATURE_FREE_03") var isEnable03: Bool = true
-    @AppStorage("FEATURE_FREE_04") var isEnable04: Bool = true
-    
+    @EnvironmentObject var free: CoreAppProduct
+
     var body: some View {
         List {
-            Toggle(isOn: $isEnable01, label: {
+            Toggle(isOn: $free.isFree01, label: {
                 VStack(alignment: .leading, spacing: nil) {
                     Text("FEATURE_FREE_01")
                     Text("FEATURE_FREE_01_DESC")
                         .splatfont2(size: 12)
                 }
             })
-            Toggle(isOn: $isEnable02, label: {
+            Toggle(isOn: $free.isFree02, label: {
                 VStack(alignment: .leading, spacing: nil) {
                     Text("FEATURE_FREE_02")
                     Text("FEATURE_FREE_02_DESC")
                         .splatfont2(size: 12)
                 }
             })
-            Toggle(isOn: $isEnable03, label: {
-                VStack(alignment: .leading, spacing: nil) {
-                    Text("FEATURE_FREE_03")
-                    Text("FEATURE_FREE_03_DESC")
-                        .splatfont2(size: 12)
-                }
-            })
-            Toggle(isOn: $isEnable04, label: {
+            Toggle(isOn: $free.isFree03, label: {
                 VStack(alignment: .leading, spacing: nil) {
                     Text("FEATURE_FREE_03")
                     Text("FEATURE_FREE_03_DESC")
@@ -44,6 +34,7 @@ struct FreeProductView: View {
                 }
             })
         }
+        .navigationTitle("TITLE_FREE_PRODUCT")
         .splatfont2(size: 16)
     }
 }
@@ -62,7 +53,6 @@ protocol ProductItemProtocol: Identifiable {
     var price: Int? { get }
 }
 
-
 struct PaidProductView: View {
     var body: some View {
         LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 60, maximum: 80)), count: 3), alignment: .center, spacing: 10, pinnedViews: []) {
@@ -76,8 +66,6 @@ struct PaidProductView: View {
         }
     }
 }
-
-
 
 struct ProductView_Previews: PreviewProvider {
     static var previews: some View {
