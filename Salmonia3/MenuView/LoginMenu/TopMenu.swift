@@ -6,15 +6,15 @@
 //
 
 import Foundation
-import URLImage
 import SwiftUI
 import SwiftUIRefresh
+import URLImage
 
 struct TopMenu: View {
     @EnvironmentObject var main: AppSettings
     @State var isShowing: Bool = false
     @State var isActive: Bool = false
-    
+
     var body: some View {
         ZStack {
             NavigationLink(destination: LoadingView(), isActive: $isActive) { EmptyView() }
@@ -40,7 +40,7 @@ struct TopMenu: View {
         .listStyle(GroupedListStyle())
         .navigationTitle("TITLE_SALMONIA")
     }
-    
+
     var Overview: some View {
         NavigationLink(destination: SettingView()) {
             HStack {
@@ -51,7 +51,7 @@ struct TopMenu: View {
             }
         }
     }
-    
+
     var Results: some View {
         Group {
             NavigationLink(destination: CoopResultCollection()) {

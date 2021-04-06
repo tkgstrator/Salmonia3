@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 struct NetworkPublisher {
-    
+
     private static let contentType = ["application/json"]
     private static let retryCoutn = 1
     static let decoder: JSONDecoder = {
@@ -19,7 +19,7 @@ struct NetworkPublisher {
 //        decoder.keyDecodingStrategy = .convertFromSnakeCase
         return decoder
     }()
-    
+
     static func publish<T: RequestProtocol, V: Decodable>(_ request: T) -> Future<V, APIError> where T.ResponseType == V {
         return Future { promise in
             let alamofire = AF.request(request)
@@ -38,7 +38,7 @@ struct NetworkPublisher {
                             let data = try decoder.decode(V.self, from: json)
                             print("ENCODED RESPONSE", dump(data))
                             promise(.success(data))
-                        } catch(let error) {
+                        } catch let error {
                             print(error)
                             promise(.failure(APIError.invalid))
                         }

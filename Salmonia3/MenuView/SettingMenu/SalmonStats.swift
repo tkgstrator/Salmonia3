@@ -9,12 +9,12 @@ import SwiftUI
 import BetterSafariView
 
 struct SalmonStatsView: View {
-    
+
     @Environment(\.presentationMode) var present
     @State var isPresented: Bool = false
     @State var isShowing: Bool = false
     @AppStorage("isDarkMode") var isDarkMode: Bool = false
-    
+
 //    init() {
 //        UINavigationBar.appearance().tintColor = isDarkMode ? UIColor.white : UIColor.black
 //        UINavigationBar.appearance().titleTextAttributes = [
@@ -22,7 +22,7 @@ struct SalmonStatsView: View {
 //            NSAttributedString.Key.foregroundColor : isDarkMode ? UIColor.white : UIColor.black
 //        ]
 //    }
-    
+
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -65,7 +65,7 @@ struct SalmonStatsView: View {
             InputTokenView(isPresented: $isShowing)
         }
     }
-    
+
     var BackGround: some View {
         Group {
             LinearGradient(gradient: Gradient(colors: [.blue, .river]), startPoint: .top, endPoint: .bottom)

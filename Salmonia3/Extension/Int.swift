@@ -18,12 +18,12 @@ extension String {
     var imageURL: String {
         return self.hash(algo: Insecure.MD5.self, using: String.Encoding.utf8)!
     }
-    
+
     private func hash<Hash: HashFunction & ByteCountable>(algo: Hash.Type, using encoding: String.Encoding = .utf8) -> String? {
         guard let data = self.data(using: encoding) else {
             return nil
         }
-        
+
         return algo.hash(data: data).prefix(algo.byteCount).map {
             String(format: "%02hhx", $0)
         }.joined()

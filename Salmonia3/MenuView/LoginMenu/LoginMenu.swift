@@ -16,7 +16,7 @@ struct LoginMenu: View {
     @State var isPresented: Bool = false
     @State var isShowing: Bool = false
     private let verifier: String = String.randomString
-    
+
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -71,7 +71,7 @@ struct LoginMenu: View {
         .background(BackGround)
         .navigationTitle("TITLE_LOGIN")
     }
-    
+
     var BackGround: some View {
         Group {
             LinearGradient(gradient: Gradient(colors: [.blue, .river]), startPoint: .top, endPoint: .bottom)
@@ -79,8 +79,8 @@ struct LoginMenu: View {
             NavigationLink(destination: SalmonLoginMenu(), isActive: $isActive) { EmptyView() }
         }
     }
-    
-    func loginSplatNet2(code: String, verifier: String) throws -> (){
+
+    func loginSplatNet2(code: String, verifier: String) throws {
         DispatchQueue(label: "Login").async {
             do {
                 #warning("X-Product Versionが固定だった")
@@ -96,7 +96,7 @@ struct LoginMenu: View {
                 let value: [String: Any?] = ["nsaid": nsaid, "nickname": nickname, "thumbnailURL": thumbnail_url, "iksmSession": iksm_session, "sessionToken": session_token, "isActive": true]
                 try RealmManager.addNewAccount(account: RealmUserInfo(value: value))
                 isActive.toggle()
-            } catch (let error) {
+            } catch let error {
                 #warning("ここにエラー処理を書く")
                 print(error)
             }

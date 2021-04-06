@@ -11,10 +11,10 @@ import UIKit
 import GoogleMobileAds
 
 struct UIGoogleMobileAdsView: UIViewControllerRepresentable {
-    
+
     func makeUIViewController(context: Context) -> UIViewController {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
-        
+
         let view = GADBannerView(adSize: kGADAdSizeBanner)
         let viewController = UIViewController()
         #if DEBUG
@@ -29,7 +29,7 @@ struct UIGoogleMobileAdsView: UIViewControllerRepresentable {
         return viewController
     }
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
-    
+
 }
 
 struct GoobleMobileAdsView: View {

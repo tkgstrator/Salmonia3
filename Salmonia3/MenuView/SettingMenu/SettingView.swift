@@ -9,7 +9,7 @@ import SwiftUI
 import BetterSafariView
 
 struct SettingView: View {
-    
+
     @State var isWarning: Bool = false
     @State var isShowing: Bool = false
     @AppStorage("isFirstLaunch") var isFirstLaunch = true
@@ -19,7 +19,7 @@ struct SettingView: View {
     private let systemName: String = UIDevice.current.systemName
     private let deviceName: String = UIDevice.current.localizedModel
     private let appVersion: String = "\(String(describing: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")!))(\(String(describing: Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")!)))"
-    
+
     var body: some View {
         #warning("ヘッダーのフォントを固定する方法ないのかな")
         Form {
@@ -28,7 +28,7 @@ struct SettingView: View {
                 SettingMenu(title: "UPLOAD", value: apiToken != nil)
                 NavigationLink(destination: SalmonStatsView(), label: { Text("LINK_SETTING_SALMON_STATS") })
                 Toggle("RE_SIGN_IN", isOn: $isFirstLaunch)
-                
+
             }
             Section(header: Text("HEADER_APPEARANCE").splatfont2(.orange, size: 14)) {
                 Toggle("SETTING_USING_DARKMODE", isOn: $isDarkMode)
@@ -56,7 +56,7 @@ struct SettingView: View {
         .font(.custom("Splatfont2", size: 16))
         .navigationTitle("TITLE_SETTINGS")
     }
-    
+
     var EraseButton: some View {
         HStack {
             Spacer()
@@ -64,7 +64,7 @@ struct SettingView: View {
             EmptyView()
         }
     }
-    
+
     var PrivacyButton: some View {
         Button(action: { isShowing.toggle() }, label: { Text("SETTING_PRIVACY")})
             .safariView(isPresented: $isShowing) {
@@ -82,12 +82,12 @@ struct SettingView_Previews: PreviewProvider {
 struct SettingMenu: View {
     let title: String
     let value: String
-    
+
     init(title: String, value: Any?) {
         self.title = "SETTING_\(title)".localized
         self.value = value.stringValue
     }
-    
+
     var body: some View {
         HStack {
             Text(title)

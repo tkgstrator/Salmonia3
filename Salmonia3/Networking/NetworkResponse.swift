@@ -9,21 +9,21 @@ import Foundation
 import Alamofire
 
 class SalmonStats {
-    
+
     class UploadResult: Decodable {
         var results: [UploadResultData] = []
-        
+
         required init(from decoder: Decoder) throws {
             let container = try decoder.singleValueContainer()
             results = try container.decode([UploadResultData].self)
         }
     }
-    
+
     class UploadResultData: Decodable {
         var salmonId: Int
         var created: Bool
         var jobId: Int
-        
+
         private enum CodingKeys: String, CodingKey {
             case salmonId = "salmon_id"
             case created = "created"
@@ -32,13 +32,13 @@ class SalmonStats {
 
         required init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            
+
             salmonId = try container.decode(Int.self, forKey: .salmonId)
             created = try container.decode(Bool.self, forKey: .created)
             jobId = try container.decode(Int.self, forKey: .jobId)
         }
     }
-    
+
 //    class ResultCoop: CoopResultProtocol, Decodable {
 //        var jobId: Int
 //        var stageId: Int
@@ -213,7 +213,7 @@ class SalmonStats {
 //    }
 }
 
-//extension SalmonStats.WaveResult.EventType {
+// extension SalmonStats.WaveResult.EventType {
 //    var name: String {
 //        switch self {
 //        case .noevent:
@@ -232,9 +232,9 @@ class SalmonStats {
 //            return "cohock-charge"
 //        }
 //    }
-//}
+// }
 //
-//extension SalmonStats.WaveResult.WaterLevel {
+// extension SalmonStats.WaveResult.WaterLevel {
 //    var name: String {
 //        switch self {
 //        case .low:
@@ -245,9 +245,9 @@ class SalmonStats {
 //            return "high"
 //        }
 //    }
-//}
+// }
 //
-//extension SplatNet2.ResultCoop.StageType {
+// extension SplatNet2.ResultCoop.StageType {
 //    var stageId: Int {
 //        switch self {
 //        case .shakeup:
@@ -262,4 +262,4 @@ class SalmonStats {
 //            return 5004
 //        }
 //    }
-//}
+// }

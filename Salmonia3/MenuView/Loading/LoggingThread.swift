@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import URLImage
 
 struct LoggingThread: View {
     @Binding var data: ProgressData
@@ -22,7 +21,7 @@ struct LoggingThread: View {
         .navigationTitle("TITLE_LOGGING_THREAD")
         .navigationBarBackButtonHidden(true)
     }
-    
+
     var Credit: some View {
         VStack {
             Text(verbatim: "Developed by @Herlingum")

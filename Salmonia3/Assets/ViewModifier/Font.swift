@@ -11,7 +11,7 @@ import SwiftUI
 struct Splatfont2: ViewModifier {
     let color: Color
     let size: CGFloat
-    
+
     func body(content: Content) -> some View {
             content
                 .font(.custom("Splatfont2", size: size))
@@ -22,7 +22,7 @@ struct Splatfont2: ViewModifier {
 struct Splatfont: ViewModifier {
     let color: Color
     let size: CGFloat
-    
+
     func body(content: Content) -> some View {
             content
                 .font(.custom("Splatfont", size: size))

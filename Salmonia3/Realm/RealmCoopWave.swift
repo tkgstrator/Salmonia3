@@ -16,11 +16,11 @@ class RealmCoopWave: Object, Decodable {
     @objc dynamic var quotaNum: Int = 0
     @objc dynamic var ikuraNum: Int = 0
     let result = LinkingObjects(fromType: RealmCoopResult.self, property: "wave")
-    
+
     override static func indexedProperties() -> [String] {
         return ["golden_ikura_num"]
     }
-    
+
     private enum CodingKeys: String, CodingKey {
         case eventType          = "event_type"
         case waterLevel         = "water_level"
@@ -29,17 +29,17 @@ class RealmCoopWave: Object, Decodable {
         case quotaNum           = "quota_num"
         case ikuraNum           = "ikura_num"
     }
-    
+
     public required convenience init(from decoder: Decoder) throws {
         self.init()
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
+
         let event = try container.decode(EventType.self, forKey: .eventType)
         eventType = event.key
-        
+
         let tide = try container.decode(WaterLevel.self, forKey: .waterLevel)
         waterLevel = tide.key
-        
+
         goldenIkuraNum = try container.decode(Int.self, forKey: .goldenIkuraNum)
         goldenIkuraPopNum = try container.decode(Int.self, forKey: .goldenIkuraPopNum)
         quotaNum = try container.decode(Int.self, forKey: .quotaNum)
