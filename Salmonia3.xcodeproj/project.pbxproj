@@ -218,6 +218,7 @@
 			children = (
 				102465F025FDDABD004DC043 /* SettingView.swift */,
 				109EF35D260CAB7F00076157 /* ProductView.swift */,
+				107E115E260FA95C008E450B /* SalmonStats.swift */,
 			);
 			path = SettingMenu;
 			sourceTree = "<group>";
@@ -418,7 +419,6 @@
 				10377FAB25FD165100536A94 /* Collection */,
 				1059419E25FA4DDE00C32D21 /* LoginMenu */,
 				102465EF25FDDAAA004DC043 /* SettingMenu */,
-				107E115E260FA95C008E450B /* SalmonStats.swift */,
 				10377F8F25FD09D200536A94 /* Loading */,
 			);
 			path = MenuView;

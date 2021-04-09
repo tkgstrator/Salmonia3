@@ -14,13 +14,9 @@ struct CoopShiftCollection: View {
         ScrollViewReader { _ in
             List {
                 ForEach(main.shifts.indices) { index in
-                    #if DEBUG
                     NavigationLink(destination: CoopShiftStatsView(startTime: main.shifts[index].startTime), label: {
                         CoopShift(shift: main.shifts[index])
                     })
-                    #else
-                    CoopShift(shift: main.shifts[index])
-                    #endif
                 }
             }
         }
@@ -29,14 +25,25 @@ struct CoopShiftCollection: View {
 }
 
 struct CoopShift: View {
+    
     @ObservedObject var shift: RealmCoopShift
     var columns: [GridItem] = Array(repeating: GridItem(), count: 4)
+    var formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.current
+        formatter.dateFormat = "yyyy MM/dd HH:mm"
+        return formatter
+    }()
 
     var body: some View {
         HStack {
             Spacer()
             VStack(alignment: .leading, spacing: 10) {
-                Text("\(shift.startTime)")
+                HStack {
+                    Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(shift.startTime))))
+                    Text(verbatim: "-")
+                    Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(shift.endTime))))
+                }
                     .splatfont2(size: 16)
                 InfoWeapon
             }

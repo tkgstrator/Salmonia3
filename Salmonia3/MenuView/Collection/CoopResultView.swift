@@ -25,6 +25,12 @@ struct CoopResultView: View {
 
 struct CoopResultOverview: View {
     var result: RealmCoopResult
+    var formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.current
+        formatter.dateFormat = "yyyy MM/dd HH:mm"
+        return formatter
+    }()
     @State var isAnonymous: Bool = false
 
     var body: some View {
@@ -62,7 +68,8 @@ struct CoopResultOverview: View {
                 .mask(Image("2ce11ebf110993621bedd8e747d7b1b").resizable())
             VStack(spacing: 0) {
                 // プレイ時間の表示
-                Text("\(result.playTime)")
+                Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(result.playTime))))
+                    .shadow(color: .black, radius: 0, x: 2, y: 2)
                     .splatfont2(.white, size: 22)
                 // キケン度の表示
                 DangerRate

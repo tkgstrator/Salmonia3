@@ -16,7 +16,9 @@ struct CoopShiftStatsView: View {
     init(startTime: Int) {
         self.shift = try! RealmManager.getShiftSchedule(startTime: startTime)
         self.result = ShiftStats(startTime: startTime)
+        #if DEBUG
         dump(result)
+        #endif
     }
 
     var body: some View {
@@ -64,7 +66,7 @@ fileprivate struct StatsColumn: View {
     
     var body: some View {
         HStack {
-            Text(title)
+            Text(title.localized)
             Spacer()
             Text(value)
                 .foregroundColor(.secondary)

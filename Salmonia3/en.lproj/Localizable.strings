@@ -39,6 +39,10 @@
 "HEADER_OVERVIEW" = "Overview";
 "HEADER_SCHEDULE" = "Shift Schedule";
 "HEADER_APPEARANCE" = "Appearance";
+"HEADER_PURCHASED" = "Purchase";
+"HEADER_STATS_OVERVIEW" = "Overview";
+"HEADER_STATS_MAX" = "Max";
+"HEADER_STATS_AVG" = "Avg";
 
 "SETTING_FREE_PRODUCT" = "Free";
 "SETTING_PAID_PRODUCT" = "Paid";
@@ -118,3 +122,19 @@
 "FEATURE_FREE_01" = "Grizzco's Weapons";
 "FEATURE_FREE_02" = "Future Rotation";
 "FEATURE_FREE_03" = "Hide My Nickname";
+
+"JOB_NUM" = "Job Num";
+"CLEAR_RATIO" = "Clear Ratio";
+"SALMON_RATE" = "Salmon Rate";
+"CLEAR_WAVE" = "Clear Wave";
+"CREW_GRADE" = "Crew Grade";
+"GRADE_POINT" = "Grade Point";
+"TEAM_POWER_EGGS" = "Team Power Eggs";
+"TEAM_GOLDEN_EGGS" = "Team Golden Eggs";
+"POWER_EGGS" = "Power Eggs";
+"GOLDEN_EGGS" = "Golden Eggs";
+"BOSS_DEFEATED" = "Boss Defeated";
+"HELP_COUNT" = "Help Count";
+"DEAD_COUNT" = "Dead Count";
+
+
