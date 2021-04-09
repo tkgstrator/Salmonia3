@@ -33,12 +33,12 @@ struct SettingView: View {
             Section(header: Text("HEADER_APPEARANCE").splatfont2(.orange, size: 14)) {
                 Toggle("SETTING_USING_DARKMODE", isOn: $isDarkMode)
             }
-            #if DEBUG
             Section(header: Text("HEADER_PURCHASED").splatfont2(.orange, size: 14)) {
                 NavigationLink(destination: FreeProductView(), label: { Text("SETTING_FREE_PRODUCT") })
+                #if DEBUG
                 NavigationLink(destination: PaidProductView(), label: { Text("SETTING_PAID_PRODUCT") })
+                #endif
             }
-            #endif
             Section(header: Text("HEADER_APPLICATION").splatfont2(.orange, size: 14)) {
                 PrivacyButton
                 Toggle("ERASE_SETTING", isOn: $isWarning)

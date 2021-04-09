@@ -42,6 +42,10 @@
 "HEADER_OVERVIEW" = "概要";
 "HEADER_SCHEDULE" = "シフトスケジュール";
 "HEADER_APPEARANCE" = "外観";
+"HEADER_PURCHASED" = "機能";
+"HEADER_STATS_OVERVIEW" = "概要";
+"HEADER_STATS_MAX" = "最高";
+"HEADER_STATS_AVG" = "平均";
 
 "SETTING_FREE_PRODUCT" = "無料機能";
 "SETTING_PAID_PRODUCT" = "有料機能";
@@ -130,3 +134,17 @@
 "FEATURE_FREE_01_DESC" = "支給されるランダムウエポンのレア枠を表示します";
 "FEATURE_FREE_02_DESC" = "2022年までの全シフトを表示します";
 "FEATURE_FREE_03_DESC" = "リザルト画面で自分の名前も隠します";
+
+"JOB_NUM" = "バイト回数";
+"CLEAR_RATIO" = "クリア率";
+"SALMON_RATE" = "シャケレート";
+"CLEAR_WAVE" = "クリアWAVE";
+"CREW_GRADE" = "ナカマ評価";
+"GRADE_POINT" = "レート";
+"TEAM_POWER_EGGS" = "チーム赤イクラ数";
+"TEAM_GOLDEN_EGGS" = "チーム金イクラ数";
+"POWER_EGGS" = "赤イクラ数";
+"GOLDEN_EGGS" = "金イクラ数";
+"BOSS_DEFEATED" = "ボス討伐数";
+"HELP_COUNT" = "救助数";
+"DEAD_COUNT" = "被救助数";
