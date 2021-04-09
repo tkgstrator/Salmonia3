@@ -50,6 +50,12 @@ enum RealmManager {
         try? RealmManager.addNewRotation()
     }
 
+    public static func getShiftSchedule(startTime: Int) throws -> RealmCoopShift {
+        guard let realm = try? Realm() else { throw APPError.realm }
+        guard let shift = realm.objects(RealmCoopShift.self).filter("startTime=%@", startTime).first else { throw APPError.realm }
+        return shift
+    }
+    
     public static func updateUserInfo(pid: String, summary: JSON) throws {
         guard let realm = try? Realm() else { return }
         let user = try JSONDecoder().decode(RealmUserInfo.self, from: summary["summary"]["card"].rawData())

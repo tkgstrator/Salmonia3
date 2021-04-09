@@ -21,6 +21,7 @@ enum APPError: Error {
     case unavailable
     case nodata
     case outdate
+    case realm
 }
 
 extension APPError: LocalizedError {
@@ -52,6 +53,8 @@ extension APPError: LocalizedError {
             return "ERROR_NODATA"
         case .outdate:
             return "ERROR_ACCOUNT_OUTDATE"
+        case .realm:
+            return "ERROR_REALM_DATABASE"
         }
     }
 }

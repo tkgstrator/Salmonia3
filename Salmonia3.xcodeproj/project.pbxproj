@@ -57,6 +57,7 @@
 		107E117C260FBE03008E450B /* SalmonStatsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E117B260FBE03008E450B /* SalmonStatsAPI.swift */; };
 		109EF35E260CAB7F00076157 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF35D260CAB7F00076157 /* ProductView.swift */; };
 		109EF375260CB01E00076157 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF374260CB01E00076157 /* ButtonStyle.swift */; };
+		10A08032262070A200BFDF59 /* ShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A08031262070A200BFDF59 /* ShiftStats.swift */; };
 		10A7DD4D2607416F00558DE3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10A7DD4F2607416F00558DE3 /* InfoPlist.strings */; };
 		10AD114D2600EB18008C0E64 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AD114C2600EB18008C0E64 /* Error.swift */; };
 		10B07C5F260A1463008FDE1B /* CoopShiftStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B07C5E260A1463008FDE1B /* CoopShiftStatsView.swift */; };
@@ -154,6 +155,7 @@
 		107E117B260FBE03008E450B /* SalmonStatsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonStatsAPI.swift; sourceTree = "<group>"; };
 		109EF35D260CAB7F00076157 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		109EF374260CB01E00076157 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
+		10A08031262070A200BFDF59 /* ShiftStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftStats.swift; sourceTree = "<group>"; };
 		10A7DD4E2607416F00558DE3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		10AD114C2600EB18008C0E64 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		10B07C5E260A1463008FDE1B /* CoopShiftStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftStatsView.swift; sourceTree = "<group>"; };
@@ -216,7 +218,6 @@
 			children = (
 				102465F025FDDABD004DC043 /* SettingView.swift */,
 				109EF35D260CAB7F00076157 /* ProductView.swift */,
-				107E115E260FA95C008E450B /* SalmonStats.swift */,
 			);
 			path = SettingMenu;
 			sourceTree = "<group>";
@@ -417,9 +418,18 @@
 				10377FAB25FD165100536A94 /* Collection */,
 				1059419E25FA4DDE00C32D21 /* LoginMenu */,
 				102465EF25FDDAAA004DC043 /* SettingMenu */,
+				107E115E260FA95C008E450B /* SalmonStats.swift */,
 				10377F8F25FD09D200536A94 /* Loading */,
 			);
 			path = MenuView;
+			sourceTree = "<group>";
+		};
+		10A08036262070A700BFDF59 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				10A08031262070A200BFDF59 /* ShiftStats.swift */,
+			);
+			path = Result;
 			sourceTree = "<group>";
 		};
 		10CF09F825FB9BEE00D2EEB1 /* Realm */ = {
@@ -441,6 +451,7 @@
 				104BD5ED261C875C0013CD27 /* CoreAppProduct.swift */,
 				10CF09FA25FB9C6B00D2EEB1 /* CoreRealmCoop.swift */,
 				10377F8525FD041900536A94 /* AppSetting.swift */,
+				10A08036262070A700BFDF59 /* Result */,
 			);
 			path = ObservableObject;
 			sourceTree = "<group>";
@@ -757,6 +768,7 @@
 				1024662525FE4012004DC043 /* CoopShiftCollection.swift in Sources */,
 				1059419725FA4C0C00C32D21 /* Color.swift in Sources */,
 				109EF375260CB01E00076157 /* ButtonStyle.swift in Sources */,
+				10A08032262070A200BFDF59 /* ShiftStats.swift in Sources */,
 				10377FAD25FD166200536A94 /* CoopResultCollection.swift in Sources */,
 				1024664B2600D55E004DC043 /* StageType.swift in Sources */,
 			);
