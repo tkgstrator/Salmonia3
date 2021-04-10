@@ -41,8 +41,9 @@ class RealmCoopResult: Object, Identifiable, Decodable {
     }
 
     var specialUsage: [[Int]] {
+        // ここのコードを修正予定
         var usage: [[Int]] = []
-        for wave in Range(0...2) {
+        for wave in Range(0 ... self.wave.count - 1) {
             var tmp: [Int] = []
             for player in self.player {
                 tmp += [Int](repeating: player.specialId, count: player.specialCounts[wave])
