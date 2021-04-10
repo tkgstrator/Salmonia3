@@ -60,7 +60,7 @@ struct LoadingView: View {
                             }
 
                             #if DEBUG
-                            let jobNumRange: Range<Int> = Range(jobId.remote ... jobId.remote)
+                            let jobNumRange: Range<Int> = Range(jobId.remote - 20 ... jobId.remote)
                             #else
                             let jobNumRange: Range<Int> = Range(max(jobId.remote - 49, jobId.local + 1) ... jobId.remote)
                             #endif
