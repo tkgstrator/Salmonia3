@@ -36,13 +36,13 @@ extension UserDefaults {
     @objc dynamic var isFirstLaunch: Bool {
         return bool(forKey: "isFirstLaunch")
     }
-    @objc dynamic var isFree01: Bool {
+    @objc dynamic var FEATURE_FREE_01: Bool {
         return bool(forKey: "FEATURE_FREE_01")
     }
     @objc dynamic var FEATURE_FREE_02: Bool {
         return bool(forKey: "FEATURE_FREE_02")
     }
-    @objc dynamic var isFree04: Bool {
+    @objc dynamic var FEATURE_FREE_03: Bool {
         return bool(forKey: "FEATURE_FREE_03")
     }
 }

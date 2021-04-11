@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CoopShiftCollection: View {
     @EnvironmentObject var main: CoreRealmCoop
-
+    
     var body: some View {
         ScrollViewReader { _ in
             List {
@@ -27,7 +27,8 @@ struct CoopShiftCollection: View {
 struct CoopShift: View {
     
     @ObservedObject var shift: RealmCoopShift
-    var columns: [GridItem] = Array(repeating: GridItem(), count: 4)
+    @AppStorage("FEATURE_FREE_01") var isFree01: Bool = false
+    
     var formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone.current
@@ -64,16 +65,38 @@ struct CoopShift: View {
             }
             VStack(alignment: .leading, spacing: 5) {
                 Text("SUPPLIED_WEAPONS")
-                LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
-                    ForEach(shift.weaponList.indices) { idx in
-                        Image(String(shift.weaponList[idx]).imageURL)
+                if isFree01 && shift.weaponList.contains(-1) {
+                    AnyView(
+                    LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 30, maximum: 50)), count: 5), alignment: .center, spacing: 0) {
+                        ForEach(shift.weaponList.indices) { idx in
+                            Image(String(shift.weaponList[idx]).imageURL)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+//                                .frame(maxWidth: 45)
+                        }
+                        Image(String(shift.rareWeapon.intValue).imageURL)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(maxWidth: 45)
+//                            .frame(maxWidth: 45)
                     }
+                    .padding(.bottom, 20)
+                    .frame(maxWidth: 200)
+                    )
+                } else {
+                    AnyView(
+                    LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 30, maximum: 50)), count: 4), alignment: .center, spacing: 0) {
+                        ForEach(shift.weaponList.indices) { idx in
+                            Image(String(shift.weaponList[idx]).imageURL)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(maxWidth: 45)
+                        }
+                    }
+                    .padding(.bottom, 20)
+                    .frame(maxWidth: 200)
+                    )
                 }
-                .padding(.bottom, 20)
-                .frame(maxWidth: 200)
+
             }
         }
     }
