@@ -47,9 +47,7 @@ struct CoopShiftStatsView: View {
                 StatsColumn(title: .helpCount, value: result.resultMax.helpCount)
             }
         }
-        .onAppear() {
-            dump(result)
-        }
+        .navigationTitle("TITLE_SHIFT_STATS")
     }
 }
 

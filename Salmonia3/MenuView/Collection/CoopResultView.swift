@@ -170,8 +170,10 @@ struct PlayerView: View {
                         .frame(height: 10)
                         .padding(.bottom, 5)
                     HStack {
-                        LazyVGrid(columns: Array(repeating: .init(.flexible()), count: player.weaponList.count + 1), alignment: .leading, spacing: 0, pinnedViews: []) {
-                            SRImage(from: Special(rawValue: player.specialId), size: CGSize(width: 25, height: 25))
+                        LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 4), alignment: .leading, spacing: 0, pinnedViews: []) {
+                            SRImage(from: Special(rawValue: player.specialId), size: CGSize(width: 35, height: 35))
+                                .aspectRatio(contentMode: .fit)
+                                .frame(maxWidth: 35)
                             ForEach(player.weaponList.indices, id: \.self) { index in
                                 Image(String(player.weaponList[index]).imageURL)
                                     .resizable()
