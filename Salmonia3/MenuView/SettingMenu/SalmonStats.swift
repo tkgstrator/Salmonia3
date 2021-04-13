@@ -13,15 +13,8 @@ struct SalmonStatsView: View {
     @Environment(\.presentationMode) var present
     @State var isPresented: Bool = false
     @State var isShowing: Bool = false
-    @AppStorage("isDarkMode") var isDarkMode: Bool = false
-
-//    init() {
-//        UINavigationBar.appearance().tintColor = isDarkMode ? UIColor.white : UIColor.black
-//        UINavigationBar.appearance().titleTextAttributes = [
-//            .font : UIFont.systemFont(ofSize: 20),
-//            NSAttributedString.Key.foregroundColor : isDarkMode ? UIColor.white : UIColor.black
-//        ]
-//    }
+    @State var appError: APPError? = nil
+    @AppStorage("apiToken") var apiToken: String?
 
     var body: some View {
         GeometryReader { geometry in
@@ -38,21 +31,19 @@ struct SalmonStatsView: View {
             VStack(spacing: 40) {
                 Button(action: { isPresented.toggle() }, label: {
                     Text("BTN_OPEN_SALMON_STATS")
-                        .splatfont2(.cloud, size: 20)
+                        .splatfont2(size: 20)
                 })
-                Button(action: { isShowing.toggle() }, label: {
-                    Text("BTN_INPUT_API_TOKEN")
-                        .splatfont2(.cloud, size: 20)
-                })
-                Button(action: { present.wrappedValue.dismiss() }, label: {
-                    Text("BTN_CANCEL")
-                        .splatfont2(.cloud, size: 20)
+                Button(action: { getAPITokenFromClipboard() }, label: {
+                    Text("BTN_PASTE_API_TOKEN")
+                        .splatfont2(size: 20)
                 })
             }
             .buttonStyle(BlueButtonStyle())
             .position(x: geometry.frame(in: .local).midX, y: 3 * geometry.size.height / 4)
         }
-        .background(BackGround)
+        .alert(isPresented: $isShowing) {
+            Alert(title: Text("ALERT_ERROR"), message: Text(appError!.localizedDescription.localized))
+        }
         .safariView(isPresented: $isPresented) {
             SafariView(url: URL(string: "https://salmon-stats-api.yuki.games/auth/twitter")!,
                        configuration: SafariView.Configuration(
@@ -60,16 +51,20 @@ struct SalmonStatsView: View {
                         barCollapsingEnabled: true
                        )
         )}
-        .navigationBarHidden(true)
-        .fullScreenCover(isPresented: $isShowing) {
-            InputTokenView(isPresented: $isShowing)
-        }
     }
-
-    var BackGround: some View {
-        Group {
-            LinearGradient(gradient: Gradient(colors: [.blue, .river]), startPoint: .top, endPoint: .bottom)
-                .edgesIgnoringSafeArea(.all)
+    
+    func getAPITokenFromClipboard() {
+        do {
+            guard let clipboard = UIPasteboard.general.string else { throw APPError.empty }
+            guard let apiToken = clipboard.capture(pattern: "[0-9a-z].*", group: 0) else { throw APPError.invalid }
+            if apiToken.count == 64 {
+                self.apiToken = apiToken
+            } else {
+                throw APPError.invalid
+            }
+        } catch(let error) {
+            appError = error as? APPError
+            isShowing.toggle()
         }
     }
 }
