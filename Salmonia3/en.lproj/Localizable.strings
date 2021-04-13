@@ -66,7 +66,7 @@
 "BTN_SKIP" = "Skip";
 "BTN_SET_API_TOKEN" = "Set";
 "BTN_OPEN_SALMON_STATS" = "Open website";
-"BTN_INPUT_API_TOKEN" = "Input";
+"BTN_PASTE_API_TOKEN" = "Paste from clipboard";
 
 // ログ表示
 "LOG_DOWNLOAD" = "Downloading";

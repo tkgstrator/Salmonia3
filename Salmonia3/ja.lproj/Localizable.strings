@@ -68,7 +68,7 @@
 "BTN_SIGN_UP" = "トウロク";
 "BTN_SKIP" = "スキップ";
 "BTN_OPEN_SALMON_STATS" = "ウェブサイトを開く";
-"BTN_INPUT_API_TOKEN" = "入力する";
+"BTN_PASTE_API_TOKEN" = "クリップボードから貼り付け";
 "BTN_SET_API_TOKEN" = "設定する";
 
 // ログ表示
