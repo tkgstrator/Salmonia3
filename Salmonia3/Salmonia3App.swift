@@ -17,8 +17,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         RealmManager.migration()
         FirebaseApp.configure()
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         ATTrackingManager.requestTrackingAuthorization(completionHandler: { _ in
-            GADMobileAds.sharedInstance().start(completionHandler: nil)
+//            GADMobileAds.sharedInstance().start(completionHandler: nil)
             print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
         })
         return true

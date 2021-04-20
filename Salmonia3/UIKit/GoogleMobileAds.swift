@@ -18,7 +18,7 @@ struct UIGoogleMobileAdsView: UIViewControllerRepresentable {
         let view = GADBannerView(adSize: kGADAdSizeBanner)
         let viewController = UIViewController()
         #if DEBUG
-        view.adUnitID = "ca-app-pub-7107468397673752/4904180382"
+//        view.adUnitID = "ca-app-pub-7107468397673752/4904180382"
         #else
         view.adUnitID = "ca-app-pub-7107468397673752/3665689717"
         #endif

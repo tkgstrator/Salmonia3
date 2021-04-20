@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/Alamofire/Alamofire",
         "state": {
           "branch": null,
-          "revision": "eaf6e622dd41b07b251d8f01752eab31bc811493",
-          "version": "5.4.1"
+          "revision": "4d19ad82f80cc71ff829b941ded114c56f4f604c",
+          "version": "5.4.2"
         }
       },
       {
@@ -17,6 +17,15 @@
           "branch": null,
           "revision": "561919b490eddf8f999b0f855cbf237001cbfccd",
           "version": "2.3.1"
+        }
+      },
+      {
+        "package": "CombineExpectations",
+        "repositoryURL": "https://github.com/groue/CombineExpectations.git",
+        "state": {
+          "branch": null,
+          "revision": "5c36f3199960776fc055196a93ca04bfc00e1857",
+          "version": "0.7.0"
         }
       },
       {

@@ -39,6 +39,11 @@ struct SettingView: View {
                 NavigationLink(destination: PaidProductView(), label: { Text("SETTING_PAID_PRODUCT") })
                 #endif
             }
+            #if DEBUG
+            Section(header: Text("HEADER_SALMONSTATS").splatfont2(.orange, size: 14)) {
+                NavigationLink(destination: ImportingView(), label: { Text("SETTING_IMPORT_RESULT")})
+            }
+            #endif
             Section(header: Text("HEADER_APPLICATION").splatfont2(.orange, size: 14)) {
                 PrivacyButton
                 Toggle("ERASE_SETTING", isOn: $isWarning)

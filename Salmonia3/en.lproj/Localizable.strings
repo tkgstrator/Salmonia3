@@ -67,6 +67,7 @@
 "BTN_SET_API_TOKEN" = "Set";
 "BTN_OPEN_SALMON_STATS" = "Open website";
 "BTN_PASTE_API_TOKEN" = "Paste from clipboard";
+"BTN_TUTORIAL" = "Tutorial";
 
 // ログ表示
 "LOG_DOWNLOAD" = "Downloading";
@@ -138,4 +139,13 @@
 "HELP_COUNT" = "Help Count";
 "DEAD_COUNT" = "Dead Count";
 
-
+"TAP_MIDDLE_BUTTON" = "Tap middle button";
+"INPUT_TWITTER_ACCOUNT_INFO" = "Input twtter account information";
+"WAIT_A_MINUTES" = "Wait a minute";
+"TAP_RIGHT_TOP_BURGER_MENU" = "Tap right top burger menu";
+"TAP_SETTINGS" = "Tap Settings";
+"TAP_GET_API_TOKEN" = "Tap Get API token";
+"TAP_COPY_TO_CLIPBOARD" = "Tap Copy to Clipboard";
+"TAP_DONE_LEFT_TOP_BUTTON" = "Tap Done";
+"TAP_BELOW_BUTTON" = "Tap below button";
+"CHECK_SALMON_STATS_STATUS" = "Complete if the status changed to Enable";

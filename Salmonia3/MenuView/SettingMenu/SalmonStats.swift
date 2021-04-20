@@ -12,6 +12,7 @@ struct SalmonStatsView: View {
 
     @Environment(\.presentationMode) var present
     @State var isPresented: Bool = false
+    @State var isActive: Bool = false
     @State var isShowing: Bool = false
     @State var appError: APPError? = nil
     @AppStorage("apiToken") var apiToken: String?
@@ -25,12 +26,17 @@ struct SalmonStatsView: View {
                     .splatfont2(.secondary, size: 18)
                     .multilineTextAlignment(.center)
                     .lineLimit(4)
+                NavigationLink(destination: TutorialView(), isActive: $isActive, label: { EmptyView() })
             }
             .padding(.horizontal, 10)
             .position(x: geometry.frame(in: .local).midX, y: geometry.size.height / 4)
             VStack(spacing: 40) {
                 Button(action: { isPresented.toggle() }, label: {
                     Text("BTN_OPEN_SALMON_STATS")
+                        .splatfont2(size: 20)
+                })
+                Button(action: { isActive.toggle() }, label: {
+                    Text("BTN_TUTORIAL")
                         .splatfont2(size: 20)
                 })
                 Button(action: { getAPITokenFromClipboard() }, label: {
