@@ -70,6 +70,7 @@
 "BTN_OPEN_SALMON_STATS" = "ウェブサイトを開く";
 "BTN_PASTE_API_TOKEN" = "クリップボードから貼り付け";
 "BTN_SET_API_TOKEN" = "設定する";
+"BTN_TUTORIAL" = "使い方";
 
 // ログ表示
 "LOG_DOWNLOAD" = "ダウンロード中";
@@ -149,3 +150,14 @@
 "BOSS_DEFEATED" = "ボス討伐数";
 "HELP_COUNT" = "救助数";
 "DEAD_COUNT" = "被救助数";
+
+"TAP_MIDDLE_BUTTON" = "真ん中のボタンをタップ";
+"INPUT_TWITTER_ACCOUNT_INFO" = "Twitterアカウントの情報を入力";
+"WAIT_A_MINUTES" = "しばらく待ちます";
+"TAP_RIGHT_TOP_BURGER_MENU" = "右上のバーガーメニューをひらきます";
+"TAP_SETTINGS" = "設定をタップ";
+"TAP_GET_API_TOKEN" = "Get API Tokenをタップ";
+"TAP_COPY_TO_CLIPBOARD" = "Copy to Clipboardをタップ";
+"TAP_DONE_LEFT_TOP_BUTTON" = "画面を閉じます";
+"TAP_BELOW_BUTTON" = "下の貼り付けを押します";
+"CHECK_SALMON_STATS_STATUS" = "有効になっていれば成功です";

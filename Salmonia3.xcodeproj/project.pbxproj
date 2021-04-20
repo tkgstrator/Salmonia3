@@ -17,6 +17,9 @@
 		1024662A25FE50A0004DC043 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024662925FE50A0004DC043 /* Int.swift */; };
 		1024663E26009956004DC043 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024663D26009956004DC043 /* Grade.swift */; };
 		1024664B2600D55E004DC043 /* StageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024664A2600D55E004DC043 /* StageType.swift */; };
+		10317286262C32FB00CF8903 /* SalmonStats in Frameworks */ = {isa = PBXBuildFile; productRef = 10317285262C32FB00CF8903 /* SalmonStats */; };
+		1031728E262C355500CF8903 /* ImportingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1031728D262C355500CF8903 /* ImportingView.swift */; };
+		10317294262C3F5100CF8903 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10317293262C3F5100CF8903 /* TutorialView.swift */; };
 		10377F4E25FCBF8600536A94 /* TwitterOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F4D25FCBF8600536A94 /* TwitterOAuth.swift */; };
 		10377F6525FCD63B00536A94 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F6425FCD63B00536A94 /* Font.swift */; };
 		10377F7525FCD8CD00536A94 /* RobotoMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10377F6125FCD5C200536A94 /* RobotoMono.ttf */; };
@@ -48,7 +51,6 @@
 		105941AD25FA500500C32D21 /* TopMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105941AC25FA500500C32D21 /* TopMenu.swift */; };
 		105941BE25FA525100C32D21 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105941BD25FA525100C32D21 /* Background.swift */; };
 		107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */; };
-		107E115A260FA709008E450B /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E1159260FA709008E450B /* TextInputView.swift */; };
 		107E115F260FA95C008E450B /* SalmonStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E115E260FA95C008E450B /* SalmonStats.swift */; };
 		107E1165260FBBCF008E450B /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E1164260FBBCE008E450B /* NetworkProtocol.swift */; };
 		107E116D260FBC21008E450B /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E116C260FBC21008E450B /* NetworkRequest.swift */; };
@@ -100,6 +102,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		100F564A262C308F00A1D1D0 /* SalmonStats */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SalmonStats; path = ../SalmonStats; sourceTree = "<group>"; };
 		102465F025FDDABD004DC043 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		1024660425FDE916004DC043 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1024661025FDF411004DC043 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -111,6 +114,8 @@
 		1024663D26009956004DC043 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		102466462600CE27004DC043 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1024664A2600D55E004DC043 /* StageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageType.swift; sourceTree = "<group>"; };
+		1031728D262C355500CF8903 /* ImportingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportingView.swift; sourceTree = "<group>"; };
+		10317293262C3F5100CF8903 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		10377F4D25FCBF8600536A94 /* TwitterOAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterOAuth.swift; sourceTree = "<group>"; };
 		10377F6125FCD5C200536A94 /* RobotoMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoMono.ttf; sourceTree = "<group>"; };
 		10377F6225FCD5C800536A94 /* Splatfont1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Splatfont1.ttf; sourceTree = "<group>"; };
@@ -146,7 +151,6 @@
 		105941AC25FA500500C32D21 /* TopMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMenu.swift; sourceTree = "<group>"; };
 		105941BD25FA525100C32D21 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopStats.swift; sourceTree = "<group>"; };
-		107E1159260FA709008E450B /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
 		107E115E260FA95C008E450B /* SalmonStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonStats.swift; sourceTree = "<group>"; };
 		107E1164260FBBCE008E450B /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
 		107E116C260FBC21008E450B /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 				10CF099425FB97F300D2EEB1 /* SwiftUIRefresh in Frameworks */,
 				10CF09AC25FB987600D2EEB1 /* Alamofire in Frameworks */,
 				10CF09B825FB9AC100D2EEB1 /* Realm in Frameworks */,
+				10317286262C32FB00CF8903 /* SalmonStats in Frameworks */,
 				104BD620261C98800013CD27 /* URLImage in Frameworks */,
 				10CF098E25FB97CB00D2EEB1 /* BetterSafariView in Frameworks */,
 				A8C5630EBE09FDEA7BF59B1C /* Pods_Salmonia3.framework in Frameworks */,
@@ -219,6 +224,7 @@
 				102465F025FDDABD004DC043 /* SettingView.swift */,
 				109EF35D260CAB7F00076157 /* ProductView.swift */,
 				107E115E260FA95C008E450B /* SalmonStats.swift */,
+				10317292262C3F4200CF8903 /* Tutorial */,
 			);
 			path = SettingMenu;
 			sourceTree = "<group>";
@@ -232,6 +238,14 @@
 				10BBBEA92604E69300DA79C9 /* SRImage.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		10317292262C3F4200CF8903 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				10317293262C3F5100CF8903 /* TutorialView.swift */,
+			);
+			path = Tutorial;
 			sourceTree = "<group>";
 		};
 		10377F6025FCD5A400536A94 /* Fonts */ = {
@@ -248,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				10377F9025FD09E800536A94 /* LoadingView.swift */,
+				1031728D262C355500CF8903 /* ImportingView.swift */,
 				10377F9825FD09FF00536A94 /* LoggingThread.swift */,
 				10377F9D25FD0A1200536A94 /* MBCirlceProgress.swift */,
 			);
@@ -268,9 +283,9 @@
 		10377FAB25FD165100536A94 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
+				10BBBEA126049EF400DA79C9 /* CoopResultView.swift */,
 				10377FAC25FD166200536A94 /* CoopResultCollection.swift */,
 				1024662425FE4012004DC043 /* CoopShiftCollection.swift */,
-				10BBBEA126049EF400DA79C9 /* CoopResultView.swift */,
 				10B07C5E260A1463008FDE1B /* CoopShiftStatsView.swift */,
 			);
 			path = Collection;
@@ -280,7 +295,6 @@
 			isa = PBXGroup;
 			children = (
 				104AA7DB2605E0C8007BDC24 /* GoogleMobileAds.swift */,
-				107E1159260FA709008E450B /* TextInputView.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -288,6 +302,7 @@
 		1059415A25FA49E500C32D21 = {
 			isa = PBXGroup;
 			children = (
+				100F564A262C308F00A1D1D0 /* SalmonStats */,
 				1059416525FA49E500C32D21 /* Salmonia3 */,
 				1059417725FA49E900C32D21 /* Salmonia3Tests */,
 				1059418225FA49E900C32D21 /* Salmonia3UITests */,
@@ -505,6 +520,7 @@
 				10CF09B925FB9AC100D2EEB1 /* RealmSwift */,
 				104BD602261C93310013CD27 /* KeychainAccess */,
 				104BD61F261C98800013CD27 /* URLImage */,
+				10317285262C32FB00CF8903 /* SalmonStats */,
 			);
 			productName = Salmonia3;
 			productReference = 1059416325FA49E500C32D21 /* Salmonia3.app */;
@@ -724,12 +740,12 @@
 				105941A025FA4E2500C32D21 /* LoginMenu.swift in Sources */,
 				107E117C260FBE03008E450B /* SalmonStatsAPI.swift in Sources */,
 				107E1177260FBD9C008E450B /* NetworkPublisher.swift in Sources */,
-				107E115A260FA709008E450B /* TextInputView.swift in Sources */,
 				1024662025FE0CE7004DC043 /* ProductManager.swift in Sources */,
 				10CF0A0A25FBA91800D2EEB1 /* OAuthLogin.swift in Sources */,
 				10377FA425FD10FE00536A94 /* Optional.swift in Sources */,
 				1024661625FDFF0F004DC043 /* ImageResize.swift in Sources */,
 				10B07C5F260A1463008FDE1B /* CoopShiftStatsView.swift in Sources */,
+				10317294262C3F5100CF8903 /* TutorialView.swift in Sources */,
 				107E1165260FBBCF008E450B /* NetworkProtocol.swift in Sources */,
 				1024662A25FE50A0004DC043 /* Int.swift in Sources */,
 				10377F6525FCD63B00536A94 /* Font.swift in Sources */,
@@ -758,6 +774,7 @@
 				107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */,
 				10CF09FB25FB9C6B00D2EEB1 /* CoreRealmCoop.swift in Sources */,
 				107E1172260FBC6B008E450B /* NetworkResponse.swift in Sources */,
+				1031728E262C355500CF8903 /* ImportingView.swift in Sources */,
 				10377F8B25FD053A00536A94 /* AppManager.swift in Sources */,
 				107E116D260FBC21008E450B /* NetworkRequest.swift in Sources */,
 				10AD114D2600EB18008C0E64 /* Error.swift in Sources */,
@@ -949,7 +966,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -974,7 +991,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1195,6 +1212,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		10317285262C32FB00CF8903 /* SalmonStats */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SalmonStats;
+		};
 		104BD602261C93310013CD27 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 104BD601261C93310013CD27 /* XCRemoteSwiftPackageReference "KeychainAccess" */;

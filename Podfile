@@ -1,4 +1,4 @@
-platform :ios, '14.0'
+platform :ios, '10.0'
 use_frameworks!
 
 target "Salmonia3" do
