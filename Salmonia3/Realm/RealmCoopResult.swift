@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+import SalmonStats
 
 class RealmCoopResult: Object, Identifiable, Decodable {
     @objc dynamic var pid: String?
@@ -82,6 +83,25 @@ class RealmCoopResult: Object, Identifiable, Decodable {
         case schedule           = "schedule"
     }
 
+    convenience init(from result: SalmonStats.ResultCoop) {
+        self.init()
+        self.stageId.value = result.stageId
+        self.salmonId.value = result.jobId
+        self.failureWave.value = result.jobResult.failureWave
+        self.failureReason = result.jobResult.failureReason
+        self.isClear = result.jobResult.isClear
+        self.dangerRate.value = result.dangerRate
+        self.playTime = result.time.playTime
+        self.endTime = result.time.endTime
+        self.startTime = result.time.startTime
+        self.goldenEggs.value = result.waveDetails.map{ $0.goldenIkuraNum }.reduce(0, +)
+        self.powerEggs.value = result.waveDetails.map{ $0.goldenIkuraNum }.reduce(0, +)
+        self.bossCounts.append(objectsIn: result.bossCounts)
+        self.bossKillCounts.append(objectsIn: result.bossKillCounts)
+        self.wave.append(objectsIn: result.waveDetails.map{ RealmCoopWave(from: $0) })
+        self.player.append(objectsIn: result.results.map{ RealmPlayerResult(from: $0) })
+    }
+    
     required convenience public init(from decoder: Decoder) throws {
         self.init()
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -148,7 +168,6 @@ class RealmCoopResult: Object, Identifiable, Decodable {
         #warning("JSONには入っていないデータは自身から計算する")
         goldenEggs.value = wave.sum(ofProperty: "goldenIkuraNum")
         powerEggs.value = wave.sum(ofProperty: "ikuraNum")
-
     }
 
 }
