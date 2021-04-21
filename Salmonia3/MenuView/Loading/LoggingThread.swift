@@ -19,7 +19,7 @@ struct LoggingThread: View {
             Spacer()
         }
         .navigationTitle("TITLE_LOGGING_THREAD")
-        .navigationBarBackButtonHidden(true)
+//        .navigationBarBackButtonHidden(true)
     }
 
     var Credit: some View {

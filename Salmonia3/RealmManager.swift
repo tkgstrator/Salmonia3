@@ -9,11 +9,14 @@ import Foundation
 import RealmSwift
 import Realm
 import SwiftyJSON
+import SalmonStats
 
-enum RealmManager {
-
-    public static func migration() {
-        // データベースのマイグレーションをする
+final class RealmManager {
+    
+    static let shared = RealmManager()
+    let realm: Realm
+    
+    init() {
         let config = Realm.Configuration(
             schemaVersion: 2048,
             migrationBlock: { migration, schemaVersion in
@@ -47,6 +50,7 @@ enum RealmManager {
                 print("MIGRATION NEEDED")
             })
         Realm.Configuration.defaultConfiguration = config
+        realm = try! Realm()
         try? RealmManager.addNewRotation()
     }
 
@@ -77,6 +81,13 @@ enum RealmManager {
         try realm.commitWrite()
     }
 
+    public static func addNewResultsFromSalmonStats(from results: [SalmonStats.ResultCoop]) {
+        RealmManager.shared.realm.beginWrite()
+        let results: [RealmCoopResult] = results.map{ RealmCoopResult(from: $0) }
+        results.map{ RealmManager.shared.realm.create(RealmCoopResult.self, value: $0, update: .all) }
+        try? RealmManager.shared.realm.commitWrite()
+    }
+    
     public static func addNewResult(from results: [JSON]) throws {
         guard let realm = try? Realm() else { return }
         realm.beginWrite()
@@ -87,15 +98,15 @@ enum RealmManager {
         try realm.commitWrite()
     }
 
-    public static func updateResult(from response: SalmonStats.UploadResult) throws {
-        guard let realm = try? Realm() else { return }
-        realm.beginWrite()
-        for id in response.results.map { (splatnet2: $0.jobId, salmonstats: $0.salmonId) } {
-            let result = realm.objects(RealmCoopResult.self).filter("jobId=%@", id.splatnet2)
-            result.setValue(id.salmonstats, forKey: "salmonId")
-        }
-        try realm.commitWrite()
-    }
+//    public static func updateResult(from response: SalmonStats.UploadResult) throws {
+//        guard let realm = try? Realm() else { return }
+//        realm.beginWrite()
+//        for id in response.results.map { (splatnet2: $0.jobId, salmonstats: $0.salmonId) } {
+//            let result = realm.objects(RealmCoopResult.self).filter("jobId=%@", id.splatnet2)
+//            result.setValue(id.salmonstats, forKey: "salmonId")
+//        }
+//        try realm.commitWrite()
+//    }
 
     private static func addNewRotation() throws {
         ProductManger.getFutureRotation { response, _ in

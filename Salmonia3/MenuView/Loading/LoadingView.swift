@@ -78,22 +78,22 @@ struct LoadingView: View {
                                 }
                             }
 
-                            if apiToken != nil {
-                                for result in results.chunked(by: 10) {
-                                    task.append(SalmonStatsAPI().uploadResultToSalmonStats(from: result.map { $0.dictionaryObject! })
-                                        .receive(on: DispatchQueue.main)
-                                        .sink(receiveCompletion: { completion in
-                                            switch completion {
-                                            case .finished:
-                                                print("SUCCESS")
-                                            case .failure(let error):
-                                                print("FAILURE", error)
-                                            }
-                                        }, receiveValue: { results in
-                                            try? RealmManager.updateResult(from: results)
-                                        }))
-                                }
-                            }
+//                            if apiToken != nil {
+//                                for result in results.chunked(by: 10) {
+//                                    task.append(SalmonStatsAPI().uploadResultToSalmonStats(from: result.map { $0.dictionaryObject! })
+//                                        .receive(on: DispatchQueue.main)
+//                                        .sink(receiveCompletion: { completion in
+//                                            switch completion {
+//                                            case .finished:
+//                                                print("SUCCESS")
+//                                            case .failure(let error):
+//                                                print("FAILURE", error)
+//                                            }
+//                                        }, receiveValue: { results in
+//                                            try? RealmManager.updateResult(from: results)
+//                                        }))
+//                                }
+//                            }
 
                             try RealmManager.addNewResult(from: results)
                             try RealmManager.updateUserInfo(pid: nsaid, summary: summary)
