@@ -81,9 +81,9 @@ final class RealmManager {
         try realm.commitWrite()
     }
 
-    public static func addNewResultsFromSalmonStats(from results: [SalmonStats.ResultCoop]) {
+    public static func addNewResultsFromSalmonStats(from results: [SalmonStats.ResultCoop], pid: String) {
         RealmManager.shared.realm.beginWrite()
-        let results: [RealmCoopResult] = results.map{ RealmCoopResult(from: $0) }
+        let results: [RealmCoopResult] = results.map{ RealmCoopResult(from: $0, pid: pid) }
         results.map{ RealmManager.shared.realm.create(RealmCoopResult.self, value: $0, update: .all) }
         try? RealmManager.shared.realm.commitWrite()
     }

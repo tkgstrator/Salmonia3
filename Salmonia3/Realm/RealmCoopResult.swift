@@ -83,19 +83,24 @@ class RealmCoopResult: Object, Identifiable, Decodable {
         case schedule           = "schedule"
     }
 
-    convenience init(from result: SalmonStats.ResultCoop) {
+    convenience init(from result: SalmonStats.ResultCoop, pid: String) {
         self.init()
         self.stageId.value = result.stageId
         self.salmonId.value = result.jobId
         self.failureWave.value = result.jobResult.failureWave
         self.failureReason = result.jobResult.failureReason
         self.isClear = result.jobResult.isClear
+        self.pid = pid
+        if let gradePoint = result.results.filter({ $0.pid == pid }).first?.gradePoint {
+            self.gradePoint.value = gradePoint.gradePointValue
+            self.gradeId.value = gradePoint.gradeIdValue
+        }
         self.dangerRate.value = result.dangerRate
         self.playTime = result.time.playTime
         self.endTime = result.time.endTime
         self.startTime = result.time.startTime
         self.goldenEggs.value = result.waveDetails.map{ $0.goldenIkuraNum }.reduce(0, +)
-        self.powerEggs.value = result.waveDetails.map{ $0.goldenIkuraNum }.reduce(0, +)
+        self.powerEggs.value = result.waveDetails.map{ $0.ikuraNum }.reduce(0, +)
         self.bossCounts.append(objectsIn: result.bossCounts)
         self.bossKillCounts.append(objectsIn: result.bossKillCounts)
         self.wave.append(objectsIn: result.waveDetails.map{ RealmCoopWave(from: $0) })
@@ -198,5 +203,41 @@ private struct Schedule: Codable {
         if stageURL.contains("e9f7c7b35e6d46778cd3cbc0d89bd7e1bc3be493") { return 5003 }
         if stageURL.contains("50064ec6e97aac91e70df5fc2cfecf61ad8615fd") { return 5004 }
         return nil
+    }
+}
+
+private extension Int {
+    var gradeIdValue: Int? {
+        switch self {
+        case 0 ..< 100:
+            return 1
+        case 100 ..< 200:
+            return 2
+        case 200 ..< 300:
+            return 3
+        case 300 ..< 400:
+            return 4
+        case 400 ..< 1400:
+            return 5
+        default:
+            return nil
+        }
+    }
+    
+    var gradePointValue: Int? {
+        switch self {
+        case 0 ..< 100:
+            return self
+        case 100 ..< 200:
+            return self - 100
+        case 200 ..< 300:
+            return self - 200
+        case 300 ..< 400:
+            return self - 300
+        case 400 ..< 1400:
+            return self - 400
+        default:
+            return nil
+        }
     }
 }
