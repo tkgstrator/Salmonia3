@@ -84,7 +84,19 @@ final class RealmManager {
     public static func addNewResultsFromSalmonStats(from results: [SalmonStats.ResultCoop], pid: String) {
         RealmManager.shared.realm.beginWrite()
         let results: [RealmCoopResult] = results.map{ RealmCoopResult(from: $0, pid: pid) }
-        results.map{ RealmManager.shared.realm.create(RealmCoopResult.self, value: $0, update: .all) }
+        for result in results {
+            switch result.isDuplicated {
+            case true:
+                // SalmonIdのみアップデート
+                // 被っているplayTimeを取得
+                if let duplicate = result.duplicatedResult {
+                    duplicate.setValue(result.salmonId, forKey: "salmonId")
+                }
+            case false:
+                // 書き込み
+                RealmManager.shared.realm.create(RealmCoopResult.self, value: result, update: .all)
+            }
+        }
         try? RealmManager.shared.realm.commitWrite()
     }
     
@@ -142,5 +154,17 @@ final class RealmManager {
             realm.delete(realm.objects(RealmPlayerResult.self))
             try? realm.commitWrite()
         }
+    }
+}
+
+fileprivate extension RealmCoopResult {
+    var isDuplicated: Bool {
+        return !(RealmManager.shared.realm.objects(RealmCoopResult.self)
+                    .filter("playTime BETWEEN %@", [self.playTime - 5, self.playTime + 5])).isEmpty
+    }
+    
+    var duplicatedResult: RealmCoopResult? {
+        return RealmManager.shared.realm.objects(RealmCoopResult.self)
+            .filter("playTime BETWEEN %@", [self.playTime - 5, self.playTime + 5]).first
     }
 }
