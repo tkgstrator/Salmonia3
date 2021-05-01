@@ -9,13 +9,13 @@ import Foundation
 import BetterSafariView
 import SwiftUI
 import SplatNet2
-import SwiftyJSON
+import Combine
 
 struct LoginMenu: View {
     @State var isActive: Bool = false
     @State var isPresented: Bool = false
     @State var isShowing: Bool = false
-    private let verifier: String = String.randomString
+    @State var task = Set<AnyCancellable>()
 
     var body: some View {
         GeometryReader { geometry in
@@ -50,10 +50,21 @@ struct LoginMenu: View {
             .position(x: geometry.frame(in: .local).midX, y: 3 * geometry.size.height / 4)
         }
         .webAuthenticationSession(isPresented: $isPresented) {
-            WebAuthenticationSession(url: verifier.oauthURL, callbackURLScheme: "npf71b963c1b7b6d119") { callbackURL, _ in
+            WebAuthenticationSession(url: SplatNet2.shared.oauthURL, callbackURLScheme: "npf71b963c1b7b6d119") { callbackURL, _ in
                 #warning("ここでエラー処理をしないといけない")
                 guard let code: String = callbackURL?.absoluteString.capture(pattern: "de=(.*)&", group: 1) else { return }
-                try? loginSplatNet2(code: code, verifier: verifier)
+                SplatNet2.shared.getCookie(sessionTokenCode: code)
+                    .sink(receiveCompletion: { completion in
+                        switch completion {
+                        case .finished:
+                            isActive.toggle()
+                        case.failure(let error):
+                            print(error)
+                        }
+                    }, receiveValue: { response in
+                        print(response)
+                    })
+                    .store(in: &task)
             }
             .prefersEphemeralWebBrowserSession(false)
         }
@@ -61,9 +72,7 @@ struct LoginMenu: View {
             SafariView(url: URL(string: "https://my.nintendo.com/login")!,
                        configuration: SafariView.Configuration(
                         entersReaderIfAvailable: false,
-                        barCollapsingEnabled: true
-                       )
-            )
+                        barCollapsingEnabled: true))
             .preferredBarAccentColor(.clear)
             .preferredControlAccentColor(.accentColor)
             .dismissButtonStyle(.done)
@@ -77,29 +86,6 @@ struct LoginMenu: View {
             LinearGradient(gradient: Gradient(colors: [.blue, .river]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
             NavigationLink(destination: SalmonLoginMenu(), isActive: $isActive) { EmptyView() }
-        }
-    }
-
-    func loginSplatNet2(code: String, verifier: String) throws {
-        DispatchQueue(label: "Login").async {
-            do {
-                #warning("X-Product Versionが固定だった")
-                let version: String = "1.10.1"
-                var response: JSON = JSON()
-                response = try SplatNet2.getSessionToken(code, verifier)
-                guard let session_token: String = response["session_token"].string else { return }
-                response = try SplatNet2.genIksmSession(session_token, version: version)
-                guard let thumbnail_url = response["user"]["thumbnail_url"].string else { return }
-                guard let nickname = response["user"]["nickname"].string else { return }
-                guard let iksm_session = response["iksm_session"].string else { return }
-                guard let nsaid = response["nsaid"].string else { return }
-                let value: [String: Any?] = ["nsaid": nsaid, "nickname": nickname, "thumbnailURL": thumbnail_url, "iksmSession": iksm_session, "sessionToken": session_token, "isActive": true]
-                try RealmManager.addNewAccount(account: RealmUserInfo(value: value))
-                isActive.toggle()
-            } catch let error {
-                #warning("ここにエラー処理を書く")
-                print(error)
-            }
         }
     }
 }
