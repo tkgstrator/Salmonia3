@@ -12,7 +12,7 @@ import SalmonStats
 struct ImportingView: View {
     @Environment(\.presentationMode) var present
     @State var data: ProgressData = ProgressData()
-    @State var task: AnyCancellable?
+    @State var task = Set<AnyCancellable>()
     
     private func dismiss() {
         DispatchQueue.main.async { present.wrappedValue.dismiss() }
@@ -21,14 +21,14 @@ struct ImportingView: View {
     var body: some View {
         LoggingThread(data: $data)
             .onAppear {
-                task = SalmonStats.shared.getMetadata(nsaid: "91d160aa84e88da6")
+                let nsaid = "91d160aa84e88da6"
+                SalmonStats.shared.getMetadata(nsaid: nsaid)
                     .sink(receiveCompletion: { completion in
                     }, receiveValue: { metadata in
                         for userdata in metadata {
                             let lastPageId: Int = Int((userdata.results.clear + userdata.results.fail) / 200) + 1
-                            print("LastPageID", lastPageId)
                             for pageId in Range(1 ... 1) {
-                                task = SalmonStats.shared.getResults(nsaid: userdata.playerId, pageId: pageId)
+                                SalmonStats.shared.getResults(nsaid: userdata.playerId, pageId: pageId)
                                     .sink(receiveCompletion: { completion in
                                         switch completion {
                                         case .finished:
@@ -37,12 +37,13 @@ struct ImportingView: View {
                                             print(error)
                                         }
                                     }, receiveValue: { results in
-                                        RealmManager.addNewResultsFromSalmonStats(from: results)
+                                        RealmManager.addNewResultsFromSalmonStats(from: results, pid: nsaid)
                                     })
+                                    .store(in: &task)
                             }
                         }
                     })
-//                task = SalmonStats.shared.getResults(nsaid: <#T##String#>, pageId: <#T##Int#>)
+                    .store(in: &task)
             }
             .navigationTitle("TITLE_IMPORT_SALMONSTATS")
     }
