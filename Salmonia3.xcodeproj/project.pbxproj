@@ -53,6 +53,7 @@
 		10795D48262F39600078A21B /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10795D47262F39600078A21B /* Keychain.swift */; };
 		107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */; };
 		107E115F260FA95C008E450B /* SalmonStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E115E260FA95C008E450B /* SalmonStats.swift */; };
+		1090C689263DF162000DD54C /* SplatNet2 in Frameworks */ = {isa = PBXBuildFile; productRef = 1090C688263DF162000DD54C /* SplatNet2 */; };
 		109EF35E260CAB7F00076157 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF35D260CAB7F00076157 /* ProductView.swift */; };
 		109EF375260CB01E00076157 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF374260CB01E00076157 /* ButtonStyle.swift */; };
 		10A08032262070A200BFDF59 /* ShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A08031262070A200BFDF59 /* ShiftStats.swift */; };
@@ -66,7 +67,6 @@
 		10CF099A25FB980400D2EEB1 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF099925FB980400D2EEB1 /* SwiftyJSON */; };
 		10CF09A025FB984400D2EEB1 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF099F25FB984400D2EEB1 /* SwiftyStoreKit */; };
 		10CF09AC25FB987600D2EEB1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF09AB25FB987600D2EEB1 /* Alamofire */; };
-		10CF09B225FB988800D2EEB1 /* SplatNet2 in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF09B125FB988800D2EEB1 /* SplatNet2 */; };
 		10CF09B825FB9AC100D2EEB1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF09B725FB9AC100D2EEB1 /* Realm */; };
 		10CF09BA25FB9AC100D2EEB1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF09B925FB9AC100D2EEB1 /* RealmSwift */; };
 		10CF09BF25FB9AEC00D2EEB1 /* LegacyNavigationViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF09BE25FB9AEC00D2EEB1 /* LegacyNavigationViewStyle.swift */; };
@@ -149,6 +149,7 @@
 		10795D47262F39600078A21B /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopStats.swift; sourceTree = "<group>"; };
 		107E115E260FA95C008E450B /* SalmonStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonStats.swift; sourceTree = "<group>"; };
+		1090C681263DF125000DD54C /* SplatNet2 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SplatNet2; path = ../SplatNet2; sourceTree = "<group>"; };
 		109EF35D260CAB7F00076157 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		109EF374260CB01E00076157 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		10A08031262070A200BFDF59 /* ShiftStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftStats.swift; sourceTree = "<group>"; };
@@ -178,8 +179,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				10CF099A25FB980400D2EEB1 /* SwiftyJSON in Frameworks */,
-				10CF09B225FB988800D2EEB1 /* SplatNet2 in Frameworks */,
 				10CF09A025FB984400D2EEB1 /* SwiftyStoreKit in Frameworks */,
+				1090C689263DF162000DD54C /* SplatNet2 in Frameworks */,
 				10CF09BA25FB9AC100D2EEB1 /* RealmSwift in Frameworks */,
 				104BD603261C93310013CD27 /* KeychainAccess in Frameworks */,
 				10CF099425FB97F300D2EEB1 /* SwiftUIRefresh in Frameworks */,
@@ -294,6 +295,7 @@
 		1059415A25FA49E500C32D21 = {
 			isa = PBXGroup;
 			children = (
+				1090C681263DF125000DD54C /* SplatNet2 */,
 				100F564A262C308F00A1D1D0 /* SalmonStats */,
 				1059416525FA49E500C32D21 /* Salmonia3 */,
 				1059417725FA49E900C32D21 /* Salmonia3Tests */,
@@ -495,12 +497,12 @@
 				10CF099925FB980400D2EEB1 /* SwiftyJSON */,
 				10CF099F25FB984400D2EEB1 /* SwiftyStoreKit */,
 				10CF09AB25FB987600D2EEB1 /* Alamofire */,
-				10CF09B125FB988800D2EEB1 /* SplatNet2 */,
 				10CF09B725FB9AC100D2EEB1 /* Realm */,
 				10CF09B925FB9AC100D2EEB1 /* RealmSwift */,
 				104BD602261C93310013CD27 /* KeychainAccess */,
 				104BD61F261C98800013CD27 /* URLImage */,
 				10317285262C32FB00CF8903 /* SalmonStats */,
+				1090C688263DF162000DD54C /* SplatNet2 */,
 			);
 			productName = Salmonia3;
 			productReference = 1059416325FA49E500C32D21 /* Salmonia3.app */;
@@ -582,7 +584,6 @@
 				10CF099825FB980400D2EEB1 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				10CF099E25FB984400D2EEB1 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
 				10CF09AA25FB987600D2EEB1 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				10CF09B025FB988800D2EEB1 /* XCRemoteSwiftPackageReference "SplatNet2" */,
 				10CF09B625FB9AC100D2EEB1 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				104BD601261C93310013CD27 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				104BD61E261C98800013CD27 /* XCRemoteSwiftPackageReference "url-image" */,
@@ -1169,14 +1170,6 @@
 				minimumVersion = 5.4.1;
 			};
 		};
-		10CF09B025FB988800D2EEB1 /* XCRemoteSwiftPackageReference "SplatNet2" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tkgstrator/SplatNet2.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.8;
-			};
-		};
 		10CF09B625FB9AC100D2EEB1 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa";
@@ -1202,6 +1195,10 @@
 			package = 104BD61E261C98800013CD27 /* XCRemoteSwiftPackageReference "url-image" */;
 			productName = URLImage;
 		};
+		1090C688263DF162000DD54C /* SplatNet2 */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SplatNet2;
+		};
 		10CF098D25FB97CB00D2EEB1 /* BetterSafariView */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 10CF098C25FB97CB00D2EEB1 /* XCRemoteSwiftPackageReference "BetterSafariView" */;
@@ -1226,11 +1223,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 10CF09AA25FB987600D2EEB1 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		10CF09B125FB988800D2EEB1 /* SplatNet2 */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 10CF09B025FB988800D2EEB1 /* XCRemoteSwiftPackageReference "SplatNet2" */;
-			productName = SplatNet2;
 		};
 		10CF09B725FB9AC100D2EEB1 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
