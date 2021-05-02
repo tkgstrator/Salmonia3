@@ -8,8 +8,8 @@
 import Foundation
 import RealmSwift
 import Realm
-import SwiftyJSON
 import SalmonStats
+import SplatNet2
 
 final class RealmManager {
     
@@ -51,36 +51,49 @@ final class RealmManager {
             })
         Realm.Configuration.defaultConfiguration = config
         realm = try! Realm()
-        try? RealmManager.addNewRotation()
+//        try? RealmManager.addNewRotation()
     }
 
+    // シフトスケジュールを取得
     public static func getShiftSchedule(startTime: Int) throws -> RealmCoopShift {
         guard let realm = try? Realm() else { throw APPError.realm }
-        guard let shift = realm.objects(RealmCoopShift.self).filter("startTime=%@", startTime).first else { throw APPError.realm }
-        return shift
+        guard let schedule = realm.objects(RealmCoopShift.self).filter("startTime=%@", startTime).first else { throw APPError.realm }
+        return schedule
     }
     
-    public static func updateUserInfo(pid: String, summary: JSON) throws {
-        guard let realm = try? Realm() else { return }
-        let user = try JSONDecoder().decode(RealmUserInfo.self, from: summary["summary"]["card"].rawData())
-        let account = realm.objects(RealmUserInfo.self).filter("nsaid=%@", pid)
-        realm.beginWrite()
-        account.setValue(user.jobNum, forKey: "jobNum")
-        account.setValue(user.goldenIkuraTotal, forKey: "goldenIkuraTotal")
-        account.setValue(user.helpTotal, forKey: "helpTotal")
-        account.setValue(user.ikuraTotal, forKey: "ikuraTotal")
-        account.setValue(user.kumaPoint, forKey: "kumaPoint")
-        account.setValue(user.kumaPointTotal, forKey: "kumaPointTotal")
-        try realm.commitWrite()
-    }
-
-    public static func addNewAccount(account: RealmUserInfo) throws {
+    // 新規アカウント追加
+    public static func addNewAccount(from account: Response.UserInfo) throws {
         guard let realm = try? Realm() else { return }
         realm.beginWrite()
-        realm.create(RealmUserInfo.self, value: account, update: .all)
+        realm.create(RealmUserInfo.self, value: RealmUserInfo(from: account), update: .all)
         try realm.commitWrite()
     }
+    
+    // ユーザ情報を更新
+    public static func updateUserInfo(from account: Response.UserInfo) throws {
+        
+    }
+    
+    public static func addNewResultsFromSplatNet2(from results: [SplatNet2.Coop.Result], pid: String) {
+        RealmManager.shared.realm.beginWrite()
+        let results: [RealmCoopResult] = results.map{ RealmCoopResult(from: $0, pid: pid) }
+        for result in results {
+            switch result.isDuplicated {
+            case true:
+                // SalmonIdのみアップデート
+                // 被っているplayTimeを取得
+                if let duplicate = result.duplicatedResult {
+                    duplicate.setValue(result.salmonId, forKey: "salmonId")
+                }
+            case false:
+                // 書き込み
+                RealmManager.shared.realm.create(RealmCoopResult.self, value: result, update: .all)
+            }
+        }
+        try? RealmManager.shared.realm.commitWrite()
+    }
 
+    // Salmon Statsからのリザルト追加
     public static func addNewResultsFromSalmonStats(from results: [SalmonStats.ResultCoop], pid: String) {
         RealmManager.shared.realm.beginWrite()
         let results: [RealmCoopResult] = results.map{ RealmCoopResult(from: $0, pid: pid) }
@@ -100,15 +113,15 @@ final class RealmManager {
         try? RealmManager.shared.realm.commitWrite()
     }
     
-    public static func addNewResult(from results: [JSON]) throws {
-        guard let realm = try? Realm() else { return }
-        realm.beginWrite()
-        for result in results {
-            let result = try JSONDecoder().decode(RealmCoopResult.self, from: result.rawData())
-            realm.create(RealmCoopResult.self, value: result, update: .all)
-        }
-        try realm.commitWrite()
-    }
+//    public static func addNewResult(from results: [JSON]) throws {
+//        guard let realm = try? Realm() else { return }
+//        realm.beginWrite()
+//        for result in results {
+//            let result = try JSONDecoder().decode(RealmCoopResult.self, from: result.rawData())
+//            realm.create(RealmCoopResult.self, value: result, update: .all)
+//        }
+//        try realm.commitWrite()
+//    }
 
 //    public static func updateResult(from response: SalmonStats.UploadResult) throws {
 //        guard let realm = try? Realm() else { return }
@@ -120,29 +133,29 @@ final class RealmManager {
 //        try realm.commitWrite()
 //    }
 
-    private static func addNewRotation() throws {
-        ProductManger.getFutureRotation { response, _ in
-            guard let response = response else { return }
-            guard let realm = try? Realm() else { return }
-            realm.beginWrite()
-            for (_, data) in response {
-                let value = try? JSONDecoder().decode(RealmCoopShift.self, from: data.rawData())
-                realm.create(RealmCoopShift.self, value: value, update: .all)
-            }
-            try? realm.commitWrite()
-        }
-    }
+//    private static func addNewRotation() throws {
+//        ProductManger.getFutureRotation { response, _ in
+//            guard let response = response else { return }
+//            guard let realm = try? Realm() else { return }
+//            realm.beginWrite()
+//            for (_, data) in response {
+//                let value = try? JSONDecoder().decode(RealmCoopShift.self, from: data.rawData())
+//                realm.create(RealmCoopShift.self, value: value, update: .all)
+//            }
+//            try? realm.commitWrite()
+//        }
+//    }
 
-    public static func setIksmSession(nsaid: String, account: JSON) throws {
-        let user = try JSONDecoder().decode(RealmUserInfo.self, from: account.rawData())
-        guard let realm = try? Realm() else { return }
-        let account = realm.objects(RealmUserInfo.self).filter("nsaid=%@", nsaid)
-        realm.beginWrite()
-        account.setValue(user.nickname, forKey: "nickname")
-        account.setValue(user.thumbnailURL, forKey: "thumbnailURL")
-        account.setValue(user.iksmSession, forKey: "iksmSession")
-        try? realm.commitWrite()
-    }
+//    public static func setIksmSession(nsaid: String, account: JSON) throws {
+//        let user = try JSONDecoder().decode(RealmUserInfo.self, from: account.rawData())
+//        guard let realm = try? Realm() else { return }
+//        let account = realm.objects(RealmUserInfo.self).filter("nsaid=%@", nsaid)
+//        realm.beginWrite()
+//        account.setValue(user.nickname, forKey: "nickname")
+//        account.setValue(user.thumbnailURL, forKey: "thumbnailURL")
+//        account.setValue(user.iksmSession, forKey: "iksmSession")
+//        try? realm.commitWrite()
+//    }
 
     static func eraseAllRecord() throws {
         guard let realm = try? Realm() else { return }

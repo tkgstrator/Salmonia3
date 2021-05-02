@@ -63,6 +63,7 @@ struct LoginMenu: View {
                         }
                     }, receiveValue: { response in
                         print(response)
+                        try? RealmManager.addNewAccount(from: response)
                     })
                     .store(in: &task)
             }
