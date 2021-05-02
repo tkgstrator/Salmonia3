@@ -94,7 +94,6 @@ fileprivate extension SplatNet2Metadata.WaterLevel {
             return "high"
         }
     }
-    
 }
 
 private class EventType: Codable {
