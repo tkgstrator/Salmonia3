@@ -53,7 +53,11 @@ final class RealmManager {
         realm = try! Realm()
 //        try? RealmManager.addNewRotation()
     }
-
+    // 最新のバイトIDを取得
+    public static func getLatestResultId() -> Int {
+        return RealmManager.shared.realm.objects(RealmUserInfo.self).first?.jobNum ?? -1
+    }
+    
     // シフトスケジュールを取得
     public static func getShiftSchedule(startTime: Int) throws -> RealmCoopShift {
         guard let realm = try? Realm() else { throw APPError.realm }
@@ -74,21 +78,20 @@ final class RealmManager {
         
     }
     
-    public static func addNewResultsFromSplatNet2(from results: [SplatNet2.Coop.Result], pid: String) {
+    public static func addNewResultsFromSplatNet2(from result: SplatNet2.Coop.Result, pid: String) {
         RealmManager.shared.realm.beginWrite()
-        let results: [RealmCoopResult] = results.map{ RealmCoopResult(from: $0, pid: pid) }
-        for result in results {
-            switch result.isDuplicated {
-            case true:
-                // SalmonIdのみアップデート
-                // 被っているplayTimeを取得
-                if let duplicate = result.duplicatedResult {
-                    duplicate.setValue(result.salmonId, forKey: "salmonId")
-                }
-            case false:
-                // 書き込み
-                RealmManager.shared.realm.create(RealmCoopResult.self, value: result, update: .all)
+        let result: RealmCoopResult = RealmCoopResult(from: result, pid: pid)
+        switch result.isDuplicated {
+        case true:
+            // SalmonIdのみアップデート
+            // 被っているplayTimeを取得
+            print("DUPLICATED")
+            if let duplicate = result.duplicatedResult {
+                duplicate.setValue(result.salmonId, forKey: "salmonId")
             }
+        case false:
+            // 書き込み
+            RealmManager.shared.realm.create(RealmCoopResult.self, value: result, update: .all)
         }
         try? RealmManager.shared.realm.commitWrite()
     }

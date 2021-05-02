@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 import SplatNet2
 import RealmSwift
-import SwiftyJSON
 import Combine
 
 struct LoadingView: View {
@@ -17,9 +16,10 @@ struct LoadingView: View {
     @EnvironmentObject var user: AppSettings
     @AppStorage("apiToken") var apiToken: String?
     @State var data: ProgressData = ProgressData()
+    
     @State var isPresented: Bool = false
-    @State var appError: APPError?
-    @State private var task: [AnyCancellable?] = []
+    @State var apiError: APIError?
+    @State private var task = Set<AnyCancellable>()
 
     private func dismiss() {
         DispatchQueue.main.async { present.wrappedValue.dismiss() }
@@ -28,94 +28,48 @@ struct LoadingView: View {
     var body: some View {
         LoggingThread(data: $data)
             .onAppear {
-//                // DispatchQueue前のエラー処理
-//                do {
-//                    guard var iksmSession: String = user.account.iksmSession else { throw APPError.empty }
-//                    guard let sessionToken: String = user.account.sessionToken else { throw APPError.empty }
-//                    guard let nsaid: String = user.account.nsaid else { throw APPError.empty }
-//                    var jobId: (local: Int, remote: Int) = (user.account.jobNum, 0)
-//
-//                    DispatchQueue(label: "Loading from SplatNet2").async {
-//                        do {
-//                            if !SplatNet2.isValid(iksm_session: iksmSession) {
-//                                let response: JSON = try SplatNet2.genIksmSession(sessionToken)
-//                                try RealmManager.setIksmSession(nsaid: nsaid, account: response)
-//                                iksmSession = response["iksm_session"].stringValue
-//                            }
-//
-//                            // バイト概要を取得
-//                            let summary: JSON = try SplatNet2.getSummary(iksm_session: iksmSession)
-//
-//                            if let _jobId = summary["summary"]["card"]["job_num"].int {
-//                                #if DEBUG
-//                                jobId.remote = _jobId
-//                                #else
-//                                // ローカルと同じまたはリザルト数が0なら空エラーを返す
-//                                if _jobId == 0 || (_jobId == jobId.local) { throw APPError.empty }
-//                                jobId.remote = _jobId
-//                                #endif
-//                            } else {
-//                                // JSONが取得できなかった場合
-//                                throw APPError.unknown
-//                            }
-//
-//                            #if DEBUG
-//                            let jobNumRange: Range<Int> = Range(jobId.remote - 20 ... jobId.remote)
-//                            #else
-//                            let jobNumRange: Range<Int> = Range(max(jobId.remote - 49, jobId.local + 1) ... jobId.remote)
-//                            #endif
-//
-//                            var results: [JSON] = []
-//                            for (_, jobId) in jobNumRange.enumerated() {
-//                                do {
-//                                    let result: JSON = try SplatNet2.getResult(job_id: jobId, iksm_session: iksmSession)
-//                                    Thread.sleep(forTimeInterval: 1)
-//                                    results.append(result)
-//                                    data.progress += 1 / CGFloat(jobNumRange.count)
-//                                } catch {
-//                                    appError = error as? APPError
-//                                    isPresented.toggle()
-//                                }
-//                            }
-//
-////                            if apiToken != nil {
-////                                for result in results.chunked(by: 10) {
-////                                    task.append(SalmonStatsAPI().uploadResultToSalmonStats(from: result.map { $0.dictionaryObject! })
-////                                        .receive(on: DispatchQueue.main)
-////                                        .sink(receiveCompletion: { completion in
-////                                            switch completion {
-////                                            case .finished:
-////                                                print("SUCCESS")
-////                                            case .failure(let error):
-////                                                print("FAILURE", error)
-////                                            }
-////                                        }, receiveValue: { results in
-////                                            try? RealmManager.updateResult(from: results)
-////                                        }))
-////                                }
-////                            }
-//
-//                            try RealmManager.addNewResult(from: results)
-//                            try RealmManager.updateUserInfo(pid: nsaid, summary: summary)
-//                            DispatchQueue.main.async { present.wrappedValue.dismiss() }
-//                        } catch {
-//                            appError = error as? APPError
-//                            isPresented.toggle()
-//                        }
-//                    }
-//                } catch {
-//                    appError = error as? APPError
-//                    isPresented.toggle()
-//                }
+                getResultFromSplatNet2()
             }
             .alert(isPresented: $isPresented) {
                 Alert(title: Text("ALERT_ERROR"),
-                      message: Text(appError?.errorDescription!.localized ?? "FATAL ERROR"),
-                      dismissButton: .default(Text("BTN_DISMISS"),
-                                              action: {
-                                                DispatchQueue.main.async { present.wrappedValue.dismiss() }
-                                              }))
+                      message: Text(apiError?.localizedDescription ?? "ERROR"),
+                      dismissButton: .default(Text("BTN_DISMISS"), action: { dismiss() }))
             }
+    }
+    
+    private func getResultFromSplatNet2() {
+        SplatNet2.shared.getSummaryCoop()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    isPresented.toggle()
+                    apiError = error
+                }
+            }, receiveValue: { response in
+                if RealmManager.getLatestResultId() != response.summary.card.jobNum {
+                    let jobNum = response.summary.card.jobNum
+                    let jobIds = Range(max(RealmManager.getLatestResultId() + 1, jobNum - 49) ... jobNum)
+                    for jobId in jobIds {
+                        SplatNet2.shared.getResultCoop(jobId: jobId)
+                            .receive(on: DispatchQueue.main)
+                            .sink(receiveCompletion: { completion in
+                                switch completion {
+                                case .finished:
+                                    print("JOB ID", jobId, "FINISHED")
+                                case .failure(let error):
+                                    print("JOB ID", jobId, "ERROR", error)
+                                }
+                            }, receiveValue: { response in
+                                RealmManager.addNewResultsFromSplatNet2(from: response, pid: SplatNet2.shared.playerId!)
+                            })
+                            .store(in: &task)
+                    }
+                }
+            })
+            .store(in: &task)
     }
 }
 
