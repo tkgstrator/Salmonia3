@@ -10,10 +10,12 @@ import RealmSwift
 import Realm
 import SalmonStats
 import SplatNet2
+import Combine
 
 final class RealmManager {
     
     static let shared = RealmManager()
+    private var task = Set<AnyCancellable>()
     let realm: Realm
     
     init() {
@@ -53,6 +55,11 @@ final class RealmManager {
         realm = try! Realm()
 //        try? RealmManager.addNewRotation()
     }
+    
+    public static func getActiveAccountsIsEmpty() -> Bool {
+        return RealmManager.shared.realm.objects(RealmUserInfo.self).isEmpty
+    }
+    
     // 最新のバイトIDを取得
     public static func getLatestResultId() -> Int {
         return RealmManager.shared.realm.objects(RealmUserInfo.self).first?.jobNum ?? -1
