@@ -27,19 +27,16 @@ struct SRImage: UIViewRepresentable {
 
 }
 
-class ImageType {
-    var rawValue: Int = 0
-    var imageURL: String = ""
-
-//    init(rawValue: Int) {
-//        self.rawValue = rawValue
-//    }
+protocol ImageType {
+    var rawValue: Int { get }
+    var imageURL: String { get }
 }
 
 class Special: ImageType {
+    var rawValue: Int
+    var imageURL: String
 
-    convenience init(rawValue: Int) {
-        self.init()
+    init(rawValue: Int) {
         self.rawValue = rawValue
         switch SpecialType(rawValue: rawValue) {
         case .bombpitcher:
@@ -64,9 +61,10 @@ class Special: ImageType {
 }
 
 class Salmonid: ImageType {
+    var rawValue: Int
+    var imageURL: String
 
-    convenience init(rawValue: Int) {
-        self.init()
+    init(rawValue: Int) {
         self.rawValue = rawValue
         switch SalmonidType(rawValue: rawValue) {
         case .goldie:
