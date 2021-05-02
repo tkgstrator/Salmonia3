@@ -8,8 +8,9 @@
 import Foundation
 import RealmSwift
 import SalmonStats
+import SplatNet2
 
-class RealmPlayerResult: Object, Decodable {
+class RealmPlayerResult: Object {
     @objc dynamic var name: String?
     @objc dynamic var pid: String?
     @objc dynamic var deadCount: Int = 0
@@ -26,17 +27,18 @@ class RealmPlayerResult: Object, Decodable {
         return ["nsaid"]
     }
 
-    private enum CodingKeys: String, CodingKey {
-        case name           = "name"
-        case pid            = "pid"
-        case deadCount      = "dead_count"
-        case helpCount      = "help_count"
-        case goldenIkuraNum = "golden_ikura_num"
-        case ikuraNum       = "ikura_num"
-        case specialId      = "special"
-        case weaponList     = "weapon_list"
-        case specialCounts  = "special_counts"
-        case bossKillCounts = "boss_kill_counts"
+    public convenience init(from result: SplatNet2.Coop.ResultPlayer) {
+        self.init()
+        self.name = result.name
+        self.pid = result.pid
+        self.deadCount = result.deadCount
+        self.helpCount = result.helpCount
+        self.goldenIkuraNum = result.goldenIkuraNum
+        self.ikuraNum = result.ikuraNum
+        self.specialId = result.specialId
+        self.bossKillCounts.append(objectsIn: result.bossKillCounts)
+        self.weaponList.append(objectsIn: result.weaponList)
+        self.specialCounts.append(objectsIn: result.specialCounts)
     }
 
     public convenience init(from result: SalmonStats.ResultCoop.ResultPlayer) {
@@ -52,42 +54,4 @@ class RealmPlayerResult: Object, Decodable {
         self.weaponList.append(objectsIn: result.weaponList)
         self.specialCounts.append(objectsIn: result.specialCounts)
     }
-    
-    public required convenience init(from decoder: Decoder) throws {
-        self.init()
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        name = try? container.decode(String.self, forKey: .name)
-        pid = try? container.decode(String.self, forKey: .pid)
-        deadCount = try container.decode(Int.self, forKey: .deadCount)
-        helpCount = try container.decode(Int.self, forKey: .helpCount)
-        goldenIkuraNum = try container.decode(Int.self, forKey: .goldenIkuraNum)
-        ikuraNum = try container.decode(Int.self, forKey: .ikuraNum)
-
-        let special = try container.decode(SpecialWeapon.self, forKey: .specialId)
-        specialId = Int(special.id) ?? 0
-
-        // List型に対する処理
-        let _bossKillCounts = try container.decodeIfPresent([Int: BossCounts].self, forKey: .bossKillCounts) ?? [Int(): BossCounts()]
-        bossKillCounts.append(objectsIn: _bossKillCounts.sorted { $0.0 < $1.0 }.map { $0.value.count })
-        let _weaponList = try container.decodeIfPresent([WeaponList].self, forKey: .weaponList) ?? [WeaponList()]
-
-        weaponList.append(objectsIn: _weaponList.map { Int($0.id).intValue })
-        let _specialCounts = try container.decodeIfPresent([Int].self, forKey: .specialCounts) ?? [Int()]
-        specialCounts.append(objectsIn: _specialCounts)
-    }
-}
-
-private class WeaponList: Codable {
-    var id: String = "0"
-    var weapon: [String: String] = [:]
-}
-
-class BossCounts: Codable {
-    var boss: [String: String] = [:]
-    var count: Int = 0
-}
-
-private class SpecialWeapon: Codable {
-    var id: String = "0"
 }

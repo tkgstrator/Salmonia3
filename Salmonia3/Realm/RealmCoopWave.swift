@@ -8,8 +8,9 @@
 import Foundation
 import RealmSwift
 import SalmonStats
+import SplatNet2
 
-class RealmCoopWave: Object, Decodable {
+class RealmCoopWave: Object {
     @objc dynamic var eventType: String?
     @objc dynamic var waterLevel: String?
     @objc dynamic var goldenIkuraNum: Int = 0
@@ -22,16 +23,7 @@ class RealmCoopWave: Object, Decodable {
         return ["golden_ikura_num"]
     }
 
-    private enum CodingKeys: String, CodingKey {
-        case eventType          = "event_type"
-        case waterLevel         = "water_level"
-        case goldenIkuraNum     = "golden_ikura_num"
-        case goldenIkuraPopNum  = "golden_ikura_pop_num"
-        case quotaNum           = "quota_num"
-        case ikuraNum           = "ikura_num"
-    }
-
-    convenience init(from result: SalmonStats.ResultCoop.ResultWave) {
+    convenience init(from result: SplatNet2.Coop.ResultWave) {
         self.init()
         self.eventType = SplatNet2Metadata.EventType(rawValue: result.eventType)!.eventType
         self.waterLevel = SplatNet2Metadata.WaterLevel(rawValue: result.waterLevel)!.waterLevel
@@ -41,20 +33,14 @@ class RealmCoopWave: Object, Decodable {
         self.ikuraNum = result.ikuraNum
     }
     
-    public required convenience init(from decoder: Decoder) throws {
+    convenience init(from result: SalmonStats.ResultCoop.ResultWave) {
         self.init()
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        let event = try container.decode(EventType.self, forKey: .eventType)
-        eventType = event.key
-
-        let tide = try container.decode(WaterLevel.self, forKey: .waterLevel)
-        waterLevel = tide.key
-
-        goldenIkuraNum = try container.decode(Int.self, forKey: .goldenIkuraNum)
-        goldenIkuraPopNum = try container.decode(Int.self, forKey: .goldenIkuraPopNum)
-        quotaNum = try container.decode(Int.self, forKey: .quotaNum)
-        ikuraNum = try container.decode(Int.self, forKey: .ikuraNum)
+        self.eventType = SplatNet2Metadata.EventType(rawValue: result.eventType)!.eventType
+        self.waterLevel = SplatNet2Metadata.WaterLevel(rawValue: result.waterLevel)!.waterLevel
+        self.goldenIkuraNum = result.goldenIkuraNum
+        self.goldenIkuraPopNum = result.goldenIkuraPopNum
+        self.quotaNum = result.quotaNum
+        self.ikuraNum = result.ikuraNum
     }
 }
 
