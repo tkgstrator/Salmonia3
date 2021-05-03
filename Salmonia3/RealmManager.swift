@@ -53,7 +53,17 @@ final class RealmManager {
             })
         Realm.Configuration.defaultConfiguration = config
         realm = try! Realm()
-//        try? RealmManager.addNewRotation()
+    }
+    
+    // 統計情報を更新
+    public static func updateSummary(from summary: Response.SummaryCoop) throws {
+        #warning("マルチアカウント対応")
+        guard let account = RealmManager.shared.realm.objects(RealmUserInfo.self).filter("nsaid=%@", SplatNet2.shared.playerId).first else { throw APPError.realm }
+        RealmManager.shared.realm.beginWrite()
+        account.goldenIkuraTotal = summary.summary.card.goldenIkuraTotal
+        account.ikuraTotal = summary.summary.card.ikuraTotal
+        account.jobNum = summary.summary.card.jobNum
+        try RealmManager.shared.realm.commitWrite()
     }
     
     public static func getActiveAccountsIsEmpty() -> Bool {
@@ -65,6 +75,12 @@ final class RealmManager {
         return RealmManager.shared.realm.objects(RealmUserInfo.self).first?.jobNum ?? -1
     }
     
+    public static func addNewRotation(from rotation: [Response.ScheduleCoop]) throws {
+        RealmManager.shared.realm.beginWrite()
+        let rotations: [RealmCoopShift] = rotation.map{ RealmCoopShift(from: $0) }
+        rotations.map{ RealmManager.shared.realm.create(RealmCoopShift.self, value: $0, update: .all) }
+        try? RealmManager.shared.realm.commitWrite()
+    }
     // シフトスケジュールを取得
     public static func getShiftSchedule(startTime: Int) throws -> RealmCoopShift {
         guard let realm = try? Realm() else { throw APPError.realm }
