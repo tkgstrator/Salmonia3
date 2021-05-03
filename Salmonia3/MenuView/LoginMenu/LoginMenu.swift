@@ -34,17 +34,24 @@ struct LoginMenu: View {
                     Text("BTN_SIGN_IN")
                         .splatfont2(.cloud, size: 20)
                 })
-                Button(action: {
-                    #if DEBUG
-                    // スキップして次に進む
-                    isActive.toggle()
-                    #else
-                    // Nintendo Switch Onlineの登録画面に進む
-                    isShowing.toggle()
-                    #endif
-                }, label: { Text("BTN_SIGN_UP")
-                    .splatfont2(.cloud, size: 20)
-                })
+                if let _ = SplatNet2.shared.sessionToken {
+                    Button(action: { migrateSplatNet2Account() }, label: {
+                        Text("BTN_MIGRATE")
+                            .splatfont2(.cloud, size: 20)
+                    })
+                } else {
+                    Button(action: {
+                        #if DEBUG
+                        // スキップして次に進む
+                        isActive.toggle()
+                        #else
+                        // Nintendo Switch Onlineの登録画面に進む
+                        isShowing.toggle()
+                        #endif
+                    }, label: { Text("BTN_SIGN_UP")
+                        .splatfont2(.cloud, size: 20)
+                    })
+                }
             }
             .buttonStyle(BlueButtonStyle())
             .position(x: geometry.frame(in: .local).midX, y: 3 * geometry.size.height / 4)
@@ -82,6 +89,29 @@ struct LoginMenu: View {
         .navigationTitle("TITLE_LOGIN")
     }
 
+    func migrateSplatNet2Account() {
+        if RealmManager.getActiveAccountsIsEmpty() {
+            if let _ = SplatNet2.shared.sessionToken {
+                SplatNet2.shared.getCookie()
+                    .receive(on: DispatchQueue.main)
+                    .sink(receiveCompletion: { completion in
+                        switch completion {
+                        case .finished:
+                            break
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }, receiveValue: { response in
+                        try? RealmManager.addNewAccount(from: response)
+                        isActive.toggle()
+                    })
+                    .store(in: &task)
+            }
+        } else {
+            isActive.toggle()
+        }
+    }
+    
     var BackGround: some View {
         Group {
             LinearGradient(gradient: Gradient(colors: [.blue, .river]), startPoint: .top, endPoint: .bottom)

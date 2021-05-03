@@ -63,6 +63,7 @@
 "BTN_CANCEL" = "Cancel";
 "BTN_SIGN_IN" = "Sign in";
 "BTN_SIGN_UP" = "Sign up";
+"BTN_SKIP" = "Migrate";
 "BTN_SKIP" = "Skip";
 "BTN_SET_API_TOKEN" = "Set";
 "BTN_OPEN_SALMON_STATS" = "Open website";

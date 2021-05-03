@@ -25,23 +25,19 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
         })
         
-        if RealmManager.getActiveAccountsIsEmpty() {
-            if let sessionToken = SplatNet2.shared.sessionToken {
-                SplatNet2.shared.getCookie()
-                    .receive(on: DispatchQueue.main)
-                    .sink(receiveCompletion: { completion in
-                        switch completion {
-                        case .finished:
-                            break
-                        case .failure(let error):
-                            print(error)
-                        }
-                    }, receiveValue: { response in
-                        try? RealmManager.addNewAccount(from: response)
-                    })
-                    .store(in: &task)
-            }
-        }
+        SplatNet2.shared.getShiftSchedule()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error)
+                }
+            }, receiveValue: { response in
+                try? RealmManager.addNewRotation(from: response)
+            })
+            .store(in: &task)
         return true
     }
 }

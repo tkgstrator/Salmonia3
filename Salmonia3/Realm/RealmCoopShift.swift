@@ -7,8 +7,9 @@
 
 import Foundation
 import RealmSwift
+import SplatNet2
 
-class RealmCoopShift: Object, Identifiable, Decodable {
+class RealmCoopShift: Object, Identifiable {
     @objc dynamic var startTime: Int = 0
     @objc dynamic var endTime: Int = 0
     let stageId = RealmOptional<Int>()
@@ -19,25 +20,14 @@ class RealmCoopShift: Object, Identifiable, Decodable {
         return "startTime"
     }
 
-    private enum CodingKeys: String, CodingKey {
-        case startTime  = "start_time"
-        case endTime    = "end_time"
-        case stageId    = "stage_id"
-        case rareWeapon = "rare_weapon"
-        case weaponList = "weapon_list"
-    }
-
-//    override init() {}
-
-    required convenience public init(from decoder: Decoder) throws {
+    convenience init(from response: Response.ScheduleCoop) {
         self.init()
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        self.startTime = try container.decode(Int.self, forKey: .startTime)
-        self.endTime = try container.decode(Int.self, forKey: .endTime)
-        self.stageId.value = try container.decode(Int.self, forKey: .stageId)
-        self.rareWeapon.value = try container.decode(Int.self, forKey: .rareWeapon)
-        let weaponList = try container.decodeIfPresent([Int].self, forKey: .weaponList) ?? [Int()]
-        self.weaponList.append(objectsIn: weaponList)
+        self.startTime = response.startTime
+        self.endTime = response.endTime
+        self.stageId.value = response.stageId
+        if response.weaponList.contains(-1) {
+            self.rareWeapon.value = response.rareWeapon
+        }
+        self.weaponList.append(objectsIn: response.weaponList)
     }
 }

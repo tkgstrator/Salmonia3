@@ -66,6 +66,7 @@
 "BTN_CANCEL" = "キャンセル";
 "BTN_SIGN_IN" = "ログイン";
 "BTN_SIGN_UP" = "トウロク";
+"BTN_MIGRATE" = "引き継ぎ";
 "BTN_SKIP" = "スキップ";
 "BTN_OPEN_SALMON_STATS" = "ウェブサイトを開く";
 "BTN_PASTE_API_TOKEN" = "クリップボードから貼り付け";

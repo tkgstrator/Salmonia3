@@ -52,6 +52,7 @@ struct LoadingView: View {
                 if RealmManager.getLatestResultId() != response.summary.card.jobNum {
                     let jobNum = response.summary.card.jobNum
                     let jobIds = Range(max(RealmManager.getLatestResultId() + 1, jobNum - 49) ... jobNum)
+                    var count: Double = 0
                     for jobId in jobIds {
                         SplatNet2.shared.getResultCoop(jobId: jobId)
                             .receive(on: DispatchQueue.main)
@@ -59,6 +60,8 @@ struct LoadingView: View {
                                 switch completion {
                                 case .finished:
                                     print("JOB ID", jobId, "FINISHED")
+                                    count += 1
+                                    data.progress = CGFloat(count / Double(jobIds.count))
                                 case .failure(let error):
                                     print("JOB ID", jobId, "ERROR", error)
                                 }
@@ -68,6 +71,7 @@ struct LoadingView: View {
                             .store(in: &task)
                     }
                 }
+                try? RealmManager.updateSummary(from: response)
             })
             .store(in: &task)
     }
