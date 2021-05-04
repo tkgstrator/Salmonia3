@@ -69,6 +69,21 @@ struct Salmonia3App: App {
                 .preferredColorScheme(isDarkMode ? .dark : .light)
                 .animation(.easeInOut)
                 .transition(.opacity)
+                .onOpenURL(perform: { url in
+//                    let parameters = url.queryParameters
+                })
         }
+    }
+}
+
+fileprivate extension URL {
+    var queryParameters: [String: Any] {
+        guard let queries = URLComponents(string: absoluteString)?.queryItems else { return [:] }
+        var parameters: [String: Any] = [:]
+        
+        for query in queries {
+            parameters[query.name] = query.value == "true" ? true : false
+        }
+        return parameters
     }
 }
