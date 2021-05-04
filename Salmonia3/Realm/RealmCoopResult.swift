@@ -62,6 +62,7 @@ class RealmCoopResult: Object, Identifiable {
         self.failureWave.value = result.jobResult.failureWave
         self.failureReason = result.jobResult.failureReason
         self.isClear = result.jobResult.isClear
+        self.pid = pid
         self.gradePoint.value = result.gradePoint
         self.gradeId.value = result.grade
         self.gradePointDelta.value = result.gradePointDelta

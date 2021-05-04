@@ -48,7 +48,6 @@
 		105941A825FA4F9500C32D21 /* SalmonLoginMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105941A725FA4F9500C32D21 /* SalmonLoginMenu.swift */; };
 		105941AD25FA500500C32D21 /* TopMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105941AC25FA500500C32D21 /* TopMenu.swift */; };
 		105941BE25FA525100C32D21 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105941BD25FA525100C32D21 /* Background.swift */; };
-		10795D48262F39600078A21B /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10795D47262F39600078A21B /* Keychain.swift */; };
 		107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */; };
 		107E115F260FA95C008E450B /* SalmonStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E115E260FA95C008E450B /* SalmonStats.swift */; };
 		1090C689263DF162000DD54C /* SplatNet2 in Frameworks */ = {isa = PBXBuildFile; productRef = 1090C688263DF162000DD54C /* SplatNet2 */; };
@@ -140,7 +139,6 @@
 		105941A725FA4F9500C32D21 /* SalmonLoginMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonLoginMenu.swift; sourceTree = "<group>"; };
 		105941AC25FA500500C32D21 /* TopMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMenu.swift; sourceTree = "<group>"; };
 		105941BD25FA525100C32D21 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
-		10795D47262F39600078A21B /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopStats.swift; sourceTree = "<group>"; };
 		107E115E260FA95C008E450B /* SalmonStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonStats.swift; sourceTree = "<group>"; };
 		1090C681263DF125000DD54C /* SplatNet2 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SplatNet2; path = ../SplatNet2; sourceTree = "<group>"; };
@@ -374,7 +372,6 @@
 				10377F6025FCD5A400536A94 /* Fonts */,
 				105941B125FA519A00C32D21 /* ViewModifier */,
 				1059419425FA4BE900C32D21 /* Color */,
-				10795D47262F39600078A21B /* Keychain.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -709,7 +706,6 @@
 				109EF35E260CAB7F00076157 /* ProductView.swift in Sources */,
 				105941A025FA4E2500C32D21 /* LoginMenu.swift in Sources */,
 				10377FA425FD10FE00536A94 /* Optional.swift in Sources */,
-				10795D48262F39600078A21B /* Keychain.swift in Sources */,
 				1024661625FDFF0F004DC043 /* ImageResize.swift in Sources */,
 				10B07C5F260A1463008FDE1B /* CoopShiftStatsView.swift in Sources */,
 				10317294262C3F5100CF8903 /* TutorialView.swift in Sources */,
@@ -930,7 +926,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -956,7 +952,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
