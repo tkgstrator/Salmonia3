@@ -3,7 +3,6 @@
   Salmonia3
 
   Created by Devonly on 3/14/21.
-  
 */
 
 "TITLE_LOGIN" = "Welcome";
@@ -44,6 +43,7 @@
 "HEADER_STATS_OVERVIEW" = "Overview";
 "HEADER_STATS_MAX" = "Max";
 "HEADER_STATS_AVG" = "Avg";
+"HEADER_SALMONSTATS" = "Salmon Stats";
 
 "SETTING_FREE_PRODUCT" = "Free";
 "SETTING_PAID_PRODUCT" = "Paid";
@@ -53,7 +53,8 @@
 "SETTING_SYSTEM" = "System Information";
 "SETTING_DEVICE" = "Device Information";
 "SETTING_APP_VERSION" = "Version";
-"SETTING_USING_DARKMODE" = "Using Darkmode";
+"SETTING_IMPORT_RESULT" = "Import results";
+"SETTING_USING_DARKMODE" = "Use darkmode";
 "ERASE_SETTING" = "Erase Data";
 "RE_SIGN_IN" = "Re-Sign in";
 

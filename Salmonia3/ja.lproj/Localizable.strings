@@ -47,6 +47,7 @@
 "HEADER_STATS_OVERVIEW" = "概要";
 "HEADER_STATS_MAX" = "最高";
 "HEADER_STATS_AVG" = "平均";
+"HEADER_SALMON_STATS" = "平均";
 
 "SETTING_FREE_PRODUCT" = "無料機能";
 "SETTING_PAID_PRODUCT" = "有料機能";
@@ -56,6 +57,7 @@
 "SETTING_SYSTEM" = "システム情報";
 "SETTING_DEVICE" = "デバイス情報";
 "SETTING_APP_VERSION" = "バージョン";
+"SETTING_IMPORT_RESULT" = "リザルト取り込み";
 "SETTING_USING_DARKMODE" = "ダークモードを使う";
 "ERASE_SETTING" = "データ消去";
 "RE_SIGN_IN" = "再ログイン";

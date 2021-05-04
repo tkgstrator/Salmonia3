@@ -10,7 +10,6 @@ import SwiftUI
 import CryptoKit
 import BetterSafariView
 import Alamofire
-import SwiftyJSON
 
 struct SalmonLoginMenu: View {
     @State var isActive: Bool = false
@@ -62,14 +61,6 @@ struct SalmonLoginMenu: View {
         .background(BackGround)
         .navigationTitle("TITLE_LOGIN")
         #warning("無効化しているOAuthURLを取得するための関数")
-        //        .onAppear() {
-        //            TwitterOAuth().getOAuthURL() { [self] response, _ in
-        //                guard let oauthToken = response?["oauth_token"] else { return }
-        //                guard let oauthTokenSecret = response?["oauth_token_secret"] else { return }
-        //                oAuthURL = URL(string: "https://api.twitter.com/oauth/authenticate?oauth_token=\(oauthToken)")!
-        //                print(oAuthURL)
-        //            }
-        //        }
     }
 
     var BackGround: some View {
