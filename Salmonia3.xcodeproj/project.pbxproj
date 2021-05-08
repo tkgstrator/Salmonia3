@@ -54,7 +54,7 @@
 		109B1379264684750044EE6C /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 109B1378264684750044EE6C /* SwiftyJSON */; };
 		109EF35E260CAB7F00076157 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF35D260CAB7F00076157 /* ProductView.swift */; };
 		109EF375260CB01E00076157 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF374260CB01E00076157 /* ButtonStyle.swift */; };
-		10A08032262070A200BFDF59 /* ShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A08031262070A200BFDF59 /* ShiftStats.swift */; };
+		10A08032262070A200BFDF59 /* CoopShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A08031262070A200BFDF59 /* CoopShiftStats.swift */; };
 		10A7DD4D2607416F00558DE3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10A7DD4F2607416F00558DE3 /* InfoPlist.strings */; };
 		10AD114D2600EB18008C0E64 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AD114C2600EB18008C0E64 /* Error.swift */; };
 		10B07C5F260A1463008FDE1B /* CoopShiftStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B07C5E260A1463008FDE1B /* CoopShiftStatsView.swift */; };
@@ -146,7 +146,7 @@
 		1090C6A6263E902B000DD54C /* Salmonia3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Salmonia3.entitlements; sourceTree = "<group>"; };
 		109EF35D260CAB7F00076157 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		109EF374260CB01E00076157 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
-		10A08031262070A200BFDF59 /* ShiftStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftStats.swift; sourceTree = "<group>"; };
+		10A08031262070A200BFDF59 /* CoopShiftStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftStats.swift; sourceTree = "<group>"; };
 		10A7DD4E2607416F00558DE3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		10AD114C2600EB18008C0E64 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		10B07C5E260A1463008FDE1B /* CoopShiftStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftStatsView.swift; sourceTree = "<group>"; };
@@ -415,7 +415,7 @@
 		10A08036262070A700BFDF59 /* Result */ = {
 			isa = PBXGroup;
 			children = (
-				10A08031262070A200BFDF59 /* ShiftStats.swift */,
+				10A08031262070A200BFDF59 /* CoopShiftStats.swift */,
 			);
 			path = Result;
 			sourceTree = "<group>";
@@ -749,7 +749,7 @@
 				1024662525FE4012004DC043 /* CoopShiftCollection.swift in Sources */,
 				1059419725FA4C0C00C32D21 /* Color.swift in Sources */,
 				109EF375260CB01E00076157 /* ButtonStyle.swift in Sources */,
-				10A08032262070A200BFDF59 /* ShiftStats.swift in Sources */,
+				10A08032262070A200BFDF59 /* CoopShiftStats.swift in Sources */,
 				10377FAD25FD166200536A94 /* CoopResultCollection.swift in Sources */,
 				1024664B2600D55E004DC043 /* StageType.swift in Sources */,
 			);
@@ -931,7 +931,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -957,7 +957,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;

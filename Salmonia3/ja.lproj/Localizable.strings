@@ -111,6 +111,12 @@
 "RESULT_HAZARD_LEVEL_%@" = "キケン度 %@%%";
 "RESULT_APPEARANCES_%lld" = "出現数 x%lld";
 
+"Ruins of Ark Polaris" = "朽ちた箱舟 ポラリス";
+"Salmonid Smokeyard" = "トキシラズいぶし工房";
+"Lost Outpost" = "海上集落シャケト場";
+"Marooner's Bay" = "難破船ドン・ブラコ";
+"Spawning Grounds" = "シャケナダム";
+
 "normal" = "通常";
 "high" = "満潮";
 "low" = "干潮";
@@ -153,6 +159,8 @@
 "BOSS_DEFEATED" = "ボス討伐数";
 "HELP_COUNT" = "救助数";
 "DEAD_COUNT" = "被救助数";
+"RATIO_POWER_EGGS" = "赤イクラ率";
+"RATIO_GOLDEN_EGGS" = "金イクラ率";
 
 "TAP_MIDDLE_BUTTON" = "真ん中のボタンをタップ";
 "INPUT_TWITTER_ACCOUNT_INFO" = "Twitterアカウントの情報を入力";

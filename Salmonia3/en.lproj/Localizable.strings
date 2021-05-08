@@ -140,6 +140,8 @@
 "BOSS_DEFEATED" = "Boss Defeated";
 "HELP_COUNT" = "Help Count";
 "DEAD_COUNT" = "Dead Count";
+"RATIO_POWER_EGGS" = "Power Egg Ratio";
+"RATIO_GOLDEN_EGGS" = "Golden Egg Ratio";
 
 "TAP_MIDDLE_BUTTON" = "Tap middle button";
 "INPUT_TWITTER_ACCOUNT_INFO" = "Input twtter account information";
