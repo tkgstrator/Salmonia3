@@ -59,7 +59,7 @@ struct CoopShift: View {
                 Image(StageType(rawValue: shift.stageId.intValue)!.md5)
                     .resizable().frame(width: 112, height: 63)
                     .clipShape(RoundedRectangle(cornerRadius: 8.0))
-                Text(StageType(rawValue: shift.stageId.intValue)!.name)
+                Text(StageType(rawValue: shift.stageId.intValue)!.name.localized)
                     .splatfont2(size: 14)
                     .padding(.bottom, 8)
             }

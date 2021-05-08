@@ -85,9 +85,9 @@ struct SettingMenu: View {
     let title: String
     let value: String
 
-    init(title: String, value: Any?) {
+    init(title: String, value: Optional<Any>) {
         self.title = "SETTING_\(title)".localized
-        self.value = value.stringValue
+        self.value = "-"
     }
 
     var body: some View {
@@ -96,23 +96,6 @@ struct SettingMenu: View {
             Spacer()
             Text(value)
                 .foregroundColor(.secondary)
-        }
-    }
-}
-
-extension Optional where Wrapped == Any {
-    var stringValue: String {
-        switch self {
-        case is Int:
-            return String(self as! Int)
-        case is Double:
-            return "-"
-        case is Bool:
-            return self as! Bool ? "ENABLED".localized : "DISABLED".localized
-        case is String:
-            return self as! String
-        default:
-            return "-"
         }
     }
 }
