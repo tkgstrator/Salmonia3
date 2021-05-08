@@ -13,6 +13,7 @@ import AdSupport
 import AppTrackingTransparency
 import GoogleMobileAds
 import SplatNet2
+import SalmonStats
 import Combine
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -24,6 +25,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             GADMobileAds.sharedInstance().start(completionHandler: nil)
             print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
         })
+        
         
         SplatNet2.shared.getShiftSchedule()
             .receive(on: DispatchQueue.main)
@@ -48,6 +50,7 @@ struct Salmonia3App: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @AppStorage("isFirstLaunch") var isFirstLaunch = true
     @AppStorage("isDarkMode") var isDarkMode = false
+    @AppStorage("apiToken") var apiToken: String?
 
     var body: some Scene {
         WindowGroup {
@@ -72,6 +75,13 @@ struct Salmonia3App: App {
                 .onOpenURL(perform: { url in
 //                    let parameters = url.queryParameters
                 })
+                .onAppear(perform: { })
+        }
+    }
+    
+    private func updateApiToken() {
+        if let apiToken = apiToken {
+            SalmonStats.shared.configure(apiToken: apiToken)
         }
     }
 }

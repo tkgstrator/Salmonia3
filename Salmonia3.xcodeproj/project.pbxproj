@@ -16,6 +16,7 @@
 		1024662A25FE50A0004DC043 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024662925FE50A0004DC043 /* Int.swift */; };
 		1024663E26009956004DC043 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024663D26009956004DC043 /* Grade.swift */; };
 		1024664B2600D55E004DC043 /* StageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024664A2600D55E004DC043 /* StageType.swift */; };
+		1028D37226418EFD0034C075 /* MBCircleProgressBar in Frameworks */ = {isa = PBXBuildFile; productRef = 1028D37126418EFD0034C075 /* MBCircleProgressBar */; };
 		10317286262C32FB00CF8903 /* SalmonStats in Frameworks */ = {isa = PBXBuildFile; productRef = 10317285262C32FB00CF8903 /* SalmonStats */; };
 		1031728E262C355500CF8903 /* ImportingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1031728D262C355500CF8903 /* ImportingView.swift */; };
 		10317294262C3F5100CF8903 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10317293262C3F5100CF8903 /* TutorialView.swift */; };
@@ -29,7 +30,6 @@
 		10377F8B25FD053A00536A94 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F8A25FD053A00536A94 /* AppManager.swift */; };
 		10377F9125FD09E800536A94 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F9025FD09E800536A94 /* LoadingView.swift */; };
 		10377F9925FD09FF00536A94 /* LoggingThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F9825FD09FF00536A94 /* LoggingThread.swift */; };
-		10377F9E25FD0A1200536A94 /* MBCirlceProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F9D25FD0A1200536A94 /* MBCirlceProgress.swift */; };
 		10377FA425FD10FE00536A94 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377FA325FD10FE00536A94 /* Optional.swift */; };
 		10377FAD25FD166200536A94 /* CoopResultCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377FAC25FD166200536A94 /* CoopResultCollection.swift */; };
 		104AA7DC2605E0C8007BDC24 /* GoogleMobileAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104AA7DB2605E0C8007BDC24 /* GoogleMobileAds.swift */; };
@@ -51,6 +51,7 @@
 		107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */; };
 		107E115F260FA95C008E450B /* SalmonStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E115E260FA95C008E450B /* SalmonStats.swift */; };
 		1090C689263DF162000DD54C /* SplatNet2 in Frameworks */ = {isa = PBXBuildFile; productRef = 1090C688263DF162000DD54C /* SplatNet2 */; };
+		109B1379264684750044EE6C /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 109B1378264684750044EE6C /* SwiftyJSON */; };
 		109EF35E260CAB7F00076157 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF35D260CAB7F00076157 /* ProductView.swift */; };
 		109EF375260CB01E00076157 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF374260CB01E00076157 /* ButtonStyle.swift */; };
 		10A08032262070A200BFDF59 /* ShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A08031262070A200BFDF59 /* ShiftStats.swift */; };
@@ -104,6 +105,7 @@
 		1024663D26009956004DC043 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		102466462600CE27004DC043 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1024664A2600D55E004DC043 /* StageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageType.swift; sourceTree = "<group>"; };
+		1028D36D26418EF30034C075 /* MBCircleProgressBar */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MBCircleProgressBar; path = ../MBCircleProgressBar; sourceTree = "<group>"; };
 		1031728D262C355500CF8903 /* ImportingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportingView.swift; sourceTree = "<group>"; };
 		10317293262C3F5100CF8903 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		10377F6125FCD5C200536A94 /* RobotoMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoMono.ttf; sourceTree = "<group>"; };
@@ -116,7 +118,6 @@
 		10377F8A25FD053A00536A94 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		10377F9025FD09E800536A94 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		10377F9825FD09FF00536A94 /* LoggingThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingThread.swift; sourceTree = "<group>"; };
-		10377F9D25FD0A1200536A94 /* MBCirlceProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBCirlceProgress.swift; sourceTree = "<group>"; };
 		10377FA325FD10FE00536A94 /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 		10377FAC25FD166200536A94 /* CoopResultCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopResultCollection.swift; sourceTree = "<group>"; };
 		104AA7DB2605E0C8007BDC24 /* GoogleMobileAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMobileAds.swift; sourceTree = "<group>"; };
@@ -170,6 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				109B1379264684750044EE6C /* SwiftyJSON in Frameworks */,
 				10CF09A025FB984400D2EEB1 /* SwiftyStoreKit in Frameworks */,
 				1090C689263DF162000DD54C /* SplatNet2 in Frameworks */,
 				10CF09BA25FB9AC100D2EEB1 /* RealmSwift in Frameworks */,
@@ -180,6 +182,7 @@
 				10317286262C32FB00CF8903 /* SalmonStats in Frameworks */,
 				104BD620261C98800013CD27 /* URLImage in Frameworks */,
 				10CF098E25FB97CB00D2EEB1 /* BetterSafariView in Frameworks */,
+				1028D37226418EFD0034C075 /* MBCircleProgressBar in Frameworks */,
 				A8C5630EBE09FDEA7BF59B1C /* Pods_Salmonia3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,7 +251,6 @@
 				10377F9025FD09E800536A94 /* LoadingView.swift */,
 				1031728D262C355500CF8903 /* ImportingView.swift */,
 				10377F9825FD09FF00536A94 /* LoggingThread.swift */,
-				10377F9D25FD0A1200536A94 /* MBCirlceProgress.swift */,
 			);
 			path = Loading;
 			sourceTree = "<group>";
@@ -286,6 +288,7 @@
 		1059415A25FA49E500C32D21 = {
 			isa = PBXGroup;
 			children = (
+				1028D36D26418EF30034C075 /* MBCircleProgressBar */,
 				1090C681263DF125000DD54C /* SplatNet2 */,
 				100F564A262C308F00A1D1D0 /* SalmonStats */,
 				1059416525FA49E500C32D21 /* Salmonia3 */,
@@ -490,6 +493,8 @@
 				104BD61F261C98800013CD27 /* URLImage */,
 				10317285262C32FB00CF8903 /* SalmonStats */,
 				1090C688263DF162000DD54C /* SplatNet2 */,
+				1028D37126418EFD0034C075 /* MBCircleProgressBar */,
+				109B1378264684750044EE6C /* SwiftyJSON */,
 			);
 			productName = Salmonia3;
 			productReference = 1059416325FA49E500C32D21 /* Salmonia3.app */;
@@ -573,6 +578,7 @@
 				10CF09B625FB9AC100D2EEB1 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				104BD601261C93310013CD27 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				104BD61E261C98800013CD27 /* XCRemoteSwiftPackageReference "url-image" */,
+				109B1377264684740044EE6C /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = 1059416425FA49E500C32D21 /* Products */;
 			projectDirPath = "";
@@ -711,7 +717,6 @@
 				10317294262C3F5100CF8903 /* TutorialView.swift in Sources */,
 				1024662A25FE50A0004DC043 /* Int.swift in Sources */,
 				10377F6525FCD63B00536A94 /* Font.swift in Sources */,
-				10377F9E25FD0A1200536A94 /* MBCirlceProgress.swift in Sources */,
 				105941BE25FA525100C32D21 /* Background.swift in Sources */,
 				1024663E26009956004DC043 /* Grade.swift in Sources */,
 				104BD5EE261C875C0013CD27 /* CoreAppProduct.swift in Sources */,
@@ -926,7 +931,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -952,7 +957,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1114,6 +1119,14 @@
 				minimumVersion = 2.2.3;
 			};
 		};
+		109B1377264684740044EE6C /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 		10CF098C25FB97CB00D2EEB1 /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/stleamist/BetterSafariView.git";
@@ -1157,6 +1170,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1028D37126418EFD0034C075 /* MBCircleProgressBar */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MBCircleProgressBar;
+		};
 		10317285262C32FB00CF8903 /* SalmonStats */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SalmonStats;
@@ -1174,6 +1191,11 @@
 		1090C688263DF162000DD54C /* SplatNet2 */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SplatNet2;
+		};
+		109B1378264684750044EE6C /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 109B1377264684740044EE6C /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
 		};
 		10CF098D25FB97CB00D2EEB1 /* BetterSafariView */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import BetterSafariView
+import SalmonStats
 
 struct SalmonStatsView: View {
 
@@ -64,6 +65,7 @@ struct SalmonStatsView: View {
             guard let clipboard = UIPasteboard.general.string else { throw APPError.empty }
             guard let apiToken = clipboard.capture(pattern: "[0-9a-z].*", group: 0) else { throw APPError.invalid }
             if apiToken.count == 64 {
+                SalmonStats.shared.configure(apiToken: apiToken)
                 self.apiToken = apiToken
             } else {
                 throw APPError.invalid
