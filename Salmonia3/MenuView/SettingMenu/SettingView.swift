@@ -7,6 +7,7 @@
 
 import SwiftUI
 import BetterSafariView
+import SalmonStats
 
 struct SettingView: View {
 
@@ -14,7 +15,6 @@ struct SettingView: View {
     @State var isShowing: Bool = false
     @AppStorage("isFirstLaunch") var isFirstLaunch = true
     @AppStorage("isDarkMode") var isDarkMode = false
-    @AppStorage("apiToken") var apiToken: String?
     private let systemVersion: String = UIDevice.current.systemVersion
     private let systemName: String = UIDevice.current.systemName
     private let deviceName: String = UIDevice.current.localizedModel
@@ -25,7 +25,7 @@ struct SettingView: View {
         Form {
             Section(header: Text("HEADER_USER_INFO").splatfont2(.orange, size: 14),
                     footer: Text("FOOTER_USER_INFO").splatfont2(.secondary, size: 14).lineLimit(2)) {
-                SettingMenu(title: "UPLOAD", value: apiToken != nil)
+                SettingMenu(title: "UPLOAD", value: SalmonStats.shared.apiToken != nil)
                 NavigationLink(destination: SalmonStatsView(), label: { Text("LINK_SETTING_SALMON_STATS") })
                 Toggle("RE_SIGN_IN", isOn: $isFirstLaunch)
 
@@ -39,11 +39,9 @@ struct SettingView: View {
                 NavigationLink(destination: PaidProductView(), label: { Text("SETTING_PAID_PRODUCT") })
                 #endif
             }
-            #if DEBUG
             Section(header: Text("HEADER_SALMONSTATS").splatfont2(.orange, size: 14)) {
                 NavigationLink(destination: ImportingView(), label: { Text("SETTING_IMPORT_RESULT")})
             }
-            #endif
             Section(header: Text("HEADER_APPLICATION").splatfont2(.orange, size: 14)) {
                 PrivacyButton
                 Toggle("ERASE_SETTING", isOn: $isWarning)
@@ -54,7 +52,6 @@ struct SettingView: View {
                 SettingMenu(title: "DEVICE", value: "\(deviceName)")
             }
         }
-        // #warning("現在はログイン情報が消えるだけ")
         .alert(isPresented: $isWarning) {
             Alert(title: Text("ALERT_ERASE_SETTING"), message: Text("MESSAGE_WARNING"), primaryButton: .default(Text("BTN_CONFIRM"), action: { AppManager.erase() }), secondaryButton: .destructive(Text("BTN_CANCEL")))
         }

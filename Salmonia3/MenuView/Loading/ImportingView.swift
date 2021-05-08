@@ -9,20 +9,18 @@ import SwiftUI
 import Combine
 import SalmonStats
 import SplatNet2
+import MBCircleProgressBar
 
 struct ImportingView: View {
     @Environment(\.presentationMode) var present
-    @State var data: ProgressData = ProgressData()
     @State var task = Set<AnyCancellable>()
+    @State var progressModel = MBCircleProgressModel(progressColor: .blue, emptyLineColor: .gray)
 
     var body: some View {
-        LoggingThread(data: $data)
+        LoggingThread(progressModel: $progressModel)
             .onAppear {
                 if let nsaid = SplatNet2.shared.playerId {
                     importResultFromSalmonStats(nsaid: nsaid)
-                    present.wrappedValue.dismiss()
-                } else {
-                    present.wrappedValue.dismiss()
                 }
             }
             .navigationTitle("TITLE_IMPORT_SALMONSTATS")
@@ -30,12 +28,15 @@ struct ImportingView: View {
     
     private func importResultFromSalmonStats(nsaid: String) {
         SalmonStats.shared.getMetadata(nsaid: nsaid)
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
             }, receiveValue: { metadata in
                 for userdata in metadata {
-                    let lastPageId: Int = Int((userdata.results.clear + userdata.results.fail) / 200) + 1
-                    for pageId in Range(1 ... 1) {
+                    progressModel.maxValue = CGFloat(userdata.results.clear + userdata.results.fail)
+                    let lastPageId: Int = Int((userdata.results.clear + userdata.results.fail) / 50) + 1
+                    for pageId in Range(1 ... lastPageId) {
                         SalmonStats.shared.getResults(nsaid: userdata.playerId, pageId: pageId)
+                            .receive(on: DispatchQueue.main)
                             .sink(receiveCompletion: { completion in
                                 switch completion {
                                 case .finished:
@@ -44,6 +45,7 @@ struct ImportingView: View {
                                     print(error)
                                 }
                             }, receiveValue: { results in
+                                progressModel.value += CGFloat(results.count)
                                 RealmManager.addNewResultsFromSalmonStats(from: results, pid: nsaid)
                             })
                             .store(in: &task)

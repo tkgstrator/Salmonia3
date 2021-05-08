@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/realm/realm-cocoa",
         "state": {
           "branch": null,
-          "revision": "239a6a383af5d4b445626a95aa6356925e6acf22",
-          "version": "10.7.4"
+          "revision": "b481f2cc637bd101a03dba52ad1bef6eadfdac9f",
+          "version": "10.7.5"
         }
       },
       {
@@ -71,6 +71,15 @@
           "branch": null,
           "revision": "fa8fac7b5eb5c729983a8bef65f094b5e0d12014",
           "version": "0.0.3"
+        }
+      },
+      {
+        "package": "SwiftyJSON",
+        "repositoryURL": "https://github.com/SwiftyJSON/SwiftyJSON",
+        "state": {
+          "branch": null,
+          "revision": "b3dcd7dbd0d488e1a7077cb33b00f2083e382f07",
+          "version": "5.0.1"
         }
       },
       {

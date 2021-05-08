@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>3</string>
+	<string>6</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-7107468397673752~2469588733</string>
 	<key>GADIsAdManagerApp</key>
@@ -55,7 +55,7 @@
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
-		<true/>
+		<false/>
 	</dict>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>

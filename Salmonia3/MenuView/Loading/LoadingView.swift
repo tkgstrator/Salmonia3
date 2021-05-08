@@ -8,25 +8,27 @@
 import Foundation
 import SwiftUI
 import SplatNet2
+import SalmonStats
 import RealmSwift
+import MBCircleProgressBar
 import Combine
 
 struct LoadingView: View {
     @Environment(\.presentationMode) var present
     @EnvironmentObject var user: AppSettings
     @AppStorage("apiToken") var apiToken: String?
-    @State var data: ProgressData = ProgressData()
-    
+
     @State var isPresented: Bool = false
-    @State var apiError: APIError?
+    @State var apiError: Error?
     @State private var task = Set<AnyCancellable>()
+    @State var progressModel = MBCircleProgressModel(progressColor: .red, emptyLineColor: .gray)
 
     private func dismiss() {
         DispatchQueue.main.async { present.wrappedValue.dismiss() }
     }
 
     var body: some View {
-        LoggingThread(data: $data)
+        LoggingThread(progressModel: $progressModel)
             .onAppear {
                 getResultFromSplatNet2()
             }
@@ -37,7 +39,34 @@ struct LoadingView: View {
             }
     }
     
+    private func uploadToSalmonStats(results: [[String: Any]]) {
+        
+        let results = results.chunked(by: 10)
+        for result in results {
+            SalmonStats.shared.uploadResults(results: result)
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { completion in
+                    switch completion {
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        print(error)
+                    }
+                }, receiveValue: { response in
+                    print(dump(response))
+                })
+                .store(in: &task)
+        }
+    }
+    
     private func getResultFromSplatNet2() {
+        var results: [[String: Any]] = []
+        var encoder: JSONEncoder {
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            return encoder
+        }
+        
         SplatNet2.shared.getSummaryCoop()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
@@ -49,39 +78,68 @@ struct LoadingView: View {
                     apiError = error
                 }
             }, receiveValue: { response in
-                if RealmManager.getLatestResultId() != response.summary.card.jobNum {
+                #if DEBUG
+                let latestResultId = RealmManager.getLatestResultId() - 10
+                #else
+                let latestResultId = RealmManager.getLatestResultId()
+                #endif
+                if latestResultId != response.summary.card.jobNum {
                     let jobNum = response.summary.card.jobNum
-                    let jobIds = Range(max(RealmManager.getLatestResultId() + 1, jobNum - 49) ... jobNum)
-                    var count: Double = 0
+                    #if DEBUG
+                    let jobIds = Range(jobNum - 4 ... jobNum)
+                    #else
+                    let jobIds = Range(max(latestResultId + 1, jobNum - 49) ... jobNum)
+                    #endif
+                    progressModel.maxValue = CGFloat(jobIds.count)
                     for jobId in jobIds {
-                        SplatNet2.shared.getResultCoop(jobId: jobId)
+                        SplatNet2.shared.getResultCoopWithJSON(jobId: jobId)
                             .receive(on: DispatchQueue.main)
                             .sink(receiveCompletion: { completion in
+                                progressModel.value += 1
                                 switch completion {
                                 case .finished:
                                     print("JOB ID", jobId, "FINISHED")
-                                    count += 1
-                                    data.progress = CGFloat(count / Double(jobIds.count))
                                 case .failure(let error):
                                     print("JOB ID", jobId, "ERROR", error)
                                 }
                             }, receiveValue: { response in
-                                RealmManager.addNewResultsFromSplatNet2(from: response, pid: SplatNet2.shared.playerId!)
+                                // MARK: Salmon Statsへのアップロード
+                                if let _ = SalmonStats.shared.apiToken {
+                                    results.append(response.json.dictionaryObject!)
+                                    if results.count == jobIds.count {
+                                        uploadToSalmonStats(results: results)
+                                    }
+                                }
+                                RealmManager.addNewResultsFromSplatNet2(from: response.data, pid: SplatNet2.shared.playerId!)
                             })
                             .store(in: &task)
                     }
+//                    present.wrappedValue.dismiss()
                 }
                 try? RealmManager.updateSummary(from: response)
+                present.wrappedValue.dismiss()
             })
             .store(in: &task)
     }
 }
 
 extension Array {
-    // 配列を指定した区切りにする
     func chunked(by chunkSize: Int) -> [[Element]] {
         return stride(from: 0, to: self.count, by: chunkSize).map {
             Array(self[$0..<Swift.min($0 + chunkSize, self.count)])
         }
+    }
+}
+
+extension Response.ResultCoop {
+    var dictionaryObject: [String: Any]? {
+        var encoder: JSONEncoder {
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            return encoder
+        }
+        
+        guard let data = try? encoder.encode(self) else { return nil }
+        return (try? JSONSerialization.jsonObject(with: data, options: [])).flatMap{ $0 as? [String: Any] }
     }
 }

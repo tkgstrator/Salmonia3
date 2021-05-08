@@ -7,15 +7,16 @@
 
 import Foundation
 import SwiftUI
+import MBCircleProgressBar
 
 struct LoggingThread: View {
-    @Binding var data: ProgressData
-
+    @Binding var progressModel: MBCircleProgressModel
+    
     var body: some View {
         VStack {
             Credit
             Divider()
-            MBCircleProgressBar(data: $data, lineWidth: 5, size: 250)
+            MBCircleProgressView(data: progressModel)
             Spacer()
         }
         .navigationTitle("TITLE_LOGGING_THREAD")
