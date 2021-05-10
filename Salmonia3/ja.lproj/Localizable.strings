@@ -48,6 +48,7 @@
 "HEADER_STATS_MAX" = "最高";
 "HEADER_STATS_AVG" = "平均";
 "HEADER_SALMONSTATS" = "Salmon Stats";
+"HEADER_STAGE_RECORD" = "ステージキロク";
 
 "SETTING_FREE_PRODUCT" = "無料機能";
 "SETTING_PAID_PRODUCT" = "有料機能";

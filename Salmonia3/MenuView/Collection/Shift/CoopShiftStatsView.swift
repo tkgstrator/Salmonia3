@@ -25,28 +25,28 @@ struct CoopShiftStatsView: View {
         List {
             Section(header: Text("HEADER_STATS_OVERVIEW")) {
                 CoopShift(shift: shift)
-                StatsColumn(title: .jobnum, value: result.overview.jobNum)
-                StatsColumn(title: .clearRatio, value: result.overview.clearRatio)
-                StatsColumn(title: .ratioPowerEggs, value: result.overview.powerEggRatio)
-                StatsColumn(title: .ratioGoldenEggs, value: result.overview.goldenEggRatio)
+                StatsColumn(title: .jobnum, value: result.overview!.jobNum)
+                StatsColumn(title: .clearRatio, value: result.overview!.clearRatio)
+                StatsColumn(title: .ratioPowerEggs, value: result.overview!.powerEggRatio)
+                StatsColumn(title: .ratioGoldenEggs, value: result.overview!.goldenEggRatio)
             }
             Section(header: Text("HEADER_STATS_MAX")) {
-                StatsColumn(title: .powerEggs, value: result.resultMax.powerEggs)
-                StatsColumn(title: .goldenEggs, value: result.resultMax.goldenEggs)
-                StatsColumn(title: .teamPowerEggs, value: result.resultMax.teamPowerEggs)
-                StatsColumn(title: .teamGoldenEggs, value: result.resultMax.teamGoldenEggs)
-                StatsColumn(title: .defeated, value: result.resultMax.bossDefeated)
-                StatsColumn(title: .deadCount, value: result.resultMax.deadCount)
-                StatsColumn(title: .helpCount, value: result.resultMax.helpCount)
+                StatsColumn(title: .powerEggs, value: result.resultMax!.powerEggs)
+                StatsColumn(title: .goldenEggs, value: result.resultMax!.goldenEggs)
+                StatsColumn(title: .teamPowerEggs, value: result.resultMax!.teamPowerEggs)
+                StatsColumn(title: .teamGoldenEggs, value: result.resultMax!.teamGoldenEggs)
+                StatsColumn(title: .defeated, value: result.resultMax!.bossDefeated)
+                StatsColumn(title: .deadCount, value: result.resultMax!.deadCount)
+                StatsColumn(title: .helpCount, value: result.resultMax!.helpCount)
             }
             Section(header: Text("HEADER_STATS_AVG")) {
-                StatsColumn(title: .powerEggs, value: result.resultAvg.powerEggs)
-                StatsColumn(title: .goldenEggs, value: result.resultAvg.goldenEggs)
-                StatsColumn(title: .teamPowerEggs, value: result.resultAvg.teamPowerEggs)
-                StatsColumn(title: .teamGoldenEggs, value: result.resultAvg.teamGoldenEggs)
-                StatsColumn(title: .defeated, value: result.resultAvg.bossDefeated)
-                StatsColumn(title: .deadCount, value: result.resultAvg.deadCount)
-                StatsColumn(title: .helpCount, value: result.resultAvg.helpCount)
+                StatsColumn(title: .powerEggs, value: result.resultAvg!.powerEggs)
+                StatsColumn(title: .goldenEggs, value: result.resultAvg!.goldenEggs)
+                StatsColumn(title: .teamPowerEggs, value: result.resultAvg!.teamPowerEggs)
+                StatsColumn(title: .teamGoldenEggs, value: result.resultAvg!.teamGoldenEggs)
+                StatsColumn(title: .defeated, value: result.resultAvg!.bossDefeated)
+                StatsColumn(title: .deadCount, value: result.resultAvg!.deadCount)
+                StatsColumn(title: .helpCount, value: result.resultAvg!.helpCount)
             }
         }
         .navigationTitle("TITLE_SHIFT_STATS")
@@ -71,7 +71,7 @@ fileprivate struct StatsColumn: View {
             Text(value)
                 .foregroundColor(.secondary)
         }
-        .font(.custom("Splatfont2", size: 14))
+        .font(.custom("Splatfont2", size: 16))
     }
 }
 
