@@ -11,14 +11,14 @@ struct CoopResultCollection: View {
     @EnvironmentObject var main: CoreRealmCoop
     @State var isActive: Bool = false
     @State var isShowing: Bool = false
-
+    
     var body: some View {
         ZStack {
             NavigationLink(destination: LoadingView(), isActive: $isActive) { EmptyView() }
             List {
-                ForEach(main.results, id: \.self) { result in
-                    NavigationLink(destination: CoopResultView(result: result)) {
-                        ResultOverview(result: result)
+                ForEach(main.results.indices, id: \.self) { index in
+                    NavigationLink(destination: CoopResultView(result: main.results[index])) {
+                        ResultOverview(result: main.results[index])
                     }
                 }
             }
@@ -37,8 +37,8 @@ struct CoopResultCollection_Previews: PreviewProvider {
 }
 
 struct ResultOverview: View {
-    @ObservedObject var result: RealmCoopResult
-
+    @StateObject var result: RealmCoopResult
+    
     var body: some View {
         HStack(spacing: 0) {
             ResultJob
@@ -49,7 +49,7 @@ struct ResultOverview: View {
         }
         .frame(maxWidth: .infinity)
     }
-
+    
     var ResultGrade: some View {
         if result.isClear {
             return AnyView(
@@ -75,7 +75,7 @@ struct ResultOverview: View {
             )
         }
     }
-
+    
     var ResultJob: some View {
         if result.isClear {
             return AnyView(
@@ -91,7 +91,7 @@ struct ResultOverview: View {
             )
         }
     }
-
+    
     var ResultEggs: some View {
         VStack(alignment: .leading, spacing: 5) {
             HStack {
