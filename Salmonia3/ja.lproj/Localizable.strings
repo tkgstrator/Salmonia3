@@ -106,7 +106,7 @@
 "ERROR_NODATA" = "新規リザルトがありません";
 
 "RESULT_BOSS_DEFEATED_%lld" = "オオモノシャケをたおした数 x%lld";
-//"RESULT_BOSS_DEFEATED_%@" = "Boss Salmonid Defeated %@";
+"RESULT_RATING_%@" = "レーティング %@";
 "RESULT_WAVE_%lld" = "WAVE %lld";
 "RESULT_HAZARD_LEVEL_MAX" = "キケン度MAX!!";
 "RESULT_HAZARD_LEVEL_%@" = "キケン度 %@%%";
