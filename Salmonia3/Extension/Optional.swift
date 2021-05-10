@@ -26,7 +26,7 @@ extension Optional where Wrapped == Int {
 
 extension Optional where Wrapped == Bool {
     var stringValue: String {
-        guard let _ = self else { return "-"}
+        guard let _ = self else { return "-" }
         return self! ? "ENABLED".localized : "DISABLED".localized
     }
 }
@@ -46,6 +46,8 @@ extension Optional where Wrapped == Any {
             return (self as? Bool).stringValue
         case is Double:
             return (self as? Double).stringValue
+        case is String:
+            return (self as? String).stringValue
         default:
             return "-"
         }

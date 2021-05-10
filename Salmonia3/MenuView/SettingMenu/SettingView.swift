@@ -87,7 +87,7 @@ struct SettingMenu: View {
 
     init(title: String, value: Optional<Any>) {
         self.title = "SETTING_\(title)".localized
-        self.value = "-"
+        self.value = value.stringValue
     }
 
     var body: some View {

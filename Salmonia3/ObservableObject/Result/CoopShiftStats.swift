@@ -8,21 +8,29 @@
 import Foundation
 import RealmSwift
 
-final class CoopShiftStats: Identifiable {
-    var resultAvg: ResultAvg
-    var resultMax: ResultMax
-    var overview: ResultOverView
+final class CoopShiftStats: Identifiable, ObservableObject {
+    @Published var resultAvg: ResultAvg?
+    @Published var resultMax: ResultMax?
+    @Published var overview: ResultOverView?
+    private var token: NotificationToken?
 
     init(startTime: Int) {
-        let realm = try! Realm()
-        let nsaid: [String] = Array(realm.objects(RealmUserInfo.self).map{ $0.nsaid! })
-        let player = realm.objects(RealmPlayerResult.self).filter("ANY result.startTime=%@ and pid IN %@", startTime, nsaid)
-        let result = realm.objects(RealmCoopResult.self).filter("startTime=%@", startTime)
-        resultMax = ResultMax(player: player, result: result)
-        resultAvg = ResultAvg(player: player, result: result)
-        overview = ResultOverView(results: result, player: player)
+        token = RealmManager.shared.realm.objects(RealmCoopResult.self).observe{ [weak self] (changes: RealmCollectionChange) in
+            let realm = try! Realm()
+            let nsaid: [String] = Array(realm.objects(RealmUserInfo.self).map{ $0.nsaid! })
+            let player = realm.objects(RealmPlayerResult.self).filter("ANY result.startTime=%@ and pid IN %@", startTime, nsaid)
+            let result = realm.objects(RealmCoopResult.self).filter("startTime=%@", startTime)
+            
+            self!.resultMax = ResultMax(player: player, result: result)
+            self!.resultAvg = ResultAvg(player: player, result: result)
+            self!.overview = ResultOverView(results: result, player: player)
+        }
     }
 
+    deinit {
+        token?.invalidate()
+    }
+    
     class ResultOverView {
         var jobNum: Int?
         var clearWave: Double?
@@ -87,7 +95,7 @@ final class CoopShiftStats: Identifiable {
     }
 }
 
-fileprivate func calcRatio(_ value: Int, divideBy: Int?) -> Double? {
+func calcRatio(_ value: Int, divideBy: Int?) -> Double? {
     guard let divideBy = divideBy else { return nil }
     if divideBy == 0 { return nil }
     return Double(value * 10000 / divideBy) / 100

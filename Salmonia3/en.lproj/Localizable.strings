@@ -13,6 +13,8 @@
 "TITLE_RESULT" = "Result";
 "TITLE_SHIFT_COLLECTION" = "Shift Schedule";
 "TITLE_RESULT_DETAIL" = "Result";
+"TITLE_FREE_PRODUCT" = "Free Feature";
+"TITLE_PAID_PRODUCT" = "Paid Feature";
 "TITLE_SHIFT_STATS" = "Shift Stats";
 
 "TEXT_SALMONIA" = "Salmonia";
@@ -126,6 +128,10 @@
 "FEATURE_FREE_01" = "Grizzco's Weapons";
 "FEATURE_FREE_02" = "Future Rotation";
 "FEATURE_FREE_03" = "Hide My Nickname";
+
+"FEATURE_FREE_01_DESC" = "Display rare weapon in random schedules";
+"FEATURE_FREE_02_DESC" = "Display all shift schedules by 2022.";
+"FEATURE_FREE_03_DESC" = "Hide nickname including you.";
 
 "JOB_NUM" = "Job Num";
 "CLEAR_RATIO" = "Clear Ratio";
