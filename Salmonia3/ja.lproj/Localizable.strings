@@ -107,6 +107,7 @@
 
 "RESULT_BOSS_DEFEATED_%lld" = "オオモノシャケをたおした数 x%lld";
 "RESULT_RATING_%@" = "レーティング %@";
+"RESULT_MATCHING_%@" = "マッチング x%@";
 "RESULT_WAVE_%lld" = "WAVE %lld";
 "RESULT_HAZARD_LEVEL_MAX" = "キケン度MAX!!";
 "RESULT_HAZARD_LEVEL_%@" = "キケン度 %@%%";

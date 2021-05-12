@@ -37,7 +37,7 @@ struct CoopPlayerView: View {
                 }
                 Spacer()
                 VStack(spacing: 0) {
-                    VStack(alignment: .trailing, spacing: 0) {
+                    VStack(alignment: .trailing, spacing: 5) {
                         HStack {
                             Spacer()
                             Text("RESULT_RATING_\(String(player.srpower))")
@@ -45,8 +45,8 @@ struct CoopPlayerView: View {
                         }
                         HStack {
                             Spacer()
-//                            Text("RESULT_RATING_\(String(player.srpower))")
-//                                .frame(height: 10)
+                            Text("RESULT_MATCHING_\(String(player.matching))")
+                                .frame(height: 10)
                         }
                     }
                     .frame(height: 12)
@@ -132,6 +132,10 @@ fileprivate extension RealmPlayerResult {
         let baserate: Int = Array(zip(self.bossKillCounts, bossrate[0])).map{ $0 * $1 }.reduce(0, +) / max(1, self.bossKillCounts.sum())
         
         return Double(Double(baserate) * bias).round
+    }
+    
+    var matching: Int {
+        return RealmManager.shared.realm.objects(RealmPlayerResult.self).filter("pid=%@", self.pid!).count
     }
 }
 

@@ -105,6 +105,7 @@
 "RESULT_BOSS_DEFEATED_%lld" = "Boss Salmonid Defeated x%lld";
 "RESULT_WAVE_%lld" = "Wave %lld";
 "RESULT_RATING_%@" = "Rating %@";
+"RESULT_MATCHING_%@" = "Match x%@";
 "RESULT_HAZARD_LEVEL_MAX" = "Hazard Level Max!!";
 "RESULT_HAZARD_LEVEL_%@" = "Hazard Level %@%";
 "RESULT_APPEARANCES_%lld" = "Appearances x%lld";

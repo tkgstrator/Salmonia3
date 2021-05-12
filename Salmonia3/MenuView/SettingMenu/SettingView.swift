@@ -41,6 +41,7 @@ struct SettingView: View {
             }
             Section(header: Text("HEADER_SALMONSTATS").splatfont2(.orange, size: 14)) {
                 NavigationLink(destination: ImportingView(), label: { Text("SETTING_IMPORT_RESULT")})
+                NavigationLink(destination: UsernameView(), label: { Text("SETTING_UPDATE_NAME")})
             }
             Section(header: Text("HEADER_APPLICATION").splatfont2(.orange, size: 14)) {
                 PrivacyButton

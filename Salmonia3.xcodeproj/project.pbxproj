@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		101C77CD26496FA6005D603C /* CoopPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C77CC26496FA6005D603C /* CoopPlayerView.swift */; };
 		101C77D526497038005D603C /* CoopPlayerResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C77D426497038005D603C /* CoopPlayerResultView.swift */; };
+		101C77DA264C283C005D603C /* UsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C77D9264C283B005D603C /* UsernameView.swift */; };
 		102465F125FDDABD004DC043 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102465F025FDDABD004DC043 /* SettingView.swift */; };
 		1024660325FDE916004DC043 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1024660525FDE916004DC043 /* Localizable.strings */; };
 		1024661125FDF411004DC043 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024661025FDF411004DC043 /* String.swift */; };
@@ -101,6 +102,7 @@
 		100F564A262C308F00A1D1D0 /* SalmonStats */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SalmonStats; path = ../SalmonStats; sourceTree = "<group>"; };
 		101C77CC26496FA6005D603C /* CoopPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopPlayerView.swift; sourceTree = "<group>"; };
 		101C77D426497038005D603C /* CoopPlayerResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopPlayerResultView.swift; sourceTree = "<group>"; };
+		101C77D9264C283B005D603C /* UsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameView.swift; sourceTree = "<group>"; };
 		102465F025FDDABD004DC043 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		1024660425FDE916004DC043 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1024661025FDF411004DC043 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 			children = (
 				10377F9025FD09E800536A94 /* LoadingView.swift */,
 				1031728D262C355500CF8903 /* ImportingView.swift */,
+				101C77D9264C283B005D603C /* UsernameView.swift */,
 				10377F9825FD09FF00536A94 /* LoggingThread.swift */,
 			);
 			path = Loading;
@@ -761,6 +764,7 @@
 				1059416725FA49E500C32D21 /* Salmonia3App.swift in Sources */,
 				10BBBEA226049EF400DA79C9 /* CoopResultView.swift in Sources */,
 				101C77D526497038005D603C /* CoopPlayerResultView.swift in Sources */,
+				101C77DA264C283C005D603C /* UsernameView.swift in Sources */,
 				10377F7C25FCD9E800536A94 /* RealmManager.swift in Sources */,
 				1024661B25FE0929004DC043 /* RealmCoopShift.swift in Sources */,
 				1024661125FDF411004DC043 /* String.swift in Sources */,
