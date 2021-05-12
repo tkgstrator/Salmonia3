@@ -110,6 +110,20 @@ final class RealmManager {
         
     }
     
+    public static func getNicknames() -> [String] {
+        return Array(Set(RealmManager.shared.realm.objects(RealmPlayerResult.self).map{ $0.pid! }))
+    }
+    
+    public static func updateNicknameAndIcons(players: Response.NicknameIcons) {
+        RealmManager.shared.realm.beginWrite()
+        let players: [Response.NicknameIcons.NicknameIcon] = players.nicknameAndIcons
+        for player in players {
+            let result = RealmManager.shared.realm.objects(RealmPlayerResult.self).filter("pid=%@", player.nsaId)
+            result.setValue(player.nickname, forKey: "name")
+        }
+        try? RealmManager.shared.realm.commitWrite()
+    }
+    
     public static func addNewResultsFromSplatNet2(from result: SplatNet2.Coop.Result, pid: String) {
         RealmManager.shared.realm.beginWrite()
         let result: RealmCoopResult = RealmCoopResult(from: result, pid: pid)

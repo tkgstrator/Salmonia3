@@ -137,9 +137,10 @@ struct CoopResultOverview: View {
     }
 
     var ResultPlayer: some View {
-        LazyHGrid(rows: Array(repeating: .init(.flexible(minimum: 80)), count: result.player.count), spacing: 0) {
+        LazyHGrid(rows: Array(repeating: .init(.flexible(minimum: 80)), count: result.player.count), spacing: 10) {
             ForEach(result.player.indices, id: \.self) { index in
                 CoopPlayerView(player: result.player[index])
+                    .padding(.vertical, 15)
             }
         }
     }
