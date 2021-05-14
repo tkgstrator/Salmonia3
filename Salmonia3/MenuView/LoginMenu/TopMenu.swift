@@ -12,6 +12,7 @@ import URLImage
 
 struct TopMenu: View {
     @EnvironmentObject var main: AppSettings
+    
     @State var isShowing: Bool = false
     @State var isActive: Bool = false
 
@@ -30,7 +31,7 @@ struct TopMenu: View {
                 }
                 Section(header: Text("HEADER_STAGE_RECORD").splatfont2(.orange, size: 14)) {
                     ForEach(StageType.allCases, id:\.self) { stage in
-                        NavigationLink(destination: CoopRecordView(stageId: stage.rawValue, record: CoopRecord(stageId: stage.rawValue))) {
+                        NavigationLink(destination: CoopRecordView(stageId: stage.rawValue)) {
                             Text(stage.name.localized)
                         }
                     }

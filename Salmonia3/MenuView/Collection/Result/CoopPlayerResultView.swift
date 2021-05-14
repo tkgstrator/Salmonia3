@@ -14,7 +14,7 @@ struct CoopPlayerResultView: View {
 
     var body: some View {
         List {
-            Section(header: Text("Players").splatfont2(.orange, size: 14)) {
+            Section(header: Text("RESULT_PLAYER").splatfont2(.orange, size: 14)) {
                 HStack(alignment: .top, spacing: 0) {
                     Text("").frame(width: 30)
                     LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: 0, pinnedViews: []) {
@@ -29,7 +29,7 @@ struct CoopPlayerResultView: View {
                     .frame(maxWidth: .infinity)
                 }
             }
-            Section(header: Text("Salmonids").splatfont2(.orange, size: 14)) {
+            Section(header: Text("RESULT_SALMONIDS").splatfont2(.orange, size: 14)) {
                 ForEach(Range(0...8)) { id in
                     if result.bossCounts[id] != 0 {
                         HStack(spacing: 0) {
@@ -65,9 +65,9 @@ struct CoopPlayerResultView: View {
                     }
                 }
             }
-            Section(header: Text("Evaluation").splatfont2(.orange, size: 14)) {
+            Section(header: Text("RESULT_EVALUATION").splatfont2(.orange, size: 14)) {
                 HStack(spacing: 0) {
-                    Text("Kill")
+                    Text("RESULT_KILL_COUNT")
                         .frame(width: 30)
                     LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: nil, pinnedViews: []) {
                         ForEach(result.player.indices, id: \.self) { index in
@@ -77,7 +77,7 @@ struct CoopPlayerResultView: View {
                     .frame(maxWidth: .infinity)
                 }
                 HStack(spacing: 0) {
-                    Text("Eggs")
+                    Text("RESULT_EGG_COUNT")
                         .frame(width: 30)
                     LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: nil, pinnedViews: []) {
                         ForEach(result.player.indices, id: \.self) { index in

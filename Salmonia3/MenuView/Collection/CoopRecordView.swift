@@ -8,21 +8,35 @@
 import SwiftUI
 
 struct CoopRecordView: View {
+//    #warning("EnvironmentObjectに切り替えてもいいかも")
+    @State var record: StageRecord = StageRecord()
     var stageId: Int
-    @StateObject var record: CoopRecord
-
+    @State private var eventTypes: [RecordType] = [.noevent, .rush, .goldie, .griller, .mothership, .fog, .cohock]
+    @State private var waterLevels: [String] = ["low", "normal", "high"]
     var body: some View {
         List {
             Section(header: Text("HEADER_STATS_OVERVIEW")) {
                 RecordColumn(title: .jobnum, value: record.jobNum)
+                RecordColumn(title: .maxGrade, value: record.maxGrade)
             }
+            ForEach(Range(0...2)) { tide in
+                Section(header: Text(waterLevels[tide].localized)) {
+                    ForEach(Range(0...6)) { event in
+                        if record.goldenEggs[tide][event] != nil {
+                            RecordColumn(title: eventTypes[event], value: record.goldenEggs[tide][event]?.goldenEggs)
+                        }
+                    }
+                }
+            }
+        }
+        .onAppear {
+            record = StageRecord(stageId: stageId)
         }
         .navigationTitle(StageType.init(rawValue: stageId)!.name.localized)
     }
 }
 
 fileprivate struct RecordColumn: View {
-    
     var title: String
     var value: String
     
@@ -43,8 +57,9 @@ fileprivate struct RecordColumn: View {
     }
 }
 
-fileprivate enum RecordType: String, CaseIterable {
+internal enum RecordType: String, CaseIterable {
     case jobnum             = "JOB_NUM"
+    case maxGrade           = "MAX_GRADE"
     case clearRatio         = "CLEAR_RATIO"
     case salmonPower        = "SALMON_RATE"
     case clearWave          = "CLEAR_WAVE"
@@ -59,11 +74,11 @@ fileprivate enum RecordType: String, CaseIterable {
     case deadCount          = "DEAD_COUNT"
     case ratioPowerEggs     = "RATIO_POWER_EGGS"
     case ratioGoldenEggs    = "RATIO_GOLDEN_EGGS"
-}
-
-
-struct CoopRecordView_Previews: PreviewProvider {
-    static var previews: some View {
-        CoopRecordView(stageId: 5000, record: CoopRecord(stageId: 5000))
-    }
+    case noevent            = "water-levels"
+    case rush               = "rush"
+    case goldie             = "goldie-seeking"
+    case griller            = "griller"
+    case fog                = "fog"
+    case mothership         = "the-mothership"
+    case cohock             = "cohock-charge"
 }

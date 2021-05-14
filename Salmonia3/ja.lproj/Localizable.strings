@@ -60,6 +60,7 @@
 "SETTING_APP_VERSION" = "バージョン";
 "SETTING_IMPORT_RESULT" = "リザルト取り込み";
 "SETTING_USING_DARKMODE" = "ダークモードを使う";
+"SETTING_UPDATE_NAME" = "ユーザ名の更新";
 "ERASE_SETTING" = "データ消去";
 "RE_SIGN_IN" = "再ログイン";
 
@@ -112,6 +113,10 @@
 "RESULT_HAZARD_LEVEL_MAX" = "キケン度MAX!!";
 "RESULT_HAZARD_LEVEL_%@" = "キケン度 %@%%";
 "RESULT_APPEARANCES_%lld" = "出現数 x%lld";
+"RESULT_PLAYER" = "クルー";
+"RESULT_KILL_COUNT" = "討伐数";
+"RESULT_EGG_COUNT" = "納品数";
+"RESULT_SALMONIDS" = "オオモノシャケ";
 
 "Ruins of Ark Polaris" = "朽ちた箱舟 ポラリス";
 "Salmonid Smokeyard" = "トキシラズいぶし工房";
@@ -163,6 +168,7 @@
 "DEAD_COUNT" = "被救助数";
 "RATIO_POWER_EGGS" = "赤イクラ率";
 "RATIO_GOLDEN_EGGS" = "金イクラ率";
+"MAX_GRADE" = "最高レート";
 
 "TAP_MIDDLE_BUTTON" = "真ん中のボタンをタップ";
 "INPUT_TWITTER_ACCOUNT_INFO" = "Twitterアカウントの情報を入力";

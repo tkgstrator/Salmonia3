@@ -2,102 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "Alamofire",
-        "repositoryURL": "https://github.com/Alamofire/Alamofire",
-        "state": {
-          "branch": null,
-          "revision": "f96b619bcb2383b43d898402283924b80e2c4bae",
-          "version": "5.4.3"
-        }
-      },
-      {
-        "package": "BetterSafariView",
-        "repositoryURL": "https://github.com/stleamist/BetterSafariView.git",
-        "state": {
-          "branch": null,
-          "revision": "561919b490eddf8f999b0f855cbf237001cbfccd",
-          "version": "2.3.1"
-        }
-      },
-      {
         "package": "CombineExpectations",
         "repositoryURL": "https://github.com/groue/CombineExpectations.git",
         "state": {
           "branch": null,
           "revision": "5c36f3199960776fc055196a93ca04bfc00e1857",
           "version": "0.7.0"
-        }
-      },
-      {
-        "package": "KeychainAccess",
-        "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess",
-        "state": {
-          "branch": null,
-          "revision": "84e546727d66f1adc5439debad16270d0fdd04e7",
-          "version": "4.2.2"
-        }
-      },
-      {
-        "package": "Realm",
-        "repositoryURL": "https://github.com/realm/realm-cocoa",
-        "state": {
-          "branch": null,
-          "revision": "b481f2cc637bd101a03dba52ad1bef6eadfdac9f",
-          "version": "10.7.5"
-        }
-      },
-      {
-        "package": "RealmDatabase",
-        "repositoryURL": "https://github.com/realm/realm-core",
-        "state": {
-          "branch": null,
-          "revision": "28ed052d10d2245542b4fbdc71d388febb1e9bc4",
-          "version": "10.6.0"
-        }
-      },
-      {
-        "package": "Introspect",
-        "repositoryURL": "https://github.com/siteline/SwiftUI-Introspect.git",
-        "state": {
-          "branch": null,
-          "revision": "2e09be8af614401bc9f87d40093ec19ce56ccaf2",
-          "version": "0.1.3"
-        }
-      },
-      {
-        "package": "SwiftUIRefresh",
-        "repositoryURL": "https://github.com/siteline/SwiftUIRefresh",
-        "state": {
-          "branch": null,
-          "revision": "fa8fac7b5eb5c729983a8bef65f094b5e0d12014",
-          "version": "0.0.3"
-        }
-      },
-      {
-        "package": "SwiftyJSON",
-        "repositoryURL": "https://github.com/SwiftyJSON/SwiftyJSON",
-        "state": {
-          "branch": null,
-          "revision": "b3dcd7dbd0d488e1a7077cb33b00f2083e382f07",
-          "version": "5.0.1"
-        }
-      },
-      {
-        "package": "SwiftyStoreKit",
-        "repositoryURL": "https://github.com/bizz84/SwiftyStoreKit.git",
-        "state": {
-          "branch": null,
-          "revision": "3b54c8eac2840b0cdd576634e83d9ebeb70f847c",
-          "version": "0.16.3"
-        }
-      },
-      {
-        "package": "URLImage",
-        "repositoryURL": "https://github.com/dmytro-anokhin/url-image",
-        "state": {
-          "branch": null,
-          "revision": "ccab89ad1cedb04f25dd4df1776dd8c8583b914a",
-          "version": "2.2.5"
         }
       }
     ]

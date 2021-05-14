@@ -57,6 +57,7 @@
 "SETTING_APP_VERSION" = "Version";
 "SETTING_IMPORT_RESULT" = "Import results";
 "SETTING_USING_DARKMODE" = "Use darkmode";
+"SETTING_UPDATE_NAME" = "Update Username";
 "ERASE_SETTING" = "Erase Data";
 "RE_SIGN_IN" = "Re-Sign in";
 
@@ -109,6 +110,10 @@
 "RESULT_HAZARD_LEVEL_MAX" = "Hazard Level Max!!";
 "RESULT_HAZARD_LEVEL_%@" = "Hazard Level %@%";
 "RESULT_APPEARANCES_%lld" = "Appearances x%lld";
+"RESULT_PLAYER" = "Crew";
+"RESULT_KILL_COUNT" = "Kills";
+"RESULT_EGG_COUNT" = "Eggs";
+"RESULT_SALMONIDS" = "Salmonids";
 
 // リザルト一覧の翻訳
 "normal" = "middle";
@@ -150,6 +155,7 @@
 "DEAD_COUNT" = "Dead Count";
 "RATIO_POWER_EGGS" = "Power Egg Ratio";
 "RATIO_GOLDEN_EGGS" = "Golden Egg Ratio";
+"MAX_GRADE" = "Max Grade";
 
 "TAP_MIDDLE_BUTTON" = "Tap middle button";
 "INPUT_TWITTER_ACCOUNT_INFO" = "Input twtter account information";

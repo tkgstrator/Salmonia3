@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+fileprivate var formatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.timeZone = TimeZone.current
+    formatter.dateFormat = "yyyy MM/dd HH:mm"
+    return formatter
+}()
+
 struct CoopResultView: View {
     var result: RealmCoopResult
     @State var isVisible: Bool = false
@@ -25,12 +32,7 @@ struct CoopResultView: View {
 
 struct CoopResultOverview: View {
     var result: RealmCoopResult
-    var formatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.timeZone = TimeZone.current
-        formatter.dateFormat = "yyyy MM/dd HH:mm"
-        return formatter
-    }()
+
     @State var isAnonymous: Bool = false
 
     var body: some View {
@@ -39,7 +41,7 @@ struct CoopResultOverview: View {
                 ResultOverview
                     .padding(.bottom, 20)
                 ResultWave
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 40)
                 ResultPlayer
                     .padding(.bottom, 50)
             }

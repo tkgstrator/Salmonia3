@@ -36,8 +36,8 @@ struct CoopShiftStatsView: View {
                 StatsColumn(title: .teamPowerEggs, value: result.resultMax!.teamPowerEggs)
                 StatsColumn(title: .teamGoldenEggs, value: result.resultMax!.teamGoldenEggs)
                 StatsColumn(title: .defeated, value: result.resultMax!.bossDefeated)
-                StatsColumn(title: .deadCount, value: result.resultMax!.deadCount)
                 StatsColumn(title: .helpCount, value: result.resultMax!.helpCount)
+                StatsColumn(title: .deadCount, value: result.resultMax!.deadCount)
             }
             Section(header: Text("HEADER_STATS_AVG")) {
                 StatsColumn(title: .powerEggs, value: result.resultAvg!.powerEggs)
@@ -45,8 +45,8 @@ struct CoopShiftStatsView: View {
                 StatsColumn(title: .teamPowerEggs, value: result.resultAvg!.teamPowerEggs)
                 StatsColumn(title: .teamGoldenEggs, value: result.resultAvg!.teamGoldenEggs)
                 StatsColumn(title: .defeated, value: result.resultAvg!.bossDefeated)
-                StatsColumn(title: .deadCount, value: result.resultAvg!.deadCount)
                 StatsColumn(title: .helpCount, value: result.resultAvg!.helpCount)
+                StatsColumn(title: .deadCount, value: result.resultAvg!.deadCount)
             }
         }
         .navigationTitle("TITLE_SHIFT_STATS")

@@ -33,7 +33,7 @@ extension Optional where Wrapped == Bool {
 
 extension Optional where Wrapped == Double {
     var stringValue: String {
-        return self == nil ? "-" : String(self!)
+        return self == nil ? "-" : String(self!.round)
     }
 }
 
@@ -60,3 +60,8 @@ extension RealmOptional where Value == Int {
     }
 }
 
+fileprivate extension Double {
+    var round: Double {
+        return Double(Int(self * 100)) / Double(100)
+    }
+}
