@@ -40,6 +40,7 @@
 		104BD603261C93310013CD27 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 104BD602261C93310013CD27 /* KeychainAccess */; };
 		104BD608261C93630013CD27 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BD607261C93630013CD27 /* KeyStorage.swift */; };
 		104BD620261C98800013CD27 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 104BD61F261C98800013CD27 /* URLImage */; };
+		10567DD8264ECDD0002654D3 /* SplatNet2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10567DD7264ECDD0002654D3 /* SplatNet2.swift */; };
 		1059416725FA49E500C32D21 /* Salmonia3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059416625FA49E500C32D21 /* Salmonia3App.swift */; };
 		1059416925FA49E500C32D21 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059416825FA49E500C32D21 /* ContentView.swift */; };
 		1059416B25FA49E900C32D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1059416A25FA49E900C32D21 /* Assets.xcassets */; };
@@ -52,7 +53,6 @@
 		105941AD25FA500500C32D21 /* TopMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105941AC25FA500500C32D21 /* TopMenu.swift */; };
 		105941BE25FA525100C32D21 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105941BD25FA525100C32D21 /* Background.swift */; };
 		1079EAD22647E3540085008C /* CoopRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1079EAD12647E3540085008C /* CoopRecordView.swift */; };
-		1079EAD72647E4080085008C /* CoopRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1079EAD62647E4080085008C /* CoopRecord.swift */; };
 		107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */; };
 		107E115F260FA95C008E450B /* SalmonStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E115E260FA95C008E450B /* SalmonStats.swift */; };
 		1090C689263DF162000DD54C /* SplatNet2 in Frameworks */ = {isa = PBXBuildFile; productRef = 1090C688263DF162000DD54C /* SplatNet2 */; };
@@ -131,6 +131,7 @@
 		104AA7DB2605E0C8007BDC24 /* GoogleMobileAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMobileAds.swift; sourceTree = "<group>"; };
 		104BD5ED261C875C0013CD27 /* CoreAppProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAppProduct.swift; sourceTree = "<group>"; };
 		104BD607261C93630013CD27 /* KeyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyStorage.swift; sourceTree = "<group>"; };
+		10567DD7264ECDD0002654D3 /* SplatNet2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplatNet2.swift; sourceTree = "<group>"; };
 		1059416325FA49E500C32D21 /* Salmonia3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Salmonia3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1059416625FA49E500C32D21 /* Salmonia3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salmonia3App.swift; sourceTree = "<group>"; };
 		1059416825FA49E500C32D21 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -149,7 +150,6 @@
 		105941AC25FA500500C32D21 /* TopMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMenu.swift; sourceTree = "<group>"; };
 		105941BD25FA525100C32D21 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		1079EAD12647E3540085008C /* CoopRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopRecordView.swift; sourceTree = "<group>"; };
-		1079EAD62647E4080085008C /* CoopRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopRecord.swift; sourceTree = "<group>"; };
 		107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopStats.swift; sourceTree = "<group>"; };
 		107E115E260FA95C008E450B /* SalmonStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonStats.swift; sourceTree = "<group>"; };
 		1090C681263DF125000DD54C /* SplatNet2 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SplatNet2; path = ../SplatNet2; sourceTree = "<group>"; };
@@ -253,6 +253,7 @@
 				1024664A2600D55E004DC043 /* StageType.swift */,
 				10AD114C2600EB18008C0E64 /* Error.swift */,
 				10BBBEA92604E69300DA79C9 /* SRImage.swift */,
+				10567DD7264ECDD0002654D3 /* SplatNet2.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -347,7 +348,6 @@
 				1059416625FA49E500C32D21 /* Salmonia3App.swift */,
 				1059416825FA49E500C32D21 /* ContentView.swift */,
 				10377F8A25FD053A00536A94 /* AppManager.swift */,
-				10377F7B25FCD9E800536A94 /* RealmManager.swift */,
 				10F97B4F2614DD1B0079CED0 /* GoogleService-Info.plist */,
 				107F9B3A2614A8CA001581C7 /* MenuView */,
 				10CF09F825FB9BEE00D2EEB1 /* Realm */,
@@ -446,7 +446,6 @@
 			isa = PBXGroup;
 			children = (
 				10A08031262070A200BFDF59 /* CoopShiftStats.swift */,
-				1079EAD62647E4080085008C /* CoopRecord.swift */,
 			);
 			path = Result;
 			sourceTree = "<group>";
@@ -454,6 +453,7 @@
 		10CF09F825FB9BEE00D2EEB1 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
+				10377F7B25FCD9E800536A94 /* RealmManager.swift */,
 				107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */,
 				10CF09F325FB9BE100D2EEB1 /* RealmCoopResult.swift */,
 				1024661A25FE0929004DC043 /* RealmCoopShift.swift */,
@@ -778,9 +778,9 @@
 				10AD114D2600EB18008C0E64 /* Error.swift in Sources */,
 				105941AD25FA500500C32D21 /* TopMenu.swift in Sources */,
 				10BBBEAA2604E69300DA79C9 /* SRImage.swift in Sources */,
+				10567DD8264ECDD0002654D3 /* SplatNet2.swift in Sources */,
 				10377F8125FCDBE400536A94 /* RealmUserInfo.swift in Sources */,
 				10CF0A0025FBA5BC00D2EEB1 /* RealmPlayerResult.swift in Sources */,
-				1079EAD72647E4080085008C /* CoopRecord.swift in Sources */,
 				1024662525FE4012004DC043 /* CoopShiftCollection.swift in Sources */,
 				101C77CD26496FA6005D603C /* CoopPlayerView.swift in Sources */,
 				1059419725FA4C0C00C32D21 /* Color.swift in Sources */,
@@ -967,7 +967,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -993,7 +993,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
