@@ -13,14 +13,15 @@ struct CoopShiftStatsView: View {
     @State private var seletion: Int = 0
     
     var body: some View {
-        TabView {
+        TabView(selection: $seletion) {
             StatsView(startTime: $startTime)
                 .tag(0)
-            StatsWaveView()
+            StatsWaveView(stats: CoopShiftStats(startTime: startTime))
                 .tag(1)
-            StatsWeaponView()
+            StatsWeaponView(stats: CoopShiftStats(startTime: startTime))
                 .tag(2)
         }
+        .navigationTitle("TITLE_SHIFT_STATS")
         .edgesIgnoringSafeArea(.bottom)
         .tabViewStyle(PageTabViewStyle())
     }

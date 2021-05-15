@@ -12,11 +12,13 @@
 "TITLE_LOGGING_THREAD" = "ログ";
 "TITLE_RESULT_COLLECTION" = "リザルト一覧";
 "TITLE_RESULT" = "リザルト";
-"TITLE_SHIFT_COLLECTION" = "シフトスケジュール";
+"TITLE_SHIFT_SCHEDULE" = "シフトスケジュール";
 "TITLE_RESULT_DETAIL" = "リザルト";
 "TITLE_FREE_PRODUCT" = "無料機能";
 "TITLE_PAID_PRODUCT" = "有料機能";
 "TITLE_SHIFT_STATS" = "シフト統計";
+"TITLE_WAVE_ANALYSIS" = "WAVE分析";
+"TITLE_WEAPON_ANALYSIS" = "ブキ分析";
 
 "TEXT_SALMONIA" = "Salmonia";
 "TEXT_SALMON_STATS" = "Salmon Stats";
