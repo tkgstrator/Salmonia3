@@ -15,12 +15,12 @@ struct CoopRecordView: View {
     @State private var waterLevels: [String] = ["low", "normal", "high"]
     var body: some View {
         List {
-            Section(header: Text("HEADER_STATS_OVERVIEW")) {
+            Section(header: Text("HEADER_STATS_OVERVIEW").splatfont2(.orange, size: 14)) {
                 RecordColumn(title: .jobnum, value: record.jobNum)
                 RecordColumn(title: .maxGrade, value: record.maxGrade)
             }
             ForEach(Range(0...2)) { tide in
-                Section(header: Text(waterLevels[tide].localized)) {
+                Section(header: Text(waterLevels[tide].localized).splatfont2(.orange, size: 14)) {
                     ForEach(Range(0...6)) { event in
                         if record.goldenEggs[tide][event] != nil {
                             RecordColumn(title: eventTypes[event], value: record.goldenEggs[tide][event]?.goldenEggs)
@@ -53,7 +53,7 @@ fileprivate struct RecordColumn: View {
             Text(value)
                 .foregroundColor(.secondary)
         }
-        .font(.custom("Splatfont2", size: 14))
+        .font(.custom("Splatfont2", size: 16))
     }
 }
 

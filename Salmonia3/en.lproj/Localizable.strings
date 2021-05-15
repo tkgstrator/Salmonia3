@@ -114,6 +114,7 @@
 "RESULT_KILL_COUNT" = "Kills";
 "RESULT_EGG_COUNT" = "Eggs";
 "RESULT_SALMONIDS" = "Salmonids";
+"RESULT_EVALUATION" = "Evaluation";
 
 // リザルト一覧の翻訳
 "normal" = "middle";

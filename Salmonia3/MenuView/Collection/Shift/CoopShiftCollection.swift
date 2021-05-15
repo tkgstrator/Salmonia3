@@ -26,7 +26,7 @@ struct CoopShiftCollection: View {
 
 struct CoopShift: View {
     
-    @ObservedObject var shift: RealmCoopShift
+    @StateObject var shift: RealmCoopShift
     @AppStorage("FEATURE_FREE_01") var isFree01: Bool = false
     
     var formatter: DateFormatter = {
