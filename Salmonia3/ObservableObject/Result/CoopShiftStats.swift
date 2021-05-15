@@ -12,6 +12,7 @@ final class CoopShiftStats: ObservableObject {
     @Published var resultAvg: ResultAvg?
     @Published var resultMax: ResultMax?
     @Published var overview: ResultOverView?
+    @Published var weaponData: [ResultWeapon] = []
     private var token: NotificationToken?
 
     init(startTime: Int) {
@@ -22,12 +23,13 @@ final class CoopShiftStats: ObservableObject {
         resultMax = ResultMax(player: player, result: result)
         resultAvg = ResultAvg(player: player, result: result)
         overview = ResultOverView(results: result, player: player)
+        weaponData = getWeaponData(startTime: startTime, nsaid: nsaid)
 
         token = RealmManager.shared.realm.objects(RealmCoopResult.self).observe{ [weak self] (changes: RealmCollectionChange) in
-
             self!.resultMax = ResultMax(player: player, result: result)
             self!.resultAvg = ResultAvg(player: player, result: result)
             self!.overview = ResultOverView(results: result, player: player)
+            self!.weaponData = self!.getWeaponData(startTime: startTime, nsaid: nsaid)
         }
     }
 
@@ -35,6 +37,32 @@ final class CoopShiftStats: ObservableObject {
         token?.invalidate()
     }
     
+    private func getWeaponData(startTime: Int, nsaid: [String]) -> [ResultWeapon] {
+        let shift = RealmManager.shared.realm.objects(RealmCoopShift.self).filter("startTime=%@", startTime).first!
+        let suppliedWepons: [Int] = RealmManager.shared.realm.objects(RealmPlayerResult.self).filter("ANY result.startTime=%@ AND pid IN %@", startTime, nsaid).flatMap{ $0.weaponList }
+        let allWeaponLists: [Int] = Array(WeaponType.allCases.map{ $0.rawValue })
+
+        switch shift.weaponList.contains(-1) {
+            case true:
+                return allWeaponLists
+                    .filter({ $0 >= 0 && $0 < 10000 || $0 == shift.rareWeapon.intValue })
+                    .sorted(by: <)
+                    .map({ ResultWeapon(weaponId: $0, count: suppliedWepons.count($0)) })
+            case false:
+                switch shift.weaponList.contains(-2) {
+                case true:
+                    return allWeaponLists
+                        .filter({ $0 >= 20000 })
+                        .sorted(by: <)
+                    .map({ ResultWeapon(weaponId: $0, count: suppliedWepons.count($0)) })
+                case false:
+                    return shift.weaponList
+                        .sorted(by: <)
+                        .map({ ResultWeapon(weaponId: $0, count: suppliedWepons.count($0)) })
+            }
+        }
+    }
+
     class ResultOverView {
         var jobNum: Int?
         var clearWave: Double?
@@ -55,6 +83,20 @@ final class CoopShiftStats: ObservableObject {
                 calcRatio(player.filter("specialId=%@", 8).count, divideBy: jobNum),
                 calcRatio(player.filter("specialId=%@", 9).count, divideBy: jobNum)
             ]
+        }
+    }
+    
+    class ResultWeapon: Identifiable {
+        var id: String = UUID().uuidString
+        var weaponId: Int
+        var count: Int = 0
+        var image: String {
+            return String(weaponId).imageURL
+        }
+        
+        init(weaponId: Int, count: Int) {
+            self.weaponId = weaponId
+            self.count = count
         }
     }
     
@@ -105,7 +147,7 @@ func calcRatio(_ value: Int, divideBy: Int?) -> Double? {
     return Double(value * 10000 / divideBy) / 100
 }
 
-extension Array where Element == Int {
+fileprivate extension Array where Element == Int {
     func avg() -> Double? {
         if self.isEmpty { return nil }
         return Double(self.reduce(0, +)) / Double(self.count)
@@ -115,4 +157,9 @@ extension Array where Element == Int {
         if divideBy == 0 { return nil }
         return Double(self.reduce(0, +)) / Double(divideBy)
     }
+    
+    func count(_ element: Int) -> Int {
+        return self.filter{ $0 == element }.count
+    }
 }
+

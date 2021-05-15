@@ -11,11 +11,13 @@
 "TITLE_LOGGING_THREAD" = "Logging Thread";
 "TITLE_RESULT_COLLECTION" = "Result Collection";
 "TITLE_RESULT" = "Result";
-"TITLE_SHIFT_COLLECTION" = "Shift Schedule";
+"TITLE_SHIFT_SCHEDULE" = "Shift Schedule";
 "TITLE_RESULT_DETAIL" = "Result";
 "TITLE_FREE_PRODUCT" = "Free Feature";
 "TITLE_PAID_PRODUCT" = "Paid Feature";
 "TITLE_SHIFT_STATS" = "Shift Stats";
+"TITLE_WAVE_ANALYSIS" = "Wave Analysis";
+"TITLE_WEAPON_ANALYSIS" = "Weapon Analysis";
 
 "TEXT_SALMONIA" = "Salmonia";
 "TEXT_SALMON_STATS" = "Salmon Stats";

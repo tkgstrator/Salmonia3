@@ -20,7 +20,7 @@ struct CoopShiftCollection: View {
                 }
             }
         }
-        .navigationTitle("TITLE_SHIFT_COLLECTION")
+        .navigationTitle("TITLE_SHIFT_SCHEDULE")
     }
 }
 

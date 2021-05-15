@@ -68,15 +68,6 @@ fileprivate struct NSObserver {
     var futureRotation: NSKeyValueObservation?
 }
 
-// MARK: ブキ支給情報
-struct WeaponList: Hashable {
-    var weaponId: Int
-    var count: Int?
-    var image: String {
-        return ""
-    }
-}
-
 // MARK: ステージキロク
 class StageRecord: ObservableObject {
     @Published var jobNum: Int?
@@ -93,6 +84,7 @@ class StageRecord: ObservableObject {
             self.jobNum = results.count
             self.maxGrade = results.max(ofProperty: "gradePoint")
             
+            // MARK: WAVE納品キロク
             for tide in Range(0 ... 2) {
                 let waterLevel = WaterLevel.init(rawValue: tide)!.waterLevel
                 for event in Range(0 ... 6) {

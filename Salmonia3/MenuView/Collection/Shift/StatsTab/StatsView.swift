@@ -45,7 +45,6 @@ struct StatsView: View {
             }
         }
         .onAppear(perform: getShiftStats)
-        .navigationTitle("TITLE_SHIFT_STATS")
     }
 }
 
