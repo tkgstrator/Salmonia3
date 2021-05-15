@@ -49,7 +49,6 @@ class CoreRealmCoop: ObservableObject {
             for stageId in Range(5000 ... 5004) {
                 records[5000 - stageId] = StageRecord(stageId: stageId)
             }
-            print(records)
         }
         
         token.realm = RealmManager.shared.realm.objects(RealmUserInfo.self).observe { [self] _ in
@@ -69,6 +68,16 @@ fileprivate struct NSObserver {
     var futureRotation: NSKeyValueObservation?
 }
 
+// MARK: ブキ支給情報
+struct WeaponList: Hashable {
+    var weaponId: Int
+    var count: Int?
+    var image: String {
+        return ""
+    }
+}
+
+// MARK: ステージキロク
 class StageRecord: ObservableObject {
     @Published var jobNum: Int?
     @Published var maxGrade: Int?

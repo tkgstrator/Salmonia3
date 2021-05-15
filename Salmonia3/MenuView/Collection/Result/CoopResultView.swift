@@ -127,7 +127,10 @@ struct CoopResultOverview: View {
                     }
                     LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 4), alignment: .leading, spacing: 0, pinnedViews: []) {
                         ForEach(result.specialUsage[index].indices) { idx in
-                            SRImage(from: Special(rawValue: result.specialUsage[index][idx]), size: CGSize(width: 28, height: 28))
+                            Image(SpecialType.init(rawValue: result.specialUsage[index][idx])!.image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 28)
                         }
                     }
                 }

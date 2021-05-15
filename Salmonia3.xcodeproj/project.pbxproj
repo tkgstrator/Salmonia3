@@ -52,6 +52,12 @@
 		105941A825FA4F9500C32D21 /* SalmonLoginMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105941A725FA4F9500C32D21 /* SalmonLoginMenu.swift */; };
 		105941AD25FA500500C32D21 /* TopMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105941AC25FA500500C32D21 /* TopMenu.swift */; };
 		105941BE25FA525100C32D21 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105941BD25FA525100C32D21 /* Background.swift */; };
+		10682EED264FEEE80035CC68 /* StatsWeaponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682EEC264FEEE80035CC68 /* StatsWeaponView.swift */; };
+		10682EF3264FEF0A0035CC68 /* StatsWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682EF2264FEF0A0035CC68 /* StatsWaveView.swift */; };
+		10682EFB264FEF2A0035CC68 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682EFA264FEF2A0035CC68 /* StatsView.swift */; };
+		10682F01265000590035CC68 /* WeaponType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682F00265000590035CC68 /* WeaponType.swift */; };
+		10682F092650026D0035CC68 /* SpecialType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682F082650026D0035CC68 /* SpecialType.swift */; };
+		10682F112650046D0035CC68 /* SalmonidType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682F102650046D0035CC68 /* SalmonidType.swift */; };
 		1079EAD22647E3540085008C /* CoopRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1079EAD12647E3540085008C /* CoopRecordView.swift */; };
 		107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */; };
 		107E115F260FA95C008E450B /* SalmonStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E115E260FA95C008E450B /* SalmonStats.swift */; };
@@ -149,6 +155,12 @@
 		105941A725FA4F9500C32D21 /* SalmonLoginMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonLoginMenu.swift; sourceTree = "<group>"; };
 		105941AC25FA500500C32D21 /* TopMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMenu.swift; sourceTree = "<group>"; };
 		105941BD25FA525100C32D21 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		10682EEC264FEEE80035CC68 /* StatsWeaponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsWeaponView.swift; sourceTree = "<group>"; };
+		10682EF2264FEF0A0035CC68 /* StatsWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsWaveView.swift; sourceTree = "<group>"; };
+		10682EFA264FEF2A0035CC68 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		10682F00265000590035CC68 /* WeaponType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponType.swift; sourceTree = "<group>"; };
+		10682F082650026D0035CC68 /* SpecialType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialType.swift; sourceTree = "<group>"; };
+		10682F102650046D0035CC68 /* SalmonidType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonidType.swift; sourceTree = "<group>"; };
 		1079EAD12647E3540085008C /* CoopRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopRecordView.swift; sourceTree = "<group>"; };
 		107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopStats.swift; sourceTree = "<group>"; };
 		107E115E260FA95C008E450B /* SalmonStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonStats.swift; sourceTree = "<group>"; };
@@ -229,6 +241,7 @@
 		101C77CB26496F6F005D603C /* Shift */ = {
 			isa = PBXGroup;
 			children = (
+				10682EF1264FEEF00035CC68 /* StatsTab */,
 				1024662425FE4012004DC043 /* CoopShiftCollection.swift */,
 				10B07C5E260A1463008FDE1B /* CoopShiftStatsView.swift */,
 			);
@@ -244,18 +257,6 @@
 				10317292262C3F4200CF8903 /* Tutorial */,
 			);
 			path = SettingMenu;
-			sourceTree = "<group>";
-		};
-		1024663C26009942004DC043 /* Enum */ = {
-			isa = PBXGroup;
-			children = (
-				1024663D26009956004DC043 /* Grade.swift */,
-				1024664A2600D55E004DC043 /* StageType.swift */,
-				10AD114C2600EB18008C0E64 /* Error.swift */,
-				10BBBEA92604E69300DA79C9 /* SRImage.swift */,
-				10567DD7264ECDD0002654D3 /* SplatNet2.swift */,
-			);
-			path = Enum;
 			sourceTree = "<group>";
 		};
 		10317292262C3F4200CF8903 /* Tutorial */ = {
@@ -352,6 +353,7 @@
 				107F9B3A2614A8CA001581C7 /* MenuView */,
 				10CF09F825FB9BEE00D2EEB1 /* Realm */,
 				10CF09F925FB9C4900D2EEB1 /* ObservableObject */,
+				10682EFF265000400035CC68 /* Enum */,
 				104AA7DA2605E0A4007BDC24 /* UIKit */,
 				10377FA225FD10EF00536A94 /* Extension */,
 				1059419525FA4BF600C32D21 /* Assets */,
@@ -401,7 +403,6 @@
 		1059419525FA4BF600C32D21 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				1024663C26009942004DC043 /* Enum */,
 				10377F6025FCD5A400536A94 /* Fonts */,
 				105941B125FA519A00C32D21 /* ViewModifier */,
 				1059419425FA4BE900C32D21 /* Color */,
@@ -429,6 +430,31 @@
 				109EF374260CB01E00076157 /* ButtonStyle.swift */,
 			);
 			path = ViewModifier;
+			sourceTree = "<group>";
+		};
+		10682EF1264FEEF00035CC68 /* StatsTab */ = {
+			isa = PBXGroup;
+			children = (
+				10682EEC264FEEE80035CC68 /* StatsWeaponView.swift */,
+				10682EF2264FEF0A0035CC68 /* StatsWaveView.swift */,
+				10682EFA264FEF2A0035CC68 /* StatsView.swift */,
+			);
+			path = StatsTab;
+			sourceTree = "<group>";
+		};
+		10682EFF265000400035CC68 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				1024663D26009956004DC043 /* Grade.swift */,
+				1024664A2600D55E004DC043 /* StageType.swift */,
+				10AD114C2600EB18008C0E64 /* Error.swift */,
+				10BBBEA92604E69300DA79C9 /* SRImage.swift */,
+				10567DD7264ECDD0002654D3 /* SplatNet2.swift */,
+				10682F00265000590035CC68 /* WeaponType.swift */,
+				10682F082650026D0035CC68 /* SpecialType.swift */,
+				10682F102650046D0035CC68 /* SalmonidType.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		107F9B3A2614A8CA001581C7 /* MenuView */ = {
@@ -751,12 +777,14 @@
 				10377F6525FCD63B00536A94 /* Font.swift in Sources */,
 				105941BE25FA525100C32D21 /* Background.swift in Sources */,
 				1024663E26009956004DC043 /* Grade.swift in Sources */,
+				10682F01265000590035CC68 /* WeaponType.swift in Sources */,
 				104BD5EE261C875C0013CD27 /* CoreAppProduct.swift in Sources */,
 				104BD608261C93630013CD27 /* KeyStorage.swift in Sources */,
 				102465F125FDDABD004DC043 /* SettingView.swift in Sources */,
 				10CF09F425FB9BE100D2EEB1 /* RealmCoopResult.swift in Sources */,
 				1059416925FA49E500C32D21 /* ContentView.swift in Sources */,
 				107E115F260FA95C008E450B /* SalmonStats.swift in Sources */,
+				10682EF3264FEF0A0035CC68 /* StatsWaveView.swift in Sources */,
 				104AA7DC2605E0C8007BDC24 /* GoogleMobileAds.swift in Sources */,
 				10377F9925FD09FF00536A94 /* LoggingThread.swift in Sources */,
 				10CF09BF25FB9AEC00D2EEB1 /* LegacyNavigationViewStyle.swift in Sources */,
@@ -768,6 +796,8 @@
 				10377F7C25FCD9E800536A94 /* RealmManager.swift in Sources */,
 				1024661B25FE0929004DC043 /* RealmCoopShift.swift in Sources */,
 				1024661125FDF411004DC043 /* String.swift in Sources */,
+				10682EFB264FEF2A0035CC68 /* StatsView.swift in Sources */,
+				10682F092650026D0035CC68 /* SpecialType.swift in Sources */,
 				10CF0A0525FBA6BF00D2EEB1 /* RealmCoopWave.swift in Sources */,
 				10377F8625FD041900536A94 /* AppSetting.swift in Sources */,
 				10377F9125FD09E800536A94 /* LoadingView.swift in Sources */,
@@ -783,8 +813,10 @@
 				10CF0A0025FBA5BC00D2EEB1 /* RealmPlayerResult.swift in Sources */,
 				1024662525FE4012004DC043 /* CoopShiftCollection.swift in Sources */,
 				101C77CD26496FA6005D603C /* CoopPlayerView.swift in Sources */,
+				10682EED264FEEE80035CC68 /* StatsWeaponView.swift in Sources */,
 				1059419725FA4C0C00C32D21 /* Color.swift in Sources */,
 				109EF375260CB01E00076157 /* ButtonStyle.swift in Sources */,
+				10682F112650046D0035CC68 /* SalmonidType.swift in Sources */,
 				10A08032262070A200BFDF59 /* CoopShiftStats.swift in Sources */,
 				10377FAD25FD166200536A94 /* CoopResultCollection.swift in Sources */,
 				1024664B2600D55E004DC043 /* StageType.swift in Sources */,

@@ -34,8 +34,10 @@ struct CoopPlayerResultView: View {
                     if result.bossCounts[id] != 0 {
                         HStack(spacing: 0) {
                             VStack(spacing: 0) {
-                                SRImage(from: Salmonid(rawValue: id), size: CGSize(width: 30, height: 30))
-                                    .frame(width: 30, height: 30)
+                                Image(SalmonidType.init(rawValue: id)!.image)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 30)
                                 if result.bossKillCounts[id] == result.bossCounts[id] {
                                     Text("\(result.bossKillCounts[id])/\(result.bossCounts[id])")
                                         .splatfont2(.yellow, size: 14)
