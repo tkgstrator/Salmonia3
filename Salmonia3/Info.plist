@@ -25,12 +25,12 @@
 			<string>work.tkgstrator.salmonia3</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>salmonia3-app</string>
+				<string>salmon-stats</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>11</string>
+	<string>13</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-7107468397673752~2469588733</string>
 	<key>GADIsAdManagerApp</key>

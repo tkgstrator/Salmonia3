@@ -23,12 +23,9 @@ struct SettingView: View {
     var body: some View {
         #warning("ヘッダーのフォントを固定する方法ないのかな")
         Form {
-            Section(header: Text("HEADER_USER_INFO").splatfont2(.orange, size: 14),
-                    footer: Text("FOOTER_USER_INFO").splatfont2(.secondary, size: 14).lineLimit(2)) {
+            Section(header: Text("HEADER_USER_INFO").splatfont2(.orange, size: 14)) {
                 SettingMenu(title: "UPLOAD", value: SalmonStats.shared.apiToken != nil)
-                NavigationLink(destination: SalmonStatsView(), label: { Text("LINK_SETTING_SALMON_STATS") })
                 Toggle("RE_SIGN_IN", isOn: $isFirstLaunch)
-
             }
             Section(header: Text("HEADER_APPEARANCE").splatfont2(.orange, size: 14)) {
                 Toggle("SETTING_USING_DARKMODE", isOn: $isDarkMode)

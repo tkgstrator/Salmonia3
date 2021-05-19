@@ -23,10 +23,8 @@
 "TEXT_SALMON_STATS" = "Salmon Stats";
 
 "TEXT_WELCOME_SPLATNET2" = "Using Salmonia, you need sign in with Nintendo Switch Online account. Salmonia don't send any information for third party clients, services without your permission.";
-"TEXT_WELCOME_SALMON_STATS" = "Salmonia need a Twitter account uploading results to Salmon Stats. If you don't want, skip and setup later.";
-"TEXT_LOGIN_SALMON_STATS" = "Salmon Stats's OAuth sign in system is temporary unavailable. If you want to upload results to Salmon Stats in public, you need to sign in Salmon Stats with Twitter account and get the credential.";
-"TEXT_INPUT_API_TOKEN" = "Salmon Stats api token must be kept secret. If you noticed that the token have been compromised, you should regenearte it from Salmon Stats website. This opperation can not be done from the application as Salmonia. Salmon Stats api token is exactly 64 single-byte alphanumeric characters.";
-"TEXT_INPUT_SALMON_STATS_API_TOKEN" = "Input Salmon Stats token";
+"TEXT_WELCOME_SALMON_STATS" = "Salmonia need a Twitter account uploading results to Salmon Stats.";
+"TEXT_TUTORIAL_SALMON_STATS" = "After Login Salmon Stats with the Twitter account, go to Setting pages in burger menu. Then tap the Connect with Salmonia";
 // アラートのタイトル
 "ALERT_ERASE_SETTING" = "Erase Data";
 "ALERT_CONFIRM" = "Confirm";
@@ -34,10 +32,8 @@
 
 // アラートのメッセージ
 "MESSAGE_WARNING" = "This operaion can not undone.";
-"MESSAGE_SKIP_SETUP" = "Linking with Salmon Stats, Samonia use more conveniently.";
 
 "HEADER_USER_INFO" = "User";
-"FOOTER_USER_INFO" = "Linking for Salmon Stats is currently unavailable.";
 "HEADER_APPLICATION" = "Application";
 "HEADER_DEVICE" = "Device";
 "HEADER_OVERVIEW" = "Overview";
