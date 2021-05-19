@@ -10,11 +10,13 @@ import SwiftUI
 import CryptoKit
 import BetterSafariView
 import Alamofire
+import SalmonStats
 
 struct SalmonLoginMenu: View {
+    @Environment(\.presentationMode) var present
     @State var isActive: Bool = false
     @State var isPresented: Bool = false
-    @State var oAuthURL: URL = URL(string: "https://salmon-stats-api.yuki.games/auth/twitter?redirect_to=salmon-stats://")!
+    @State var oAuthURL: URL = URL(string: "https://salmon-stats-api.yuki.games/auth/twitter")!
     @AppStorage("isFirstLaunch") var isFirstLaunch = true
 
     var body: some View {
@@ -26,6 +28,10 @@ struct SalmonLoginMenu: View {
                     .splatfont2(.secondary, size: 18)
                     .multilineTextAlignment(.center)
                     .lineLimit(4)
+                Text("TEXT_TUTORIAL_SALMON_STATS")
+                    .splatfont2(.secondary, size: 18)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(4)
             }
             .padding(.horizontal, 10)
             .position(x: geometry.frame(in: .local).midX, y: geometry.size.height / 4)
@@ -34,33 +40,21 @@ struct SalmonLoginMenu: View {
                         Text("BTN_SIGN_IN")
                             .splatfont2(.cloud, size: 20)
                 })
-                Button(action: { isActive.toggle() }, label: {
-                        Text("BTN_SKIP")
-                            .splatfont2(.cloud, size: 20)
-                })
             }
             .buttonStyle(BlueButtonStyle())
             .position(x: geometry.frame(in: .local).midX, y: 3 * geometry.size.height / 4)
         }
         .webAuthenticationSession(isPresented: $isPresented) {
             WebAuthenticationSession(url: oAuthURL, callbackURLScheme: "salmon-stats") { callbackURL, _ in
-                guard let oauthToken = callbackURL?.absoluteString.capture(pattern: "token=(.*)&", group: 1) else { return }
-                guard let oauthVerifier = callbackURL?.absoluteString.capture(pattern: "verifier=(.*)", group: 1) else { return }
-                #warning("とりあえずここでSalmon Statsのトークンを取得")
-                AppManager.configure(oauthToken: oauthToken, oauthVerifier: oauthVerifier)
-                #warning("ここでログイン画面に切り替わるはず")
+                guard let apiToken = callbackURL?.absoluteString.capture(pattern: "api-token=(.*)", group: 1) else { return }
+                SalmonStats.shared.configure(apiToken: apiToken)
                 isFirstLaunch = false
             }
             .prefersEphemeralWebBrowserSession(false)
         }
-        .alert(isPresented: $isActive) {
-            Alert(title: Text("ALERT_CONFIRM"), message: Text("MESSAGE_SKIP_SETUP"), primaryButton: .destructive(Text("BTN_LATER"), action: {
-                isFirstLaunch.toggle()
-            }), secondaryButton: .default(Text("BTN_CANCEL")))
-        }
         .background(BackGround)
+        .navigationBarBackButtonHidden(true)
         .navigationTitle("TITLE_LOGIN")
-        #warning("無効化しているOAuthURLを取得するための関数")
     }
 
     var BackGround: some View {

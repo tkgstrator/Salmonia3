@@ -73,6 +73,7 @@ struct Salmonia3App: App {
                 .animation(.easeInOut)
                 .transition(.opacity)
                 .onOpenURL(perform: { url in
+                    print(url)
 //                    let parameters = url.queryParameters
                 })
                 .onAppear(perform: { })
