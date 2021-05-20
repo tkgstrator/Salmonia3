@@ -26,7 +26,7 @@ struct CoopResultCollection: View {
                 isActive.toggle()
             }
         }
-        .navigationTitle("TITLE_RESULT_COLLECTION")
+        .navigationTitle(.TITLE_RESULT_COLLECTION)
     }
 }
 
@@ -79,13 +79,13 @@ struct ResultOverview: View {
     var ResultJob: some View {
         if result.isClear {
             return AnyView(
-                Text("RESULT_CLEAR")
+                Text(.RESULT_CLEAR)
                     .splatfont(.green, size: 14)
                     .frame(width: 50)
             )
         } else {
             return AnyView(
-                Text("RESULT_DEFEAT")
+                Text(.RESULT_DEFEAT)
                     .splatfont(.orange, size: 14)
                     .frame(width: 50)
             )
@@ -107,18 +107,5 @@ struct ResultOverview: View {
         }
         .frame(width: 55)
         .splatfont2(size: 14)
-    }
-}
-
-#warning("リザルトの詳細ビューはここだけどいまは無効化中")
-// リザルトの詳細のビュー
-private struct CoopResult: View {
-    var body: some View {
-        ScrollView {
-            LazyVStack {
-                Text("RESULT_VIEW")
-            }
-        }
-        .navigationTitle("TITLE_RESULT")
     }
 }

@@ -8,16 +8,20 @@
 import SwiftUI
 
 struct CoopRecordView: View {
-//    #warning("EnvironmentObjectに切り替えてもいいかも")
+    
     @State var record: StageRecord = StageRecord()
-    var stageId: Int
-    @State private var eventTypes: [RecordType] = [.noevent, .rush, .goldie, .griller, .mothership, .fog, .cohock]
+    @State private var eventTypes: [String] = [
+        "water-levels", "rush", "goldie-seeking",
+        "griller", "the-mothership", "fog", "cohock-charge"
+    ]
     @State private var waterLevels: [String] = ["low", "normal", "high"]
+    var stageId: Int
+
     var body: some View {
         List {
-            Section(header: Text("HEADER_STATS_OVERVIEW").splatfont2(.orange, size: 14)) {
-                RecordColumn(title: .jobnum, value: record.jobNum)
-                RecordColumn(title: .maxGrade, value: record.maxGrade)
+            Section(header: Text(.HEADER_OVERVIEW).splatfont2(.orange, size: 14)) {
+                RecordColumn(title: .RESULT_JOB_NUM, value: record.jobNum)
+                RecordColumn(title: .RESULT_MAX_GRADE, value: record.maxGrade)
             }
             ForEach(Range(0...2)) { tide in
                 Section(header: Text(waterLevels[tide].localized).splatfont2(.orange, size: 14)) {
@@ -40,45 +44,25 @@ fileprivate struct RecordColumn: View {
     var title: String
     var value: String
     
-    init(title: RecordType, value: Optional<Any>)
+    init(title: LocalizableStrings.Key, value: Optional<Any>)
     {
-        self.title = title.rawValue
+        self.title = title.rawValue.localized
+        self.value = value.stringValue
+    }
+    
+    init(title: String, value: Optional<Any>)
+    {
+        self.title = title.localized
         self.value = value.stringValue
     }
     
     var body: some View {
         HStack {
-            Text(title.localized)
+            Text(title)
             Spacer()
             Text(value)
                 .foregroundColor(.secondary)
         }
         .font(.custom("Splatfont2", size: 16))
     }
-}
-
-internal enum RecordType: String, CaseIterable {
-    case jobnum             = "JOB_NUM"
-    case maxGrade           = "MAX_GRADE"
-    case clearRatio         = "CLEAR_RATIO"
-    case salmonPower        = "SALMON_RATE"
-    case clearWave          = "CLEAR_WAVE"
-    case crewGrade          = "CREW_GRADE"
-    case gradePoint         = "GRADE_POINT"
-    case teamPowerEggs      = "TEAM_POWER_EGGS"
-    case teamGoldenEggs     = "TEAM_GOLDEN_EGGS"
-    case powerEggs          = "POWER_EGGS"
-    case goldenEggs         = "GOLDEN_EGGS"
-    case defeated           = "BOSS_DEFEATED"
-    case helpCount          = "HELP_COUNT"
-    case deadCount          = "DEAD_COUNT"
-    case ratioPowerEggs     = "RATIO_POWER_EGGS"
-    case ratioGoldenEggs    = "RATIO_GOLDEN_EGGS"
-    case noevent            = "water-levels"
-    case rush               = "rush"
-    case goldie             = "goldie-seeking"
-    case griller            = "griller"
-    case fog                = "fog"
-    case mothership         = "the-mothership"
-    case cohock             = "cohock-charge"
 }

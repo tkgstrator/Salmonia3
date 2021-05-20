@@ -1,181 +1,135 @@
-/* 
-  Locaziable.strings
-  Salmonia3
-
-  Created by Devonly on 3/14/21.
-  
-*/
-
-"TITLE_LOGIN" = "ようこそ";
-"TITLE_SALMONIA" = "Salmonia";
-"TITLE_SETTINGS" = "設定";
-"TITLE_LOGGING_THREAD" = "ログ";
-"TITLE_RESULT_COLLECTION" = "リザルト一覧";
-"TITLE_RESULT" = "リザルト";
-"TITLE_SHIFT_SCHEDULE" = "シフトスケジュール";
-"TITLE_RESULT_DETAIL" = "リザルト";
-"TITLE_FREE_PRODUCT" = "無料機能";
-"TITLE_PAID_PRODUCT" = "有料機能";
-"TITLE_SHIFT_STATS" = "シフト統計";
-"TITLE_WAVE_ANALYSIS" = "WAVE分析";
-"TITLE_WEAPON_ANALYSIS" = "ブキ分析";
-
-"TEXT_SALMONIA" = "Salmonia";
-"TEXT_SALMON_STATS" = "Salmon Stats";
-
-"TEXT_WELCOME_SPLATNET2" = "Salmoniaの利用にはNintendo Switch Onlineでのログインが必要です。Salmoniaは許可なしにあらゆる情報を第三者のサービスに提供しません";
-"TEXT_WELCOME_SALMON_STATS" = "SalmoniaはSalmon StatsへのリザルトのアップロードにTwitterアカウントの情報を必要とします";
-"TEXT_TUTORIAL_SALMON_STATS" = "Twitterアカウントでログイン後、Salmon Statsの設定からConnect with Salmoniaのボタンを押します";
-
-// アラートのタイトル
-"ALERT_ERASE_SETTING" = "データ消去";
-"ALERT_CONFIRM" = "確認";
-"ALERT_ERROR" = "エラー";
-
-// アラートのメッセージ
-"MESSAGE_WARNING" = "この操作は取り消せません。";
-
-"HEADER_USER_INFO" = "ユーザ情報";
-"HEADER_APPLICATION" = "アプリケーション";
-"HEADER_DEVICE" = "デバイス情報";
-"HEADER_OVERVIEW" = "概要";
-"HEADER_SCHEDULE" = "シフトスケジュール";
-"HEADER_APPEARANCE" = "外観";
-"HEADER_PURCHASED" = "機能";
-"HEADER_STATS_OVERVIEW" = "概要";
-"HEADER_STATS_MAX" = "最高";
-"HEADER_STATS_AVG" = "平均";
-"HEADER_SALMONSTATS" = "Salmon Stats";
-"HEADER_STAGE_RECORD" = "ステージキロク";
-
-"SETTING_FREE_PRODUCT" = "無料機能";
-"SETTING_PAID_PRODUCT" = "有料機能";
-
-"SETTING_PRIVACY" = "プライバシーポリシー";
-"SETTING_UPLOAD" = "Salmon Statsへのアップロード";
-"SETTING_SYSTEM" = "システム情報";
-"SETTING_DEVICE" = "デバイス情報";
-"SETTING_APP_VERSION" = "バージョン";
-"SETTING_IMPORT_RESULT" = "リザルト取り込み";
-"SETTING_USING_DARKMODE" = "ダークモードを使う";
-"SETTING_UPDATE_NAME" = "ユーザ名の更新";
-"ERASE_SETTING" = "データ消去";
-"RE_SIGN_IN" = "再ログイン";
-
-"BTN_CONFIRM" = "確認";
-"BTN_DISMISS" = "閉じる";
-"BTN_LATER" = "あとで設定する";
-"BTN_CANCEL" = "キャンセル";
-"BTN_SIGN_IN" = "ログイン";
-"BTN_SIGN_UP" = "トウロク";
-"BTN_MIGRATE" = "引き継ぎ";
-"BTN_SKIP" = "スキップ";
-"BTN_OPEN_SALMON_STATS" = "ウェブサイトを開く";
-"BTN_PASTE_API_TOKEN" = "クリップボードから貼り付け";
-"BTN_SET_API_TOKEN" = "設定する";
-"BTN_TUTORIAL" = "使い方";
-
-// ログ表示
-"LOG_DOWNLOAD" = "ダウンロード中";
-"LOG_UPLOAD" = "アップロード中";
-
-// NavigationLink
-"LINK_RESULTS" = "リザルト一覧";
-"LINK_COOP_SCHEDULE" = "シフトスケジュール";
-"LINK_SETTING_SALMON_STATS" = "Salmon Statsとの連携";
-
-// リザルト一覧のところの翻訳
-"RESULT_CLEAR" = "Clear";
-"RESULT_DEFEAT" = "Failure";
-
-//
-"SUPPLIED_WEAPONS" = "支給ブキ";
-
-"ERROR_UNKNOWN" = "不明なエラーです";
-"ERROR_UPGRADE" = "APIのアップデートが必要です";
-"ERROR_UNAUTHORIZED" = "承認されていないリクエストです";
-"ERROR_FORBIDDEN" = "このアクセスは禁止されています";
-"ERROR_BADREQUEST" = "無効なリクエストです";
-"ERROR_MANY_REQUESTS" = "リクエストが多すぎます";
-"ERROR_METHOD" = "許可されていない通信です";
-"ERROR_INVALID" = "トークンが無効です";
-"ERROR_EXPIRED" = "トークンが期限切れです";
-"ERROR_EMPTY" = "ユーザデータがありません";
-"ERROR_UNAVAILABLE" = "サーバが利用不可です";
-"ERROR_NODATA" = "新規リザルトがありません";
-
-"RESULT_BOSS_DEFEATED_%lld" = "オオモノシャケをたおした数 x%lld";
-"RESULT_RATING_%@" = "レーティング %@";
-"RESULT_MATCHING_%@" = "マッチング x%@";
-"RESULT_WAVE_%lld" = "WAVE %lld";
-"RESULT_HAZARD_LEVEL_MAX" = "キケン度MAX!!";
-"RESULT_HAZARD_LEVEL_%@" = "キケン度 %@%%";
-"RESULT_APPEARANCES_%lld" = "出現数 x%lld";
-"RESULT_PLAYER" = "クルー";
-"RESULT_KILL_COUNT" = "討伐数";
-"RESULT_EGG_COUNT" = "納品数";
-"RESULT_SALMONIDS" = "オオモノシャケ";
-"RESULT_EVALUATION" = "評価";
-
-"Ruins of Ark Polaris" = "朽ちた箱舟 ポラリス";
-"Salmonid Smokeyard" = "トキシラズいぶし工房";
-"Lost Outpost" = "海上集落シャケト場";
-"Marooner's Bay" = "難破船ドン・ブラコ";
-"Spawning Grounds" = "シャケナダム";
-
-"normal" = "通常";
-"high" = "満潮";
-"low" = "干潮";
-"water-levels" = "-";
-"rush" = "ラッシュ";
-"goldie-seeking" = "キンシャケ探し";
-"griller" = "グリル発進";
-"the-mothership" = "ハコビヤ襲来";
-"fog" = "霧";
-"cohock-charge" = "ドスコイ大量発生";
-
-"ENABLED" = "有効";
-"DISABLED" = "無効";
-
-"Intern" = "けんしゅう";
-"Apparentice" = "かけだし";
-"Part-Timer" = "はんにんまえ";
-"Go-Getter" = "いちにんまえ";
-"Overachiver" = "じゅくれん";
-"Profressional" = "たつじん";
-
-"FEATURE_FREE_01" = "クマサン印のブキ表示";
-"FEATURE_FREE_02" = "将来のシフト表示";
-"FEATURE_FREE_03" = "自分の名前も隠す";
-
-"FEATURE_FREE_01_DESC" = "支給されるランダムウエポンのレア枠を表示します";
-"FEATURE_FREE_02_DESC" = "2022年までの全シフトを表示します";
-"FEATURE_FREE_03_DESC" = "リザルト画面で自分の名前も隠します";
-
-"JOB_NUM" = "バイト回数";
-"CLEAR_RATIO" = "クリア率";
-"SALMON_RATE" = "シャケレート";
-"CLEAR_WAVE" = "クリアWAVE";
-"CREW_GRADE" = "ナカマ評価";
-"GRADE_POINT" = "レート";
-"TEAM_POWER_EGGS" = "チーム赤イクラ数";
-"TEAM_GOLDEN_EGGS" = "チーム金イクラ数";
-"POWER_EGGS" = "赤イクラ数";
-"GOLDEN_EGGS" = "金イクラ数";
-"BOSS_DEFEATED" = "ボス討伐数";
-"HELP_COUNT" = "救助数";
-"DEAD_COUNT" = "被救助数";
-"RATIO_POWER_EGGS" = "赤イクラ率";
-"RATIO_GOLDEN_EGGS" = "金イクラ率";
-"MAX_GRADE" = "最高レート";
-
-"TAP_MIDDLE_BUTTON" = "真ん中のボタンをタップ";
-"INPUT_TWITTER_ACCOUNT_INFO" = "Twitterアカウントの情報を入力";
-"WAIT_A_MINUTES" = "しばらく待ちます";
-"TAP_RIGHT_TOP_BURGER_MENU" = "右上のバーガーメニューをひらきます";
-"TAP_SETTINGS" = "設定をタップ";
-"TAP_GET_API_TOKEN" = "Get API Tokenをタップ";
-"TAP_COPY_TO_CLIPBOARD" = "Copy to Clipboardをタップ";
-"TAP_DONE_LEFT_TOP_BUTTON" = "画面を閉じます";
-"TAP_BELOW_BUTTON" = "下の貼り付けを押します";
-"CHECK_SALMON_STATS_STATUS" = "有効になっていれば成功です";
+"Apparentice"="かけだし";
+"AUTHORIZED_WITH_BIOMETRICS"="生体認証を利用します";
+"BOSS_DEFEATED"="ボス討伐数";
+"BTN_CANCEL"="キャンセル";
+"BTN_CONFIRM"="確認";
+"BTN_DISMISS"="閉じる";
+"BTN_MIGRATE"="引き継ぎ";
+"BTN_SIGN_IN"="ログイン";
+"BTN_SIGN_OUT"="ログアウト";
+"BTN_SIGN_UP"="トウロク";
+"cohock-charge"="ドスコイ大量発生";
+"DISABLED"="無効";
+"ENABLED"="有効";
+"ERASE_DATA"="データ消去";
+"ERROR_BADREQUEST"="無効なリクエストです";
+"ERROR_EMPTY"="空のデータです";
+"ERROR_EXPIRED"="有効期限切れです";
+"ERROR_FORBIDDEN"="許可されていません";
+"ERROR_INVALID"="無効なデータです";
+"ERROR_METHOD"="無効なメソッドです";
+"ERROR_NODATA"="データがありません";
+"ERROR_REQUESTS"="リクエストが多すぎます";
+"ERROR_UNAUTHORIZED"="承認されていません";
+"ERROR_UNAVAILABLE"="サーバが利用できません";
+"ERROR_UNKNOWN"="不明なエラーです";
+"ERROR_UPGRADE"="アップグレードが必要です";
+"FEATURE_FREE_01"="クマサン印のブキ表示";
+"FEATURE_FREE_01_DESC"="支給されるランダムブキのレア枠を表示します";
+"FEATURE_FREE_02"="将来のシフト表示";
+"FEATURE_FREE_02_DESC"="2022年までの全シフトを表示します";
+"FEATURE_FREE_03"="自分の名前も非表示";
+"FEATURE_FREE_03_DESC"="リザルト画面で自分の名前も隠します";
+"fog"="霧";
+"Go-Getter"="いちにんまえ";
+"GOLDEN_EGGS"="金イクラ数";
+"goldie-seeking"="キンシャケ探し";
+"griller"="グリル発進";
+"HEADER_APPEARANCE"="外観";
+"HEADER_APPLICATION"="アプリケーション";
+"HEADER_DEVICE"="デバイス";
+"HEADER_OVERVIEW"="概要";
+"HEADER_PRODUCT"="機能";
+"HEADER_SALMONSTATS"="Salmon Stats";
+"HEADER_SCHEDULE"="シフトスケジュール";
+"HEADER_STAGE_RECORD"="ステージキロク";
+"HEADER_STATS_AVG"="平均記録";
+"HEADER_STATS_MAX"="最高記録";
+"HEADER_USERINFO"="ユーザ情報";
+"high"="満潮";
+"Intern"="けんしゅう";
+"LOG_DOWNLOAD"="ダウンロード";
+"LOG_UPLOADING"="アップロード";
+"Lost Outpost"="海上集落シャケト場";
+"low"="干潮";
+"Marooner's Bay"="難破船ドン・ブラコ";
+"normal"="通常";
+"Overachiver"="じゅくれん";
+"Part-Timer"="はんにんまえ";
+"PRODUCT_MULTI_ACCOUNT"="複数アカウント";
+"Profressional"="たつじん";
+"RESIGN_IN"="再ログイン";
+"RESULT_APPEARANCES_%lld"="出現数 x%lld";
+"RESULT_BOSS_DEFEATED_%lld"="オオモノシャケをたおした数 x%lld";
+"RESULT_CLEAR"="Clear";
+"RESULT_CLEAR_RATIO"="クリア率";
+"RESULT_CLEAR_WAVE"="クリアWAVE";
+"RESULT_CREW_GRADE"="ナカマ評価";
+"RESULT_DEAD_COUNT"="被救助数";
+"RESULT_DEFEAT"="Failure";
+"RESULT_EGG_COUNT"="納品数";
+"RESULT_EVALUATION"="討伐数";
+"RESULT_GOLDEN_EGGS"="金イクラ数";
+"RESULT_GRADE_POINT"="評価";
+"RESULT_HAZARD_LEVEL_%@"="キケンド %@%%";
+"RESULT_HAZARD_LEVEL_MAX"="キケン度MAX!!";
+"RESULT_HELP_COUNT"="救助数";
+"RESULT_JOB_NUM"="バイト回数";
+"RESULT_KILL_COUNT"="討伐数";
+"RESULT_MATCHING_%@"="マッチング x%@";
+"RESULT_MAX_GRADE"="最高評価";
+"RESULT_PLAYER"="プレイヤー";
+"RESULT_POWER_EGGS"="赤イクラ数";
+"RESULT_RATIO_GOLDEN_EGGS"="金イクラ率";
+"RESULT_RATIO_POWER_EGGS"="赤イクラ率";
+"RESULT_RATING_%@"="レーティング %@";
+"RESULT_SALMON_RATE"="シャケレート";
+"RESULT_SALMONIDS"="オオモノシャケ";
+"RESULT_TEAM_GOLDEN_EGGS"="チーム金イクラ数";
+"RESULT_TEAM_POWER_EGGS"="チーム赤イクラ数";
+"RESULT_WAVE_%lld"="WAVE %lld";
+"RESULTS"="リザルト件数";
+"Ruins of Ark Polaris"="朽ちた箱舟 ポラリス";
+"rush"="ラッシュ";
+"Salmonid Smokeyard"="トキシラズいぶし工房";
+"SETTING_API_VERSION"="X-Product Version";
+"SETTING_APP_VERSION"="バージョン";
+"SETTING_DARKMODE"="ダークモード";
+"SETTING_DETAIL"="詳細設定";
+"SETTING_DEVICE"="デバイス";
+"SETTING_ERASE_DATA"="データ消去";
+"SETTING_FREE_PRODUCT"="無料機能";
+"SETTING_IMPORT_RESULT"="リザルト取り込み";
+"SETTING_PAID_PRODUCT"="有料機能";
+"SETTING_PRIVACY"="プライバシーポリシー";
+"SETTING_RE_SIGN_IN"="再ログイン";
+"SETTING_RESULTS"="リザルト件数";
+"SETTING_SYSTEM"="システム設定";
+"SETTING_UPDATE_NAME"="ユーザ名更新";
+"SETTING_UPLOAD"="アップロード";
+"SHIFT_SCHEDULE"="シフトスケジュール";
+"Spawning Grounds"="シェケナダム";
+"SUPPLIED_WEAPONS"="支給ブキ";
+"TEXT_CONFIRM"="本当によろしいですか?";
+"TEXT_ERASE_DATA"="データ削除には少し時間がかかる場合があります。この操作は取り消せません。";
+"TEXT_RE_SIGN_IN"="イカリング2のアカウント切り替えを行います。データは削除されません。";
+"TEXT_SALMONIA"="Salmonia";
+"TEXT_SALMONSTATS"="Salmon Stats";
+"TEXT_TUTORIAL_SALMONSTATS"="Twitterアカウントでログイン後、Salmon Statsの設定からConnect with Salmoniaのボタンを押します";
+"TEXT_WELCOME_SALMONSTATS"="SalmoniaはSalmon StatsへのリザルトのアップロードにTwitterアカウントの情報を必要とします";
+"TEXT_WELCOME_SPLATNET2"="Salmoniaの利用にはNintendo Switch Onlineでのログインが必要です。Salmoniaは許可なしにあらゆる情報を第三者のサービスに提供しません";
+"the-mothership"="ハコビヤ襲来";
+"TITLE_FREE_PRODUCT"="無料機能";
+"TITLE_LOGGING_THREAD"="ログ";
+"TITLE_LOGIN"="ログイン";
+"TITLE_PAID_PRODUCT"="有料機能";
+"TITLE_RESULT"="リザルト";
+"TITLE_RESULT_COLLECTION"="リザルト一覧";
+"TITLE_RESULT_DETAIL"="リザルト詳細";
+"TITLE_SALMONIA"="Salmonia";
+"TITLE_SETTINGS"="設定";
+"TITLE_SHIFT_SCHEDULE"="シフトスケジュール";
+"TITLE_SHIFT_STATS"="シフト統計";
+"TITLE_WAVE_ANALYSIS"="WAVE分析";
+"TITLE_WEAPON_ANALYSIS"="WEAPON分析";
+"water-levels"="-";

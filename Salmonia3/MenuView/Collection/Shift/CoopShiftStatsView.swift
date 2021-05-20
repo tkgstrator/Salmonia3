@@ -13,6 +13,7 @@ struct CoopShiftStatsView: View {
     @State private var seletion: Int = 0
     
     var body: some View {
+        #if DEBUG
         TabView(selection: $seletion) {
             StatsView(startTime: $startTime)
                 .tag(0)
@@ -21,8 +22,14 @@ struct CoopShiftStatsView: View {
             StatsWeaponView(stats: CoopShiftStats(startTime: startTime))
                 .tag(2)
         }
-        .navigationTitle("TITLE_SHIFT_STATS")
+        .navigationTitle(.TITLE_SHIFT_STATS)
         .edgesIgnoringSafeArea(.bottom)
         .tabViewStyle(PageTabViewStyle())
+        #else
+        StatsView(startTime: $startTime)
+        .navigationTitle(.TITLE_SHIFT_STATS)
+        .edgesIgnoringSafeArea(.bottom)
+        .tabViewStyle(PageTabViewStyle())
+        #endif
     }
 }

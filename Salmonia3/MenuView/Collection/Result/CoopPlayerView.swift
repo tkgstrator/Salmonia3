@@ -9,12 +9,16 @@ import SwiftUI
 import RealmSwift
 
 struct CoopPlayerView: View {
+    
     var player: RealmPlayerResult
+    var isVisible: Bool
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(alignment: .bottom) {
                 VStack(spacing: 3) {
-                    Text(player.name.stringValue)
+                    #warning("プレイヤー名の表示")
+                    Text(player.name.stringValue(isVisible))
                         .splatfont2(.white, size: 18)
                         .frame(height: 12)
                         .padding(.bottom, 5)
@@ -122,6 +126,13 @@ fileprivate func calcBias(_ result: RealmCoopResult, _ nsaid: String) -> Double 
         return bias.reduce(0, +) / 2
     case (false, false): // どちらもしてない
         return bias.min()!
+    }
+}
+
+extension Optional where Wrapped == String {
+    func stringValue(_ isVisible: Bool) -> String {
+        if isVisible { return self.stringValue }
+        return "-"
     }
 }
 

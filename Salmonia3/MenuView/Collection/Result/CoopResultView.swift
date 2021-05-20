@@ -16,13 +16,13 @@ fileprivate var formatter: DateFormatter = {
 
 struct CoopResultView: View {
     var result: RealmCoopResult
-    @State var isVisible: Bool = false
+    @State var isVisible: Bool = true
 
     var body: some View {
         TabView {
-            CoopResultOverview(result: result)
+            CoopResultOverview(isVisible: $isVisible, result: result)
                 .tag(0)
-            CoopPlayerResultView(result: result, isVisible: $isVisible)
+            CoopPlayerResultView(isVisible: $isVisible, result: result)
                 .tag(1)
         }
         .tabViewStyle(PageTabViewStyle())
@@ -31,9 +31,9 @@ struct CoopResultView: View {
 }
 
 struct CoopResultOverview: View {
+    @Binding var isVisible: Bool
+    @AppStorage("FEATURE_FREE_03") var isFree03: Bool = false
     var result: RealmCoopResult
-
-    @State var isAnonymous: Bool = false
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -48,18 +48,22 @@ struct CoopResultOverview: View {
         }
         .backgroundColor(.black)
         .navigationBarTitleDisplayMode(.inline)
-//        .navigationBarItems(trailing: SRButton)
-        .navigationTitle("TITLE_RESULT_DETAIL")
+        .navigationBarItems(trailing: SRButton)
+        .navigationTitle(.TITLE_RESULT_DETAIL)
     }
 
     var SRButton: some View {
         HStack {
-            Button(action: { isAnonymous.toggle() }) { Image(systemName: "person.circle.fill") }
-            //            Button(action: { isEnable.toggle() }) { Image(systemName: "info.circle.fill") }
+            Button(action: { isVisible.toggle() }) {
+                Image(systemName: "person.circle.fill")
+                    .imageScale(.large)
+                    .grayscale(isVisible ? 1.0 : 0.99)
+                    .opacity(isVisible ? 1.0 : 0.5)
+            }
         }
     }
 
-    #warning("直接画像返すやつ書けばよくね？？？")
+    #warning("直接画像返すやつ書けばよくね")
     var ResultOverview: some View {
         ZStack(alignment: .center) {
             Image(StageType(rawValue: result.stageId.intValue)!.md5)
@@ -144,7 +148,7 @@ struct CoopResultOverview: View {
     var ResultPlayer: some View {
         LazyHGrid(rows: Array(repeating: .init(.flexible(minimum: 80)), count: result.player.count), spacing: 10) {
             ForEach(result.player.indices, id: \.self) { index in
-                CoopPlayerView(player: result.player[index])
+                CoopPlayerView(player: result.player[index], isVisible: (isVisible || (index == 0 && !isFree03)))
                     .padding(.vertical, 15)
             }
         }
@@ -153,7 +157,7 @@ struct CoopResultOverview: View {
     var DangerRate: some View {
         switch result.dangerRate.value! == 200 {
         case true:
-            return Text("RESULT_HAZARD_LEVEL_MAX")
+            return Text(.RESULT_HAZARD_LEVEL_MAX)
                 .splatfont2(.yellow, size: 20)
         case false:
             return Text("RESULT_HAZARD_LEVEL_\(String(result.dangerRate.value!))")

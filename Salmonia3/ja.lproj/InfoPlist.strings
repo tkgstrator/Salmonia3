@@ -1,8 +1,0 @@
-/* 
-  InfoPlist.strings
-  Salmonia3
-
-  Created by Devonly on 3/21/21.
-  
-*/
-NSUserTrackingUsageDescription = "お客様の興味関心に合わせた広告を表示するために利用します";

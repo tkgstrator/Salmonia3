@@ -20,9 +20,9 @@ struct LoginMenu: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Text("TEXT_SALMONIA")
+                Text(.TEXT_SALMONIA)
                     .splatfont2(size: 36)
-                Text("TEXT_WELCOME_SPLATNET2")
+                Text(.TEXT_WELCOME_SPLATNET2)
                     .splatfont2(.secondary, size: 18)
                     .multilineTextAlignment(.center)
                     .lineLimit(4)
@@ -31,12 +31,12 @@ struct LoginMenu: View {
             .position(x: geometry.frame(in: .local).midX, y: geometry.size.height / 4)
             VStack(spacing: 40) {
                 Button(action: { isPresented.toggle() }, label: {
-                    Text("BTN_SIGN_IN")
+                    Text(.BTN_SIGN_IN)
                         .splatfont2(.cloud, size: 20)
                 })
                 if let _ = SplatNet2.shared.sessionToken {
                     Button(action: { migrateSplatNet2Account() }, label: {
-                        Text("BTN_MIGRATE")
+                        Text(.BTN_MIGRATE)
                             .splatfont2(.cloud, size: 20)
                     })
                 } else {
@@ -48,7 +48,7 @@ struct LoginMenu: View {
                         // Nintendo Switch Onlineの登録画面に進む
                         isShowing.toggle()
                         #endif
-                    }, label: { Text("BTN_SIGN_UP")
+                    }, label: { Text(.BTN_SIGN_UP)
                         .splatfont2(.cloud, size: 20)
                     })
                 }
@@ -86,7 +86,7 @@ struct LoginMenu: View {
             .dismissButtonStyle(.done)
         }
         .background(BackGround)
-        .navigationTitle("TITLE_LOGIN")
+        .navigationTitle(.TITLE_LOGIN)
     }
 
     func migrateSplatNet2Account() {

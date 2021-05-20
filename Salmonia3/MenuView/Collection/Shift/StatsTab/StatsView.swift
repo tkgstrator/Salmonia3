@@ -18,30 +18,30 @@ struct StatsView: View {
     
     var body: some View {
         List {
-            Section(header: Text("HEADER_STATS_OVERVIEW").splatfont2(.orange, size: 14)) {
+            Section(header: Text(.HEADER_OVERVIEW).splatfont2(.orange, size: 14)) {
                 CoopShift(shift: try! RealmManager.getShiftSchedule(startTime: startTime))
-                StatsColumn(title: .jobnum, value: result?.overview?.jobNum)
-                StatsColumn(title: .clearRatio, value: result?.overview?.clearRatio)
-                StatsColumn(title: .ratioPowerEggs, value: result?.overview?.powerEggRatio)
-                StatsColumn(title: .ratioGoldenEggs, value: result?.overview?.goldenEggRatio)
+                StatsColumn(title: .RESULT_JOB_NUM, value: result?.overview?.jobNum)
+                StatsColumn(title: .RESULT_CLEAR_RATIO, value: result?.overview?.clearRatio)
+                StatsColumn(title: .RESULT_POWER_EGGS, value: result?.overview?.powerEggRatio)
+                StatsColumn(title: .RESULT_GOLDEN_EGGS, value: result?.overview?.goldenEggRatio)
             }
-            Section(header: Text("HEADER_STATS_MAX").splatfont2(.orange, size: 14)) {
-                StatsColumn(title: .powerEggs, value: result?.resultMax?.powerEggs)
-                StatsColumn(title: .goldenEggs, value: result?.resultMax?.goldenEggs)
-                StatsColumn(title: .teamPowerEggs, value: result?.resultMax?.teamPowerEggs)
-                StatsColumn(title: .teamGoldenEggs, value: result?.resultMax?.teamGoldenEggs)
-                StatsColumn(title: .defeated, value: result?.resultMax?.bossDefeated)
-                StatsColumn(title: .helpCount, value: result?.resultMax?.helpCount)
-                StatsColumn(title: .deadCount, value: result?.resultMax?.deadCount)
+            Section(header: Text(.HEADER_STATS_MAX).splatfont2(.orange, size: 14)) {
+                StatsColumn(title: .RESULT_POWER_EGGS, value: result?.resultMax?.powerEggs)
+                StatsColumn(title: .RESULT_GOLDEN_EGGS, value: result?.resultMax?.goldenEggs)
+                StatsColumn(title: .RESULT_TEAM_POWER_EGGS, value: result?.resultMax?.teamPowerEggs)
+                StatsColumn(title: .RESULT_TEAM_GOLDEN_EGGS, value: result?.resultMax?.teamGoldenEggs)
+                StatsColumn(title: .RESULT_KILL_COUNT, value: result?.resultMax?.bossDefeated)
+                StatsColumn(title: .RESULT_HELP_COUNT, value: result?.resultMax?.helpCount)
+                StatsColumn(title: .RESULT_DEAD_COUNT, value: result?.resultMax?.deadCount)
             }
-            Section(header: Text("HEADER_STATS_AVG").splatfont2(.orange, size: 14)) {
-                StatsColumn(title: .powerEggs, value: result?.resultAvg?.powerEggs)
-                StatsColumn(title: .goldenEggs, value: result?.resultAvg?.goldenEggs)
-                StatsColumn(title: .teamPowerEggs, value: result?.resultAvg?.teamPowerEggs)
-                StatsColumn(title: .teamGoldenEggs, value: result?.resultAvg?.teamGoldenEggs)
-                StatsColumn(title: .defeated, value: result?.resultAvg?.bossDefeated)
-                StatsColumn(title: .helpCount, value: result?.resultAvg?.helpCount)
-                StatsColumn(title: .deadCount, value: result?.resultAvg?.deadCount)
+            Section(header: Text(.HEADER_STATS_AVG).splatfont2(.orange, size: 14)) {
+                StatsColumn(title: .RESULT_POWER_EGGS, value: result?.resultAvg?.powerEggs)
+                StatsColumn(title: .RESULT_GOLDEN_EGGS, value: result?.resultAvg?.goldenEggs)
+                StatsColumn(title: .RESULT_TEAM_POWER_EGGS, value: result?.resultAvg?.teamPowerEggs)
+                StatsColumn(title: .RESULT_TEAM_GOLDEN_EGGS, value: result?.resultAvg?.teamGoldenEggs)
+                StatsColumn(title: .RESULT_KILL_COUNT, value: result?.resultAvg?.bossDefeated)
+                StatsColumn(title: .RESULT_HELP_COUNT, value: result?.resultAvg?.helpCount)
+                StatsColumn(title: .RESULT_DEAD_COUNT, value: result?.resultAvg?.deadCount)
             }
         }
         .onAppear(perform: getShiftStats)
@@ -53,7 +53,7 @@ fileprivate struct StatsColumn: View {
     var title: String
     var value: String
     
-    init(title: ShiftStatsType, value: Optional<Any>)
+    init(title: LocalizableStrings.Key, value: Optional<Any>)
     {
         self.title = title.rawValue
         self.value = value.stringValue
