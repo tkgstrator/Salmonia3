@@ -34,7 +34,7 @@ struct FreeProductView: View {
                 }
             })
         }
-        .navigationTitle("TITLE_FREE_PRODUCT")
+        .navigationTitle(.TITLE_FREE_PRODUCT)
         .splatfont2(size: 16)
     }
 }

@@ -16,7 +16,7 @@ struct ContentView: View {
             SettingView()
         }
         .overlay(GoobleMobileAdsView(), alignment: .bottom)
-        .navigationViewStyle(LegacyNavigationViewStyle())
+        .navigationViewStyle(SplitNavigationViewStyle())
     }
 }
 

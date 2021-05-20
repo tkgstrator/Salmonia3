@@ -19,7 +19,7 @@ struct LoggingThread: View {
             MBCircleProgressView(data: progressModel)
             Spacer()
         }
-        .navigationTitle("TITLE_LOGGING_THREAD")
+        .navigationTitle(.TITLE_LOGGING_THREAD)
 //        .navigationBarBackButtonHidden(true)
     }
 

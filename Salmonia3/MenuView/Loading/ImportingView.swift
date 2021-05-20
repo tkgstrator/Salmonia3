@@ -23,7 +23,7 @@ struct ImportingView: View {
                     importResultFromSalmonStats(nsaid: nsaid)
                 }
             }
-            .navigationTitle("TITLE_IMPORT_SALMONSTATS")
+            .navigationTitle(.TITLE_LOGGING_THREAD)
     }
     
     private func importResultFromSalmonStats(nsaid: String) {
@@ -34,7 +34,7 @@ struct ImportingView: View {
                 for userdata in metadata {
                     progressModel.maxValue = CGFloat(userdata.results.clear + userdata.results.fail)
                     let lastPageId: Int = Int((userdata.results.clear + userdata.results.fail) / 50) + 1
-                    for pageId in Range(1 ... lastPageId) {
+                    for pageId in Range(1 ... 1) {
                         SalmonStats.shared.getResults(nsaid: userdata.playerId, pageId: pageId)
                             .receive(on: DispatchQueue.main)
                             .sink(receiveCompletion: { completion in

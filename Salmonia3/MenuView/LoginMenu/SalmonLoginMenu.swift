@@ -22,13 +22,13 @@ struct SalmonLoginMenu: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Text("TEXT_SALMON_STATS")
+                Text(.TEXT_SALMONSTATS)
                     .splatfont2(size: 36)
-                Text("TEXT_WELCOME_SALMON_STATS")
+                Text(.TEXT_WELCOME_SALMONSTATS)
                     .splatfont2(.secondary, size: 18)
                     .multilineTextAlignment(.center)
                     .lineLimit(4)
-                Text("TEXT_TUTORIAL_SALMON_STATS")
+                Text(.TEXT_TUTORIAL_SALMONSTATS)
                     .splatfont2(.secondary, size: 18)
                     .multilineTextAlignment(.center)
                     .lineLimit(4)
@@ -37,7 +37,7 @@ struct SalmonLoginMenu: View {
             .position(x: geometry.frame(in: .local).midX, y: geometry.size.height / 4)
             VStack(spacing: 40) {
                 Button(action: { isPresented.toggle() }, label: {
-                        Text("BTN_SIGN_IN")
+                    Text(.BTN_SIGN_IN)
                             .splatfont2(.cloud, size: 20)
                 })
             }
@@ -54,7 +54,7 @@ struct SalmonLoginMenu: View {
         }
         .background(BackGround)
         .navigationBarBackButtonHidden(true)
-        .navigationTitle("TITLE_LOGIN")
+        .navigationTitle(.TITLE_LOGIN)
     }
 
     var BackGround: some View {

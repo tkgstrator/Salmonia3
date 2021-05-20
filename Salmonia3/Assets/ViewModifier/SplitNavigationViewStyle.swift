@@ -1,5 +1,5 @@
 //
-//  LegacyNavigationViewStyle.swift
+//  SplitNavigationViewStyle.swift
 //  Salmonia3
 //
 //  Created by Devonly on 2021/03/12.
@@ -8,13 +8,13 @@
 import Foundation
 import SwiftUI
 
-public struct LegacyNavigationViewStyle: NavigationViewStyle {
+public struct SplitNavigationViewStyle: NavigationViewStyle {
     struct ControllerModifier: ViewModifier {
         struct ControllerView: UIViewControllerRepresentable {
             class ViewController: UIViewController {
 
-                override func viewDidAppear(_ animated: Bool) {
-                    super.viewDidAppear(animated)
+                override func viewWillAppear(_ animated: Bool) {
+                    super.viewWillAppear(animated)
                     guard let svc = self.parent?.children.first as? UISplitViewController else { return }
                     svc.preferredDisplayMode = .oneBesideSecondary
                     svc.preferredSplitBehavior = .tile

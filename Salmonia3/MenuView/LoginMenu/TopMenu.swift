@@ -20,16 +20,16 @@ struct TopMenu: View {
         ZStack {
             NavigationLink(destination: LoadingView(), isActive: $isActive) { EmptyView() }
             List {
-                Section(header: Text("HEADER_OVERVIEW").splatfont2(.orange, size: 14)) {
+                Section(header: Text(.HEADER_OVERVIEW).splatfont2(.orange, size: 14)) {
                     Overview
                     Results
                 }
-                Section(header: Text("HEADER_SCHEDULE").splatfont2(.orange, size: 14)) {
+                Section(header: Text(.HEADER_SCHEDULE).splatfont2(.orange, size: 14)) {
                     NavigationLink(destination: CoopShiftCollection()) {
-                        Text("LINK_COOP_SCHEDULE")
+                        Text(.TITLE_SHIFT_SCHEDULE)
                     }
                 }
-                Section(header: Text("HEADER_STAGE_RECORD").splatfont2(.orange, size: 14)) {
+                Section(header: Text(.HEADER_STAGE_RECORD).splatfont2(.orange, size: 14)) {
                     ForEach(StageType.allCases, id:\.self) { stage in
                         NavigationLink(destination: CoopRecordView(stageId: stage.rawValue)) {
                             Text(stage.name.localized)
@@ -46,7 +46,7 @@ struct TopMenu: View {
         }
         .splatfont2(size: 16)
         .listStyle(GroupedListStyle())
-        .navigationTitle("TITLE_SALMONIA")
+        .navigationTitle(.TITLE_SALMONIA)
     }
 
     var Overview: some View {
@@ -63,13 +63,9 @@ struct TopMenu: View {
     var Results: some View {
         Group {
             NavigationLink(destination: CoopResultCollection()) {
-                Text("LINK_RESULTS")
+                Text(.TITLE_RESULT_COLLECTION)
                     .splatfont2(size: 16)
             }
-            //            NavigationLink(destination: WaveCollectionView()) {
-            //                Text("TITLE_WAVE_RESULTS")
-            //                    .splatfont2(size: 16)
-            //            }
         }
     }
 }

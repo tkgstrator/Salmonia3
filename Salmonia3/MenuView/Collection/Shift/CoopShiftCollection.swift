@@ -20,12 +20,11 @@ struct CoopShiftCollection: View {
                 }
             }
         }
-        .navigationTitle("TITLE_SHIFT_SCHEDULE")
+        .navigationTitle(.TITLE_SHIFT_SCHEDULE)
     }
 }
 
 struct CoopShift: View {
-    
     @StateObject var shift: RealmCoopShift
     @AppStorage("FEATURE_FREE_01") var isFree01: Bool = false
     
@@ -64,7 +63,7 @@ struct CoopShift: View {
                     .padding(.bottom, 8)
             }
             VStack(alignment: .leading, spacing: 5) {
-                Text("SUPPLIED_WEAPONS")
+                Text(.SUPPLIED_WEAPONS)
                 if isFree01 && shift.weaponList.contains(-1) {
                     AnyView(
                     LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 30, maximum: 50)), count: 5), alignment: .center, spacing: 0) {

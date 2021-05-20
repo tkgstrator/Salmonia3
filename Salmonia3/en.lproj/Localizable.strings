@@ -1,168 +1,116 @@
-/* 
-  Locaziable.strings
-  Salmonia3
-
-  Created by Devonly on 3/14/21.
-*/
-
-"TITLE_LOGIN" = "Welcome";
-"TITLE_SALMONIA" = "Salmonia";
-"TITLE_SETTINGS" = "Settings";
-"TITLE_LOGGING_THREAD" = "Logging Thread";
-"TITLE_RESULT_COLLECTION" = "Result Collection";
-"TITLE_RESULT" = "Result";
-"TITLE_SHIFT_SCHEDULE" = "Shift Schedule";
-"TITLE_RESULT_DETAIL" = "Result";
-"TITLE_FREE_PRODUCT" = "Free Feature";
-"TITLE_PAID_PRODUCT" = "Paid Feature";
-"TITLE_SHIFT_STATS" = "Shift Stats";
-"TITLE_WAVE_ANALYSIS" = "Wave Analysis";
-"TITLE_WEAPON_ANALYSIS" = "Weapon Analysis";
-
-"TEXT_SALMONIA" = "Salmonia";
-"TEXT_SALMON_STATS" = "Salmon Stats";
-
-"TEXT_WELCOME_SPLATNET2" = "Using Salmonia, you need sign in with Nintendo Switch Online account. Salmonia don't send any information for third party clients, services without your permission.";
-"TEXT_WELCOME_SALMON_STATS" = "Salmonia need a Twitter account uploading results to Salmon Stats.";
-"TEXT_TUTORIAL_SALMON_STATS" = "After Login Salmon Stats with the Twitter account, go to Setting pages in burger menu. Then tap the Connect with Salmonia";
-// アラートのタイトル
-"ALERT_ERASE_SETTING" = "Erase Data";
-"ALERT_CONFIRM" = "Confirm";
-"ALERT_ERROR" = "Error";
-
-// アラートのメッセージ
-"MESSAGE_WARNING" = "This operaion can not undone.";
-
-"HEADER_USER_INFO" = "User";
-"HEADER_APPLICATION" = "Application";
-"HEADER_DEVICE" = "Device";
-"HEADER_OVERVIEW" = "Overview";
-"HEADER_SCHEDULE" = "Shift Schedule";
-"HEADER_APPEARANCE" = "Appearance";
-"HEADER_PURCHASED" = "Purchase";
-"HEADER_STATS_OVERVIEW" = "Overview";
-"HEADER_STATS_MAX" = "Max";
-"HEADER_STATS_AVG" = "Avg";
-"HEADER_SALMONSTATS" = "Salmon Stats";
-
-"SETTING_FREE_PRODUCT" = "Free";
-"SETTING_PAID_PRODUCT" = "Paid";
-
-"SETTING_PRIVACY" = "Privacy Policy";
-"SETTING_UPLOAD" = "Upload to Salmon Stats";
-"SETTING_SYSTEM" = "System Information";
-"SETTING_DEVICE" = "Device Information";
-"SETTING_APP_VERSION" = "Version";
-"SETTING_IMPORT_RESULT" = "Import results";
-"SETTING_USING_DARKMODE" = "Use darkmode";
-"SETTING_UPDATE_NAME" = "Update Username";
-"ERASE_SETTING" = "Erase Data";
-"RE_SIGN_IN" = "Re-Sign in";
-
-"BTN_CONFIRM" = "Confirm";
-"BTN_DISMISS" = "Dismiss";
-"BTN_LATER" = "Setup later";
-"BTN_CANCEL" = "Cancel";
-"BTN_SIGN_IN" = "Sign in";
-"BTN_SIGN_UP" = "Sign up";
-"BTN_MIGRATE" = "Migrate";
-"BTN_SKIP" = "Skip";
-"BTN_SET_API_TOKEN" = "Set";
-"BTN_OPEN_SALMON_STATS" = "Open website";
-"BTN_PASTE_API_TOKEN" = "Paste from clipboard";
-"BTN_TUTORIAL" = "Tutorial";
-
-// ログ表示
-"LOG_DOWNLOAD" = "Downloading";
-"LOG_UPLOAD" = "Uploading";
-
-// NavigationLink
-"LINK_RESULTS" = "Results";
-"LINK_COOP_SCHEDULE" = "Shift Schedule";
-"LINK_SETTING_SALMON_STATS" = "Link with Salmon Stats";
-
-// リザルト一覧のところの翻訳
-"RESULT_CLEAR" = "Clear!";
-"RESULT_DEFEAT" = "Defeat";
-
-//
-"SUPPLIED_WEAPONS" = "Supplied Weapons";
-
-"ERROR_UNKNOWN" = "Unknown Error";
-"ERROR_UPGRADE" = "Nintendo Changed API method";
-"ERROR_UNAUTHORIZED" = "Unauthorized session";
-"ERROR_FORBIDDEN" = "This session is forbidden";
-"ERROR_BADREQUEST" = "This request is rejected";
-"ERROR_MANY_REQUESTS" = "Too many requests";
-"ERROR_METHOD" = "Not allowed method";
-"ERROR_INVALID" = "Invalid token";
-"ERROR_EXPIRED" = "This token is expired";
-"ERROR_EMPTY" = "No user data found";
-"ERROR_UNAVAILABLE" = "The server is unavailable";
-"ERROR_NODATA" = "No new results";
-
-"RESULT_BOSS_DEFEATED_%lld" = "Boss Salmonid Defeated x%lld";
-"RESULT_WAVE_%lld" = "Wave %lld";
-"RESULT_RATING_%@" = "Rating %@";
-"RESULT_MATCHING_%@" = "Match x%@";
-"RESULT_HAZARD_LEVEL_MAX" = "Hazard Level Max!!";
-"RESULT_HAZARD_LEVEL_%@" = "Hazard Level %@%";
-"RESULT_APPEARANCES_%lld" = "Appearances x%lld";
-"RESULT_PLAYER" = "Crew";
-"RESULT_KILL_COUNT" = "Kills";
-"RESULT_EGG_COUNT" = "Eggs";
-"RESULT_SALMONIDS" = "Salmonids";
-"RESULT_EVALUATION" = "Evaluation";
-
-// リザルト一覧の翻訳
-"normal" = "middle";
-"high" = "high tide";
-"low" = "low tide";
-"water-levels" = "-";
-"rush" = "Rush";
-"goldie-seeking" = "Goldie Seeking";
-"griller" = "Griller";
-"the-mothership" = "The Mothership";
-"fog" = "Fog";
-"cohock-charge" = "Cohock Charge";
-
-"ENABLED" = "Enabled";
-"DISABLED" = "Disabled";
-
-"PRODUCT_MULTI_ACCOUNT" = "Multi Account";
-
-"FEATURE_FREE_01" = "Grizzco's Weapons";
-"FEATURE_FREE_02" = "Future Rotation";
-"FEATURE_FREE_03" = "Hide My Nickname";
-
-"FEATURE_FREE_01_DESC" = "Display rare weapon in random schedules";
-"FEATURE_FREE_02_DESC" = "Display all shift schedules by 2022.";
-"FEATURE_FREE_03_DESC" = "Hide nickname including you.";
-
-"JOB_NUM" = "Job Num";
-"CLEAR_RATIO" = "Clear Ratio";
-"SALMON_RATE" = "Salmon Rate";
-"CLEAR_WAVE" = "Clear Wave";
-"CREW_GRADE" = "Crew Grade";
-"GRADE_POINT" = "Grade Point";
-"TEAM_POWER_EGGS" = "Team Power Eggs";
-"TEAM_GOLDEN_EGGS" = "Team Golden Eggs";
-"POWER_EGGS" = "Power Eggs";
-"GOLDEN_EGGS" = "Golden Eggs";
-"BOSS_DEFEATED" = "Boss Defeated";
-"HELP_COUNT" = "Help Count";
-"DEAD_COUNT" = "Dead Count";
-"RATIO_POWER_EGGS" = "Power Egg Ratio";
-"RATIO_GOLDEN_EGGS" = "Golden Egg Ratio";
-"MAX_GRADE" = "Max Grade";
-
-"TAP_MIDDLE_BUTTON" = "Tap middle button";
-"INPUT_TWITTER_ACCOUNT_INFO" = "Input twtter account information";
-"WAIT_A_MINUTES" = "Wait a minute";
-"TAP_RIGHT_TOP_BURGER_MENU" = "Tap right top burger menu";
-"TAP_SETTINGS" = "Tap Settings";
-"TAP_GET_API_TOKEN" = "Tap Get API token";
-"TAP_COPY_TO_CLIPBOARD" = "Tap Copy to Clipboard";
-"TAP_DONE_LEFT_TOP_BUTTON" = "Tap Done";
-"TAP_BELOW_BUTTON" = "Tap below button";
-"CHECK_SALMON_STATS_STATUS" = "Complete if the status changed to Enable";
+"AUTHORIZED_WITH_BIOMETRICS"="Authorize with biometrics";
+"BOSS_DEFEATED"="Boss Defeated";
+"BTN_CANCEL"="Cancel";
+"BTN_CONFIRM"="Confirm";
+"BTN_DISMISS"="Dismiss";
+"BTN_MIGRATE"="Migrate";
+"BTN_SIGN_IN"="Sign in";
+"BTN_SIGN_OUT"="Sign out";
+"BTN_SIGN_UP"="Sign up";
+"DISABLED"="Disabled";
+"ENABLED"="Enabled";
+"ERASE_DATA"="Erase Data";
+"ERROR_BADREQUEST"="Bad Request";
+"ERROR_EMPTY"="Empty Data";
+"ERROR_EXPIRED"="Expired";
+"ERROR_FORBIDDEN"="Forbidden";
+"ERROR_INVALID"="Invalid";
+"ERROR_METHOD"="Method";
+"ERROR_NODATA"="No Data";
+"ERROR_REQUESTS"="Many Requests";
+"ERROR_UNAUTHORIZED"="Unauthorized";
+"ERROR_UNAVAILABLE"="Unavailable";
+"ERROR_UNKNOWN"="Unknown";
+"ERROR_UPGRADE"="Upgrade";
+"FEATURE_FREE_01"="Grizzco Weapons";
+"FEATURE_FREE_01_DESC"="Display grizzco weapons in rotations includeing random weapon";
+"FEATURE_FREE_02"="Future Rotation";
+"FEATURE_FREE_02_DESC"="Display future shift schedule until 2022";
+"FEATURE_FREE_03"="Hide My Nickname";
+"FEATURE_FREE_03_DESC"="Hide my nickname in results";
+"HEADER_APPEARANCE"="Appearance";
+"HEADER_APPLICATION"="Application";
+"HEADER_DEVICE"="Device";
+"HEADER_OVERVIEW"="Overview";
+"HEADER_PRODUCT"="Product";
+"HEADER_SALMONSTATS"="Salmon Stats";
+"HEADER_SCHEDULE"="Shift Schedule";
+"HEADER_STAGE_RECORD"="Stage Record";
+"HEADER_STATS_AVG"="Avg";
+"HEADER_STATS_MAX"="Max";
+"HEADER_USERINFO"="User info";
+"high"="High tide";
+"LOG_DOWNLOAD"="Downloading";
+"LOG_UPLOADING"="Uploading";
+"low"="Low tide";
+"normal"="Middle tide";
+"PRODUCT_MULTI_ACCOUNT"="Multi account";
+"RESIGN_IN"="Re-sign in";
+"RESULT_APPEARANCES_%lld"="Appearances x%lld";
+"RESULT_BOSS_DEFEATED_%lld"="Boss Salmonid Defeated x%lld";
+"RESULT_CLEAR"="Clear";
+"RESULT_CLEAR_RATIO"="Clear Ratio";
+"RESULT_CLEAR_WAVE"="Clear Wave";
+"RESULT_CREW_GRADE"="Crew Grade";
+"RESULT_DEAD_COUNT"="Dead Count";
+"RESULT_DEFEAT"="Defeated";
+"RESULT_EGG_COUNT"="Eggs";
+"RESULT_EVALUATION"="Eval";
+"RESULT_GOLDEN_EGGS"="Golden Eggs";
+"RESULT_HAZARD_LEVEL_%@"="Hazard Level %@%";
+"RESULT_HAZARD_LEVEL_MAX"="Hazard Level Max!!";
+"RESULT_HELP_COUNT"="Help count";
+"RESULT_JOB_NUM"="Job num";
+"RESULT_KILL_COUNT"="Kill";
+"RESULT_MATCHING_%@"="Match x%@";
+"RESULT_MAX_GRADE"="Max grade";
+"RESULT_PLAYER"="Player";
+"RESULT_POWER_EGGS"="Power Eggs";
+"RESULT_RATIO_GOLDEN_EGGS"="Ratio Golden Eggs";
+"RESULT_RATIO_POWER_EGGS"="Ratio Power Eggs";
+"RESULT_SALMON_RATE"="Salmon Rate";
+"RESULT_SALMONIDS"="Salmonids";
+"RESULT_TEAM_GOLDEN_EGGS"="Team Golden Eggs";
+"RESULT_TEAM_POWER_EGGS"="Team Power Eggs";
+"RESULT_WAVE_%lld"="Wave %lld";
+"RESULT_RATING_%@"="Rating %@";
+"RESULTS"="Results Num";
+"SETTING_API_VERSION"="X-Product Version";
+"SETTING_APP_VERSION"="Version";
+"SETTING_DARKMODE"="Darkmode";
+"SETTING_DETAIL"="Detail Settings";
+"SETTING_DEVICE"="Devide";
+"SETTING_ERASE_DATA"="Erase Data";
+"SETTING_FREE_PRODUCT"="Free Product";
+"SETTING_IMPORT_RESULT"="Import Results";
+"SETTING_PAID_PRODUCT"="Paid Product";
+"SETTING_PRIVACY"="Privacy Poricy";
+"SETTING_RE_SIGN_IN"="Re-Sign in";
+"SETTING_RESULTS"="Results";
+"SETTING_SYSTEM"="System";
+"SETTING_UPDATE_NAME"="Update Nickname";
+"SETTING_UPLOAD"="Link with Salmon Stats";
+"SHIFT_SCHEDULE"="Shift Schedule";
+"SUPPLIED_WEAPONS"="Supplied Weapons";
+"TEXT_CONFIRM"="Are you sure?";
+"TEXT_ERASE_DATA"="It may take a minute to remove all data with this device. This operation can not undone.";
+"TEXT_RE_SIGN_IN"="Changing the SplatNet2 account. Do not erase your data.";
+"TEXT_SALMONIA"="Salmonia";
+"TEXT_SALMONSTATS"="Salmon Stats";
+"TEXT_TUTORIAL_SALMONSTATS"="After Login Salmon Stats with the Twitter account, go to Setting pages in burger menu. Then tap the Connect with Salmonia";
+"TEXT_WELCOME_SALMONSTATS"="Salmonia need a Twitter account uploading results to Salmon Stats.";
+"TEXT_WELCOME_SPLATNET2"="Using Salmonia, you need sign in with Nintendo Switch Online account. Salmonia don't send any information for third party clients, services without your permission.";
+"TITLE_FREE_PRODUCT"="Free Product";
+"TITLE_LOGGING_THREAD"="Log";
+"TITLE_LOGIN"="Sign In";
+"TITLE_PAID_PRODUCT"="Paid Product";
+"TITLE_RESULT"="Result";
+"TITLE_RESULT_COLLECTION"="Results";
+"TITLE_RESULT_DETAIL"="Result Detail";
+"TITLE_SALMONIA"="Salmonia";
+"TITLE_SETTINGS"="Settings";
+"TITLE_SHIFT_SCHEDULE"="Shift Schedule";
+"TITLE_SHIFT_STATS"="Shift Stats";
+"TITLE_WAVE_ANALYSIS"="Wave Analysis";
+"TITLE_WEAPON_ANALYSIS"="Weapon Analysis";
+"water-levels"="-";

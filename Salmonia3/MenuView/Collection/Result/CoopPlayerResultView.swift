@@ -9,19 +9,20 @@ import SwiftUI
 import RealmSwift
 
 struct CoopPlayerResultView: View {
-    var result: RealmCoopResult
     @Binding var isVisible: Bool
+    @AppStorage("FEATURE_FREE_03") var isFree03: Bool = false
+    var result: RealmCoopResult
 
     var body: some View {
         List {
-            Section(header: Text("RESULT_PLAYER").splatfont2(.orange, size: 14)) {
+            Section(header: Text(.RESULT_PLAYER).splatfont2(.orange, size: 14)) {
                 HStack(alignment: .top, spacing: 0) {
                     Text("").frame(width: 30)
                     LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: 0, pinnedViews: []) {
                         ForEach(result.player.indices, id: \.self) { index in
                             VStack {
                                 Image(systemName: "circle")
-                                Text(result.player[index].name.stringValue)
+                                Text(result.player[index].name.stringValue((isVisible || (index == 0 && !isFree03))))
                                     .splatfont2(size: 12)
                             }
                         }
@@ -29,7 +30,7 @@ struct CoopPlayerResultView: View {
                     .frame(maxWidth: .infinity)
                 }
             }
-            Section(header: Text("RESULT_SALMONIDS").splatfont2(.orange, size: 14)) {
+            Section(header: Text(.RESULT_SALMONIDS).splatfont2(.orange, size: 14)) {
                 ForEach(Range(0...8)) { id in
                     if result.bossCounts[id] != 0 {
                         HStack(spacing: 0) {
@@ -67,9 +68,9 @@ struct CoopPlayerResultView: View {
                     }
                 }
             }
-            Section(header: Text("RESULT_EVALUATION").splatfont2(.orange, size: 14)) {
+            Section(header: Text(.RESULT_EVALUATION).splatfont2(.orange, size: 14)) {
                 HStack(spacing: 0) {
-                    Text("RESULT_KILL_COUNT")
+                    Text(.RESULT_KILL_COUNT)
                         .frame(width: 30)
                     LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: nil, pinnedViews: []) {
                         ForEach(result.player.indices, id: \.self) { index in
@@ -79,7 +80,7 @@ struct CoopPlayerResultView: View {
                     .frame(maxWidth: .infinity)
                 }
                 HStack(spacing: 0) {
-                    Text("RESULT_EGG_COUNT")
+                    Text(.RESULT_EGG_COUNT)
                         .frame(width: 30)
                     LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: nil, pinnedViews: []) {
                         ForEach(result.player.indices, id: \.self) { index in
