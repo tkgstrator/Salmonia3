@@ -78,14 +78,13 @@ struct LoadingView: View {
                 if latestResultId != response.summary.card.jobNum {
                     let jobNum = response.summary.card.jobNum
                     let jobIds = Range(max(latestResultId + 1, jobNum - 49) ... jobNum)
-                    progressModel.value = CGFloat(0)
-                    progressModel.maxValue = CGFloat(jobIds.count)
+                    progressModel.updateValue(value: 0, maxValue: CGFloat(jobIds.count))
                     for jobId in jobIds {
                         // MARK: リザルトのダウンロード
                         SplatNet2.shared.getResultCoopWithJSON(jobId: jobId)
                             .receive(on: DispatchQueue.main)
                             .sink(receiveCompletion: { completion in
-                                progressModel.value += 1
+                                progressModel.addValue(value: 1)
                                 switch completion {
                                 case .finished:
                                     break

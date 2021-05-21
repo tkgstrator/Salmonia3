@@ -87,7 +87,7 @@ final class RealmManager {
     public static func addNewRotation(from rotation: [Response.ScheduleCoop]) throws {
         RealmManager.shared.realm.beginWrite()
         let rotations: [RealmCoopShift] = rotation.map{ RealmCoopShift(from: $0) }
-        rotations.map{ RealmManager.shared.realm.create(RealmCoopShift.self, value: $0, update: .all) }
+        let _ = rotations.map{ RealmManager.shared.realm.create(RealmCoopShift.self, value: $0, update: .all) }
         try? RealmManager.shared.realm.commitWrite()
     }
     // シフトスケジュールを取得

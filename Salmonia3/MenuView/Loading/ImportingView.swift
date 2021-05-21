@@ -42,11 +42,10 @@ struct ImportingView: View {
     }
     
     private func importResultFromSalmonStats() {
-        var dispatchQueue = DispatchQueue(label: "Network Publisher")
-        
-        progressModel.value = 0
-        progressModel.maxValue = 0
-        
+        let dispatchQueue = DispatchQueue(label: "Network Publisher")
+        progressModel.updateValue(value: 0, maxValue: 0)
+
+        // 情報がなければ何もせずエラーを返す
         guard let nsaid = SplatNet2.shared.playerId else {
             apiError = .empty
             isPresented.toggle()
@@ -58,7 +57,8 @@ struct ImportingView: View {
             .sink(receiveCompletion: { completion in
             }, receiveValue: { metadata in
                 DispatchQueue.main.async {
-                    progressModel.maxValue = CGFloat(metadata.map{ $0.results.clear + $0.results.fail }.reduce(0, +))
+                    let maxValue = CGFloat(metadata.map{ $0.results.clear + $0.results.fail }.reduce(0, +))
+                    progressModel.updateValue(value: 0, maxValue: maxValue)
                 }
                 for userdata in metadata {
                     #if DEBUG
@@ -80,7 +80,7 @@ struct ImportingView: View {
                                     }
                                 }, receiveValue: { results in
                                     DispatchQueue.main.async {
-                                        progressModel.value += CGFloat(results.count)
+                                        progressModel.addValue(value: CGFloat(results.count))
                                         RealmManager.addNewResultsFromSalmonStats(from: results, pid: nsaid)
                                     }
                                 })
