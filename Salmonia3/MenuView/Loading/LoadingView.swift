@@ -17,21 +17,19 @@ struct LoadingView: View {
     @Environment(\.presentationMode) var present
     @EnvironmentObject var user: AppSettings
     @AppStorage("apiToken") var apiToken: String?
-
+    
     @State var isPresented: Bool = false
-    @State var apiError: Error?
+    @State var apiError: SplatNet2.APIError?
     @State private var task = Set<AnyCancellable>()
     @State var progressModel = MBCircleProgressModel(progressColor: .red, emptyLineColor: .gray)
-
+    
     private func dismiss() {
         DispatchQueue.main.async { present.wrappedValue.dismiss() }
     }
-
+    
     var body: some View {
         LoggingThread(progressModel: $progressModel)
-            .onAppear {
-                getResultFromSplatNet2()
-            }
+            .onAppear(perform: getResultFromSplatNet2)
             .alert(isPresented: $isPresented) {
                 Alert(title: Text("ALERT_ERROR"),
                       message: Text(apiError?.localizedDescription ?? "ERROR"),
@@ -40,7 +38,6 @@ struct LoadingView: View {
     }
     
     private func uploadToSalmonStats(results: [[String: Any]]) {
-        
         let results = results.chunked(by: 10)
         for result in results {
             SalmonStats.shared.uploadResults(results: result)
@@ -50,11 +47,10 @@ struct LoadingView: View {
                     case .finished:
                         break
                     case .failure(let error):
-                        print(error)
+                        apiError = error
+                        isPresented.toggle()
                     }
-                }, receiveValue: { response in
-                    print(dump(response))
-                })
+                }, receiveValue: { _ in })
                 .store(in: &task)
         }
     }
@@ -78,29 +74,24 @@ struct LoadingView: View {
                     apiError = error
                 }
             }, receiveValue: { response in
-                #if DEBUG
-                let latestResultId = RealmManager.getLatestResultId() - 10
-                #else
                 let latestResultId = RealmManager.getLatestResultId()
-                #endif
                 if latestResultId != response.summary.card.jobNum {
                     let jobNum = response.summary.card.jobNum
-                    #if DEBUG
-                    let jobIds = Range(jobNum - 4 ... jobNum)
-                    #else
                     let jobIds = Range(max(latestResultId + 1, jobNum - 49) ... jobNum)
-                    #endif
+                    progressModel.value = CGFloat(0)
                     progressModel.maxValue = CGFloat(jobIds.count)
                     for jobId in jobIds {
+                        // MARK: リザルトのダウンロード
                         SplatNet2.shared.getResultCoopWithJSON(jobId: jobId)
                             .receive(on: DispatchQueue.main)
                             .sink(receiveCompletion: { completion in
                                 progressModel.value += 1
                                 switch completion {
                                 case .finished:
-                                    print("JOB ID", jobId, "FINISHED")
+                                    break
                                 case .failure(let error):
-                                    print("JOB ID", jobId, "ERROR", error)
+                                    apiError = error
+                                    isPresented.toggle()
                                 }
                             }, receiveValue: { response in
                                 // MARK: Salmon Statsへのアップロード
@@ -114,7 +105,9 @@ struct LoadingView: View {
                             })
                             .store(in: &task)
                     }
-//                    present.wrappedValue.dismiss()
+                } else {
+                    apiError = .nonewresults
+                    isPresented.toggle()
                 }
                 try? RealmManager.updateSummary(from: response)
                 present.wrappedValue.dismiss()

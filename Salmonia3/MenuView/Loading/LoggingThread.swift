@@ -17,6 +17,7 @@ struct LoggingThread: View {
             Credit
             Divider()
             MBCircleProgressView(data: progressModel)
+                .frame(width: 200, height: 200, alignment: .center)
             Spacer()
         }
         .navigationTitle(.TITLE_LOGGING_THREAD)
