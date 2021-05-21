@@ -107,7 +107,7 @@ final class RealmManager {
     
     // ユーザ情報を更新
     public static func updateUserInfo(from account: Response.UserInfo) throws {
-        
+
     }
     
     public static func getNicknames() -> [String] {
@@ -142,9 +142,47 @@ final class RealmManager {
         try? RealmManager.shared.realm.commitWrite()
     }
 
+    
+    public func addNewResultsFromSalmonStatsTest() {
+        guard let nsaid = SplatNet2.shared.playerId else { return }
+        let dispatchQueue = DispatchQueue(label: "Realm Manager")
+        
+        SalmonStats.shared.getMetadata(nsaid: nsaid)
+            .receive(on: dispatchQueue)
+            .sink(receiveCompletion: { completion in
+            }, receiveValue: { [self] metadata in
+                print(metadata)
+                for userdata in metadata {
+                    dispatchQueue.async {
+                        let lastPageId: Int = 3
+                        for pageId in (1 ... lastPageId) {
+                            dispatchQueue.async {
+                            SalmonStats.shared.getResults(nsaid: userdata.playerId, pageId: pageId)
+                                .receive(on: dispatchQueue)
+                                .sink(receiveCompletion: { completion in
+                                    switch completion {
+                                    case .finished:
+                                        break
+                                    case .failure(let error):
+                                        print(error)
+                                    }
+                                }, receiveValue: { response in
+                                    print(response)
+                                })
+                                .store(in: &task)
+                            }
+                        }
+                    }
+                }
+            })
+            .store(in: &task)
+    }
+    
     // Salmon Statsからのリザルト追加
     public static func addNewResultsFromSalmonStats(from results: [SalmonStats.ResultCoop], pid: String) {
-        RealmManager.shared.realm.beginWrite()
+        guard let realm = try? Realm() else { return }
+//        RealmManager.shared.realm.beginWrite()
+        realm.beginWrite()
         let results: [RealmCoopResult] = results.map{ RealmCoopResult(from: $0, pid: pid) }
         for result in results {
             switch result.isDuplicated {
@@ -156,10 +194,12 @@ final class RealmManager {
                 }
             case false:
                 // 書き込み
-                RealmManager.shared.realm.create(RealmCoopResult.self, value: result, update: .all)
+                realm.create(RealmCoopResult.self, value: result, update: .all)
+//                RealmManager.shared.realm.create(RealmCoopResult.self, value: result, update: .all)
             }
         }
-        try? RealmManager.shared.realm.commitWrite()
+        try? realm.commitWrite()
+//        try? RealmManager.shared.realm.commitWrite()
     }
 
     static func eraseAllRecord() throws {

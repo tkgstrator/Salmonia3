@@ -30,7 +30,7 @@ struct StatsView: View {
                 StatsColumn(title: .RESULT_GOLDEN_EGGS, value: result?.resultMax?.goldenEggs)
                 StatsColumn(title: .RESULT_TEAM_POWER_EGGS, value: result?.resultMax?.teamPowerEggs)
                 StatsColumn(title: .RESULT_TEAM_GOLDEN_EGGS, value: result?.resultMax?.teamGoldenEggs)
-                StatsColumn(title: .RESULT_KILL_COUNT, value: result?.resultMax?.bossDefeated)
+                StatsColumn(title: .RESULT_DEFEATED, value: result?.resultMax?.bossDefeated)
                 StatsColumn(title: .RESULT_HELP_COUNT, value: result?.resultMax?.helpCount)
                 StatsColumn(title: .RESULT_DEAD_COUNT, value: result?.resultMax?.deadCount)
             }
@@ -39,7 +39,7 @@ struct StatsView: View {
                 StatsColumn(title: .RESULT_GOLDEN_EGGS, value: result?.resultAvg?.goldenEggs)
                 StatsColumn(title: .RESULT_TEAM_POWER_EGGS, value: result?.resultAvg?.teamPowerEggs)
                 StatsColumn(title: .RESULT_TEAM_GOLDEN_EGGS, value: result?.resultAvg?.teamGoldenEggs)
-                StatsColumn(title: .RESULT_KILL_COUNT, value: result?.resultAvg?.bossDefeated)
+                StatsColumn(title: .RESULT_DEFEATED, value: result?.resultAvg?.bossDefeated)
                 StatsColumn(title: .RESULT_HELP_COUNT, value: result?.resultAvg?.helpCount)
                 StatsColumn(title: .RESULT_DEAD_COUNT, value: result?.resultAvg?.deadCount)
             }

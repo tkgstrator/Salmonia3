@@ -70,13 +70,8 @@ struct Salmonia3App: App {
                 .listStyle(GroupedListStyle())
                 .buttonStyle(PlainButtonStyle())
                 .preferredColorScheme(isDarkMode ? .dark : .light)
-                .animation(.easeInOut)
-                .transition(.opacity)
-                .onOpenURL(perform: { url in
-                    print(url)
-//                    let parameters = url.queryParameters
-                })
-                .onAppear(perform: { })
+//                .animation(.easeInOut)
+//                .transition(.opacity)
         }
     }
     
