@@ -36,8 +36,7 @@ struct UsernameView: View {
     
     func getNicknameAndIcons() {
         let nsaids: [String] = RealmManager.getNicknames()
-        progressModel.value = CGFloat(0)
-        progressModel.maxValue = CGFloat(nsaids.count)
+        progressModel.updateValue(value: 0, maxValue: CGFloat(nsaids.count))
         
         for nsaid in nsaids.chunked(by: 200) {
             SplatNet2.shared.getNicknameAndIcons(playerId: nsaid)
@@ -50,7 +49,7 @@ struct UsernameView: View {
                         print(error)
                     }
                 }, receiveValue: { response in
-                    progressModel.value += CGFloat(response.nicknameAndIcons.count)
+                    progressModel.addValue(value: CGFloat(response.nicknameAndIcons.count))
                     RealmManager.updateNicknameAndIcons(players: response)
                 })
                 .store(in: &task)
