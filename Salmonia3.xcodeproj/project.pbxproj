@@ -30,7 +30,6 @@
 		10377F7C25FCD9E800536A94 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F7B25FCD9E800536A94 /* RealmManager.swift */; };
 		10377F8125FCDBE400536A94 /* RealmUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F8025FCDBE400536A94 /* RealmUserInfo.swift */; };
 		10377F8625FD041900536A94 /* AppSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F8525FD041900536A94 /* AppSetting.swift */; };
-		10377F8B25FD053A00536A94 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F8A25FD053A00536A94 /* AppManager.swift */; };
 		10377F9125FD09E800536A94 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F9025FD09E800536A94 /* LoadingView.swift */; };
 		10377F9925FD09FF00536A94 /* LoggingThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F9825FD09FF00536A94 /* LoggingThread.swift */; };
 		10377FA425FD10FE00536A94 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377FA325FD10FE00536A94 /* Optional.swift */; };
@@ -129,7 +128,6 @@
 		10377F7B25FCD9E800536A94 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		10377F8025FCDBE400536A94 /* RealmUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUserInfo.swift; sourceTree = "<group>"; };
 		10377F8525FD041900536A94 /* AppSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetting.swift; sourceTree = "<group>"; };
-		10377F8A25FD053A00536A94 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		10377F9025FD09E800536A94 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		10377F9825FD09FF00536A94 /* LoggingThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingThread.swift; sourceTree = "<group>"; };
 		10377FA325FD10FE00536A94 /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
@@ -350,7 +348,6 @@
 				1090C6A6263E902B000DD54C /* Salmonia3.entitlements */,
 				1059416625FA49E500C32D21 /* Salmonia3App.swift */,
 				1059416825FA49E500C32D21 /* ContentView.swift */,
-				10377F8A25FD053A00536A94 /* AppManager.swift */,
 				10F97B4F2614DD1B0079CED0 /* GoogleService-Info.plist */,
 				107F9B3A2614A8CA001581C7 /* MenuView */,
 				10CF09F825FB9BEE00D2EEB1 /* Realm */,
@@ -802,7 +799,6 @@
 				107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */,
 				10CF09FB25FB9C6B00D2EEB1 /* CoreRealmCoop.swift in Sources */,
 				1031728E262C355500CF8903 /* ImportingView.swift in Sources */,
-				10377F8B25FD053A00536A94 /* AppManager.swift in Sources */,
 				10D2E1622655618B00AE584E /* LocalizableStrings.swift in Sources */,
 				10AD114D2600EB18008C0E64 /* Error.swift in Sources */,
 				105941AD25FA500500C32D21 /* TopMenu.swift in Sources */,

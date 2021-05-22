@@ -25,18 +25,27 @@ struct UsernameView: View {
     }
 
     var body: some View {
-        LoggingThread(progressModel: $progressModel)
-            .onAppear(perform: getNicknameAndIcons)
-            .alert(isPresented: $isPresented) {
-                Alert(title: Text("ALERT_ERROR"),
-                      message: Text(apiError?.localizedDescription ?? "ERROR"),
-                      dismissButton: .default(Text("BTN_DISMISS"), action: { dismiss() }))
+        ZStack {
+            GeometryReader { geometry in
+                LoggingThread(progressModel: $progressModel)
+                    .onAppear(perform: getNicknameAndIcons)
+                    .alert(isPresented: $isPresented) {
+                        Alert(title: Text("ALERT_ERROR"),
+                              message: Text(apiError?.localizedDescription ?? "ERROR"),
+                              dismissButton: .default(Text("BTN_DISMISS"), action: { dismiss() }))
+                    }
+                ActivityIndicator()
+                    .frame(width: 30, height: 30)
+                    .position(x: geometry.size.width * 0.5, y: geometry.size.height * 0.5)
+                    .opacity(progressModel.isCompleted ? 0.0 : 1.0)
             }
+        }
     }
     
     func getNicknameAndIcons() {
         let nsaids: [String] = RealmManager.getNicknames()
-        print("DEBUG: NSAID", nsaids.count)
+        
+        log.verbose("GET NICKNAME \(nsaids.count)")
         progressModel.updateValue(value: 0, maxValue: CGFloat(nsaids.count))
         
         for nsaid in nsaids.chunked(by: 200) {
