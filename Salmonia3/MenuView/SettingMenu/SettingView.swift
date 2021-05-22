@@ -75,7 +75,7 @@ struct SettingView: View {
     var PrivacyButton: some View {
         Button(action: { isShowing.toggle() }, label: { Text(.SETTING_PRIVACY)})
             .safariView(isPresented: $isShowing) {
-                SafariView(url: URL(string: "https://tkgstrator.work/?page_id=25126")!)
+                SafariView(url: URL(string: "https://tkgstrator.work/posts/1970/01/01/privacyporicy.html")!)
             }
     }
 }

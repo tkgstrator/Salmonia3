@@ -30,11 +30,10 @@ struct ImportingView: View {
         ZStack {
             GeometryReader { geometry in
                 LoggingThread(progressModel: $progressModel)
-                    .onAppear(perform: importResultFromSalmonStats)
                     .alert(isPresented: $isPresented) {
-                        Alert(title: Text("ALERT_ERROR"),
-                              message: Text(apiError?.localizedDescription ?? "ERROR"),
-                              dismissButton: .default(Text("BTN_DISMISS"), action: { dismiss() }))
+                        Alert(title: Text(.ALERT_ERROR),
+                              message: Text(apiError?.localizedDescription ?? LocalizableStrings.Key.ALERT_ERROR.rawValue.localized),
+                              dismissButton: .default(Text(.BTN_DISMISS), action: { dismiss() }))
                     }
                 ActivityIndicator()
                     .frame(width: 30, height: 30)
@@ -43,12 +42,12 @@ struct ImportingView: View {
             }
             
         }
+        .onAppear(perform: importResultFromSalmonStats)
         .navigationTitle(.TITLE_LOGGING_THREAD)
     }
     
     private func importResultFromSalmonStats() {
         let dispatchQueue = DispatchQueue(label: "Network Publisher")
-        progressModel.updateValue(value: 0, maxValue: 0)
 
         // 情報がなければ何もせずエラーを返す
         guard let nsaid = SplatNet2.shared.playerId else {
@@ -87,9 +86,6 @@ struct ImportingView: View {
                                     DispatchQueue.main.async {
                                         progressModel.addValue(value: CGFloat(results.count))
                                         RealmManager.addNewResultsFromSalmonStats(from: results, pid: nsaid)
-                                    }
-                                    if pageId == lastPageId {
-                                        
                                     }
                                 })
                                 .store(in: &task)

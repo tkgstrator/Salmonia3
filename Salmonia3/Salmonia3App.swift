@@ -27,22 +27,21 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     private var task = Set<AnyCancellable>()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-        // ログの設定
+        // MARK: ログの設定
         console.format = "$DHH:mm:ss$d $L $M"
 
         log.addDestination(console)
         log.addDestination(file)
         log.addDestination(cloud)
         
-        log.verbose("not so important")
+        // MARK: Firebaseの設定
         FirebaseApp.configure()
-
         ATTrackingManager.requestTrackingAuthorization(completionHandler: { _ in
             GADMobileAds.sharedInstance().start(completionHandler: nil)
             print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
         })
         
-        
+        // MARK: シフト情報の取得
         SplatNet2.shared.getShiftSchedule()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
@@ -84,10 +83,8 @@ struct Salmonia3App: App {
                 .environmentObject(CoreAppProduct())
                 .environmentObject(AppSettings())
                 .listStyle(GroupedListStyle())
-                .buttonStyle(PlainButtonStyle())
                 .preferredColorScheme(isDarkMode ? .dark : .light)
-//                .animation(.easeInOut)
-//                .transition(.opacity)
+                .onAppear(perform: updateApiToken)
         }
     }
     
