@@ -36,6 +36,7 @@ struct UsernameView: View {
     
     func getNicknameAndIcons() {
         let nsaids: [String] = RealmManager.getNicknames()
+        print("DEBUG: NSAID", nsaids.count)
         progressModel.updateValue(value: 0, maxValue: CGFloat(nsaids.count))
         
         for nsaid in nsaids.chunked(by: 200) {
