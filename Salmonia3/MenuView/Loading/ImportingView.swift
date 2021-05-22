@@ -22,6 +22,10 @@ struct ImportingView: View {
         DispatchQueue.main.async { present.wrappedValue.dismiss() }
     }
     
+    init() {
+        progressModel.updateValue(value: 0, maxValue: 0)
+    }
+    
     var body: some View {
         ZStack {
             GeometryReader { geometry in
@@ -35,6 +39,7 @@ struct ImportingView: View {
                 ActivityIndicator()
                     .frame(width: 30, height: 30)
                     .position(x: geometry.size.width * 0.5, y: geometry.size.height * 0.5)
+                    .opacity(progressModel.isCompleted ? 0.0 : 1.0)
             }
             
         }
@@ -82,6 +87,9 @@ struct ImportingView: View {
                                     DispatchQueue.main.async {
                                         progressModel.addValue(value: CGFloat(results.count))
                                         RealmManager.addNewResultsFromSalmonStats(from: results, pid: nsaid)
+                                    }
+                                    if pageId == lastPageId {
+                                        
                                     }
                                 })
                                 .store(in: &task)
