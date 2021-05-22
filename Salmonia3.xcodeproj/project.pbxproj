@@ -37,7 +37,6 @@
 		10377FAD25FD166200536A94 /* CoopResultCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377FAC25FD166200536A94 /* CoopResultCollection.swift */; };
 		104AA7DC2605E0C8007BDC24 /* GoogleMobileAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104AA7DB2605E0C8007BDC24 /* GoogleMobileAds.swift */; };
 		104BD5EE261C875C0013CD27 /* CoreAppProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BD5ED261C875C0013CD27 /* CoreAppProduct.swift */; };
-		104BD603261C93310013CD27 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 104BD602261C93310013CD27 /* KeychainAccess */; };
 		104BD608261C93630013CD27 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BD607261C93630013CD27 /* KeyStorage.swift */; };
 		104BD620261C98800013CD27 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 104BD61F261C98800013CD27 /* URLImage */; };
 		1052C2D026550E7800D3B9A9 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1052C2CF26550E7800D3B9A9 /* DetailView.swift */; };
@@ -63,7 +62,6 @@
 		107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */; };
 		1083857C265922700099475F /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 1083857B265922700099475F /* SwiftyBeaver */; };
 		1090C689263DF162000DD54C /* SplatNet2 in Frameworks */ = {isa = PBXBuildFile; productRef = 1090C688263DF162000DD54C /* SplatNet2 */; };
-		109B1379264684750044EE6C /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 109B1378264684750044EE6C /* SwiftyJSON */; };
 		109EF35E260CAB7F00076157 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF35D260CAB7F00076157 /* ProductView.swift */; };
 		109EF375260CB01E00076157 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF374260CB01E00076157 /* ButtonStyle.swift */; };
 		10A08032262070A200BFDF59 /* CoopShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A08031262070A200BFDF59 /* CoopShiftStats.swift */; };
@@ -74,7 +72,6 @@
 		10CF098E25FB97CB00D2EEB1 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF098D25FB97CB00D2EEB1 /* BetterSafariView */; };
 		10CF099425FB97F300D2EEB1 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF099325FB97F300D2EEB1 /* SwiftUIRefresh */; };
 		10CF09A025FB984400D2EEB1 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF099F25FB984400D2EEB1 /* SwiftyStoreKit */; };
-		10CF09AC25FB987600D2EEB1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF09AB25FB987600D2EEB1 /* Alamofire */; };
 		10CF09B825FB9AC100D2EEB1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF09B725FB9AC100D2EEB1 /* Realm */; };
 		10CF09BA25FB9AC100D2EEB1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF09B925FB9AC100D2EEB1 /* RealmSwift */; };
 		10CF09BF25FB9AEC00D2EEB1 /* SplitNavigationViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF09BE25FB9AEC00D2EEB1 /* SplitNavigationViewStyle.swift */; };
@@ -198,13 +195,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				109B1379264684750044EE6C /* SwiftyJSON in Frameworks */,
 				10CF09A025FB984400D2EEB1 /* SwiftyStoreKit in Frameworks */,
 				1090C689263DF162000DD54C /* SplatNet2 in Frameworks */,
 				10CF09BA25FB9AC100D2EEB1 /* RealmSwift in Frameworks */,
-				104BD603261C93310013CD27 /* KeychainAccess in Frameworks */,
 				10CF099425FB97F300D2EEB1 /* SwiftUIRefresh in Frameworks */,
-				10CF09AC25FB987600D2EEB1 /* Alamofire in Frameworks */,
 				10CF09B825FB9AC100D2EEB1 /* Realm in Frameworks */,
 				10317286262C32FB00CF8903 /* SalmonStats in Frameworks */,
 				1083857C265922700099475F /* SwiftyBeaver in Frameworks */,
@@ -551,15 +545,12 @@
 				10CF098D25FB97CB00D2EEB1 /* BetterSafariView */,
 				10CF099325FB97F300D2EEB1 /* SwiftUIRefresh */,
 				10CF099F25FB984400D2EEB1 /* SwiftyStoreKit */,
-				10CF09AB25FB987600D2EEB1 /* Alamofire */,
 				10CF09B725FB9AC100D2EEB1 /* Realm */,
 				10CF09B925FB9AC100D2EEB1 /* RealmSwift */,
-				104BD602261C93310013CD27 /* KeychainAccess */,
 				104BD61F261C98800013CD27 /* URLImage */,
 				10317285262C32FB00CF8903 /* SalmonStats */,
 				1090C688263DF162000DD54C /* SplatNet2 */,
 				1028D37126418EFD0034C075 /* MBCircleProgressBar */,
-				109B1378264684750044EE6C /* SwiftyJSON */,
 				1083857B265922700099475F /* SwiftyBeaver */,
 			);
 			productName = Salmonia3;
@@ -640,11 +631,8 @@
 				10CF098C25FB97CB00D2EEB1 /* XCRemoteSwiftPackageReference "BetterSafariView" */,
 				10CF099225FB97F300D2EEB1 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
 				10CF099E25FB984400D2EEB1 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
-				10CF09AA25FB987600D2EEB1 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				10CF09B625FB9AC100D2EEB1 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
-				104BD601261C93310013CD27 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				104BD61E261C98800013CD27 /* XCRemoteSwiftPackageReference "url-image" */,
-				109B1377264684740044EE6C /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				1083857A265922700099475F /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
 			);
 			productRefGroup = 1059416425FA49E500C32D21 /* Products */;
@@ -1175,14 +1163,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		104BD601261C93310013CD27 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.2.2;
-			};
-		};
 		104BD61E261C98800013CD27 /* XCRemoteSwiftPackageReference "url-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
@@ -1197,14 +1177,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.9.5;
-			};
-		};
-		109B1377264684740044EE6C /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.1;
 			};
 		};
 		10CF098C25FB97CB00D2EEB1 /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
@@ -1231,14 +1203,6 @@
 				minimumVersion = 0.16.3;
 			};
 		};
-		10CF09AA25FB987600D2EEB1 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.4.1;
-			};
-		};
 		10CF09B625FB9AC100D2EEB1 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa";
@@ -1258,11 +1222,6 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = SalmonStats;
 		};
-		104BD602261C93310013CD27 /* KeychainAccess */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 104BD601261C93310013CD27 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
-			productName = KeychainAccess;
-		};
 		104BD61F261C98800013CD27 /* URLImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 104BD61E261C98800013CD27 /* XCRemoteSwiftPackageReference "url-image" */;
@@ -1276,11 +1235,6 @@
 		1090C688263DF162000DD54C /* SplatNet2 */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SplatNet2;
-		};
-		109B1378264684750044EE6C /* SwiftyJSON */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 109B1377264684740044EE6C /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
-			productName = SwiftyJSON;
 		};
 		10CF098D25FB97CB00D2EEB1 /* BetterSafariView */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1296,11 +1250,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 10CF099E25FB984400D2EEB1 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;
 			productName = SwiftyStoreKit;
-		};
-		10CF09AB25FB987600D2EEB1 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 10CF09AA25FB987600D2EEB1 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
 		};
 		10CF09B725FB9AC100D2EEB1 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;

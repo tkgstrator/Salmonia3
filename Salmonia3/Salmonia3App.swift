@@ -15,12 +15,28 @@ import GoogleMobileAds
 import SplatNet2
 import SalmonStats
 import Combine
+import SwiftyBeaver
+
+// SwiftyBeaverの初期化
+let log = SwiftyBeaver.self
+let console = ConsoleDestination()
+let file = FileDestination()
+let cloud = SBPlatformDestination(appID: "work.tkgstrator.", appSecret: "salmonia3", encryptionKey: "salmonia3")
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     private var task = Set<AnyCancellable>()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        // ログの設定
+        console.format = "$DHH:mm:ss$d $L $M"
+
+        log.addDestination(console)
+        log.addDestination(file)
+        log.addDestination(cloud)
+        
+        log.verbose("not so important")
         FirebaseApp.configure()
+
         ATTrackingManager.requestTrackingAuthorization(completionHandler: { _ in
             GADMobileAds.sharedInstance().start(completionHandler: nil)
             print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
