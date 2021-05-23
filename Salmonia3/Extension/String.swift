@@ -7,7 +7,6 @@
 
 import Foundation
 
-#warning("ローカライズするだけの意味なさげなExtension")
 extension String {
     var localized: String {
         return NSLocalizedString(self, comment: "")

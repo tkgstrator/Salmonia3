@@ -11,25 +11,25 @@ struct FreeProductView: View {
     @EnvironmentObject var free: CoreAppProduct
 
     var body: some View {
-        List {
+        Form {
             Toggle(isOn: $free.isFree01, label: {
                 VStack(alignment: .leading, spacing: nil) {
-                    Text("FEATURE_FREE_01")
-                    Text("FEATURE_FREE_01_DESC")
+                    Text(.FEATURE_FREE_01)
+                    Text(.FEATURE_FREE_01_DESC)
                         .splatfont2(size: 12)
                 }
             })
             Toggle(isOn: $free.isFree02, label: {
                 VStack(alignment: .leading, spacing: nil) {
-                    Text("FEATURE_FREE_02")
-                    Text("FEATURE_FREE_02_DESC")
+                    Text(.FEATURE_FREE_02)
+                    Text(.FEATURE_FREE_02_DESC)
                         .splatfont2(size: 12)
                 }
             })
             Toggle(isOn: $free.isFree03, label: {
                 VStack(alignment: .leading, spacing: nil) {
-                    Text("FEATURE_FREE_03")
-                    Text("FEATURE_FREE_03_DESC")
+                    Text(.FEATURE_FREE_03)
+                    Text(.FEATURE_FREE_03_DESC)
                         .splatfont2(size: 12)
                 }
             })
@@ -54,17 +54,56 @@ protocol ProductItemProtocol: Identifiable {
 }
 
 struct PaidProductView: View {
+    @EnvironmentObject var paid: CoreAppProduct
+    @AppStorage("loadingIcon") var loadingIcon: LoadingType = .LOADING_SNOW
+
     var body: some View {
-        LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 60, maximum: 80)), count: 3), alignment: .center, spacing: 10, pinnedViews: []) {
-            ForEach(Range(0...11)) { number in
-                Button(action: {}, label: {
-                    Text("\(number)")
-                        .frame(width: 60, height: 60, alignment: .center)
+        Form {
+            Section(header: EmptyView()) {
+                Toggle(isOn: $paid.isPaid01, label: {
+                    VStack(alignment: .leading, spacing: nil) {
+                        Text(.FEATURE_PAID_01)
+                        Text(.FEATURE_PAID_01_DESC)
+                            .splatfont2(size: 12)
+                    }
                 })
-//                .buttonStyle(CircleButtonStyle())
+                Toggle(isOn: $paid.isPaid02, label: {
+                    VStack(alignment: .leading, spacing: nil) {
+                        Text(.FEATURE_PAID_02)
+                        Text(.FEATURE_PAID_02_DESC)
+                            .splatfont2(size: 12)
+                    }
+                })
+                Toggle(isOn: $paid.isPaid03, label: {
+                    VStack(alignment: .leading, spacing: nil) {
+                        Text(.FEATURE_PAID_03)
+                        Text(.FEATURE_PAID_03_DESC)
+                            .splatfont2(size: 12)
+                    }
+                })
             }
+            Section(header: EmptyView()) {
+                Picker(selection: $loadingIcon, label: Text(.SETTING_LOADING_TYPE) ) {
+                    ForEach(LoadingType.allCases, id:\.rawValue) {
+                        Text($0.rawValue.localized).tag($0)
+                    }
+                    .navigationTitle(.SETTING_LOADING_TYPE)
+                }
+            }
+            .navigationTitle(.TITLE_PAID_PRODUCT)
         }
+        .navigationTitle(.TITLE_PAID_PRODUCT)
+        .onChange(of: loadingIcon) { value in
+            loadingIcon = value
+        }
+        .splatfont2(size: 16)
     }
+}
+
+enum LoadingType: String, CaseIterable {
+    case LOADING_IKA    = "LoadingIka"
+    case LOADING_SPIN   = "LoadingSpin"
+    case LOADING_SNOW   = "LoadingSnow"
 }
 
 struct ProductView_Previews: PreviewProvider {
