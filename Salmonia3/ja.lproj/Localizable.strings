@@ -30,6 +30,12 @@
 "FEATURE_FREE_02_DESC"="2022年までの全シフトを表示します";
 "FEATURE_FREE_03"="自分の名前も非表示";
 "FEATURE_FREE_03_DESC"="リザルト画面で自分の名前も隠します";
+"FEATURE_PAID_01"="Loading Indicator";
+"FEATURE_PAID_01_DESC"="Change loading indicator.";
+"FEATURE_PAID_02"="";
+"FEATURE_PAID_02_DESC"="";
+"FEATURE_PAID_03"="";
+"FEATURE_PAID_03_DESC"="";
 "GOLDEN_EGGS"="金イクラ数";
 "Go-Getter"="いちにんまえ";
 "HEADER_APPEARANCE"="外観";
@@ -46,6 +52,9 @@
 "Intern"="けんしゅう";
 "LOG_DOWNLOAD"="ダウンロード";
 "LOG_UPLOADING"="アップロード";
+"LoadingIka" = "スプラトゥーン";
+"LoadingSnow" = "デフォルト";
+"LoadingSpin" = "スピナー";
 "Lost Outpost"="海上集落シャケト場";
 "Marooner's Bay"="難破船ドン・ブラコ";
 "Overachiver"="じゅくれん";
@@ -93,6 +102,7 @@
 "SETTING_ERASE_DATA"="データ消去";
 "SETTING_FREE_PRODUCT"="無料機能";
 "SETTING_IMPORT_RESULT"="リザルト取り込み";
+"SETTING_LOADING_TYPE" = "ローディング中画像";
 "SETTING_PAID_PRODUCT"="有料機能";
 "SETTING_PRIVACY"="プライバシーポリシー";
 "SETTING_RESULTS"="リザルト件数";

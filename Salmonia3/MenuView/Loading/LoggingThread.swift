@@ -10,14 +10,15 @@ import SwiftUI
 import MBCircleProgressBar
 
 struct LoggingThread: View {
-    @Binding var progressModel: MBCircleProgressModel
-    
+    @ObservedObject var progressModel: MBCircleProgressModel
+
     var body: some View {
         VStack {
             Credit
             Divider()
             MBCircleProgressView(data: progressModel)
                 .frame(width: 200, height: 200, alignment: .center)
+                .overlay(LoadingIndicator(loading: !progressModel.isCompleted), alignment: .bottom)
             Spacer()
         }
         .navigationTitle(.TITLE_LOGGING_THREAD)

@@ -22,26 +22,13 @@ struct ImportingView: View {
         DispatchQueue.main.async { present.wrappedValue.dismiss() }
     }
     
-    init() {
-        progressModel.updateValue(value: 0, maxValue: 0)
-    }
-    
     var body: some View {
-        ZStack {
-            GeometryReader { geometry in
-                LoggingThread(progressModel: $progressModel)
-                    .alert(isPresented: $isPresented) {
-                        Alert(title: Text(.ALERT_ERROR),
-                              message: Text(apiError?.localizedDescription ?? LocalizableStrings.Key.ALERT_ERROR.rawValue.localized),
-                              dismissButton: .default(Text(.BTN_DISMISS), action: { dismiss() }))
-                    }
-                ActivityIndicator()
-                    .frame(width: 30, height: 30)
-                    .position(x: geometry.size.width * 0.5, y: geometry.size.height * 0.5)
-                    .opacity(progressModel.isCompleted ? 0.0 : 1.0)
+        LoggingThread(progressModel: progressModel)
+            .alert(isPresented: $isPresented) {
+                Alert(title: Text(.ALERT_ERROR),
+                      message: Text(apiError?.localizedDescription ?? LocalizableStrings.Key.ALERT_ERROR.rawValue.localized),
+                      dismissButton: .default(Text(.BTN_DISMISS), action: { dismiss() }))
             }
-            
-        }
         .onAppear(perform: importResultFromSalmonStats)
         .navigationTitle(.TITLE_LOGGING_THREAD)
     }
@@ -62,7 +49,11 @@ struct ImportingView: View {
             }, receiveValue: { metadata in
                 DispatchQueue.main.async {
                     let maxValue = CGFloat(metadata.map{ $0.results.clear + $0.results.fail }.reduce(0, +))
-                    progressModel.updateValue(value: 0, maxValue: maxValue)
+                    #if DEBUG
+                    progressModel.configure(maxValue: 150)
+                    #else
+                    progressModel.configure(maxValue: maxValue)
+                    #endif
                 }
                 for userdata in metadata {
                     #if DEBUG

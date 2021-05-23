@@ -28,7 +28,7 @@ struct LoadingView: View {
     }
     
     var body: some View {
-        LoggingThread(progressModel: $progressModel)
+        LoggingThread(progressModel: progressModel)
             .onAppear(perform: getResultFromSplatNet2)
             .alert(isPresented: $isPresented) {
                 Alert(title: Text("ALERT_ERROR"),
@@ -78,7 +78,7 @@ struct LoadingView: View {
                 if latestResultId != response.summary.card.jobNum {
                     let jobNum = response.summary.card.jobNum
                     let jobIds = Range(max(latestResultId + 1, jobNum - 49) ... jobNum)
-                    progressModel.updateValue(value: 0, maxValue: CGFloat(jobIds.count))
+                    progressModel.configure(maxValue: CGFloat(jobIds.count))
                     for jobId in jobIds {
                         // MARK: リザルトのダウンロード
                         SplatNet2.shared.getResultCoopWithJSON(jobId: jobId)

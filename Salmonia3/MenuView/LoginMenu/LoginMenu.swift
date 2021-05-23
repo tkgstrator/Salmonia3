@@ -10,6 +10,7 @@ import BetterSafariView
 import SwiftUI
 import SplatNet2
 import Combine
+import APNGKit
 
 struct LoginMenu: View {
     @State var isActive: Bool = false
@@ -18,6 +19,7 @@ struct LoginMenu: View {
     @State var isAlertShowing: Bool = false
     @State var task = Set<AnyCancellable>()
     @State var apiError: SplatNet2.APIError?
+    var image = APNGImage(named: "Loading")
 
     var body: some View {
         GeometryReader { geometry in
@@ -49,9 +51,9 @@ struct LoginMenu: View {
                     .position(x: geometry.frame(in: .local).midX, y: 3 * geometry.size.height / 4)
                 }
                 .disabled(isLoading)
-                ProgressView()
-                    .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)
-                    .opacity(isLoading ? 1.0 : 0.0)
+//                APNGView(imageName: "Loading)
+//                    .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)
+//                    .opacity(isLoading ? 1.0 : 0.0)
             }
         }
         .webAuthenticationSession(isPresented: $isPresented) {

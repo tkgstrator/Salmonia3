@@ -23,30 +23,22 @@ struct UsernameView: View {
     private func dismiss() {
         DispatchQueue.main.async { present.wrappedValue.dismiss() }
     }
-
-    var body: some View {
-        ZStack {
-            GeometryReader { geometry in
-                LoggingThread(progressModel: $progressModel)
-                    .onAppear(perform: getNicknameAndIcons)
-                    .alert(isPresented: $isPresented) {
-                        Alert(title: Text("ALERT_ERROR"),
-                              message: Text(apiError?.localizedDescription ?? "ERROR"),
-                              dismissButton: .default(Text("BTN_DISMISS"), action: { dismiss() }))
-                    }
-                ActivityIndicator()
-                    .frame(width: 30, height: 30)
-                    .position(x: geometry.size.width * 0.5, y: geometry.size.height * 0.5)
-                    .opacity(progressModel.isCompleted ? 0.0 : 1.0)
-            }
-        }
-    }
     
+    var body: some View {
+        LoggingThread(progressModel: progressModel)
+            .onAppear(perform: getNicknameAndIcons)
+            .alert(isPresented: $isPresented) {
+                Alert(title: Text("ALERT_ERROR"),
+                      message: Text(apiError?.localizedDescription ?? "ERROR"),
+                      dismissButton: .default(Text("BTN_DISMISS"), action: { dismiss() }))
+            }
+    }
+
     func getNicknameAndIcons() {
         let nsaids: [String] = RealmManager.getNicknames()
         
         log.verbose("GET NICKNAME \(nsaids.count)")
-        progressModel.updateValue(value: 0, maxValue: CGFloat(nsaids.count))
+        progressModel.configure(maxValue: CGFloat(nsaids.count))
         
         for nsaid in nsaids.chunked(by: 200) {
             SplatNet2.shared.getNicknameAndIcons(playerId: nsaid)

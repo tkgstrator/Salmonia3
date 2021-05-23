@@ -34,6 +34,12 @@ class LocalizableStrings {
         case FEATURE_FREE_02_DESC
         case FEATURE_FREE_03
         case FEATURE_FREE_03_DESC
+        case FEATURE_PAID_01
+        case FEATURE_PAID_01_DESC
+        case FEATURE_PAID_02
+        case FEATURE_PAID_02_DESC
+        case FEATURE_PAID_03
+        case FEATURE_PAID_03_DESC
         case GOLDEN_EGGS
         case HEADER_APPEARANCE
         case HEADER_APPLICATION
@@ -90,6 +96,7 @@ class LocalizableStrings {
         case SETTING_SYSTEM
         case SETTING_UPDATE_NAME
         case SETTING_UPLOAD
+        case SETTING_LOADING_TYPE
         case SHIFT_SCHEDULE
         case SUPPLIED_WEAPONS
         case TEXT_CONFIRM

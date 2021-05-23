@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "APNGKit",
+        "repositoryURL": "https://github.com/onevcat/APNGKit.git",
+        "state": {
+          "branch": null,
+          "revision": "10129abce1fcb98ddbded7e50be18f9da0771ed1",
+          "version": "1.2.2"
+        }
+      },
+      {
         "package": "BetterSafariView",
         "repositoryURL": "https://github.com/stleamist/BetterSafariView.git",
         "state": {
