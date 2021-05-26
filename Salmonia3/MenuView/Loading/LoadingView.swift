@@ -109,7 +109,6 @@ struct LoadingView: View {
                     isPresented.toggle()
                 }
                 try? RealmManager.updateSummary(from: response)
-                present.wrappedValue.dismiss()
             })
             .store(in: &task)
     }
