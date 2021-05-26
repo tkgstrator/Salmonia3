@@ -11,6 +11,7 @@ import MBCircleProgressBar
 
 struct LoggingThread: View {
     @ObservedObject var progressModel: MBCircleProgressModel
+    @Environment(\.presentationMode) var present
 
     var body: some View {
         VStack {
@@ -21,8 +22,11 @@ struct LoggingThread: View {
                 .overlay(LoadingIndicator(loading: !progressModel.isCompleted), alignment: .bottom)
             Spacer()
         }
+        .onChange(of: progressModel.isCompleted) { value in
+            if value { present.wrappedValue.dismiss() }
+        }
         .navigationTitle(.TITLE_LOGGING_THREAD)
-//        .navigationBarBackButtonHidden(true)
+        .navigationBarBackButtonHidden(!progressModel.isCompleted)
     }
 
     var Credit: some View {
