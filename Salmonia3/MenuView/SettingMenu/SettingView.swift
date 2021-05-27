@@ -35,9 +35,7 @@ struct SettingView: View {
             
             Section(header: Text(.HEADER_PRODUCT).splatfont2(.orange, size: 14)) {
                 NavigationLink(destination: FreeProductView(), label: { Text(.SETTING_FREE_PRODUCT) })
-                #if DEBUG
                 NavigationLink(destination: PaidProductView(), label: { Text(.SETTING_PAID_PRODUCT) })
-                #endif
             }
             
             Section(header: Text(.HEADER_SALMONSTATS).splatfont2(.orange, size: 14)) {

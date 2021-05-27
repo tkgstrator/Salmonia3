@@ -21,7 +21,7 @@ import SwiftyBeaver
 let log = SwiftyBeaver.self
 let console = ConsoleDestination()
 let file = FileDestination()
-let cloud = SBPlatformDestination(appID: "work.tkgstrator.", appSecret: "salmonia3", encryptionKey: "salmonia3")
+let cloud = SBPlatformDestination(appID: "k6Pxwd", appSecret: "iqnaqabvjpwGitdb6au4wDo0UphgshBz", encryptionKey: "vb8cesft69mtFmPbeRe8iIuXohHbrmno")
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     private var task = Set<AnyCancellable>()

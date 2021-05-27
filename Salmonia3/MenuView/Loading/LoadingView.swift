@@ -56,6 +56,7 @@ struct LoadingView: View {
     }
     
     private func getResultFromSplatNet2() {
+        log.debug("nsaid: \(SplatNet2.shared.playerId ?? "-"), session:\(SplatNet2.shared.iksmSession ?? "-")")
         var results: [[String: Any]] = []
         var encoder: JSONEncoder {
             let encoder = JSONEncoder()

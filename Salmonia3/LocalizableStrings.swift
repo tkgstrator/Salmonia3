@@ -4,6 +4,7 @@ class LocalizableStrings {
 
     enum Key: String {
         case AUTHORIZED_WITH_BIOMETRICS
+        case AUTHORIZED_WITH_PASSCODE
         case ALERT_ERROR
         case BOSS_DEFEATED
         case BTN_CANCEL
