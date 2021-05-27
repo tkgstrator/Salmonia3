@@ -51,7 +51,7 @@ struct UsernameView: View {
                         print(error)
                     }
                 }, receiveValue: { response in
-                    progressModel.addValue(value: CGFloat(response.nicknameAndIcons.count))
+                    progressModel.addValue(value: CGFloat(nsaid.count))
                     RealmManager.updateNicknameAndIcons(players: response)
                 })
                 .store(in: &task)

@@ -28,6 +28,7 @@ struct DetailView: View {
                     messageTitle = LocalizableStrings.Key.TEXT_ERASE_DATA.rawValue.localized
                     if value { isWarning = value }
                 }
+            Toggle(LocalizableStrings.Key.SETTING_LOG_SEND.rawValue.localized, isOn: $isToggle[1])
         }
         .onAppear(perform: authorizeWithBiometrics)
         .alert(isPresented: $isWarning) {

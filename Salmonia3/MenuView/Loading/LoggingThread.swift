@@ -25,6 +25,8 @@ struct LoggingThread: View {
         .onChange(of: progressModel.isCompleted) { value in
             if value { present.wrappedValue.dismiss() }
         }
+        .onAppear(perform: enableAutoLock)
+        .onDisappear(perform: disableAutoLock)
         .navigationTitle(.TITLE_LOGGING_THREAD)
         .navigationBarBackButtonHidden(!progressModel.isCompleted)
     }
@@ -36,5 +38,13 @@ struct LoggingThread: View {
             Text(verbatim: "API @frozenpandaman, @nexusmine")
         }
         .font(.custom("Roboto Mono", size: 16))
+    }
+    
+    private func enableAutoLock() {
+        UIApplication.shared.isIdleTimerDisabled = true
+    }
+
+    private func disableAutoLock() {
+        UIApplication.shared.isIdleTimerDisabled = false
     }
 }
