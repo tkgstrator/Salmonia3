@@ -47,12 +47,12 @@ struct DetailView: View {
     private func authorizeWithBiometrics() {
         if LAContext().canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
             LAContext().evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: LocalizableStrings.Key.AUTHORIZED_WITH_BIOMETRICS.rawValue.localized) { (success, error) in
-                if success {
-                    isAuthorized.toggle()
-                }
+                if success { isAuthorized.toggle() }
             }
         } else {
-            print("BIOMETRICS IS NOT AVAILABLE")
+            LAContext().evaluatePolicy(.deviceOwnerAuthentication, localizedReason: LocalizableStrings.Key.AUTHORIZED_WITH_PASSCODE.rawValue.localized) { (success, error) in
+                if success { isAuthorized.toggle() }
+            }
         }
     }
     
