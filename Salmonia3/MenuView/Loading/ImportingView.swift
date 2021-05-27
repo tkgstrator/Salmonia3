@@ -50,14 +50,14 @@ struct ImportingView: View {
                 DispatchQueue.main.async {
                     let maxValue = CGFloat(metadata.map{ $0.results.clear + $0.results.fail }.reduce(0, +))
                     #if DEBUG
-                    progressModel.configure(maxValue: 150)
+                    progressModel.configure(maxValue: maxValue)
                     #else
                     progressModel.configure(maxValue: maxValue)
                     #endif
                 }
                 for userdata in metadata {
                     #if DEBUG
-                    let lastPageId: Int = 3
+                    let lastPageId: Int = Int((userdata.results.clear + userdata.results.fail) / 50) + 1
                     #else
                     let lastPageId: Int = Int((userdata.results.clear + userdata.results.fail) / 50) + 1
                     #endif
