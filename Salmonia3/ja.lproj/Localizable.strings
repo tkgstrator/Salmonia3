@@ -30,10 +30,10 @@
 "FEATURE_FREE_02_DESC"="2022年までの全シフトを表示します";
 "FEATURE_FREE_03"="自分の名前も非表示";
 "FEATURE_FREE_03_DESC"="リザルト画面で自分の名前も隠します";
-"FEATURE_PAID_01"="Loading Indicator";
-"FEATURE_PAID_01_DESC"="Change loading indicator.";
-"FEATURE_PAID_02"="";
-"FEATURE_PAID_02_DESC"="";
+"FEATURE_PAID_01"="ロード画像";
+"FEATURE_PAID_01_DESC"="ロード中の進捗表示画像を変更します";
+"FEATURE_PAID_02"="広告の非表示";
+"FEATURE_PAID_02_DESC"="アプリ下部に表示されている広告を無効化します";
 "FEATURE_PAID_03"="";
 "FEATURE_PAID_03_DESC"="";
 "GOLDEN_EGGS"="金イクラ数";
@@ -76,7 +76,7 @@
 "RESULT_EVALUATION"="評価";
 "RESULT_GOLDEN_EGGS"="金イクラ数";
 "RESULT_GRADE_POINT"="評価";
-"RESULT_HAZARD_LEVEL_%@"="キケンド %@%%";
+"RESULT_HAZARD_LEVEL_%@"="キケン度 %@%%";
 "RESULT_HAZARD_LEVEL_MAX"="キケン度MAX!!";
 "RESULT_HELP_COUNT"="救助数";
 "RESULT_JOB_NUM"="バイト回数";
@@ -145,3 +145,5 @@
 "rush"="ラッシュ";
 "the-mothership"="ハコビヤ襲来";
 "water-levels"="-";
+"SETTING_IMPORT_NUM"="リザルト取り込み件数";
+"SETTING_LOG_SEND"="ログの送信を許可";

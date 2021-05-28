@@ -33,13 +33,12 @@
 		10377F7725FCD8CD00536A94 /* Splatfont2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10377F6325FCD5CD00536A94 /* Splatfont2.ttf */; };
 		10377F7C25FCD9E800536A94 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F7B25FCD9E800536A94 /* RealmManager.swift */; };
 		10377F8125FCDBE400536A94 /* RealmUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F8025FCDBE400536A94 /* RealmUserInfo.swift */; };
-		10377F8625FD041900536A94 /* AppSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F8525FD041900536A94 /* AppSetting.swift */; };
+		10377F8625FD041900536A94 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F8525FD041900536A94 /* AppManager.swift */; };
 		10377F9125FD09E800536A94 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F9025FD09E800536A94 /* LoadingView.swift */; };
 		10377F9925FD09FF00536A94 /* LoggingThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F9825FD09FF00536A94 /* LoggingThread.swift */; };
 		10377FA425FD10FE00536A94 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377FA325FD10FE00536A94 /* Optional.swift */; };
 		10377FAD25FD166200536A94 /* CoopResultCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377FAC25FD166200536A94 /* CoopResultCollection.swift */; };
 		104AA7DC2605E0C8007BDC24 /* GoogleMobileAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104AA7DB2605E0C8007BDC24 /* GoogleMobileAds.swift */; };
-		104BD5EE261C875C0013CD27 /* CoreAppProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BD5ED261C875C0013CD27 /* CoreAppProduct.swift */; };
 		104BD608261C93630013CD27 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BD607261C93630013CD27 /* KeyStorage.swift */; };
 		104BD620261C98800013CD27 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 104BD61F261C98800013CD27 /* URLImage */; };
 		1052C2D026550E7800D3B9A9 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1052C2CF26550E7800D3B9A9 /* DetailView.swift */; };
@@ -135,13 +134,12 @@
 		10377F6425FCD63B00536A94 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		10377F7B25FCD9E800536A94 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		10377F8025FCDBE400536A94 /* RealmUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUserInfo.swift; sourceTree = "<group>"; };
-		10377F8525FD041900536A94 /* AppSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetting.swift; sourceTree = "<group>"; };
+		10377F8525FD041900536A94 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		10377F9025FD09E800536A94 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		10377F9825FD09FF00536A94 /* LoggingThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingThread.swift; sourceTree = "<group>"; };
 		10377FA325FD10FE00536A94 /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 		10377FAC25FD166200536A94 /* CoopResultCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopResultCollection.swift; sourceTree = "<group>"; };
 		104AA7DB2605E0C8007BDC24 /* GoogleMobileAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMobileAds.swift; sourceTree = "<group>"; };
-		104BD5ED261C875C0013CD27 /* CoreAppProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAppProduct.swift; sourceTree = "<group>"; };
 		104BD607261C93630013CD27 /* KeyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyStorage.swift; sourceTree = "<group>"; };
 		1052C2CF26550E7800D3B9A9 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		10567DD7264ECDD0002654D3 /* SplatNet2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplatNet2.swift; sourceTree = "<group>"; };
@@ -505,9 +503,8 @@
 		10CF09F925FB9C4900D2EEB1 /* ObservableObject */ = {
 			isa = PBXGroup;
 			children = (
-				104BD5ED261C875C0013CD27 /* CoreAppProduct.swift */,
 				10CF09FA25FB9C6B00D2EEB1 /* CoreRealmCoop.swift */,
-				10377F8525FD041900536A94 /* AppSetting.swift */,
+				10377F8525FD041900536A94 /* AppManager.swift */,
 				10A08036262070A700BFDF59 /* Result */,
 			);
 			path = ObservableObject;
@@ -807,7 +804,6 @@
 				10D2E1552655548F00AE584E /* Text.swift in Sources */,
 				1024663E26009956004DC043 /* Grade.swift in Sources */,
 				10682F01265000590035CC68 /* WeaponType.swift in Sources */,
-				104BD5EE261C875C0013CD27 /* CoreAppProduct.swift in Sources */,
 				104BD608261C93630013CD27 /* KeyStorage.swift in Sources */,
 				102465F125FDDABD004DC043 /* SettingView.swift in Sources */,
 				10CF09F425FB9BE100D2EEB1 /* RealmCoopResult.swift in Sources */,
@@ -828,7 +824,7 @@
 				10682EFB264FEF2A0035CC68 /* StatsView.swift in Sources */,
 				10682F092650026D0035CC68 /* SpecialType.swift in Sources */,
 				10CF0A0525FBA6BF00D2EEB1 /* RealmCoopWave.swift in Sources */,
-				10377F8625FD041900536A94 /* AppSetting.swift in Sources */,
+				10377F8625FD041900536A94 /* AppManager.swift in Sources */,
 				10377F9125FD09E800536A94 /* LoadingView.swift in Sources */,
 				102C75DF2659BA5700AEE20F /* LoadingIndicator.swift in Sources */,
 				107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */,
@@ -1022,7 +1018,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1048,7 +1044,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;

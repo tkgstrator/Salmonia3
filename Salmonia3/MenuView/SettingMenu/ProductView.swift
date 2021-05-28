@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct FreeProductView: View {
-    @EnvironmentObject var free: CoreAppProduct
+    @EnvironmentObject var appManager: AppManager
 
     var body: some View {
         Form {
-            Toggle(isOn: $free.isFree01, label: {
+            Toggle(isOn: $appManager.isFree01, label: {
                 VStack(alignment: .leading, spacing: nil) {
                     Text(.FEATURE_FREE_01)
                     Text(.FEATURE_FREE_01_DESC)
                         .splatfont2(size: 12)
                 }
             })
-            Toggle(isOn: $free.isFree02, label: {
+            Toggle(isOn: $appManager.isFree02, label: {
                 VStack(alignment: .leading, spacing: nil) {
                     Text(.FEATURE_FREE_02)
                     Text(.FEATURE_FREE_02_DESC)
                         .splatfont2(size: 12)
                 }
             })
-            Toggle(isOn: $free.isFree03, label: {
+            Toggle(isOn: $appManager.isFree03, label: {
                 VStack(alignment: .leading, spacing: nil) {
                     Text(.FEATURE_FREE_03)
                     Text(.FEATURE_FREE_03_DESC)
@@ -54,27 +54,27 @@ protocol ProductItemProtocol: Identifiable {
 }
 
 struct PaidProductView: View {
-    @EnvironmentObject var paid: CoreAppProduct
+    @EnvironmentObject var appManager: AppManager
     @AppStorage("loadingIcon") var loadingIcon: LoadingType = .LOADING_SNOW
-
+    
     var body: some View {
         Form {
             Section(header: EmptyView()) {
-                Toggle(isOn: $paid.isPaid01, label: {
+                Toggle(isOn: $appManager.isPaid01, label: {
                     VStack(alignment: .leading, spacing: nil) {
                         Text(.FEATURE_PAID_01)
                         Text(.FEATURE_PAID_01_DESC)
                             .splatfont2(size: 12)
                     }
                 })
-                Toggle(isOn: $paid.isPaid02, label: {
+                Toggle(isOn: $appManager.isPaid02, label: {
                     VStack(alignment: .leading, spacing: nil) {
                         Text(.FEATURE_PAID_02)
                         Text(.FEATURE_PAID_02_DESC)
                             .splatfont2(size: 12)
                     }
                 })
-                Toggle(isOn: $paid.isPaid03, label: {
+                Toggle(isOn: $appManager.isPaid03, label: {
                     VStack(alignment: .leading, spacing: nil) {
                         Text(.FEATURE_PAID_03)
                         Text(.FEATURE_PAID_03_DESC)
@@ -87,15 +87,10 @@ struct PaidProductView: View {
                     ForEach(LoadingType.allCases, id:\.rawValue) {
                         Text($0.rawValue.localized).tag($0)
                     }
-                    .navigationTitle(.SETTING_LOADING_TYPE)
                 }
             }
-            .navigationTitle(.TITLE_PAID_PRODUCT)
         }
         .navigationTitle(.TITLE_PAID_PRODUCT)
-        .onChange(of: loadingIcon) { value in
-            loadingIcon = value
-        }
         .splatfont2(size: 16)
     }
 }

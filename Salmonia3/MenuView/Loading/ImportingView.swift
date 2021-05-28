@@ -13,21 +13,18 @@ import MBCircleProgressBar
 
 struct ImportingView: View {
     @Environment(\.presentationMode) var present
+    @AppStorage("importNum") var importNum: Int = 50
     @State var task = Set<AnyCancellable>()
     @State var progressModel = MBCircleProgressModel(progressColor: .blue, emptyLineColor: .gray)
     @State var isPresented: Bool = false
     @State var apiError: SplatNet2.APIError?
-    
-    private func dismiss() {
-        DispatchQueue.main.async { present.wrappedValue.dismiss() }
-    }
     
     var body: some View {
         LoggingThread(progressModel: progressModel)
             .alert(isPresented: $isPresented) {
                 Alert(title: Text(.ALERT_ERROR),
                       message: Text(apiError?.localizedDescription ?? LocalizableStrings.Key.ALERT_ERROR.rawValue.localized),
-                      dismissButton: .default(Text(.BTN_DISMISS), action: { dismiss() }))
+                      dismissButton: .default(Text(.BTN_DISMISS), action: { present.wrappedValue.dismiss() }))
             }
         .onAppear(perform: importResultFromSalmonStats)
         .navigationTitle(.TITLE_LOGGING_THREAD)
@@ -48,22 +45,23 @@ struct ImportingView: View {
             .sink(receiveCompletion: { completion in
             }, receiveValue: { metadata in
                 DispatchQueue.main.async {
-                    let maxValue = CGFloat(metadata.map{ $0.results.clear + $0.results.fail }.reduce(0, +))
                     #if DEBUG
+                    let maxValue: CGFloat = 150
                     progressModel.configure(maxValue: maxValue)
                     #else
+                    let maxValue: CGFloat = CGFloat(metadata.map{ $0.results.clear + $0.results.fail }.reduce(0, +))
                     progressModel.configure(maxValue: maxValue)
                     #endif
                 }
                 for userdata in metadata {
                     #if DEBUG
-                    let lastPageId: Int = Int((userdata.results.clear + userdata.results.fail) / 50) + 1
+                    let lastPageId: Int = 3
                     #else
-                    let lastPageId: Int = Int((userdata.results.clear + userdata.results.fail) / 50) + 1
+                    let lastPageId: Int = Int((userdata.results.clear + userdata.results.fail) / importNum) + 1
                     #endif
                     for pageId in Range(1 ... lastPageId) {
                         dispatchQueue.async {
-                            SalmonStats.shared.getResults(nsaid: userdata.playerId, pageId: pageId)
+                            SalmonStats.shared.getResults(nsaid: userdata.playerId, pageId: pageId, count: importNum)
                                 .receive(on: dispatchQueue)
                                 .sink(receiveCompletion: { completion in
                                     switch completion {

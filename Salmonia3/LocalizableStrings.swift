@@ -99,6 +99,7 @@ class LocalizableStrings {
         case SETTING_UPLOAD
         case SETTING_LOADING_TYPE
         case SETTING_LOG_SEND
+        case SETTING_IMPORT_NUM
         case SHIFT_SCHEDULE
         case SUPPLIED_WEAPONS
         case TEXT_CONFIRM

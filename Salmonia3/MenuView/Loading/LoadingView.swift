@@ -15,7 +15,7 @@ import Combine
 
 struct LoadingView: View {
     @Environment(\.presentationMode) var present
-    @EnvironmentObject var user: AppSettings
+    @EnvironmentObject var user: AppManager
     @AppStorage("apiToken") var apiToken: String?
     
     @State var isPresented: Bool = false

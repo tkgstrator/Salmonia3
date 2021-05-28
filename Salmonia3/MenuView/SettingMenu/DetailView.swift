@@ -11,6 +11,8 @@ import LocalAuthentication
 struct DetailView: View {
     @Environment(\.presentationMode) var present
     @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = false
+    @AppStorage("isDebugLog") var isDebugLog: Bool = false
+    @AppStorage("importNum") var importNum: Int = 50
     @State var isToggle: [Bool] = Array(repeating: false, count: 2)
     @State var isWarning: Bool = false
     @State var isAuthorized: Bool = false
@@ -18,17 +20,26 @@ struct DetailView: View {
     
     var body: some View {
         Form {
-            Toggle(LocalizableStrings.Key.SETTING_RE_SIGN_IN.rawValue.localized, isOn: $isToggle[0])
-                .onChange(of: isToggle[0]) { value in
-                    messageTitle = LocalizableStrings.Key.TEXT_RE_SIGN_IN.rawValue.localized
-                    if value { isWarning = value }
+            Section {
+                Toggle(LocalizableStrings.Key.SETTING_LOG_SEND.rawValue.localized, isOn: $isDebugLog)
+                Picker(selection: $importNum, label: Text(.SETTING_IMPORT_NUM)) {
+                    ForEach(ImportType.allCases, id:\.rawValue) {
+                        Text("\($0.rawValue)")
+                    }
                 }
-            Toggle(LocalizableStrings.Key.SETTING_ERASE_DATA.rawValue.localized, isOn: $isToggle[1])
-                .onChange(of: isToggle[1]) { value in
-                    messageTitle = LocalizableStrings.Key.TEXT_ERASE_DATA.rawValue.localized
-                    if value { isWarning = value }
-                }
-            Toggle(LocalizableStrings.Key.SETTING_LOG_SEND.rawValue.localized, isOn: $isToggle[1])
+            }
+            Section {
+                Toggle(LocalizableStrings.Key.SETTING_RE_SIGN_IN.rawValue.localized, isOn: $isToggle[0])
+                    .onChange(of: isToggle[0]) { value in
+                        messageTitle = LocalizableStrings.Key.TEXT_RE_SIGN_IN.rawValue.localized
+                        if value { isWarning = value }
+                    }
+                Toggle(LocalizableStrings.Key.SETTING_ERASE_DATA.rawValue.localized, isOn: $isToggle[1])
+                    .onChange(of: isToggle[1]) { value in
+                        messageTitle = LocalizableStrings.Key.TEXT_ERASE_DATA.rawValue.localized
+                        if value { isWarning = value }
+                    }
+            }
         }
         .onAppear(perform: authorizeWithBiometrics)
         .alert(isPresented: $isWarning) {
@@ -46,13 +57,15 @@ struct DetailView: View {
     }
     
     private func authorizeWithBiometrics() {
-        if LAContext().canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
-            LAContext().evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: LocalizableStrings.Key.AUTHORIZED_WITH_BIOMETRICS.rawValue.localized) { (success, error) in
-                if success { isAuthorized.toggle() }
-            }
-        } else {
-            LAContext().evaluatePolicy(.deviceOwnerAuthentication, localizedReason: LocalizableStrings.Key.AUTHORIZED_WITH_PASSCODE.rawValue.localized) { (success, error) in
-                if success { isAuthorized.toggle() }
+        if !isAuthorized {
+            if LAContext().canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
+                LAContext().evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: LocalizableStrings.Key.AUTHORIZED_WITH_BIOMETRICS.rawValue.localized) { (success, error) in
+                    if success { isAuthorized.toggle() }
+                }
+            } else {
+                LAContext().evaluatePolicy(.deviceOwnerAuthentication, localizedReason: LocalizableStrings.Key.AUTHORIZED_WITH_PASSCODE.rawValue.localized) { (success, error) in
+                    if success { isAuthorized.toggle() }
+                }
             }
         }
     }
@@ -69,6 +82,16 @@ struct DetailView: View {
         }
         isToggle = Array(repeating: false, count: 2)
     }
+}
+
+private enum ImportType: Int, CaseIterable {
+    case type50     = 50
+    case type75     = 75
+    case type100    = 100
+    case type125    = 125
+    case type150    = 150
+    case type175    = 175
+    case type200    = 200
 }
 
 struct DetailView_Previews: PreviewProvider {
