@@ -11,7 +11,7 @@ import SwiftUIRefresh
 import URLImage
 
 struct TopMenu: View {
-    @EnvironmentObject var main: AppSettings
+    @EnvironmentObject var main: AppManager
     
     @State var isShowing: Bool = false
     @State var isActive: Bool = false

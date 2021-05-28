@@ -133,3 +133,5 @@
 "rush"="Rush";
 "the-mothership"="The Mothership";
 "water-levels"="-";
+"SETTING_IMPORT_NUM"="Import results";
+"SETTING_LOG_SEND"="Accept log to be sent";
