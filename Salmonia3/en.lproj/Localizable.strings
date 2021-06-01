@@ -1,5 +1,6 @@
 "ALERT_ERROR" = "Error";
 "AUTHORIZED_WITH_BIOMETRICS"="Authorize with biometrics";
+"AUTHORIZED_WITH_PASSCODE" = "Authorize with passcode";
 "BOSS_DEFEATED"="Boss Defeated";
 "BTN_CANCEL"="Cancel";
 "BTN_CONFIRM"="Confirm";
@@ -83,6 +84,7 @@
 "RESULT_TEAM_GOLDEN_EGGS"="Team golden eggs";
 "RESULT_TEAM_POWER_EGGS"="Team power eggs";
 "RESULT_WAVE_%lld"="Wave %lld";
+"SALMON_STATS" = "Salmon Stats";
 "SETTING_API_VERSION"="X-Product Version";
 "SETTING_APP_VERSION"="Version";
 "SETTING_DARKMODE"="Darkmode";
@@ -90,9 +92,11 @@
 "SETTING_DEVICE"="Devide";
 "SETTING_ERASE_DATA"="Erase Data";
 "SETTING_FREE_PRODUCT"="Free Product";
+"SETTING_IMPORT_NUM"="Import results";
 "SETTING_IMPORT_RESULT"="Import Results";
 "SETTING_LOADING_TYPE" = "Indicator Type";
 "SETTING_LOADING_TYPE" = "Loading Indicator";
+"SETTING_LOG_SEND"="Accept log to be sent";
 "SETTING_PAID_PRODUCT"="Paid Product";
 "SETTING_PRIVACY"="Privacy Poricy";
 "SETTING_RESULTS"="Results";
@@ -133,5 +137,3 @@
 "rush"="Rush";
 "the-mothership"="The Mothership";
 "water-levels"="-";
-"SETTING_IMPORT_NUM"="Import results";
-"SETTING_LOG_SEND"="Accept log to be sent";

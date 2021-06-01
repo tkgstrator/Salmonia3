@@ -10,9 +10,7 @@ import LocalAuthentication
 
 struct DetailView: View {
     @Environment(\.presentationMode) var present
-    @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = false
-    @AppStorage("isDebugLog") var isDebugLog: Bool = false
-    @AppStorage("importNum") var importNum: Int = 50
+    @EnvironmentObject var appManager: AppManager
     @State var isToggle: [Bool] = Array(repeating: false, count: 2)
     @State var isWarning: Bool = false
     @State var isAuthorized: Bool = false
@@ -21,8 +19,8 @@ struct DetailView: View {
     var body: some View {
         Form {
             Section {
-                Toggle(LocalizableStrings.Key.SETTING_LOG_SEND.rawValue.localized, isOn: $isDebugLog)
-                Picker(selection: $importNum, label: Text(.SETTING_IMPORT_NUM)) {
+                Toggle(LocalizableStrings.Key.SETTING_LOG_SEND.rawValue.localized, isOn: $appManager.isDebugLog)
+                Picker(selection: $appManager.importNum, label: Text(.SETTING_IMPORT_NUM)) {
                     ForEach(ImportType.allCases, id:\.rawValue) {
                         Text("\($0.rawValue)")
                     }
@@ -74,7 +72,7 @@ struct DetailView: View {
         guard let index = isToggle.firstIndex(of: true) else { return }
         switch index {
         case 0:
-            isFirstLaunch.toggle()
+            appManager.isFirstLaunch.toggle()
         case 1:
             try? RealmManager.eraseAllRecord()
         default:

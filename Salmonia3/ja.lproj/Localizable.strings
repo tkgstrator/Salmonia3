@@ -1,5 +1,6 @@
 "ALERT_ERROR" = "エラー";
 "AUTHORIZED_WITH_BIOMETRICS"="生体認証を利用します";
+"AUTHORIZED_WITH_PASSCODE" = "パスコードで認証します";
 "Apparentice"="かけだし";
 "BOSS_DEFEATED"="ボス討伐数";
 "BTN_CANCEL"="キャンセル";
@@ -94,6 +95,7 @@
 "RESULT_TEAM_POWER_EGGS"="チーム赤イクラ数";
 "RESULT_WAVE_%lld"="WAVE %lld";
 "Ruins of Ark Polaris"="朽ちた箱舟 ポラリス";
+"SALMON_STATS" = "Salmon Stats";
 "SETTING_API_VERSION"="X-Product Version";
 "SETTING_APP_VERSION"="バージョン";
 "SETTING_DARKMODE"="ダークモード";
@@ -101,8 +103,10 @@
 "SETTING_DEVICE"="デバイス";
 "SETTING_ERASE_DATA"="データ消去";
 "SETTING_FREE_PRODUCT"="無料機能";
+"SETTING_IMPORT_NUM"="リザルト取り込み件数";
 "SETTING_IMPORT_RESULT"="リザルト取り込み";
 "SETTING_LOADING_TYPE" = "ローディング中画像";
+"SETTING_LOG_SEND"="ログの送信を許可";
 "SETTING_PAID_PRODUCT"="有料機能";
 "SETTING_PRIVACY"="プライバシーポリシー";
 "SETTING_RESULTS"="リザルト件数";
@@ -145,5 +149,3 @@
 "rush"="ラッシュ";
 "the-mothership"="ハコビヤ襲来";
 "water-levels"="-";
-"SETTING_IMPORT_NUM"="リザルト取り込み件数";
-"SETTING_LOG_SEND"="ログの送信を許可";

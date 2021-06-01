@@ -12,11 +12,10 @@ import Combine
 
 struct UsernameView: View {
     @Environment(\.presentationMode) var present
-    @EnvironmentObject var user: AppManager
+    @EnvironmentObject var appManager: AppManager
     @AppStorage("apiToken") var apiToken: String?
 
-    @State var isPresented: Bool = false
-    @State var apiError: Error?
+    @State var apiError: SplatNet2.APIError?
     @State private var task = Set<AnyCancellable>()
     @State var progressModel = MBCircleProgressModel(progressColor: .red, emptyLineColor: .gray)
 
@@ -27,17 +26,18 @@ struct UsernameView: View {
     var body: some View {
         LoggingThread(progressModel: progressModel)
             .onAppear(perform: getNicknameAndIcons)
-            .alert(isPresented: $isPresented) {
+            .alert(item: $apiError) { error in
                 Alert(title: Text("ALERT_ERROR"),
-                      message: Text(apiError?.localizedDescription ?? "ERROR"),
-                      dismissButton: .default(Text("BTN_DISMISS"), action: { dismiss() }))
+                      message: Text(error.localizedDescription),
+                      dismissButton: .default(Text("BTN_DISMISS"), action: {
+                        appManager.loggingToCloud(error.errorDescription!)
+                        present.wrappedValue.dismiss()
+                      }))
             }
     }
 
     func getNicknameAndIcons() {
         let nsaids: [String] = RealmManager.getNicknames()
-        
-        log.verbose("GET NICKNAME \(nsaids.count)")
         progressModel.configure(maxValue: CGFloat(nsaids.count))
         
         for nsaid in nsaids.chunked(by: 200) {
@@ -48,7 +48,7 @@ struct UsernameView: View {
                     case .finished:
                         break
                     case .failure(let error):
-                        print(error)
+                        apiError = error
                     }
                 }, receiveValue: { response in
                     progressModel.addValue(value: CGFloat(nsaid.count))

@@ -36,6 +36,20 @@ class AppManager: ObservableObject {
     @AppStorage("FEATURE_GAME_04") var isGame04: Bool = false
     @AppStorage("FEATURE_GAME_05") var isGame05: Bool = false
     
+    // その他の機能
+    @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = false // 初回起動かどうかのフラグ
+    @AppStorage("importNum") var importNum: Int = 50     // 一度にSalmon Statsから取得するリザルトの件数
+    @AppStorage("FEATURE_OTHER_01") var isOther03: Bool = false //
+    @AppStorage("FEATURE_OTHER_01") var isOther04: Bool = false //
+    @AppStorage("FEATURE_OTHER_01") var isOther05: Bool = false //
+
+    // デバッグ機能
+    @AppStorage("isDebugLog") var isDebugLog: Bool = false // ログ出力
+    @AppStorage("FEATURE_DEBUG_02") var isDebug02: Bool = false //
+    @AppStorage("FEATURE_DEBUG_03") var isDebug03: Bool = false //
+    @AppStorage("FEATURE_DEBUG_04") var isDebug04: Bool = false //
+    @AppStorage("FEATURE_DEBUG_05") var isDebug05: Bool = false // 
+
     private var token: NSObserver = NSObserver()
     private var observer: [[NSKeyValueObservation?]] = Array(repeating: Array(repeating: nil, count: 5), count: 3)
     
@@ -93,6 +107,21 @@ class AppManager: ObservableObject {
             self?.objectWillChange.send()
         })
     }
+    
+    func loggingToCloud(_ value: String) {
+        // ログ機能がオンの場合
+        if isDebugLog {
+            log.debug("nsaid: \(String(describing: SplatNet2.shared.playerId!)), session: \(String(describing: SplatNet2.shared.iksmSession!)), apiver: \(SplatNet2.shared.version), value: \(value)")
+        }
+    }
+}
+
+// ログの収集別タイトル
+enum LogType: String, CaseIterable {
+    case getNickname
+    case getResult
+    case importResult
+    case uploadResult
 }
 
 extension UserDefaults {

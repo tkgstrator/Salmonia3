@@ -28,20 +28,20 @@ final class RealmManager {
                         formatter.timeZone = TimeZone.current
                         return formatter
                     }()
-
+                    
                     migration.enumerateObjects(ofType: RealmCoopShift.className()) { old, new in
                         new!["startTime"] = Int((formatter.date(from: old!["startTime"] as! String)!).timeIntervalSince1970)
                         new!["endTime"] = Int((formatter.date(from: old!["endTime"] as! String)!).timeIntervalSince1970)
                     }
                 }
-
+                
                 if schemaVersion <= 1024 {
                     let formatter: ISO8601DateFormatter = {
                         let formatter = ISO8601DateFormatter()
                         formatter.timeZone = TimeZone.current
                         return formatter
                     }()
-
+                    
                     migration.enumerateObjects(ofType: RealmCoopResult.className()) { old, new in
                         new!["startTime"] = Int((formatter.date(from: old!["startTime"] as! String)!).timeIntervalSince1970)
                         new!["playTime"] = Int((formatter.date(from: old!["playTime"] as! String)!).timeIntervalSince1970)
@@ -107,7 +107,7 @@ final class RealmManager {
     
     // ユーザ情報を更新
     public static func updateUserInfo(from account: Response.UserInfo) throws {
-
+        
     }
     
     public static func getNicknames() -> [String] {
@@ -141,7 +141,7 @@ final class RealmManager {
         }
         try? RealmManager.shared.realm.commitWrite()
     }
-
+    
     
     public func addNewResultsFromSalmonStatsTest() {
         guard let nsaid = SplatNet2.shared.playerId else { return }
@@ -157,19 +157,19 @@ final class RealmManager {
                         let lastPageId: Int = 3
                         for pageId in (1 ... lastPageId) {
                             dispatchQueue.async {
-                            SalmonStats.shared.getResults(nsaid: userdata.playerId, pageId: pageId)
-                                .receive(on: dispatchQueue)
-                                .sink(receiveCompletion: { completion in
-                                    switch completion {
-                                    case .finished:
-                                        break
-                                    case .failure(let error):
-                                        print(error)
-                                    }
-                                }, receiveValue: { response in
-                                    print(response)
-                                })
-                                .store(in: &task)
+                                SalmonStats.shared.getResults(nsaid: userdata.playerId, pageId: pageId)
+                                    .receive(on: dispatchQueue)
+                                    .sink(receiveCompletion: { completion in
+                                        switch completion {
+                                        case .finished:
+                                            break
+                                        case .failure(let error):
+                                            print(error)
+                                        }
+                                    }, receiveValue: { response in
+                                        print(response)
+                                    })
+                                    .store(in: &task)
                             }
                         }
                     }
@@ -181,37 +181,36 @@ final class RealmManager {
     // Salmon Statsからのリザルト追加
     public static func addNewResultsFromSalmonStats(from results: [SalmonStats.ResultCoop], pid: String) {
         guard let realm = try? Realm() else { return }
-//        RealmManager.shared.realm.beginWrite()
         realm.beginWrite()
         let results: [RealmCoopResult] = results.map{ RealmCoopResult(from: $0, pid: pid) }
         for result in results {
             switch result.isDuplicated {
             case true:
                 // SalmonIdのみアップデート
-                // 被っているplayTimeを取得
                 if let duplicate = result.duplicatedResult {
                     duplicate.setValue(result.salmonId, forKey: "salmonId")
                 }
             case false:
                 // 書き込み
                 realm.create(RealmCoopResult.self, value: result, update: .all)
-//                RealmManager.shared.realm.create(RealmCoopResult.self, value: result, update: .all)
             }
         }
         try? realm.commitWrite()
-//        try? RealmManager.shared.realm.commitWrite()
     }
-
+    
     static func eraseAllRecord() throws {
         guard let realm = try? Realm() else { return }
         UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
-        autoreleasepool {
-            realm.beginWrite()
-            realm.delete(realm.objects(RealmCoopWave.self))
-            realm.delete(realm.objects(RealmCoopResult.self))
-            realm.delete(realm.objects(RealmPlayerResult.self))
-            realm.delete(realm.objects(RealmUserInfo.self))
-            try? realm.commitWrite()
+        // クラッシュするバグ対策(クラッシュしたが)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            autoreleasepool {
+                realm.beginWrite()
+                realm.delete(realm.objects(RealmCoopWave.self))
+                realm.delete(realm.objects(RealmCoopResult.self))
+                realm.delete(realm.objects(RealmPlayerResult.self))
+                //                realm.delete(realm.objects(RealmUserInfo.self))
+                try? realm.commitWrite()
+            }
         }
     }
 }

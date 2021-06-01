@@ -12,37 +12,42 @@ import SplatNet2
 import MBCircleProgressBar
 
 struct ImportingView: View {
+    @EnvironmentObject var appManager: AppManager
     @Environment(\.presentationMode) var present
-    @AppStorage("importNum") var importNum: Int = 50
     @State var task = Set<AnyCancellable>()
     @State var progressModel = MBCircleProgressModel(progressColor: .blue, emptyLineColor: .gray)
-    @State var isPresented: Bool = false
-    @State var apiError: SplatNet2.APIError?
+    @State var apiError: SplatNet2.APIError? = nil
     
     var body: some View {
         LoggingThread(progressModel: progressModel)
-            .alert(isPresented: $isPresented) {
-                Alert(title: Text(.ALERT_ERROR),
-                      message: Text(apiError?.localizedDescription ?? LocalizableStrings.Key.ALERT_ERROR.rawValue.localized),
-                      dismissButton: .default(Text(.BTN_DISMISS), action: { present.wrappedValue.dismiss() }))
+            .alert(item: $apiError) { error in
+                Alert(title: Text(.ALERT_ERROR), message: Text(error.localizedDescription), dismissButton: .default(Text(.BTN_DISMISS), action: {
+                    appManager.loggingToCloud(error.errorDescription!)
+                    present.wrappedValue.dismiss()
+                }))
             }
-        .onAppear(perform: importResultFromSalmonStats)
-        .navigationTitle(.TITLE_LOGGING_THREAD)
+            .onAppear(perform: importResultFromSalmonStats)
+            .navigationTitle(.TITLE_LOGGING_THREAD)
     }
     
     private func importResultFromSalmonStats() {
         let dispatchQueue = DispatchQueue(label: "Network Publisher")
-
+        
         // 情報がなければ何もせずエラーを返す
         guard let nsaid = SplatNet2.shared.playerId else {
             apiError = .empty
-            isPresented.toggle()
             return
         }
         
         SalmonStats.shared.getMetadata(nsaid: nsaid)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    apiError = error
+                }
             }, receiveValue: { metadata in
                 DispatchQueue.main.async {
                     #if DEBUG
@@ -57,11 +62,11 @@ struct ImportingView: View {
                     #if DEBUG
                     let lastPageId: Int = 3
                     #else
-                    let lastPageId: Int = Int((userdata.results.clear + userdata.results.fail) / importNum) + 1
+                    let lastPageId: Int = Int((userdata.results.clear + userdata.results.fail) / appManager.importNum) + 1
                     #endif
                     for pageId in Range(1 ... lastPageId) {
                         dispatchQueue.async {
-                            SalmonStats.shared.getResults(nsaid: userdata.playerId, pageId: pageId, count: importNum)
+                            SalmonStats.shared.getResults(nsaid: userdata.playerId, pageId: pageId, count: appManager.importNum)
                                 .receive(on: dispatchQueue)
                                 .sink(receiveCompletion: { completion in
                                     switch completion {
@@ -69,7 +74,6 @@ struct ImportingView: View {
                                         print("FINISHED")
                                     case .failure(let error):
                                         apiError = error
-                                        isPresented.toggle()
                                     }
                                 }, receiveValue: { results in
                                     DispatchQueue.main.async {

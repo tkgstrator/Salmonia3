@@ -15,25 +15,23 @@ import Combine
 
 struct LoadingView: View {
     @Environment(\.presentationMode) var present
-    @EnvironmentObject var user: AppManager
+    @EnvironmentObject var appManager: AppManager
     @AppStorage("apiToken") var apiToken: String?
     
-    @State var isPresented: Bool = false
     @State var apiError: SplatNet2.APIError?
     @State private var task = Set<AnyCancellable>()
     @State var progressModel = MBCircleProgressModel(progressColor: .red, emptyLineColor: .gray)
     
-    private func dismiss() {
-        DispatchQueue.main.async { present.wrappedValue.dismiss() }
-    }
-    
     var body: some View {
         LoggingThread(progressModel: progressModel)
             .onAppear(perform: getResultFromSplatNet2)
-            .alert(isPresented: $isPresented) {
+            .alert(item: $apiError) { error in
                 Alert(title: Text("ALERT_ERROR"),
-                      message: Text(apiError?.localizedDescription ?? "ERROR"),
-                      dismissButton: .default(Text("BTN_DISMISS"), action: { dismiss() }))
+                      message: Text(error.localizedDescription),
+                      dismissButton: .default(Text("BTN_DISMISS"), action: {
+                        appManager.loggingToCloud(error.errorDescription!)
+                        present.wrappedValue.dismiss()
+                      }))
             }
     }
     
@@ -48,7 +46,6 @@ struct LoadingView: View {
                         break
                     case .failure(let error):
                         apiError = error
-                        isPresented.toggle()
                     }
                 }, receiveValue: { _ in })
                 .store(in: &task)
@@ -56,7 +53,6 @@ struct LoadingView: View {
     }
     
     private func getResultFromSplatNet2() {
-        log.debug("nsaid: \(SplatNet2.shared.playerId ?? "-"), session:\(SplatNet2.shared.iksmSession ?? "-")")
         var results: [[String: Any]] = []
         var encoder: JSONEncoder {
             let encoder = JSONEncoder()
@@ -71,7 +67,6 @@ struct LoadingView: View {
                 case .finished:
                     break
                 case .failure(let error):
-                    isPresented.toggle()
                     apiError = error
                 }
             }, receiveValue: { response in
@@ -91,7 +86,6 @@ struct LoadingView: View {
                                     break
                                 case .failure(let error):
                                     apiError = error
-                                    isPresented.toggle()
                                 }
                             }, receiveValue: { response in
                                 // MARK: Salmon Statsへのアップロード
@@ -107,7 +101,6 @@ struct LoadingView: View {
                     }
                 } else {
                     apiError = .nonewresults
-                    isPresented.toggle()
                 }
                 try? RealmManager.updateSummary(from: response)
             })
