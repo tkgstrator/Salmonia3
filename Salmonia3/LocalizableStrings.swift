@@ -123,6 +123,9 @@ class LocalizableStrings {
         case TITLE_SHIFT_STATS
         case TITLE_WAVE_ANALYSIS
         case TITLE_WEAPON_ANALYSIS
+        case SALMON_RUN_RECORDS
+        case SALMON_STATS
+        case LANPLAY_RECORDS
     }
 
 }

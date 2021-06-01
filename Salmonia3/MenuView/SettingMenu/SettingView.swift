@@ -16,7 +16,6 @@ struct SettingView: View {
     @AppStorage("isFirstLaunch") var isFirstLaunch = true
     @AppStorage("isDarkMode") var isDarkMode = false
     @State var selectedURL: URL? = nil
-//    @State var isShowing: Bool = false
     private let systemVersion: String = UIDevice.current.systemVersion
     private let systemName: String = UIDevice.current.systemName
     private let deviceName: String = UIDevice.current.localizedModel

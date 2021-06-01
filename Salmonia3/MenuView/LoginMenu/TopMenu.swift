@@ -28,6 +28,10 @@ struct TopMenu: View {
                     Overview
                     Results
                     SalmonStats
+                    #if DEBUG
+                    SalmonRecords
+                    LanPlayRecords
+                    #endif
                 }
                 Section(header: Text(.HEADER_SCHEDULE).splatfont2(.orange, size: 14)) {
                     ForEach(main.latestShifts, id:\.self) { shift in
@@ -52,6 +56,18 @@ struct TopMenu: View {
             }
             .onChange(of: isActive) { _ in
                 isShowing = false
+            }
+            .safariView(item: $selectedURL) { selectedURL in
+                SafariView(
+                    url: selectedURL,
+                    configuration: SafariView.Configuration(
+                        entersReaderIfAvailable: false,
+                        barCollapsingEnabled: true
+                    )
+                )
+                .preferredBarAccentColor(.clear)
+                .preferredControlAccentColor(.accentColor)
+                .dismissButtonStyle(.done)
             }
         }
         .splatfont2(size: 16)
@@ -80,18 +96,14 @@ struct TopMenu: View {
     }
     
     var SalmonStats: some View {
-        Button(action: { selectedURL = URL(string: "https://salmon-stats.yuki.games/") }, label: { Text(.TEXT_SALMONSTATS) })
-            .safariView(item: $selectedURL) { selectedURL in
-                SafariView(
-                    url: selectedURL,
-                    configuration: SafariView.Configuration(
-                        entersReaderIfAvailable: false,
-                        barCollapsingEnabled: true
-                    )
-                )
-                .preferredBarAccentColor(.clear)
-                .preferredControlAccentColor(.accentColor)
-                .dismissButtonStyle(.done)
-            }
+        Button(action: { selectedURL = URL(string: "https://salmon-stats-api.yuki.games/auth/twitter") }, label: { Text(.SALMON_STATS) })
+    }
+    
+    var SalmonRecords: some View {
+        Button(action: { selectedURL = URL(string: "https://gungeespla.github.io/salmon_run_records/") }, label: { Text(.SALMON_RUN_RECORDS) })
+    }
+
+    var LanPlayRecords: some View {
+        Button(action: { selectedURL = URL(string: "https://salmonrun-records.netlify.app/") }, label: { Text(.LANPLAY_RECORDS) })
     }
 }

@@ -13,12 +13,13 @@ import Combine
 import APNGKit
 
 struct LoginMenu: View {
+    @Environment(\.presentationMode) var present
     @State var isActive: Bool = false
     @State var isPresented: Bool = false
     @State var isLoading: Bool = false
-    @State var isAlertShowing: Bool = false
     @State var task = Set<AnyCancellable>()
     @State var apiError: SplatNet2.APIError?
+
     var image = APNGImage(named: "Loading")
 
     var body: some View {
@@ -51,18 +52,12 @@ struct LoginMenu: View {
                     .position(x: geometry.frame(in: .local).midX, y: 3 * geometry.size.height / 4)
                 }
                 .disabled(isLoading)
-//                APNGView(imageName: "Loading)
-//                    .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)
-//                    .opacity(isLoading ? 1.0 : 0.0)
             }
         }
         .webAuthenticationSession(isPresented: $isPresented) {
             WebAuthenticationSession(url: SplatNet2.shared.oauthURL, callbackURLScheme: "npf71b963c1b7b6d119") { callbackURL, _ in
-                isLoading = true
                 guard let code: String = callbackURL?.absoluteString.capture(pattern: "de=(.*)&", group: 1) else {
-                    isLoading = false
                     apiError = SplatNet2.APIError.failure
-                    isAlertShowing = true
                     return
                 }
                 SplatNet2.shared.getCookie(sessionTokenCode: code)
@@ -72,8 +67,6 @@ struct LoginMenu: View {
                             isActive.toggle()
                         case.failure(let error):
                             apiError = error
-                            isLoading = false
-                            isAlertShowing = true
                         }
                     }, receiveValue: { response in
                         try? RealmManager.addNewAccount(from: response)
@@ -82,8 +75,10 @@ struct LoginMenu: View {
             }
             .prefersEphemeralWebBrowserSession(false)
         }
-        .alert(isPresented: $isAlertShowing) {
-            Alert(title: Text(.ALERT_ERROR), message: Text(apiError!.localizedDescription))
+        .alert(item: $apiError) { error in
+            Alert(title: Text("ALERT_ERROR"),
+                  message: Text(error.localizedDescription),
+                  dismissButton: .default(Text("BTN_DISMISS"), action: { present.wrappedValue.dismiss() }))
         }
         .background(BackGround)
         .navigationTitle(.TITLE_LOGIN)
