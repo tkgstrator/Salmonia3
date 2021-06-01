@@ -38,6 +38,7 @@
 		10377F9925FD09FF00536A94 /* LoggingThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F9825FD09FF00536A94 /* LoggingThread.swift */; };
 		10377FA425FD10FE00536A94 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377FA325FD10FE00536A94 /* Optional.swift */; };
 		10377FAD25FD166200536A94 /* CoopResultCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377FAC25FD166200536A94 /* CoopResultCollection.swift */; };
+		10448BDD26652E7B00FFB553 /* SRPower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10448BDC26652E7B00FFB553 /* SRPower.swift */; };
 		104AA7DC2605E0C8007BDC24 /* GoogleMobileAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104AA7DB2605E0C8007BDC24 /* GoogleMobileAds.swift */; };
 		104BD608261C93630013CD27 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BD607261C93630013CD27 /* KeyStorage.swift */; };
 		104BD620261C98800013CD27 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 104BD61F261C98800013CD27 /* URLImage */; };
@@ -139,6 +140,7 @@
 		10377F9825FD09FF00536A94 /* LoggingThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingThread.swift; sourceTree = "<group>"; };
 		10377FA325FD10FE00536A94 /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 		10377FAC25FD166200536A94 /* CoopResultCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopResultCollection.swift; sourceTree = "<group>"; };
+		10448BDC26652E7B00FFB553 /* SRPower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRPower.swift; sourceTree = "<group>"; };
 		104AA7DB2605E0C8007BDC24 /* GoogleMobileAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMobileAds.swift; sourceTree = "<group>"; };
 		104BD607261C93630013CD27 /* KeyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyStorage.swift; sourceTree = "<group>"; };
 		1052C2CF26550E7800D3B9A9 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -318,6 +320,14 @@
 			path = Collection;
 			sourceTree = "<group>";
 		};
+		10448BDB26652E6700FFB553 /* SRPower */ = {
+			isa = PBXGroup;
+			children = (
+				10448BDC26652E7B00FFB553 /* SRPower.swift */,
+			);
+			path = SRPower;
+			sourceTree = "<group>";
+		};
 		104AA7DA2605E0A4007BDC24 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -489,6 +499,7 @@
 		10CF09F825FB9BEE00D2EEB1 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
+				10448BDB26652E6700FFB553 /* SRPower */,
 				10377F7B25FCD9E800536A94 /* RealmManager.swift */,
 				107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */,
 				10CF09F325FB9BE100D2EEB1 /* RealmCoopResult.swift */,
@@ -802,6 +813,7 @@
 				10377F6525FCD63B00536A94 /* Font.swift in Sources */,
 				105941BE25FA525100C32D21 /* Background.swift in Sources */,
 				10D2E1552655548F00AE584E /* Text.swift in Sources */,
+				10448BDD26652E7B00FFB553 /* SRPower.swift in Sources */,
 				1024663E26009956004DC043 /* Grade.swift in Sources */,
 				10682F01265000590035CC68 /* WeaponType.swift in Sources */,
 				104BD608261C93630013CD27 /* KeyStorage.swift in Sources */,
@@ -1018,7 +1030,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1044,7 +1056,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;

@@ -34,8 +34,8 @@
 "FEATURE_PAID_01_DESC"="ロード中の進捗表示画像を変更します";
 "FEATURE_PAID_02"="広告の非表示";
 "FEATURE_PAID_02_DESC"="アプリ下部に表示されている広告を無効化します";
-"FEATURE_PAID_03"="";
-"FEATURE_PAID_03_DESC"="";
+"FEATURE_PAID_03"="乱獲レーティング";
+"FEATURE_PAID_03_DESC"="乱獲用のレーティングを表示します";
 "GOLDEN_EGGS"="金イクラ数";
 "Go-Getter"="いちにんまえ";
 "HEADER_APPEARANCE"="外観";

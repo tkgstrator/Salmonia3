@@ -52,6 +52,7 @@ struct CoopResultOverview: View {
         .navigationTitle(.TITLE_RESULT_DETAIL)
     }
 
+    // 切り替え用のボタン
     var SRButton: some View {
         HStack {
             Button(action: { isVisible.toggle() }) {
@@ -63,7 +64,7 @@ struct CoopResultOverview: View {
         }
     }
 
-    #warning("直接画像返すやつ書けばよくね")
+    // MARK: 概要を表示するビュー
     var ResultOverview: some View {
         ZStack(alignment: .center) {
             Image(StageType(rawValue: result.stageId.intValue)!.md5)
@@ -73,13 +74,13 @@ struct CoopResultOverview: View {
                 .frame(height: 120)
                 .mask(Image("2ce11ebf110993621bedd8e747d7b1b").resizable())
             VStack(spacing: 0) {
-                // プレイ時間の表示
+                // MARK: プレイ時間の表示
                 Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(result.playTime))))
                     .shadow(color: .black, radius: 0, x: 2, y: 2)
                     .splatfont2(.white, size: 22)
-                // キケン度の表示
+                // MARK: キケン度の表示
                 DangerRate
-                // イクラ数の表示
+                // MARK: イクラ数の表示
                 HStack {
                     Image("49c944e4edf1abee295b6db7525887bd")
                         .resizable()
@@ -98,6 +99,7 @@ struct CoopResultOverview: View {
         .splatfont2(.white, size: 20)
     }
 
+    // MARK: 各WAVEの情報を表示
     var ResultWave: some View {
         LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 140), alignment: .top), count: result.wave.count)) {
             ForEach(result.wave.indices, id: \.self) { index in
@@ -145,15 +147,18 @@ struct CoopResultOverview: View {
         .padding(.horizontal, 5)
     }
 
+    // MARK: 各プレイヤーの情報を表示
     var ResultPlayer: some View {
         LazyHGrid(rows: Array(repeating: .init(.flexible(minimum: 80)), count: result.player.count), spacing: 10) {
             ForEach(result.player.indices, id: \.self) { index in
+                // MARK: 表示させるかどうかのフラグをつける
                 CoopPlayerView(player: result.player[index], isVisible: (isVisible || (index == 0 && !isFree03)))
                     .padding(.vertical, 15)
             }
         }
     }
 
+    // MARK: キケン度を表示
     var DangerRate: some View {
         switch result.dangerRate.value! == 200 {
         case true:

@@ -11,12 +11,17 @@ struct CoopShiftCollection: View {
     @EnvironmentObject var main: CoreRealmCoop
     
     var body: some View {
-        ScrollViewReader { _ in
+        ScrollViewReader { proxy in
             List {
-                ForEach(main.shifts.indices) { index in
+                ForEach(main.shifts.indices, id:\.self) { index in
                     NavigationLink(destination: CoopShiftStatsView(startTime: main.shifts[index].startTime), label: {
                         CoopShift(shift: main.shifts[index])
                     })
+                }
+            }
+            .onAppear {
+                withAnimation {
+                    proxy.scrollTo(main.currentShiftNumber, anchor: .center)
                 }
             }
         }
@@ -26,7 +31,7 @@ struct CoopShiftCollection: View {
 
 struct CoopShift: View {
     @StateObject var shift: RealmCoopShift
-    @AppStorage("FEATURE_FREE_01") var isFree01: Bool = false
+    @EnvironmentObject var appManager: AppManager
     
     var formatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -34,7 +39,7 @@ struct CoopShift: View {
         formatter.dateFormat = "yyyy MM/dd HH:mm"
         return formatter
     }()
-
+    
     var body: some View {
         HStack {
             Spacer()
@@ -44,14 +49,14 @@ struct CoopShift: View {
                     Text(verbatim: "-")
                     Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(shift.endTime))))
                 }
-                    .splatfont2(size: 16)
+                .splatfont2(size: 16)
                 InfoWeapon
             }
             .splatfont2(size: 14)
             Spacer()
         }
     }
-
+    
     var InfoWeapon: some View {
         HStack {
             VStack(spacing: 0) {
@@ -64,38 +69,38 @@ struct CoopShift: View {
             }
             VStack(alignment: .leading, spacing: 5) {
                 Text(.SUPPLIED_WEAPONS)
-                if isFree01 && shift.weaponList.contains(-1) {
+                if appManager.isFree01 && shift.weaponList.contains(-1) {
                     AnyView(
-                    LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 30, maximum: 50)), count: 5), alignment: .center, spacing: 0) {
-                        ForEach(shift.weaponList.indices) { idx in
-                            Image(String(shift.weaponList[idx]).imageURL)
+                        LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 30, maximum: 50)), count: 5), alignment: .center, spacing: 0) {
+                            ForEach(shift.weaponList.indices) { idx in
+                                Image(String(shift.weaponList[idx]).imageURL)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                //                                .frame(maxWidth: 45)
+                            }
+                            Image(String(shift.rareWeapon.intValue).imageURL)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-//                                .frame(maxWidth: 45)
+                            //                            .frame(maxWidth: 45)
                         }
-                        Image(String(shift.rareWeapon.intValue).imageURL)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-//                            .frame(maxWidth: 45)
-                    }
-                    .padding(.bottom, 20)
-                    .frame(maxWidth: 200)
+                        .padding(.bottom, 20)
+                        .frame(maxWidth: 200)
                     )
                 } else {
                     AnyView(
-                    LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 30, maximum: 50)), count: 4), alignment: .center, spacing: 0) {
-                        ForEach(shift.weaponList.indices) { idx in
-                            Image(String(shift.weaponList[idx]).imageURL)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(maxWidth: 45)
+                        LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 30, maximum: 50)), count: 4), alignment: .center, spacing: 0) {
+                            ForEach(shift.weaponList.indices) { idx in
+                                Image(String(shift.weaponList[idx]).imageURL)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(maxWidth: 45)
+                            }
                         }
-                    }
-                    .padding(.bottom, 20)
-                    .frame(maxWidth: 200)
+                        .padding(.bottom, 20)
+                        .frame(maxWidth: 200)
                     )
                 }
-
+                
             }
         }
     }

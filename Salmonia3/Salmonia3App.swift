@@ -93,15 +93,3 @@ struct Salmonia3App: App {
         }
     }
 }
-
-fileprivate extension URL {
-    var queryParameters: [String: Any] {
-        guard let queries = URLComponents(string: absoluteString)?.queryItems else { return [:] }
-        var parameters: [String: Any] = [:]
-        
-        for query in queries {
-            parameters[query.name] = query.value == "true" ? true : false
-        }
-        return parameters
-    }
-}

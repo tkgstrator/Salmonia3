@@ -9,12 +9,16 @@ import Foundation
 import SwiftUI
 import SwiftUIRefresh
 import URLImage
+import BetterSafariView
 
 struct TopMenu: View {
-    @EnvironmentObject var main: AppManager
+    @EnvironmentObject var appManager: AppManager
+    @EnvironmentObject var main: CoreRealmCoop
     
+    @State var isPresented: Bool = false
     @State var isShowing: Bool = false
     @State var isActive: Bool = false
+    @State var selectedURL: URL? = nil
 
     var body: some View {
         ZStack {
@@ -23,8 +27,14 @@ struct TopMenu: View {
                 Section(header: Text(.HEADER_OVERVIEW).splatfont2(.orange, size: 14)) {
                     Overview
                     Results
+                    SalmonStats
                 }
                 Section(header: Text(.HEADER_SCHEDULE).splatfont2(.orange, size: 14)) {
+                    ForEach(main.latestShifts, id:\.self) { shift in
+                        NavigationLink(destination: CoopShiftStatsView(startTime: shift.startTime), label: {
+                            CoopShift(shift: shift)
+                        })
+                    }
                     NavigationLink(destination: CoopShiftCollection()) {
                         Text(.TITLE_SHIFT_SCHEDULE)
                     }
@@ -52,8 +62,8 @@ struct TopMenu: View {
     var Overview: some View {
         NavigationLink(destination: SettingView()) {
             HStack {
-                URLImage(url: URL(string: main.account.thumbnailURL.stringValue)!) { image in image.resizable().clipShape(Circle()) }.frame(width: 70, height: 70)
-                Text(main.account.nickname.stringValue)
+                URLImage(url: URL(string: appManager.account.thumbnailURL.stringValue)!) { image in image.resizable().clipShape(Circle()) }.frame(width: 70, height: 70)
+                Text(appManager.account.nickname.stringValue)
                     .splatfont2(size: 22)
                     .frame(maxWidth: .infinity)
             }
@@ -67,5 +77,21 @@ struct TopMenu: View {
                     .splatfont2(size: 16)
             }
         }
+    }
+    
+    var SalmonStats: some View {
+        Button(action: { selectedURL = URL(string: "https://salmon-stats.yuki.games/") }, label: { Text(.TEXT_SALMONSTATS) })
+            .safariView(item: $selectedURL) { selectedURL in
+                SafariView(
+                    url: selectedURL,
+                    configuration: SafariView.Configuration(
+                        entersReaderIfAvailable: false,
+                        barCollapsingEnabled: true
+                    )
+                )
+                .preferredBarAccentColor(.clear)
+                .preferredControlAccentColor(.accentColor)
+                .dismissButtonStyle(.done)
+            }
     }
 }

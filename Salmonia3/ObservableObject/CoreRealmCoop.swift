@@ -11,62 +11,54 @@ import Combine
 import SwiftUI
 
 class CoreRealmCoop: ObservableObject {
-    private var token: NSObserver = NSObserver()
-    
-    // 実際に使いそうなデータ
+    @ObservedObject var appManager: AppManager = AppManager()
     @Published var results: RealmSwift.Results<RealmCoopResult> = RealmManager.shared.realm.objects(RealmCoopResult.self).sorted(byKeyPath: "playTime", ascending: false)
-    @Published var shifts: RealmSwift.Results<RealmCoopShift> = RealmManager.shared.realm.objects(RealmCoopShift.self).sorted(byKeyPath: "startTime", ascending: false)
-    @Published var records: [StageRecord] = Array(repeating: StageRecord(), count: 5)
-    @AppStorage("FEATURE_FREE_01") var isFree01: Bool = false // クマブキアンロック
-    @AppStorage("FEATURE_FREE_02") var isFree02: Bool = false // 将来のシフト
-    @AppStorage("FEATURE_FREE_03") var isFree03: Bool = false
     
-    private func observer() {
-        // 将来のシフト表示が切り替わったとき
-        token.futureRotation = UserDefaults.standard.observe(\.FEATURE_FREE_02, options: [.initial, .new], changeHandler: { [self] (_, _) in
-            switch isFree02 {
-            case true:
-                // 全部表示
-                shifts = RealmManager.shared.realm.objects(RealmCoopShift.self).sorted(byKeyPath: "startTime", ascending: false)
-            case false:
-                // 一部だけ表示
-                let currentTime: Int = Int(Date().timeIntervalSince1970)
-                guard let nextShiftStartTime: Int = RealmManager.shared.realm.objects(RealmCoopShift.self)
-                        .sorted(byKeyPath: "startTime", ascending: true)
-                        .filter("startTime>=%@", currentTime)
-                        .first?.startTime else { return }
-                shifts = RealmManager.shared.realm.objects(RealmCoopShift.self)
-                    .sorted(byKeyPath: "startTime", ascending: false)
-                    .filter("startTime<=%@", nextShiftStartTime)
-            }
-        })
+    var records: [StageRecord] {
+        return Range(5000 ... 5004).map{ StageRecord(stageId: $0) }
     }
-
-    init() {
-        token.realm = RealmManager.shared.realm.objects(RealmCoopResult.self).observe { [self] _ in
-            observer()
-            results = RealmManager.shared.realm.objects(RealmCoopResult.self).sorted(byKeyPath: "playTime", ascending: false)
-            for stageId in Range(5000 ... 5004) {
-                records[5000 - stageId] = StageRecord(stageId: stageId)
-            }
-        }
+    
+    // Observer
+    private var realmObserver: [NotificationToken?] = Array(repeating: nil, count: 2)
+    
+    private var nextShiftStartTime: Int {
+        appManager.isFree02 ? 1643976000 : RealmManager.shared.realm.objects(RealmCoopShift.self)
+            .filter("startTime>=%@", Int(Date().timeIntervalSince1970))
+            .min(ofProperty: "startTime") ?? 1500616800
+    }
+    var currentShiftNumber: Int {
+        !appManager.isFree02 ? 0 : RealmManager.shared.realm.objects(RealmCoopShift.self).sorted(byKeyPath: "startTime", ascending: false)
+            .sorted(byKeyPath: "startTime", ascending: false)
+            .filter("startTime>=%@", Int(Date().timeIntervalSince1970))
+            .count
+    }
+    var shifts: RealmSwift.Results<RealmCoopShift> {
+        RealmManager.shared.realm.objects(RealmCoopShift.self).sorted(byKeyPath: "startTime", ascending: false)
+            .sorted(byKeyPath: "startTime", ascending: false)
+            .filter("startTime<=%@", nextShiftStartTime)
+    }
+    
+    // MARK: 最新の二件のシフト表示
+    var latestShifts: [RealmCoopShift] {
+        let currentTime: Int = Int(Date().timeIntervalSince1970)
         
-        token.realm = RealmManager.shared.realm.objects(RealmUserInfo.self).observe { [self] _ in
-            observer()
-            results = RealmManager.shared.realm.objects(RealmCoopResult.self).sorted(byKeyPath: "playTime", ascending: false)
+        return Array(RealmManager.shared.realm.objects(RealmCoopShift.self)
+            .filter("endTime>=%@", currentTime)
+            .sorted(byKeyPath: "startTime", ascending: true).prefix(2))
+    }
+    
+    init() {
+        realmObserver[1] = RealmManager.shared.realm.objects(RealmUserInfo.self).observe { [self] _ in
+            objectWillChange.send()
         }
     }
     
     deinit {
-        token.futureRotation?.invalidate()
+        realmObserver[0]?.invalidate()
+        realmObserver[1]?.invalidate()
     }
 }
 
-fileprivate struct NSObserver {
-    var realm: NotificationToken?
-    var rareWeapon: NSKeyValueObservation?
-    var futureRotation: NSKeyValueObservation?
-}
 
 // MARK: ステージキロク
 class StageRecord: ObservableObject {
@@ -97,11 +89,11 @@ class StageRecord: ObservableObject {
             }
         }
     }
-    
-    struct GoldenEggsRecord {
-        var goldenEggs: Int?
-        var playTime: Int?
-        var tide: Int
-        var event: Int
-    }
+}
+
+struct GoldenEggsRecord {
+    var goldenEggs: Int?
+    var playTime: Int?
+    var tide: Int
+    var event: Int
 }
