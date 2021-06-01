@@ -210,6 +210,7 @@ final class RealmManager {
             realm.delete(realm.objects(RealmCoopWave.self))
             realm.delete(realm.objects(RealmCoopResult.self))
             realm.delete(realm.objects(RealmPlayerResult.self))
+            realm.delete(realm.objects(RealmUserInfo.self))
             try? realm.commitWrite()
         }
     }

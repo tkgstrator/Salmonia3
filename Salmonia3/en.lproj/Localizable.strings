@@ -31,10 +31,10 @@
 "FEATURE_FREE_03_DESC"="Hide my nickname in results.";
 "FEATURE_PAID_01"="Loading Indicator";
 "FEATURE_PAID_01_DESC"="Change loading indicator.";
-"FEATURE_PAID_02"="";
-"FEATURE_PAID_02_DESC"="";
-"FEATURE_PAID_03"="";
-"FEATURE_PAID_03_DESC"="";
+"FEATURE_PAID_02"="Disable Ads";
+"FEATURE_PAID_02_DESC"="Disable Advertisement.";
+"FEATURE_PAID_03"="Overfishing Rating";
+"FEATURE_PAID_03_DESC"="Display overfishing rating";
 "HEADER_APPEARANCE"="Appearance";
 "HEADER_APPLICATION"="Application";
 "HEADER_DEVICE"="Device";

@@ -16,9 +16,6 @@ struct LoadingIndicator: View {
         APNGView(named: loadingIcon.rawValue)
             .frame(width: 64, height: 64, alignment: .center)
             .opacity(loading ? 1.0 : 0.0)
-            .onChange(of: loading) { value in
-                log.verbose("LOADING \(loading)")
-            }
     }
 }
 

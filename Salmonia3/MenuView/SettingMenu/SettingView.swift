@@ -15,8 +15,8 @@ struct SettingView: View {
     @EnvironmentObject var appManager: CoreRealmCoop
     @AppStorage("isFirstLaunch") var isFirstLaunch = true
     @AppStorage("isDarkMode") var isDarkMode = false
-    @State var isWarning: Bool = false
-    @State var isShowing: Bool = false
+    @State var selectedURL: URL? = nil
+//    @State var isShowing: Bool = false
     private let systemVersion: String = UIDevice.current.systemVersion
     private let systemName: String = UIDevice.current.systemName
     private let deviceName: String = UIDevice.current.localizedModel
@@ -24,7 +24,7 @@ struct SettingView: View {
     private let apiVersion: String = SplatNet2.shared.version
     
     var body: some View {
-        Form {
+        List {
             Section(header: Text(.HEADER_USERINFO).splatfont2(.orange, size: 14)) {
                 SettingMenu(title: .RESULTS, value: appManager.results.count)
             }
@@ -35,7 +35,9 @@ struct SettingView: View {
             
             Section(header: Text(.HEADER_PRODUCT).splatfont2(.orange, size: 14)) {
                 NavigationLink(destination: FreeProductView(), label: { Text(.SETTING_FREE_PRODUCT) })
+                #if DEBUG
                 NavigationLink(destination: PaidProductView(), label: { Text(.SETTING_PAID_PRODUCT) })
+                #endif
             }
             
             Section(header: Text(.HEADER_SALMONSTATS).splatfont2(.orange, size: 14)) {
@@ -71,10 +73,20 @@ struct SettingView: View {
     }
     
     var PrivacyButton: some View {
-        Button(action: { isShowing.toggle() }, label: { Text(.SETTING_PRIVACY)})
-            .safariView(isPresented: $isShowing) {
-                SafariView(url: URL(string: "https://tkgstrator.work/posts/1970/01/01/privacyporicy.html")!)
+        Button(action: { selectedURL = URL(string: "https://tkgstrator.work/posts/1970/01/01/privacyporicy.html") }, label: { Text(.SETTING_PRIVACY) })
+            .safariView(item: $selectedURL) { selectedURL in
+                SafariView(
+                    url: selectedURL,
+                    configuration: SafariView.Configuration(
+                        entersReaderIfAvailable: false,
+                        barCollapsingEnabled: true
+                    )
+                )
+                .preferredBarAccentColor(.clear)
+                .preferredControlAccentColor(.accentColor)
+                .dismissButtonStyle(.done)
             }
+            .buttonStyle(PlainButtonStyle())
     }
 }
 

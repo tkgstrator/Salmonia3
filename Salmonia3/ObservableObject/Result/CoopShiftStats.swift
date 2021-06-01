@@ -20,6 +20,8 @@ final class CoopShiftStats: ObservableObject {
         let nsaid: [String] = Array(realm.objects(RealmUserInfo.self).map{ $0.nsaid! })
         let player = realm.objects(RealmPlayerResult.self).filter("ANY result.startTime=%@ and pid IN %@", startTime, nsaid)
         let result = realm.objects(RealmCoopResult.self).filter("startTime=%@", startTime)
+        
+        
         resultMax = ResultMax(player: player, result: result)
         resultAvg = ResultAvg(player: player, result: result)
         overview = ResultOverView(results: result, player: player)
