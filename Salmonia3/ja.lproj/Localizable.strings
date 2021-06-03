@@ -31,6 +31,8 @@
 "FEATURE_FREE_02_DESC"="2022年までの全シフトを表示します";
 "FEATURE_FREE_03"="自分の名前も非表示";
 "FEATURE_FREE_03_DESC"="リザルト画面で自分の名前も隠します";
+"FEATURE_FREE_04"="リストスタイルを使う";
+"FEATURE_FREE_04_DESC"="リザルト一覧でリストスタイルを使います";
 "FEATURE_PAID_01"="ロード画像";
 "FEATURE_PAID_01_DESC"="ロード中の進捗表示画像を変更します";
 "FEATURE_PAID_02"="広告の非表示";

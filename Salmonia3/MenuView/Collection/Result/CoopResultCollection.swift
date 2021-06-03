@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CoopResultCollection: View {
+    @EnvironmentObject var appManager: AppManager
     @EnvironmentObject var main: CoreRealmCoop
     @State var isActive: Bool = false
     @State var isShowing: Bool = false
@@ -15,18 +16,48 @@ struct CoopResultCollection: View {
     var body: some View {
         ZStack {
             NavigationLink(destination: LoadingView(), isActive: $isActive) { EmptyView() }
-            List {
-                ForEach(main.results.indices, id: \.self) { index in
-                    NavigationLink(destination: CoopResultView(result: main.results[index])) {
-                        ResultOverview(result: main.results[index])
-                    }
-                }
-            }
-            .pullToRefresh(isShowing: $isShowing) {
-                isActive.toggle()
+            switch appManager.isFree04 {
+            case true:
+                SidebarListStyleView
+            case false:
+                PlainListStyleView
             }
         }
         .navigationTitle(.TITLE_RESULT_COLLECTION)
+    }
+    
+    var SidebarListStyleView: some View {
+        List {
+            ForEach(main.results) { shift in
+                Section(header: CoopShift(shift: shift.phase)) {
+                    ForEach(shift.results, id:\.self) { result in
+                        NavigationLink(destination: CoopResultView(result: result)) {
+                            ResultOverview(result: result)
+                        }
+                    }
+                }
+                
+            }
+        }
+        .listStyle(SidebarListStyle())
+        .pullToRefresh(isShowing: $isShowing) { isActive.toggle() }
+    }
+    
+    var PlainListStyleView: some View {
+        List {
+            ForEach(main.results) { shift in
+                Section(header: CoopShift(shift: shift.phase)) {
+                    ForEach(shift.results, id:\.self) { result in
+                        NavigationLink(destination: CoopResultView(result: result)) {
+                            ResultOverview(result: result)
+                        }
+                    }
+                }
+                
+            }
+        }
+        .listStyle(PlainListStyle())
+        .pullToRefresh(isShowing: $isShowing) { isActive.toggle() }
     }
 }
 
@@ -40,12 +71,17 @@ struct ResultOverview: View {
     @StateObject var result: RealmCoopResult
     
     var body: some View {
-        HStack(spacing: 0) {
-            ResultJob
-            Spacer()
-            ResultGrade
-            Spacer()
-            ResultEggs
+        ZStack(alignment: .topLeading) {
+            Text("\(result.indexOfResults)")
+                .splatfont2(size: 12)
+                .offset(y: -10)
+            HStack(spacing: 0) {
+                ResultJob
+                Spacer()
+                ResultGrade
+                Spacer()
+                ResultEggs
+            }
         }
         .frame(maxWidth: .infinity)
     }

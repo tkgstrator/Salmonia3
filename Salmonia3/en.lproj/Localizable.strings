@@ -30,6 +30,8 @@
 "FEATURE_FREE_02_DESC"="Display future shift schedule until 2022.";
 "FEATURE_FREE_03"="Hide My Nickname";
 "FEATURE_FREE_03_DESC"="Hide my nickname in results.";
+"FEATURE_FREE_04"="Using ListStyle";
+"FEATURE_FREE_04_DESC"="Using sidebar liststyle in result viewer.";
 "FEATURE_PAID_01"="Loading Indicator";
 "FEATURE_PAID_01_DESC"="Change loading indicator.";
 "FEATURE_PAID_02"="Disable Ads";
