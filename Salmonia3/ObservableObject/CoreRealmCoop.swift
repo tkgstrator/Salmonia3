@@ -12,7 +12,8 @@ import SwiftUI
 
 class CoreRealmCoop: ObservableObject {
     @ObservedObject var appManager: AppManager = AppManager()
-    @Published var results: RealmSwift.Results<RealmCoopResult> = RealmManager.shared.realm.objects(RealmCoopResult.self).sorted(byKeyPath: "playTime", ascending: false)
+//    @Published var results: RealmSwift.Results<RealmCoopResult> = RealmManager.shared.realm.objects(RealmCoopResult.self).sorted(byKeyPath: "playTime", ascending: false)
+    @Published var results: [UserCoopResult] = []
     
     var records: [StageRecord] {
         return Range(5000 ... 5004).map{ StageRecord(stageId: $0) }
@@ -48,14 +49,29 @@ class CoreRealmCoop: ObservableObject {
     }
     
     init() {
+        realmObserver[0] = RealmManager.shared.realm.objects(RealmCoopResult.self).observe { [self] _ in
+            let starTime: [Int] = Array(Set(RealmManager.shared.realm.objects(RealmCoopResult.self).map({ $0.startTime }))).sorted(by: >)
+            results = starTime.map{ UserCoopResult(startTime: $0) }
+        }
         realmObserver[1] = RealmManager.shared.realm.objects(RealmUserInfo.self).observe { [self] _ in
             objectWillChange.send()
         }
     }
     
     deinit {
-        realmObserver[0]?.invalidate()
         realmObserver[1]?.invalidate()
+    }
+}
+
+class UserCoopResult: Identifiable {
+    var id: Int
+    var phase: RealmCoopShift
+    var results: RealmSwift.Results<RealmCoopResult>
+    
+    init(startTime: Int) {
+        self.id = startTime
+        self.phase = RealmManager.shared.realm.objects(RealmCoopShift.self).filter("startTime=%@", startTime).first!
+        results = RealmManager.shared.realm.objects(RealmCoopResult.self).filter("startTime=%@", startTime).sorted(byKeyPath: "playTime", ascending: false)
     }
 }
 

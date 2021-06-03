@@ -140,3 +140,10 @@ private extension Int {
         }
     }
 }
+
+extension RealmCoopResult {
+    var indexOfResults: Int {
+        let results = RealmManager.shared.realm.objects(RealmCoopResult.self).filter("startTime=%@", self.startTime)
+        return (results.index(of: self) ?? -1) + 1
+    }
+}

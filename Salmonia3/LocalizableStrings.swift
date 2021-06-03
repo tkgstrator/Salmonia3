@@ -35,6 +35,10 @@ class LocalizableStrings {
         case FEATURE_FREE_02_DESC
         case FEATURE_FREE_03
         case FEATURE_FREE_03_DESC
+        case FEATURE_FREE_04
+        case FEATURE_FREE_04_DESC
+        case FEATURE_FREE_05
+        case FEATURE_FREE_05_DESC
         case FEATURE_PAID_01
         case FEATURE_PAID_01_DESC
         case FEATURE_PAID_02
