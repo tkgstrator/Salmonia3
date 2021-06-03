@@ -20,7 +20,7 @@ struct UIGoogleMobileAdsView: UIViewControllerRepresentable {
         #if DEBUG
         view.adUnitID = "ca-app-pub-7107468397673752/4904180382"
         #else
-        view.adUnitID = "ca-app-pub-7107468397673752/3665689717"
+        view.adUnitID = "ca-app-pub-7107468397673752/3033508550"
         #endif
         view.rootViewController = viewController
         viewController.view.addSubview(view)
