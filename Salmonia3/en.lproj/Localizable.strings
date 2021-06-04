@@ -103,10 +103,10 @@
 "SETTING_PRIVACY"="Privacy Poricy";
 "SETTING_RESULTS"="Results";
 "SETTING_RE_SIGN_IN"="Re-Sign in";
+"SETTING_SPLATNET2" = "SplatNet2";
 "SETTING_SYSTEM"="System";
 "SETTING_UPDATE_NAME"="Update Nickname";
 "SETTING_UPLOAD"="Link with Salmon Stats";
-"SETTING_SPLATNET2" = "SplatNet2";
 "SHIFT_SCHEDULE"="Shift Schedule";
 "SUPPLIED_WEAPONS"="Supplied Weapons";
 "TEXT_CONFIRM"="Are you sure?";
@@ -129,6 +129,7 @@
 "TITLE_SHIFT_SCHEDULE"="Shift Schedule";
 "TITLE_SHIFT_STATS"="Shift Stats";
 "TITLE_WAVE_ANALYSIS"="Wave Analysis";
+"TITLE_WAVE_COLLECTION"="Wave Results";
 "TITLE_WEAPON_ANALYSIS"="Weapon Analysis";
 "cohock-charge"="Cohock Charge";
 "fog"="Fog";

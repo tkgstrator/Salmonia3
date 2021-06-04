@@ -71,6 +71,7 @@
 		10A08032262070A200BFDF59 /* CoopShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A08031262070A200BFDF59 /* CoopShiftStats.swift */; };
 		10AD114D2600EB18008C0E64 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AD114C2600EB18008C0E64 /* Error.swift */; };
 		10B07C5F260A1463008FDE1B /* CoopShiftStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B07C5E260A1463008FDE1B /* CoopShiftStatsView.swift */; };
+		10B62CA32669CC1400916A64 /* CoopWaveCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B62CA22669CC1400916A64 /* CoopWaveCollection.swift */; };
 		10BBBEA226049EF400DA79C9 /* CoopResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBBEA126049EF400DA79C9 /* CoopResultView.swift */; };
 		10CF098E25FB97CB00D2EEB1 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF098D25FB97CB00D2EEB1 /* BetterSafariView */; };
 		10CF099425FB97F300D2EEB1 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF099325FB97F300D2EEB1 /* SwiftUIRefresh */; };
@@ -177,6 +178,7 @@
 		10A08031262070A200BFDF59 /* CoopShiftStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftStats.swift; sourceTree = "<group>"; };
 		10AD114C2600EB18008C0E64 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		10B07C5E260A1463008FDE1B /* CoopShiftStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftStatsView.swift; sourceTree = "<group>"; };
+		10B62CA22669CC1400916A64 /* CoopWaveCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopWaveCollection.swift; sourceTree = "<group>"; };
 		10BBBEA126049EF400DA79C9 /* CoopResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopResultView.swift; sourceTree = "<group>"; };
 		10CF09BE25FB9AEC00D2EEB1 /* SplitNavigationViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitNavigationViewStyle.swift; sourceTree = "<group>"; };
 		10CF09F325FB9BE100D2EEB1 /* RealmCoopResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopResult.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 		10377FAB25FD165100536A94 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
+				10B62CA72669CC1C00916A64 /* Wave */,
 				101C77CB26496F6F005D603C /* Shift */,
 				101C77CA26496F64005D603C /* Result */,
 				1079EAD12647E3540085008C /* CoopRecordView.swift */,
@@ -491,6 +494,14 @@
 				10A08031262070A200BFDF59 /* CoopShiftStats.swift */,
 			);
 			path = Result;
+			sourceTree = "<group>";
+		};
+		10B62CA72669CC1C00916A64 /* Wave */ = {
+			isa = PBXGroup;
+			children = (
+				10B62CA22669CC1400916A64 /* CoopWaveCollection.swift */,
+			);
+			path = Wave;
 			sourceTree = "<group>";
 		};
 		10CF09F825FB9BEE00D2EEB1 /* Realm */ = {
@@ -819,6 +830,7 @@
 				1059416925FA49E500C32D21 /* ContentView.swift in Sources */,
 				10682EF3264FEF0A0035CC68 /* StatsWaveView.swift in Sources */,
 				104AA7DC2605E0C8007BDC24 /* GoogleMobileAds.swift in Sources */,
+				10B62CA32669CC1400916A64 /* CoopWaveCollection.swift in Sources */,
 				1052C2D026550E7800D3B9A9 /* DetailView.swift in Sources */,
 				10377F9925FD09FF00536A94 /* LoggingThread.swift in Sources */,
 				10CF09BF25FB9AEC00D2EEB1 /* SplitNavigationViewStyle.swift in Sources */,

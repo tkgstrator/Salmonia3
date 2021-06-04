@@ -13,6 +13,7 @@ import SwiftUI
 class CoreRealmCoop: ObservableObject {
     @ObservedObject var appManager: AppManager = AppManager()
     @Published var resultCount: Int = RealmManager.shared.realm.objects(RealmCoopResult.self).count
+    @Published var waves: RealmSwift.Results<RealmCoopWave> = RealmManager.shared.realm.objects(RealmCoopWave.self).sorted(byKeyPath: "goldenIkuraNum", ascending: false)
     @Published var results: [UserCoopResult] = []
     
     var records: [CoopRecord] {
@@ -62,6 +63,7 @@ class CoreRealmCoop: ObservableObject {
     }
 }
 
+// MARK: リザルト一覧で使うデータ
 class UserCoopResult: Identifiable {
     var id: Int
     var phase: RealmCoopShift

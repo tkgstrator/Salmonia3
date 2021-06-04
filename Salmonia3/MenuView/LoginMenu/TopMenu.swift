@@ -27,6 +27,7 @@ struct TopMenu: View {
                 Section(header: Text(.HEADER_OVERVIEW).splatfont2(.orange, size: 14)) {
                     Overview
                     Results
+                    Waves
                     SalmonStats
                     #if DEBUG
                     SalmonRecords
@@ -87,11 +88,16 @@ struct TopMenu: View {
     }
 
     var Results: some View {
-        Group {
-            NavigationLink(destination: CoopResultCollection()) {
-                Text(.TITLE_RESULT_COLLECTION)
-                    .splatfont2(size: 16)
-            }
+        NavigationLink(destination: CoopResultCollection()) {
+            Text(.TITLE_RESULT_COLLECTION)
+                .splatfont2(size: 16)
+        }
+    }
+    
+    var Waves: some View {
+        NavigationLink(destination: CoopWaveCollection()) {
+            Text(.TITLE_WAVE_COLLECTION)
+                .splatfont2(size: 16)
         }
     }
     
