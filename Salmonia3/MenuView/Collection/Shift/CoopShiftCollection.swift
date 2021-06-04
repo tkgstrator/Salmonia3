@@ -43,7 +43,7 @@ struct CoopShift: View {
     var body: some View {
         HStack {
             Spacer()
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: 5) {
                 HStack {
                     Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(shift.startTime))))
                     Text(verbatim: "-")
@@ -65,10 +65,12 @@ struct CoopShift: View {
                     .clipShape(RoundedRectangle(cornerRadius: 8.0))
                 Text(StageType(rawValue: shift.stageId.intValue)!.name.localized)
                     .splatfont2(size: 14)
+                    .textCase(nil)
                     .padding(.bottom, 8)
             }
             VStack(alignment: .leading, spacing: 5) {
                 Text(.SUPPLIED_WEAPONS)
+                    .textCase(nil)
                 if appManager.isFree01 && shift.weaponList.contains(-1) {
                     AnyView(
                         LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 30, maximum: 50)), count: 5), alignment: .center, spacing: 0) {
@@ -76,12 +78,12 @@ struct CoopShift: View {
                                 Image(String(shift.weaponList[idx]).imageURL)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                //                                .frame(maxWidth: 45)
+                                    .frame(maxWidth: 45)
                             }
                             Image(String(shift.rareWeapon.intValue).imageURL)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                            //                            .frame(maxWidth: 45)
+                                .frame(maxWidth: 45)
                         }
                         .padding(.bottom, 20)
                         .frame(maxWidth: 200)

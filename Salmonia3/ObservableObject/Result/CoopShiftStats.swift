@@ -13,6 +13,7 @@ final class CoopShiftStats: ObservableObject {
     @Published var resultMax: ResultMax?
     @Published var overview: ResultOverView?
     @Published var weaponData: [ResultWeapon] = []
+    @Published var records: CoopRecord
     private var token: NotificationToken?
 
     init(startTime: Int) {
@@ -21,7 +22,7 @@ final class CoopShiftStats: ObservableObject {
         let player = realm.objects(RealmPlayerResult.self).filter("ANY result.startTime=%@ and pid IN %@", startTime, nsaid)
         let result = realm.objects(RealmCoopResult.self).filter("startTime=%@", startTime)
         
-        
+        records = CoopRecord(startTime: startTime)
         resultMax = ResultMax(player: player, result: result)
         resultAvg = ResultAvg(player: player, result: result)
         overview = ResultOverView(results: result, player: player)

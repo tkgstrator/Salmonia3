@@ -7,20 +7,22 @@
 
 import Foundation
 
-enum EventType: Int, CaseIterable {
-    case noevent = 0
-    case rush = 1
-    case goldie = 2
-    case griller = 3
+enum EventType: Int, CaseIterable, Identifiable {
+    var id: Int { rawValue }
+    case noevent    = 0
+    case rush       = 1
+    case goldie     = 2
+    case griller    = 3
     case mothership = 4
-    case fog = 5
-    case cohock = 6
+    case fog        = 5
+    case cohock     = 6
 }
 
-enum WaterLevel: Int, CaseIterable {
-    case low = 0
-    case normal = 1
-    case high = 2
+enum WaterLevel: Int, CaseIterable, Identifiable {
+    var id: Int { rawValue }
+    case low        = 0
+    case normal     = 1
+    case high       = 2
 }
 
 extension EventType {

@@ -72,7 +72,6 @@
 		10AD114D2600EB18008C0E64 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AD114C2600EB18008C0E64 /* Error.swift */; };
 		10B07C5F260A1463008FDE1B /* CoopShiftStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B07C5E260A1463008FDE1B /* CoopShiftStatsView.swift */; };
 		10BBBEA226049EF400DA79C9 /* CoopResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBBEA126049EF400DA79C9 /* CoopResultView.swift */; };
-		10BBBEAA2604E69300DA79C9 /* SRImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBBEA92604E69300DA79C9 /* SRImage.swift */; };
 		10CF098E25FB97CB00D2EEB1 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF098D25FB97CB00D2EEB1 /* BetterSafariView */; };
 		10CF099425FB97F300D2EEB1 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF099325FB97F300D2EEB1 /* SwiftUIRefresh */; };
 		10CF09A025FB984400D2EEB1 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF099F25FB984400D2EEB1 /* SwiftyStoreKit */; };
@@ -179,7 +178,6 @@
 		10AD114C2600EB18008C0E64 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		10B07C5E260A1463008FDE1B /* CoopShiftStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftStatsView.swift; sourceTree = "<group>"; };
 		10BBBEA126049EF400DA79C9 /* CoopResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopResultView.swift; sourceTree = "<group>"; };
-		10BBBEA92604E69300DA79C9 /* SRImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRImage.swift; sourceTree = "<group>"; };
 		10CF09BE25FB9AEC00D2EEB1 /* SplitNavigationViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitNavigationViewStyle.swift; sourceTree = "<group>"; };
 		10CF09F325FB9BE100D2EEB1 /* RealmCoopResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopResult.swift; sourceTree = "<group>"; };
 		10CF09FA25FB9C6B00D2EEB1 /* CoreRealmCoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreRealmCoop.swift; sourceTree = "<group>"; };
@@ -468,7 +466,6 @@
 				1024663D26009956004DC043 /* Grade.swift */,
 				1024664A2600D55E004DC043 /* StageType.swift */,
 				10AD114C2600EB18008C0E64 /* Error.swift */,
-				10BBBEA92604E69300DA79C9 /* SRImage.swift */,
 				10567DD7264ECDD0002654D3 /* SplatNet2.swift */,
 				10682F00265000590035CC68 /* WeaponType.swift */,
 				10682F082650026D0035CC68 /* SpecialType.swift */,
@@ -845,7 +842,6 @@
 				10D2E1622655618B00AE584E /* LocalizableStrings.swift in Sources */,
 				10AD114D2600EB18008C0E64 /* Error.swift in Sources */,
 				105941AD25FA500500C32D21 /* TopMenu.swift in Sources */,
-				10BBBEAA2604E69300DA79C9 /* SRImage.swift in Sources */,
 				10D2E15A265557B200AE584E /* View.swift in Sources */,
 				10567DD8264ECDD0002654D3 /* SplatNet2.swift in Sources */,
 				10377F8125FCDBE400536A94 /* RealmUserInfo.swift in Sources */,
@@ -1030,7 +1026,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1040,7 +1036,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1056,7 +1052,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1066,7 +1062,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

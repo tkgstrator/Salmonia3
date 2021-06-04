@@ -12,14 +12,13 @@ import SwiftUI
 
 class CoreRealmCoop: ObservableObject {
     @ObservedObject var appManager: AppManager = AppManager()
-//    @Published var results: RealmSwift.Results<RealmCoopResult> = RealmManager.shared.realm.objects(RealmCoopResult.self).sorted(byKeyPath: "playTime", ascending: false)
+    @Published var resultCount: Int = RealmManager.shared.realm.objects(RealmCoopResult.self).count
     @Published var results: [UserCoopResult] = []
     
-    var records: [StageRecord] {
-        return Range(5000 ... 5004).map{ StageRecord(stageId: $0) }
+    var records: [CoopRecord] {
+        return Range(5000 ... 5004).map{ CoopRecord(stageId: $0) }
     }
     
-    // Observer
     private var realmObserver: [NotificationToken?] = Array(repeating: nil, count: 2)
     
     private var nextShiftStartTime: Int {
@@ -77,29 +76,35 @@ class UserCoopResult: Identifiable {
 
 
 // MARK: ステージキロク
-class StageRecord: ObservableObject {
-    @Published var jobNum: Int?
-    @Published var maxGrade: Int?
-    @Published var goldenEggs: [[GoldenEggsRecord?]] = Array(repeating: Array(repeating: nil, count: 7), count: 3)
-    
+class CoopRecord: ObservableObject {
+    var jobNum: Int?
+    var maxGrade: Int?
+    var goldenEggs: [[GoldenEggsRecord?]] = Array(repeating: Array(repeating: nil, count: 7), count: 3)
+
     init() {}
+    
+    init(startTime: Int) {
+        let results = RealmManager.shared.realm.objects(RealmCoopResult.self).filter("startTime=%@", startTime)
+        let waves = RealmManager.shared.realm.objects(RealmCoopWave.self).filter("ANY result.startTime=%@", startTime)
+        getRecordsFromDatabase(results: results, waves: waves)
+    }
     
     init(stageId: Int) {
         let results = RealmManager.shared.realm.objects(RealmCoopResult.self).filter("stageId=%@", stageId)
         let waves = RealmManager.shared.realm.objects(RealmCoopWave.self).filter("ANY result.stageId=%@", stageId)
-        
+        getRecordsFromDatabase(results: results, waves: waves)
+    }
+    
+    func getRecordsFromDatabase(results: RealmSwift.Results<RealmCoopResult>, waves: RealmSwift.Results<RealmCoopWave>) {
         if results.count != 0 {
             self.jobNum = results.count
             self.maxGrade = results.max(ofProperty: "gradePoint")
             
             // MARK: WAVE納品キロク
-            for tide in Range(0 ... 2) {
-                let waterLevel = WaterLevel.init(rawValue: tide)!.waterLevel
-                for event in Range(0 ... 6) {
-                    let eventType = EventType.init(rawValue: event)!.eventType
-                    let goldenEgg: Int? = waves.filter("eventType=%@ AND waterLevel=%@", eventType, waterLevel).max(ofProperty: "goldenIkuraNum")
-                    if let goldenEgg = goldenEgg {
-                        self.goldenEggs[tide][event] = GoldenEggsRecord(goldenEggs: goldenEgg, playTime: nil, tide: tide, event: event)
+            for tide in WaterLevel.allCases {
+                for event in EventType.allCases {
+                    if let goldenEgg: Int = waves.filter("eventType=%@ AND waterLevel=%@", event.eventType, tide.waterLevel).max(ofProperty: "goldenIkuraNum") {
+                        self.goldenEggs[tide.rawValue][event.rawValue] = GoldenEggsRecord(goldenEggs: goldenEgg, playTime: nil, tide: tide.rawValue, event: event.rawValue)
                     }
                 }
             }

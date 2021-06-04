@@ -7,16 +7,17 @@
 
 import Foundation
 
-enum SalmonidType: Int, CaseIterable {
-    case goldie     = 0
-    case steelhead  = 1
-    case flyfish    = 2
-    case scrapper   = 3
-    case steeleel   = 4
-    case tower      = 5
-    case maw        = 6
-    case griller    = 7
-    case drizzler   = 8
+enum SalmonidType: Int, CaseIterable, Identifiable {
+    var id: Int { rawValue }
+    case goldie     = 3
+    case steelhead  = 6
+    case flyfish    = 9
+    case scrapper   = 12
+    case steeleel   = 13
+    case tower      = 14
+    case maws        = 15
+    case griller    = 16
+    case drizzler   = 21
 }
 
 extension SalmonidType {
@@ -34,12 +35,39 @@ extension SalmonidType {
             return "9da9e56c0634bb7c6aa23dcaf96bc80a"
         case .tower:
             return "2e1473ff7deefbf5f834b71046271c9c"
-        case .maw:
+        case .maws:
             return "fab43fc3b7a1d9fa6d204efd12589ae3"
         case .griller:
             return "9564445e3926734f256c44300dc1828d"
         case .drizzler:
             return "f28f0f0fe1e418c4da14403e44d1d1ea"
         }
+    }
+    
+    var name: String {
+        switch self {
+        case .goldie:
+            return "Goldie"
+        case .steelhead:
+            return "Steelhead"
+        case .flyfish:
+            return "Flyfish"
+        case .scrapper:
+            return "Scrapper"
+        case .steeleel:
+            return "Steel Eel"
+        case .tower:
+            return "Tower"
+        case .maws:
+            return "Maws"
+        case .griller:
+            return "Griller"
+        case .drizzler:
+            return "Drizzler"
+        }
+    }
+    
+    var index: Int {
+        return SalmonidType.allCases.firstIndex(of: self)!
     }
 }
