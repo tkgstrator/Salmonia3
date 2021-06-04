@@ -1,4 +1,5 @@
 "ALERT_ERROR" = "Error";
+"ALERT_SIGN_IN"="How to Sign in";
 "AUTHORIZED_WITH_BIOMETRICS"="Authorize with biometrics";
 "AUTHORIZED_WITH_PASSCODE" = "Authorize with passcode";
 "BOSS_DEFEATED"="Boss Defeated";
@@ -36,6 +37,8 @@
 "FEATURE_PAID_02_DESC"="Disable Advertisement.";
 "FEATURE_PAID_03"="Overfishing Rating";
 "FEATURE_PAID_03_DESC"="Display overfishing rating";
+"FOOTER_SALMONSTATS"="If Link is disabled, please re-sign in in advanced settings.";
+"FOOTER_SPLATNET2"="If the value of SplatNet2 is empty, please re-sign in in advanced settings.";
 "HEADER_APPEARANCE"="Appearance";
 "HEADER_APPLICATION"="Application";
 "HEADER_DEVICE"="Device";
@@ -116,9 +119,11 @@
 "SUPPLIED_WEAPONS"="Supplied Weapons";
 "TEXT_CONFIRM"="Are you sure?";
 "TEXT_ERASE_DATA"="It may take a minute to remove all data with this device. This operation can not undone.";
+"TEXT_IMPORT"="This operation may take a long time.";
 "TEXT_RE_SIGN_IN"="Changing the SplatNet2 account. Do not erase your data.";
 "TEXT_SALMONIA"="Salmonia";
 "TEXT_SALMONSTATS"="Salmon Stats";
+"TEXT_SIGN_IN"="After sign in with Twitter account, open settings and tap Connect with Salmonia unless the window close.";
 "TEXT_TUTORIAL_SALMONSTATS"="After Login Salmon Stats with the Twitter account, go to Setting pages in burger menu. Then tap the Connect with Salmonia";
 "TEXT_WELCOME_SALMONSTATS"="Salmonia need a Twitter account uploading results to Salmon Stats.";
 "TEXT_WELCOME_SPLATNET2"="Using Salmonia, you need sign in with Nintendo Switch Online account. Salmonia don't send any information for third party clients, services without your permission.";
@@ -146,7 +151,3 @@
 "rush"="Rush";
 "the-mothership"="The Mothership";
 "water-levels"="-";
-"FOOTER_SPLATNET2"="If the value of SplatNet2 is empty, please re-sign in in advanced settings.";
-"FOOTER_SALMONSTATS"="If Link is disabled, please re-sign in in advanced settings.";
-"TEXT_IMPORT"="This operation may take a long time.";
-

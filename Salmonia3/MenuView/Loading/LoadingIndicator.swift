@@ -18,9 +18,3 @@ struct LoadingIndicator: View {
             .opacity(loading ? 1.0 : 0.0)
     }
 }
-
-//struct LoadingIndicator_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LoadingIndicator()
-//    }
-//}

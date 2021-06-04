@@ -1,4 +1,5 @@
 "ALERT_ERROR" = "エラー";
+"ALERT_SIGN_IN"="ログインに関して";
 "AUTHORIZED_WITH_BIOMETRICS"="生体認証を利用します。";
 "AUTHORIZED_WITH_PASSCODE" = "パスコードで認証します。";
 "Apparentice"="かけだし";
@@ -37,6 +38,8 @@
 "FEATURE_PAID_02_DESC"="アプリ下部に表示されている広告を無効化します。";
 "FEATURE_PAID_03"="乱獲レーティング";
 "FEATURE_PAID_03_DESC"="乱獲用のレーティングを表示します。";
+"FOOTER_SALMONSTATS"="アップロード機能が無効になっている場合、詳細設定から再ログインしてください。";
+"FOOTER_SPLATNET2"="もしイカリング2の項目に何も表示されていない場合、詳細設定から再ログインしてください。";
 "GOLDEN_EGGS"="金イクラ数";
 "Go-Getter"="いちにんまえ";
 "HEADER_APPEARANCE"="外観";
@@ -128,9 +131,11 @@
 "Spawning Grounds"="シェケナダム";
 "TEXT_CONFIRM"="本当によろしいですか?";
 "TEXT_ERASE_DATA"="データ削除には少し時間がかかる場合があります。この操作は取り消せません。";
+"TEXT_IMPORT"="この操作は長い時間がかかる場合があります。";
 "TEXT_RE_SIGN_IN"="イカリング2のアカウント切り替えを行います。データは削除されません。";
 "TEXT_SALMONIA"="Salmonia";
 "TEXT_SALMONSTATS"="Salmon Stats";
+"TEXT_SIGN_IN"="Twitterアカウントでログイン後、画面を閉じずにSalmon Statsの設定画面を開いてConnect with Salmoniaのボタンを押してください。";
 "TEXT_TUTORIAL_SALMONSTATS"="Twitterアカウントでログイン後、Salmon Statsの設定からConnect with Salmoniaのボタンを押します。";
 "TEXT_WELCOME_SALMONSTATS"="SalmoniaはSalmon StatsへのリザルトのアップロードにTwitterアカウントの情報を必要とします。";
 "TEXT_WELCOME_SPLATNET2"="Salmoniaの利用にはNintendo Switch Onlineでのログインが必要です。Salmoniaは許可なしにあらゆる情報を第三者のサービスに提供しません。";
@@ -158,6 +163,3 @@
 "rush"="ラッシュ";
 "the-mothership"="ハコビヤ襲来";
 "water-levels"="-";
-"FOOTER_SPLATNET2"="もしイカリング2の項目に何も表示されていない場合、詳細設定から再ログインしてください。";
-"TEXT_IMPORT"="この操作は長い時間がかかる場合があります。";
-"FOOTER_SALMONSTATS"="アップロード機能が無効になっている場合、詳細設定から再ログインしてください。";

@@ -26,27 +26,28 @@ struct DetailView: View {
                 }
             }
             Section(header: Text(.SETTING_IMPORTANT)) {
-                Toggle(LocalizableStrings.Key.SETTING_RE_SIGN_IN.rawValue.localized, isOn: $isToggle[0])
-                    .onChange(of: isToggle[0]) { value in
-                        if value {
-                            warning = .signin
-                        }
+                Toggle(LocalizableStrings.Key.SETTING_RE_SIGN_IN.rawValue.localized, isOn: .init(
+                    get: { isToggle[0] },
+                    set: {
+                        let _ = $0
+                        warning = .signin
                     }
-                Toggle(LocalizableStrings.Key.SETTING_ERASE_DATA.rawValue.localized, isOn: $isToggle[1])
-                    .onChange(of: isToggle[1]) { value in
-                        if value {
-                            warning = .erase
-                        }
+                ))
+                Toggle(LocalizableStrings.Key.SETTING_ERASE_DATA.rawValue.localized, isOn: .init(
+                    get: { isToggle[1] },
+                    set: {
+                        let _ = $0
+                        warning = .signin
                     }
+                ))
             }
         }
-        .alert(item: $warning) { error in
+        .alert(item: $warning) { warning in
             Alert(title: Text(.TEXT_CONFIRM),
-                  message: Text(error.localizedDescription),
+                  message: Text(warning.localizedDescription),
                   primaryButton: .default(Text(.BTN_CONFIRM),
-                                          action: { changeState() }),
-                  secondaryButton: .destructive(Text(.BTN_CANCEL),
-                                                action: { isToggle = Array(repeating: false, count: 2)})
+                                          action: { changeState(warning: warning) }),
+                  secondaryButton: .destructive(Text(.BTN_CANCEL))
             )
         }
         .font(.custom("Splatfont2", size: 16))
@@ -67,17 +68,13 @@ struct DetailView: View {
 //        }
 //    }
     
-    private func changeState() {
-        guard let index = isToggle.firstIndex(of: true) else { return }
-        switch index {
-        case 0:
-            appManager.isFirstLaunch.toggle()
-        case 1:
+    private func changeState(warning: Warning) {
+        switch warning {
+        case .erase:
             try? RealmManager.eraseAllRecord()
-        default:
-            break
+        case .signin:
+            appManager.isFirstLaunch = true
         }
-        isToggle = Array(repeating: false, count: 2)
     }
 }
 

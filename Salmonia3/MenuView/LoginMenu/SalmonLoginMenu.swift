@@ -17,6 +17,7 @@ struct SalmonLoginMenu: View {
     @EnvironmentObject var appManager: AppManager
     @State var isActive: Bool = false
     @State var isPresented: Bool = false
+    @State var isAlertShowing: Bool = true
     @State var oAuthURL: URL = URL(string: "https://salmon-stats-api.yuki.games/auth/twitter")!
 
     var body: some View {
@@ -51,6 +52,9 @@ struct SalmonLoginMenu: View {
                 appManager.isFirstLaunch.toggle()
             }
             .prefersEphemeralWebBrowserSession(false)
+        }
+        .alert(isPresented: $isAlertShowing) {
+            Alert(title: Text(.ALERT_SIGN_IN), message: Text(.TEXT_SIGN_IN), dismissButton: .default(Text(.BTN_CONFIRM)))
         }
         .background(BackGround)
         .navigationBarBackButtonHidden(true)

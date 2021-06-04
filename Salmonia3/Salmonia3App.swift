@@ -63,17 +63,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct Salmonia3App: App {
 
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @ObservedObject var appManager: AppManager = AppManager()
     @AppStorage("apiToken") var apiToken: String?
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .fullScreenCover(isPresented: $appManager.isFirstLaunch) {
-                    NavigationView {
-                        LoginMenu()
-                    }
-                }
                 .environment(\.lineLimit, 1)
                 .environment(\.minimumScaleFactor, 0.5)
                 .environment(\.imageScale, .large)
@@ -81,25 +75,24 @@ struct Salmonia3App: App {
                 .environmentObject(CoreRealmCoop())
                 .environmentObject(AppManager())
                 .listStyle(GroupedListStyle())
-                .preferredColorScheme(appManager.isDarkMode ? .dark : .light)
-                .onAppear(perform: updateToken)
+//                .onAppear(perform: updateToken)
         }
     }
-    
-    private func updateToken() {
-        // APIトークンの設定
-        if let apiToken = apiToken {
-            SalmonStats.shared.configure(apiToken: apiToken)
-        }
-        
-        // sessionTokenを強制追加
-        guard let _ = SplatNet2.shared.sessionToken else {
-            if let account = RealmManager.shared.realm.objects(RealmUserInfo.self).first {
-                if let sessionToken = account.sessionToken {
-                    SplatNet2.shared.configure(sessionToken: sessionToken)
-                }
-            }
-            return
-        }
-    }
+//
+//    private func updateToken() {
+//        // APIトークンの設定
+//        if let apiToken = apiToken {
+//            SalmonStats.shared.configure(apiToken: apiToken)
+//        }
+//
+//        // sessionTokenを強制追加
+//        guard let _ = SplatNet2.shared.sessionToken else {
+//            if let account = RealmManager.shared.realm.objects(RealmUserInfo.self).first {
+//                if let sessionToken = account.sessionToken {
+//                    SplatNet2.shared.configure(sessionToken: sessionToken)
+//                }
+//            }
+//            return
+//        }
+//    }
 }

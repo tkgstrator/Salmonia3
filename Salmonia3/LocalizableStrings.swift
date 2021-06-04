@@ -139,6 +139,8 @@ class LocalizableStrings {
         case SALMON_RUN_RECORDS
         case SALMON_STATS
         case LANPLAY_RECORDS
+        case ALERT_SIGN_IN
+        case TEXT_SIGN_IN
     }
 
 }
