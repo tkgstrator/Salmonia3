@@ -16,11 +16,13 @@ struct CoopResultCollection: View {
     var body: some View {
         ZStack {
             NavigationLink(destination: LoadingView(), isActive: $isActive) { EmptyView() }
-            switch appManager.isFree04 {
-            case true:
-                SidebarListStyleView
-            case false:
+            switch appManager.listStyle {
+            case .legacy:
                 PlainListStyleView
+            case .inset:
+                InsetListStyleView
+            case .sidebar:
+                SidebarListStyleView
             }
         }
         .navigationTitle(.TITLE_RESULT_COLLECTION)
@@ -56,6 +58,23 @@ struct CoopResultCollection: View {
         }
         .listStyle(PlainListStyle())
         .pullToRefresh(isShowing: $isShowing) { isActive.toggle() }
+    }
+    
+    var InsetListStyleView: some View {
+        List {
+            ForEach(main.results) { shift in
+                Section(header: CoopShift(shift: shift.phase)) {
+                    ForEach(shift.results, id:\.self) { result in
+                        NavigationLink(destination: CoopResultView(result: result)) {
+                            ResultOverview(result: result)
+                        }
+                    }
+                }
+            }
+        }
+        .listStyle(InsetGroupedListStyle())
+        .pullToRefresh(isShowing: $isShowing) { isActive.toggle() }
+        
     }
 }
 

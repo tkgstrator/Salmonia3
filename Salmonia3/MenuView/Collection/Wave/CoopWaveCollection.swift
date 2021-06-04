@@ -29,14 +29,30 @@ struct WaveOverview: View {
         HStack(spacing: 0) {
             StageInfo
             Spacer()
+            WeaponList
+            Spacer()
             ResultEggs
         }
         .frame(maxWidth: .infinity)
     }
     
+    var WeaponList: some View {
+        LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: 20, maximum: 50)), count: wave.weaponLists.count), spacing: 0) {
+            ForEach(wave.weaponLists.indices, id:\.self) { index in
+                Image(String(wave.weaponLists[index]).imageURL)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            }
+        }
+        
+    }
+    
     var StageInfo: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(StageType.init(rawValue: wave.result.first!.stageId.value!)!.name.localized)
+            HStack {
+                Text(wave.waterLevel!.localized)
+                Text(StageType.init(rawValue: wave.result.first!.stageId.value!)!.name.localized)
+            }
             Text(wave.eventType!.localized)
                 .splatfont2(size: 16)
         }

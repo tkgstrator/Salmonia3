@@ -72,6 +72,7 @@
 		10AD114D2600EB18008C0E64 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AD114C2600EB18008C0E64 /* Error.swift */; };
 		10B07C5F260A1463008FDE1B /* CoopShiftStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B07C5E260A1463008FDE1B /* CoopShiftStatsView.swift */; };
 		10B62CA32669CC1400916A64 /* CoopWaveCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B62CA22669CC1400916A64 /* CoopWaveCollection.swift */; };
+		10B62CAF2669D48E00916A64 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B62CAE2669D48E00916A64 /* Appearance.swift */; };
 		10BBBEA226049EF400DA79C9 /* CoopResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBBEA126049EF400DA79C9 /* CoopResultView.swift */; };
 		10CF098E25FB97CB00D2EEB1 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF098D25FB97CB00D2EEB1 /* BetterSafariView */; };
 		10CF099425FB97F300D2EEB1 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF099325FB97F300D2EEB1 /* SwiftUIRefresh */; };
@@ -179,6 +180,7 @@
 		10AD114C2600EB18008C0E64 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		10B07C5E260A1463008FDE1B /* CoopShiftStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftStatsView.swift; sourceTree = "<group>"; };
 		10B62CA22669CC1400916A64 /* CoopWaveCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopWaveCollection.swift; sourceTree = "<group>"; };
+		10B62CAE2669D48E00916A64 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		10BBBEA126049EF400DA79C9 /* CoopResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopResultView.swift; sourceTree = "<group>"; };
 		10CF09BE25FB9AEC00D2EEB1 /* SplitNavigationViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitNavigationViewStyle.swift; sourceTree = "<group>"; };
 		10CF09F325FB9BE100D2EEB1 /* RealmCoopResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopResult.swift; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 				10682F00265000590035CC68 /* WeaponType.swift */,
 				10682F082650026D0035CC68 /* SpecialType.swift */,
 				10682F102650046D0035CC68 /* SalmonidType.swift */,
+				10B62CAE2669D48E00916A64 /* Appearance.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -845,6 +848,7 @@
 				10682EFB264FEF2A0035CC68 /* StatsView.swift in Sources */,
 				10682F092650026D0035CC68 /* SpecialType.swift in Sources */,
 				10CF0A0525FBA6BF00D2EEB1 /* RealmCoopWave.swift in Sources */,
+				10B62CAF2669D48E00916A64 /* Appearance.swift in Sources */,
 				10377F8625FD041900536A94 /* AppManager.swift in Sources */,
 				10377F9125FD09E800536A94 /* LoadingView.swift in Sources */,
 				102C75DF2659BA5700AEE20F /* LoadingIndicator.swift in Sources */,

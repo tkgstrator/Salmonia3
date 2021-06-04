@@ -14,6 +14,8 @@ struct SettingView: View {
     @EnvironmentObject var appManager: AppManager
     @EnvironmentObject var results: CoreRealmCoop
     @State var selectedURL: URL? = nil
+    @State var isActive: Bool = false
+    @State var isPresented: Bool = false
     private let systemVersion: String = UIDevice.current.systemVersion
     private let systemName: String = UIDevice.current.systemName
     private let deviceName: String = UIDevice.current.localizedModel
@@ -29,6 +31,13 @@ struct SettingView: View {
             
             Section(header: Text(.HEADER_APPEARANCE).splatfont2(.orange, size: 14)) {
                 Toggle(LocalizableStrings.Key.SETTING_DARKMODE.rawValue.localized, isOn: $appManager.isDarkMode)
+                Picker(selection: $appManager.listStyle, label: Text(.SETTING_LISTSTYLE)) {
+                    ForEach(ListStyle.allCases, id:\.rawValue) {
+                        Text($0.rawValue.localized)
+                            .tag($0)
+                    }
+                    .navigationTitle(.TITLE_SETTINGS)
+                }
             }
             
             Section(header: Text(.HEADER_PRODUCT).splatfont2(.orange, size: 14)) {
@@ -40,7 +49,20 @@ struct SettingView: View {
             
             Section(header: Text(.HEADER_SALMONSTATS).splatfont2(.orange, size: 14)) {
                 SettingMenu(title: .SETTING_UPLOAD, value: SalmonStats.shared.apiToken != nil)
-                NavigationLink(destination: ImportingView(), label: { Text(.SETTING_IMPORT_RESULT)})
+                Button(action: { isPresented.toggle() }, label: { Text(.SETTING_IMPORT_RESULT) })
+                    .background(
+                        NavigationLink(destination: ImportingView(), isActive: $isActive, label: { EmptyView() })
+                            .disabled(true)
+                            .frame(width: 0, height: 0, alignment: .center)
+                            .opacity(0.0)
+                    )
+                    .buttonStyle(PlainButtonStyle())
+                    .alert(isPresented: $isPresented) {
+                        Alert(title: Text(.TEXT_CONFIRM),
+                              message: Text(.TEXT_IMPORT),
+                              primaryButton: .default(Text(.BTN_CONFIRM), action: { isActive.toggle() }),
+                              secondaryButton: .destructive(Text(.BTN_CANCEL)))
+                    }
                 NavigationLink(destination: UsernameView(), label: { Text(.SETTING_UPDATE_NAME)})
             }
             
@@ -84,7 +106,7 @@ struct SettingView: View {
                 .preferredControlAccentColor(.accentColor)
                 .dismissButtonStyle(.done)
             }
-            .buttonStyle(PlainButtonStyle())
+//            .buttonStyle(PlainButtonStyle())
     }
 }
 

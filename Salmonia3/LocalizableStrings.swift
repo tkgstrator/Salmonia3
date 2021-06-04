@@ -105,8 +105,13 @@ class LocalizableStrings {
         case SETTING_LOG_SEND
         case SETTING_IMPORT_NUM
         case SETTING_SPLATNET2
+        case SETTING_LISTSTYLE
+        case SETTING_ENABLE_IMPORT
+        case SETTING_GENERAL
+        case SETTING_IMPORTANT
         case SHIFT_SCHEDULE
         case SUPPLIED_WEAPONS
+        case TEXT_IMPORT
         case TEXT_CONFIRM
         case TEXT_ERASE_DATA
         case TEXT_RE_SIGN_IN

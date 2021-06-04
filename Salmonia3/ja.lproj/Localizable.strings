@@ -31,8 +31,6 @@
 "FEATURE_FREE_02_DESC"="2022年までの全シフトを表示します";
 "FEATURE_FREE_03"="自分の名前も非表示";
 "FEATURE_FREE_03_DESC"="リザルト画面で自分の名前も隠します";
-"FEATURE_FREE_04"="リストスタイルを使う";
-"FEATURE_FREE_04_DESC"="リザルト一覧でリストスタイルを使います";
 "FEATURE_PAID_01"="ロード画像";
 "FEATURE_PAID_01_DESC"="ロード中の進捗表示画像を変更します";
 "FEATURE_PAID_02"="広告の非表示";
@@ -103,10 +101,14 @@
 "SETTING_DARKMODE"="ダークモード";
 "SETTING_DETAIL"="詳細設定";
 "SETTING_DEVICE"="デバイス";
+"SETTING_ENABLE_IMPORT"="Salmon Statsからの取り込み機能";
 "SETTING_ERASE_DATA"="データ消去";
 "SETTING_FREE_PRODUCT"="無料機能";
+"SETTING_GENERAL"="一般";
+"SETTING_IMPORTANT"="重要";
 "SETTING_IMPORT_NUM"="リザルト取り込み件数";
 "SETTING_IMPORT_RESULT"="リザルト取り込み";
+"SETTING_LISTSTYLE"="リザルト表示形式";
 "SETTING_LOADING_TYPE" = "ローディング中画像";
 "SETTING_LOG_SEND"="ログの送信を許可";
 "SETTING_PAID_PRODUCT"="有料機能";
@@ -118,6 +120,9 @@
 "SETTING_UPDATE_NAME"="ユーザ名更新";
 "SETTING_UPLOAD"="アップロード";
 "SHIFT_SCHEDULE"="シフトスケジュール";
+"STYLE_INSET"="インセット";
+"STYLE_LEGACY"="旧式";
+"STYLE_SIDEBAR"="サイドバー";
 "SUPPLIED_WEAPONS"="支給ブキ";
 "Salmonid Smokeyard"="トキシラズいぶし工房";
 "Spawning Grounds"="シェケナダム";
