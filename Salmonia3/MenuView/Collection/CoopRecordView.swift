@@ -33,7 +33,6 @@ struct CoopRecordView: View {
                     
                 }
             }
-            .onAppear { print(record.goldenEggs) }
         }
         .navigationTitle(StageType.init(rawValue: stageId)!.name.localized)
     }

@@ -24,11 +24,31 @@ struct SettingView: View {
     
     var body: some View {
         List {
-            Section(header: Text(.HEADER_USERINFO).splatfont2(.orange, size: 14)) {
+            Section(header: Text(.HEADER_USERINFO).splatfont2(.orange, size: 14),
+                    footer: Text(.FOOTER_SPLATNET2).splatfont2(.secondary, size: 12).environment(\.lineLimit, 2)) {
                 SettingMenu(title: .SETTING_SPLATNET2, value: SplatNet2.shared.playerId)
                 SettingMenu(title: .RESULTS, value: results.resultCount)
             }
             
+            Section(header: Text(.HEADER_SALMONSTATS).splatfont2(.orange, size: 14),
+                    footer: Text(.FOOTER_SALMONSTATS).splatfont2(.secondary, size: 12).environment(\.lineLimit, 2)) {
+                SettingMenu(title: .SETTING_UPLOAD, value: SalmonStats.shared.apiToken != nil)
+                Button(action: { isPresented.toggle() }, label: { Text(.SETTING_IMPORT_RESULT) })
+                    .background(
+                        NavigationLink(destination: ImportingView(), isActive: $isActive, label: { EmptyView() })
+                            .disabled(true)
+                            .frame(width: 0, height: 0, alignment: .center)
+                            .opacity(0.0)
+                    )
+                    .alert(isPresented: $isPresented) {
+                        Alert(title: Text(.TEXT_CONFIRM),
+                              message: Text(.TEXT_IMPORT),
+                              primaryButton: .default(Text(.BTN_CONFIRM), action: { isActive.toggle() }),
+                              secondaryButton: .destructive(Text(.BTN_CANCEL)))
+                    }
+                NavigationLink(destination: UsernameView(), label: { Text(.SETTING_UPDATE_NAME)})
+            }
+
             Section(header: Text(.HEADER_APPEARANCE).splatfont2(.orange, size: 14)) {
                 Toggle(LocalizableStrings.Key.SETTING_DARKMODE.rawValue.localized, isOn: $appManager.isDarkMode)
                 Picker(selection: $appManager.listStyle, label: Text(.SETTING_LISTSTYLE)) {
@@ -47,25 +67,7 @@ struct SettingView: View {
                 #endif
             }
             
-            Section(header: Text(.HEADER_SALMONSTATS).splatfont2(.orange, size: 14)) {
-                SettingMenu(title: .SETTING_UPLOAD, value: SalmonStats.shared.apiToken != nil)
-                Button(action: { isPresented.toggle() }, label: { Text(.SETTING_IMPORT_RESULT) })
-                    .background(
-                        NavigationLink(destination: ImportingView(), isActive: $isActive, label: { EmptyView() })
-                            .disabled(true)
-                            .frame(width: 0, height: 0, alignment: .center)
-                            .opacity(0.0)
-                    )
-                    .buttonStyle(PlainButtonStyle())
-                    .alert(isPresented: $isPresented) {
-                        Alert(title: Text(.TEXT_CONFIRM),
-                              message: Text(.TEXT_IMPORT),
-                              primaryButton: .default(Text(.BTN_CONFIRM), action: { isActive.toggle() }),
-                              secondaryButton: .destructive(Text(.BTN_CANCEL)))
-                    }
-                NavigationLink(destination: UsernameView(), label: { Text(.SETTING_UPDATE_NAME)})
-            }
-            
+
             Section(header: Text(.HEADER_APPLICATION).splatfont2(.orange, size: 14)) {
                 PrivacyButton
                 NavigationLink(destination: DetailView(), label: { Text(.SETTING_DETAIL) })

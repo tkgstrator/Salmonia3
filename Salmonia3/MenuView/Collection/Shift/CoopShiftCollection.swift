@@ -8,19 +8,24 @@
 import SwiftUI
 
 struct CoopShiftCollection: View {
+    @Environment(\.presentationMode) var present
     @EnvironmentObject var main: CoreRealmCoop
-    
+
     var body: some View {
         ScrollViewReader { proxy in
             List {
                 ForEach(main.shifts.indices, id:\.self) { index in
-                    NavigationLink(destination: CoopShiftStatsView(startTime: main.shifts[index].startTime), label: {
+                    ZStack(alignment: .leading) {
+                        NavigationLink(destination: CoopShiftStatsView(startTime: main.shifts[index].startTime), label: {
+                            EmptyView()
+                        })
+                        .opacity(0.0)
                         CoopShift(shift: main.shifts[index])
-                    })
+                    }
                 }
             }
             .onAppear {
-                withAnimation {
+                if present.wrappedValue.isPresented {
                     proxy.scrollTo(main.currentShiftNumber, anchor: .center)
                 }
             }
