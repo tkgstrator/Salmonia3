@@ -111,6 +111,8 @@ class LocalizableStrings {
         case SETTING_IMPORTANT
         case SHIFT_SCHEDULE
         case SUPPLIED_WEAPONS
+        case FOOTER_SPLATNET2
+        case FOOTER_SALMONSTATS
         case TEXT_IMPORT
         case TEXT_CONFIRM
         case TEXT_ERASE_DATA

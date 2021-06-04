@@ -43,6 +43,7 @@
 		104BD608261C93630013CD27 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BD607261C93630013CD27 /* KeyStorage.swift */; };
 		104BD620261C98800013CD27 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 104BD61F261C98800013CD27 /* URLImage */; };
 		1052C2D026550E7800D3B9A9 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1052C2CF26550E7800D3B9A9 /* DetailView.swift */; };
+		10539182266AA86B001025E1 /* ViewWillAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10539181266AA86B001025E1 /* ViewWillAppear.swift */; };
 		10567DD8264ECDD0002654D3 /* SplatNet2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10567DD7264ECDD0002654D3 /* SplatNet2.swift */; };
 		1059416725FA49E500C32D21 /* Salmonia3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059416625FA49E500C32D21 /* Salmonia3App.swift */; };
 		1059416925FA49E500C32D21 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059416825FA49E500C32D21 /* ContentView.swift */; };
@@ -145,6 +146,7 @@
 		104AA7DB2605E0C8007BDC24 /* GoogleMobileAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMobileAds.swift; sourceTree = "<group>"; };
 		104BD607261C93630013CD27 /* KeyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyStorage.swift; sourceTree = "<group>"; };
 		1052C2CF26550E7800D3B9A9 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		10539181266AA86B001025E1 /* ViewWillAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWillAppear.swift; sourceTree = "<group>"; };
 		10567DD7264ECDD0002654D3 /* SplatNet2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplatNet2.swift; sourceTree = "<group>"; };
 		1059416325FA49E500C32D21 /* Salmonia3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Salmonia3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1059416625FA49E500C32D21 /* Salmonia3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salmonia3App.swift; sourceTree = "<group>"; };
@@ -339,6 +341,14 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
+		10539180266AA847001025E1 /* ViewWillHandler */ = {
+			isa = PBXGroup;
+			children = (
+				10539181266AA86B001025E1 /* ViewWillAppear.swift */,
+			);
+			path = ViewWillHandler;
+			sourceTree = "<group>";
+		};
 		1059415A25FA49E500C32D21 = {
 			isa = PBXGroup;
 			children = (
@@ -373,6 +383,7 @@
 				1059416825FA49E500C32D21 /* ContentView.swift */,
 				108C04072659847D008D2D8C /* GoogleService-Info.plist */,
 				107F9B3A2614A8CA001581C7 /* MenuView */,
+				10539180266AA847001025E1 /* ViewWillHandler */,
 				10CF09F825FB9BEE00D2EEB1 /* Realm */,
 				10CF09F925FB9C4900D2EEB1 /* ObservableObject */,
 				10682EFF265000400035CC68 /* Enum */,
@@ -849,6 +860,7 @@
 				10682F092650026D0035CC68 /* SpecialType.swift in Sources */,
 				10CF0A0525FBA6BF00D2EEB1 /* RealmCoopWave.swift in Sources */,
 				10B62CAF2669D48E00916A64 /* Appearance.swift in Sources */,
+				10539182266AA86B001025E1 /* ViewWillAppear.swift in Sources */,
 				10377F8625FD041900536A94 /* AppManager.swift in Sources */,
 				10377F9125FD09E800536A94 /* LoadingView.swift in Sources */,
 				102C75DF2659BA5700AEE20F /* LoadingIndicator.swift in Sources */,

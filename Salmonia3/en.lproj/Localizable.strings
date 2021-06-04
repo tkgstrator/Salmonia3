@@ -146,3 +146,7 @@
 "rush"="Rush";
 "the-mothership"="The Mothership";
 "water-levels"="-";
+"FOOTER_SPLATNET2"="If the value of SplatNet2 is empty, please re-sign in in advanced settings.";
+"FOOTER_SALMONSTATS"="If Link is disabled, please re-sign in in advanced settings.";
+"TEXT_IMPORT"="This operation may take a long time.";
+

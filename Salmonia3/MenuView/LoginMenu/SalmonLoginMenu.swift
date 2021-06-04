@@ -13,11 +13,11 @@ import Alamofire
 import SalmonStats
 
 struct SalmonLoginMenu: View {
-    @Environment(\.presentationMode) var present
+//    @Environment(\.presentationMode) var present
+    @EnvironmentObject var appManager: AppManager
     @State var isActive: Bool = false
     @State var isPresented: Bool = false
     @State var oAuthURL: URL = URL(string: "https://salmon-stats-api.yuki.games/auth/twitter")!
-    @AppStorage("isFirstLaunch") var isFirstLaunch = true
 
     var body: some View {
         GeometryReader { geometry in
@@ -48,7 +48,7 @@ struct SalmonLoginMenu: View {
             WebAuthenticationSession(url: oAuthURL, callbackURLScheme: "salmon-stats") { callbackURL, _ in
                 guard let apiToken = callbackURL?.absoluteString.capture(pattern: "api-token=(.*)", group: 1) else { return }
                 SalmonStats.shared.configure(apiToken: apiToken)
-                isFirstLaunch = false
+                appManager.isFirstLaunch.toggle()
             }
             .prefersEphemeralWebBrowserSession(false)
         }
