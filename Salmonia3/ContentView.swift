@@ -15,6 +15,12 @@ struct ContentView: View {
             TopMenu()
             SettingView()
         }
+        .preferredColorScheme(appManager.isDarkMode ? .dark : .light)
+        .fullScreenCover(isPresented: $appManager.isFirstLaunch) {
+            NavigationView {
+                LoginMenu()
+            }
+        }
         .overlay(!appManager.isPaid02 ? AnyView(GoobleMobileAdsView()) : AnyView(EmptyView()), alignment: .bottom)
         .navigationViewStyle(SplitNavigationViewStyle())
     }

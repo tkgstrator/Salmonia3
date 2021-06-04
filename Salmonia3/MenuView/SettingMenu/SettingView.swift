@@ -25,13 +25,13 @@ struct SettingView: View {
     var body: some View {
         List {
             Section(header: Text(.HEADER_USERINFO).splatfont2(.orange, size: 14),
-                    footer: Text(.FOOTER_SPLATNET2).splatfont2(.secondary, size: 12).environment(\.lineLimit, 2)) {
+                    footer: Text(.FOOTER_SPLATNET2).splatfont2(.secondary, size: 13).environment(\.lineLimit, 2)) {
                 SettingMenu(title: .SETTING_SPLATNET2, value: SplatNet2.shared.playerId)
                 SettingMenu(title: .RESULTS, value: results.resultCount)
             }
             
             Section(header: Text(.HEADER_SALMONSTATS).splatfont2(.orange, size: 14),
-                    footer: Text(.FOOTER_SALMONSTATS).splatfont2(.secondary, size: 12).environment(\.lineLimit, 2)) {
+                    footer: Text(.FOOTER_SALMONSTATS).splatfont2(.secondary, size: 13).environment(\.lineLimit, 2)) {
                 SettingMenu(title: .SETTING_UPLOAD, value: SalmonStats.shared.apiToken != nil)
                 Button(action: { isPresented.toggle() }, label: { Text(.SETTING_IMPORT_RESULT) })
                     .background(
