@@ -11,7 +11,7 @@ struct FreeProductView: View {
     @EnvironmentObject var appManager: AppManager
 
     var body: some View {
-        Form {
+        List {
             Toggle(isOn: $appManager.isFree01, label: {
                 VStack(alignment: .leading, spacing: nil) {
                     Text(.FEATURE_FREE_01)
@@ -65,7 +65,7 @@ struct PaidProductView: View {
     @AppStorage("loadingIcon") var loadingIcon: LoadingType = .LOADING_SNOW
     
     var body: some View {
-        Form {
+        List {
             Section(header: EmptyView()) {
                 Toggle(isOn: $appManager.isPaid01, label: {
                     VStack(alignment: .leading, spacing: nil) {

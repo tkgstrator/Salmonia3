@@ -31,21 +31,21 @@ struct CoopPlayerResultView: View {
                 }
             }
             Section(header: Text(.RESULT_SALMONIDS).splatfont2(.orange, size: 14)) {
-                ForEach(Range(0...8)) { id in
-                    if result.bossCounts[id] != 0 {
+                ForEach(SalmonidType.allCases, id:\.self) { salmonid in
+                    if result.bossCounts[salmonid.index] != 0 {
                         HStack(spacing: 0) {
                             VStack(spacing: 0) {
-                                Image(SalmonidType.init(rawValue: id)!.image)
+                                Image(salmonid.image)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 30)
-                                if result.bossKillCounts[id] == result.bossCounts[id] {
-                                    Text("\(result.bossKillCounts[id])/\(result.bossCounts[id])")
+                                if result.bossKillCounts[salmonid.index] == result.bossCounts[salmonid.index] {
+                                    Text("\(result.bossKillCounts[salmonid.index])/\(result.bossCounts[salmonid.index])")
                                         .splatfont2(.yellow, size: 14)
                                         .shadow(color: .black, radius: 0, x: 1, y: 1)
                                         .frame(width: 40, height: 16)
                                 } else {
-                                    Text("\(result.bossKillCounts[id])/\(result.bossCounts[id])")
+                                    Text("\(result.bossKillCounts[salmonid.index])/\(result.bossCounts[salmonid.index])")
                                         .splatfont2(size: 14)
                                         .frame(width: 40, height: 16)
                                 }
@@ -53,12 +53,12 @@ struct CoopPlayerResultView: View {
                             .frame(width: 30)
                             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: nil, pinnedViews: []) {
                                 ForEach(result.player.indices, id: \.self) { index in
-                                    if result.player[index].bossKillCounts[id] == result.player.map { $0.bossKillCounts[id] }.max() {
-                                        Text("\(result.player[index].bossKillCounts[id])")
+                                    if result.player[index].bossKillCounts[salmonid.index] == result.player.map { $0.bossKillCounts[salmonid.index] }.max() {
+                                        Text("\(result.player[index].bossKillCounts[salmonid.index])")
                                             .splatfont2(.yellow, size: 18)
                                             .shadow(color: .black, radius: 0, x: 1, y: 1)
                                     } else {
-                                        Text("\(result.player[index].bossKillCounts[id])")
+                                        Text("\(result.player[index].bossKillCounts[salmonid.index])")
                                             .splatfont2(size: 18)
                                     }
                                 }

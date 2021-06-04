@@ -9,32 +9,31 @@ import SwiftUI
 
 struct CoopRecordView: View {
     
-    @State var record: StageRecord = StageRecord()
-    @State private var eventTypes: [String] = [
-        "water-levels", "rush", "goldie-seeking",
-        "griller", "the-mothership", "fog", "cohock-charge"
-    ]
-    @State private var waterLevels: [String] = ["low", "normal", "high"]
-    var stageId: Int
-
+    @State var record: CoopRecord
+    private var stageId: Int
+    
+    init(stageId: Int) {
+        self.stageId = stageId
+        self._record = State(initialValue: CoopRecord(stageId: stageId))
+    }
+    
     var body: some View {
         List {
             Section(header: Text(.HEADER_OVERVIEW).splatfont2(.orange, size: 14)) {
                 RecordColumn(title: .RESULT_JOB_NUM, value: record.jobNum)
                 RecordColumn(title: .RESULT_MAX_GRADE, value: record.maxGrade)
             }
-            ForEach(Range(0...2)) { tide in
-                Section(header: Text(waterLevels[tide].localized).splatfont2(.orange, size: 14)) {
-                    ForEach(Range(0...6)) { event in
-                        if record.goldenEggs[tide][event] != nil {
-                            RecordColumn(title: eventTypes[event], value: record.goldenEggs[tide][event]?.goldenEggs)
+            ForEach(WaterLevel.allCases, id:\.self) { tide in
+                Section(header: Text(tide.waterLevel.localized).splatfont2(.orange, size: 14)) {
+                    ForEach(EventType.allCases, id:\.self) { event in
+                        if let goldenEggs = record.goldenEggs[tide.rawValue][event.rawValue]?.goldenEggs {
+                            RecordColumn(title: event.eventType, value: goldenEggs)
                         }
                     }
+                    
                 }
             }
-        }
-        .onAppear {
-            record = StageRecord(stageId: stageId)
+            .onAppear { print(record.goldenEggs) }
         }
         .navigationTitle(StageType.init(rawValue: stageId)!.name.localized)
     }

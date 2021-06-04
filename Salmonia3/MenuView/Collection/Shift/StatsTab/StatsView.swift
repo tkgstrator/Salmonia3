@@ -11,7 +11,6 @@ struct StatsView: View {
     
     @Binding var startTime: Int
     @State var result: CoopShiftStats?
-
     private func getShiftStats() {
         result = CoopShiftStats(startTime: startTime)
     }
@@ -43,19 +42,33 @@ struct StatsView: View {
                 StatsColumn(title: .RESULT_HELP_COUNT, value: result?.resultAvg?.helpCount)
                 StatsColumn(title: .RESULT_DEAD_COUNT, value: result?.resultAvg?.deadCount)
             }
+            ForEach(WaterLevel.allCases, id:\.rawValue) { tide in
+                Section(header: Text(tide.waterLevel.localized).splatfont2(.orange, size: 14)) {
+                    ForEach(EventType.allCases, id:\.rawValue) { event in
+                        if let goldenEggs = result?.records.goldenEggs[tide.rawValue][event.rawValue]?.goldenEggs {
+                            StatsColumn(title: event.eventType, value: goldenEggs)
+                        }
+                    }
+                }
+            }
         }
         .onAppear(perform: getShiftStats)
     }
 }
 
 fileprivate struct StatsColumn: View {
-    
     var title: String
     var value: String
     
     init(title: LocalizableStrings.Key, value: Optional<Any>)
     {
         self.title = title.rawValue
+        self.value = value.stringValue
+    }
+    
+    init(title: String, value: Optional<Any>)
+    {
+        self.title = title.localized
         self.value = value.stringValue
     }
     

@@ -17,9 +17,9 @@ struct DetailView: View {
     @State var messageTitle: String = ""
     
     var body: some View {
-        Form {
+        List {
             Section {
-                Toggle(LocalizableStrings.Key.SETTING_LOG_SEND.rawValue.localized, isOn: $appManager.isDebugLog)
+                Toggle(LocalizableStrings.Key.SETTING_LOG_SEND.rawValue.localized, isOn: $appManager.isDebugMode)
                 Picker(selection: $appManager.importNum, label: Text(.SETTING_IMPORT_NUM)) {
                     ForEach(ImportType.allCases, id:\.rawValue) {
                         Text("\($0.rawValue)")

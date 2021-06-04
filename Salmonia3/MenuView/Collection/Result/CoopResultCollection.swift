@@ -36,7 +36,6 @@ struct CoopResultCollection: View {
                         }
                     }
                 }
-                
             }
         }
         .listStyle(SidebarListStyle())
@@ -53,7 +52,6 @@ struct CoopResultCollection: View {
                         }
                     }
                 }
-                
             }
         }
         .listStyle(PlainListStyle())
@@ -91,10 +89,8 @@ struct ResultOverview: View {
             return AnyView(
                 HStack {
                     Text(SRGrade(rawValue: result.gradeId.value ?? 0)!.name)
-                    Group {
-                        Text("\(result.gradePoint.intValue)")
-                        Text("↑").splatfont(.red, size: 14)
-                    }
+                    Text("\(result.gradePoint.intValue)")
+                    Text("↑").splatfont(.red, size: 14)
                 }
                 .splatfont(size: 14)
             )
@@ -102,10 +98,8 @@ struct ResultOverview: View {
             return AnyView(
                 HStack {
                     Text(SRGrade(rawValue: result.gradeId.value ?? 0)!.name)
-                    Group {
-                        Text("\(result.gradePoint.intValue)")
-                        Text(result.gradePointDelta.intValue == 0 ? "→" : "↓")
-                    }
+                    Text("\(result.gradePoint.intValue)")
+                    Text(result.gradePointDelta.intValue == 0 ? "→" : "↓")
                 }
                 .splatfont(.gray, size: 14)
             )
@@ -117,13 +111,13 @@ struct ResultOverview: View {
             return AnyView(
                 Text(.RESULT_CLEAR)
                     .splatfont(.green, size: 14)
-                    .frame(width: 50)
+                    .frame(width: 70)
             )
         } else {
             return AnyView(
                 Text(.RESULT_DEFEAT)
                     .splatfont(.orange, size: 14)
-                    .frame(width: 50)
+                    .frame(width: 70)
             )
         }
     }

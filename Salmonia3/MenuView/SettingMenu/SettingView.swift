@@ -11,10 +11,8 @@ import SalmonStats
 import SplatNet2
 
 struct SettingView: View {
-    
-    @EnvironmentObject var appManager: CoreRealmCoop
-    @AppStorage("isFirstLaunch") var isFirstLaunch = true
-    @AppStorage("isDarkMode") var isDarkMode = false
+    @EnvironmentObject var appManager: AppManager
+    @EnvironmentObject var results: CoreRealmCoop
     @State var selectedURL: URL? = nil
     private let systemVersion: String = UIDevice.current.systemVersion
     private let systemName: String = UIDevice.current.systemName
@@ -25,11 +23,12 @@ struct SettingView: View {
     var body: some View {
         List {
             Section(header: Text(.HEADER_USERINFO).splatfont2(.orange, size: 14)) {
-                SettingMenu(title: .RESULTS, value: appManager.results.count)
+                SettingMenu(title: .SETTING_SPLATNET2, value: SplatNet2.shared.playerId)
+                SettingMenu(title: .RESULTS, value: results.resultCount)
             }
             
             Section(header: Text(.HEADER_APPEARANCE).splatfont2(.orange, size: 14)) {
-                Toggle(LocalizableStrings.Key.SETTING_DARKMODE.rawValue.localized, isOn: $isDarkMode)
+                Toggle(LocalizableStrings.Key.SETTING_DARKMODE.rawValue.localized, isOn: $appManager.isDarkMode)
             }
             
             Section(header: Text(.HEADER_PRODUCT).splatfont2(.orange, size: 14)) {
