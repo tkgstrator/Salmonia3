@@ -30,8 +30,6 @@
 "FEATURE_FREE_02_DESC"="Display future shift schedule until 2022.";
 "FEATURE_FREE_03"="Hide My Nickname";
 "FEATURE_FREE_03_DESC"="Hide my nickname in results.";
-"FEATURE_FREE_04"="Using ListStyle";
-"FEATURE_FREE_04_DESC"="Using sidebar liststyle in result viewer.";
 "FEATURE_PAID_01"="Loading Indicator";
 "FEATURE_PAID_01_DESC"="Change loading indicator.";
 "FEATURE_PAID_02"="Disable Ads";
@@ -92,10 +90,14 @@
 "SETTING_DARKMODE"="Darkmode";
 "SETTING_DETAIL"="Advanced Settings";
 "SETTING_DEVICE"="Devide";
+"SETTING_ENABLE_IMPORT"="Import from Salmon Stats";
 "SETTING_ERASE_DATA"="Erase Data";
 "SETTING_FREE_PRODUCT"="Free Product";
+"SETTING_GENERAL"="General";
+"SETTING_IMPORTANT"="Important";
 "SETTING_IMPORT_NUM"="Import results";
 "SETTING_IMPORT_RESULT"="Import Results";
+"SETTING_LISTSTYLE"="Results Style";
 "SETTING_LOADING_TYPE" = "Indicator Type";
 "SETTING_LOADING_TYPE" = "Loading Indicator";
 "SETTING_LOG_SEND"="Accept log to be sent";
@@ -108,6 +110,9 @@
 "SETTING_UPDATE_NAME"="Update Nickname";
 "SETTING_UPLOAD"="Link with Salmon Stats";
 "SHIFT_SCHEDULE"="Shift Schedule";
+"STYLE_INSET"="Inset";
+"STYLE_LEGACY"="Legacy";
+"STYLE_SIDEBAR"="Sidebar";
 "SUPPLIED_WEAPONS"="Supplied Weapons";
 "TEXT_CONFIRM"="Are you sure?";
 "TEXT_ERASE_DATA"="It may take a minute to remove all data with this device. This operation can not undone.";

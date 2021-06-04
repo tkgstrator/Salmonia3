@@ -33,13 +33,6 @@ struct FreeProductView: View {
                         .splatfont2(size: 12)
                 }
             })
-            Toggle(isOn: $appManager.isFree04, label: {
-                VStack(alignment: .leading, spacing: nil) {
-                    Text(.FEATURE_FREE_04)
-                    Text(.FEATURE_FREE_04_DESC)
-                        .splatfont2(size: 12)
-                }
-            })
         }
         .navigationTitle(.TITLE_FREE_PRODUCT)
         .splatfont2(size: 16)

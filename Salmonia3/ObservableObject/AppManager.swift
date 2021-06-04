@@ -19,7 +19,7 @@ class AppManager: ObservableObject {
     @AppStorage("FEATURE_FREE_01") var isFree01: Bool = false // クマブキ表示
     @AppStorage("FEATURE_FREE_02") var isFree02: Bool = false // ローテーション表示
     @AppStorage("FEATURE_FREE_03") var isFree03: Bool = false // ニックネームを隠す
-    @AppStorage("FEATURE_FREE_04") var isFree04: Bool = false // リストスタイル
+    @AppStorage("FEATURE_FREE_04") var isFree04: Bool = false
     @AppStorage("FEATURE_FREE_05") var isFree05: Bool = false
 
     // 課金機能
@@ -37,11 +37,11 @@ class AppManager: ObservableObject {
     @AppStorage("FEATURE_GAME_05") var isGame05: Bool = false
     
     // その他の機能
-    @AppStorage("FEATURE_OTHER_01") var isFirstLaunch: Bool = false // 初回起動かどうかのフラグ
-    @AppStorage("FEATURE_OTHER_02") var importNum: Int = 50         // 一度にSalmon Statsから取得するリザルトの件数
-    @AppStorage("FEATURE_OTHER_03") var isDarkMode: Bool = false    // ダークモード判定
-    @AppStorage("FEATURE_OTHER_04") var isOther04: Bool = false     //
-    @AppStorage("FEATURE_OTHER_05") var isOther05: Bool = false     //
+    @AppStorage("FEATURE_OTHER_01") var isFirstLaunch: Bool = false     // 初回起動かどうかのフラグ
+    @AppStorage("FEATURE_OTHER_02") var importNum: Int = 50             // 一度にSalmon Statsから取得するリザルトの件数
+    @AppStorage("FEATURE_OTHER_03") var isDarkMode: Bool = false        // ダークモード判定
+    @AppStorage("FEATURE_OTHER_04") var listStyle: ListStyle = .legacy  // リストスタイル
+    @AppStorage("FEATURE_OTHER_05") var importEnabled: Bool = true      // 無効化されたインポート機能を再有効化
 
     // デバッグ機能
     @AppStorage("FEATURE_DEBUG_01") var isDebugMode: Bool = false // ログ出力
