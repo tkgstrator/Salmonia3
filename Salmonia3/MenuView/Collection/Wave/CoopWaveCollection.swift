@@ -13,7 +13,11 @@ struct CoopWaveCollection: View {
     var body: some View {
         List {
             ForEach(main.waves) { wave in
-                NavigationLink(destination: CoopResultView(result: wave.result.first!)) {
+                ZStack(alignment: .leading) {
+                    NavigationLink(destination: CoopResultView(result: wave.result.first!)) {
+                        EmptyView()
+                    }
+                    .opacity(0.0)
                     WaveOverview(wave: wave)
                 }
             }
@@ -42,7 +46,7 @@ struct WaveOverview: View {
                 Image(String(wave.weaponLists[index]).imageURL)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(minWidth: 25)
+                    .frame(minWidth: 30)
             }
         }
         

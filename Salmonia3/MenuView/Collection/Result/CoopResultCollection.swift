@@ -33,7 +33,11 @@ struct CoopResultCollection: View {
             ForEach(main.results) { shift in
                 Section(header: CoopShift(shift: shift.phase)) {
                     ForEach(shift.results, id:\.self) { result in
-                        NavigationLink(destination: CoopResultView(result: result)) {
+                        ZStack(alignment: .leading) {
+                            NavigationLink(destination: CoopResultView(result: result)) {
+                                EmptyView()
+                            }
+                            .opacity(0.0)
                             ResultOverview(result: result)
                         }
                     }
@@ -49,7 +53,11 @@ struct CoopResultCollection: View {
             ForEach(main.results) { shift in
                 Section(header: CoopShift(shift: shift.phase)) {
                     ForEach(shift.results, id:\.self) { result in
-                        NavigationLink(destination: CoopResultView(result: result)) {
+                        ZStack(alignment: .leading) {
+                            NavigationLink(destination: CoopResultView(result: result)) {
+                                EmptyView()
+                            }
+                            .opacity(0.0)
                             ResultOverview(result: result)
                         }
                     }
@@ -65,7 +73,11 @@ struct CoopResultCollection: View {
             ForEach(main.results) { shift in
                 Section(header: CoopShift(shift: shift.phase)) {
                     ForEach(shift.results, id:\.self) { result in
-                        NavigationLink(destination: CoopResultView(result: result)) {
+                        ZStack(alignment: .leading) {
+                            NavigationLink(destination: CoopResultView(result: result)) {
+                                EmptyView()
+                            }
+                            .opacity(0.0)
                             ResultOverview(result: result)
                         }
                     }

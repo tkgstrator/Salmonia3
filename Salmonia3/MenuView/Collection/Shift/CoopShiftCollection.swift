@@ -91,7 +91,7 @@ struct CoopShift: View {
                                 .frame(maxWidth: 45)
                         }
                         .padding(.bottom, 20)
-                        .frame(maxWidth: 200)
+                        .frame(maxWidth: 250)
                     )
                 } else {
                     AnyView(
@@ -104,7 +104,7 @@ struct CoopShift: View {
                             }
                         }
                         .padding(.bottom, 20)
-                        .frame(maxWidth: 200)
+                        .frame(maxWidth: 250)
                     )
                 }
                 
