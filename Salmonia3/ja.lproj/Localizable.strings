@@ -166,3 +166,6 @@
 "rush"="ラッシュ";
 "the-mothership"="ハコビヤ襲来";
 "water-levels"="-";
+"HELP_GET_RESULT"="イカリング2からデータ取得方法";
+"HELP_IMPORT_RESULT"="Salmon Statsからデータ取得方法";
+"TITLE_HELP"="使い方解説";

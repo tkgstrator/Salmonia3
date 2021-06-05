@@ -67,9 +67,9 @@ struct SettingView: View {
                 #endif
             }
             
-
             Section(header: Text(.HEADER_APPLICATION).splatfont2(.orange, size: 14)) {
                 PrivacyButton
+                NavigationLink(destination: HelpView(), label: { Text(.TITLE_HELP) })
                 NavigationLink(destination: DetailView(), label: { Text(.SETTING_DETAIL) })
                 SettingMenu(title: .SETTING_API_VERSION, value: "\(apiVersion)")
                 SettingMenu(title: .SETTING_APP_VERSION, value: "\(appVersion)")
@@ -108,7 +108,6 @@ struct SettingView: View {
                 .preferredControlAccentColor(.accentColor)
                 .dismissButtonStyle(.done)
             }
-//            .buttonStyle(PlainButtonStyle())
     }
 }
 

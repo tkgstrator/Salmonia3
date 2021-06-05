@@ -141,6 +141,10 @@ class LocalizableStrings {
         case LANPLAY_RECORDS
         case ALERT_SIGN_IN
         case TEXT_SIGN_IN
+        case HELP_IMPORT_RESULT
+        case HELP_GET_RESULT
+        case SETTING_HELP
+        case TITLE_HELP
     }
 
 }

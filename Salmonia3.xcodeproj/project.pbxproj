@@ -44,6 +44,7 @@
 		104BD620261C98800013CD27 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 104BD61F261C98800013CD27 /* URLImage */; };
 		1052C2D026550E7800D3B9A9 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1052C2CF26550E7800D3B9A9 /* DetailView.swift */; };
 		10539182266AA86B001025E1 /* ViewWillAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10539181266AA86B001025E1 /* ViewWillAppear.swift */; };
+		10539190266BD8B5001025E1 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1053918F266BD8B5001025E1 /* HelpView.swift */; };
 		10567DD8264ECDD0002654D3 /* SplatNet2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10567DD7264ECDD0002654D3 /* SplatNet2.swift */; };
 		1059416725FA49E500C32D21 /* Salmonia3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059416625FA49E500C32D21 /* Salmonia3App.swift */; };
 		1059416925FA49E500C32D21 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059416825FA49E500C32D21 /* ContentView.swift */; };
@@ -147,6 +148,7 @@
 		104BD607261C93630013CD27 /* KeyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyStorage.swift; sourceTree = "<group>"; };
 		1052C2CF26550E7800D3B9A9 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		10539181266AA86B001025E1 /* ViewWillAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWillAppear.swift; sourceTree = "<group>"; };
+		1053918F266BD8B5001025E1 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		10567DD7264ECDD0002654D3 /* SplatNet2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplatNet2.swift; sourceTree = "<group>"; };
 		1059416325FA49E500C32D21 /* Salmonia3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Salmonia3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1059416625FA49E500C32D21 /* Salmonia3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salmonia3App.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				102465F025FDDABD004DC043 /* SettingView.swift */,
 				1052C2CF26550E7800D3B9A9 /* DetailView.swift */,
 				109EF35D260CAB7F00076157 /* ProductView.swift */,
+				1053918F266BD8B5001025E1 /* HelpView.swift */,
 			);
 			path = SettingMenu;
 			sourceTree = "<group>";
@@ -833,6 +836,7 @@
 				10B07C5F260A1463008FDE1B /* CoopShiftStatsView.swift in Sources */,
 				1024662A25FE50A0004DC043 /* Int.swift in Sources */,
 				10377F6525FCD63B00536A94 /* Font.swift in Sources */,
+				10539190266BD8B5001025E1 /* HelpView.swift in Sources */,
 				105941BE25FA525100C32D21 /* Background.swift in Sources */,
 				10D2E1552655548F00AE584E /* Text.swift in Sources */,
 				10448BDD26652E7B00FFB553 /* SRPower.swift in Sources */,

@@ -10,54 +10,59 @@ import BetterSafariView
 import SwiftUI
 import SplatNet2
 import Combine
-import APNGKit
+import SwiftyAPNGKit
 
 struct LoginMenu: View {
-    @Environment(\.presentationMode) var present
     @State var isActive: Bool = false
+    @State var oauthURL: URL?
     @State var isPresented: Bool = false
-    @State var isLoading: Bool = false
     @State var task = Set<AnyCancellable>()
     @State var apiError: SplatNet2.APIError?
 
-    var image = APNGImage(named: "Loading")
-
     var body: some View {
         GeometryReader { geometry in
-            ZStack {
-                Group {
-                    VStack {
-                        Text(.TEXT_SALMONIA)
-                            .splatfont2(size: 36)
-                        Text(.TEXT_WELCOME_SPLATNET2)
-                            .splatfont2(.secondary, size: 18)
-                            .multilineTextAlignment(.center)
-                            .lineLimit(4)
-                    }
-                    .padding(.horizontal, 10)
-                    .position(x: geometry.frame(in: .local).midX, y: geometry.size.height / 4)
-                    VStack(spacing: 40) {
-                        Button(action: { isPresented.toggle() }, label: {
-                            Text(.BTN_SIGN_IN)
+            Group {
+                VStack {
+                    Text(.TEXT_SALMONIA)
+                        .splatfont2(size: 36)
+                    Text(.TEXT_WELCOME_SPLATNET2)
+                        .splatfont2(.secondary, size: 18)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(4)
+                }
+                .padding(.horizontal, 10)
+                .position(x: geometry.frame(in: .local).midX, y: geometry.size.height / 4)
+                VStack(spacing: 40) {
+                    Button(action: { oauthURL = SplatNet2.shared.oauthURL }, label: {
+                        Text(.BTN_SIGN_IN)
+                            .splatfont2(.cloud, size: 20)
+                    })
+                    if let _ = SplatNet2.shared.sessionToken {
+                        Button(action: { migrateSplatNet2Account() }, label: {
+                            Text(.BTN_MIGRATE)
                                 .splatfont2(.cloud, size: 20)
                         })
-                        if let _ = SplatNet2.shared.sessionToken {
-                            Button(action: { migrateSplatNet2Account() }, label: {
-                                Text(.BTN_MIGRATE)
-                                    .splatfont2(.cloud, size: 20)
-                            })
-                        }
                     }
-                    .buttonStyle(BlueButtonStyle())
-                    .position(x: geometry.frame(in: .local).midX, y: 3 * geometry.size.height / 4)
                 }
-                .disabled(isLoading)
+                .buttonStyle(BlueButtonStyle())
+                .position(x: geometry.frame(in: .local).midX, y: 3 * geometry.size.height / 4)
             }
+            .overlay(Helpbutton, alignment: .topTrailing)
         }
-        .webAuthenticationSession(isPresented: $isPresented) {
-            WebAuthenticationSession(url: SplatNet2.shared.oauthURL, callbackURLScheme: "npf71b963c1b7b6d119") { callbackURL, _ in
+        .safariView(isPresented: $isPresented) {
+            SafariView(url: URL(string: "https://github.com/tkgstrator/Salmonia3/raw/develop/Resources/00.png")!,
+                       configuration: SafariView.Configuration(
+                        entersReaderIfAvailable: false,
+                        barCollapsingEnabled: true
+                       )
+            )
+            .preferredBarAccentColor(.clear)
+            .preferredControlAccentColor(.accentColor)
+            .dismissButtonStyle(.done)
+        }
+        .webAuthenticationSession(item: $oauthURL) { url in
+            WebAuthenticationSession(url: url, callbackURLScheme: "npf71b963c1b7b6d119") { callbackURL, _ in
                 guard let code: String = callbackURL?.absoluteString.capture(pattern: "de=(.*)&", group: 1) else {
-                    apiError = SplatNet2.APIError.failure
                     return
                 }
                 SplatNet2.shared.getCookie(sessionTokenCode: code)
@@ -78,7 +83,7 @@ struct LoginMenu: View {
         .alert(item: $apiError) { error in
             Alert(title: Text("ALERT_ERROR"),
                   message: Text(error.localizedDescription),
-                  dismissButton: .default(Text("BTN_DISMISS"), action: { present.wrappedValue.dismiss() }))
+                  dismissButton: .default(Text("BTN_DISMISS")))
         }
         .background(BackGround)
         .navigationTitle(.TITLE_LOGIN)
@@ -105,6 +110,11 @@ struct LoginMenu: View {
         } else {
             isActive.toggle()
         }
+    }
+    
+    var Helpbutton: some View {
+        Button(action: { isPresented.toggle() },
+               label: { Image(systemName: "questionmark.circle").resizable().frame(width: 35, height: 35).foregroundColor(.white).padding(.all, 20) })
     }
     
     var BackGround: some View {

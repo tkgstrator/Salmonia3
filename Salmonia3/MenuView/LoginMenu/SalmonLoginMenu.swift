@@ -13,12 +13,11 @@ import Alamofire
 import SalmonStats
 
 struct SalmonLoginMenu: View {
-//    @Environment(\.presentationMode) var present
     @EnvironmentObject var appManager: AppManager
     @State var isActive: Bool = false
     @State var isPresented: Bool = false
     @State var isAlertShowing: Bool = true
-    @State var oAuthURL: URL = URL(string: "https://salmon-stats-api.yuki.games/auth/twitter")!
+    @State var oauthURL: URL?
 
     var body: some View {
         GeometryReader { geometry in
@@ -37,7 +36,7 @@ struct SalmonLoginMenu: View {
             .padding(.horizontal, 10)
             .position(x: geometry.frame(in: .local).midX, y: geometry.size.height / 4)
             VStack(spacing: 40) {
-                Button(action: { isPresented.toggle() }, label: {
+                Button(action: { oauthURL = URL(string: "https://salmon-stats-api.yuki.games/auth/twitter") }, label: {
                     Text(.BTN_SIGN_IN)
                             .splatfont2(.cloud, size: 20)
                 })
@@ -45,8 +44,20 @@ struct SalmonLoginMenu: View {
             .buttonStyle(BlueButtonStyle())
             .position(x: geometry.frame(in: .local).midX, y: 3 * geometry.size.height / 4)
         }
-        .webAuthenticationSession(isPresented: $isPresented) {
-            WebAuthenticationSession(url: oAuthURL, callbackURLScheme: "salmon-stats") { callbackURL, _ in
+        .overlay(Helpbutton, alignment: .topTrailing)
+        .safariView(isPresented: $isPresented) {
+            SafariView(url: URL(string: "https://github.com/tkgstrator/Salmonia3/raw/develop/Resources/01.png")!,
+                       configuration: SafariView.Configuration(
+                        entersReaderIfAvailable: false,
+                        barCollapsingEnabled: true
+                       )
+            )
+            .preferredBarAccentColor(.clear)
+            .preferredControlAccentColor(.accentColor)
+            .dismissButtonStyle(.done)
+        }
+        .webAuthenticationSession(item: $oauthURL) { url in
+            WebAuthenticationSession(url: url, callbackURLScheme: "salmon-stats") { callbackURL, _ in
                 guard let apiToken = callbackURL?.absoluteString.capture(pattern: "api-token=(.*)", group: 1) else { return }
                 SalmonStats.shared.configure(apiToken: apiToken)
                 appManager.isFirstLaunch.toggle()
@@ -61,6 +72,11 @@ struct SalmonLoginMenu: View {
         .navigationTitle(.TITLE_LOGIN)
     }
 
+    var Helpbutton: some View {
+        Button(action: { isPresented.toggle() },
+               label: { Image(systemName: "questionmark.circle").resizable().frame(width: 35, height: 35).foregroundColor(.white).padding(.all, 20) })
+    }
+    
     var BackGround: some View {
         Group {
             LinearGradient(gradient: Gradient(colors: [.blue, .river]), startPoint: .top, endPoint: .bottom)
