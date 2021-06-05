@@ -63,7 +63,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct Salmonia3App: App {
 
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @AppStorage("apiToken") var apiToken: String?
 
     var body: some Scene {
         WindowGroup {
@@ -75,24 +74,6 @@ struct Salmonia3App: App {
                 .environmentObject(CoreRealmCoop())
                 .environmentObject(AppManager())
                 .listStyle(GroupedListStyle())
-//                .onAppear(perform: updateToken)
         }
     }
-//
-//    private func updateToken() {
-//        // APIトークンの設定
-//        if let apiToken = apiToken {
-//            SalmonStats.shared.configure(apiToken: apiToken)
-//        }
-//
-//        // sessionTokenを強制追加
-//        guard let _ = SplatNet2.shared.sessionToken else {
-//            if let account = RealmManager.shared.realm.objects(RealmUserInfo.self).first {
-//                if let sessionToken = account.sessionToken {
-//                    SplatNet2.shared.configure(sessionToken: sessionToken)
-//                }
-//            }
-//            return
-//        }
-//    }
 }
