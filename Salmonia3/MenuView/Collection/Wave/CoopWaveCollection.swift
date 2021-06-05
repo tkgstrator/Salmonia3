@@ -56,13 +56,12 @@ struct WaveOverview: View {
         VStack(alignment: .leading, spacing: 0) {
             Text(StageType.init(rawValue: wave.result.first!.stageId.value!)!.name.localized)
             HStack {
-                Text(wave.waterLevel!.localized)
+                Text(wave.waterLevel!.tide.localized)
                 Text(wave.eventType!.localized)
             }
             .splatfont2(size: 16)
         }
         .splatfont2(size: 14)
-        .frame(width: 90, alignment: .leading)
     }
     
     var ResultEggs: some View {
@@ -83,6 +82,20 @@ struct WaveOverview: View {
     }
 }
 
+fileprivate extension String {
+    var tide: String {
+        switch self {
+        case "high":
+            return "HT"
+        case "low":
+            return "LT"
+        case "normal":
+            return "NT"
+        default:
+            return self
+        }
+    }
+}
 struct CoopWaveCollection_Previews: PreviewProvider {
     static var previews: some View {
         CoopWaveCollection()
