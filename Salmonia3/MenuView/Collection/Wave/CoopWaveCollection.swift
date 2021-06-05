@@ -12,13 +12,13 @@ struct CoopWaveCollection: View {
     
     var body: some View {
         List {
-            ForEach(main.waves) { wave in
+            ForEach(main.waves.indices, id:\.self) { index in
                 ZStack(alignment: .leading) {
-                    NavigationLink(destination: CoopResultView(result: wave.result.first!)) {
+                    NavigationLink(destination: CoopResultView(result: main.waves[index].result.first!)) {
                         EmptyView()
                     }
                     .opacity(0.0)
-                    WaveOverview(wave: wave)
+                    WaveOverview(wave: main.waves[index])
                 }
             }
         }
