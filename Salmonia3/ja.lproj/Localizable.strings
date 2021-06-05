@@ -160,6 +160,9 @@
 "high"="満潮";
 "low"="干潮";
 "normal"="通常";
+"HT"="満潮";
+"LT"="干潮";
+"NT"="通常";
 "rush"="ラッシュ";
 "the-mothership"="ハコビヤ襲来";
 "water-levels"="-";
