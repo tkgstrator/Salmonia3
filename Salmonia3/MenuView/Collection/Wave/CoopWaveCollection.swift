@@ -62,6 +62,7 @@ struct WaveOverview: View {
             .splatfont2(size: 16)
         }
         .splatfont2(size: 14)
+        .frame(width: 110, alignment: .leading)
     }
     
     var ResultEggs: some View {

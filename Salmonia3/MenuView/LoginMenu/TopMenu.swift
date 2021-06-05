@@ -30,8 +30,8 @@ struct TopMenu: View {
                     Waves
                     SalmonStats
                     #if DEBUG
-                    SalmonRecords
-                    LanPlayRecords
+//                    SalmonRecords
+//                    LanPlayRecords
                     #endif
                 }
                 Section(header: Text(.HEADER_SCHEDULE).splatfont2(.orange, size: 14)) {
