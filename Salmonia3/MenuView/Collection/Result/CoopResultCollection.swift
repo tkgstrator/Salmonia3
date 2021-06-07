@@ -10,15 +10,20 @@ import SwiftUI
 struct CoopResultCollection: View {
     @EnvironmentObject var appManager: AppManager
     @EnvironmentObject var main: CoreRealmCoop
-    @State var isActive: Bool = false
-    @State var isShowing: Bool = false
+    @State private var isActive: Bool = false
+    @State private var isShowing: Bool = false
+    @State private var index: Int = 0
+    @State private var offset: CGFloat = 0
+    @State private var orientation: UIInterfaceOrientation = .portrait
     
     var body: some View {
         ZStack {
             NavigationLink(destination: LoadingView(), isActive: $isActive) { EmptyView() }
             switch appManager.listStyle {
-            case .legacy:
+            case .default:
                 PlainListStyleView
+            case .legacy:
+                LegacyListStyleView
             case .inset:
                 InsetListStyleView
             case .sidebar:
@@ -26,6 +31,20 @@ struct CoopResultCollection: View {
             }
         }
         .navigationTitle(.TITLE_RESULT_COLLECTION)
+    }
+    
+    var LegacyListStyleView: some View {
+        GeometryReader { geometry in
+            ScrollView(.horizontal, showsIndicators: false) {
+                LazyHGrid(rows: Array(repeating: .init(.fixed(geometry.size.height)), count: 1), alignment: .center, spacing: 0, pinnedViews: []) {
+                    ForEach(main.result.indices) { index in
+                        CoopResultView(result: main.result[index], isSimple: true)
+                            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                    }
+                }
+            }
+            .paging(geometry: geometry, index: $index, offset: $offset, orientation: $orientation)
+        }
     }
     
     var SidebarListStyleView: some View {
@@ -168,5 +187,37 @@ struct ResultOverview: View {
         }
         .frame(width: 55)
         .splatfont2(size: 14)
+    }
+}
+
+fileprivate extension ScrollView {
+    func paging(geometry: GeometryProxy, index: Binding<Int>, offset: Binding<CGFloat>, orientation: Binding<UIInterfaceOrientation>) -> some View {
+        return self
+            .content.offset(x: offset.wrappedValue)
+            .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+                guard let status = UIApplication.shared.windows.first?.windowScene?.interfaceOrientation else { return }
+                if !UIDevice.current.orientation.isFlat {
+                    if (orientation.wrappedValue.isPortrait != status.isPortrait) || (orientation.wrappedValue.isLandscape != status.isLandscape) {
+                        offset.wrappedValue = -(geometry.size.height + (UIApplication.shared.windows.first?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0)) * CGFloat(index.wrappedValue)
+                        orientation.wrappedValue = status
+                    }
+                }
+            }
+            .gesture(DragGesture()
+                        .onChanged({ value in
+                            offset.wrappedValue = value.translation.width - geometry.size.width * CGFloat(index.wrappedValue)
+                        })
+                        .onEnded({ value in
+                            let scrollThreshold = geometry.size.width / 2
+                            if value.predictedEndTranslation.width < -scrollThreshold {
+                                index.wrappedValue = min(index.wrappedValue + 1, 4)
+                            } else if value.predictedEndTranslation.width > scrollThreshold {
+                                index.wrappedValue = max(index.wrappedValue - 1, 0)
+                            }
+                            withAnimation {
+                                offset.wrappedValue = -geometry.size.width * CGFloat(index.wrappedValue)
+                            }
+                        })
+            )
     }
 }

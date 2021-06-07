@@ -14,6 +14,8 @@ class CoreRealmCoop: ObservableObject {
     @ObservedObject var appManager: AppManager = AppManager()
     @Published var resultCount: Int = RealmManager.shared.realm.objects(RealmCoopResult.self).count
     @Published var waves: RealmSwift.Results<RealmCoopWave> = RealmManager.shared.realm.objects(RealmCoopWave.self).sorted(byKeyPath: "goldenIkuraNum", ascending: false)
+    @Published var players: RealmSwift.Results<RealmPlayer> = RealmManager.shared.realm.objects(RealmPlayer.self).sorted(byKeyPath: "lastMatchedTime", ascending: false)
+    @Published var result: [RealmCoopResult] = Array(RealmManager.shared.realm.objects(RealmCoopResult.self).sorted(byKeyPath: "playTime", ascending: false).prefix(5))
     @Published var results: [UserCoopResult] = []
     
     var records: [CoopRecord] {
@@ -52,6 +54,7 @@ class CoreRealmCoop: ObservableObject {
         realmObserver[0] = RealmManager.shared.realm.objects(RealmCoopResult.self).observe { [self] _ in
             let starTime: [Int] = Array(Set(RealmManager.shared.realm.objects(RealmCoopResult.self).map({ $0.startTime }))).sorted(by: >)
             results = starTime.map{ UserCoopResult(startTime: $0) }
+            result = Array(RealmManager.shared.realm.objects(RealmCoopResult.self).sorted(byKeyPath: "playTime", ascending: false).prefix(5))
         }
         realmObserver[1] = RealmManager.shared.realm.objects(RealmUserInfo.self).observe { [self] _ in
             objectWillChange.send()
@@ -73,6 +76,12 @@ class UserCoopResult: Identifiable {
         self.id = startTime
         self.phase = RealmManager.shared.realm.objects(RealmCoopShift.self).filter("startTime=%@", startTime).first!
         results = RealmManager.shared.realm.objects(RealmCoopResult.self).filter("startTime=%@", startTime).sorted(byKeyPath: "playTime", ascending: false)
+    }
+    
+    init(startTime: Int, pid: String) {
+        self.id = startTime
+        self.phase = RealmManager.shared.realm.objects(RealmCoopShift.self).filter("startTime=%@", startTime).first!
+        results = RealmManager.shared.realm.objects(RealmCoopResult.self).filter("startTime=%@ AND ANY player.pid=%@", startTime, pid).sorted(byKeyPath: "playTime", ascending: false)
     }
 }
 

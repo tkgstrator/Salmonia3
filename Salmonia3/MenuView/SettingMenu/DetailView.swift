@@ -36,7 +36,7 @@ struct DetailView: View {
                     get: { isToggle[1] },
                     set: {
                         let _ = $0
-                        warning = .signin
+                        warning = .erase
                     }
                 ))
             }

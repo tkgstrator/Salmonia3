@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 import SplatNet2
 
-class RealmUserInfo: Object {
+final class RealmUserInfo: Object {
     @objc dynamic var nsaid: String?
     @objc dynamic var nickname: String?
     @objc dynamic var thumbnailURL: String?

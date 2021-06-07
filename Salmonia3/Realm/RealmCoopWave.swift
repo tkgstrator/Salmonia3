@@ -10,7 +10,7 @@ import RealmSwift
 import SalmonStats
 import SplatNet2
 
-class RealmCoopWave: Object {
+final class RealmCoopWave: Object {
     @objc dynamic var eventType: String?
     @objc dynamic var waterLevel: String?
     @objc dynamic var goldenIkuraNum: Int = 0
