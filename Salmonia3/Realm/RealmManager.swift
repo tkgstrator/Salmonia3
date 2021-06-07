@@ -20,7 +20,7 @@ final class RealmManager {
     
     init() {
         let config = Realm.Configuration(
-            schemaVersion: 2048,
+            schemaVersion: 4098,
             migrationBlock: { migration, schemaVersion in
                 if schemaVersion <= 512 {
                     let formatter: ISO8601DateFormatter = {
@@ -118,6 +118,7 @@ final class RealmManager {
         RealmManager.shared.realm.beginWrite()
         let players: [Response.NicknameIcons.NicknameIcon] = players.nicknameAndIcons
         for player in players {
+            RealmManager.shared.realm.add(RealmPlayer(from: player), update: .all)
             let result = RealmManager.shared.realm.objects(RealmPlayerResult.self).filter("pid=%@", player.nsaId)
             result.setValue(player.nickname, forKey: "name")
         }
@@ -205,8 +206,9 @@ final class RealmManager {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             autoreleasepool {
                 realm.beginWrite()
-                realm.delete(realm.objects(RealmCoopWave.self))
                 realm.delete(realm.objects(RealmCoopResult.self))
+                realm.delete(realm.objects(RealmCoopWave.self))
+                realm.delete(realm.objects(RealmPlayer.self))
                 realm.delete(realm.objects(RealmPlayerResult.self))
                 //                realm.delete(realm.objects(RealmUserInfo.self))
                 try? realm.commitWrite()

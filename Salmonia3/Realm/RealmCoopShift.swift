@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 import SplatNet2
 
-class RealmCoopShift: Object, Identifiable {
+final class RealmCoopShift: Object, Identifiable {
     @objc dynamic var startTime: Int = 0
     @objc dynamic var endTime: Int = 0
     let stageId = RealmOptional<Int>()

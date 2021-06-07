@@ -15,40 +15,48 @@ fileprivate var formatter: DateFormatter = {
 }()
 
 struct CoopResultView: View {
-    var result: RealmCoopResult
     @State var isVisible: Bool = true
+    var result: RealmCoopResult
+    var isSimple: Bool = false
 
     var body: some View {
-        TabView {
+        if !isSimple {
+            TabView {
+                CoopResultOverview(isVisible: $isVisible, result: result)
+                    .tag(0)
+                CoopPlayerResultView(isVisible: $isVisible, result: result)
+                    .tag(1)
+            }
+            .tabViewStyle(PageTabViewStyle())
+            .edgesIgnoringSafeArea(.all)
+            .navigationBarTitleDisplayMode(.inline)
+        } else {
             CoopResultOverview(isVisible: $isVisible, result: result)
-                .tag(0)
-            CoopPlayerResultView(isVisible: $isVisible, result: result)
-                .tag(1)
+                .navigationTitle(.TITLE_RESULT_DETAIL)
+                .edgesIgnoringSafeArea(.all)
+                .navigationBarTitleDisplayMode(.inline)
         }
-        .tabViewStyle(PageTabViewStyle())
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct CoopResultOverview: View {
     @Binding var isVisible: Bool
-    @AppStorage("FEATURE_FREE_03") var isFree03: Bool = false
+    @AppStorage("FEATURE_FREE_03") var isHidden: Bool = false
     var result: RealmCoopResult
 
     var body: some View {
         ScrollView(showsIndicators: false) {
             LazyVStack {
                 ResultOverview
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 10)
                 ResultWave
-                    .padding(.bottom, 40)
+                    .padding(.bottom, 10)
                 ResultPlayer
                     .padding(.bottom, 50)
             }
         }
         .backgroundColor(.black)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(trailing: SRButton)
         .navigationTitle(.TITLE_RESULT_DETAIL)
     }
 
@@ -60,6 +68,7 @@ struct CoopResultOverview: View {
                     .imageScale(.large)
                     .grayscale(isVisible ? 1.0 : 0.99)
                     .opacity(isVisible ? 1.0 : 0.5)
+                    .padding(.all, 10)
             }
         }
     }
@@ -73,7 +82,7 @@ struct CoopResultOverview: View {
                 .clipShape(RoundedRectangle(cornerRadius: 8.0))
                 .frame(height: 120)
                 .mask(Image("2ce11ebf110993621bedd8e747d7b1b").resizable())
-            VStack(spacing: 0) {
+            LazyVStack(spacing: 0) {
                 // MARK: プレイ時間の表示
                 Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(result.playTime))))
                     .shadow(color: .black, radius: 0, x: 2, y: 2)
@@ -81,7 +90,7 @@ struct CoopResultOverview: View {
                 // MARK: キケン度の表示
                 DangerRate
                 // MARK: イクラ数の表示
-                HStack {
+                LazyHStack {
                     Image("49c944e4edf1abee295b6db7525887bd")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -96,6 +105,7 @@ struct CoopResultOverview: View {
                 .shadow(color: .black, radius: 0, x: 1, y: 1)
             }
         }
+        .overlay(SRButton, alignment: .topTrailing)
         .splatfont2(.white, size: 20)
     }
 
@@ -103,8 +113,8 @@ struct CoopResultOverview: View {
     var ResultWave: some View {
         LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 140), alignment: .top), count: result.wave.count)) {
             ForEach(result.wave.indices, id: \.self) { index in
-                VStack(spacing: 0) {
-                    VStack(spacing: 0) {
+                LazyVStack(spacing: 0) {
+                    LazyVStack(spacing: 0) {
                         Text("RESULT_WAVE_\(index + 1)")
                             .foregroundColor(.black)
                         Text("\(result.wave[index].goldenIkuraNum)/\(result.wave[index].quotaNum)")
@@ -125,12 +135,14 @@ struct CoopResultOverview: View {
                     }
                     .background(Color.yellow)
                     .clipShape(RoundedRectangle(cornerRadius: 3))
-                    HStack {
+                    .padding(.bottom, 10)
+                    LazyHStack {
                         Image("49c944e4edf1abee295b6db7525887bd")
                             .resizable()
                             .frame(width: 15, height: 15)
                         Text("RESULT_APPEARANCES_\(result.wave[index].goldenIkuraPopNum)")
                     }
+                    .padding(.bottom, 10)
                     LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 4), alignment: .leading, spacing: 0, pinnedViews: []) {
                         ForEach(result.specialUsage[index].indices) { idx in
                             Image(SpecialType.init(rawValue: result.specialUsage[index][idx])!.image)
@@ -142,7 +154,7 @@ struct CoopResultOverview: View {
                 }
             }
         }
-        .frame(height: 180)
+        .frame(minHeight: 120)
         .splatfont2(.white, size: 16)
         .padding(.horizontal, 5)
     }
@@ -152,7 +164,7 @@ struct CoopResultOverview: View {
         LazyHGrid(rows: Array(repeating: .init(.flexible(minimum: 80)), count: result.player.count), spacing: 10) {
             ForEach(result.player.indices, id: \.self) { index in
                 // MARK: 表示させるかどうかのフラグをつける
-                CoopPlayerView(player: result.player[index], isVisible: (isVisible || (index == 0 && !isFree03)))
+                CoopPlayerView(player: result.player[index], isVisible: (isVisible || (index == 0 && !isHidden)))
                     .padding(.vertical, 15)
             }
         }
@@ -168,7 +180,6 @@ struct CoopResultOverview: View {
             return Text("RESULT_HAZARD_LEVEL_\(String(result.dangerRate.value!))")
                 .splatfont2(.yellow, size: 20)
         }
-
     }
 }
 

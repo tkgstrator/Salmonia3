@@ -10,9 +10,9 @@ import RealmSwift
 import SwiftUI
 
 extension RealmPlayerResult {
-    func srpower(isOverfishing: Bool) -> Double {
+    var srpower: Double {
         let bossrate: [[Int]] = [[1783, 1609, 2649, 1587, 1534, 1563, 1500, 1783, 2042]]
-        let bias: Double = calcBias(self.result.first!, self.pid!, isOverfishing: isOverfishing)
+        let bias: Double = calcBias(self.result.first!, self.pid!)
         let baserate: Int = Array(zip(self.bossKillCounts, bossrate[0])).map{ $0 * $1 }.reduce(0, +) / max(1, self.bossKillCounts.sum())
         
         return Double(Double(baserate) * bias).round
@@ -23,7 +23,7 @@ extension RealmPlayerResult {
     }
 }
 
-private func calcBias(_ result: RealmCoopResult, _ nsaid: String, isOverfishing: Bool) -> Double {
+private func calcBias(_ result: RealmCoopResult, _ nsaid: String) -> Double {
     let player: RealmPlayerResult = result.player.filter("pid=%@", nsaid).first!
     let base: [Double] = [
         Double((result.dangerRate.value! * 3) / 5 + 120) / 160, // MAX
@@ -33,21 +33,11 @@ private func calcBias(_ result: RealmCoopResult, _ nsaid: String, isOverfishing:
         Double(player.bossKillCounts.sum() * 99) / Double(17 * result.bossCounts.sum()),
         Double((result.dangerRate.value! * 3) / 5 + 80) / 160 + Double(player.goldenIkuraNum * 3 - result.wave.sum(ofProperty: "quotaNum")) / (9 * 160)
     ]
-    var quota: [Bool] {
-        switch isOverfishing {
-        case true:
-            return [
-                result.wave.sum(ofProperty: "goldenIkuraNum") / 5 <= player.goldenIkuraNum, // 納品数の1/5
-                result.bossCounts.sum() / 6 <= player.bossKillCounts.sum(), // 出現数の1/6
-            ]
-        case false:
-            return [
-                (min(result.wave.sum(ofProperty: "quotaNum"), result.wave.sum(ofProperty: "goldenIkuraNum")) / 5) <= player.goldenIkuraNum, // ノルマか納品数の少ない方の20%
-                min(result.bossKillCounts.sum() / 5, result.bossCounts.sum() / 6) <= player.bossKillCounts.sum(), // 討伐数の25%か出現数の20%の小さい方のどちらか
-            ]
-        }
-    }
-    
+    let quota: [Bool] = [
+        (min(result.wave.sum(ofProperty: "quotaNum"), result.wave.sum(ofProperty: "goldenIkuraNum")) / 5) <= player.goldenIkuraNum, // ノルマか納品数の少ない方の20%
+        min(result.bossKillCounts.sum() / 5, result.bossCounts.sum() / 6) <= player.bossKillCounts.sum(), // 討伐数の25%か出現数の20%の小さい方のどちらか
+    ]
+
     switch (quota[0], quota[1]) {
     case (true, true): // どちらもした
         switch (bias.min()! >  base.max()!) {

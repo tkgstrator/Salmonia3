@@ -25,8 +25,10 @@ struct CoopShiftCollection: View {
                 }
             }
             .onAppear {
-                if present.wrappedValue.isPresented {
-                    proxy.scrollTo(main.currentShiftNumber, anchor: .center)
+                if !present.wrappedValue.isPresented {
+                    withAnimation {
+                        proxy.scrollTo(main.currentShiftNumber, anchor: .center)
+                    }
                 }
             }
         }

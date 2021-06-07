@@ -9,8 +9,6 @@ import SwiftUI
 import RealmSwift
 
 struct CoopPlayerView: View {
-    
-    @EnvironmentObject var appManager: AppManager
     var player: RealmPlayerResult
     var isVisible: Bool
     
@@ -47,7 +45,6 @@ struct CoopPlayerView: View {
                 // MARK: レーティングとマッチング回数の表示
                 VStack(spacing: 0) {
                     advancedResult
-
                     Spacer()
                     HStack {
                         HStack {
@@ -94,7 +91,7 @@ struct CoopPlayerView: View {
             HStack {
                 Spacer()
                 // MARK: レーティングを計算
-                Text("RESULT_RATING_\(String(player.srpower(isOverfishing: appManager.isPaid03)))")
+                Text("RESULT_RATING_\(String(player.srpower))")
                     .frame(height: 10)
             }
             HStack {

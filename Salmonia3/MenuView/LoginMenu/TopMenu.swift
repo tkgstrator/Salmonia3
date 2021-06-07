@@ -28,6 +28,7 @@ struct TopMenu: View {
                     Overview
                     Results
                     Waves
+                    Players
                     SalmonStats
                     #if DEBUG
 //                    SalmonRecords
@@ -97,6 +98,13 @@ struct TopMenu: View {
     var Waves: some View {
         NavigationLink(destination: CoopWaveCollection()) {
             Text(.TITLE_WAVE_COLLECTION)
+                .splatfont2(size: 16)
+        }
+    }
+    
+    var Players: some View {
+        NavigationLink(destination: CoopPlayerCollection()) {
+            Text(.TITLE_PLAYER_COLLECTION)
                 .splatfont2(size: 16)
         }
     }

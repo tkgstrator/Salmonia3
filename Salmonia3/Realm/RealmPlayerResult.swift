@@ -10,7 +10,7 @@ import RealmSwift
 import SalmonStats
 import SplatNet2
 
-class RealmPlayerResult: Object {
+final class RealmPlayerResult: Object {
     @objc dynamic var name: String?
     @objc dynamic var pid: String?
     @objc dynamic var deadCount: Int = 0

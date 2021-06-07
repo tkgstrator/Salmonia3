@@ -10,7 +10,7 @@ import RealmSwift
 import SalmonStats
 import SplatNet2
 
-class RealmCoopResult: Object, Identifiable {
+final class RealmCoopResult: Object, Identifiable {
     @objc dynamic var pid: String?
     let jobId = RealmOptional<Int>() // SplatNet2用のID
     let stageId = RealmOptional<Int>()
