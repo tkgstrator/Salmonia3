@@ -30,10 +30,6 @@ final class RealmPlayer: Object, Identifiable {
         self.nsaid = account.nsaId
         self.nickname = account.nickname
         self.thumbnailURL = account.thumbnailUrl
-        
-        let results = RealmManager.shared.realm.objects(RealmPlayerResult.self).filter("pid=%@", account.nsaId)
-        self.matching = results.count
-        self.lastMatchedTime = RealmManager.shared.realm.objects(RealmCoopResult.self).sorted(byKeyPath: "playTime", ascending: false).filter("ANY player.pid =%@", account.nsaId).first?.playTime ?? 0
     }
 }
 
@@ -42,7 +38,6 @@ extension RealmPlayer {
 
     var results: [UserCoopResult] {
         let startTime: [Int] = Array(Set(RealmManager.shared.realm.objects(RealmCoopResult.self).sorted(byKeyPath: "playTime", ascending: false).filter("ANY player.pid=%@", self.nsaid!).map{ $0.startTime })).sorted(by: >)
-        print(startTime)
         return startTime.map{ UserCoopResult(startTime: $0, pid: self.nsaid!) }
     }
 }
