@@ -66,6 +66,16 @@ final class RealmManager {
         try RealmManager.shared.realm.commitWrite()
     }
     
+    // そのプレイヤーが参加していたシフトのスケジュールを取得
+    public static func getPlayerShiftStartTime(nsaid: String) -> [Int] {
+        return Array(Set(RealmManager.shared.realm.objects(RealmCoopResult.self).filter("ANY player.pid=%@", nsaid).map{ $0.startTime })).sorted(by: >)
+    }
+    
+    // そのプレイヤーが参加していたシフトのデータを取得
+    public static func getPlayerShiftResults(nsaid: String) -> [UserCoopResult] {
+        return getPlayerShiftStartTime(nsaid: nsaid).map({ UserCoopResult(startTime: $0, pid: nsaid)})
+    }
+
     public static func updateUserNickname(players: [PlayerMetadata]) {
         RealmManager.shared.realm.beginWrite()
         for player in players {

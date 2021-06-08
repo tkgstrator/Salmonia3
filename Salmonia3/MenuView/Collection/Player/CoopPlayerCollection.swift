@@ -14,9 +14,9 @@ struct CoopPlayerCollection: View {
     
     var body: some View {
         List {
-            ForEach(main.players.indices, id:\.self) { index in
-                NavigationLink(destination: PlayerResultsView(results: main.players[index].results, nickname: main.players[index].nickname!)) {
-                    PlayerOverview(player: main.players[index])
+            ForEach(main.players) { player in
+                NavigationLink(destination: PlayerResultsView(player: player)) {
+                    PlayerOverview(player: player)
                 }
             }
         }
@@ -25,32 +25,49 @@ struct CoopPlayerCollection: View {
 }
 
 struct PlayerResultsView: View {
-    var main: [UserCoopResult]
-    var nickname: String
-    
-    init(results: [UserCoopResult], nickname: String) {
-        self.main = results
-        self.nickname = nickname
+    @State var main: [UserCoopResult]?
+    var nsaid: String?
+    var nickname: String?
+
+    // イニシャライザ
+    init(player: RealmPlayer) {
+        self.nsaid = player.nsaid
+        self.nickname = player.nickname
+    }
+
+    // イニシャライザ
+    init(player: RealmPlayerResult) {
+        self.nsaid = player.pid
+        self.nickname = player.name
     }
     
     var body: some View {
         List {
-            ForEach(main) { shift in
-                Section(header: CoopShift(shift: shift.phase, results: shift.results)) {
-                    ForEach(shift.results, id:\.self) { result in
-                        ZStack(alignment: .leading) {
-                            NavigationLink(destination: CoopResultView(result: result)) {
-                                EmptyView()
+            if let main = main {
+                ForEach(main) { shift in
+                    Section(header: CoopShift(shift: shift.phase, results: shift.results)) {
+                        ForEach(shift.results, id:\.self) { result in
+                            ZStack(alignment: .leading) {
+                                NavigationLink(destination: CoopResultView(result: result)) {
+                                    EmptyView()
+                                }
+                                .opacity(0.0)
+                                ResultOverview(result: result)
                             }
-                            .opacity(0.0)
-                            ResultOverview(result: result)
                         }
                     }
                 }
             }
         }
         .listStyle(PlainListStyle())
-        .navigationTitle(nickname)
+        .onAppear(perform: getPlayerShiftResults)
+        .navigationTitle(nickname.stringValue)
+    }
+    
+    private func getPlayerShiftResults() {
+        if let nsaid = nsaid {
+            self.main = RealmManager.getPlayerShiftResults(nsaid: nsaid)
+        }
     }
 }
 

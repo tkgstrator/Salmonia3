@@ -68,18 +68,16 @@ class CoreRealmCoop: ObservableObject {
 
 // MARK: リザルト一覧で使うデータ
 class UserCoopResult: Identifiable {
-    var id: Int
+    var id: UUID = UUID()
     var phase: RealmCoopShift
     var results: RealmSwift.Results<RealmCoopResult>
-    
+        
     init(startTime: Int) {
-        self.id = startTime
         self.phase = RealmManager.shared.realm.objects(RealmCoopShift.self).filter("startTime=%@", startTime).first!
         results = RealmManager.shared.realm.objects(RealmCoopResult.self).filter("startTime=%@", startTime).sorted(byKeyPath: "playTime", ascending: false)
     }
     
     init(startTime: Int, pid: String) {
-        self.id = startTime
         self.phase = RealmManager.shared.realm.objects(RealmCoopShift.self).filter("startTime=%@", startTime).first!
         results = RealmManager.shared.realm.objects(RealmCoopResult.self).filter("startTime=%@ AND ANY player.pid=%@", startTime, pid).sorted(byKeyPath: "playTime", ascending: false)
     }

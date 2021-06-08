@@ -164,8 +164,10 @@ struct CoopResultOverview: View {
         LazyHGrid(rows: Array(repeating: .init(.flexible(minimum: 80)), count: result.player.count), spacing: 10) {
             ForEach(result.player.indices, id: \.self) { index in
                 // MARK: 表示させるかどうかのフラグをつける
-                CoopPlayerView(player: result.player[index], isVisible: (isVisible || (index == 0 && !isHidden)))
-                    .padding(.vertical, 15)
+                NavigationLink(destination: PlayerResultsView(player: result.player[index])) {
+                    CoopPlayerView(player: result.player[index], isVisible: (isVisible || (index == 0 && !isHidden)))
+                        .padding(.vertical, 15)
+                }
             }
         }
     }

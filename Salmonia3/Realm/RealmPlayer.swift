@@ -10,7 +10,7 @@ import RealmSwift
 import SalmonStats
 import SplatNet2
 
-final class RealmPlayer: Object {
+final class RealmPlayer: Object, Identifiable {
     @objc dynamic var nsaid: String?
     @objc dynamic var nickname: String?
     @objc dynamic var thumbnailURL: String?
@@ -38,6 +38,8 @@ final class RealmPlayer: Object {
 }
 
 extension RealmPlayer {
+    var id: UUID { UUID() } 
+
     var results: [UserCoopResult] {
         let startTime: [Int] = Array(Set(RealmManager.shared.realm.objects(RealmCoopResult.self).sorted(byKeyPath: "playTime", ascending: false).filter("ANY player.pid=%@", self.nsaid!).map{ $0.startTime })).sorted(by: >)
         print(startTime)
