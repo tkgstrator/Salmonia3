@@ -39,7 +39,8 @@ final class RealmPlayer: Object {
 
 extension RealmPlayer {
     var results: [UserCoopResult] {
-        let startTime: [Int] = Array(Set(RealmManager.shared.realm.objects(RealmCoopResult.self).sorted(byKeyPath: "playTime", ascending: false).filter("ANY player.pid=%@", self.nsaid!).map{ $0.startTime }))
+        let startTime: [Int] = Array(Set(RealmManager.shared.realm.objects(RealmCoopResult.self).sorted(byKeyPath: "playTime", ascending: false).filter("ANY player.pid=%@", self.nsaid!).map{ $0.startTime })).sorted(by: >)
+        print(startTime)
         return startTime.map{ UserCoopResult(startTime: $0, pid: self.nsaid!) }
     }
 }
