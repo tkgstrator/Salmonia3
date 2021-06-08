@@ -123,7 +123,8 @@ final class RealmManager {
     public static func getNicknames() -> [String] {
         return Array(Set(RealmManager.shared.realm.objects(RealmPlayerResult.self).map{ $0.pid! }))
     }
-    
+ 
+    // MARK: ユーザ名やサムネイルを更新し、RealmPlayerのオブジェクトを作成
     public static func updateNicknameAndIcons(players: Response.NicknameIcons) {
         RealmManager.shared.realm.beginWrite()
         let players: [Response.NicknameIcons.NicknameIcon] = players.nicknameAndIcons
@@ -135,74 +136,38 @@ final class RealmManager {
         try? RealmManager.shared.realm.commitWrite()
     }
     
+    // MARK: 新しいプレイヤーを追加/更新
+    public static func addNewNicknameAndIcons(nsaid: [String]) {
+        
+    }
+
+    // MARK: 新しいリザルトを追加
     public static func addNewResultsFromSplatNet2(from result: SplatNet2.Coop.Result, pid: String) {
         RealmManager.shared.realm.beginWrite()
         let result: RealmCoopResult = RealmCoopResult(from: result, pid: pid)
         switch result.isDuplicated {
         case true:
-            // SalmonIdのみアップデート
-            // 被っているplayTimeを取得
-            print("DUPLICATED")
+            // 重複していたらsalmonIdだけアップデートする
             if let duplicate = result.duplicatedResult {
                 duplicate.setValue(result.salmonId, forKey: "salmonId")
             }
         case false:
-            // 書き込み
+            // ないデータは新規書き込みする
             RealmManager.shared.realm.create(RealmCoopResult.self, value: result, update: .all)
         }
         try? RealmManager.shared.realm.commitWrite()
     }
-    
-    
-    public func addNewResultsFromSalmonStatsTest() {
-        guard let nsaid = SplatNet2.shared.playerId else { return }
-        let dispatchQueue = DispatchQueue(label: "Realm Manager")
-        
-        SalmonStats.shared.getMetadata(nsaid: nsaid)
-            .receive(on: dispatchQueue)
-            .sink(receiveCompletion: { completion in
-            }, receiveValue: { [self] metadata in
-                print(metadata)
-                for userdata in metadata {
-                    dispatchQueue.async {
-                        let lastPageId: Int = 3
-                        for pageId in (1 ... lastPageId) {
-                            dispatchQueue.async {
-                                SalmonStats.shared.getResults(nsaid: userdata.playerId, pageId: pageId)
-                                    .receive(on: dispatchQueue)
-                                    .sink(receiveCompletion: { completion in
-                                        switch completion {
-                                        case .finished:
-                                            break
-                                        case .failure(let error):
-                                            print(error)
-                                        }
-                                    }, receiveValue: { response in
-                                        print(response)
-                                    })
-                                    .store(in: &task)
-                            }
-                        }
-                    }
-                }
-            })
-            .store(in: &task)
-    }
-    
-    // Salmon Statsからのリザルト追加
+
+    // MARK: Salmon Statsからのリザルト追加
     public static func addNewResultsFromSalmonStats(from results: [SalmonStats.ResultCoop], pid: String) {
         guard let realm = try? Realm() else { return }
         realm.beginWrite()
         let results: [RealmCoopResult] = results.map{ RealmCoopResult(from: $0, pid: pid) }
         for result in results {
-            switch result.isDuplicated {
+            switch !result.duplicatedResult.isEmpty {
             case true:
-                // SalmonIdのみアップデート
-                if let duplicate = result.duplicatedResult {
-                    duplicate.setValue(result.salmonId, forKey: "salmonId")
-                }
+                result.duplicatedResult.setValue(result.salmonId, forKey: "salmonId")
             case false:
-                // 書き込み
                 realm.create(RealmCoopResult.self, value: result, update: .all)
             }
         }
@@ -234,13 +199,7 @@ struct PlayerMetadata {
 }
 
 fileprivate extension RealmCoopResult {
-    var isDuplicated: Bool {
-        return !(RealmManager.shared.realm.objects(RealmCoopResult.self)
-                    .filter("playTime BETWEEN %@", [self.playTime - 5, self.playTime + 5])).isEmpty
-    }
-    
-    var duplicatedResult: RealmCoopResult? {
-        return RealmManager.shared.realm.objects(RealmCoopResult.self)
-            .filter("playTime BETWEEN %@", [self.playTime - 5, self.playTime + 5]).first
+    var duplicatedResult: RealmSwift.Results<RealmCoopResult> {
+        return RealmManager.shared.realm.objects(RealmCoopResult.self).filter("playTime BETWEEN %@", [self.playTime - 5, self.playTime + 5])
     }
 }
