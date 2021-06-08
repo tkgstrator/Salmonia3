@@ -25,15 +25,17 @@ struct CoopShiftCollection: View {
                     }
                 }
             }
-            .onAppear {
-                if !present.wrappedValue.isPresented {
-                    withAnimation {
-                        proxy.scrollTo(main.currentShiftNumber, anchor: .center)
-                    }
-                }
-            }
+            .onAppear{ scrollTo(proxy: proxy) }
         }
         .navigationTitle(.TITLE_SHIFT_SCHEDULE)
+    }
+    
+    private func scrollTo(proxy: ScrollViewProxy) {
+        if !present.wrappedValue.isPresented {
+            withAnimation {
+                proxy.scrollTo(main.currentShiftNumber, anchor: .center)
+            }
+        }
     }
 }
 
@@ -59,20 +61,17 @@ struct CoopShift: View {
     }
     
     var body: some View {
-        HStack {
-            Spacer()
-            VStack(alignment: .leading, spacing: 5) {
-                HStack {
-                    Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(shift.startTime))))
-                    Text(verbatim: "-")
-                    Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(shift.endTime))))
-                }
-                .splatfont2(size: 16)
-                InfoWeapon
+        VStack(spacing: 5) {
+            HStack {
+                Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(shift.startTime))))
+                Text(verbatim: "-")
+                Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(shift.endTime))))
             }
-            .splatfont2(size: 14)
-            Spacer()
+            .splatfont2(size: 16)
+            InfoWeapon
         }
+        .splatfont2(size: 14)
+        .frame(maxWidth: .infinity)
     }
     
     var InfoWeapon: some View {
@@ -91,7 +90,6 @@ struct CoopShift: View {
                     Text(.SUPPLIED_WEAPONS)
                         .textCase(nil)
                     // 金イクラ数平均とか出すと良いかも
-                    Spacer()
                     if let average = average {
                         Text(average.golden.stringValue)
                     }
