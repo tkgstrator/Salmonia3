@@ -54,6 +54,7 @@ struct LoadingView: View {
     
     private func getResultFromSplatNet2() {
         var results: [[String: Any]] = []
+        var pids: [String] = []
         var encoder: JSONEncoder {
             let encoder = JSONEncoder()
             encoder.keyEncodingStrategy = .convertToSnakeCase

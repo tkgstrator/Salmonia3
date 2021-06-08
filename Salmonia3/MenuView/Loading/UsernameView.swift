@@ -38,9 +38,10 @@ struct UsernameView: View {
 
     func getNicknameAndIcons() {
         let nsaids: [String] = RealmManager.getNicknames()
+        var players: [Response.NicknameIcons.NicknameIcon] = []
         progressModel.configure(maxValue: CGFloat(nsaids.count))
         
-        for nsaid in nsaids.chunked(by: 200) {
+        for nsaid in nsaids.chunked(by: 50) {
             SplatNet2.shared.getNicknameAndIcons(playerId: nsaid)
                 .receive(on: DispatchQueue.main)
                 .sink(receiveCompletion: { completion in
@@ -52,7 +53,10 @@ struct UsernameView: View {
                     }
                 }, receiveValue: { response in
                     progressModel.addValue(value: CGFloat(nsaid.count))
-                    RealmManager.updateNicknameAndIcons(players: response)
+                    players.append(contentsOf: response.nicknameAndIcons)
+                    if players.count == nsaids.count {
+                        RealmManager.updateNicknameAndIcons(players: players)
+                    }
                 })
                 .store(in: &task)
         }
