@@ -30,6 +30,11 @@ final class RealmPlayer: Object, Identifiable {
         self.nsaid = account.nsaId
         self.nickname = account.nickname
         self.thumbnailURL = account.thumbnailUrl
+        
+        guard let realm = try? Realm() else { return }
+        let results = realm.objects(RealmPlayerResult.self).filter("pid=%@", account.nsaId)
+        self.matching = results.count
+        self.lastMatchedTime = realm.objects(RealmCoopResult.self).sorted(byKeyPath: "playTime", ascending: false).filter("ANY player.pid =%@", account.nsaId).first?.playTime ?? 0
     }
 }
 

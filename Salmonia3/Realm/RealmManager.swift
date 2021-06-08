@@ -125,15 +125,19 @@ final class RealmManager {
     }
  
     // MARK: ユーザ名やサムネイルを更新し、RealmPlayerのオブジェクトを作成
-    public static func updateNicknameAndIcons(players: Response.NicknameIcons) {
-        RealmManager.shared.realm.beginWrite()
-        let players: [Response.NicknameIcons.NicknameIcon] = players.nicknameAndIcons
-        for player in players {
-            RealmManager.shared.realm.add(RealmPlayer(from: player), update: .all)
-            let result = RealmManager.shared.realm.objects(RealmPlayerResult.self).filter("pid=%@", player.nsaId)
-            result.setValue(player.nickname, forKey: "name")
+    public static func updateNicknameAndIcons(players: [Response.NicknameIcons.NicknameIcon]) {
+        DispatchQueue(label: "Realm Manager").async {
+            autoreleasepool {
+                guard let realm = try? Realm() else { return }
+                realm.beginWrite()
+                for player in players {
+                    realm.create(RealmPlayer.self, value: RealmPlayer(from: player), update: .all)
+                    let result = realm.objects(RealmPlayerResult.self).filter("pid=%@", player.nsaId)
+                    result.setValue(player.nickname, forKey: "name")
+                }
+                try? realm.commitWrite()
+            }
         }
-        try? RealmManager.shared.realm.commitWrite()
     }
     
     // MARK: 新しいプレイヤーを追加/更新
@@ -145,14 +149,10 @@ final class RealmManager {
     public static func addNewResultsFromSplatNet2(from result: SplatNet2.Coop.Result, pid: String) {
         RealmManager.shared.realm.beginWrite()
         let result: RealmCoopResult = RealmCoopResult(from: result, pid: pid)
-        switch result.isDuplicated {
+        switch !result.duplicatedResult.isEmpty {
         case true:
-            // 重複していたらsalmonIdだけアップデートする
-            if let duplicate = result.duplicatedResult {
-                duplicate.setValue(result.salmonId, forKey: "salmonId")
-            }
+            result.duplicatedResult.setValue(result.salmonId, forKey: "salmonId")
         case false:
-            // ないデータは新規書き込みする
             RealmManager.shared.realm.create(RealmCoopResult.self, value: result, update: .all)
         }
         try? RealmManager.shared.realm.commitWrite()
@@ -160,18 +160,22 @@ final class RealmManager {
 
     // MARK: Salmon Statsからのリザルト追加
     public static func addNewResultsFromSalmonStats(from results: [SalmonStats.ResultCoop], pid: String) {
-        guard let realm = try? Realm() else { return }
-        realm.beginWrite()
-        let results: [RealmCoopResult] = results.map{ RealmCoopResult(from: $0, pid: pid) }
-        for result in results {
-            switch !result.duplicatedResult.isEmpty {
-            case true:
-                result.duplicatedResult.setValue(result.salmonId, forKey: "salmonId")
-            case false:
-                realm.create(RealmCoopResult.self, value: result, update: .all)
+        DispatchQueue(label: "Realm Manager").async {
+            autoreleasepool {
+                guard let realm = try? Realm() else { return }
+                realm.beginWrite()
+                let results: [RealmCoopResult] = results.map{ RealmCoopResult(from: $0, pid: pid) }
+                for result in results {
+                    switch !result.duplicatedResult.isEmpty {
+                    case true:
+                        result.duplicatedResult.setValue(result.salmonId, forKey: "salmonId")
+                    case false:
+                        realm.create(RealmCoopResult.self, value: result, update: .all)
+                    }
+                }
+                try? realm.commitWrite()
             }
         }
-        try? realm.commitWrite()
     }
     
     static func eraseAllRecord() throws {
