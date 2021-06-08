@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct CoopShiftCollection: View {
     @Environment(\.presentationMode) var present
@@ -37,15 +38,25 @@ struct CoopShiftCollection: View {
 }
 
 struct CoopShift: View {
-    @StateObject var shift: RealmCoopShift
     @EnvironmentObject var appManager: AppManager
-    
+    @StateObject var shift: RealmCoopShift
+    var average: (power: Double?, golden: Double?)?
+    var maximum: (power: Int?, golden: Int?)?
+
     var formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone.current
         formatter.dateFormat = "yyyy MM/dd HH:mm"
         return formatter
     }()
+    
+    init(shift: RealmCoopShift, results: RealmSwift.Results<RealmCoopResult>? = nil) {
+        self._shift = StateObject(wrappedValue: shift)
+        if let results = results {
+            average = (power: results.average(ofProperty: "powerEggs"), golden: results.average(ofProperty: "goldenEggs"))
+            maximum = (power: results.max(ofProperty: "powerEggs"), golden: results.max(ofProperty: "goldenEggs"))
+        }
+    }
     
     var body: some View {
         HStack {
@@ -76,8 +87,15 @@ struct CoopShift: View {
                     .padding(.bottom, 8)
             }
             VStack(alignment: .leading, spacing: 5) {
-                Text(.SUPPLIED_WEAPONS)
-                    .textCase(nil)
+                HStack {
+                    Text(.SUPPLIED_WEAPONS)
+                        .textCase(nil)
+                    // 金イクラ数平均とか出すと良いかも
+                    Spacer()
+                    if let average = average {
+                        Text(average.golden.stringValue)
+                    }
+                }
                 if appManager.isFree01 && shift.weaponList.contains(-1) {
                     AnyView(
                         LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 30, maximum: 50)), count: 5), alignment: .center, spacing: 0) {
