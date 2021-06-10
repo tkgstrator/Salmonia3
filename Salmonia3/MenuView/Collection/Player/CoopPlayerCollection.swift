@@ -60,7 +60,8 @@ struct PlayerResultsView: View {
             }
         }
         .listStyle(PlainListStyle())
-        .onAppear(perform: getPlayerShiftResults)
+        .onWillAppear{ getPlayerShiftResults() }
+//        .onAppear(perform: getPlayerShiftResults)
         .navigationTitle(nickname.stringValue)
     }
     
