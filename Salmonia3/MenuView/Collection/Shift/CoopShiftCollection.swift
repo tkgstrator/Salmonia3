@@ -90,6 +90,7 @@ struct CoopShift: View {
                     Text(.SUPPLIED_WEAPONS)
                         .textCase(nil)
                     // 金イクラ数平均とか出すと良いかも
+                    Spacer()
                     if let average = average {
                         Text(average.golden.stringValue)
                     }

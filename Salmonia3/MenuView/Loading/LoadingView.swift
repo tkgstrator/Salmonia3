@@ -21,6 +21,7 @@ struct LoadingView: View {
     @State var apiError: SplatNet2.APIError?
     @State private var task = Set<AnyCancellable>()
     @State var progressModel = MBCircleProgressModel(progressColor: .red, emptyLineColor: .gray)
+    private let dispatchQueue: DispatchQueue = DispatchQueue(label: "LoadingView")
     
     var body: some View {
         LoggingThread(progressModel: progressModel)
@@ -52,15 +53,26 @@ struct LoadingView: View {
         }
     }
     
+    private func getNicknameIcons(pid: [String]) {
+        SplatNet2.shared.getNicknameAndIcons(playerId: Array(Set(pid)))
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    apiError = error
+                }
+            }, receiveValue: { response in
+                RealmManager.updateNicknameAndIcons(players: response.nicknameAndIcons)
+            })
+            .store(in: &task)
+    }
+    
     private func getResultFromSplatNet2() {
-        var results: [[String: Any]] = []
         var pids: [String] = []
-        var encoder: JSONEncoder {
-            let encoder = JSONEncoder()
-            encoder.keyEncodingStrategy = .convertToSnakeCase
-            return encoder
-        }
-        
+        var results: [(json: Response.ResultCoop, data: SplatNet2.Coop.Result)] = []
+
         SplatNet2.shared.getSummaryCoop()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
@@ -71,37 +83,44 @@ struct LoadingView: View {
                     apiError = error
                 }
             }, receiveValue: { response in
+                #if DEBUG
                 let latestResultId = RealmManager.getLatestResultId()
-                if latestResultId != response.summary.card.jobNum {
-                    let jobNum = response.summary.card.jobNum
-                    let jobIds = Range(max(latestResultId + 1, jobNum - 49) ... jobNum)
-                    progressModel.configure(maxValue: CGFloat(jobIds.count))
-                    for jobId in jobIds {
-                        // MARK: リザルトのダウンロード
-                        SplatNet2.shared.getResultCoopWithJSON(jobId: jobId)
-                            .receive(on: DispatchQueue.main)
-                            .sink(receiveCompletion: { completion in
-                                progressModel.addValue(value: 1)
-                                switch completion {
-                                case .finished:
-                                    break
-                                case .failure(let error):
-                                    apiError = error
-                                }
-                            }, receiveValue: { response in
-                                // MARK: Salmon Statsへのアップロード
-                                if let _ = SalmonStats.shared.apiToken {
-                                    results.append(response.json.dictionaryObject!)
-                                    if results.count == jobIds.count {
-                                        uploadToSalmonStats(results: results)
-                                    }
-                                }
-                                RealmManager.addNewResultsFromSplatNet2(from: response.data, pid: SplatNet2.shared.playerId!)
-                            })
-                            .store(in: &task)
-                    }
-                } else {
+                #else
+                let latestResultId = RealmManager.getLatestResultId()
+                #endif
+                if latestResultId == response.summary.card.jobNum {
                     apiError = .nonewresults
+                    return
+                }
+                
+                let jobNum = response.summary.card.jobNum
+                let jobIds = Range(max(latestResultId + 1, jobNum - 49) ... jobNum)
+                progressModel.configure(maxValue: CGFloat(jobIds.count))
+                for jobId in jobIds {
+                    // MARK: リザルトのダウンロード
+                    SplatNet2.shared.getResultCoopWithJSON(jobId: jobId)
+                        .receive(on: DispatchQueue.main)
+                        .sink(receiveCompletion: { completion in
+                            progressModel.addValue(value: 1)
+                            switch completion {
+                            case .finished:
+                                break
+                            case .failure(let error):
+                                apiError = error
+                            }
+                        }, receiveValue: { response in
+                            // MARK: Salmon Statsへのアップロード
+                            if let _ = SalmonStats.shared.apiToken {
+                                pids.append(contentsOf: response.data.results.map{ $0.pid })
+                                results.append(response)
+                                if results.count == jobIds.count {
+                                    RealmManager.addNewResultsFromSplatNet2(from: results.map{ $0.data }, pid: SplatNet2.shared.playerId!)
+                                    uploadToSalmonStats(results: results.map{ $0.json.dictionaryObject! })
+                                    getNicknameIcons(pid: pids)
+                                }
+                            }
+                        })
+                        .store(in: &task)
                 }
                 try? RealmManager.updateSummary(from: response)
             })

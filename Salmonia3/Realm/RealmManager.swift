@@ -146,16 +146,23 @@ final class RealmManager {
     }
 
     // MARK: 新しいリザルトを追加
-    public static func addNewResultsFromSplatNet2(from result: SplatNet2.Coop.Result, pid: String) {
-        RealmManager.shared.realm.beginWrite()
-        let result: RealmCoopResult = RealmCoopResult(from: result, pid: pid)
-        switch !result.duplicatedResult.isEmpty {
-        case true:
-            result.duplicatedResult.setValue(result.salmonId, forKey: "salmonId")
-        case false:
-            RealmManager.shared.realm.create(RealmCoopResult.self, value: result, update: .all)
+    public static func addNewResultsFromSplatNet2(from results: [SplatNet2.Coop.Result], pid: String) {
+        DispatchQueue(label: "Realm Manager").async {
+            autoreleasepool {
+                guard let realm = try? Realm() else { return }
+                realm.beginWrite()
+                for result in results {
+                    let result: RealmCoopResult = RealmCoopResult(from: result, pid: pid)
+                    switch !result.duplicatedResult.isEmpty {
+                    case true:
+                        result.duplicatedResult.setValue(result.salmonId, forKey: "salmonId")
+                    case false:
+                        realm.create(RealmCoopResult.self, value: result, update: .all)
+                    }
+                }
+                try? realm.commitWrite()
+            }
         }
-        try? RealmManager.shared.realm.commitWrite()
     }
 
     // MARK: Salmon Statsからのリザルト追加
@@ -204,6 +211,7 @@ struct PlayerMetadata {
 
 fileprivate extension RealmCoopResult {
     var duplicatedResult: RealmSwift.Results<RealmCoopResult> {
-        return RealmManager.shared.realm.objects(RealmCoopResult.self).filter("playTime BETWEEN %@", [self.playTime - 5, self.playTime + 5])
+        guard let realm = try? Realm() else { fatalError() }
+        return realm.objects(RealmCoopResult.self).filter("playTime BETWEEN %@", [self.playTime - 5, self.playTime + 5])
     }
 }

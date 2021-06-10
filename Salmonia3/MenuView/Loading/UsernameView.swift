@@ -41,7 +41,7 @@ struct UsernameView: View {
         var players: [Response.NicknameIcons.NicknameIcon] = []
         progressModel.configure(maxValue: CGFloat(nsaids.count))
         
-        for nsaid in nsaids.chunked(by: 50) {
+        for nsaid in nsaids.chunked(by: 200) {
             SplatNet2.shared.getNicknameAndIcons(playerId: nsaid)
                 .receive(on: DispatchQueue.main)
                 .sink(receiveCompletion: { completion in
