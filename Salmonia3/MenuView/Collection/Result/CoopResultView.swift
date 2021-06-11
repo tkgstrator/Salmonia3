@@ -17,26 +17,32 @@ fileprivate var formatter: DateFormatter = {
 struct CoopResultView: View {
     @State var isVisible: Bool = true
     var result: RealmCoopResult
-    var isSimple: Bool = false
 
     var body: some View {
-        if !isSimple {
-            TabView {
-                CoopResultOverview(isVisible: $isVisible, result: result)
-                    .tag(0)
-                CoopPlayerResultView(isVisible: $isVisible, result: result)
-                    .tag(1)
-            }
-            .tabViewStyle(PageTabViewStyle())
-            .edgesIgnoringSafeArea(.all)
-            .navigationBarTitleDisplayMode(.inline)
-        } else {
+        TabView {
             CoopResultOverview(isVisible: $isVisible, result: result)
-                .navigationTitle(.TITLE_RESULT_DETAIL)
-                .edgesIgnoringSafeArea(.all)
-                .navigationBarTitleDisplayMode(.inline)
+                .padding(.bottom, 50)
+                .tag(0)
+            CoopPlayerResultView(isVisible: $isVisible, result: result)
+                .tag(1)
         }
+        .background(Color.black.edgesIgnoringSafeArea(.all))
+        .tabViewStyle(PageTabViewStyle())
+        .navigationBarTitleDisplayMode(.inline)
     }
+}
+
+struct CoopResultSimpleView: View {
+    @State var isVisible: Bool = true
+    var result: RealmCoopResult
+
+    var body: some View {
+        CoopResultOverview(isVisible: $isVisible, result: result)
+            .background(Color.black.edgesIgnoringSafeArea(.all))
+            .navigationTitle(.TITLE_RESULT_DETAIL)
+            .navigationBarTitleDisplayMode(.inline)
+    }
+
 }
 
 struct CoopResultOverview: View {
@@ -52,7 +58,6 @@ struct CoopResultOverview: View {
                 ResultWave
                     .padding(.bottom, 10)
                 ResultPlayer
-                    .padding(.bottom, 50)
             }
         }
         .backgroundColor(.black)
