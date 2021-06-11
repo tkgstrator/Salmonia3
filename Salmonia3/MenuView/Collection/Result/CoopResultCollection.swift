@@ -33,12 +33,12 @@ struct CoopResultCollection: View {
         .navigationTitle(.TITLE_RESULT_COLLECTION)
     }
     
-    var LegacyListStyleView: some View {
+    private var LegacyListStyleView: some View {
         GeometryReader { geometry in
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHGrid(rows: Array(repeating: .init(.fixed(geometry.size.height)), count: 1), alignment: .center, spacing: 0, pinnedViews: []) {
                     ForEach(main.result.indices) { index in
-                        CoopResultView(result: main.result[index], isSimple: true)
+                        CoopResultSimpleView(result: main.result[index])
                             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
                     }
                 }
@@ -47,7 +47,7 @@ struct CoopResultCollection: View {
         }
     }
     
-    var SidebarListStyleView: some View {
+    private var SidebarListStyleView: some View {
         List {
             ForEach(main.results) { shift in
                 Section(header: CoopShift(shift: shift.phase)) {
@@ -67,7 +67,7 @@ struct CoopResultCollection: View {
         .pullToRefresh(isShowing: $isShowing) { isActive.toggle() }
     }
     
-    var PlainListStyleView: some View {
+    private var PlainListStyleView: some View {
         List {
             ForEach(main.results) { shift in
                 Section(header: CoopShift(shift: shift.phase)) {
@@ -87,7 +87,7 @@ struct CoopResultCollection: View {
         .pullToRefresh(isShowing: $isShowing) { isActive.toggle() }
     }
     
-    var InsetListStyleView: some View {
+    private var InsetListStyleView: some View {
         List {
             ForEach(main.results) { shift in
                 Section(header: CoopShift(shift: shift.phase)) {
