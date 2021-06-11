@@ -25,7 +25,7 @@ struct CoopPlayerCollection: View {
 }
 
 struct PlayerResultsView: View {
-    @State var main: [UserCoopResult]?
+    @State var main: [UserCoopResult] = []
     var nsaid: String?
     var nickname: String?
 
@@ -43,17 +43,15 @@ struct PlayerResultsView: View {
     
     var body: some View {
         List {
-            if let main = main {
-                ForEach(main) { shift in
-                    Section(header: CoopShift(shift: shift.phase, results: shift.results)) {
-                        ForEach(shift.results, id:\.self) { result in
-                            ZStack(alignment: .leading) {
-                                NavigationLink(destination: CoopResultView(result: result)) {
-                                    EmptyView()
-                                }
-                                .opacity(0.0)
-                                ResultOverview(result: result)
+            ForEach(main) { shift in
+                Section(header: CoopShift(shift: shift.phase, results: shift.results)) {
+                    ForEach(shift.results, id:\.self) { result in
+                        ZStack(alignment: .leading) {
+                            NavigationLink(destination: CoopResultView(result: result)) {
+                                EmptyView()
                             }
+                            .opacity(0.0)
+                            ResultOverview(result: result)
                         }
                     }
                 }

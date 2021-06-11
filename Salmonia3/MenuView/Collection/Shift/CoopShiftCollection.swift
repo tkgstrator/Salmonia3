@@ -95,6 +95,7 @@ struct CoopShift: View {
                         Text(average.golden.stringValue)
                     }
                 }
+                .frame(maxWidth: 250)
                 if appManager.isFree01 && shift.weaponList.contains(-1) {
                     AnyView(
                         LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 30, maximum: 50)), count: 5), alignment: .center, spacing: 0) {
