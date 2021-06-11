@@ -92,7 +92,11 @@ struct CoopShift: View {
                     // 金イクラ数平均とか出すと良いかも
                     Spacer()
                     if let average = average {
-                        Text(average.golden.stringValue)
+                        HStack {
+                            Image("49c944e4edf1abee295b6db7525887bd").resize()
+                            Text("x\(average.golden.stringValue)")
+                                .textCase(nil)
+                        }
                     }
                 }
                 .frame(maxWidth: 250)
