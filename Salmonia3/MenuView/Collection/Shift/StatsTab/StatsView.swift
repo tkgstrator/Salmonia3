@@ -6,13 +6,17 @@
 //
 
 import SwiftUI
+import SwiftChart
 
 struct StatsView: View {
     
     @Binding var startTime: Int
     @State var result: CoopShiftStats?
     private func getShiftStats() {
-        result = CoopShiftStats(startTime: startTime)
+        // 何故か何回も呼ばれる意味不明さがある
+        if let _ = result { } else {
+            result = CoopShiftStats(startTime: startTime)
+        }
     }
     
     var body: some View {
@@ -23,6 +27,14 @@ struct StatsView: View {
                 StatsColumn(title: .RESULT_CLEAR_RATIO, value: result?.overview?.clearRatio)
                 StatsColumn(title: .RESULT_RATIO_POWER_EGGS, value: result?.overview?.powerEggRatio)
                 StatsColumn(title: .RESULT_RATIO_GOLDEN_EGGS, value: result?.overview?.goldenEggRatio)
+            }
+            Section {
+                HStack {
+                    Spacer()
+                    PieChartView(pieChartData: result?.overview?.specialWeapon)
+                        .frame(width: 300, height: 300, alignment: .center)
+                    Spacer()
+                }
             }
             Section(header: Text(.HEADER_STATS_MAX).splatfont2(.orange, size: 14)) {
                 StatsColumn(title: .RESULT_POWER_EGGS, value: result?.resultMax?.powerEggs)

@@ -48,6 +48,8 @@
 		1053919C266D1703001025E1 /* RealmPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1053919B266D1703001025E1 /* RealmPlayer.swift */; };
 		105391A4266D1C6F001025E1 /* CoreRealmPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105391A3266D1C6F001025E1 /* CoreRealmPlayer.swift */; };
 		105391AC266D23C4001025E1 /* CoopPlayerCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105391AB266D23C4001025E1 /* CoopPlayerCollection.swift */; };
+		105391C92673AF97001025E1 /* ViewAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105391C82673AF96001025E1 /* ViewAppear.swift */; };
+		105391D52673E733001025E1 /* SwiftChart in Frameworks */ = {isa = PBXBuildFile; productRef = 105391D42673E733001025E1 /* SwiftChart */; };
 		10567DD8264ECDD0002654D3 /* SplatNet2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10567DD7264ECDD0002654D3 /* SplatNet2.swift */; };
 		1059416725FA49E500C32D21 /* Salmonia3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059416625FA49E500C32D21 /* Salmonia3App.swift */; };
 		1059416925FA49E500C32D21 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059416825FA49E500C32D21 /* ContentView.swift */; };
@@ -155,6 +157,8 @@
 		1053919B266D1703001025E1 /* RealmPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPlayer.swift; sourceTree = "<group>"; };
 		105391A3266D1C6F001025E1 /* CoreRealmPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreRealmPlayer.swift; sourceTree = "<group>"; };
 		105391AB266D23C4001025E1 /* CoopPlayerCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopPlayerCollection.swift; sourceTree = "<group>"; };
+		105391C82673AF96001025E1 /* ViewAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAppear.swift; sourceTree = "<group>"; };
+		105391D02673E705001025E1 /* SwiftChart */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftChart; path = ../SwiftChart; sourceTree = "<group>"; };
 		10567DD7264ECDD0002654D3 /* SplatNet2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplatNet2.swift; sourceTree = "<group>"; };
 		1059416325FA49E500C32D21 /* Salmonia3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Salmonia3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1059416625FA49E500C32D21 /* Salmonia3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salmonia3App.swift; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 				10CF099425FB97F300D2EEB1 /* SwiftUIRefresh in Frameworks */,
 				10CF09B825FB9AC100D2EEB1 /* Realm in Frameworks */,
 				102C75EB2659C5A600AEE20F /* SwiftyAPNGKit in Frameworks */,
+				105391D52673E733001025E1 /* SwiftChart in Frameworks */,
 				10317286262C32FB00CF8903 /* SalmonStats in Frameworks */,
 				1083857C265922700099475F /* SwiftyBeaver in Frameworks */,
 				104BD620261C98800013CD27 /* URLImage in Frameworks */,
@@ -355,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				10539181266AA86B001025E1 /* ViewWillAppear.swift */,
+				105391C82673AF96001025E1 /* ViewAppear.swift */,
 			);
 			path = ViewWillHandler;
 			sourceTree = "<group>";
@@ -374,6 +380,7 @@
 				1028D36D26418EF30034C075 /* MBCircleProgressBar */,
 				1090C681263DF125000DD54C /* SplatNet2 */,
 				100F564A262C308F00A1D1D0 /* SalmonStats */,
+				105391D02673E705001025E1 /* SwiftChart */,
 				1059416525FA49E500C32D21 /* Salmonia3 */,
 				1059417725FA49E900C32D21 /* Salmonia3Tests */,
 				1059418225FA49E900C32D21 /* Salmonia3UITests */,
@@ -614,6 +621,7 @@
 				1028D37126418EFD0034C075 /* MBCircleProgressBar */,
 				1083857B265922700099475F /* SwiftyBeaver */,
 				102C75EA2659C5A600AEE20F /* SwiftyAPNGKit */,
+				105391D42673E733001025E1 /* SwiftChart */,
 			);
 			productName = Salmonia3;
 			productReference = 1059416325FA49E500C32D21 /* Salmonia3.app */;
@@ -865,6 +873,7 @@
 				1059416925FA49E500C32D21 /* ContentView.swift in Sources */,
 				10682EF3264FEF0A0035CC68 /* StatsWaveView.swift in Sources */,
 				104AA7DC2605E0C8007BDC24 /* GoogleMobileAds.swift in Sources */,
+				105391C92673AF97001025E1 /* ViewAppear.swift in Sources */,
 				10B62CA32669CC1400916A64 /* CoopWaveCollection.swift in Sources */,
 				1052C2D026550E7800D3B9A9 /* DetailView.swift in Sources */,
 				10377F9925FD09FF00536A94 /* LoggingThread.swift in Sources */,
@@ -1078,7 +1087,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1104,7 +1113,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1317,6 +1326,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 104BD61E261C98800013CD27 /* XCRemoteSwiftPackageReference "url-image" */;
 			productName = URLImage;
+		};
+		105391D42673E733001025E1 /* SwiftChart */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftChart;
 		};
 		1083857B265922700099475F /* SwiftyBeaver */ = {
 			isa = XCSwiftPackageProductDependency;

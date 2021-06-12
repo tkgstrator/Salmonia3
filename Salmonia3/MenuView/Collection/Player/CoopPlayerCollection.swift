@@ -58,14 +58,15 @@ struct PlayerResultsView: View {
             }
         }
         .listStyle(PlainListStyle())
-//        .onWillAppear{ getPlayerShiftResults() }
         .onAppear(perform: getPlayerShiftResults)
         .navigationTitle(nickname.stringValue)
     }
     
     private func getPlayerShiftResults() {
         if let nsaid = nsaid {
-            self.main = RealmManager.getPlayerShiftResults(nsaid: nsaid)
+            if main.isEmpty {
+                self.main = RealmManager.getPlayerShiftResults(nsaid: nsaid)
+            }
         }
     }
 }
