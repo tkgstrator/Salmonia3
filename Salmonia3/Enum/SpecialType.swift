@@ -27,4 +27,17 @@ extension SpecialType {
             return "5c4a265d5d1dd51c7e5577f92d358cb4"
         }
     }
+    
+    var name: String {
+        switch self {
+        case .bombpitcher:
+            return "Bomb pitcher"
+        case .stingray:
+            return "Sting ray"
+        case .inkjet:
+            return "Inkjet"
+        case .splashdown:
+            return "Splashdown"
+        }
+    }
 }
