@@ -15,9 +15,10 @@ struct UsernameView: View {
     @EnvironmentObject var appManager: AppManager
     @AppStorage("apiToken") var apiToken: String?
 
-    @State var apiError: SplatNet2.APIError?
+    @State private var apiError: SplatNet2.APIError?
     @State private var task = Set<AnyCancellable>()
-    @State var progressModel = MBCircleProgressModel(progressColor: .red, emptyLineColor: .gray)
+    @State private var progressModel = MBCircleProgressModel(progressColor: .red, emptyLineColor: .gray)
+    @State private var players: [Response.NicknameIcons.NicknameIcon] = []
 
     private func dismiss() {
         DispatchQueue.main.async { present.wrappedValue.dismiss() }
@@ -26,6 +27,7 @@ struct UsernameView: View {
     var body: some View {
         LoggingThread(progressModel: progressModel)
             .onAppear(perform: getNicknameAndIcons)
+            .onDisappear{ RealmManager.updateNicknameAndIcons(players: players) }
             .alert(item: $apiError) { error in
                 Alert(title: Text("ALERT_ERROR"),
                       message: Text(error.localizedDescription),
@@ -38,7 +40,6 @@ struct UsernameView: View {
 
     func getNicknameAndIcons() {
         let nsaids: [String] = RealmManager.getNicknames()
-        var players: [Response.NicknameIcons.NicknameIcon] = []
         progressModel.configure(maxValue: CGFloat(nsaids.count))
         
         for nsaid in nsaids.chunked(by: 200) {
@@ -54,9 +55,6 @@ struct UsernameView: View {
                 }, receiveValue: { response in
                     progressModel.addValue(value: CGFloat(nsaid.count))
                     players.append(contentsOf: response.nicknameAndIcons)
-                    if players.count == nsaids.count {
-                        RealmManager.updateNicknameAndIcons(players: players)
-                    }
                 })
                 .store(in: &task)
         }
