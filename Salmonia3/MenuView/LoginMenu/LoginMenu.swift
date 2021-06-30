@@ -17,7 +17,7 @@ struct LoginMenu: View {
     @State var oauthURL: URL?
     @State var isPresented: Bool = false
     @State var task = Set<AnyCancellable>()
-    @State var apiError: SplatNet2.APIError?
+    @State var apiError: APIError?
 
     var body: some View {
         GeometryReader { geometry in
@@ -33,11 +33,11 @@ struct LoginMenu: View {
                 .padding(.horizontal, 10)
                 .position(x: geometry.frame(in: .local).midX, y: geometry.size.height / 4)
                 VStack(spacing: 40) {
-                    Button(action: { oauthURL = SplatNet2.shared.oauthURL }, label: {
+                    Button(action: { oauthURL = manager.oauthURL }, label: {
                         Text(.BTN_SIGN_IN)
                             .splatfont2(.cloud, size: 20)
                     })
-                    if let _ = SplatNet2.shared.sessionToken {
+                    if let _ = manager.sessionToken {
                         Button(action: { migrateSplatNet2Account() }, label: {
                             Text(.BTN_MIGRATE)
                                 .splatfont2(.cloud, size: 20)
@@ -65,7 +65,7 @@ struct LoginMenu: View {
                 guard let code: String = callbackURL?.absoluteString.capture(pattern: "de=(.*)&", group: 1) else {
                     return
                 }
-                SplatNet2.shared.getCookie(sessionTokenCode: code)
+                manager.getCookie(sessionTokenCode: code)
                     .sink(receiveCompletion: { completion in
                         switch completion {
                         case .finished:
@@ -91,8 +91,8 @@ struct LoginMenu: View {
 
     func migrateSplatNet2Account() {
         if RealmManager.getActiveAccountsIsEmpty() {
-            if let _ = SplatNet2.shared.sessionToken {
-                SplatNet2.shared.getCookie()
+            if let _ = manager.sessionToken {
+                manager.getCookie()
                     .receive(on: DispatchQueue.main)
                     .sink(receiveCompletion: { completion in
                         switch completion {

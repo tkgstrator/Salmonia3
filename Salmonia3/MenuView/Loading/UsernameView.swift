@@ -15,7 +15,7 @@ struct UsernameView: View {
     @EnvironmentObject var appManager: AppManager
     @AppStorage("apiToken") var apiToken: String?
 
-    @State private var apiError: SplatNet2.APIError?
+    @State private var apiError: APIError?
     @State private var task = Set<AnyCancellable>()
     @State private var progressModel = MBCircleProgressModel(progressColor: .red, emptyLineColor: .gray)
     @State private var players: [Response.NicknameIcons.NicknameIcon] = []
@@ -43,7 +43,7 @@ struct UsernameView: View {
         progressModel.configure(maxValue: CGFloat(nsaids.count))
         
         for nsaid in nsaids.chunked(by: 200) {
-            SplatNet2.shared.getNicknameAndIcons(playerId: nsaid)
+            manager.getNicknameAndIcons(playerId: nsaid)
                 .receive(on: DispatchQueue.main)
                 .sink(receiveCompletion: { completion in
                     switch completion {

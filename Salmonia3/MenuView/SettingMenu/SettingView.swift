@@ -20,13 +20,13 @@ struct SettingView: View {
     private let systemName: String = UIDevice.current.systemName
     private let deviceName: String = UIDevice.current.localizedModel
     private let appVersion: String = "\(String(describing: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")!))(\(String(describing: Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")!)))"
-    private let apiVersion: String = SplatNet2.shared.version
+    private let apiVersion: String = "1.11.0"
     
     var body: some View {
         List {
             Section(header: Text(.HEADER_USERINFO).splatfont2(.orange, size: 14),
                     footer: Text(.FOOTER_SPLATNET2).splatfont2(.secondary, size: 13).environment(\.lineLimit, 2)) {
-                SettingMenu(title: .SETTING_SPLATNET2, value: SplatNet2.shared.playerId)
+//                SettingMenu(title: .SETTING_SPLATNET2, value: manager.playerId)
                 SettingMenu(title: .RESULTS, value: results.resultCount)
             }
             

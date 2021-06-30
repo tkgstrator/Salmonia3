@@ -72,11 +72,19 @@ final class CoopShiftStats: ObservableObject {
     // MARK: シフト統計の大雑把な値を返す
     final class ResultOverView {
         var jobNum: Int?
+        var player: RealmSwift.Results<RealmPlayerResult>?
         var clearWave: Double?
         var clearRatio: Double?
         var goldenEggRatio: Double?
         var powerEggRatio: Double?
-        var specialWeapon: PieChartData?
+        lazy var specialWeapon = {
+            return [
+                PieChartData(value: Double(self.player?.filter("specialId=%@", 2).count ?? 0), label: { Text("A") }),
+                PieChartData(value: Double(self.player?.filter("specialId=%@", 7).count ?? 0), label: { Text("A") }),
+                PieChartData(value: Double(self.player?.filter("specialId=%@", 8).count ?? 0), label: { Text("A") }),
+                PieChartData(value: Double(self.player?.filter("specialId=%@", 9).count ?? 0), label: { Text("A") })
+            ]
+        }()
         var playerBossDefeatedRatio: [Double?] = []
         var otherBossDefeatedRatio: [Double?] = []
         var teamBossDefeatedRatio: [Double?] = []
@@ -84,11 +92,12 @@ final class CoopShiftStats: ObservableObject {
         
         init(results: RealmSwift.Results<RealmCoopResult>, player: RealmSwift.Results<RealmPlayerResult>) {
             guard let _ = results.first else { return }
+            self.player = player
             self.jobNum = results.count
             self.clearRatio = calcRatio(results.filter("isClear=true").count, divideBy: jobNum)
             self.goldenEggRatio = calcRatio(player.sum(ofProperty: "goldenIkuraNum"), divideBy: results.sum(ofProperty: "goldenEggs"))
             self.powerEggRatio = calcRatio(player.sum(ofProperty: "ikuraNum"), divideBy: results.sum(ofProperty: "powerEggs"))
-            self.specialWeapon = PieChartData(data: SpecialType.allCases.map({ DataSet(value: Double(player.filter("specialId=%@", $0.rawValue).count) / Double(jobNum ?? 1), caption: $0.name)}))
+            
 
             // MARK: 各オオモノの出現数を保存
             let bossAppearCount = Array(results.map({ $0.bossCounts })).sum()
