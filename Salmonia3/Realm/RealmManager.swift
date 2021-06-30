@@ -58,7 +58,7 @@ final class RealmManager {
     // 統計情報を更新
     public static func updateSummary(from summary: Response.SummaryCoop) throws {
         #warning("マルチアカウント対応")
-        guard let account = RealmManager.shared.realm.objects(RealmUserInfo.self).filter("nsaid=%@", SplatNet2.shared.playerId).first else { throw APPError.realm }
+        guard let account = RealmManager.shared.realm.objects(RealmUserInfo.self).filter("nsaid=%@", manager.playerId).first else { throw APPError.realm }
         RealmManager.shared.realm.beginWrite()
         account.goldenIkuraTotal = summary.summary.card.goldenIkuraTotal
         account.ikuraTotal = summary.summary.card.ikuraTotal

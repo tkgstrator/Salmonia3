@@ -16,7 +16,7 @@ struct CoopShiftStatsView: View {
     var body: some View {
         #if DEBUG
         TabView(selection: $seletion) {
-            StatsView(startTime: $startTime)
+            StatsView(startTime: startTime)
                 .tag(0)
 //            StatsWaveView(stats: CoopShiftStats(startTime: startTime))
 //                .tag(1)

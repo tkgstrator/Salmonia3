@@ -10,13 +10,19 @@ import SwiftChart
 
 struct StatsView: View {
     
-    @Binding var startTime: Int
-    @State var result: CoopShiftStats?
+//    @Binding var startTime: Int
+    var result: CoopShiftStats?
+    var startTime: Int
     private func getShiftStats() {
         // 何故か何回も呼ばれる意味不明さがある
-        if let _ = result { } else {
-            result = CoopShiftStats(startTime: startTime)
-        }
+//        if let _ = result { } else {
+//            result = CoopShiftStats(startTime: startTime)
+//        }
+    }
+    
+    init(startTime: Int) {
+        self.startTime = startTime
+        self.result = CoopShiftStats(startTime: startTime)
     }
     
     var body: some View {
@@ -31,7 +37,7 @@ struct StatsView: View {
             Section {
                 HStack {
                     Spacer()
-                    PieChartView(pieChartData: result?.overview?.specialWeapon)
+                    PieChartView(data: (result?.overview!.specialWeapon)!)
                         .frame(width: 300, height: 300, alignment: .center)
                     Spacer()
                 }

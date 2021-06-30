@@ -18,7 +18,7 @@ struct LoadingView: View {
     @EnvironmentObject var appManager: AppManager
     @AppStorage("apiToken") var apiToken: String?
     
-    @State var apiError: SplatNet2.APIError?
+    @State var apiError: APIError?
     @State private var task = Set<AnyCancellable>()
     @State var progressModel = MBCircleProgressModel(progressColor: .red, emptyLineColor: .gray)
     private let dispatchQueue: DispatchQueue = DispatchQueue(label: "LoadingView")
@@ -54,7 +54,7 @@ struct LoadingView: View {
     }
     
     private func getNicknameIcons(pid: [String]) {
-        SplatNet2.shared.getNicknameAndIcons(playerId: Array(Set(pid)))
+        manager.getNicknameAndIcons(playerId: Array(Set(pid)))
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
@@ -73,7 +73,7 @@ struct LoadingView: View {
         var pids: [String] = []
         var results: [(json: Response.ResultCoop, data: SplatNet2.Coop.Result)] = []
 
-        SplatNet2.shared.getSummaryCoop()
+        manager.getSummaryCoop()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
@@ -89,7 +89,7 @@ struct LoadingView: View {
                 let latestResultId = RealmManager.getLatestResultId()
                 #endif
                 if latestResultId == response.summary.card.jobNum {
-                    apiError = .nonewresults
+                    apiError = APIError.emptySessionToken
                     return
                 }
                 
@@ -98,7 +98,7 @@ struct LoadingView: View {
                 progressModel.configure(maxValue: CGFloat(jobIds.count))
                 for jobId in jobIds {
                     // MARK: リザルトのダウンロード
-                    SplatNet2.shared.getResultCoopWithJSON(jobId: jobId)
+                    manager.getResultCoopWithJSON(jobId: jobId)
                         .receive(on: DispatchQueue.main)
                         .sink(receiveCompletion: { completion in
                             progressModel.addValue(value: 1)
@@ -114,7 +114,7 @@ struct LoadingView: View {
                                 pids.append(contentsOf: response.data.results.map{ $0.pid })
                                 results.append(response)
                                 if results.count == jobIds.count {
-                                    RealmManager.addNewResultsFromSplatNet2(from: results.map{ $0.data }, pid: SplatNet2.shared.playerId!)
+//                                    RealmManager.addNewResultsFromSplatNet2(from: results.map{ $0.data }, pid: manager.playerId!)
                                     uploadToSalmonStats(results: results.map{ $0.json.dictionaryObject! })
                                     getNicknameIcons(pid: pids)
                                 }

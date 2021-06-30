@@ -16,7 +16,7 @@ struct ImportingView: View {
     @Environment(\.presentationMode) var present
     @State var task = Set<AnyCancellable>()
     @State var progressModel = MBCircleProgressModel(progressColor: .blue, emptyLineColor: .gray)
-    @State var apiError: SplatNet2.APIError? = nil
+    @State var apiError: APIError? = nil
     
     var body: some View {
         LoggingThread(progressModel: progressModel)
@@ -36,8 +36,8 @@ struct ImportingView: View {
         let dispatchQueue = DispatchQueue(label: "Network Publisher")
         
         // 情報がなければ何もせずエラーを返す
-        guard let nsaid = SplatNet2.shared.playerId else {
-            apiError = .empty
+        guard let nsaid = manager.playerId else {
+            apiError = APIError.emptySessionToken
             return
         }
         

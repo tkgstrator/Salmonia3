@@ -141,7 +141,7 @@ class AppManager: ObservableObject {
     func loggingToCloud(_ value: String) {
         // ログ機能がオンの場合
         if isDebugMode {
-            log.error("nsaid: \(String(describing: SplatNet2.shared.playerId!)), session: \(String(describing: SplatNet2.shared.iksmSession!)), apiver: \(SplatNet2.shared.version), value: \(value)")
+//            log.error("nsaid: \(String(describing: manager.)), session: \(String(describing: manager.iksmSession!)), apiver: \(manager.version), value: \(value)")
         }
     }
 }

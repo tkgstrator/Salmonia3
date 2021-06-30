@@ -15,7 +15,7 @@ class CoreRealmCoop: ObservableObject {
     @ObservedObject var appManager: AppManager = AppManager()
     @Published var resultCount: Int = RealmManager.shared.realm.objects(RealmCoopResult.self).count
     @Published var waves: RealmSwift.Results<RealmCoopWave> = RealmManager.shared.realm.objects(RealmCoopWave.self).sorted(byKeyPath: "goldenIkuraNum", ascending: false)
-    @Published var players: RealmSwift.Results<RealmPlayer> = RealmManager.shared.realm.objects(RealmPlayer.self).filter("nsaid!=%@", SplatNet2.shared.playerId ?? "").sorted(byKeyPath: "lastMatchedTime", ascending: false)
+    @Published var players: RealmSwift.Results<RealmPlayer> = RealmManager.shared.realm.objects(RealmPlayer.self).filter("nsaid!=%@", manager.playerId ?? "").sorted(byKeyPath: "lastMatchedTime", ascending: false)
     @Published var result: [RealmCoopResult] = Array(RealmManager.shared.realm.objects(RealmCoopResult.self).sorted(byKeyPath: "playTime", ascending: false).prefix(5))
     @Published var results: [UserCoopResult] = []
     

@@ -22,6 +22,7 @@ let log = SwiftyBeaver.self
 let console = ConsoleDestination()
 let file = FileDestination()
 let cloud = SBPlatformDestination(appID: "k6Pxwd", appSecret: "iqnaqabvjpwGitdb6au4wDo0UphgshBz", encryptionKey: "vb8cesft69mtFmPbeRe8iIuXohHbrmno")
+var manager: SplatNet2 = SplatNet2()
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     private var task = Set<AnyCancellable>()
@@ -42,7 +43,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         })
         
         // MARK: シフト情報の取得
-        SplatNet2.shared.getShiftSchedule()
+        manager.getShiftSchedule()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
