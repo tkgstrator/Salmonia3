@@ -84,7 +84,7 @@ struct LoadingView: View {
                 }
             }, receiveValue: { response in
                 #if DEBUG
-                let latestResultId = RealmManager.getLatestResultId()
+                let latestResultId = RealmManager.getLatestResultId() - 49
                 #else
                 let latestResultId = RealmManager.getLatestResultId()
                 #endif
@@ -114,7 +114,7 @@ struct LoadingView: View {
                                 pids.append(contentsOf: response.data.results.map{ $0.pid })
                                 results.append(response)
                                 if results.count == jobIds.count {
-//                                    RealmManager.addNewResultsFromSplatNet2(from: results.map{ $0.data }, pid: manager.playerId!)
+                                    RealmManager.addNewResultsFromSplatNet2(from: results.map{ $0.data }, pid: manager.playerId!)
                                     uploadToSalmonStats(results: results.map{ $0.json.dictionaryObject! })
                                     getNicknameIcons(pid: pids)
                                 }

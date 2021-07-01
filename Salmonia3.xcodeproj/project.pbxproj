@@ -68,6 +68,7 @@
 		10682F01265000590035CC68 /* WeaponType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682F00265000590035CC68 /* WeaponType.swift */; };
 		10682F092650026D0035CC68 /* SpecialType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682F082650026D0035CC68 /* SpecialType.swift */; };
 		10682F112650046D0035CC68 /* SalmonidType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682F102650046D0035CC68 /* SalmonidType.swift */; };
+		1076C80C268D52DA00C43987 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1076C80B268D52DA00C43987 /* Wave.swift */; };
 		1079EAD22647E3540085008C /* CoopRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1079EAD12647E3540085008C /* CoopRecordView.swift */; };
 		107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */; };
 		1083857C265922700099475F /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 1083857B265922700099475F /* SwiftyBeaver */; };
@@ -77,10 +78,10 @@
 		109EF375260CB01E00076157 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF374260CB01E00076157 /* ButtonStyle.swift */; };
 		10A08032262070A200BFDF59 /* CoopShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A08031262070A200BFDF59 /* CoopShiftStats.swift */; };
 		10AD114D2600EB18008C0E64 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AD114C2600EB18008C0E64 /* Error.swift */; };
-		10B07C5F260A1463008FDE1B /* CoopShiftStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B07C5E260A1463008FDE1B /* CoopShiftStatsView.swift */; };
 		10B62CA32669CC1400916A64 /* CoopWaveCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B62CA22669CC1400916A64 /* CoopWaveCollection.swift */; };
 		10B62CAF2669D48E00916A64 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B62CAE2669D48E00916A64 /* Appearance.swift */; };
 		10BBBEA226049EF400DA79C9 /* CoopResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBBEA126049EF400DA79C9 /* CoopResultView.swift */; };
+		10CD8544268D40AA00A00162 /* CoopShiftStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD8543268D40A900A00162 /* CoopShiftStatsView.swift */; };
 		10CF098E25FB97CB00D2EEB1 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF098D25FB97CB00D2EEB1 /* BetterSafariView */; };
 		10CF099425FB97F300D2EEB1 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF099325FB97F300D2EEB1 /* SwiftUIRefresh */; };
 		10CF09A025FB984400D2EEB1 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF099F25FB984400D2EEB1 /* SwiftyStoreKit */; };
@@ -183,6 +184,7 @@
 		10682F00265000590035CC68 /* WeaponType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponType.swift; sourceTree = "<group>"; };
 		10682F082650026D0035CC68 /* SpecialType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialType.swift; sourceTree = "<group>"; };
 		10682F102650046D0035CC68 /* SalmonidType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonidType.swift; sourceTree = "<group>"; };
+		1076C80B268D52DA00C43987 /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
 		1079EAD12647E3540085008C /* CoopRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopRecordView.swift; sourceTree = "<group>"; };
 		107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopStats.swift; sourceTree = "<group>"; };
 		108C04072659847D008D2D8C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -192,10 +194,10 @@
 		109EF374260CB01E00076157 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		10A08031262070A200BFDF59 /* CoopShiftStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftStats.swift; sourceTree = "<group>"; };
 		10AD114C2600EB18008C0E64 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
-		10B07C5E260A1463008FDE1B /* CoopShiftStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftStatsView.swift; sourceTree = "<group>"; };
 		10B62CA22669CC1400916A64 /* CoopWaveCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopWaveCollection.swift; sourceTree = "<group>"; };
 		10B62CAE2669D48E00916A64 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		10BBBEA126049EF400DA79C9 /* CoopResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopResultView.swift; sourceTree = "<group>"; };
+		10CD8543268D40A900A00162 /* CoopShiftStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftStatsView.swift; sourceTree = "<group>"; };
 		10CF09BE25FB9AEC00D2EEB1 /* SplitNavigationViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitNavigationViewStyle.swift; sourceTree = "<group>"; };
 		10CF09F325FB9BE100D2EEB1 /* RealmCoopResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopResult.swift; sourceTree = "<group>"; };
 		10CF09FA25FB9C6B00D2EEB1 /* CoreRealmCoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreRealmCoop.swift; sourceTree = "<group>"; };
@@ -267,7 +269,7 @@
 			children = (
 				10682EF1264FEEF00035CC68 /* StatsTab */,
 				1024662425FE4012004DC043 /* CoopShiftCollection.swift */,
-				10B07C5E260A1463008FDE1B /* CoopShiftStatsView.swift */,
+				10CD8543268D40A900A00162 /* CoopShiftStatsView.swift */,
 			);
 			path = Shift;
 			sourceTree = "<group>";
@@ -462,6 +464,7 @@
 		1059419525FA4BF600C32D21 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				1076C80A268D52CE00C43987 /* Wave */,
 				10377F6025FCD5A400536A94 /* Fonts */,
 				105941B125FA519A00C32D21 /* ViewModifier */,
 				1059419425FA4BE900C32D21 /* Color */,
@@ -514,6 +517,14 @@
 				10B62CAE2669D48E00916A64 /* Appearance.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		1076C80A268D52CE00C43987 /* Wave */ = {
+			isa = PBXGroup;
+			children = (
+				1076C80B268D52DA00C43987 /* Wave.swift */,
+			);
+			path = Wave;
 			sourceTree = "<group>";
 		};
 		107F9B3A2614A8CA001581C7 /* MenuView */ = {
@@ -858,7 +869,6 @@
 				1079EAD22647E3540085008C /* CoopRecordView.swift in Sources */,
 				10377FA425FD10FE00536A94 /* Optional.swift in Sources */,
 				1024661625FDFF0F004DC043 /* ImageResize.swift in Sources */,
-				10B07C5F260A1463008FDE1B /* CoopShiftStatsView.swift in Sources */,
 				1024662A25FE50A0004DC043 /* Int.swift in Sources */,
 				10377F6525FCD63B00536A94 /* Font.swift in Sources */,
 				10539190266BD8B5001025E1 /* HelpView.swift in Sources */,
@@ -899,6 +909,7 @@
 				107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */,
 				10CF09FB25FB9C6B00D2EEB1 /* CoreRealmCoop.swift in Sources */,
 				1031728E262C355500CF8903 /* ImportingView.swift in Sources */,
+				10CD8544268D40AA00A00162 /* CoopShiftStatsView.swift in Sources */,
 				10D2E1622655618B00AE584E /* LocalizableStrings.swift in Sources */,
 				10AD114D2600EB18008C0E64 /* Error.swift in Sources */,
 				105941AD25FA500500C32D21 /* TopMenu.swift in Sources */,
@@ -909,6 +920,7 @@
 				1024662525FE4012004DC043 /* CoopShiftCollection.swift in Sources */,
 				101C77CD26496FA6005D603C /* CoopPlayerView.swift in Sources */,
 				10682EED264FEEE80035CC68 /* StatsWeaponView.swift in Sources */,
+				1076C80C268D52DA00C43987 /* Wave.swift in Sources */,
 				1059419725FA4C0C00C32D21 /* Color.swift in Sources */,
 				1053919C266D1703001025E1 /* RealmPlayer.swift in Sources */,
 				109EF375260CB01E00076157 /* ButtonStyle.swift in Sources */,

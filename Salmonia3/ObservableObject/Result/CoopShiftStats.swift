@@ -11,9 +11,9 @@ import SwiftUI
 import SwiftChart
 
 final class CoopShiftStats: ObservableObject {
-    @Published var resultAvg: ResultAvg?
-    @Published var resultMax: ResultMax?
-    @Published var overview: ResultOverView?
+    @Published var resultAvg: ResultAvg
+    @Published var resultMax: ResultMax
+    @Published var overview: ResultOverView
     @Published var weaponData: [ResultWeapon] = []
     @Published var records: CoopRecord
     private var token: NotificationToken?

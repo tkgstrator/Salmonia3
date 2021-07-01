@@ -42,10 +42,3 @@ struct StatsWeaponView: View {
         }
     }
 }
-
-
-//struct StatsWeaponView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        StatsWeaponView()
-//    }
-//}
