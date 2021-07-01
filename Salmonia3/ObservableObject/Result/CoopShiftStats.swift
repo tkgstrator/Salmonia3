@@ -16,6 +16,7 @@ final class CoopShiftStats: ObservableObject {
     @Published var overview: ResultOverView
     @Published var weaponData: [ResultWeapon] = []
     @Published var records: CoopRecord
+    @Published var resultWave: [ResultWave] = []
     private var token: NotificationToken?
 
     init(startTime: Int) {
@@ -23,12 +24,14 @@ final class CoopShiftStats: ObservableObject {
         let nsaid: [String] = Array(realm.objects(RealmUserInfo.self).map{ $0.nsaid! })
         let player = realm.objects(RealmPlayerResult.self).filter("ANY result.startTime=%@ and pid IN %@", startTime, nsaid)
         let result = realm.objects(RealmCoopResult.self).filter("startTime=%@", startTime)
-        
+        let waves = realm.objects(RealmCoopWave.self).filter("ANY result.startTime=%@", startTime)
+
         records = CoopRecord(startTime: startTime)
         resultMax = ResultMax(player: player, result: result)
         resultAvg = ResultAvg(player: player, result: result)
         overview = ResultOverView(results: result, player: player)
         weaponData = getWeaponData(startTime: startTime, nsaid: nsaid)
+        resultWave = waves.resultWaves
 
         token = RealmManager.shared.realm.objects(RealmCoopResult.self).observe{ [weak self] (changes: RealmCollectionChange) in
             self!.resultMax = ResultMax(player: player, result: result)
@@ -36,6 +39,8 @@ final class CoopShiftStats: ObservableObject {
             self!.overview = ResultOverView(results: result, player: player)
             self!.weaponData = self!.getWeaponData(startTime: startTime, nsaid: nsaid)
         }
+        
+        
     }
 
     deinit {
@@ -167,6 +172,22 @@ final class CoopShiftStats: ObservableObject {
             deadCount = player.average(ofProperty: "deadCount")
         }
     }
+    
+    // MARK: 各潮位とイベントにおける納品数を計算する
+    final class ResultWave: Identifiable {
+        var id: UUID { UUID() }
+        var goldenEggs: Double?
+        var count: Int?
+        var tide: Int
+        var event: Int
+        
+        init(tide: Int, event: Int, count: Int, goldenEggs: Double?) {
+            self.tide = tide
+            self.event = event
+            self.count = count
+            self.goldenEggs = goldenEggs
+        }
+    }
 }
 
 func calcRatio(_ value: Int, divideBy: Int?) -> Double? {
@@ -216,5 +237,20 @@ private func bossDefeatedRatio(_ a: [Int], _ b: [Int] ) -> [Double] {
 private extension Collection where Element == Int {
     func drop(index: [Int]) -> [Int] {
         return self.filter({ !index.contains(self.firstIndex(of: $0) as! Int) })
+    }
+}
+
+extension RealmSwift.Results where Element == RealmCoopWave {
+    var resultWaves: [CoopShiftStats.ResultWave] {
+        var waves: [CoopShiftStats.ResultWave] = []
+        for tide in WaterLevel.allCases {
+            for event in EventType.allCases {
+                let results = self.filter("eventType=%@ AND waterLevel=%@", event.eventType, tide.waterLevel)
+                let count: Int = results.count
+                let goldenEggs: Double? = results.average(ofProperty: "goldenIkuraNum")
+                waves.append(CoopShiftStats.ResultWave(tide: tide.rawValue, event: event.rawValue, count: count, goldenEggs: goldenEggs))
+            }
+        }
+        return waves
     }
 }
