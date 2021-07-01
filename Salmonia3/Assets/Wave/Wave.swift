@@ -7,15 +7,22 @@
 
 import SwiftUI
 
-struct Wave: Shape {
+private struct Wave: Shape {
     var offset: Angle
     var percent: Double
+    static var isLoading: Bool = true
     
     var animatableData: AnimatablePair<Double, Double> {
         get { AnimatablePair(offset.degrees, percent) }
         set {
             offset = Angle(degrees: newValue.first)
-            percent = newValue.second
+            
+            if percent == newValue.second {
+                Wave.isLoading = false
+            }
+            if Wave.isLoading {
+                percent = newValue.second
+            }
         }
     }
     
@@ -33,7 +40,7 @@ struct Wave: Shape {
         
         p.move(to: CGPoint(x: 0, y: yoffset + waveHeight * CGFloat(sin(offset.radians))))
         
-        for angle in stride(from: startAngle.degrees, through: endAngle.degrees, by: 1) {
+        for angle in stride(from: startAngle.degrees, through: endAngle.degrees, by: 10) {
             let x = CGFloat((angle - startAngle.degrees) / 360) * rect.width
             p.addLine(to: CGPoint(x: x, y: yoffset + waveHeight * CGFloat(sin(Angle(degrees: angle).radians))))
         }
@@ -55,19 +62,14 @@ struct CircleWaveView: View {
 
     var body: some View {
         GeometryReader { geo in
-            ZStack {
-                Text("\(Int(self.percent))%")
-                    .foregroundColor(.black)
-                    .font(Font.system(size: 0.25 * min(geo.size.width, geo.size.height) ))
-                    .animation(.none)
-                Circle()
-                    .stroke(Color.blue, lineWidth: 0.025 * min(geo.size.width, geo.size.height))
-                    .overlay(
-                        Wave(offset: Angle(degrees: self.waveOffset.degrees), percent: Double(percent)/100)
-                            .fill(Color(red: 0, green: 0.5, blue: 0.75, opacity: 0.5))
-                            .clipShape(Circle().scale(0.92))
-                    )
-            }
+            Circle()
+                .stroke(Color.blue, lineWidth: 0.025 * min(geo.size.width, geo.size.height))
+                .shadow(radius: 3)
+                .overlay(
+                    Wave(offset: Angle(degrees: self.waveOffset.degrees), percent: Double(percent)/100)
+                        .fill(Color(red: 0, green: 0.5, blue: 0.75, opacity: 0.5))
+                        .clipShape(Circle().scale(0.92))
+                )
         }
         .aspectRatio(1, contentMode: .fit)
         .onAppear {
