@@ -72,8 +72,8 @@ struct LoadingView: View {
     private func getResultFromSplatNet2() {
         var pids: [String] = []
         var results: [(json: Response.ResultCoop, data: SplatNet2.Coop.Result)] = []
-
-        manager.getSummaryCoop()
+        print(RealmManager.getLatestResultId())
+        manager.getSummaryCoop(jobNum: RealmManager.getLatestResultId())
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
@@ -82,19 +82,8 @@ struct LoadingView: View {
                 case .failure(let error):
                     apiError = error
                 }
-            }, receiveValue: { response in
-                #if DEBUG
-                let latestResultId = RealmManager.getLatestResultId() - 49
-                #else
-                let latestResultId = RealmManager.getLatestResultId()
-                #endif
-                if latestResultId == response.summary.card.jobNum {
-                    apiError = APIError.emptySessionToken
-                    return
-                }
-                
-                let jobNum = response.summary.card.jobNum
-                let jobIds = Range(max(latestResultId + 1, jobNum - 49) ... jobNum)
+            }, receiveValue: { _ in
+                let jobIds: Range = Range(uncheckedBounds: (max(RealmManager.getLatestResultId(), appManager.account.coop.jobNum - 49), appManager.account.coop.jobNum + 1))
                 progressModel.configure(maxValue: CGFloat(jobIds.count))
                 for jobId in jobIds {
                     // MARK: リザルトのダウンロード
@@ -114,7 +103,7 @@ struct LoadingView: View {
                                 pids.append(contentsOf: response.data.results.map{ $0.pid })
                                 results.append(response)
                                 if results.count == jobIds.count {
-                                    RealmManager.addNewResultsFromSplatNet2(from: results.map{ $0.data }, pid: manager.playerId!)
+                                    RealmManager.addNewResultsFromSplatNet2(from: results.map{ $0.data }, pid: manager.playerId)
                                     uploadToSalmonStats(results: results.map{ $0.json.dictionaryObject! })
                                     getNicknameIcons(pid: pids)
                                 }
@@ -122,7 +111,6 @@ struct LoadingView: View {
                         })
                         .store(in: &task)
                 }
-                try? RealmManager.updateSummary(from: response)
             })
             .store(in: &task)
     }

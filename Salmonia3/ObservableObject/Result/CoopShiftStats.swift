@@ -21,7 +21,8 @@ final class CoopShiftStats: ObservableObject {
 
     init(startTime: Int) {
         let realm = try! Realm()
-        let nsaid: [String] = Array(realm.objects(RealmUserInfo.self).map{ $0.nsaid! })
+        #warning("強制アンラップ")
+        let nsaid: [String] = [manager.account.nsaid]
         let player = realm.objects(RealmPlayerResult.self).filter("ANY result.startTime=%@ and pid IN %@", startTime, nsaid)
         let result = realm.objects(RealmCoopResult.self).filter("startTime=%@", startTime)
         let waves = realm.objects(RealmCoopWave.self).filter("ANY result.startTime=%@", startTime)

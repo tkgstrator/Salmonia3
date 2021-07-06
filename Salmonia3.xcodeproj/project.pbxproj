@@ -43,12 +43,10 @@
 		104BD608261C93630013CD27 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BD607261C93630013CD27 /* KeyStorage.swift */; };
 		104BD620261C98800013CD27 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 104BD61F261C98800013CD27 /* URLImage */; };
 		1052C2D026550E7800D3B9A9 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1052C2CF26550E7800D3B9A9 /* DetailView.swift */; };
-		10539182266AA86B001025E1 /* ViewWillAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10539181266AA86B001025E1 /* ViewWillAppear.swift */; };
 		10539190266BD8B5001025E1 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1053918F266BD8B5001025E1 /* HelpView.swift */; };
 		1053919C266D1703001025E1 /* RealmPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1053919B266D1703001025E1 /* RealmPlayer.swift */; };
 		105391A4266D1C6F001025E1 /* CoreRealmPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105391A3266D1C6F001025E1 /* CoreRealmPlayer.swift */; };
 		105391AC266D23C4001025E1 /* CoopPlayerCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105391AB266D23C4001025E1 /* CoopPlayerCollection.swift */; };
-		105391C92673AF97001025E1 /* ViewAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105391C82673AF96001025E1 /* ViewAppear.swift */; };
 		105391D52673E733001025E1 /* SwiftChart in Frameworks */ = {isa = PBXBuildFile; productRef = 105391D42673E733001025E1 /* SwiftChart */; };
 		10567DD8264ECDD0002654D3 /* SplatNet2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10567DD7264ECDD0002654D3 /* SplatNet2.swift */; };
 		1059416725FA49E500C32D21 /* Salmonia3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059416625FA49E500C32D21 /* Salmonia3App.swift */; };
@@ -81,6 +79,7 @@
 		10B62CA32669CC1400916A64 /* CoopWaveCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B62CA22669CC1400916A64 /* CoopWaveCollection.swift */; };
 		10B62CAF2669D48E00916A64 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B62CAE2669D48E00916A64 /* Appearance.swift */; };
 		10BBBEA226049EF400DA79C9 /* CoopResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBBEA126049EF400DA79C9 /* CoopResultView.swift */; };
+		10C4CCFF2693FC3100489CBB /* SwiftyUI in Frameworks */ = {isa = PBXBuildFile; productRef = 10C4CCFE2693FC3100489CBB /* SwiftyUI */; };
 		10CD8544268D40AA00A00162 /* CoopShiftStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD8543268D40A900A00162 /* CoopShiftStatsView.swift */; };
 		10CF098E25FB97CB00D2EEB1 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF098D25FB97CB00D2EEB1 /* BetterSafariView */; };
 		10CF099425FB97F300D2EEB1 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF099325FB97F300D2EEB1 /* SwiftUIRefresh */; };
@@ -153,12 +152,10 @@
 		104AA7DB2605E0C8007BDC24 /* GoogleMobileAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMobileAds.swift; sourceTree = "<group>"; };
 		104BD607261C93630013CD27 /* KeyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyStorage.swift; sourceTree = "<group>"; };
 		1052C2CF26550E7800D3B9A9 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		10539181266AA86B001025E1 /* ViewWillAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWillAppear.swift; sourceTree = "<group>"; };
 		1053918F266BD8B5001025E1 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		1053919B266D1703001025E1 /* RealmPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPlayer.swift; sourceTree = "<group>"; };
 		105391A3266D1C6F001025E1 /* CoreRealmPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreRealmPlayer.swift; sourceTree = "<group>"; };
 		105391AB266D23C4001025E1 /* CoopPlayerCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopPlayerCollection.swift; sourceTree = "<group>"; };
-		105391C82673AF96001025E1 /* ViewAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAppear.swift; sourceTree = "<group>"; };
 		105391D02673E705001025E1 /* SwiftChart */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftChart; path = ../SwiftChart; sourceTree = "<group>"; };
 		10567DD7264ECDD0002654D3 /* SplatNet2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplatNet2.swift; sourceTree = "<group>"; };
 		1059416325FA49E500C32D21 /* Salmonia3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Salmonia3.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,6 +216,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10C4CCFF2693FC3100489CBB /* SwiftyUI in Frameworks */,
 				10CF09A025FB984400D2EEB1 /* SwiftyStoreKit in Frameworks */,
 				1090C689263DF162000DD54C /* SplatNet2 in Frameworks */,
 				10CF09BA25FB9AC100D2EEB1 /* RealmSwift in Frameworks */,
@@ -358,15 +356,6 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
-		10539180266AA847001025E1 /* ViewWillHandler */ = {
-			isa = PBXGroup;
-			children = (
-				10539181266AA86B001025E1 /* ViewWillAppear.swift */,
-				105391C82673AF96001025E1 /* ViewAppear.swift */,
-			);
-			path = ViewWillHandler;
-			sourceTree = "<group>";
-		};
 		1053919A266D16E4001025E1 /* Player */ = {
 			isa = PBXGroup;
 			children = (
@@ -410,7 +399,6 @@
 				1059416825FA49E500C32D21 /* ContentView.swift */,
 				108C04072659847D008D2D8C /* GoogleService-Info.plist */,
 				107F9B3A2614A8CA001581C7 /* MenuView */,
-				10539180266AA847001025E1 /* ViewWillHandler */,
 				10CF09F825FB9BEE00D2EEB1 /* Realm */,
 				10CF09F925FB9C4900D2EEB1 /* ObservableObject */,
 				10682EFF265000400035CC68 /* Enum */,
@@ -633,6 +621,7 @@
 				1083857B265922700099475F /* SwiftyBeaver */,
 				102C75EA2659C5A600AEE20F /* SwiftyAPNGKit */,
 				105391D42673E733001025E1 /* SwiftChart */,
+				10C4CCFE2693FC3100489CBB /* SwiftyUI */,
 			);
 			productName = Salmonia3;
 			productReference = 1059416325FA49E500C32D21 /* Salmonia3.app */;
@@ -684,6 +673,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
+				ORGANIZATIONNAME = "Magi Corporation";
 				TargetAttributes = {
 					1059416225FA49E500C32D21 = {
 						CreatedOnToolsVersion = 12.4;
@@ -715,6 +705,7 @@
 				10CF09B625FB9AC100D2EEB1 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				104BD61E261C98800013CD27 /* XCRemoteSwiftPackageReference "url-image" */,
 				1083857A265922700099475F /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
+				10C4CCFD2693FC3100489CBB /* XCRemoteSwiftPackageReference "SwiftyUI" */,
 			);
 			productRefGroup = 1059416425FA49E500C32D21 /* Products */;
 			projectDirPath = "";
@@ -883,7 +874,6 @@
 				1059416925FA49E500C32D21 /* ContentView.swift in Sources */,
 				10682EF3264FEF0A0035CC68 /* StatsWaveView.swift in Sources */,
 				104AA7DC2605E0C8007BDC24 /* GoogleMobileAds.swift in Sources */,
-				105391C92673AF97001025E1 /* ViewAppear.swift in Sources */,
 				10B62CA32669CC1400916A64 /* CoopWaveCollection.swift in Sources */,
 				1052C2D026550E7800D3B9A9 /* DetailView.swift in Sources */,
 				10377F9925FD09FF00536A94 /* LoggingThread.swift in Sources */,
@@ -902,7 +892,6 @@
 				105391A4266D1C6F001025E1 /* CoreRealmPlayer.swift in Sources */,
 				10CF0A0525FBA6BF00D2EEB1 /* RealmCoopWave.swift in Sources */,
 				10B62CAF2669D48E00916A64 /* Appearance.swift in Sources */,
-				10539182266AA86B001025E1 /* ViewWillAppear.swift in Sources */,
 				10377F8625FD041900536A94 /* AppManager.swift in Sources */,
 				10377F9125FD09E800536A94 /* LoadingView.swift in Sources */,
 				102C75DF2659BA5700AEE20F /* LoadingIndicator.swift in Sources */,
@@ -1101,7 +1090,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1111,7 +1100,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.3;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1127,7 +1116,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1137,7 +1126,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.3;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1289,6 +1278,14 @@
 				minimumVersion = 1.9.5;
 			};
 		};
+		10C4CCFD2693FC3100489CBB /* XCRemoteSwiftPackageReference "SwiftyUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tkgstrator/SwiftyUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		10CF098C25FB97CB00D2EEB1 /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/stleamist/BetterSafariView.git";
@@ -1353,6 +1350,11 @@
 		1090C688263DF162000DD54C /* SplatNet2 */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SplatNet2;
+		};
+		10C4CCFE2693FC3100489CBB /* SwiftyUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10C4CCFD2693FC3100489CBB /* XCRemoteSwiftPackageReference "SwiftyUI" */;
+			productName = SwiftyUI;
 		};
 		10CF098D25FB97CB00D2EEB1 /* BetterSafariView */ = {
 			isa = XCSwiftPackageProductDependency;

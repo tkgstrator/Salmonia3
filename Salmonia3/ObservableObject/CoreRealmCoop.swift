@@ -57,9 +57,9 @@ class CoreRealmCoop: ObservableObject {
             results = starTime.map{ UserCoopResult(startTime: $0) }
             result = Array(RealmManager.shared.realm.objects(RealmCoopResult.self).sorted(byKeyPath: "playTime", ascending: false).prefix(5))
         }
-        realmObserver[1] = RealmManager.shared.realm.objects(RealmUserInfo.self).observe { [self] _ in
-            objectWillChange.send()
-        }
+//        realmObserver[1] = RealmManager.shared.realm.objects(RealmUserInfo.self).observe { [self] _ in
+//            objectWillChange.send()
+//        }
     }
     
     deinit {

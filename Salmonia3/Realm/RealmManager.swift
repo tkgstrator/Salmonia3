@@ -55,17 +55,6 @@ final class RealmManager {
         realm = try! Realm()
     }
     
-    // 統計情報を更新
-    public static func updateSummary(from summary: Response.SummaryCoop) throws {
-        #warning("マルチアカウント対応")
-        guard let account = RealmManager.shared.realm.objects(RealmUserInfo.self).filter("nsaid=%@", manager.playerId).first else { throw APPError.realm }
-        RealmManager.shared.realm.beginWrite()
-        account.goldenIkuraTotal = summary.summary.card.goldenIkuraTotal
-        account.ikuraTotal = summary.summary.card.ikuraTotal
-        account.jobNum = summary.summary.card.jobNum
-        try RealmManager.shared.realm.commitWrite()
-    }
-    
     // そのプレイヤーが参加していたシフトのスケジュールを取得
     public static func getPlayerShiftStartTime(nsaid: String) -> [Int] {
         return Array(Set(RealmManager.shared.realm.objects(RealmCoopResult.self).filter("ANY player.pid=%@", nsaid).map{ $0.startTime })).sorted(by: >)
@@ -84,14 +73,17 @@ final class RealmManager {
         }
         try? RealmManager.shared.realm.commitWrite()
     }
-    
-    public static func getActiveAccountsIsEmpty() -> Bool {
-        return RealmManager.shared.realm.objects(RealmUserInfo.self).isEmpty
-    }
-    
+
     // 最新のバイトIDを取得
     public static func getLatestResultId() -> Int {
-        return RealmManager.shared.realm.objects(RealmUserInfo.self).first?.jobNum ?? -1
+        let nsaid = manager.account.nsaid
+        guard let realm = try? Realm() else { return 0 }
+        let jobNum: Int? = realm.objects(RealmCoopResult.self).filter("pid=%@", nsaid).max(ofProperty: "jobId")
+        if let jobNum = jobNum {
+            return jobNum
+        } else {
+            return 0
+        }
     }
     
     public static func addNewRotation(from rotation: [Response.ScheduleCoop]) throws {
@@ -106,20 +98,7 @@ final class RealmManager {
         guard let schedule = realm.objects(RealmCoopShift.self).filter("startTime=%@", startTime).first else { throw APPError.realm }
         return schedule
     }
-    
-    // 新規アカウント追加
-    public static func addNewAccount(from account: Response.UserInfo) throws {
-        guard let realm = try? Realm() else { return }
-        realm.beginWrite()
-        realm.create(RealmUserInfo.self, value: RealmUserInfo(from: account), update: .all)
-        try realm.commitWrite()
-    }
-    
-    // ユーザ情報を更新
-    public static func updateUserInfo(from account: Response.UserInfo) throws {
-        
-    }
-    
+
     public static func getNicknames() -> [String] {
         return Array(Set(RealmManager.shared.realm.objects(RealmPlayerResult.self).map{ $0.pid! }))
     }
@@ -196,7 +175,6 @@ final class RealmManager {
                 realm.delete(realm.objects(RealmCoopWave.self))
                 realm.delete(realm.objects(RealmPlayer.self))
                 realm.delete(realm.objects(RealmPlayerResult.self))
-                //                realm.delete(realm.objects(RealmUserInfo.self))
                 try? realm.commitWrite()
             }
         }

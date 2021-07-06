@@ -13,7 +13,11 @@ import Combine
 
 class AppManager: ObservableObject {
     
-    @Published var account: RealmUserInfo = RealmManager.shared.realm.objects(RealmUserInfo.self).first ?? RealmUserInfo()
+    var account: UserInfo {
+        get {
+            manager.account
+        }
+    }
     
     // 無料機能
     @AppStorage("FEATURE_FREE_01") var isFree01: Bool = false // クマブキ表示
@@ -54,13 +58,7 @@ class AppManager: ObservableObject {
     private var observer: [[NSKeyValueObservation?]] = Array(repeating: Array(repeating: nil, count: 5), count: 5)
     
     init() {
-        guard let realm = try? Realm() else { return }
-        token.realm = realm.objects(RealmUserInfo.self).observe { _ in
-            if let account = realm.objects(RealmUserInfo.self).first {
-                self.account = account
-            }
-        }
-        
+
         observer[0][0] = UserDefaults.standard.observe(\.FEATURE_PAID_01, options: [.initial, .new], changeHandler: { [weak self] (_, _) in
             self?.objectWillChange.send()
         })
