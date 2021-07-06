@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftyUI
 import BetterSafariView
 import SalmonStats
 import SplatNet2
@@ -27,7 +28,8 @@ struct SettingView: View {
             Section(header: Text(.HEADER_USERINFO).splatfont2(.orange, size: 14),
                     footer: Text(.FOOTER_SPLATNET2).splatfont2(.secondary, size: 13).environment(\.lineLimit, 2)) {
 //                SettingMenu(title: .SETTING_SPLATNET2, value: manager.playerId)
-                SettingMenu(title: .RESULTS, value: results.resultCount)
+                AccountPicker()
+                SettingMenu(title: .RESULTS, value: appManager.account.coop.jobNum)
             }
             
             Section(header: Text(.HEADER_SALMONSTATS).splatfont2(.orange, size: 14),
@@ -83,6 +85,7 @@ struct SettingView: View {
             #endif
         }
         .font(.custom("Splatfont2", size: 16))
+        .onWillDisappear(appManager.objectWillChange.send)
         .navigationTitle(.TITLE_SETTINGS)
     }
     

@@ -22,10 +22,8 @@ struct RealmCoopStats {
 
     init(startTime: String) {
         guard let realm = try? Realm() else { return }
-//        guard let pid = realm.objects(RealmUserInfo.self).first?.nsaid else { return }
         let results = realm.objects(RealmCoopResult.self).filter("startTime=%@", startTime)
         guard let _ = results.first else { return }
-//        let player = realm.objects(RealmPlayerResult.self).filter("ANY result.startTime=%@ AND pid=%@", startTime, pid)
 
         maxResult.goldenEggs = results.max(ofProperty: "goldenEggs")
         maxResult.powerEggs = results.max(ofProperty: "powerEggs")

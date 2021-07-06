@@ -80,8 +80,8 @@ struct TopMenu: View {
     var Overview: some View {
         NavigationLink(destination: SettingView()) {
             HStack {
-                URLImage(url: URL(string: appManager.account.thumbnailURL.stringValue)!) { image in image.resizable().clipShape(Circle()) }.frame(width: 70, height: 70)
-                Text(appManager.account.nickname.stringValue)
+                URLImage(url: appManager.account.imageUri) { image in image.resizable().clipShape(Circle()) }.frame(width: 70, height: 70)
+                Text(appManager.account.nickname)
                     .splatfont2(size: 22)
                     .frame(maxWidth: .infinity)
             }
