@@ -83,7 +83,7 @@ struct LoadingView: View {
                     apiError = error
                 }
             }, receiveValue: { _ in
-                let jobIds: Range = Range(uncheckedBounds: (max(RealmManager.getLatestResultId(), appManager.account.coop.jobNum - 49), appManager.account.coop.jobNum + 1))
+                let jobIds: Range = Range(uncheckedBounds: (max(RealmManager.getLatestResultId(), manager.account.coop.jobNum - 49), manager.account.coop.jobNum + 1))
                 progressModel.configure(maxValue: CGFloat(jobIds.count))
                 for jobId in jobIds {
                     // MARK: リザルトのダウンロード

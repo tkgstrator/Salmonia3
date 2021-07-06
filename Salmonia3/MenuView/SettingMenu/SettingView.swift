@@ -29,7 +29,7 @@ struct SettingView: View {
                     footer: Text(.FOOTER_SPLATNET2).splatfont2(.secondary, size: 13).environment(\.lineLimit, 2)) {
 //                SettingMenu(title: .SETTING_SPLATNET2, value: manager.playerId)
                 AccountPicker()
-                SettingMenu(title: .RESULTS, value: appManager.account.coop.jobNum)
+                SettingMenu(title: .RESULTS, value: manager.account.coop.jobNum)
             }
             
             Section(header: Text(.HEADER_SALMONSTATS).splatfont2(.orange, size: 14),
@@ -85,7 +85,10 @@ struct SettingView: View {
             #endif
         }
         .font(.custom("Splatfont2", size: 16))
-        .onWillDisappear(appManager.objectWillChange.send)
+        .onWillDisappear {
+            appManager.objectWillChange.send()
+            results.objectWillChange.send()
+        }
         .navigationTitle(.TITLE_SETTINGS)
     }
     

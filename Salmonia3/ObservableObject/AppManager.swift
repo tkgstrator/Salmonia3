@@ -13,12 +13,6 @@ import Combine
 
 class AppManager: ObservableObject {
     
-    var account: UserInfo {
-        get {
-            manager.account
-        }
-    }
-    
     // 無料機能
     @AppStorage("FEATURE_FREE_01") var isFree01: Bool = false // クマブキ表示
     @AppStorage("FEATURE_FREE_02") var isFree02: Bool = false // ローテーション表示
