@@ -55,6 +55,22 @@ final class RealmManager {
         realm = try! Realm()
     }
     
+    //
+    public static func getCoopResults(startTime: Int? = nil, pid: String? = nil) -> RealmSwift.Results<RealmCoopResult> {
+        let realm = try! Realm()
+        if let startTime = startTime, let pid = pid {
+            return realm.objects(RealmCoopResult.self).filter("startTime=%@ AND pid=%@", startTime, pid)
+        }
+        if let startTime = startTime {
+            return realm.objects(RealmCoopResult.self).filter("startTime=%@", startTime)
+        }
+        if let pid = pid {
+            return realm.objects(RealmCoopResult.self).filter("pid=%@", pid)
+        }
+        return realm.objects(RealmCoopResult.self)
+    }
+        
+    
     // そのプレイヤーが参加していたシフトのスケジュールを取得
     public static func getPlayerShiftStartTime(nsaid: String) -> [Int] {
         return Array(Set(RealmManager.shared.realm.objects(RealmCoopResult.self).filter("ANY player.pid=%@", nsaid).map{ $0.startTime })).sorted(by: >)

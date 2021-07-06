@@ -34,7 +34,7 @@ struct ImportingView: View {
         // 取り込み機能を無効化
         appManager.importEnabled = false
         let dispatchQueue = DispatchQueue(label: "Network Publisher")
-        let nsaid = appManager.account.nsaid
+        let nsaid = manager.account.nsaid
         
         // 情報がなければ何もせずエラーを返す
         if nsaid.isEmpty {

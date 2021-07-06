@@ -13,10 +13,17 @@ import SplatNet2
 
 class CoreRealmCoop: ObservableObject {
     @ObservedObject var appManager: AppManager = AppManager()
-    @Published var resultCount: Int = RealmManager.shared.realm.objects(RealmCoopResult.self).count
-    @Published var waves: RealmSwift.Results<RealmCoopWave> = RealmManager.shared.realm.objects(RealmCoopWave.self).sorted(byKeyPath: "goldenIkuraNum", ascending: false)
-    @Published var players: RealmSwift.Results<RealmPlayer> = RealmManager.shared.realm.objects(RealmPlayer.self).filter("nsaid!=%@", manager.playerId ?? "").sorted(byKeyPath: "lastMatchedTime", ascending: false)
-    @Published var result: [RealmCoopResult] = Array(RealmManager.shared.realm.objects(RealmCoopResult.self).sorted(byKeyPath: "playTime", ascending: false).prefix(5))
+    @Published var resultCount: Int = RealmManager.shared.realm.objects(RealmCoopResult.self)
+        .filter("pid=%@", manager.playerId)
+        .count
+    @Published var waves: RealmSwift.Results<RealmCoopWave> = RealmManager.shared.realm.objects(RealmCoopWave.self)
+        .filter("ANY result.pid=%@", manager.playerId)
+        .sorted(byKeyPath: "goldenIkuraNum", ascending: false)
+    @Published var players: RealmSwift.Results<RealmPlayer> = RealmManager.shared.realm.objects(RealmPlayer.self)
+        .filter("nsaid!=%@", manager.playerId)
+        .sorted(byKeyPath: "lastMatchedTime", ascending: false)
+    @Published var result: [RealmCoopResult] = Array(RealmManager.shared.realm.objects(RealmCoopResult.self)
+                                                        .sorted(byKeyPath: "playTime", ascending: false).prefix(5))
     @Published var results: [UserCoopResult] = []
     
     var records: [CoopRecord] {
@@ -30,12 +37,14 @@ class CoreRealmCoop: ObservableObject {
             .filter("startTime>=%@", Int(Date().timeIntervalSince1970))
             .min(ofProperty: "startTime") ?? 1500616800
     }
+    
     var currentShiftNumber: Int {
         !appManager.isFree02 ? 0 : RealmManager.shared.realm.objects(RealmCoopShift.self).sorted(byKeyPath: "startTime", ascending: false)
             .sorted(byKeyPath: "startTime", ascending: false)
             .filter("startTime>=%@", Int(Date().timeIntervalSince1970))
             .count
     }
+    
     var shifts: RealmSwift.Results<RealmCoopShift> {
         RealmManager.shared.realm.objects(RealmCoopShift.self).sorted(byKeyPath: "startTime", ascending: false)
             .sorted(byKeyPath: "startTime", ascending: false)
@@ -43,23 +52,22 @@ class CoreRealmCoop: ObservableObject {
     }
     
     // MARK: 最新の二件のシフト表示
-    var latestShifts: [RealmCoopShift] {
+    var latestShifts: [RealmCoopShift] = {
         let currentTime: Int = Int(Date().timeIntervalSince1970)
         
         return Array(RealmManager.shared.realm.objects(RealmCoopShift.self)
             .filter("endTime>=%@", currentTime)
             .sorted(byKeyPath: "startTime", ascending: true).prefix(2))
-    }
+    }()
     
     init() {
         realmObserver[0] = RealmManager.shared.realm.objects(RealmCoopResult.self).observe { [self] _ in
-            let starTime: [Int] = Array(Set(RealmManager.shared.realm.objects(RealmCoopResult.self).map({ $0.startTime }))).sorted(by: >)
+            let starTime: [Int] = Array(Set(RealmManager.shared.realm.objects(RealmCoopResult.self)
+                                                .filter("pid=%@", manager.playerId)
+                                                .map({ $0.startTime }))).sorted(by: >)
             results = starTime.map{ UserCoopResult(startTime: $0) }
             result = Array(RealmManager.shared.realm.objects(RealmCoopResult.self).sorted(byKeyPath: "playTime", ascending: false).prefix(5))
         }
-//        realmObserver[1] = RealmManager.shared.realm.objects(RealmUserInfo.self).observe { [self] _ in
-//            objectWillChange.send()
-//        }
     }
     
     deinit {
@@ -74,13 +82,19 @@ class UserCoopResult: Identifiable {
     var results: RealmSwift.Results<RealmCoopResult>
         
     init(startTime: Int) {
-        self.phase = RealmManager.shared.realm.objects(RealmCoopShift.self).filter("startTime=%@", startTime).first!
-        results = RealmManager.shared.realm.objects(RealmCoopResult.self).filter("startTime=%@", startTime).sorted(byKeyPath: "playTime", ascending: false)
+        self.phase = RealmManager.shared.realm.objects(RealmCoopShift.self)
+            .filter("startTime=%@", startTime).first!
+        results = RealmManager.shared.realm.objects(RealmCoopResult.self)
+            .filter("startTime=%@ AND pid=%@", startTime, manager.playerId)
+            .sorted(byKeyPath: "playTime", ascending: false)
     }
     
     init(startTime: Int, pid: String) {
-        self.phase = RealmManager.shared.realm.objects(RealmCoopShift.self).filter("startTime=%@", startTime).first!
-        results = RealmManager.shared.realm.objects(RealmCoopResult.self).filter("startTime=%@ AND ANY player.pid=%@", startTime, pid).sorted(byKeyPath: "playTime", ascending: false)
+        self.phase = RealmManager.shared.realm.objects(RealmCoopShift.self)
+            .filter("startTime=%@", startTime).first!
+        results = RealmManager.shared.realm.objects(RealmCoopResult.self)
+            .filter("startTime=%@ AND ANY player.pid=%@", startTime, manager.playerId)
+            .sorted(byKeyPath: "playTime", ascending: false)
     }
 }
 
@@ -94,14 +108,18 @@ class CoopRecord: ObservableObject {
     init() {}
     
     init(startTime: Int) {
-        let results = RealmManager.shared.realm.objects(RealmCoopResult.self).filter("startTime=%@", startTime)
-        let waves = RealmManager.shared.realm.objects(RealmCoopWave.self).filter("ANY result.startTime=%@", startTime)
+        let results = RealmManager.shared.realm.objects(RealmCoopResult.self)
+            .filter("startTime=%@", startTime)
+        let waves = RealmManager.shared.realm.objects(RealmCoopWave.self)
+            .filter("ANY result.startTime=%@", startTime)
         getRecordsFromDatabase(results: results, waves: waves)
     }
     
     init(stageId: Int) {
-        let results = RealmManager.shared.realm.objects(RealmCoopResult.self).filter("stageId=%@", stageId)
-        let waves = RealmManager.shared.realm.objects(RealmCoopWave.self).filter("ANY result.stageId=%@", stageId)
+        let results = RealmManager.shared.realm.objects(RealmCoopResult.self)
+            .filter("stageId=%@", stageId)
+        let waves = RealmManager.shared.realm.objects(RealmCoopWave.self)
+            .filter("ANY result.stageId=%@", stageId)
         getRecordsFromDatabase(results: results, waves: waves)
     }
     
