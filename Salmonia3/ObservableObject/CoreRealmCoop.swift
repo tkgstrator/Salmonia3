@@ -18,7 +18,7 @@ class CoreRealmCoop: ObservableObject {
     @Published var players: RealmSwift.Results<RealmPlayer> = RealmManager.Objects.players
     @Published var result: [RealmCoopResult] = Array(RealmManager.Objects.results.prefix(5))
     var results: [UserCoopResult] {
-        let startTime: [Int] = Array(Set(RealmManager.Objects.results.map({ $0.startTime }))).sorted(by: <)
+        let startTime: [Int] = Array(Set(RealmManager.Objects.results.map({ $0.startTime }))).sorted(by: >)
         return startTime.map({ UserCoopResult(startTime: $0) })
     }
     

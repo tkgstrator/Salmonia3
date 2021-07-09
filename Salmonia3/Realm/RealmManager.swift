@@ -35,34 +35,36 @@ final class RealmManager: AppManager {
         static func results(startTime: Int) -> RealmSwift.Results<RealmCoopResult> {
             return realm.objects(RealmCoopResult.self)
                 .filter("pid=%@ AND startTime=%@", manager.account.nsaid, startTime)
-                .sorted(byKeyPath: "startTime", ascending: false)
+                .sorted(byKeyPath: "playTime", ascending: false)
         }
 
         // シフトIDを指定して返す
         static func results(startTime: Int, playerId: String) -> RealmSwift.Results<RealmCoopResult> {
             return realm.objects(RealmCoopResult.self)
                 .filter("pid=%@ AND startTime=%@", playerId, startTime)
-                .sorted(byKeyPath: "startTime", ascending: false)
+                .sorted(byKeyPath: "playTime", ascending: false)
         }
 
         // ステージIDを指定して返す
         static func results(stageId: Int) -> RealmSwift.Results<RealmCoopResult> {
             return realm.objects(RealmCoopResult.self)
                 .filter("pid=%@ AND stageId=%@", manager.account.nsaid, stageId)
-                .sorted(byKeyPath: "startTime", ascending: false)
+                .sorted(byKeyPath: "playTime", ascending: false)
         }
         
         //
         static func results(playerId: String) -> RealmSwift.Results<RealmCoopResult> {
             return realm.objects(RealmCoopResult.self)
                 .filter("pid=%@", playerId)
-                .sorted(byKeyPath: "startTime", ascending: false)
+                .sorted(byKeyPath: "playTime", ascending: false)
         }
 
         // MARK: RealmCoopWave
         // 全WAVEリザルトを返す
         static var waves: RealmSwift.Results<RealmCoopWave> {
-            return realm.objects(RealmCoopWave.self).filter("ANY result.pid=%@", manager.account.nsaid)
+            return realm.objects(RealmCoopWave.self)
+                .filter("ANY result.pid=%@", manager.account.nsaid)
+                .sorted(byKeyPath: "goldenIkuraNum", ascending: false)
         }
         
         static func waves(startTime: Int) -> RealmSwift.Results<RealmCoopWave> {
