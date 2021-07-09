@@ -12,47 +12,97 @@ import SalmonStats
 import SplatNet2
 import Combine
 
-final class RealmManager {
+final class RealmManager: AppManager {
+    private static let realm: Realm = try! Realm()
+    class Objects {
+        private static let realm: Realm = try! Realm()
+        
+        // MARK: RealmCoopShift
+        static func shift(startTime: Int) -> RealmCoopShift {
+            return realm.objects(RealmCoopShift.self)
+                .filter("startTime=%@", startTime).first!
+        }
+
+        // MARK: RealmCoopResult
+        // 全リザルトを返す
+        static var results: RealmSwift.Results<RealmCoopResult> {
+            return realm.objects(RealmCoopResult.self)
+                .filter("pid=%@", manager.account.nsaid)
+                .sorted(byKeyPath: "playTime", ascending: false)
+        }
+
+        // シフトIDを指定して返す
+        static func results(startTime: Int) -> RealmSwift.Results<RealmCoopResult> {
+            return realm.objects(RealmCoopResult.self)
+                .filter("pid=%@ AND startTime=%@", manager.account.nsaid, startTime)
+                .sorted(byKeyPath: "startTime", ascending: false)
+        }
+
+        // シフトIDを指定して返す
+        static func results(startTime: Int, playerId: String) -> RealmSwift.Results<RealmCoopResult> {
+            return realm.objects(RealmCoopResult.self)
+                .filter("pid=%@ AND startTime=%@", playerId, startTime)
+                .sorted(byKeyPath: "startTime", ascending: false)
+        }
+
+        // ステージIDを指定して返す
+        static func results(stageId: Int) -> RealmSwift.Results<RealmCoopResult> {
+            return realm.objects(RealmCoopResult.self)
+                .filter("pid=%@ AND stageId=%@", manager.account.nsaid, stageId)
+                .sorted(byKeyPath: "startTime", ascending: false)
+        }
+        
+        //
+        static func results(playerId: String) -> RealmSwift.Results<RealmCoopResult> {
+            return realm.objects(RealmCoopResult.self)
+                .filter("pid=%@", playerId)
+                .sorted(byKeyPath: "startTime", ascending: false)
+        }
+
+        // MARK: RealmCoopWave
+        // 全WAVEリザルトを返す
+        static var waves: RealmSwift.Results<RealmCoopWave> {
+            return realm.objects(RealmCoopWave.self).filter("ANY result.pid=%@", manager.account.nsaid)
+        }
+        
+        static func waves(startTime: Int) -> RealmSwift.Results<RealmCoopWave> {
+            return realm.objects(RealmCoopWave.self)
+                .filter("ANY result.pid=%@ AND ANY result.startTime=%@", manager.account.nsaid, startTime)
+        }
+        
+        static func waves(stageId: Int) -> RealmSwift.Results<RealmCoopWave> {
+            return realm.objects(RealmCoopWave.self)
+                .filter("ANY result.pid=%@ AND ANY result.stageId=%@", manager.account.nsaid, stageId)
+        }
+
+        // MARK: RealmPlayerResult
+        static func playerResults(startTime: Int, playerId: String) -> RealmSwift.Results<RealmPlayerResult> {
+            return realm.objects(RealmPlayerResult.self)
+                .filter("pid=%@ AND ANY result.startTime=%@", playerId, startTime)
+        }
+
+        static func playerResults(playerId: String) -> RealmSwift.Results<RealmPlayerResult> {
+            return realm.objects(RealmPlayerResult.self)
+                .filter("pid=%@", playerId)
+        }
+
+        static func playerResults(startTime: Int) -> RealmSwift.Results<RealmPlayerResult> {
+            return realm.objects(RealmPlayerResult.self)
+                .filter("pid=%@ AND ANY result.startTime=%@", manager.playerId, startTime)
+        }
+
+        // MARK: RealmPlayer
+        // マッチングしたプレイヤーを返す
+        static var players: RealmSwift.Results<RealmPlayer> {
+            return realm.objects(RealmPlayer.self)
+                .filter("nsaid!=%@", manager.account.nsaid)
+                .sorted(byKeyPath: "lastMatchedTime", ascending: false)
+        }
+    }
     
-    static let shared = RealmManager()
     private var task = Set<AnyCancellable>()
-    let realm: Realm
-    
-    init() {
-        let config = Realm.Configuration(
-            schemaVersion: 4100,
-            migrationBlock: { migration, schemaVersion in
-                if schemaVersion <= 512 {
-                    let formatter: ISO8601DateFormatter = {
-                        let formatter = ISO8601DateFormatter()
-                        formatter.timeZone = TimeZone.current
-                        return formatter
-                    }()
-                    
-                    migration.enumerateObjects(ofType: RealmCoopShift.className()) { old, new in
-                        new!["startTime"] = Int((formatter.date(from: old!["startTime"] as! String)!).timeIntervalSince1970)
-                        new!["endTime"] = Int((formatter.date(from: old!["endTime"] as! String)!).timeIntervalSince1970)
-                    }
-                }
-                
-                if schemaVersion <= 1024 {
-                    let formatter: ISO8601DateFormatter = {
-                        let formatter = ISO8601DateFormatter()
-                        formatter.timeZone = TimeZone.current
-                        return formatter
-                    }()
-                    
-                    migration.enumerateObjects(ofType: RealmCoopResult.className()) { old, new in
-                        new!["startTime"] = Int((formatter.date(from: old!["startTime"] as! String)!).timeIntervalSince1970)
-                        new!["playTime"] = Int((formatter.date(from: old!["playTime"] as! String)!).timeIntervalSince1970)
-                        new!["endTime"] = Int((formatter.date(from: old!["endTime"] as! String)!).timeIntervalSince1970)
-                    }
-                }
-                // schemaVersionが上がると呼び出される
-                print("MIGRATION NEEDED")
-            })
-        Realm.Configuration.defaultConfiguration = config
-        realm = try! Realm()
+
+    override init() {
     }
     
     //
@@ -73,21 +123,21 @@ final class RealmManager {
     
     // そのプレイヤーが参加していたシフトのスケジュールを取得
     public static func getPlayerShiftStartTime(nsaid: String) -> [Int] {
-        return Array(Set(RealmManager.shared.realm.objects(RealmCoopResult.self).filter("ANY player.pid=%@", nsaid).map{ $0.startTime })).sorted(by: >)
+        return Array(Set(realm.objects(RealmCoopResult.self).filter("ANY player.pid=%@", nsaid).map{ $0.startTime })).sorted(by: >)
     }
     
     // そのプレイヤーが参加していたシフトのデータを取得
     public static func getPlayerShiftResults(nsaid: String) -> [UserCoopResult] {
-        return getPlayerShiftStartTime(nsaid: nsaid).map({ UserCoopResult(startTime: $0, pid: nsaid)})
+        return getPlayerShiftStartTime(nsaid: nsaid).map({ UserCoopResult(startTime: $0, playerId: nsaid)})
     }
 
     public static func updateUserNickname(players: [PlayerMetadata]) {
-        RealmManager.shared.realm.beginWrite()
+        realm.beginWrite()
         for player in players {
-            let account = RealmManager.shared.realm.objects(RealmPlayerResult.self).filter("pid=%@", player.pid)
+            let account = realm.objects(RealmPlayerResult.self).filter("pid=%@", player.pid)
             account.setValue(player.name, forKey: "name")
         }
-        try? RealmManager.shared.realm.commitWrite()
+        try? realm.commitWrite()
     }
 
     // 最新のバイトIDを取得
@@ -103,10 +153,10 @@ final class RealmManager {
     }
     
     public static func addNewRotation(from rotation: [Response.ScheduleCoop]) throws {
-        RealmManager.shared.realm.beginWrite()
+        realm.beginWrite()
         let rotations: [RealmCoopShift] = rotation.map{ RealmCoopShift(from: $0) }
-        let _ = rotations.map{ RealmManager.shared.realm.create(RealmCoopShift.self, value: $0, update: .all) }
-        try? RealmManager.shared.realm.commitWrite()
+        let _ = rotations.map{ realm.create(RealmCoopShift.self, value: $0, update: .all) }
+        try? realm.commitWrite()
     }
     // シフトスケジュールを取得
     public static func getShiftSchedule(startTime: Int) throws -> RealmCoopShift {
@@ -116,7 +166,7 @@ final class RealmManager {
     }
 
     public static func getNicknames() -> [String] {
-        return Array(Set(RealmManager.shared.realm.objects(RealmPlayerResult.self).map{ $0.pid! }))
+        return Array(Set(realm.objects(RealmPlayerResult.self).map{ $0.pid }))
     }
  
     // MARK: ユーザ名やサムネイルを更新し、RealmPlayerのオブジェクトを作成

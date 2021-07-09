@@ -12,14 +12,14 @@ import SwiftUI
 extension RealmPlayerResult {
     var srpower: Double {
         let bossrate: [[Int]] = [[1783, 1609, 2649, 1587, 1534, 1563, 1500, 1783, 2042]]
-        let bias: Double = calcBias(self.result.first!, self.pid!)
+        let bias: Double = calcBias(self.result.first!, self.pid)
         let baserate: Int = Array(zip(self.bossKillCounts, bossrate[0])).map{ $0 * $1 }.reduce(0, +) / max(1, self.bossKillCounts.sum())
         
         return Double(Double(baserate) * bias).round
     }
     
     var matching: Int {
-        return RealmManager.shared.realm.objects(RealmPlayerResult.self).filter("pid=%@", self.pid!).count
+        return RealmManager.Objects.playerResults(playerId: self.pid).count
     }
 }
 
