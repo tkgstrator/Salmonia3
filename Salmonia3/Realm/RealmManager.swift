@@ -20,7 +20,7 @@ final class RealmManager {
     
     init() {
         let config = Realm.Configuration(
-            schemaVersion: 4098,
+            schemaVersion: 4100,
             migrationBlock: { migration, schemaVersion in
                 if schemaVersion <= 512 {
                     let formatter: ISO8601DateFormatter = {
