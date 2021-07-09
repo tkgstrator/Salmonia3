@@ -14,18 +14,18 @@ struct CoopShiftCollection: View {
 
     var body: some View {
         ScrollViewReader { proxy in
-            List {
-                ForEach(main.shifts.indices, id:\.self) { index in
-                    ZStack(alignment: .leading) {
-                        NavigationLink(destination: CoopShiftStatsView(startTime: main.shifts[index].startTime), label: {
-                            EmptyView()
-                        })
-                        .opacity(0.0)
-                        CoopShift(shift: main.shifts[index])
-                    }
-                }
-            }
-            .onAppear{ scrollTo(proxy: proxy) }
+//            List {
+//                ForEach(main.shifts.indices, id:\.self) { index in
+//                    ZStack(alignment: .leading) {
+//                        NavigationLink(destination: CoopShiftStatsView(startTime: main.shifts[index].startTime), label: {
+//                            EmptyView()
+//                        })
+//                        .opacity(0.0)
+//                        CoopShift(shift: main.shifts[index])
+//                    }
+//                }
+//            }
+//            .onAppear{ scrollTo(proxy: proxy) }
         }
         .navigationTitle(.TITLE_SHIFT_SCHEDULE)
     }
@@ -33,7 +33,7 @@ struct CoopShiftCollection: View {
     private func scrollTo(proxy: ScrollViewProxy) {
         if !present.wrappedValue.isPresented {
             withAnimation {
-                proxy.scrollTo(main.currentShiftNumber, anchor: .center)
+//                proxy.scrollTo(main.currentShiftNumber, anchor: .center)
             }
         }
     }

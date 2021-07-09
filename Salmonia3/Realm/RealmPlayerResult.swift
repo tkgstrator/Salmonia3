@@ -12,7 +12,7 @@ import SplatNet2
 
 final class RealmPlayerResult: Object {
     @Persisted var name: String?
-    @Persisted(indexed: true) var pid: String?
+    @Persisted(indexed: true) var pid: String
     @Persisted var deadCount: Int
     @Persisted var helpCount: Int
     @Persisted var goldenIkuraNum: Int

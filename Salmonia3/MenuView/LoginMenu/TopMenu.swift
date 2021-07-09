@@ -35,16 +35,16 @@ struct TopMenu: View {
 //                    LanPlayRecords
                     #endif
                 }
-                Section(header: Text(.HEADER_SCHEDULE).splatfont2(.orange, size: 14)) {
-                    ForEach(main.latestShifts, id:\.self) { shift in
-                        NavigationLink(destination: CoopShiftStatsView(startTime: shift.startTime), label: {
-                            CoopShift(shift: shift)
-                        })
-                    }
-                    NavigationLink(destination: CoopShiftCollection()) {
-                        Text(.TITLE_SHIFT_SCHEDULE)
-                    }
-                }
+//                Section(header: Text(.HEADER_SCHEDULE).splatfont2(.orange, size: 14)) {
+//                    ForEach(main.latestShifts, id:\.self) { shift in
+//                        NavigationLink(destination: CoopShiftStatsView(startTime: shift.startTime), label: {
+//                            CoopShift(shift: shift)
+//                        })
+//                    }
+//                    NavigationLink(destination: CoopShiftCollection()) {
+//                        Text(.TITLE_SHIFT_SCHEDULE)
+//                    }
+//                }
                 Section(header: Text(.HEADER_STAGE_RECORD).splatfont2(.orange, size: 14)) {
                     ForEach(StageType.allCases, id:\.self) { stage in
                         NavigationLink(destination: CoopRecordView(stageId: stage.rawValue)) {

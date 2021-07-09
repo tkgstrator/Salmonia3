@@ -34,7 +34,7 @@ final class CoopShiftStats: ObservableObject {
         weaponData = getWeaponData(startTime: startTime, nsaid: nsaid)
         resultWave = waves.resultWaves
 
-        token = RealmManager.shared.realm.objects(RealmCoopResult.self).observe{ [weak self] (changes: RealmCollectionChange) in
+        token = RealmManager.Objects.results.observe{ [weak self] (changes: RealmCollectionChange) in
             self!.resultMax = ResultMax(player: player, result: result)
             self!.resultAvg = ResultAvg(player: player, result: result)
             self!.overview = ResultOverView(results: result, player: player)
@@ -50,8 +50,8 @@ final class CoopShiftStats: ObservableObject {
     
     // MARK: 指定されたスケジュールのブキのリストを返す
     private func getWeaponData(startTime: Int, nsaid: [String]) -> [ResultWeapon] {
-        guard let shift = RealmManager.shared.realm.objects(RealmCoopShift.self).filter("startTime=%@", startTime).first else { return [] }
-        let suppliedWepons: [Int] = RealmManager.shared.realm.objects(RealmPlayerResult.self).filter("ANY result.startTime=%@ AND pid IN %@", startTime, nsaid).flatMap{ $0.weaponList }
+        let shift: RealmCoopShift = RealmManager.Objects.shift(startTime: startTime)
+        let suppliedWepons: [Int] = RealmManager.Objects.playerResults(startTime: startTime).flatMap{ $0.weaponList }
         let allWeaponLists: [Int] = Array(WeaponType.allCases.map{ $0.rawValue })
 
         switch shift.weaponList.contains(-1) {

@@ -22,9 +22,9 @@ final class RealmCoopResult: Object, Identifiable {
     @Persisted var gradeId: Int?
     @Persisted var kumaPoint: Int?
     @Persisted var dangerRate: Double
-    @Persisted var playTime: Int
+    @Persisted(primaryKey: true) var playTime: Int
     @Persisted var endTime: Int
-    @Persisted var startTime: Int
+    @Persisted(indexed: true) var startTime: Int
     @Persisted var goldenEggs: Int
     @Persisted var powerEggs: Int
     @Persisted var failureReason: String?
@@ -33,14 +33,6 @@ final class RealmCoopResult: Object, Identifiable {
     @Persisted var bossKillCounts: List<Int>
     @Persisted var wave: List<RealmCoopWave>
     @Persisted var player: List<RealmPlayerResult>
-
-    override static func primaryKey() -> String? {
-        return "playTime"
-    }
-
-    override static func indexedProperties() -> [String] {
-        return ["startTime"]
-    }
 
     var specialUsage: [[Int]] {
         // ここのコードを修正予定
@@ -143,7 +135,6 @@ private extension Int {
 
 extension RealmCoopResult {
     var indexOfResults: Int {
-        let results = RealmManager.shared.realm.objects(RealmCoopResult.self).filter("startTime=%@", self.startTime)
-        return (results.index(of: self) ?? -1) + 1
+        return (RealmManager.Objects.results(startTime: startTime).index(of: self) ?? -1) + 1
     }
 }

@@ -120,6 +120,6 @@ extension Optional where Wrapped == String {
 
 extension RealmPlayerResult {
     var isOwner: Bool {
-        return self.result.first?.player.first!.pid == self.pid!
+        return self.result.first?.player.first!.pid == self.pid
     }
 }
