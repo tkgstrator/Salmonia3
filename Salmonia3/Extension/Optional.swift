@@ -10,24 +10,35 @@ import RealmSwift
 
 extension Optional where Wrapped == String {
     var stringValue: String {
-        return self == nil ? "-" : self!
+        if let value = self {
+            return value
+        }
+        return "-"
     }
 }
 
 extension Optional where Wrapped == Int {
     var stringValue: String {
-        return self == nil ? "-" : String(self!)
+        if let value = self {
+            return String(value)
+        }
+        return ""
     }
     
     var intValue: Int {
-        return self == nil ? 0 : self!
+        if let value = self {
+            return value
+        }
+        return 0
     }
 }
 
 extension Optional where Wrapped == Bool {
     var stringValue: String {
-        guard let _ = self else { return "-" }
-        return self! ? "ENABLED".localized : "DISABLED".localized
+        if let value = self {
+            return value ? "ENABLED".localized : "DISABLED".localized
+        }
+        return "-"
     }
 }
 
@@ -61,12 +72,6 @@ extension Optional where Wrapped == Any {
         default:
             return "-"
         }
-    }
-}
-
-extension RealmOptional where Value == Int {
-    var intValue: Int {
-        return self.value == nil ? 0 : self.value!
     }
 }
 

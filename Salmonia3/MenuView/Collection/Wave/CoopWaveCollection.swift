@@ -54,10 +54,10 @@ struct WaveOverview: View {
     
     var StageInfo: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(StageType.init(rawValue: wave.result.first!.stageId!)!.name.localized)
+            Text(StageType.init(rawValue: wave.result.first!.stageId)!.name.localized)
             HStack {
-                Text(wave.waterLevel!.tide.localized)
-                Text(wave.eventType!.localized)
+                Text(wave.waterLevel.tide.localized)
+                Text(wave.eventType.localized)
             }
             .splatfont2(size: 16)
         }

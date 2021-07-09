@@ -13,7 +13,7 @@ final class RealmCoopShift: Object, Identifiable {
     
     @Persisted(primaryKey: true) var startTime: Int
     @Persisted var endTime: Int
-    @Persisted var stageId: Int?
+    @Persisted var stageId: Int
     @Persisted var rareWeapon: Int?
     @Persisted var weaponList: List<Int>
 

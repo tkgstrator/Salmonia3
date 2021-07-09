@@ -83,10 +83,10 @@ struct PlayerOverview: View {
     
     var body: some View {
         HStack {
-            URLImage(url: URL(string: player.thumbnailURL!)!) { image in image.resizable().clipShape(Circle()) }
+            URLImage(url: URL(string: player.thumbnailURL)!) { image in image.resizable().clipShape(Circle()) }
                 .frame(width: 70, height: 70)
             Spacer()
-            Text(player.nickname!)
+            Text(player.nickname)
                 .splatfont2(size: 18)
             Spacer()
             VStack(alignment: .trailing) {
