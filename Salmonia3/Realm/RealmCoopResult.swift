@@ -13,7 +13,7 @@ import SplatNet2
 final class RealmCoopResult: Object, Identifiable {
     @Persisted var pid: String
     @Persisted var jobId: Int?
-    @Persisted var stageId: Int?
+    @Persisted var stageId: Int
     @Persisted var salmonId: Int?
     @Persisted var gradePoint: Int?
     @Persisted var gradePointDelta: Int?
@@ -21,12 +21,12 @@ final class RealmCoopResult: Object, Identifiable {
     @Persisted var jobScore: Int?
     @Persisted var gradeId: Int?
     @Persisted var kumaPoint: Int?
-    @Persisted var dangerRate: Double?
+    @Persisted var dangerRate: Double
     @Persisted var playTime: Int
     @Persisted var endTime: Int
     @Persisted var startTime: Int
-    @Persisted var goldenEggs: Int?
-    @Persisted var powerEggs: Int?
+    @Persisted var goldenEggs: Int
+    @Persisted var powerEggs: Int
     @Persisted var failureReason: String?
     @Persisted var isClear: Bool
     @Persisted var bossCounts: List<Int>

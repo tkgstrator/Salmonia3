@@ -11,8 +11,8 @@ import SalmonStats
 import SplatNet2
 
 final class RealmCoopWave: Object {
-    @Persisted var eventType: String?
-    @Persisted var waterLevel: String?
+    @Persisted var eventType: String
+    @Persisted var waterLevel: String
     @Persisted(indexed: true) var goldenIkuraNum: Int
     @Persisted var goldenIkuraPopNum: Int
     @Persisted var quotaNum: Int

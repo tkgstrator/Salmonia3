@@ -11,19 +11,15 @@ import SalmonStats
 import SplatNet2
 
 final class RealmPlayer: Object, Identifiable {
-    @objc dynamic var nsaid: String?
-    @objc dynamic var nickname: String?
-    @objc dynamic var thumbnailURL: String?
-    @objc dynamic var jobNum: Int = 0
-    @objc dynamic var goldenIkuraTotal: Int = 0
-    @objc dynamic var helpTotal: Int = 0
-    @objc dynamic var ikuraTotal: Int = 0
-    @objc dynamic var matching: Int = 0
-    @objc dynamic var lastMatchedTime: Int = 0
-    
-    override static func primaryKey() -> String? {
-        return "nsaid"
-    }
+    @Persisted(primaryKey: true) var nsaid: String
+    @Persisted var nickname: String
+    @Persisted var thumbnailURL: String
+    @Persisted var jobNum: Int
+    @Persisted var goldenIkuraTotal: Int
+    @Persisted var helpTotal: Int
+    @Persisted var ikuraTotal: Int
+    @Persisted var matching: Int
+    @Persisted var lastMatchedTime: Int
     
     convenience init(from account: Response.NicknameIcons.NicknameIcon) {
         self.init()
@@ -42,7 +38,7 @@ extension RealmPlayer {
     var id: UUID { UUID() } 
 
     var results: [UserCoopResult] {
-        let startTime: [Int] = Array(Set(RealmManager.shared.realm.objects(RealmCoopResult.self).sorted(byKeyPath: "playTime", ascending: false).filter("ANY player.pid=%@", self.nsaid!).map{ $0.startTime })).sorted(by: >)
-        return startTime.map{ UserCoopResult(startTime: $0, pid: self.nsaid!) }
+        let startTime: [Int] = Array(Set(RealmManager.shared.realm.objects(RealmCoopResult.self).sorted(byKeyPath: "playTime", ascending: false).filter("ANY player.pid=%@", self.nsaid).map{ $0.startTime })).sorted(by: >)
+        return startTime.map{ UserCoopResult(startTime: $0, pid: self.nsaid) }
     }
 }

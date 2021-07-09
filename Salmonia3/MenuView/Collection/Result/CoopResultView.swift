@@ -81,7 +81,7 @@ struct CoopResultOverview: View {
     // MARK: 概要を表示するビュー
     var ResultOverview: some View {
         ZStack(alignment: .center) {
-            Image(StageType(rawValue: result.stageId.intValue)!.md5)
+            Image(StageType(rawValue: result.stageId)!.md5)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .clipShape(RoundedRectangle(cornerRadius: 8.0))
@@ -100,12 +100,12 @@ struct CoopResultOverview: View {
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 24, height: 24)
-                    Text(verbatim: "x\(result.goldenEggs.intValue)")
+                    Text(verbatim: "x\(result.goldenEggs)")
                     Image("f812db3e6de0479510cd02684131e15a")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 24, height: 24)
-                    Text(verbatim: "x\(result.powerEggs.intValue)")
+                    Text(verbatim: "x\(result.powerEggs)")
                 }
                 .shadow(color: .black, radius: 0, x: 1, y: 1)
             }
@@ -131,10 +131,10 @@ struct CoopResultOverview: View {
                             .splatfont2(size: 26)
                         Text("\(result.wave[index].ikuraNum)")
                             .foregroundColor(.red)
-                        Text(result.wave[index].waterLevel.stringValue.localized)
+                        Text(result.wave[index].waterLevel.localized)
                             .frame(height: 24)
                             .foregroundColor(.black)
-                        Text(result.wave[index].eventType.stringValue.localized)
+                        Text(result.wave[index].eventType.localized)
                             .frame(height: 24)
                             .foregroundColor(.black)
                     }
@@ -179,12 +179,12 @@ struct CoopResultOverview: View {
 
     // MARK: キケン度を表示
     var DangerRate: some View {
-        switch result.dangerRate! == 200 {
+        switch result.dangerRate == 200 {
         case true:
             return Text(.RESULT_HAZARD_LEVEL_MAX)
                 .splatfont2(.yellow, size: 20)
         case false:
-            return Text("RESULT_HAZARD_LEVEL_\(String(result.dangerRate.doubleValue))")
+            return Text("RESULT_HAZARD_LEVEL_\(String(result.dangerRate))")
                 .splatfont2(.yellow, size: 20)
         }
     }

@@ -176,12 +176,12 @@ struct ResultOverview: View {
         VStack(alignment: .leading, spacing: 5) {
             HStack {
                 Image("49c944e4edf1abee295b6db7525887bd").resize()
-                Text("x\(result.goldenEggs.intValue)")
+                Text("x\(result.goldenEggs)")
                     .frame(width: 50, height: 18, alignment: .leading)
             }
             HStack {
                 Image("f812db3e6de0479510cd02684131e15a").resize()
-                Text("x\(result.powerEggs.intValue)")
+                Text("x\(result.powerEggs)")
                     .frame(width: 50, height: 18, alignment: .leading)
             }
         }

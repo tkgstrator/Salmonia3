@@ -77,10 +77,10 @@ struct CoopShift: View {
     var InfoWeapon: some View {
         HStack {
             VStack(spacing: 0) {
-                Image(StageType(rawValue: shift.stageId.intValue)!.md5)
+                Image(StageType(rawValue: shift.stageId)!.md5)
                     .resizable().frame(width: 112, height: 63)
                     .clipShape(RoundedRectangle(cornerRadius: 8.0))
-                Text(StageType(rawValue: shift.stageId.intValue)!.name.localized)
+                Text(StageType(rawValue: shift.stageId)!.name.localized)
                     .splatfont2(size: 14)
                     .textCase(nil)
                     .padding(.bottom, 8)
