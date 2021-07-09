@@ -11,21 +11,17 @@ import SalmonStats
 import SplatNet2
 
 final class RealmPlayerResult: Object {
-    @objc dynamic var name: String?
-    @objc dynamic var pid: String?
-    @objc dynamic var deadCount: Int = 0
-    @objc dynamic var helpCount: Int = 0
-    @objc dynamic var goldenIkuraNum: Int = 0
-    @objc dynamic var ikuraNum: Int = 0
-    @objc dynamic var specialId: Int = 0
-    dynamic var bossKillCounts = List<Int>()
-    dynamic var weaponList = List<Int>()
-    dynamic var specialCounts = List<Int>()
-    let result = LinkingObjects(fromType: RealmCoopResult.self, property: "player")
-
-    override static func indexedProperties() -> [String] {
-        return ["nsaid"]
-    }
+    @Persisted var name: String?
+    @Persisted(indexed: true) var pid: String?
+    @Persisted var deadCount: Int
+    @Persisted var helpCount: Int
+    @Persisted var goldenIkuraNum: Int
+    @Persisted var ikuraNum: Int
+    @Persisted var specialId: Int
+    @Persisted var bossKillCounts: List<Int>
+    @Persisted var weaponList: List<Int>
+    @Persisted var specialCounts: List<Int>
+    @Persisted(originProperty: "player") var result: LinkingObjects<RealmCoopResult>
 
     public convenience init(from result: SplatNet2.Coop.ResultPlayer) {
         self.init()
