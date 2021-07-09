@@ -11,17 +11,13 @@ import SalmonStats
 import SplatNet2
 
 final class RealmCoopWave: Object {
-    @objc dynamic var eventType: String?
-    @objc dynamic var waterLevel: String?
-    @objc dynamic var goldenIkuraNum: Int = 0
-    @objc dynamic var goldenIkuraPopNum: Int = 0
-    @objc dynamic var quotaNum: Int = 0
-    @objc dynamic var ikuraNum: Int = 0
-    let result = LinkingObjects(fromType: RealmCoopResult.self, property: "wave")
-
-    override static func indexedProperties() -> [String] {
-        return ["golden_ikura_num"]
-    }
+    @Persisted var eventType: String?
+    @Persisted var waterLevel: String?
+    @Persisted(indexed: true) var goldenIkuraNum: Int
+    @Persisted var goldenIkuraPopNum: Int
+    @Persisted var quotaNum: Int
+    @Persisted var ikuraNum: Int
+    @Persisted(originProperty: "wave") var result: LinkingObjects<RealmCoopResult>
 
     convenience init(from result: SplatNet2.Coop.ResultWave) {
         self.init()
