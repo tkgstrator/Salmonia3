@@ -11,28 +11,28 @@ import SalmonStats
 import SplatNet2
 
 final class RealmCoopResult: Object, Identifiable {
-    @objc dynamic var pid: String?
-    let jobId = RealmOptional<Int>() // SplatNet2用のID
-    let stageId = RealmOptional<Int>()
-    let salmonId = RealmOptional<Int>() // SalmonStats用のID
-    let gradePoint = RealmOptional<Int>()
-    let gradeId = RealmOptional<Int>()
-    let gradePointDelta = RealmOptional<Int>()
-    let failureWave = RealmOptional<Int>()
-    let jobScore = RealmOptional<Int>()
-    let kumaPoint = RealmOptional<Int>()
-    let dangerRate = RealmOptional<Double>()
-    @objc dynamic var playTime: Int = 0
-    @objc dynamic var endTime: Int = 0
-    @objc dynamic var startTime: Int = 0
-    let goldenEggs = RealmOptional<Int>()
-    let powerEggs = RealmOptional<Int>()
-    @objc dynamic var failureReason: String?
-    @objc dynamic var isClear: Bool = false
-    dynamic var bossCounts = List<Int>()
-    dynamic var bossKillCounts = List<Int>()
-    var wave = List<RealmCoopWave>()
-    var player = List<RealmPlayerResult>()
+    @Persisted var pid: String
+    @Persisted var jobId: Int?
+    @Persisted var stageId: Int?
+    @Persisted var salmonId: Int?
+    @Persisted var gradePoint: Int?
+    @Persisted var gradePointDelta: Int?
+    @Persisted var failureWave: Int?
+    @Persisted var jobScore: Int?
+    @Persisted var gradeId: Int?
+    @Persisted var kumaPoint: Int?
+    @Persisted var dangerRate: Double?
+    @Persisted var playTime: Int
+    @Persisted var endTime: Int
+    @Persisted var startTime: Int
+    @Persisted var goldenEggs: Int?
+    @Persisted var powerEggs: Int?
+    @Persisted var failureReason: String?
+    @Persisted var isClear: Bool
+    @Persisted var bossCounts: List<Int>
+    @Persisted var bossKillCounts: List<Int>
+    @Persisted var wave: List<RealmCoopWave>
+    @Persisted var player: List<RealmPlayerResult>
 
     override static func primaryKey() -> String? {
         return "playTime"
@@ -57,23 +57,23 @@ final class RealmCoopResult: Object, Identifiable {
 
     convenience init(from result: SplatNet2.Coop.Result, pid: String) {
         self.init()
-        self.stageId.value = result.stageId
-        self.jobId.value = result.jobId
-        self.failureWave.value = result.jobResult.failureWave
+        self.stageId = result.stageId
+        self.jobId = result.jobId
+        self.failureWave = result.jobResult.failureWave
         self.failureReason = result.jobResult.failureReason
         self.isClear = result.jobResult.isClear
         self.pid = pid
-        self.jobScore.value = result.jobScore
-        self.kumaPoint.value = result.kumaPoint
-        self.gradePoint.value = result.gradePoint
-        self.gradeId.value = result.grade
-        self.gradePointDelta.value = result.gradePointDelta
-        self.dangerRate.value = result.dangerRate
+        self.jobScore = result.jobScore
+        self.kumaPoint = result.kumaPoint
+        self.gradePoint = result.gradePoint
+        self.gradeId = result.grade
+        self.gradePointDelta = result.gradePointDelta
+        self.dangerRate = result.dangerRate
         self.playTime = result.time.playTime
         self.endTime = result.time.endTime
         self.startTime = result.time.startTime
-        self.goldenEggs.value = result.goldenEggs
-        self.powerEggs.value = result.powerEggs
+        self.goldenEggs = result.goldenEggs
+        self.powerEggs = result.powerEggs
         self.bossCounts.append(objectsIn: result.bossCounts)
         self.bossKillCounts.append(objectsIn: result.bossKillCounts)
         self.wave.append(objectsIn: result.waveDetails.map{ RealmCoopWave(from: $0) })
@@ -82,22 +82,22 @@ final class RealmCoopResult: Object, Identifiable {
     
     convenience init(from result: SalmonStats.ResultCoop, pid: String) {
         self.init()
-        self.stageId.value = result.stageId
-        self.salmonId.value = result.jobId
-        self.failureWave.value = result.jobResult.failureWave
+        self.stageId = result.stageId
+        self.salmonId = result.jobId
+        self.failureWave = result.jobResult.failureWave
         self.failureReason = result.jobResult.failureReason
         self.isClear = result.jobResult.isClear
         self.pid = pid
         if let gradePoint = result.results.filter({ $0.pid == pid }).first?.gradePoint {
-            self.gradePoint.value = gradePoint.gradePointValue
-            self.gradeId.value = gradePoint.gradeIdValue
+            self.gradePoint = gradePoint.gradePointValue
+            self.gradeId = gradePoint.gradeIdValue
         }
-        self.dangerRate.value = result.dangerRate
+        self.dangerRate = result.dangerRate
         self.playTime = result.time.playTime
         self.endTime = result.time.endTime
         self.startTime = result.time.startTime
-        self.goldenEggs.value = result.waveDetails.map{ $0.goldenIkuraNum }.reduce(0, +)
-        self.powerEggs.value = result.waveDetails.map{ $0.ikuraNum }.reduce(0, +)
+        self.goldenEggs = result.waveDetails.map{ $0.goldenIkuraNum }.reduce(0, +)
+        self.powerEggs = result.waveDetails.map{ $0.ikuraNum }.reduce(0, +)
         self.bossCounts.append(objectsIn: result.bossCounts)
         self.bossKillCounts.append(objectsIn: result.bossKillCounts)
         self.wave.append(objectsIn: result.waveDetails.map{ RealmCoopWave(from: $0) })

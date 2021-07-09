@@ -26,12 +26,12 @@ extension RealmPlayerResult {
 private func calcBias(_ result: RealmCoopResult, _ nsaid: String) -> Double {
     let player: RealmPlayerResult = result.player.filter("pid=%@", nsaid).first!
     let base: [Double] = [
-        Double((result.dangerRate.value! * 3) / 5 + 120) / 160, // MAX
-        Double((result.dangerRate.value! * 3) / 5 + 80) / 160, // BASE
+        Double((result.dangerRate.doubleValue * 3) / 5 + 120) / 160, // MAX
+        Double((result.dangerRate.doubleValue * 3) / 5 + 80) / 160, // BASE
     ]
     let bias: [Double] = [
         Double(player.bossKillCounts.sum() * 99) / Double(17 * result.bossCounts.sum()),
-        Double((result.dangerRate.value! * 3) / 5 + 80) / 160 + Double(player.goldenIkuraNum * 3 - result.wave.sum(ofProperty: "quotaNum")) / (9 * 160)
+        Double((result.dangerRate.doubleValue * 3) / 5 + 80) / 160 + Double(player.goldenIkuraNum * 3 - result.wave.sum(ofProperty: "quotaNum")) / (9 * 160)
     ]
     let quota: [Bool] = [
         (min(result.wave.sum(ofProperty: "quotaNum"), result.wave.sum(ofProperty: "goldenIkuraNum")) / 5) <= player.goldenIkuraNum, // ノルマか納品数の少ない方の20%

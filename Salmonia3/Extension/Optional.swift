@@ -33,7 +33,17 @@ extension Optional where Wrapped == Bool {
 
 extension Optional where Wrapped == Double {
     var stringValue: String {
-        return self == nil ? "-" : String(self!.round)
+        if let value = self {
+            return String(value.round)
+        }
+        return "-"
+    }
+    
+    var doubleValue: Double {
+        if let value = self {
+            return value
+        }
+        return 0.0
     }
 }
 

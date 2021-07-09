@@ -179,12 +179,12 @@ struct CoopResultOverview: View {
 
     // MARK: キケン度を表示
     var DangerRate: some View {
-        switch result.dangerRate.value! == 200 {
+        switch result.dangerRate! == 200 {
         case true:
             return Text(.RESULT_HAZARD_LEVEL_MAX)
                 .splatfont2(.yellow, size: 20)
         case false:
-            return Text("RESULT_HAZARD_LEVEL_\(String(result.dangerRate.value!))")
+            return Text("RESULT_HAZARD_LEVEL_\(String(result.dangerRate.doubleValue))")
                 .splatfont2(.yellow, size: 20)
         }
     }
