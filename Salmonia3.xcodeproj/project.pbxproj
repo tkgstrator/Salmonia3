@@ -85,7 +85,6 @@
 		10CF09A025FB984400D2EEB1 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF099F25FB984400D2EEB1 /* SwiftyStoreKit */; };
 		10CF09B825FB9AC100D2EEB1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF09B725FB9AC100D2EEB1 /* Realm */; };
 		10CF09BA25FB9AC100D2EEB1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF09B925FB9AC100D2EEB1 /* RealmSwift */; };
-		10CF09BF25FB9AEC00D2EEB1 /* SplitNavigationViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF09BE25FB9AEC00D2EEB1 /* SplitNavigationViewStyle.swift */; };
 		10CF09F425FB9BE100D2EEB1 /* RealmCoopResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF09F325FB9BE100D2EEB1 /* RealmCoopResult.swift */; };
 		10CF09FB25FB9C6B00D2EEB1 /* CoreRealmCoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF09FA25FB9C6B00D2EEB1 /* CoreRealmCoop.swift */; };
 		10CF0A0025FBA5BC00D2EEB1 /* RealmPlayerResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF09FF25FBA5BC00D2EEB1 /* RealmPlayerResult.swift */; };
@@ -129,9 +128,7 @@
 		1024663D26009956004DC043 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		102466462600CE27004DC043 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1024664A2600D55E004DC043 /* StageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageType.swift; sourceTree = "<group>"; };
-		1028D36D26418EF30034C075 /* MBCircleProgressBar */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MBCircleProgressBar; path = ../MBCircleProgressBar; sourceTree = "<group>"; };
 		102C75DE2659BA5700AEE20F /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
-		102C75E62659C59500AEE20F /* SwiftyAPNGKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftyAPNGKit; path = ../SwiftyAPNGKit; sourceTree = "<group>"; };
 		102C760C265A50BC00AEE20F /* LoadingSnow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoadingSnow.png; sourceTree = "<group>"; };
 		102C761C265A549400AEE20F /* LoadingSpin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoadingSpin.png; sourceTree = "<group>"; };
 		102C762D265A718600AEE20F /* LoadingIka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoadingIka.png; sourceTree = "<group>"; };
@@ -154,7 +151,6 @@
 		1053919B266D1703001025E1 /* RealmPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPlayer.swift; sourceTree = "<group>"; };
 		105391A3266D1C6F001025E1 /* CoreRealmPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreRealmPlayer.swift; sourceTree = "<group>"; };
 		105391AB266D23C4001025E1 /* CoopPlayerCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopPlayerCollection.swift; sourceTree = "<group>"; };
-		105391D02673E705001025E1 /* SwiftChart */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftChart; path = ../SwiftChart; sourceTree = "<group>"; };
 		10567DD7264ECDD0002654D3 /* SplatNet2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplatNet2.swift; sourceTree = "<group>"; };
 		1059416325FA49E500C32D21 /* Salmonia3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Salmonia3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1059416625FA49E500C32D21 /* Salmonia3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salmonia3App.swift; sourceTree = "<group>"; };
@@ -193,7 +189,6 @@
 		10B62CAE2669D48E00916A64 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		10BBBEA126049EF400DA79C9 /* CoopResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopResultView.swift; sourceTree = "<group>"; };
 		10CD8543268D40A900A00162 /* CoopShiftStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftStatsView.swift; sourceTree = "<group>"; };
-		10CF09BE25FB9AEC00D2EEB1 /* SplitNavigationViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitNavigationViewStyle.swift; sourceTree = "<group>"; };
 		10CF09F325FB9BE100D2EEB1 /* RealmCoopResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopResult.swift; sourceTree = "<group>"; };
 		10CF09FA25FB9C6B00D2EEB1 /* CoreRealmCoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreRealmCoop.swift; sourceTree = "<group>"; };
 		10CF09FF25FBA5BC00D2EEB1 /* RealmPlayerResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPlayerResult.swift; sourceTree = "<group>"; };
@@ -365,11 +360,8 @@
 		1059415A25FA49E500C32D21 = {
 			isa = PBXGroup;
 			children = (
-				102C75E62659C59500AEE20F /* SwiftyAPNGKit */,
-				1028D36D26418EF30034C075 /* MBCircleProgressBar */,
 				1090C681263DF125000DD54C /* SplatNet2 */,
 				100F564A262C308F00A1D1D0 /* SalmonStats */,
-				105391D02673E705001025E1 /* SwiftChart */,
 				1059416525FA49E500C32D21 /* Salmonia3 */,
 				1059417725FA49E900C32D21 /* Salmonia3Tests */,
 				1059418225FA49E900C32D21 /* Salmonia3UITests */,
@@ -472,7 +464,6 @@
 			isa = PBXGroup;
 			children = (
 				105941BD25FA525100C32D21 /* Background.swift */,
-				10CF09BE25FB9AEC00D2EEB1 /* SplitNavigationViewStyle.swift */,
 				10377F6425FCD63B00536A94 /* Font.swift */,
 				1024661525FDFF0F004DC043 /* ImageResize.swift */,
 				109EF374260CB01E00076157 /* ButtonStyle.swift */,
@@ -598,7 +589,6 @@
 				1059416025FA49E500C32D21 /* Frameworks */,
 				1059416125FA49E500C32D21 /* Resources */,
 				1AC99CC90BF85D86A9A4136F /* [CP] Embed Pods Frameworks */,
-				48D606FF7FECA6B26B08AFFE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -806,23 +796,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Salmonia3Tests/Pods-Salmonia3Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		48D606FF7FECA6B26B08AFFE /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Salmonia3/Pods-Salmonia3-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Salmonia3/Pods-Salmonia3-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Salmonia3/Pods-Salmonia3-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D7C2DF4B6924925625DD7D9F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -875,7 +848,6 @@
 				1052C2D026550E7800D3B9A9 /* DetailView.swift in Sources */,
 				10377F9925FD09FF00536A94 /* LoggingThread.swift in Sources */,
 				105391AC266D23C4001025E1 /* CoopPlayerCollection.swift in Sources */,
-				10CF09BF25FB9AEC00D2EEB1 /* SplitNavigationViewStyle.swift in Sources */,
 				105941A825FA4F9500C32D21 /* SalmonLoginMenu.swift in Sources */,
 				1059416725FA49E500C32D21 /* Salmonia3App.swift in Sources */,
 				10BBBEA226049EF400DA79C9 /* CoopResultView.swift in Sources */,

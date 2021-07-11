@@ -37,17 +37,17 @@ final class RealmPlayerResult: Object {
         self.specialCounts.append(objectsIn: result.specialCounts)
     }
 
-    public convenience init(from result: SalmonStats.ResultCoop.ResultPlayer) {
-        self.init()
-        self.name = result.name
-        self.pid = result.pid
-        self.deadCount = result.deadCount
-        self.helpCount = result.helpCount
-        self.goldenIkuraNum = result.goldenIkuraNum
-        self.ikuraNum = result.ikuraNum
-        self.specialId = result.specialId
-        self.bossKillCounts.append(objectsIn: result.bossKillCounts)
-        self.weaponList.append(objectsIn: result.weaponList)
-        self.specialCounts.append(objectsIn: result.specialCounts)
-    }
+//    public convenience init(from result: SalmonStats.ResultCoop.ResultPlayer) {
+//        self.init()
+//        self.name = result.name
+//        self.pid = result.pid
+//        self.deadCount = result.deadCount
+//        self.helpCount = result.helpCount
+//        self.goldenIkuraNum = result.goldenIkuraNum
+//        self.ikuraNum = result.ikuraNum
+//        self.specialId = result.specialId
+//        self.bossKillCounts.append(objectsIn: result.bossKillCounts)
+//        self.weaponList.append(objectsIn: result.weaponList)
+//        self.specialCounts.append(objectsIn: result.specialCounts)
+//    }
 }

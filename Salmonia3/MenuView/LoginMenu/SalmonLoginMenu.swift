@@ -59,7 +59,7 @@ struct SalmonLoginMenu: View {
         .webAuthenticationSession(item: $oauthURL) { url in
             WebAuthenticationSession(url: url, callbackURLScheme: "salmon-stats") { callbackURL, _ in
                 guard let apiToken = callbackURL?.absoluteString.capture(pattern: "api-token=(.*)", group: 1) else { return }
-                SalmonStats.shared.configure(apiToken: apiToken)
+//                SalmonStats.shared.configure(apiToken: apiToken)
                 appManager.isFirstLaunch.toggle()
             }
             .prefersEphemeralWebBrowserSession(false)

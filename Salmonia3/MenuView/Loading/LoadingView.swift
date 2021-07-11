@@ -39,17 +39,17 @@ struct LoadingView: View {
     private func uploadToSalmonStats(results: [[String: Any]]) {
         let results = results.chunked(by: 10)
         for result in results {
-            SalmonStats.shared.uploadResults(results: result)
-                .receive(on: DispatchQueue.main)
-                .sink(receiveCompletion: { completion in
-                    switch completion {
-                    case .finished:
-                        break
-                    case .failure(let error):
-                        apiError = error
-                    }
-                }, receiveValue: { _ in })
-                .store(in: &task)
+//            SalmonStats.shared.uploadResults(results: result)
+//                .receive(on: DispatchQueue.main)
+//                .sink(receiveCompletion: { completion in
+//                    switch completion {
+//                    case .finished:
+//                        break
+//                    case .failure(let error):
+//                        apiError = error
+//                    }
+//                }, receiveValue: { _ in })
+//                .store(in: &task)
         }
     }
     
@@ -98,16 +98,17 @@ struct LoadingView: View {
                                 apiError = error
                             }
                         }, receiveValue: { response in
+                            RealmManager.addNewResultsFromSplatNet2(from: [response.data], pid: manager.playerId)
                             // MARK: Salmon Statsへのアップロード
-                            if let _ = SalmonStats.shared.apiToken {
-                                pids.append(contentsOf: response.data.results.map{ $0.pid })
-                                results.append(response)
-                                if results.count == jobIds.count {
-                                    RealmManager.addNewResultsFromSplatNet2(from: results.map{ $0.data }, pid: manager.playerId)
-                                    uploadToSalmonStats(results: results.map{ $0.json.dictionaryObject! })
-                                    getNicknameIcons(pid: pids)
-                                }
-                            }
+//                            if let _ = SalmonStats.shared.apiToken {
+//                                pids.append(contentsOf: response.data.results.map{ $0.pid })
+//                                results.append(response)
+//                                if results.count == jobIds.count {
+//                                    RealmManager.addNewResultsFromSplatNet2(from: results.map{ $0.data }, pid: manager.playerId)
+//                                    uploadToSalmonStats(results: results.map{ $0.json.dictionaryObject! })
+//                                    getNicknameIcons(pid: pids)
+//                                }
+//                            }
                         })
                         .store(in: &task)
                 }
