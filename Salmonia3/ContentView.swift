@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftyUI
 
 struct ContentView: View {
     @EnvironmentObject var appManager: AppManager

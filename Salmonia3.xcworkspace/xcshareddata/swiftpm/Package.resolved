@@ -47,7 +47,16 @@
         }
       },
       {
-        "package": "Realm",
+        "package": "MBCircleProgressBar",
+        "repositoryURL": "https://github.com/tkgstrator/MBCircleProgressBar",
+        "state": {
+          "branch": null,
+          "revision": "6a623d17a81dbd57a48b3c8cd47a2e51bc5493bc",
+          "version": "0.0.2"
+        }
+      },
+      {
+        "package": "realm-cocoa",
         "repositoryURL": "https://github.com/realm/realm-cocoa",
         "state": {
           "branch": null,
@@ -56,7 +65,7 @@
         }
       },
       {
-        "package": "RealmDatabase",
+        "package": "realm-core",
         "repositoryURL": "https://github.com/realm/realm-core",
         "state": {
           "branch": null,
@@ -65,7 +74,16 @@
         }
       },
       {
-        "package": "Introspect",
+        "package": "SwiftChart",
+        "repositoryURL": "https://github.com/tkgstrator/SwiftChart",
+        "state": {
+          "branch": null,
+          "revision": "c09e9c7891c96a0b169795e66005c1b13dc55e92",
+          "version": "0.0.1"
+        }
+      },
+      {
+        "package": "SwiftUI-Introspect",
         "repositoryURL": "https://github.com/siteline/SwiftUI-Introspect.git",
         "state": {
           "branch": null,
@@ -80,6 +98,15 @@
           "branch": null,
           "revision": "fa8fac7b5eb5c729983a8bef65f094b5e0d12014",
           "version": "0.0.3"
+        }
+      },
+      {
+        "package": "SwiftyAPNGKit",
+        "repositoryURL": "https://github.com/tkgstrator/SwiftyAPNGKit",
+        "state": {
+          "branch": null,
+          "revision": "958738a8e1431e181d9f5f7a8f4d727e33386172",
+          "version": "0.0.2"
         }
       },
       {
@@ -105,12 +132,12 @@
         "repositoryURL": "https://github.com/tkgstrator/SwiftyUI",
         "state": {
           "branch": null,
-          "revision": "dc752edce248a4c31afe282fe7a55d9e5d24d61b",
-          "version": "1.0.0"
+          "revision": "531445262f6ec2da0efd6502dc4162e92dc86b23",
+          "version": "1.0.1"
         }
       },
       {
-        "package": "URLImage",
+        "package": "url-image",
         "repositoryURL": "https://github.com/dmytro-anokhin/url-image",
         "state": {
           "branch": null,

@@ -34,7 +34,7 @@ struct SettingView: View {
             
             Section(header: Text(.HEADER_SALMONSTATS).splatfont2(.orange, size: 14),
                     footer: Text(.FOOTER_SALMONSTATS).splatfont2(.secondary, size: 13).environment(\.lineLimit, 2)) {
-                SettingMenu(title: .SETTING_UPLOAD, value: SalmonStats.shared.apiToken != nil)
+//                SettingMenu(title: .SETTING_UPLOAD, value: SalmonStats.shared.apiToken != nil)
                 Button(action: { isPresented.toggle() }, label: { Text(.SETTING_IMPORT_RESULT) })
                     .background(
                         NavigationLink(destination: ImportingView(), isActive: $isActive, label: { EmptyView() })

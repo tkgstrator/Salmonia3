@@ -213,24 +213,24 @@ final class RealmManager: AppManager {
     }
 
     // MARK: Salmon Statsからのリザルト追加
-    public static func addNewResultsFromSalmonStats(from results: [SalmonStats.ResultCoop], pid: String) {
-        DispatchQueue(label: "Realm Manager").async {
-            autoreleasepool {
-                guard let realm = try? Realm() else { return }
-                realm.beginWrite()
-                let results: [RealmCoopResult] = results.map{ RealmCoopResult(from: $0, pid: pid) }
-                for result in results {
-                    switch !result.duplicatedResult.isEmpty {
-                    case true:
-                        result.duplicatedResult.setValue(result.salmonId, forKey: "salmonId")
-                    case false:
-                        realm.create(RealmCoopResult.self, value: result, update: .all)
-                    }
-                }
-                try? realm.commitWrite()
-            }
-        }
-    }
+//    public static func addNewResultsFromSalmonStats(from results: [SalmonStats.ResultCoop], pid: String) {
+//        DispatchQueue(label: "Realm Manager").async {
+//            autoreleasepool {
+//                guard let realm = try? Realm() else { return }
+//                realm.beginWrite()
+//                let results: [RealmCoopResult] = results.map{ RealmCoopResult(from: $0, pid: pid) }
+//                for result in results {
+//                    switch !result.duplicatedResult.isEmpty {
+//                    case true:
+//                        result.duplicatedResult.setValue(result.salmonId, forKey: "salmonId")
+//                    case false:
+//                        realm.create(RealmCoopResult.self, value: result, update: .all)
+//                    }
+//                }
+//                try? realm.commitWrite()
+//            }
+//        }
+//    }
     
     static func eraseAllRecord() throws {
         guard let realm = try? Realm() else { return }

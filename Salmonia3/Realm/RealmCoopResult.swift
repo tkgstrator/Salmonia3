@@ -72,29 +72,29 @@ final class RealmCoopResult: Object, Identifiable {
         self.player.append(objectsIn: result.results.map{ RealmPlayerResult(from: $0) })
     }
     
-    convenience init(from result: SalmonStats.ResultCoop, pid: String) {
-        self.init()
-        self.stageId = result.stageId
-        self.salmonId = result.jobId
-        self.failureWave = result.jobResult.failureWave
-        self.failureReason = result.jobResult.failureReason
-        self.isClear = result.jobResult.isClear
-        self.pid = pid
-        if let gradePoint = result.results.filter({ $0.pid == pid }).first?.gradePoint {
-            self.gradePoint = gradePoint.gradePointValue
-            self.gradeId = gradePoint.gradeIdValue
-        }
-        self.dangerRate = result.dangerRate
-        self.playTime = result.time.playTime
-        self.endTime = result.time.endTime
-        self.startTime = result.time.startTime
-        self.goldenEggs = result.waveDetails.map{ $0.goldenIkuraNum }.reduce(0, +)
-        self.powerEggs = result.waveDetails.map{ $0.ikuraNum }.reduce(0, +)
-        self.bossCounts.append(objectsIn: result.bossCounts)
-        self.bossKillCounts.append(objectsIn: result.bossKillCounts)
-        self.wave.append(objectsIn: result.waveDetails.map{ RealmCoopWave(from: $0) })
-        self.player.append(objectsIn: result.results.map{ RealmPlayerResult(from: $0) })
-    }
+//    convenience init(from result: SalmonStats.ResultCoop, pid: String) {
+//        self.init()
+//        self.stageId = result.stageId
+//        self.salmonId = result.jobId
+//        self.failureWave = result.jobResult.failureWave
+//        self.failureReason = result.jobResult.failureReason
+//        self.isClear = result.jobResult.isClear
+//        self.pid = pid
+//        if let gradePoint = result.results.filter({ $0.pid == pid }).first?.gradePoint {
+//            self.gradePoint = gradePoint.gradePointValue
+//            self.gradeId = gradePoint.gradeIdValue
+//        }
+//        self.dangerRate = result.dangerRate
+//        self.playTime = result.time.playTime
+//        self.endTime = result.time.endTime
+//        self.startTime = result.time.startTime
+//        self.goldenEggs = result.waveDetails.map{ $0.goldenIkuraNum }.reduce(0, +)
+//        self.powerEggs = result.waveDetails.map{ $0.ikuraNum }.reduce(0, +)
+//        self.bossCounts.append(objectsIn: result.bossCounts)
+//        self.bossKillCounts.append(objectsIn: result.bossKillCounts)
+//        self.wave.append(objectsIn: result.waveDetails.map{ RealmCoopWave(from: $0) })
+//        self.player.append(objectsIn: result.results.map{ RealmPlayerResult(from: $0) })
+//    }
 }
 
 private extension Int {

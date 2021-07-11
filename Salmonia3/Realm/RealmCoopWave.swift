@@ -29,15 +29,15 @@ final class RealmCoopWave: Object {
         self.ikuraNum = result.ikuraNum
     }
     
-    convenience init(from result: SalmonStats.ResultCoop.ResultWave) {
-        self.init()
-        self.eventType = SplatNet2Metadata.EventType(rawValue: result.eventType)!.eventType
-        self.waterLevel = SplatNet2Metadata.WaterLevel(rawValue: result.waterLevel)!.waterLevel
-        self.goldenIkuraNum = result.goldenIkuraNum
-        self.goldenIkuraPopNum = result.goldenIkuraPopNum
-        self.quotaNum = result.quotaNum
-        self.ikuraNum = result.ikuraNum
-    }
+//    convenience init(from result: SalmonStats.ResultCoop.ResultWave) {
+//        self.init()
+//        self.eventType = SplatNet2Metadata.EventType(rawValue: result.eventType)!.eventType
+//        self.waterLevel = SplatNet2Metadata.WaterLevel(rawValue: result.waterLevel)!.waterLevel
+//        self.goldenIkuraNum = result.goldenIkuraNum
+//        self.goldenIkuraPopNum = result.goldenIkuraPopNum
+//        self.quotaNum = result.quotaNum
+//        self.ikuraNum = result.ikuraNum
+//    }
 }
 
 fileprivate final class SplatNet2Metadata {

@@ -1,5 +1,4 @@
 //
-
 //  Salmonia3App.swift
 //  Salmonia3
 //
@@ -92,23 +91,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             GADMobileAds.sharedInstance().start(completionHandler: nil)
             print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
         })
-        
         getKeychain()
         
         // MARK: シフト情報の取得
-        manager.getShiftSchedule()
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    print(error)
-                }
-            }, receiveValue: { response in
-                try? RealmManager.addNewRotation(from: response)
-            })
-            .store(in: &task)
+        try? RealmManager.addNewRotation(from: SplatNet2.shiftSchedule)
         return true
     }
 }
