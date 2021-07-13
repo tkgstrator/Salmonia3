@@ -47,10 +47,15 @@ final class RealmCoopResult: Object, Identifiable {
         return usage
     }
 
-    convenience init(from result: SplatNet2.Coop.Result, pid: String) {
+    convenience init(from result: SplatNet2.Coop.Result, pid: String, environment: RealmManager.Environment.Server = .splatnet2) {
         self.init()
         self.stageId = result.stageId
-        self.jobId = result.jobId
+        switch environment {
+        case .splatnet2:
+            self.jobId = result.jobId
+        case .salmonstats:
+            self.salmonId = result.jobId
+        }
         self.failureWave = result.jobResult.failureWave
         self.failureReason = result.jobResult.failureReason
         self.isClear = result.jobResult.isClear
@@ -70,66 +75,6 @@ final class RealmCoopResult: Object, Identifiable {
         self.bossKillCounts.append(objectsIn: result.bossKillCounts)
         self.wave.append(objectsIn: result.waveDetails.map{ RealmCoopWave(from: $0) })
         self.player.append(objectsIn: result.results.map{ RealmPlayerResult(from: $0) })
-    }
-    
-//    convenience init(from result: SalmonStats.ResultCoop, pid: String) {
-//        self.init()
-//        self.stageId = result.stageId
-//        self.salmonId = result.jobId
-//        self.failureWave = result.jobResult.failureWave
-//        self.failureReason = result.jobResult.failureReason
-//        self.isClear = result.jobResult.isClear
-//        self.pid = pid
-//        if let gradePoint = result.results.filter({ $0.pid == pid }).first?.gradePoint {
-//            self.gradePoint = gradePoint.gradePointValue
-//            self.gradeId = gradePoint.gradeIdValue
-//        }
-//        self.dangerRate = result.dangerRate
-//        self.playTime = result.time.playTime
-//        self.endTime = result.time.endTime
-//        self.startTime = result.time.startTime
-//        self.goldenEggs = result.waveDetails.map{ $0.goldenIkuraNum }.reduce(0, +)
-//        self.powerEggs = result.waveDetails.map{ $0.ikuraNum }.reduce(0, +)
-//        self.bossCounts.append(objectsIn: result.bossCounts)
-//        self.bossKillCounts.append(objectsIn: result.bossKillCounts)
-//        self.wave.append(objectsIn: result.waveDetails.map{ RealmCoopWave(from: $0) })
-//        self.player.append(objectsIn: result.results.map{ RealmPlayerResult(from: $0) })
-//    }
-}
-
-private extension Int {
-    var gradeIdValue: Int? {
-        switch self {
-        case 0 ..< 100:
-            return 1
-        case 100 ..< 200:
-            return 2
-        case 200 ..< 300:
-            return 3
-        case 300 ..< 400:
-            return 4
-        case 400 ..< 1400:
-            return 5
-        default:
-            return nil
-        }
-    }
-    
-    var gradePointValue: Int? {
-        switch self {
-        case 0 ..< 100:
-            return self
-        case 100 ..< 200:
-            return self - 100
-        case 200 ..< 300:
-            return self - 200
-        case 300 ..< 400:
-            return self - 300
-        case 400 ..< 1400:
-            return self - 400
-        default:
-            return nil
-        }
     }
 }
 

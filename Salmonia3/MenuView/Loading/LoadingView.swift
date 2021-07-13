@@ -98,7 +98,7 @@ struct LoadingView: View {
                                 apiError = error
                             }
                         }, receiveValue: { response in
-                            RealmManager.addNewResultsFromSplatNet2(from: [response.data], pid: manager.playerId)
+                            RealmManager.addNewResultsFromSplatNet2(from: [response.data], .splatnet2)
                             // MARK: Salmon Statsへのアップロード
 //                            if let _ = SalmonStats.shared.apiToken {
 //                                pids.append(contentsOf: response.data.results.map{ $0.pid })

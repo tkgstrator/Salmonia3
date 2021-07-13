@@ -22,6 +22,8 @@ struct CoopRecordView: View {
             Section(header: Text(.HEADER_OVERVIEW).splatfont2(.orange, size: 14)) {
                 RecordColumn(title: .RESULT_JOB_NUM, value: record.jobNum)
                 RecordColumn(title: .RESULT_MAX_GRADE, value: record.maxGrade)
+                RecordColumn(title: .RESULT_MAX_GRADE_NUM, value: record.counterStepNum)
+                RecordColumn(title: .RESULT_MIN_MAX_GRADE, value: record.minimumStepNum)
             }
             ForEach(WaterLevel.allCases, id:\.self) { tide in
                 Section(header: Text(tide.waterLevel.localized).splatfont2(.orange, size: 14)) {

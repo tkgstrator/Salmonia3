@@ -14,9 +14,21 @@ import Combine
 
 final class RealmManager: AppManager {
     private static let realm: Realm = try! Realm()
-
     
     private var task = Set<AnyCancellable>()
+    
+    // 環境設定のためのEnum
+    enum Environment {
+        enum Server {
+            case splatnet2
+            case salmonstats
+        }
+        
+        enum System {
+            case develop
+            case production
+        }
+    }
 
     override init() {
     }
@@ -107,13 +119,13 @@ final class RealmManager: AppManager {
     }
 
     // MARK: 新しいリザルトを追加
-    public static func addNewResultsFromSplatNet2(from results: [SplatNet2.Coop.Result], pid: String) {
+    public static func addNewResultsFromSplatNet2(from results: [SplatNet2.Coop.Result], _ environment: Environment.Server = .splatnet2) {
         DispatchQueue(label: "Realm Manager").async {
             autoreleasepool {
                 guard let realm = try? Realm() else { return }
                 realm.beginWrite()
                 for result in results {
-                    let result: RealmCoopResult = RealmCoopResult(from: result, pid: pid)
+                    let result: RealmCoopResult = RealmCoopResult(from: result, pid: manager.playerId, environment: environment)
                     switch !result.duplicatedResult.isEmpty {
                     case true:
                         result.duplicatedResult.setValue(result.salmonId, forKey: "salmonId")
@@ -127,25 +139,7 @@ final class RealmManager: AppManager {
     }
 
     // MARK: Salmon Statsからのリザルト追加
-//    public static func addNewResultsFromSalmonStats(from results: [SalmonStats.ResultCoop], pid: String) {
-//        DispatchQueue(label: "Realm Manager").async {
-//            autoreleasepool {
-//                guard let realm = try? Realm() else { return }
-//                realm.beginWrite()
-//                let results: [RealmCoopResult] = results.map{ RealmCoopResult(from: $0, pid: pid) }
-//                for result in results {
-//                    switch !result.duplicatedResult.isEmpty {
-//                    case true:
-//                        result.duplicatedResult.setValue(result.salmonId, forKey: "salmonId")
-//                    case false:
-//                        realm.create(RealmCoopResult.self, value: result, update: .all)
-//                    }
-//                }
-//                try? realm.commitWrite()
-//            }
-//        }
-//    }
-    
+
     static func eraseAllRecord() throws {
         guard let realm = try? Realm() else { return }
         #if DEBUG

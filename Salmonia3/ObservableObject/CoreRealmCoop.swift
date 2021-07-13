@@ -60,17 +60,20 @@ class UserCoopResult: Identifiable {
 class CoopRecord: ObservableObject {
     var jobNum: Int?
     var maxGrade: Int?
+    var counterStepNum: Int = 0
+    var minimumStepNum: Int?
     var goldenEggs: [[GoldenEggsRecord?]] = Array(repeating: Array(repeating: nil, count: 7), count: 3)
 
     init() {}
-    
+   
+    // シフトごとの記録
     init(startTime: Int) {
         let results = RealmManager.Objects.results(startTime: startTime)
         let waves = RealmManager.Objects.waves(startTime: startTime)
-        
         getRecordsFromDatabase(results: results, waves: waves)
     }
     
+    // ステージごとの記録
     init(stageId: Int) {
         let results = RealmManager.Objects.results(stageId: stageId)
         let waves = RealmManager.Objects.waves(stageId: stageId)
@@ -81,12 +84,13 @@ class CoopRecord: ObservableObject {
         if results.count != 0 {
             self.jobNum = results.count
             self.maxGrade = results.max(ofProperty: "gradePoint")
-            
+            self.counterStepNum = results.counterStepNum
+            self.minimumStepNum = results.minimumStepNum
             // MARK: WAVE納品キロク
-            for tide in WaterLevel.allCases {
-                for event in EventType.allCases {
-                    if let goldenEgg: Int = waves.filter("eventType=%@ AND waterLevel=%@", event.eventType, tide.waterLevel).max(ofProperty: "goldenIkuraNum") {
-                        self.goldenEggs[tide.rawValue][event.rawValue] = GoldenEggsRecord(goldenEggs: goldenEgg, playTime: nil, tide: tide.rawValue, event: event.rawValue)
+            for waterLevel in WaterLevel.allCases {
+                for eventType in EventType.allCases {
+                    if let goldenEgg: Int = waves.maxGoldenEggs(eventType: eventType, waterLevel: waterLevel) {
+                        self.goldenEggs[waterLevel.rawValue][eventType.rawValue] = GoldenEggsRecord(goldenEggs: goldenEgg)
                     }
                 }
             }
@@ -96,7 +100,7 @@ class CoopRecord: ObservableObject {
 
 struct GoldenEggsRecord {
     var goldenEggs: Int?
-    var playTime: Int?
-    var tide: Int
-    var event: Int
+    var playTime: Int? = 0
+    var tide: Int = 0
+    var event: Int = 0
 }

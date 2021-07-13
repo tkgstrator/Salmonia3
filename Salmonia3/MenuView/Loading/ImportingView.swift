@@ -72,7 +72,7 @@ struct ImportingView: View {
                                 DispatchQueue.main.async {
                                     progressModel.addValue(value: CGFloat(response.count))
                                 }
-                                RealmManager.addNewResultsFromSplatNet2(from: response, pid: manager.playerId)
+                                RealmManager.addNewResultsFromSplatNet2(from: response, .salmonstats)
                             }).store(in: &task)
                     }
                 }
