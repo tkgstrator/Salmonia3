@@ -31,16 +31,52 @@ struct ImportingView: View {
     }
     
     private func importResultFromSalmonStats() {
-        // 取り込み機能を無効化
-        appManager.importEnabled = false
         let dispatchQueue = DispatchQueue(label: "Network Publisher")
-        let nsaid = manager.account.nsaid
-        
-        // 情報がなければ何もせずエラーを返す
-        if nsaid.isEmpty {
-            apiError = APIError.emptySessionToken
-            return
-        }
+
+        manager.getMetadata(nsaid: manager.playerId)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    apiError = error
+                }
+            }, receiveValue: { response in
+                DispatchQueue.main.async {
+                    #if DEBUG
+                    let maxValue: CGFloat = 500
+                    progressModel.configure(maxValue: maxValue)
+                    #else
+                    let maxValue: CGFloat = CGFloat(response.map{ $0.results.clear + $0.results.fail }.reduce(0, +))
+                    progressModel.configure(maxValue: maxValue)
+                    #endif
+                    
+                    #if DEBUG
+                    let lastPageId: Int = 10
+                    #else
+                    let lastPageId: Int = Int(maxValue / 50) + 1
+                    #endif
+                    
+                    for pageId in Range(1 ... lastPageId) {
+                        manager.getResults(nsaid: manager.playerId, pageId: pageId, count: 50)
+                            .receive(on: DispatchQueue.main)
+                            .sink(receiveCompletion: { completion in
+                                switch completion {
+                                case .finished:
+                                    break
+                                case .failure(let error):
+                                    apiError = error
+                                }
+                            }, receiveValue: { response in
+                                DispatchQueue.main.async {
+                                    progressModel.addValue(value: CGFloat(response.count))
+                                }
+                                RealmManager.addNewResultsFromSplatNet2(from: response, pid: manager.playerId)
+                            }).store(in: &task)
+                    }
+                }
+            }).store(in: &task)
         
 //        SalmonStats.shared.getMetadata(nsaid: nsaid)
 //            .receive(on: DispatchQueue.main)

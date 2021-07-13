@@ -177,16 +177,17 @@ struct ResultOverview: View {
             HStack {
                 Image("49c944e4edf1abee295b6db7525887bd").resize()
                 Text("x\(result.goldenEggs)")
-                    .frame(width: 50, height: 18, alignment: .leading)
+                    .splatfont2(size: 16)
+                    .frame(width: 50, height: 22, alignment: .leading)
             }
             HStack {
                 Image("f812db3e6de0479510cd02684131e15a").resize()
                 Text("x\(result.powerEggs)")
-                    .frame(width: 50, height: 18, alignment: .leading)
+                    .splatfont2(size: 16)
+                    .frame(width: 50, height: 22, alignment: .leading)
             }
         }
         .frame(width: 55)
-        .splatfont2(size: 14)
     }
 }
 

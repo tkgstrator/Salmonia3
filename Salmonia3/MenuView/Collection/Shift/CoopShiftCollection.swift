@@ -70,7 +70,6 @@ struct CoopShift: View {
             .splatfont2(size: 16)
             InfoWeapon
         }
-        .splatfont2(size: 14)
         .frame(maxWidth: .infinity)
     }
     
@@ -81,7 +80,7 @@ struct CoopShift: View {
                     .resizable().frame(width: 112, height: 63)
                     .clipShape(RoundedRectangle(cornerRadius: 8.0))
                 Text(StageType(rawValue: shift.stageId)!.name.localized)
-                    .splatfont2(size: 14)
+                    .splatfont2(size: 16)
                     .textCase(nil)
                     .padding(.bottom, 8)
             }
@@ -89,6 +88,7 @@ struct CoopShift: View {
                 HStack {
                     Text(.SUPPLIED_WEAPONS)
                         .textCase(nil)
+                        .splatfont2(size: 16)
                     // 金イクラ数平均とか出すと良いかも
                     Spacer()
                     if let average = average {
