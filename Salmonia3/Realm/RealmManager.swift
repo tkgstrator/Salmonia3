@@ -80,7 +80,7 @@ final class RealmManager: AppManager {
         }
     }
     
-    public static func addNewRotation(from rotation: [Response.ScheduleCoop]) throws {
+    public static func addNewRotation(from rotation: [ScheduleCoop.Response]) throws {
         realm.beginWrite()
         let rotations: [RealmCoopShift] = rotation.map{ RealmCoopShift(from: $0) }
         let _ = rotations.map{ realm.create(RealmCoopShift.self, value: $0, update: .all) }
@@ -98,7 +98,7 @@ final class RealmManager: AppManager {
     }
  
     // MARK: ユーザ名やサムネイルを更新し、RealmPlayerのオブジェクトを作成
-    public static func updateNicknameAndIcons(players: [Response.NicknameIcons.NicknameIcon]) {
+    public static func updateNicknameAndIcons(players: [NicknameIcons.Response.NicknameIcon]) {
         DispatchQueue(label: "Realm Manager").async {
             autoreleasepool {
                 guard let realm = try? Realm() else { return }

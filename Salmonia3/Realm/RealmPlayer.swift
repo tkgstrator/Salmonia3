@@ -21,7 +21,7 @@ final class RealmPlayer: Object, Identifiable {
     @Persisted var matching: Int
     @Persisted var lastMatchedTime: Int
     
-    convenience init(from account: Response.NicknameIcons.NicknameIcon) {
+    convenience init(from account: NicknameIcons.Response.NicknameIcon) {
         self.init()
         self.nsaid = account.nsaId
         self.nickname = account.nickname

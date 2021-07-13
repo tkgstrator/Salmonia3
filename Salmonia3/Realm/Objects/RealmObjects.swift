@@ -54,6 +54,12 @@ extension RealmManager {
                 .filter("pid=%@ AND startTime=%@", playerId, startTime)
                 .sorted(byKeyPath: "playTime", ascending: false)
         }
+        
+        static func results(startTime: Int, memberId: String) -> RealmSwift.Results<RealmCoopResult> {
+            return realm.objects(RealmCoopResult.self)
+                .filter("ANY player.pid=%@ AND startTime=%@", memberId, startTime)
+                .sorted(byKeyPath: "playTime", ascending: false)
+        }
 
         // シフトIDとプレイヤーIDを複数指定
         static func results(startTime: Int, playerId: [String]) -> RealmSwift.Results<RealmCoopResult> {

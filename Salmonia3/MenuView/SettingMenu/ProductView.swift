@@ -88,6 +88,7 @@ struct PaidProductView: View {
                         Text($0.rawValue.localized).tag($0)
                     }
                 }
+                .pickerStyle(MenuPickerStyle())
             }
         }
         .navigationTitle(.TITLE_PAID_PRODUCT)
