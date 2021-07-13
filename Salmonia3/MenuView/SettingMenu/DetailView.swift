@@ -18,10 +18,15 @@ struct DetailView: View {
         List {
             Section(header: Text(.SETTING_GENERAL).splatfont2(.orange, size: 14)) {
                 Toggle(LocalizableStrings.Key.SETTING_LOG_SEND.rawValue.localized, isOn: $appManager.isDebugMode)
-                Picker(selection: $appManager.importNum, label: Text(.SETTING_IMPORT_NUM)) {
-                    ForEach(ImportType.allCases, id:\.rawValue) {
-                        Text("\($0.rawValue)")
-                    }
+                HStack {
+                    Picker(selection: $appManager.importNum, label: Text(.SETTING_IMPORT_NUM)) {
+                        ForEach(ImportType.allCases, id:\.rawValue) {
+                            Text("\($0.rawValue)")
+                        }
+                    }.pickerStyle(MenuPickerStyle())
+                    Spacer()
+                    Text("\(appManager.importNum)")
+                        .foregroundColor(.secondary)
                 }
             }
             Section(header: Text(.SETTING_IMPORTANT).splatfont2(.orange, size: 14)) {
@@ -52,21 +57,7 @@ struct DetailView: View {
         .font(.custom("Splatfont2", size: 16))
         .navigationTitle(.TITLE_SETTINGS)
     }
-    
-//    private func authorizeWithBiometrics() {
-//        if !isAuthorized {
-//            if LAContext().canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
-//                LAContext().evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: LocalizableStrings.Key.AUTHORIZED_WITH_BIOMETRICS.rawValue.localized) { (success, error) in
-//                    if success { isAuthorized.toggle() }
-//                }
-//            } else {
-//                LAContext().evaluatePolicy(.deviceOwnerAuthentication, localizedReason: LocalizableStrings.Key.AUTHORIZED_WITH_PASSCODE.rawValue.localized) { (success, error) in
-//                    if success { isAuthorized.toggle() }
-//                }
-//            }
-//        }
-//    }
-    
+
     private func changeState(warning: Warning) {
         switch warning {
         case .erase:

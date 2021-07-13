@@ -17,7 +17,7 @@ final class RealmCoopShift: Object, Identifiable {
     @Persisted var rareWeapon: Int?
     @Persisted var weaponList: List<Int>
 
-    convenience init(from response: Response.ScheduleCoop) {
+    convenience init(from response: ScheduleCoop.Response) {
         self.init()
         self.startTime = response.startTime
         self.endTime = response.endTime

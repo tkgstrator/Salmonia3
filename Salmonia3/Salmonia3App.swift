@@ -15,6 +15,7 @@ import SplatNet2
 import SalmonStats
 import Combine
 import SwiftyBeaver
+import RealmSwift
 import KeychainAccess
 
 // SwiftyBeaverの初期化
@@ -22,11 +23,13 @@ let log = SwiftyBeaver.self
 let console = ConsoleDestination()
 let file = FileDestination()
 let cloud = SBPlatformDestination(appID: "k6Pxwd", appSecret: "iqnaqabvjpwGitdb6au4wDo0UphgshBz", encryptionKey: "vb8cesft69mtFmPbeRe8iIuXohHbrmno")
+let schemaVersion: UInt64 = 4100
 // Salmon Statsインスタンスの初期化
 var manager: SalmonStats = SalmonStats()
 
+
 @main
-struct Salmonia3App: App {
+struct Salmonia3App: SwiftUI.App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     var body: some Scene {
@@ -91,6 +94,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             GADMobileAds.sharedInstance().start(completionHandler: nil)
             print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
         })
+        let config = Realm.Configuration(schemaVersion: schemaVersion)
+        Realm.Configuration.defaultConfiguration = config
+        let _ = try! Realm()
         getKeychain()
         
         // MARK: シフト情報の取得

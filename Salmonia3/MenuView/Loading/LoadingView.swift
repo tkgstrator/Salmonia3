@@ -71,7 +71,7 @@ struct LoadingView: View {
     
     private func getResultFromSplatNet2() {
         var pids: [String] = []
-        var results: [(json: Response.ResultCoop, data: SplatNet2.Coop.Result)] = []
+        var results: [(json: ResultCoop.Response, data: SplatNet2.Coop.Result)] = []
         print(RealmManager.getLatestResultId())
         manager.getSummaryCoop(jobNum: RealmManager.getLatestResultId())
             .receive(on: DispatchQueue.main)
@@ -125,7 +125,7 @@ extension Array {
     }
 }
 
-extension Response.ResultCoop {
+extension ResultCoop.Response {
     var dictionaryObject: [String: Any]? {
         var encoder: JSONEncoder {
             let encoder = JSONEncoder()

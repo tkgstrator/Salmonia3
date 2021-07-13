@@ -46,12 +46,12 @@ class UserCoopResult: Identifiable {
         
     init(startTime: Int) {
         self.phase = RealmManager.Objects.shift(startTime: startTime)
-        results = RealmManager.Objects.results(startTime: startTime)
+        self.results = RealmManager.Objects.results(startTime: startTime)
     }
 
     init(startTime: Int, playerId: String) {
         self.phase = RealmManager.Objects.shift(startTime: startTime)
-        results = RealmManager.Objects.results(startTime: startTime, playerId: playerId)
+        self.results = RealmManager.Objects.results(startTime: startTime, memberId: playerId)
     }
 }
 

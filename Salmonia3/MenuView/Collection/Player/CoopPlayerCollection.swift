@@ -26,20 +26,22 @@ struct CoopPlayerCollection: View {
 }
 
 struct PlayerResultsView: View {
-    @State var main: [UserCoopResult] = []
-    var nsaid: String?
-    var nickname: String?
+    var nsaid: String
+    var nickname: String
+    var main: [UserCoopResult] = []
 
     // イニシャライザ
     init(player: RealmPlayer) {
         self.nsaid = player.nsaid
         self.nickname = player.nickname
+        self.main = RealmManager.getPlayerShiftResults(nsaid: nsaid)
     }
 
     // イニシャライザ
     init(player: RealmPlayerResult) {
         self.nsaid = player.pid
-        self.nickname = player.name
+        self.nickname = player.name.stringValue
+        self.main = RealmManager.getPlayerShiftResults(nsaid: nsaid)
     }
     
     var body: some View {
@@ -59,17 +61,7 @@ struct PlayerResultsView: View {
             }
         }
         .listStyle(PlainListStyle())
-        .onWillAppear { getPlayerShiftResults()}
-//        .onAppear(perform: getPlayerShiftResults)
-        .navigationTitle(nickname.stringValue)
-    }
-    
-    private func getPlayerShiftResults() {
-        if let nsaid = nsaid {
-            if main.isEmpty {
-                self.main = RealmManager.getPlayerShiftResults(nsaid: nsaid)
-            }
-        }
+        .navigationTitle(nickname)
     }
 }
 
