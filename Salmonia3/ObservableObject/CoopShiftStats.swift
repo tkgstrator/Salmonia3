@@ -20,27 +20,27 @@ final class CoopShiftStats: ObservableObject {
     private var token: NotificationToken?
 
     init(startTime: Int) {
-        let realm = try! Realm()
-        let nsaid: [String] = [manager.account.nsaid]
-        let player = realm.objects(RealmPlayerResult.self).filter("ANY result.startTime=%@ and pid IN %@", startTime, nsaid)
-        let result = realm.objects(RealmCoopResult.self).filter("startTime=%@", startTime)
-        let waves = realm.objects(RealmCoopWave.self).filter("ANY result.startTime=%@", startTime)
+        // 表示するプレイヤーIDを選択
+        let playerId: [String] = [manager.account.nsaid]
+        // 指定されたシフトIDでのデータを取得
+        // 個人記録・全体記録・WAVE記録
+        let playerResults = RealmManager.Objects.playerResults(startTime: startTime, playerId: playerId)
+        let results = RealmManager.Objects.results(startTime: startTime, playerId: playerId)
+        let waves = RealmManager.Objects.waves(startTime: startTime)
 
         records = CoopRecord(startTime: startTime)
-        resultMax = ResultMax(player: player, result: result)
-        resultAvg = ResultAvg(player: player, result: result)
-        overview = ResultOverView(results: result, player: player)
-        weaponData = getWeaponData(startTime: startTime, nsaid: nsaid)
+        resultMax = ResultMax(player: playerResults, result: results)
+        resultAvg = ResultAvg(player: playerResults, result: results)
+        overview = ResultOverView(results: results, player: playerResults)
+        weaponData = getWeaponData(startTime: startTime, nsaid: playerId)
         resultWave = waves.resultWaves
 
-        token = RealmManager.Objects.results.observe{ [weak self] (changes: RealmCollectionChange) in
-            self!.resultMax = ResultMax(player: player, result: result)
-            self!.resultAvg = ResultAvg(player: player, result: result)
-            self!.overview = ResultOverView(results: result, player: player)
-            self!.weaponData = self!.getWeaponData(startTime: startTime, nsaid: nsaid)
+        token = RealmManager.Objects.results.observe{ [weak self] _ in
+            self?.resultMax = ResultMax(player: playerResults, result: results)
+            self?.resultAvg = ResultAvg(player: playerResults, result: results)
+            self?.overview = ResultOverView(results: results, player: playerResults)
+            self?.weaponData = self!.getWeaponData(startTime: startTime, nsaid: playerId)
         }
-        
-        
     }
 
     deinit {
