@@ -71,6 +71,7 @@
 		1081B760269C778D0063D947 /* MBCircleProgressBar in Frameworks */ = {isa = PBXBuildFile; productRef = 1081B75F269C778D0063D947 /* MBCircleProgressBar */; };
 		1081B763269C77AE0063D947 /* SwiftChart in Frameworks */ = {isa = PBXBuildFile; productRef = 1081B762269C77AE0063D947 /* SwiftChart */; };
 		1081B766269C77C40063D947 /* SwiftyAPNGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1081B765269C77C40063D947 /* SwiftyAPNGKit */; };
+		1081B769269D1FD60063D947 /* RealmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1081B768269D1FD60063D947 /* RealmObjects.swift */; };
 		1083857C265922700099475F /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 1083857B265922700099475F /* SwiftyBeaver */; };
 		108C04082659847D008D2D8C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 108C04072659847D008D2D8C /* GoogleService-Info.plist */; };
 		1090C689263DF162000DD54C /* SplatNet2 in Frameworks */ = {isa = PBXBuildFile; productRef = 1090C688263DF162000DD54C /* SplatNet2 */; };
@@ -181,6 +182,7 @@
 		1076C80B268D52DA00C43987 /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
 		1079EAD12647E3540085008C /* CoopRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopRecordView.swift; sourceTree = "<group>"; };
 		107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopStats.swift; sourceTree = "<group>"; };
+		1081B768269D1FD60063D947 /* RealmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
 		108C04072659847D008D2D8C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1090C681263DF125000DD54C /* SplatNet2 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SplatNet2; path = ../SplatNet2; sourceTree = "<group>"; };
 		1090C6A6263E902B000DD54C /* Salmonia3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Salmonia3.entitlements; sourceTree = "<group>"; };
@@ -521,12 +523,12 @@
 			path = MenuView;
 			sourceTree = "<group>";
 		};
-		10A08036262070A700BFDF59 /* Result */ = {
+		1081B767269D1FC30063D947 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				10A08031262070A200BFDF59 /* CoopShiftStats.swift */,
+				1081B768269D1FD60063D947 /* RealmObjects.swift */,
 			);
-			path = Result;
+			path = Objects;
 			sourceTree = "<group>";
 		};
 		10B62CA72669CC1C00916A64 /* Wave */ = {
@@ -542,6 +544,7 @@
 			children = (
 				10448BDB26652E6700FFB553 /* SRPower */,
 				10377F7B25FCD9E800536A94 /* RealmManager.swift */,
+				1081B767269D1FC30063D947 /* Objects */,
 				107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */,
 				10CF09F325FB9BE100D2EEB1 /* RealmCoopResult.swift */,
 				1024661A25FE0929004DC043 /* RealmCoopShift.swift */,
@@ -555,10 +558,10 @@
 		10CF09F925FB9C4900D2EEB1 /* ObservableObject */ = {
 			isa = PBXGroup;
 			children = (
+				10A08031262070A200BFDF59 /* CoopShiftStats.swift */,
 				10CF09FA25FB9C6B00D2EEB1 /* CoreRealmCoop.swift */,
 				105391A3266D1C6F001025E1 /* CoreRealmPlayer.swift */,
 				10377F8525FD041900536A94 /* AppManager.swift */,
-				10A08036262070A700BFDF59 /* Result */,
 			);
 			path = ObservableObject;
 			sourceTree = "<group>";
@@ -838,6 +841,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				109EF35E260CAB7F00076157 /* ProductView.swift in Sources */,
+				1081B769269D1FD60063D947 /* RealmObjects.swift in Sources */,
 				105941A025FA4E2500C32D21 /* LoginMenu.swift in Sources */,
 				1079EAD22647E3540085008C /* CoopRecordView.swift in Sources */,
 				10377FA425FD10FE00536A94 /* Optional.swift in Sources */,
