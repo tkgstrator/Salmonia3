@@ -171,3 +171,5 @@
 "TITLE_HELP"="使い方解説";
 "TITLE_PLAYER_COLLECTION"="プレイヤー一覧";
 "STYLE_DEFAULT"="デフォルト";
+"RESULT_MAX_GRADE_NUM" = "評価カンスト回数";
+"RESULT_MIN_MAX_GRADE" = "最短カンストバイト回数";

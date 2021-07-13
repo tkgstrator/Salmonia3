@@ -117,3 +117,30 @@ extension RealmManager {
         }
     }
 }
+
+extension RealmSwift.Results where Element == RealmCoopWave {
+    func maxGoldenEggs(eventType: EventType, waterLevel: WaterLevel) -> Int? {
+        self.filter("eventType=%@ AND waterLevel=%@", eventType.eventType, waterLevel.waterLevel).max(ofProperty: "goldenIkuraNum")
+    }
+}
+
+extension RealmSwift.Results where Element == RealmCoopResult {
+    var counterStepNum: Int {
+        Set(self.filter("gradePoint == 999").map({ $0.startTime })).count
+    }
+    
+    var minimumStepNum: Int? {
+        // プレイしたシフトIDを抽出
+        let startTime: [Int] = Array(Set(self.map({ $0.startTime })))
+            .map({ self.filter("startTime=%@", $0) })
+            .filter({ !$0.filter("gradePoint<=420").isEmpty && !$0.filter("gradePoint==999").isEmpty })
+            .compactMap({ $0.first?.startTime })
+        return startTime.compactMap({ element -> Int? in
+            if let minimumPlayTime: Int = self.filter("startTime=%@ AND gradePoint==999", element).min(ofProperty: "playTime") {
+                let count = self.filter("startTime=%@ AND playTime<=%@", element, minimumPlayTime).count
+                if count < 30 { return nil } else { return count }
+            }
+            return nil
+        }).min()
+    }
+}

@@ -146,6 +146,8 @@ class LocalizableStrings {
         case HELP_GET_RESULT
         case SETTING_HELP
         case TITLE_HELP
+        case RESULT_MAX_GRADE_NUM
+        case RESULT_MIN_MAX_GRADE
     }
 
 }
