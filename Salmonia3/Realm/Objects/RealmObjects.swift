@@ -88,11 +88,6 @@ extension RealmManager {
         }
         
         // MARK: RealmPlayerResult
-        static func playerResults(startTime: Int, playerId: String) -> RealmSwift.Results<RealmPlayerResult> {
-            return realm.objects(RealmPlayerResult.self)
-                .filter("pid=%@ AND ANY result.startTime=%@", playerId, startTime)
-        }
-        
         static func playerResults(playerId: String) -> RealmSwift.Results<RealmPlayerResult> {
             return realm.objects(RealmPlayerResult.self)
                 .filter("pid=%@", playerId)
@@ -102,7 +97,17 @@ extension RealmManager {
             return realm.objects(RealmPlayerResult.self)
                 .filter("pid=%@ AND ANY result.startTime=%@", manager.playerId, startTime)
         }
-        
+
+        static func playerResults(startTime: Int, playerId: String) -> RealmSwift.Results<RealmPlayerResult> {
+            return realm.objects(RealmPlayerResult.self)
+                .filter("pid=%@ AND ANY result.startTime=%@", playerId, startTime)
+        }
+
+        static func playerResults(startTime: Int, playerId: [String]) -> RealmSwift.Results<RealmPlayerResult> {
+            return realm.objects(RealmPlayerResult.self)
+                .filter("pid IN %@ AND ANY result.startTime=%@", playerId, startTime)
+        }
+
         // MARK: RealmPlayer
         // マッチングしたプレイヤーを返す
         static var players: RealmSwift.Results<RealmPlayer> {
