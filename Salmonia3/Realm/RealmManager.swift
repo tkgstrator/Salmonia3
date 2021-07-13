@@ -234,7 +234,10 @@ final class RealmManager: AppManager {
     
     static func eraseAllRecord() throws {
         guard let realm = try? Realm() else { return }
+        #if DEBUG
+        #else
         UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+        #endif
         // クラッシュするバグ対策(クラッシュしたが)
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             autoreleasepool {

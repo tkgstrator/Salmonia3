@@ -68,6 +68,9 @@
 		1076C80C268D52DA00C43987 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1076C80B268D52DA00C43987 /* Wave.swift */; };
 		1079EAD22647E3540085008C /* CoopRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1079EAD12647E3540085008C /* CoopRecordView.swift */; };
 		107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */; };
+		1081B760269C778D0063D947 /* MBCircleProgressBar in Frameworks */ = {isa = PBXBuildFile; productRef = 1081B75F269C778D0063D947 /* MBCircleProgressBar */; };
+		1081B763269C77AE0063D947 /* SwiftChart in Frameworks */ = {isa = PBXBuildFile; productRef = 1081B762269C77AE0063D947 /* SwiftChart */; };
+		1081B766269C77C40063D947 /* SwiftyAPNGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1081B765269C77C40063D947 /* SwiftyAPNGKit */; };
 		1083857C265922700099475F /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 1083857B265922700099475F /* SwiftyBeaver */; };
 		108C04082659847D008D2D8C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 108C04072659847D008D2D8C /* GoogleService-Info.plist */; };
 		1090C689263DF162000DD54C /* SplatNet2 in Frameworks */ = {isa = PBXBuildFile; productRef = 1090C688263DF162000DD54C /* SplatNet2 */; };
@@ -216,11 +219,14 @@
 				10CF099425FB97F300D2EEB1 /* SwiftUIRefresh in Frameworks */,
 				10CF09B825FB9AC100D2EEB1 /* Realm in Frameworks */,
 				102C75EB2659C5A600AEE20F /* SwiftyAPNGKit in Frameworks */,
+				1081B760269C778D0063D947 /* MBCircleProgressBar in Frameworks */,
 				105391D52673E733001025E1 /* SwiftChart in Frameworks */,
+				1081B763269C77AE0063D947 /* SwiftChart in Frameworks */,
 				10317286262C32FB00CF8903 /* SalmonStats in Frameworks */,
 				1083857C265922700099475F /* SwiftyBeaver in Frameworks */,
 				104BD620261C98800013CD27 /* URLImage in Frameworks */,
 				10CF098E25FB97CB00D2EEB1 /* BetterSafariView in Frameworks */,
+				1081B766269C77C40063D947 /* SwiftyAPNGKit in Frameworks */,
 				1028D37226418EFD0034C075 /* MBCircleProgressBar in Frameworks */,
 				A8C5630EBE09FDEA7BF59B1C /* Pods_Salmonia3.framework in Frameworks */,
 			);
@@ -609,6 +615,9 @@
 				102C75EA2659C5A600AEE20F /* SwiftyAPNGKit */,
 				105391D42673E733001025E1 /* SwiftChart */,
 				10C4CCFE2693FC3100489CBB /* SwiftyUI */,
+				1081B75F269C778D0063D947 /* MBCircleProgressBar */,
+				1081B762269C77AE0063D947 /* SwiftChart */,
+				1081B765269C77C40063D947 /* SwiftyAPNGKit */,
 			);
 			productName = Salmonia3;
 			productReference = 1059416325FA49E500C32D21 /* Salmonia3.app */;
@@ -693,6 +702,9 @@
 				104BD61E261C98800013CD27 /* XCRemoteSwiftPackageReference "url-image" */,
 				1083857A265922700099475F /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
 				10C4CCFD2693FC3100489CBB /* XCRemoteSwiftPackageReference "SwiftyUI" */,
+				1081B75E269C778D0063D947 /* XCRemoteSwiftPackageReference "MBCircleProgressBar" */,
+				1081B761269C77AE0063D947 /* XCRemoteSwiftPackageReference "SwiftChart" */,
+				1081B764269C77C40063D947 /* XCRemoteSwiftPackageReference "SwiftyAPNGKit" */,
 			);
 			productRefGroup = 1059416425FA49E500C32D21 /* Products */;
 			projectDirPath = "";
@@ -1238,6 +1250,30 @@
 				minimumVersion = 2.2.3;
 			};
 		};
+		1081B75E269C778D0063D947 /* XCRemoteSwiftPackageReference "MBCircleProgressBar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tkgstrator/MBCircleProgressBar";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.2;
+			};
+		};
+		1081B761269C77AE0063D947 /* XCRemoteSwiftPackageReference "SwiftChart" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tkgstrator/SwiftChart";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
+		1081B764269C77C40063D947 /* XCRemoteSwiftPackageReference "SwiftyAPNGKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tkgstrator/SwiftyAPNGKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.2;
+			};
+		};
 		1083857A265922700099475F /* XCRemoteSwiftPackageReference "SwiftyBeaver" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyBeaver/SwiftyBeaver";
@@ -1309,6 +1345,21 @@
 		105391D42673E733001025E1 /* SwiftChart */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftChart;
+		};
+		1081B75F269C778D0063D947 /* MBCircleProgressBar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1081B75E269C778D0063D947 /* XCRemoteSwiftPackageReference "MBCircleProgressBar" */;
+			productName = MBCircleProgressBar;
+		};
+		1081B762269C77AE0063D947 /* SwiftChart */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1081B761269C77AE0063D947 /* XCRemoteSwiftPackageReference "SwiftChart" */;
+			productName = SwiftChart;
+		};
+		1081B765269C77C40063D947 /* SwiftyAPNGKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1081B764269C77C40063D947 /* XCRemoteSwiftPackageReference "SwiftyAPNGKit" */;
+			productName = SwiftyAPNGKit;
 		};
 		1083857B265922700099475F /* SwiftyBeaver */ = {
 			isa = XCSwiftPackageProductDependency;

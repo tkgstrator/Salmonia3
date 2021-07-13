@@ -12,22 +12,26 @@ import SwiftUI
 import SplatNet2
 
 class CoreRealmCoop: ObservableObject {
-    @ObservedObject var appManager: AppManager = AppManager()
+    private var token: NotificationToken?
     @Published var resultCount: Int = RealmManager.Objects.results.count
     @Published var waves: RealmSwift.Results<RealmCoopWave> = RealmManager.Objects.waves
     @Published var players: RealmSwift.Results<RealmPlayer> = RealmManager.Objects.players
     @Published var result: [RealmCoopResult] = Array(RealmManager.Objects.results.prefix(5))
+    
     var results: [UserCoopResult] {
         let startTime: [Int] = Array(Set(RealmManager.Objects.results.map({ $0.startTime }))).sorted(by: >)
         return startTime.map({ UserCoopResult(startTime: $0) })
     }
     
     var records: [CoopRecord] {
-        return Range(5000 ... 5004).map{ CoopRecord(stageId: $0) }
+        return StageType.allCases.map{ CoopRecord(stageId: $0.rawValue) }
     }
     
     init() {
-        
+        // 不要だとは思うが念の為にアップデートする
+        token = RealmManager.Objects.results.observe { [weak self] _ in
+            self?.objectWillChange.send()
+        }
     }
     
     deinit {
