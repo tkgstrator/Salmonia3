@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10039F9626A45EA300B1546A /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10039F9526A45EA300B1546A /* GoogleMobileAds.xcframework */; };
 		101C77CD26496FA6005D603C /* CoopPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C77CC26496FA6005D603C /* CoopPlayerView.swift */; };
 		101C77D526497038005D603C /* CoopPlayerResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C77D426497038005D603C /* CoopPlayerResultView.swift */; };
 		101C77DA264C283C005D603C /* UsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C77D9264C283B005D603C /* UsernameView.swift */; };
@@ -118,6 +119,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10039F9526A45EA300B1546A /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleMobileAds.xcframework; sourceTree = "<group>"; };
 		100F564A262C308F00A1D1D0 /* SalmonStats */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SalmonStats; path = ../SalmonStats; sourceTree = "<group>"; };
 		101C77CC26496FA6005D603C /* CoopPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopPlayerView.swift; sourceTree = "<group>"; };
 		101C77D426497038005D603C /* CoopPlayerResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopPlayerResultView.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				10CF099425FB97F300D2EEB1 /* SwiftUIRefresh in Frameworks */,
 				10CF09B825FB9AC100D2EEB1 /* Realm in Frameworks */,
 				102C75EB2659C5A600AEE20F /* SwiftyAPNGKit in Frameworks */,
+				10039F9626A45EA300B1546A /* GoogleMobileAds.xcframework in Frameworks */,
 				1081B760269C778D0063D947 /* MBCircleProgressBar in Frameworks */,
 				105391D52673E733001025E1 /* SwiftChart in Frameworks */,
 				1081B763269C77AE0063D947 /* SwiftChart in Frameworks */,
@@ -569,6 +572,7 @@
 		CC3D58FA9034E515205807EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				10039F9526A45EA300B1546A /* GoogleMobileAds.xcframework */,
 				7B6419A3A4A135F484294BF5 /* Pods_Salmonia3.framework */,
 				F4CFAB4D922D35088435EF26 /* Pods_Salmonia3Tests.framework */,
 			);
@@ -1085,6 +1089,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.2.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

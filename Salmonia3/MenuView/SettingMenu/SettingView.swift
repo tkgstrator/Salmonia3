@@ -27,14 +27,14 @@ struct SettingView: View {
         List {
             Section(header: Text(.HEADER_USERINFO).splatfont2(.orange, size: 14),
                     footer: Text(.FOOTER_SPLATNET2).splatfont2(.secondary, size: 13).environment(\.lineLimit, 2)) {
-//                SettingMenu(title: .SETTING_SPLATNET2, value: manager.playerId)
-                AccountPicker()
+                AccountPicker(manager: manager)
+                SettingMenu(title: .SETTING_SPLATNET2, value: manager.playerId)
                 SettingMenu(title: .RESULTS, value: manager.account.coop.jobNum)
             }
             
             Section(header: Text(.HEADER_SALMONSTATS).splatfont2(.orange, size: 14),
                     footer: Text(.FOOTER_SALMONSTATS).splatfont2(.secondary, size: 13).environment(\.lineLimit, 2)) {
-//                SettingMenu(title: .SETTING_UPLOAD, value: SalmonStats.shared.apiToken != nil)
+                SettingMenu(title: .SETTING_UPLOAD, value: manager.apiToken)
                 Button(action: { isPresented.toggle() }, label: { Text(.SETTING_IMPORT_RESULT) })
                     .background(
                         NavigationLink(destination: ImportingView(), isActive: $isActive, label: { EmptyView() })

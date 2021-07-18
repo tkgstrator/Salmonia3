@@ -30,7 +30,7 @@ struct LoadingView: View {
                 Alert(title: Text("ALERT_ERROR"),
                       message: Text(error.localizedDescription),
                       dismissButton: .default(Text("BTN_DISMISS"), action: {
-                        appManager.loggingToCloud(error.errorDescription!)
+//                        appManager.loggingToCloud(error.errorDescription!)
                         present.wrappedValue.dismiss()
                       }))
             }
@@ -72,7 +72,6 @@ struct LoadingView: View {
     private func getResultFromSplatNet2() {
         var pids: [String] = []
         var results: [(json: ResultCoop.Response, data: SplatNet2.Coop.Result)] = []
-        print(RealmManager.getLatestResultId())
         manager.getSummaryCoop(jobNum: RealmManager.getLatestResultId())
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
@@ -80,13 +79,19 @@ struct LoadingView: View {
                 case .finished:
                     break
                 case .failure(let error):
-                    apiError = error
+                    switch error {
+                    case .nonewresults:
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            present.wrappedValue.dismiss()
+                        }
+                    default:
+                        apiError = error
+                    }
                 }
             }, receiveValue: { _ in
                 let jobIds: Range = Range(uncheckedBounds: (max(RealmManager.getLatestResultId(), manager.account.coop.jobNum - 49), manager.account.coop.jobNum + 1))
                 progressModel.configure(maxValue: CGFloat(jobIds.count))
                 for jobId in jobIds {
-                    // MARK: リザルトのダウンロード
                     manager.getResultCoopWithJSON(jobId: jobId)
                         .receive(on: DispatchQueue.main)
                         .sink(receiveCompletion: { completion in
@@ -98,17 +103,13 @@ struct LoadingView: View {
                                 apiError = error
                             }
                         }, receiveValue: { response in
-                            RealmManager.addNewResultsFromSplatNet2(from: [response.data], .splatnet2)
-                            // MARK: Salmon Statsへのアップロード
-//                            if let _ = SalmonStats.shared.apiToken {
-//                                pids.append(contentsOf: response.data.results.map{ $0.pid })
-//                                results.append(response)
-//                                if results.count == jobIds.count {
-//                                    RealmManager.addNewResultsFromSplatNet2(from: results.map{ $0.data }, pid: manager.playerId)
-//                                    uploadToSalmonStats(results: results.map{ $0.json.dictionaryObject! })
-//                                    getNicknameIcons(pid: pids)
-//                                }
-//                            }
+                            pids.append(contentsOf: response.data.results.map{ $0.pid })
+                            results.append(response)
+                            if results.count == jobIds.count {
+                                RealmManager.addNewResultsFromSplatNet2(from: results.map{ $0.data }, .splatnet2)
+                                uploadToSalmonStats(results: results.map{ $0.json.dictionaryObject! })
+                                getNicknameIcons(pid: pids)
+                            }
                         })
                         .store(in: &task)
                 }

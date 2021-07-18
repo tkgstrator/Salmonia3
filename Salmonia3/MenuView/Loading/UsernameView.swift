@@ -32,7 +32,7 @@ struct UsernameView: View {
                 Alert(title: Text("ALERT_ERROR"),
                       message: Text(error.localizedDescription),
                       dismissButton: .default(Text("BTN_DISMISS"), action: {
-                        appManager.loggingToCloud(error.errorDescription!)
+//                        appManager.loggingToCloud(error.errorDescription!)
                         present.wrappedValue.dismiss()
                       }))
             }

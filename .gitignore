@@ -92,3 +92,5 @@ iOSInjectionProject/
 GoogleService-Info.plist
 Podfile.lock
 .DS_Store
+env.txt
+GoogleMobileAds.xcframework
