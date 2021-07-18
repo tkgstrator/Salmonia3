@@ -53,7 +53,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     // 旧データを削除するためのコード
     private func getKeychain() {
         for item in Keychain.allItems(.internetPassword) {
-            print(item)
             if let value = item["server"] as? String {
                 if value == "" {
                     if let key = item["key"] as? String {
@@ -64,13 +63,15 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                                     .sink(receiveCompletion: { completion in
                                         switch completion {
                                         case .finished:
-                                            let keychain = Keychain(server: "tkgstrator.work", protocolType: .https)
-                                            try? keychain.removeAll()
+                                            let keys = Keychain.allItems(.internetPassword)
+                                                .compactMap({ $0["key"] as? String })
+                                            print(keys)
                                         case .failure(let error):
                                             print(error)
                                         }
                                     }, receiveValue: { response in
-                                        print(response)
+                                        let keychain = Keychain(service: response.nsaid)
+                                        keychain.setValue(response)
                                     }).store(in: &task)
                             }
                         }

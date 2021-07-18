@@ -147,15 +147,13 @@ final class RealmManager: AppManager {
         UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
         #endif
         // クラッシュするバグ対策(クラッシュしたが)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            autoreleasepool {
-                realm.beginWrite()
-                realm.delete(realm.objects(RealmCoopResult.self))
-                realm.delete(realm.objects(RealmCoopWave.self))
-                realm.delete(realm.objects(RealmPlayer.self))
-                realm.delete(realm.objects(RealmPlayerResult.self))
-                try? realm.commitWrite()
-            }
+        autoreleasepool {
+            realm.beginWrite()
+            realm.delete(realm.objects(RealmCoopResult.self))
+            realm.delete(realm.objects(RealmCoopWave.self))
+            realm.delete(realm.objects(RealmPlayer.self))
+            realm.delete(realm.objects(RealmPlayerResult.self))
+            try? realm.commitWrite()
         }
     }
 }
