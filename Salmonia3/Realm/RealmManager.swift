@@ -32,32 +32,17 @@ final class RealmManager: AppManager {
 
     override init() {
     }
-    
-    //
-    public static func getCoopResults(startTime: Int? = nil, pid: String? = nil) -> RealmSwift.Results<RealmCoopResult> {
-        let realm = try! Realm()
-        if let startTime = startTime, let pid = pid {
-            return realm.objects(RealmCoopResult.self).filter("startTime=%@ AND pid=%@", startTime, pid)
-        }
-        if let startTime = startTime {
-            return realm.objects(RealmCoopResult.self).filter("startTime=%@", startTime)
-        }
-        if let pid = pid {
-            return realm.objects(RealmCoopResult.self).filter("pid=%@", pid)
-        }
-        return realm.objects(RealmCoopResult.self)
-    }
-        
-    
-    // そのプレイヤーが参加していたシフトのスケジュールを取得
-    public static func getPlayerShiftStartTime(nsaid: String) -> [Int] {
-        return Array(Set(realm.objects(RealmCoopResult.self).filter("ANY player.pid=%@", nsaid).map{ $0.startTime })).sorted(by: >)
-    }
-    
-    // そのプレイヤーが参加していたシフトのデータを取得
-    public static func getPlayerShiftResults(nsaid: String) -> [UserCoopResult] {
-        return getPlayerShiftStartTime(nsaid: nsaid).map({ UserCoopResult(startTime: $0, playerId: nsaid)})
-    }
+
+//    
+//    // そのプレイヤーが参加していたシフトのスケジュールを取得
+//    public static func getPlayerShiftStartTime(nsaid: String) -> [Int] {
+//        return Array(Set(realm.objects(RealmCoopResult.self).filter("ANY player.pid=%@", nsaid).map{ $0.startTime })).sorted(by: >)
+//    }
+//    
+//    // そのプレイヤーが参加していたシフトのデータを取得
+//    public static func getPlayerShiftResults(nsaid: String) -> [UserCoopResult] {
+//        return getPlayerShiftStartTime(nsaid: nsaid).map({ UserCoopResult(startTime: $0, playerId: nsaid)})
+//    }
 
     public static func updateUserNickname(players: [PlayerMetadata]) {
         realm.beginWrite()
@@ -86,6 +71,7 @@ final class RealmManager: AppManager {
         let _ = rotations.map{ realm.create(RealmCoopShift.self, value: $0, update: .all) }
         try? realm.commitWrite()
     }
+    
     // シフトスケジュールを取得
     public static func getShiftSchedule(startTime: Int) throws -> RealmCoopShift {
         guard let realm = try? Realm() else { throw APPError.realm }
@@ -138,8 +124,7 @@ final class RealmManager: AppManager {
         }
     }
 
-    // MARK: Salmon Statsからのリザルト追加
-
+    // MARK: データ削除
     static func eraseAllRecord() throws {
         guard let realm = try? Realm() else { return }
         #if DEBUG
