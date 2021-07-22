@@ -19,6 +19,14 @@ extension RealmManager {
                 .filter("startTime=%@", startTime).first!
         }
         
+        private static func shiftTimeList(nsaid: String) -> [Int] {
+            return Array(Set(realm.objects(RealmCoopResult.self).filter("ANY player.pid=%@", nsaid).map{ $0.startTime })).sorted(by: >)
+        }
+        
+        static func shiftResults(nsaid: String) -> [UserCoopResult] {
+            return shiftTimeList(nsaid: nsaid).map({ UserCoopResult(startTime: $0, playerId: nsaid)})
+        }
+        
         // MARK: RealmCoopResult
         // 全リザルトを返す
         static var results: RealmSwift.Results<RealmCoopResult> {
