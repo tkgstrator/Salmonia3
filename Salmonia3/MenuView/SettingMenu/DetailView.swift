@@ -23,7 +23,8 @@ struct DetailView: View {
                         ForEach(ImportType.allCases, id:\.rawValue) {
                             Text("\($0.rawValue)")
                         }
-                    }.pickerStyle(MenuPickerStyle())
+                    }
+                    .pickerStyle(MenuPickerStyle())
                     Spacer()
                     Text("\(appManager.importNum)")
                         .foregroundColor(.secondary)
@@ -54,7 +55,6 @@ struct DetailView: View {
                   secondaryButton: .destructive(Text(.BTN_CANCEL))
             )
         }
-        .font(.custom("Splatfont2", size: 16))
         .navigationTitle(.TITLE_SETTINGS)
     }
 

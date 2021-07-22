@@ -34,7 +34,7 @@ struct SettingView: View {
             
             Section(header: Text(.HEADER_SALMONSTATS).splatfont2(.orange, size: 14),
                     footer: Text(.FOOTER_SALMONSTATS).splatfont2(.secondary, size: 13).environment(\.lineLimit, 2)) {
-                SettingMenu(title: .SETTING_UPLOAD, value: manager.apiToken)
+                SettingMenu(title: .SETTING_UPLOAD, value: !(manager.apiToken?.isEmpty ?? true))
                 Button(action: { isPresented.toggle() }, label: { Text(.SETTING_IMPORT_RESULT) })
                     .background(
                         NavigationLink(destination: ImportingView(), isActive: $isActive, label: { EmptyView() })
@@ -53,12 +53,17 @@ struct SettingView: View {
 
             Section(header: Text(.HEADER_APPEARANCE).splatfont2(.orange, size: 14)) {
                 Toggle(LocalizableStrings.Key.SETTING_DARKMODE.rawValue.localized, isOn: $appManager.isDarkMode)
-                Picker(selection: $appManager.listStyle, label: Text(.SETTING_LISTSTYLE)) {
-                    ForEach(ListStyle.allCases, id:\.rawValue) {
-                        Text($0.rawValue.localized)
-                            .tag($0)
+                HStack {
+                    Picker(selection: $appManager.listStyle, label: Text(.SETTING_LISTSTYLE)) {
+                        ForEach(ListStyle.allCases, id:\.rawValue) {
+                            Text($0.rawValue.localized)
+                                .tag($0)
+                        }
                     }
-                    .navigationTitle(.TITLE_SETTINGS)
+                    .pickerStyle(MenuPickerStyle())
+                    Spacer()
+                    Text(appManager.listStyle.rawValue.localized)
+                        .foregroundColor(.secondary)
                 }
             }
             

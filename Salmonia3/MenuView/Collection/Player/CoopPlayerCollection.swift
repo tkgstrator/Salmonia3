@@ -83,7 +83,6 @@ struct PlayerOverview: View {
             Spacer()
             VStack(alignment: .trailing) {
                 Text(dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(player.lastMatchedTime))))
-                
             }
             .splatfont2(size: 16)
         }

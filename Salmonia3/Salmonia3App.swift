@@ -48,43 +48,25 @@ struct Salmonia3App: SwiftUI.App {
 
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-    private var task = Set<AnyCancellable>()
-    
-    // 旧データを削除するためのコード
-    private func getKeychain() {
-        for item in Keychain.allItems(.internetPassword) {
-            if let value = item["server"] as? String {
-                if value == "" {
-                    if let key = item["key"] as? String {
-                        if key == "sessionToken" {
-                            if let sessionToken = item["value"] as? String {
-                                manager.getCookie(sessionToken: sessionToken)
-                                    .receive(on: DispatchQueue.main)
-                                    .sink(receiveCompletion: { completion in
-                                        switch completion {
-                                        case .finished:
-                                            let keys = Keychain.allItems(.internetPassword)
-                                                .compactMap({ $0["key"] as? String })
-                                            print(keys)
-                                        case .failure(let error):
-                                            print(error)
-                                        }
-                                    }, receiveValue: { response in
-                                        let keychain = Keychain(service: response.nsaid)
-                                        keychain.setValue(response)
-                                    }).store(in: &task)
-                            }
-                        }
-                    }
-                }
+    @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = true
+
+    private func updateAppVersion() {
+        let servers: [String] = Keychain.allItems(.internetPassword).compactMap({ $0["key"] as? String }).filter({ !$0.isEmpty })
+        if !servers.isEmpty {
+            for server in servers {
+                let keychain = Keychain(server: server, protocolType: .https)
+                try? keychain.removeAll()
             }
+            let keychain = Keychain(server: "tkgstrator.work", protocolType: .https)
+            try? keychain.removeAll()
+            isFirstLaunch = true
         }
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         // MARK: ログの設定
         console.format = "$DHH:mm:ss$d $L $M"
-
+        
         log.addDestination(console)
         log.addDestination(file)
         log.addDestination(cloud)
@@ -98,7 +80,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         let config = Realm.Configuration(schemaVersion: schemaVersion)
         Realm.Configuration.defaultConfiguration = config
         let _ = try! Realm()
-        getKeychain()
+        updateAppVersion()
         
         // MARK: シフト情報の取得
         try? RealmManager.addNewRotation(from: SplatNet2.shiftSchedule)
