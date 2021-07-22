@@ -148,6 +148,8 @@ class LocalizableStrings {
         case TITLE_HELP
         case RESULT_MAX_GRADE_NUM
         case RESULT_MIN_MAX_GRADE
+        case RESULT_MAX_GOLDEN_EGGS_NONIGHT
+        case RESULT_MAX_GOLDEN_EGGS
     }
 
 }

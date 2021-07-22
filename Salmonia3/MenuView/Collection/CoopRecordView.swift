@@ -24,6 +24,8 @@ struct CoopRecordView: View {
                 RecordColumn(title: .RESULT_MAX_GRADE, value: record.maxGrade)
                 RecordColumn(title: .RESULT_MAX_GRADE_NUM, value: record.counterStepNum)
                 RecordColumn(title: .RESULT_MIN_MAX_GRADE, value: record.minimumStepNum)
+                RecordColumn(title: .RESULT_MAX_GOLDEN_EGGS, value: record.maxGoldenEggs.all)
+                RecordColumn(title: .RESULT_MAX_GOLDEN_EGGS_NONIGHT, value: record.maxGoldenEggs.nonight)
             }
             ForEach(WaterLevel.allCases, id:\.self) { tide in
                 Section(header: Text(tide.waterLevel.localized).splatfont2(.orange, size: 14)) {
