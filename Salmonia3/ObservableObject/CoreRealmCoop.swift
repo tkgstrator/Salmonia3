@@ -17,6 +17,7 @@ class CoreRealmCoop: ObservableObject {
     @Published var waves: RealmSwift.Results<RealmCoopWave> = RealmManager.Objects.waves
     @Published var players: RealmSwift.Results<RealmPlayer> = RealmManager.Objects.players
     @Published var result: [RealmCoopResult] = Array(RealmManager.Objects.results.prefix(5))
+    @Published var latestShift: RealmSwift.Results<RealmCoopShift> = RealmManager.latestShiftStartTime
     
     // リザルト一覧
     var results: [UserCoopResult] {
