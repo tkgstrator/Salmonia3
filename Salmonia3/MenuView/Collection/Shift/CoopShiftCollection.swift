@@ -10,31 +10,36 @@ import RealmSwift
 
 struct CoopShiftCollection: View {
     @Environment(\.presentationMode) var present
-    @EnvironmentObject var main: CoreRealmCoop
-
+    @EnvironmentObject var appManager: AppManager
+    @State var shifts: RealmSwift.Results<RealmCoopShift>
+    var shiftNumber: Int = RealmManager.shiftNumber
+    
+    init(displayFutureShift: Bool) {
+        self._shifts = State(initialValue: RealmManager.allShiftStartTime(displayFutureShift: displayFutureShift))
+    }
+    
     var body: some View {
         ScrollViewReader { proxy in
-//            List {
-//                ForEach(main.shifts.indices, id:\.self) { index in
-//                    ZStack(alignment: .leading) {
-//                        NavigationLink(destination: CoopShiftStatsView(startTime: main.shifts[index].startTime), label: {
-//                            EmptyView()
-//                        })
-//                        .opacity(0.0)
-//                        CoopShift(shift: main.shifts[index])
-//                    }
-//                }
-//            }
-//            .onAppear{ scrollTo(proxy: proxy) }
+            List {
+                ForEach(shifts.indices, id:\.self) { index in
+                    ZStack(alignment: .leading) {
+                        NavigationLink(destination: CoopShiftStatsView(startTime: shifts[index].startTime), label: {
+                            EmptyView()
+                        })
+                        .opacity(0.0)
+                        CoopShift(shift: shifts[index])
+                    }
+                    .tag(index)
+                }
+            }
+            .onAppear{ scrollTo(proxy: proxy) }
         }
         .navigationTitle(.TITLE_SHIFT_SCHEDULE)
     }
     
     private func scrollTo(proxy: ScrollViewProxy) {
         if !present.wrappedValue.isPresented {
-            withAnimation {
-//                proxy.scrollTo(main.currentShiftNumber, anchor: .center)
-            }
+            proxy.scrollTo(shiftNumber, anchor: .center)
         }
     }
 }
@@ -137,9 +142,9 @@ struct CoopShift: View {
         }
     }
 }
-
-struct CoopShiftCollection_Previews: PreviewProvider {
-    static var previews: some View {
-        CoopShiftCollection()
-    }
-}
+//
+//struct CoopShiftCollection_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CoopShiftCollection()
+//    }
+//}

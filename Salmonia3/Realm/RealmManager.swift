@@ -33,17 +33,38 @@ final class RealmManager: AppManager {
     override init() {
     }
 
-//    
-//    // そのプレイヤーが参加していたシフトのスケジュールを取得
-//    public static func getPlayerShiftStartTime(nsaid: String) -> [Int] {
-//        return Array(Set(realm.objects(RealmCoopResult.self).filter("ANY player.pid=%@", nsaid).map{ $0.startTime })).sorted(by: >)
-//    }
-//    
-//    // そのプレイヤーが参加していたシフトのデータを取得
-//    public static func getPlayerShiftResults(nsaid: String) -> [UserCoopResult] {
-//        return getPlayerShiftStartTime(nsaid: nsaid).map({ UserCoopResult(startTime: $0, playerId: nsaid)})
-//    }
+    // 直近の二回のバイトシフトのIdを返す
+    public static var latestShiftStartTime: RealmSwift.Results<RealmCoopShift> {
+        // 現在時刻
+        let currentTime: Int = Int(Date().timeIntervalSince1970)
+        // 現在時刻よりも開始時刻が遅いシフトで最も始まるのが早いシフトを取得
+        let startTime: Int = realm.objects(RealmCoopShift.self).filter("startTime>=%@", currentTime).sorted(byKeyPath: "startTime", ascending: true).map({ $0.startTime }).first!
+        // 現在時刻よりも終了時刻が早いシフトで最も始まるのが遅いシフトを取得
+        let endTime: Int = realm.objects(RealmCoopShift.self).filter("endTime<=%@", currentTime).sorted(byKeyPath: "startTime", ascending: false).map({ $0.startTime }).first!
+        return realm.objects(RealmCoopShift.self).filter("startTime>%@ AND startTime<=%@", endTime, startTime).sorted(byKeyPath: "startTime", ascending: true)
+    }
+    
+    public static func allShiftStartTime(displayFutureShift: Bool) -> RealmSwift.Results<RealmCoopShift> {
+        // 現在時刻
+        let currentTime: Int = Int(Date().timeIntervalSince1970)
+        // 現在時刻よりも開始時刻が遅いシフトで最も始まるのが早いシフトを取得
+        let startTime: Int = realm.objects(RealmCoopShift.self).filter("startTime>=%@", currentTime).sorted(byKeyPath: "startTime", ascending: true).map({ $0.startTime }).first!
 
+        switch displayFutureShift {
+        case true:
+            return realm.objects(RealmCoopShift.self).sorted(byKeyPath: "startTime", ascending: false)
+        case false:
+            return realm.objects(RealmCoopShift.self).filter("startTime<=%@", startTime).sorted(byKeyPath: "startTime", ascending: false)
+        }
+    }
+    
+    public static var shiftNumber: Int {
+        let currentTime: Int = Int(Date().timeIntervalSince1970)
+        // 現在時刻よりも開始時刻が遅いシフトで最も始まるのが早いシフトを取得
+        return realm.objects(RealmCoopShift.self).filter("startTime>=%@", currentTime).count
+    }
+    
+    
     public static func updateUserNickname(players: [PlayerMetadata]) {
         realm.beginWrite()
         for player in players {
