@@ -23,7 +23,7 @@ let log = SwiftyBeaver.self
 let console = ConsoleDestination()
 let file = FileDestination()
 let cloud = SBPlatformDestination(appID: "k6Pxwd", appSecret: "iqnaqabvjpwGitdb6au4wDo0UphgshBz", encryptionKey: "vb8cesft69mtFmPbeRe8iIuXohHbrmno")
-let schemaVersion: UInt64 = 4200
+let schemaVersion: UInt64 = 8192
 // Salmon Statsインスタンスの初期化
 var manager: SalmonStats = SalmonStats()
 
@@ -77,7 +77,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             GADMobileAds.sharedInstance().start(completionHandler: nil)
             print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
         })
-        let config = Realm.Configuration(schemaVersion: schemaVersion)
+        let config = Realm.Configuration(schemaVersion: schemaVersion, deleteRealmIfMigrationNeeded: true)
         Realm.Configuration.defaultConfiguration = config
         let _ = try! Realm()
         updateAppVersion()

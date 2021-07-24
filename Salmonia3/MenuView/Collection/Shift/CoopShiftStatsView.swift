@@ -21,10 +21,12 @@ struct CoopShiftStatsView: View {
         TabView {
             StatsView(startTime: startTime, stats: stats)
                 .tag(0)
-            StatsWaveView(stats: stats)
+            StatsChartView(stats: stats)
                 .tag(1)
-            StatsWeaponView(stats: stats)
+            StatsWaveView(stats: stats)
                 .tag(2)
+            StatsWeaponView(stats: stats)
+                .tag(3)
         }
         .tabViewStyle(PageTabViewStyle())
         .navigationTitle(.TITLE_SHIFT_STATS)
