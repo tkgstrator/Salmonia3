@@ -84,10 +84,10 @@ final class CoopShiftStats: ObservableObject {
         var powerEggRatio: Double?
         lazy var specialWeapon = {
             return [
-                PieChartData(value: Double(self.player?.filter("specialId=%@", 2).count ?? 0), label: { Text("A") }),
-                PieChartData(value: Double(self.player?.filter("specialId=%@", 7).count ?? 0), label: { Text("A") }),
-                PieChartData(value: Double(self.player?.filter("specialId=%@", 8).count ?? 0), label: { Text("A") }),
-                PieChartData(value: Double(self.player?.filter("specialId=%@", 9).count ?? 0), label: { Text("A") })
+                PieChartData(value: Double(self.player?.filter("specialId=%@", 2).count ?? 0), label: { AnyView(Image(SpecialType.init(rawValue: 2)!.image).resizable().frame(width: 35, height: 35, alignment: .center)) }),
+                PieChartData(value: Double(self.player?.filter("specialId=%@", 7).count ?? 0), label: { AnyView(Image(SpecialType.init(rawValue: 7)!.image).resizable().frame(width: 35, height: 35, alignment: .center)) }),
+                PieChartData(value: Double(self.player?.filter("specialId=%@", 8).count ?? 0), label: { AnyView(Image(SpecialType.init(rawValue: 8)!.image).resizable().frame(width: 35, height: 35, alignment: .center)) }),
+                PieChartData(value: Double(self.player?.filter("specialId=%@", 9).count ?? 0), label: { AnyView(Image(SpecialType.init(rawValue: 9)!.image).resizable().frame(width: 35, height: 35, alignment: .center)) })
             ]
         }()
         var playerBossDefeatedRatio: [Double?] = []
@@ -243,8 +243,8 @@ private extension Collection where Element == Int {
 extension RealmSwift.Results where Element == RealmCoopWave {
     var resultWaves: [CoopShiftStats.ResultWave] {
         var waves: [CoopShiftStats.ResultWave] = []
-        for tide in WaterLevel.allCases {
-            for event in EventType.allCases {
+        for event in EventType.allCases {
+            for tide in WaterLevel.allCases {
                 let results = self.filter("eventType=%@ AND waterLevel=%@", event.eventType, tide.waterLevel)
                 let count: Int = results.count
                 let goldenEggs: Double? = results.average(ofProperty: "goldenIkuraNum")

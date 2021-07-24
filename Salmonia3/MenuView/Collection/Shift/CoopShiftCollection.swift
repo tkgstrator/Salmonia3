@@ -12,10 +12,11 @@ struct CoopShiftCollection: View {
     @Environment(\.presentationMode) var present
     @EnvironmentObject var appManager: AppManager
     @State var shifts: RealmSwift.Results<RealmCoopShift>
-    var shiftNumber: Int = RealmManager.shiftNumber
+    var shiftNumber: Int
     
     init(displayFutureShift: Bool) {
         self._shifts = State(initialValue: RealmManager.allShiftStartTime(displayFutureShift: displayFutureShift))
+        self.shiftNumber = RealmManager.shiftNumber(displayFutureShift: displayFutureShift)
     }
     
     var body: some View {

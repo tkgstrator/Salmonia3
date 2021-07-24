@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftChart
 
 struct StatsView: View {
-    
     var startTime: Int
     var stats: CoopShiftStats
 
@@ -22,14 +21,6 @@ struct StatsView: View {
                 StatsColumn(title: .RESULT_RATIO_POWER_EGGS, value: stats.overview.powerEggRatio)
                 StatsColumn(title: .RESULT_RATIO_GOLDEN_EGGS, value: stats.overview.goldenEggRatio)
             }
-//            Section {
-//                HStack {
-//                    Spacer()
-//                    PieChartView(data: (stats.overview!.specialWeapon))
-//                        .frame(width: 300, height: 300, alignment: .center)
-//                    Spacer()
-//                }
-//            }
             Section(header: Text(.HEADER_STATS_MAX).splatfont2(.orange, size: 14)) {
                 StatsColumn(title: .RESULT_POWER_EGGS, value: stats.resultMax.powerEggs)
                 StatsColumn(title: .RESULT_GOLDEN_EGGS, value: stats.resultMax.goldenEggs)

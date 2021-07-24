@@ -58,10 +58,15 @@ final class RealmManager: AppManager {
         }
     }
     
-    public static var shiftNumber: Int {
-        let currentTime: Int = Int(Date().timeIntervalSince1970)
-        // 現在時刻よりも開始時刻が遅いシフトで最も始まるのが早いシフトを取得
-        return realm.objects(RealmCoopShift.self).filter("startTime>=%@", currentTime).count
+    public static func shiftNumber(displayFutureShift: Bool) -> Int {
+        switch displayFutureShift {
+        case true:
+            let currentTime: Int = Int(Date().timeIntervalSince1970)
+            // 現在時刻よりも開始時刻が遅いシフトで最も始まるのが早いシフトを取得
+            return realm.objects(RealmCoopShift.self).filter("startTime>=%@", currentTime).count
+        case false:
+            return 0
+        }
     }
     
     
