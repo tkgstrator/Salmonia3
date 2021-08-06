@@ -21,12 +21,18 @@ struct CoopShiftStatsView: View {
         TabView {
             StatsView(startTime: startTime, stats: stats)
                 .tag(0)
-            StatsChartView(stats: stats)
-                .tag(1)
+            // 記録が0でないなら
+            if stats.overview.jobNum != 0 {
+                StatsChartView(stats: stats)
+                    .tag(1)
+            }
             StatsWaveView(stats: stats)
                 .tag(2)
-            StatsWeaponView(stats: stats)
-                .tag(3)
+            // ランダムブキがあるなら表示
+            if RealmManager.Objects.shift(startTime: startTime).rareWeapon != nil {
+                StatsWeaponView(stats: stats)
+                    .tag(3)
+            }
         }
         .tabViewStyle(PageTabViewStyle())
         .navigationTitle(.TITLE_SHIFT_STATS)
