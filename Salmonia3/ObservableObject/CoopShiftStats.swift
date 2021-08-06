@@ -11,15 +11,17 @@ import SwiftUI
 import SwiftChart
 
 final class CoopShiftStats: ObservableObject {
-    @Published var resultAvg: ResultAvg
-    @Published var resultMax: ResultMax
-    @Published var overview: ResultOverView
+    @Published var resultAvg: ResultAvg = ResultAvg()
+    @Published var resultMax: ResultMax = ResultMax()
+    @Published var overview: ResultOverView = ResultOverView()
     @Published var weaponData: [ResultWeapon] = []
-    @Published var records: CoopRecord
+    @Published var records: CoopRecord = CoopRecord()
     @Published var resultWave: [ResultWave] = []
     private var token: NotificationToken?
 
     init(startTime: Int) {
+        // 現在時刻よりもあとのやつはデータが空なのでスキップ
+        if startTime >= Int(Date().timeIntervalSince1970) { return }
         // 表示するプレイヤーIDを選択
         let playerId: [String] = [manager.account.nsaid]
         // 指定されたシフトIDでのデータを取得
@@ -27,15 +29,15 @@ final class CoopShiftStats: ObservableObject {
         let playerResults = RealmManager.Objects.playerResults(startTime: startTime, playerId: playerId)
         let results = RealmManager.Objects.results(startTime: startTime, playerId: playerId)
         let waves = RealmManager.Objects.waves(startTime: startTime)
-
-        records = CoopRecord(startTime: startTime)
-        resultMax = ResultMax(player: playerResults, result: results)
-        resultAvg = ResultAvg(player: playerResults, result: results)
-        overview = ResultOverView(results: results, player: playerResults)
-        weaponData = getWeaponData(startTime: startTime, nsaid: playerId)
-        resultWave = waves.resultWaves
-
-        token = RealmManager.Objects.results.observe{ [weak self] _ in
+        
+        self.records = CoopRecord(startTime: startTime)
+        //        self.resultMax = ResultMax(player: playerResults, result: results)
+        //        self.resultAvg = ResultAvg(player: playerResults, result: results)
+        //        self.overview = ResultOverView(results: results, player: playerResults)
+        //        self.weaponData = self.getWeaponData(startTime: startTime, nsaid: playerId)
+        self.resultWave = waves.resultWaves
+        
+        self.token = RealmManager.Objects.results.observe{ [weak self] _ in
             self?.resultMax = ResultMax(player: playerResults, result: results)
             self?.resultAvg = ResultAvg(player: playerResults, result: results)
             self?.overview = ResultOverView(results: results, player: playerResults)
@@ -95,6 +97,7 @@ final class CoopShiftStats: ObservableObject {
         var teamBossDefeatedRatio: [Double?] = []
         var bossAppearRatio: [Double?] = []
         
+        init() {}
         init(results: RealmSwift.Results<RealmCoopResult>, player: RealmSwift.Results<RealmPlayerResult>) {
             guard let _ = results.first else { return }
             self.player = player
@@ -141,6 +144,7 @@ final class CoopShiftStats: ObservableObject {
         var helpCount: Int?
         var deadCount: Int?
 
+        init() {}
         init(player: RealmSwift.Results<RealmPlayerResult>, result: RealmSwift.Results<RealmCoopResult>) {
             teamPowerEggs = result.max(ofProperty: "powerEggs")
             teamGoldenEggs = result.max(ofProperty: "goldenEggs")
@@ -162,6 +166,7 @@ final class CoopShiftStats: ObservableObject {
         var helpCount: Double?
         var deadCount: Double?
 
+        init() {}
         init(player: RealmSwift.Results<RealmPlayerResult>, result: RealmSwift.Results<RealmCoopResult>) {
             teamPowerEggs = result.average(ofProperty: "powerEggs")
             teamGoldenEggs = result.average(ofProperty: "goldenEggs")
