@@ -161,3 +161,5 @@
 "RESULT_MIN_MAX_GRADE" = "Minimum attempts of 999";
 "RESULT_MAX_GOLDEN_EGGS" = "Max golden eggs";
 "RESULT_MAX_GOLDEN_EGGS_NONIGHT" = "Max golden eggs(without event)";
+"HEADER_SPECIAL_WEAPON" = "Special Weapon";
+"SETTING_ACCOUNT" = "Account";

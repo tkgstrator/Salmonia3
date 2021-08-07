@@ -47,6 +47,7 @@ struct DetailView: View {
                 ))
             }
         }
+        .splatfont2(size: 16)
         .alert(item: $warning) { warning in
             Alert(title: Text(.TEXT_CONFIRM),
                   message: Text(warning.localizedDescription),

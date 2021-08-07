@@ -22,16 +22,16 @@ struct CoopShiftStatsView: View {
             StatsView(startTime: startTime, stats: stats)
                 .tag(0)
             // 記録が0でないなら
-            if stats.overview.jobNum != 0 {
+            if stats.overview.jobNum != nil {
                 StatsChartView(stats: stats)
                     .tag(1)
-            }
-            StatsWaveView(stats: stats)
-                .tag(2)
-            // ランダムブキがあるなら表示
-            if RealmManager.Objects.shift(startTime: startTime).rareWeapon != nil {
-                StatsWeaponView(stats: stats)
-                    .tag(3)
+                StatsWaveView(stats: stats)
+                    .tag(2)
+                // ランダムブキがあるなら表示
+                if RealmManager.Objects.shift(startTime: startTime).rareWeapon != nil {
+                    StatsWeaponView(stats: stats)
+                        .tag(3)
+                }
             }
         }
         .tabViewStyle(PageTabViewStyle())

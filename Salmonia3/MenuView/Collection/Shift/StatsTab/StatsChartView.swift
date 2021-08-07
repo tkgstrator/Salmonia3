@@ -14,7 +14,7 @@ struct StatsChartView: View {
     
     var body: some View {
         List {
-            Section {
+            Section(header: Text(.HEADER_SPECIAL_WEAPON).splatfont2(.orange, size: 14)) {
                 HStack {
                     Spacer()
                     PieChartView(data: (stats.overview.specialWeapon))

@@ -150,6 +150,8 @@ class LocalizableStrings {
         case RESULT_MIN_MAX_GRADE
         case RESULT_MAX_GOLDEN_EGGS_NONIGHT
         case RESULT_MAX_GOLDEN_EGGS
+        case HEADER_SPECIAL_WEAPON
+        case SETTING_ACCOUNT
     }
 
 }
