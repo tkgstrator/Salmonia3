@@ -17,16 +17,17 @@ import Combine
 import SwiftyBeaver
 import RealmSwift
 import KeychainAccess
+import SwiftyStoreKit
 
 // SwiftyBeaverの初期化
 let log = SwiftyBeaver.self
 let console = ConsoleDestination()
 let file = FileDestination()
 let cloud = SBPlatformDestination(appID: "k6Pxwd", appSecret: "iqnaqabvjpwGitdb6au4wDo0UphgshBz", encryptionKey: "vb8cesft69mtFmPbeRe8iIuXohHbrmno")
+// RealmManager
 let schemaVersion: UInt64 = 8192
 // Salmon Statsインスタンスの初期化
 var manager: SalmonStats = SalmonStats()
-
 
 @main
 struct Salmonia3App: SwiftUI.App {
@@ -49,8 +50,74 @@ struct Salmonia3App: SwiftUI.App {
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = true
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        initFirebaseMobileAds()
+        initSwiftyStoreKit()
+        initSwiftyBeaver()
+        updateKeychainAccess()
 
-    private func updateAppVersion() {
+        #warning("これより下は次期アップデートで削除予定")
+        let config = Realm.Configuration(schemaVersion: schemaVersion, deleteRealmIfMigrationNeeded: true)
+        Realm.Configuration.defaultConfiguration = config
+        let _ = try! Realm()
+
+        // MARK: シフト情報の取得
+        try? RealmManager.addNewRotation(from: SplatNet2.shiftSchedule)
+        return true
+    }
+    
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        // Called when a new scene session is being created.
+        // Use this method to select a configuration to create the new scene with.
+        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+    }
+    
+    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+        // Called when the user discards a scene session.
+        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
+        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+    
+    private func initSwiftyBeaver() {
+        // MARK: SwiftyBeaverの設定
+        console.format = "$DHH:mm:ss$d $L $M"
+        log.addDestination(console)
+        log.addDestination(cloud)
+    }
+    
+    private func initFirebaseMobileAds() {
+        // MARK: Firebaseの設定
+        FirebaseApp.configure()
+        ATTrackingManager.requestTrackingAuthorization(completionHandler: { _ in
+            GADMobileAds.sharedInstance().start(completionHandler: nil)
+            print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
+        })
+    }
+    
+    private func initSwiftyStoreKit() {
+        // MARK: SwiftyStoreKitの設定
+        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
+            for purchase in purchases {
+                switch purchase.transaction.transactionState {
+                case .purchased, .restored:
+                    if purchase.needsFinishTransaction {
+                        SwiftyStoreKit.finishTransaction(purchase.transaction)
+                    }
+                case .failed, .purchasing, .deferred:
+                    break
+                default:
+                    break
+                }
+            }
+        }
+    }
+
+    private func updateKeychainAccess() {
+        // MARK: 旧バージョンからキーチェインを削除して更新する仕組み
         let servers: [String] = Keychain.allItems(.internetPassword).compactMap({ $0["key"] as? String }).filter({ !$0.isEmpty })
         if !servers.isEmpty {
             for server in servers {
@@ -63,27 +130,4 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         }
     }
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-        // MARK: ログの設定
-        console.format = "$DHH:mm:ss$d $L $M"
-        
-        log.addDestination(console)
-        log.addDestination(file)
-        log.addDestination(cloud)
-        
-        // MARK: Firebaseの設定
-        FirebaseApp.configure()
-        ATTrackingManager.requestTrackingAuthorization(completionHandler: { _ in
-            GADMobileAds.sharedInstance().start(completionHandler: nil)
-            print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
-        })
-        let config = Realm.Configuration(schemaVersion: schemaVersion, deleteRealmIfMigrationNeeded: true)
-        Realm.Configuration.defaultConfiguration = config
-        let _ = try! Realm()
-        updateAppVersion()
-        
-        // MARK: シフト情報の取得
-        try? RealmManager.addNewRotation(from: SplatNet2.shiftSchedule)
-        return true
-    }
 }
