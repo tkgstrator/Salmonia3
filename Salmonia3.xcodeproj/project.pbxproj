@@ -95,6 +95,8 @@
 		10CF09FB25FB9C6B00D2EEB1 /* CoreRealmCoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF09FA25FB9C6B00D2EEB1 /* CoreRealmCoop.swift */; };
 		10CF0A0025FBA5BC00D2EEB1 /* RealmPlayerResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF09FF25FBA5BC00D2EEB1 /* RealmPlayerResult.swift */; };
 		10CF0A0525FBA6BF00D2EEB1 /* RealmCoopWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF0A0425FBA6BF00D2EEB1 /* RealmCoopWave.swift */; };
+		10D0177726C06DED000DCA1B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D0177626C06DED000DCA1B /* StoreKit.framework */; };
+		10D0177926C074B1000DCA1B /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0177826C074B1000DCA1B /* AppStore.swift */; };
 		10D2E1552655548F00AE584E /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D2E1542655548F00AE584E /* Text.swift */; };
 		10D2E15A265557B200AE584E /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D2E159265557B200AE584E /* View.swift */; };
 		10D2E1622655618B00AE584E /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D2E1612655618B00AE584E /* LocalizableStrings.swift */; };
@@ -202,6 +204,8 @@
 		10CF09FA25FB9C6B00D2EEB1 /* CoreRealmCoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreRealmCoop.swift; sourceTree = "<group>"; };
 		10CF09FF25FBA5BC00D2EEB1 /* RealmPlayerResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPlayerResult.swift; sourceTree = "<group>"; };
 		10CF0A0425FBA6BF00D2EEB1 /* RealmCoopWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopWave.swift; sourceTree = "<group>"; };
+		10D0177626C06DED000DCA1B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		10D0177826C074B1000DCA1B /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		10D2E1542655548F00AE584E /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		10D2E159265557B200AE584E /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		10D2E1612655618B00AE584E /* LocalizableStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
@@ -221,6 +225,7 @@
 				10C4CCFF2693FC3100489CBB /* SwiftyUI in Frameworks */,
 				10CF09A025FB984400D2EEB1 /* SwiftyStoreKit in Frameworks */,
 				1090C689263DF162000DD54C /* SplatNet2 in Frameworks */,
+				10D0177726C06DED000DCA1B /* StoreKit.framework in Frameworks */,
 				10CF09BA25FB9AC100D2EEB1 /* RealmSwift in Frameworks */,
 				10CF099425FB97F300D2EEB1 /* SwiftUIRefresh in Frameworks */,
 				10CF09B825FB9AC100D2EEB1 /* Realm in Frameworks */,
@@ -399,6 +404,7 @@
 			children = (
 				1090C6A6263E902B000DD54C /* Salmonia3.entitlements */,
 				1059416625FA49E500C32D21 /* Salmonia3App.swift */,
+				10D0177826C074B1000DCA1B /* AppStore.swift */,
 				1059416825FA49E500C32D21 /* ContentView.swift */,
 				108C04072659847D008D2D8C /* GoogleService-Info.plist */,
 				107F9B3A2614A8CA001581C7 /* MenuView */,
@@ -575,6 +581,7 @@
 		CC3D58FA9034E515205807EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				10D0177626C06DED000DCA1B /* StoreKit.framework */,
 				10039F9526A45EA300B1546A /* GoogleMobileAds.xcframework */,
 				7B6419A3A4A135F484294BF5 /* Pods_Salmonia3.framework */,
 				F4CFAB4D922D35088435EF26 /* Pods_Salmonia3Tests.framework */,
@@ -880,6 +887,7 @@
 				10377F7C25FCD9E800536A94 /* RealmManager.swift in Sources */,
 				1024661B25FE0929004DC043 /* RealmCoopShift.swift in Sources */,
 				1024661125FDF411004DC043 /* String.swift in Sources */,
+				10D0177926C074B1000DCA1B /* AppStore.swift in Sources */,
 				10682EFB264FEF2A0035CC68 /* StatsView.swift in Sources */,
 				10682F092650026D0035CC68 /* SpecialType.swift in Sources */,
 				105391A4266D1C6F001025E1 /* CoreRealmPlayer.swift in Sources */,
@@ -1082,7 +1090,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1109,7 +1117,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
