@@ -75,7 +75,7 @@ struct LoadingView: View {
     private func getResultFromSplatNet2() {
         var pids: [String] = []
         var results: [(json: ResultCoop.Response, data: SplatNet2.Coop.Result)] = []
-        let lastJobId: Int = RealmManager.getLatestResultId() - 4
+        let lastJobId: Int = RealmManager.getLatestResultId()
         manager.getSummaryCoop(jobNum: lastJobId)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
