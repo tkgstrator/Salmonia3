@@ -16,6 +16,7 @@ final class RealmManager: AppManager {
     public static let shared = RealmManager()
     internal var realm: Realm
     
+    private let schemeVersion: UInt64 = 8192
     private var task = Set<AnyCancellable>()
     
     // 環境設定のためのEnum
@@ -33,15 +34,18 @@ final class RealmManager: AppManager {
 
     override private init() {
         do {
-            self.realm = try Realm()
+            var config = Realm.Configuration.defaultConfiguration
+            config.schemaVersion = schemeVersion
+            self.realm = try Realm(configuration: config)
         } catch {
             var config = Realm.Configuration.defaultConfiguration
             config.deleteRealmIfMigrationNeeded = true
+            config.schemaVersion = schemeVersion
             self.realm = try! Realm(configuration: config)
         }
     }
 
-    // 直近の二回のバイトシフトのIdを返す
+    /// 直近の二回のバイトシフトのIdを返す
     public var latestShiftStartTime: RealmSwift.Results<RealmCoopShift> {
         // 現在時刻
         let currentTime: Int = Int(Date().timeIntervalSince1970)

@@ -25,8 +25,6 @@ let log = SwiftyBeaver.self
 let console = ConsoleDestination()
 let file = FileDestination()
 let cloud = SBPlatformDestination(appID: "k6Pxwd", appSecret: "iqnaqabvjpwGitdb6au4wDo0UphgshBz", encryptionKey: "vb8cesft69mtFmPbeRe8iIuXohHbrmno")
-// RealmManager
-let schemaVersion: UInt64 = 8192
 // Salmon Statsインスタンスの初期化
 var manager: SalmonStats = SalmonStats()
 
