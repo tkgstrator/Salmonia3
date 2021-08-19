@@ -9,6 +9,7 @@ import SwiftUI
 import UIKit
 import Firebase
 import AdSupport
+import Alamofire
 import AppTrackingTransparency
 import GoogleMobileAds
 import SplatNet2
@@ -56,8 +57,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         initSwiftyStoreKit()
         initSwiftyBeaver()
         updateKeychainAccess()
+        updateXProductVersion()
 
-        #warning("これより下は次期アップデートで削除予定")
+        #warning("これより下が将来的に無効化")
         let config = Realm.Configuration(schemaVersion: schemaVersion, deleteRealmIfMigrationNeeded: true)
         Realm.Configuration.defaultConfiguration = config
         let _ = try! Realm()
@@ -80,6 +82,36 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+    
+    private func updateXProductVersion() {
+        AF.request("https://salmonia-api.herokuapp.com", method: .get)
+            .validate(statusCode: 200...200)
+            .validate(contentType: ["application/json"])
+            .responseJSON { response in
+                switch response.result {
+                case .success:
+                    if let data = response.data {
+                        let decoder: JSONDecoder = {
+                            let decoder = JSONDecoder()
+                            decoder.keyDecodingStrategy = .convertFromSnakeCase
+                            return decoder
+                        }()
+                        
+                        // APIのバージョンを更新
+                        if let response = try? decoder.decode(XProductVersion.self, from: data) {
+                            UserDefaults.standard.setValue(response.xProductVersion, forKey: "xProductVersion")
+                            UserDefaults.standard.setValue(response.apiVersion, forKey: "apiVersion")
+                            // インスタンスを更新
+                            manager = SalmonStats(version: response.xProductVersion)
+                        } else {
+                            print("ERROR")
+                        }
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
     }
     
     private func initSwiftyBeaver() {
@@ -128,6 +160,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             try? keychain.removeAll()
             isFirstLaunch = true
         }
+    }
+    
+    private struct XProductVersion: Codable {
+        let xProductVersion: String
+        let apiVersion: String
     }
     
 }

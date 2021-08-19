@@ -1,0 +1,58 @@
+{
+  "identifier" : "447C7E3D",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "EE78F0ED",
+      "localizations" : [
+        {
+          "description" : "Disable advertisement",
+          "displayName" : "Disable ads",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "広告を非表示にします",
+          "displayName" : "広告非表示",
+          "locale" : "ja"
+        }
+      ],
+      "productID" : "work.tkgstrator.disableads",
+      "referenceName" : "Disable Ads",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "655CEE62",
+      "localizations" : [
+        {
+          "description" : "Enable to change another account",
+          "displayName" : "Multiple Accounts",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "別アカウントへの切り替えを有効化します",
+          "displayName" : "複数アカウント",
+          "locale" : "ja"
+        }
+      ],
+      "productID" : "work.tkgstrator.multiaccounts",
+      "referenceName" : "Multiple Accounts",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 1
+  }
+}

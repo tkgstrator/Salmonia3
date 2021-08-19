@@ -75,7 +75,6 @@
 		1081B769269D1FD60063D947 /* RealmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1081B768269D1FD60063D947 /* RealmObjects.swift */; };
 		1083857C265922700099475F /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 1083857B265922700099475F /* SwiftyBeaver */; };
 		108C04082659847D008D2D8C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 108C04072659847D008D2D8C /* GoogleService-Info.plist */; };
-		1090C689263DF162000DD54C /* SplatNet2 in Frameworks */ = {isa = PBXBuildFile; productRef = 1090C688263DF162000DD54C /* SplatNet2 */; };
 		109EF35E260CAB7F00076157 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF35D260CAB7F00076157 /* ProductView.swift */; };
 		109EF375260CB01E00076157 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF374260CB01E00076157 /* ButtonStyle.swift */; };
 		10A08032262070A200BFDF59 /* CoopShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A08031262070A200BFDF59 /* CoopShiftStats.swift */; };
@@ -96,7 +95,8 @@
 		10CF0A0025FBA5BC00D2EEB1 /* RealmPlayerResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF09FF25FBA5BC00D2EEB1 /* RealmPlayerResult.swift */; };
 		10CF0A0525FBA6BF00D2EEB1 /* RealmCoopWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CF0A0425FBA6BF00D2EEB1 /* RealmCoopWave.swift */; };
 		10D0177726C06DED000DCA1B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10D0177626C06DED000DCA1B /* StoreKit.framework */; };
-		10D0177926C074B1000DCA1B /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0177826C074B1000DCA1B /* AppStore.swift */; };
+		10D0177926C074B1000DCA1B /* StoreKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0177826C074B1000DCA1B /* StoreKitManager.swift */; };
+		10D0177E26C0985F000DCA1B /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 10D0177D26C0985F000DCA1B /* Configuration.storekit */; };
 		10D2E1552655548F00AE584E /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D2E1542655548F00AE584E /* Text.swift */; };
 		10D2E15A265557B200AE584E /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D2E159265557B200AE584E /* View.swift */; };
 		10D2E1622655618B00AE584E /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D2E1612655618B00AE584E /* LocalizableStrings.swift */; };
@@ -205,7 +205,8 @@
 		10CF09FF25FBA5BC00D2EEB1 /* RealmPlayerResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPlayerResult.swift; sourceTree = "<group>"; };
 		10CF0A0425FBA6BF00D2EEB1 /* RealmCoopWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopWave.swift; sourceTree = "<group>"; };
 		10D0177626C06DED000DCA1B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		10D0177826C074B1000DCA1B /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
+		10D0177826C074B1000DCA1B /* StoreKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitManager.swift; sourceTree = "<group>"; };
+		10D0177D26C0985F000DCA1B /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		10D2E1542655548F00AE584E /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		10D2E159265557B200AE584E /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		10D2E1612655618B00AE584E /* LocalizableStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
@@ -224,7 +225,6 @@
 			files = (
 				10C4CCFF2693FC3100489CBB /* SwiftyUI in Frameworks */,
 				10CF09A025FB984400D2EEB1 /* SwiftyStoreKit in Frameworks */,
-				1090C689263DF162000DD54C /* SplatNet2 in Frameworks */,
 				10D0177726C06DED000DCA1B /* StoreKit.framework in Frameworks */,
 				10CF09BA25FB9AC100D2EEB1 /* RealmSwift in Frameworks */,
 				10CF099425FB97F300D2EEB1 /* SwiftUIRefresh in Frameworks */,
@@ -402,10 +402,11 @@
 		1059416525FA49E500C32D21 /* Salmonia3 */ = {
 			isa = PBXGroup;
 			children = (
-				1090C6A6263E902B000DD54C /* Salmonia3.entitlements */,
 				1059416625FA49E500C32D21 /* Salmonia3App.swift */,
-				10D0177826C074B1000DCA1B /* AppStore.swift */,
+				10D0177826C074B1000DCA1B /* StoreKitManager.swift */,
 				1059416825FA49E500C32D21 /* ContentView.swift */,
+				1090C6A6263E902B000DD54C /* Salmonia3.entitlements */,
+				10D0177D26C0985F000DCA1B /* Configuration.storekit */,
 				108C04072659847D008D2D8C /* GoogleService-Info.plist */,
 				107F9B3A2614A8CA001581C7 /* MenuView */,
 				10CF09F825FB9BEE00D2EEB1 /* Realm */,
@@ -626,7 +627,6 @@
 				10CF09B925FB9AC100D2EEB1 /* RealmSwift */,
 				104BD61F261C98800013CD27 /* URLImage */,
 				10317285262C32FB00CF8903 /* SalmonStats */,
-				1090C688263DF162000DD54C /* SplatNet2 */,
 				1028D37126418EFD0034C075 /* MBCircleProgressBar */,
 				1083857B265922700099475F /* SwiftyBeaver */,
 				102C75EA2659C5A600AEE20F /* SwiftyAPNGKit */,
@@ -748,6 +748,7 @@
 				1059416E25FA49E900C32D21 /* Preview Assets.xcassets in Resources */,
 				1059416B25FA49E900C32D21 /* Assets.xcassets in Resources */,
 				102C762E265A718600AEE20F /* LoadingIka.png in Resources */,
+				10D0177E26C0985F000DCA1B /* Configuration.storekit in Resources */,
 				108C04082659847D008D2D8C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -887,7 +888,7 @@
 				10377F7C25FCD9E800536A94 /* RealmManager.swift in Sources */,
 				1024661B25FE0929004DC043 /* RealmCoopShift.swift in Sources */,
 				1024661125FDF411004DC043 /* String.swift in Sources */,
-				10D0177926C074B1000DCA1B /* AppStore.swift in Sources */,
+				10D0177926C074B1000DCA1B /* StoreKitManager.swift in Sources */,
 				10682EFB264FEF2A0035CC68 /* StatsView.swift in Sources */,
 				10682F092650026D0035CC68 /* SpecialType.swift in Sources */,
 				105391A4266D1C6F001025E1 /* CoreRealmPlayer.swift in Sources */,
@@ -1090,7 +1091,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1100,7 +1101,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.1;
+				MARKETING_VERSION = 0.2.2;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1117,7 +1118,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1127,7 +1128,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.1;
+				MARKETING_VERSION = 0.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1386,10 +1387,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1083857A265922700099475F /* XCRemoteSwiftPackageReference "SwiftyBeaver" */;
 			productName = SwiftyBeaver;
-		};
-		1090C688263DF162000DD54C /* SplatNet2 */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SplatNet2;
 		};
 		10C4CCFE2693FC3100489CBB /* SwiftyUI */ = {
 			isa = XCSwiftPackageProductDependency;

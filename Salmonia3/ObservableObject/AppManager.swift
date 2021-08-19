@@ -21,8 +21,8 @@ class AppManager: ObservableObject {
     @AppStorage("FEATURE_FREE_05") var isFree05: Bool = false
 
     // 課金機能
-    @AppStorage("FEATURE_PAID_01") var isPaid01: Bool = false
-    @AppStorage("FEATURE_PAID_02") var isPaid02: Bool = false
+    @AppStorage("work.tkgstrator.disableads") var isPaid01: Bool = false
+    @AppStorage("work.tkgstrator.multiaccounts") var isPaid02: Bool = false
     @AppStorage("FEATURE_PAID_03") var isPaid03: Bool = false
     @AppStorage("FEATURE_PAID_04") var isPaid04: Bool = false
     @AppStorage("FEATURE_PAID_05") var isPaid05: Bool = false
