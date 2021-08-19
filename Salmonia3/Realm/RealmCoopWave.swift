@@ -95,7 +95,7 @@ fileprivate extension SplatNet2Metadata.WaterLevel {
 extension RealmCoopWave {
     var weaponLists: [Int] {
         let startTime = self.result.first!.startTime
-        return Array(RealmManager.Objects.shift(startTime: startTime).weaponList)
+        return Array(RealmManager.shared.shift(startTime: startTime).weaponList)
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  RealmManager.swift
+//  RealmManager.shared.swift
 //  Salmonia3
 //
 //  Created by Devonly on 3/13/21.
@@ -13,7 +13,8 @@ import SplatNet2
 import Combine
 
 final class RealmManager: AppManager {
-    private static let realm: Realm = try! Realm()
+    public static let shared = RealmManager()
+    internal var realm: Realm
     
     private var task = Set<AnyCancellable>()
     
@@ -30,11 +31,18 @@ final class RealmManager: AppManager {
         }
     }
 
-    override init() {
+    override private init() {
+        do {
+            self.realm = try Realm()
+        } catch {
+            var config = Realm.Configuration.defaultConfiguration
+            config.deleteRealmIfMigrationNeeded = true
+            self.realm = try! Realm(configuration: config)
+        }
     }
 
     // 直近の二回のバイトシフトのIdを返す
-    public static var latestShiftStartTime: RealmSwift.Results<RealmCoopShift> {
+    public var latestShiftStartTime: RealmSwift.Results<RealmCoopShift> {
         // 現在時刻
         let currentTime: Int = Int(Date().timeIntervalSince1970)
         // 現在時刻よりも開始時刻が遅いシフトで最も始まるのが早いシフトを取得
@@ -44,7 +52,7 @@ final class RealmManager: AppManager {
         return realm.objects(RealmCoopShift.self).filter("startTime>%@ AND startTime<=%@", endTime, startTime).sorted(byKeyPath: "startTime", ascending: true)
     }
     
-    public static func allShiftStartTime(displayFutureShift: Bool) -> RealmSwift.Results<RealmCoopShift> {
+    public func allShiftStartTime(displayFutureShift: Bool) -> RealmSwift.Results<RealmCoopShift> {
         // 現在時刻
         let currentTime: Int = Int(Date().timeIntervalSince1970)
         // 現在時刻よりも開始時刻が遅いシフトで最も始まるのが早いシフトを取得
@@ -58,7 +66,7 @@ final class RealmManager: AppManager {
         }
     }
     
-    public static func shiftNumber(displayFutureShift: Bool) -> Int {
+    public func shiftNumber(displayFutureShift: Bool) -> Int {
         switch displayFutureShift {
         case true:
             let currentTime: Int = Int(Date().timeIntervalSince1970)
@@ -69,8 +77,7 @@ final class RealmManager: AppManager {
         }
     }
     
-    
-    public static func updateUserNickname(players: [PlayerMetadata]) {
+    public func updateUserNickname(players: [PlayerMetadata]) {
         realm.beginWrite()
         for player in players {
             let account = realm.objects(RealmPlayerResult.self).filter("pid=%@", player.pid)
@@ -80,7 +87,7 @@ final class RealmManager: AppManager {
     }
 
     // 最新のバイトIDを取得
-    public static func getLatestResultId() -> Int {
+    public func getLatestResultId() -> Int {
         let nsaid = manager.account.nsaid
         guard let realm = try? Realm() else { return 0 }
         let jobNum: Int? = realm.objects(RealmCoopResult.self).filter("pid=%@", nsaid).max(ofProperty: "jobId")
@@ -91,7 +98,7 @@ final class RealmManager: AppManager {
         }
     }
     
-    public static func addNewRotation(from rotation: [ScheduleCoop.Response]) throws {
+    public func addNewRotation(from rotation: [ScheduleCoop.Response]) throws {
         realm.beginWrite()
         let rotations: [RealmCoopShift] = rotation.map{ RealmCoopShift(from: $0) }
         let _ = rotations.map{ realm.create(RealmCoopShift.self, value: $0, update: .all) }
@@ -99,18 +106,18 @@ final class RealmManager: AppManager {
     }
     
     // シフトスケジュールを取得
-    public static func getShiftSchedule(startTime: Int) throws -> RealmCoopShift {
+    public func getShiftSchedule(startTime: Int) throws -> RealmCoopShift {
         guard let realm = try? Realm() else { throw APPError.realm }
         guard let schedule = realm.objects(RealmCoopShift.self).filter("startTime=%@", startTime).first else { throw APPError.realm }
         return schedule
     }
 
-    public static func getNicknames() -> [String] {
+    public func getNicknames() -> [String] {
         return Array(Set(realm.objects(RealmPlayerResult.self).map{ $0.pid }))
     }
  
     // MARK: ユーザ名やサムネイルを更新し、RealmPlayerのオブジェクトを作成
-    public static func updateNicknameAndIcons(players: [NicknameIcons.Response.NicknameIcon]) {
+    public func updateNicknameAndIcons(players: [NicknameIcons.Response.NicknameIcon]) {
         DispatchQueue(label: "Realm Manager").async {
             autoreleasepool {
                 guard let realm = try? Realm() else { return }
@@ -126,12 +133,12 @@ final class RealmManager: AppManager {
     }
     
     // MARK: 新しいプレイヤーを追加/更新
-    public static func addNewNicknameAndIcons(nsaid: [String]) {
+    public func addNewNicknameAndIcons(nsaid: [String]) {
         
     }
 
     // MARK: 新しいリザルトを追加
-    public static func addNewResultsFromSplatNet2(from results: [SplatNet2.Coop.Result], _ environment: Environment.Server = .splatnet2) {
+    public func addNewResultsFromSplatNet2(from results: [SplatNet2.Coop.Result], _ environment: Environment.Server = .splatnet2) {
         DispatchQueue(label: "Realm Manager").async {
             autoreleasepool {
                 guard let realm = try? Realm() else { return }
@@ -151,7 +158,7 @@ final class RealmManager: AppManager {
     }
 
     // MARK: データ削除
-    static func eraseAllRecord() throws {
+     func eraseAllRecord() throws {
         guard let realm = try? Realm() else { return }
         #if DEBUG
         #else

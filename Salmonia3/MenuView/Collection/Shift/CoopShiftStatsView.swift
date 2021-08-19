@@ -28,7 +28,7 @@ struct CoopShiftStatsView: View {
                 StatsWaveView(stats: stats)
                     .tag(2)
                 // ランダムブキがあるなら表示
-                if RealmManager.Objects.shift(startTime: startTime).rareWeapon != nil {
+                if RealmManager.shared.shift(startTime: startTime).rareWeapon != nil {
                     StatsWeaponView(stats: stats)
                         .tag(3)
                 }

@@ -62,7 +62,7 @@ struct DetailView: View {
     private func changeState(warning: Warning) {
         switch warning {
         case .erase:
-            try? RealmManager.eraseAllRecord()
+            try? RealmManager.shared.eraseAllRecord()
         case .signin:
             appManager.isFirstLaunch = true
         }

@@ -57,15 +57,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         initSwiftyStoreKit()
         initSwiftyBeaver()
         updateKeychainAccess()
+        
+        // X-Product Versionの更新
         updateXProductVersion()
 
-        #warning("これより下が将来的に無効化")
-        let config = Realm.Configuration(schemaVersion: schemaVersion, deleteRealmIfMigrationNeeded: true)
-        Realm.Configuration.defaultConfiguration = config
-        let _ = try! Realm()
-
-        // MARK: シフト情報の取得
-        try? RealmManager.addNewRotation(from: SplatNet2.shiftSchedule)
+        // シフト情報の取得
+        try? RealmManager.shared.addNewRotation(from: SplatNet2.shiftSchedule)
         return true
     }
     

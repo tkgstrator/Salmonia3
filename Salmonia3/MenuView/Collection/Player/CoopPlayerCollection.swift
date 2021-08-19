@@ -34,14 +34,14 @@ struct PlayerResultsView: View {
     init(player: RealmPlayer) {
         self.nsaid = player.nsaid
         self.nickname = player.nickname
-        self.main = RealmManager.Objects.shiftResults(nsaid: nsaid)
+        self.main = RealmManager.shared.shiftResults(nsaid: nsaid)
     }
 
     // イニシャライザ
     init(player: RealmPlayerResult) {
         self.nsaid = player.pid
         self.nickname = player.name.stringValue
-        self.main = RealmManager.Objects.shiftResults(nsaid: nsaid)
+        self.main = RealmManager.shared.shiftResults(nsaid: nsaid)
     }
     
     var body: some View {

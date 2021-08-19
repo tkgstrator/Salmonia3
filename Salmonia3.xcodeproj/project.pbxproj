@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		10039F9626A45EA300B1546A /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10039F9526A45EA300B1546A /* GoogleMobileAds.xcframework */; };
+		10094BB926CE9FC4001ACBDF /* SwiftyUI in Frameworks */ = {isa = PBXBuildFile; productRef = 10094BB826CE9FC4001ACBDF /* SwiftyUI */; };
 		101C77CD26496FA6005D603C /* CoopPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C77CC26496FA6005D603C /* CoopPlayerView.swift */; };
 		101C77D526497038005D603C /* CoopPlayerResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C77D426497038005D603C /* CoopPlayerResultView.swift */; };
 		101C77DA264C283C005D603C /* UsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C77D9264C283B005D603C /* UsernameView.swift */; };
@@ -83,7 +84,6 @@
 		10B62CA32669CC1400916A64 /* CoopWaveCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B62CA22669CC1400916A64 /* CoopWaveCollection.swift */; };
 		10B62CAF2669D48E00916A64 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B62CAE2669D48E00916A64 /* Appearance.swift */; };
 		10BBBEA226049EF400DA79C9 /* CoopResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBBEA126049EF400DA79C9 /* CoopResultView.swift */; };
-		10C4CCFF2693FC3100489CBB /* SwiftyUI in Frameworks */ = {isa = PBXBuildFile; productRef = 10C4CCFE2693FC3100489CBB /* SwiftyUI */; };
 		10CD8544268D40AA00A00162 /* CoopShiftStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD8543268D40A900A00162 /* CoopShiftStatsView.swift */; };
 		10CF098E25FB97CB00D2EEB1 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF098D25FB97CB00D2EEB1 /* BetterSafariView */; };
 		10CF099425FB97F300D2EEB1 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF099325FB97F300D2EEB1 /* SwiftUIRefresh */; };
@@ -123,6 +123,7 @@
 
 /* Begin PBXFileReference section */
 		10039F9526A45EA300B1546A /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleMobileAds.xcframework; sourceTree = "<group>"; };
+		10094BB726CE9F13001ACBDF /* SwiftyUI */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftyUI; path = ../SwiftyUI; sourceTree = "<group>"; };
 		100F564A262C308F00A1D1D0 /* SalmonStats */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SalmonStats; path = ../SalmonStats; sourceTree = "<group>"; };
 		101C77CC26496FA6005D603C /* CoopPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopPlayerView.swift; sourceTree = "<group>"; };
 		101C77D426497038005D603C /* CoopPlayerResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopPlayerResultView.swift; sourceTree = "<group>"; };
@@ -223,7 +224,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10C4CCFF2693FC3100489CBB /* SwiftyUI in Frameworks */,
+				10094BB926CE9FC4001ACBDF /* SwiftyUI in Frameworks */,
 				10CF09A025FB984400D2EEB1 /* SwiftyStoreKit in Frameworks */,
 				10D0177726C06DED000DCA1B /* StoreKit.framework in Frameworks */,
 				10CF09BA25FB9AC100D2EEB1 /* RealmSwift in Frameworks */,
@@ -262,6 +263,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10094BBA26CEA222001ACBDF /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				10377F7B25FCD9E800536A94 /* RealmManager.swift */,
+				10377F8525FD041900536A94 /* AppManager.swift */,
+				10D0177826C074B1000DCA1B /* StoreKitManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		101C77CA26496F64005D603C /* Result */ = {
 			isa = PBXGroup;
 			children = (
@@ -378,6 +389,7 @@
 		1059415A25FA49E500C32D21 = {
 			isa = PBXGroup;
 			children = (
+				10094BB726CE9F13001ACBDF /* SwiftyUI */,
 				1090C681263DF125000DD54C /* SplatNet2 */,
 				100F564A262C308F00A1D1D0 /* SalmonStats */,
 				1059416525FA49E500C32D21 /* Salmonia3 */,
@@ -403,11 +415,11 @@
 			isa = PBXGroup;
 			children = (
 				1059416625FA49E500C32D21 /* Salmonia3App.swift */,
-				10D0177826C074B1000DCA1B /* StoreKitManager.swift */,
 				1059416825FA49E500C32D21 /* ContentView.swift */,
 				1090C6A6263E902B000DD54C /* Salmonia3.entitlements */,
 				10D0177D26C0985F000DCA1B /* Configuration.storekit */,
 				108C04072659847D008D2D8C /* GoogleService-Info.plist */,
+				10094BBA26CEA222001ACBDF /* Manager */,
 				107F9B3A2614A8CA001581C7 /* MenuView */,
 				10CF09F825FB9BEE00D2EEB1 /* Realm */,
 				10CF09F925FB9C4900D2EEB1 /* ObservableObject */,
@@ -556,7 +568,6 @@
 			isa = PBXGroup;
 			children = (
 				10448BDB26652E6700FFB553 /* SRPower */,
-				10377F7B25FCD9E800536A94 /* RealmManager.swift */,
 				1081B767269D1FC30063D947 /* Objects */,
 				107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */,
 				10CF09F325FB9BE100D2EEB1 /* RealmCoopResult.swift */,
@@ -574,7 +585,6 @@
 				10A08031262070A200BFDF59 /* CoopShiftStats.swift */,
 				10CF09FA25FB9C6B00D2EEB1 /* CoreRealmCoop.swift */,
 				105391A3266D1C6F001025E1 /* CoreRealmPlayer.swift */,
-				10377F8525FD041900536A94 /* AppManager.swift */,
 			);
 			path = ObservableObject;
 			sourceTree = "<group>";
@@ -631,10 +641,10 @@
 				1083857B265922700099475F /* SwiftyBeaver */,
 				102C75EA2659C5A600AEE20F /* SwiftyAPNGKit */,
 				105391D42673E733001025E1 /* SwiftChart */,
-				10C4CCFE2693FC3100489CBB /* SwiftyUI */,
 				1081B75F269C778D0063D947 /* MBCircleProgressBar */,
 				1081B762269C77AE0063D947 /* SwiftChart */,
 				1081B765269C77C40063D947 /* SwiftyAPNGKit */,
+				10094BB826CE9FC4001ACBDF /* SwiftyUI */,
 			);
 			productName = Salmonia3;
 			productReference = 1059416325FA49E500C32D21 /* Salmonia3.app */;
@@ -718,7 +728,6 @@
 				10CF09B625FB9AC100D2EEB1 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				104BD61E261C98800013CD27 /* XCRemoteSwiftPackageReference "url-image" */,
 				1083857A265922700099475F /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
-				10C4CCFD2693FC3100489CBB /* XCRemoteSwiftPackageReference "SwiftyUI" */,
 				1081B75E269C778D0063D947 /* XCRemoteSwiftPackageReference "MBCircleProgressBar" */,
 				1081B761269C77AE0063D947 /* XCRemoteSwiftPackageReference "SwiftChart" */,
 				1081B764269C77C40063D947 /* XCRemoteSwiftPackageReference "SwiftyAPNGKit" */,
@@ -1101,7 +1110,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.2;
+				MARKETING_VERSION = 0.2.3;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1128,7 +1137,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.2;
+				MARKETING_VERSION = 0.2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1304,14 +1313,6 @@
 				minimumVersion = 1.9.5;
 			};
 		};
-		10C4CCFD2693FC3100489CBB /* XCRemoteSwiftPackageReference "SwiftyUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tkgstrator/SwiftyUI";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		10CF098C25FB97CB00D2EEB1 /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/stleamist/BetterSafariView.git";
@@ -1347,6 +1348,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		10094BB826CE9FC4001ACBDF /* SwiftyUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftyUI;
+		};
 		1028D37126418EFD0034C075 /* MBCircleProgressBar */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MBCircleProgressBar;
@@ -1387,11 +1392,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1083857A265922700099475F /* XCRemoteSwiftPackageReference "SwiftyBeaver" */;
 			productName = SwiftyBeaver;
-		};
-		10C4CCFE2693FC3100489CBB /* SwiftyUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 10C4CCFD2693FC3100489CBB /* XCRemoteSwiftPackageReference "SwiftyUI" */;
-			productName = SwiftyUI;
 		};
 		10CF098D25FB97CB00D2EEB1 /* BetterSafariView */ = {
 			isa = XCSwiftPackageProductDependency;

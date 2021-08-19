@@ -60,7 +60,6 @@ struct CoopResultOverview: View {
                 ResultPlayer
             }
         }
-        .backgroundColor(.black)
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(.TITLE_RESULT_DETAIL)
     }

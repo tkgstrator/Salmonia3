@@ -27,7 +27,7 @@ struct UsernameView: View {
     var body: some View {
         LoggingThread(progressModel: progressModel)
             .onAppear(perform: getNicknameAndIcons)
-            .onDisappear{ RealmManager.updateNicknameAndIcons(players: players) }
+            .onDisappear{ RealmManager.shared.updateNicknameAndIcons(players: players) }
             .alert(item: $apiError) { error in
                 Alert(title: Text("ALERT_ERROR"),
                       message: Text(error.localizedDescription),
@@ -39,7 +39,7 @@ struct UsernameView: View {
     }
 
     func getNicknameAndIcons() {
-        let nsaids: [String] = RealmManager.getNicknames()
+        let nsaids: [String] = RealmManager.shared.getNicknames()
         progressModel.configure(maxValue: CGFloat(nsaids.count))
         
         for nsaid in nsaids.chunked(by: 200) {
