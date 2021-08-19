@@ -26,9 +26,9 @@ final class CoopShiftStats: ObservableObject {
         let playerId: [String] = [manager.account.nsaid]
         // 指定されたシフトIDでのデータを取得
         // 個人記録・全体記録・WAVE記録
-        let playerResults = RealmManager.Objects.playerResults(startTime: startTime, playerId: playerId)
-        let results = RealmManager.Objects.results(startTime: startTime, playerId: playerId)
-        let waves = RealmManager.Objects.waves(startTime: startTime)
+        let playerResults = RealmManager.shared.playerResults(startTime: startTime, playerId: playerId)
+        let results = RealmManager.shared.results(startTime: startTime, playerId: playerId)
+        let waves = RealmManager.shared.waves(startTime: startTime)
         
         self.records = CoopRecord(startTime: startTime)
         //        self.resultMax = ResultMax(player: playerResults, result: results)
@@ -37,7 +37,7 @@ final class CoopShiftStats: ObservableObject {
         //        self.weaponData = self.getWeaponData(startTime: startTime, nsaid: playerId)
         self.resultWave = waves.resultWaves
         
-        self.token = RealmManager.Objects.results.observe{ [weak self] _ in
+        self.token = RealmManager.shared.results.observe{ [weak self] _ in
             self?.resultMax = ResultMax(player: playerResults, result: results)
             self?.resultAvg = ResultAvg(player: playerResults, result: results)
             self?.overview = ResultOverView(results: results, player: playerResults)
@@ -51,8 +51,8 @@ final class CoopShiftStats: ObservableObject {
     
     // MARK: 指定されたスケジュールのブキのリストを返す
     private func getWeaponData(startTime: Int, nsaid: [String]) -> [ResultWeapon] {
-        let shift: RealmCoopShift = RealmManager.Objects.shift(startTime: startTime)
-        let suppliedWepons: [Int] = RealmManager.Objects.playerResults(startTime: startTime).flatMap{ $0.weaponList }
+        let shift: RealmCoopShift = RealmManager.shared.shift(startTime: startTime)
+        let suppliedWepons: [Int] = RealmManager.shared.playerResults(startTime: startTime).flatMap{ $0.weaponList }
         let allWeaponLists: [Int] = Array(WeaponType.allCases.map{ $0.rawValue })
 
         switch shift.weaponList.contains(-1) {

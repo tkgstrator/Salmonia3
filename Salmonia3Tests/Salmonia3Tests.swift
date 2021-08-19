@@ -11,7 +11,7 @@ import XCTest
 class Salmonia3Tests: XCTestCase {
 
     func testShiftStartTime() throws {
-        print(RealmManager.latestShiftStartTime)
+        print(RealmManager.shared.latestShiftStartTime)
     }
 
 }

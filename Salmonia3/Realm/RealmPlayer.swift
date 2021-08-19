@@ -38,7 +38,7 @@ extension RealmPlayer {
     var id: UUID { UUID() } 
 
     var results: [UserCoopResult] {
-        let startTime: [Int] = Array(Set(RealmManager.Objects.results(playerId: self.nsaid).map{ $0.startTime })).sorted(by: >)
+        let startTime: [Int] = Array(Set(RealmManager.shared.results(playerId: self.nsaid).map{ $0.startTime })).sorted(by: >)
         return startTime.map{ UserCoopResult(startTime: $0, playerId: self.nsaid) }
     }
 }

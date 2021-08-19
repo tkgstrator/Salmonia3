@@ -15,8 +15,8 @@ struct CoopShiftCollection: View {
     var shiftNumber: Int
     
     init(displayFutureShift: Bool) {
-        self._shifts = State(initialValue: RealmManager.allShiftStartTime(displayFutureShift: displayFutureShift))
-        self.shiftNumber = RealmManager.shiftNumber(displayFutureShift: displayFutureShift)
+        self._shifts = State(initialValue: RealmManager.shared.allShiftStartTime(displayFutureShift: displayFutureShift))
+        self.shiftNumber = RealmManager.shared.shiftNumber(displayFutureShift: displayFutureShift)
     }
     
     var body: some View {

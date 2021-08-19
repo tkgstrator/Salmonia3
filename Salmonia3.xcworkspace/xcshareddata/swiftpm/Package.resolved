@@ -128,15 +128,6 @@
         }
       },
       {
-        "package": "SwiftyUI",
-        "repositoryURL": "https://github.com/tkgstrator/SwiftyUI",
-        "state": {
-          "branch": null,
-          "revision": "531445262f6ec2da0efd6502dc4162e92dc86b23",
-          "version": "1.0.1"
-        }
-      },
-      {
         "package": "URLImage",
         "repositoryURL": "https://github.com/dmytro-anokhin/url-image",
         "state": {

@@ -19,7 +19,7 @@ extension RealmPlayerResult {
     }
     
     var matching: Int {
-        return RealmManager.Objects.playerResults(playerId: self.pid).count
+        return RealmManager.shared.playerResults(playerId: self.pid).count
     }
 }
 

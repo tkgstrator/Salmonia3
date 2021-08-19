@@ -67,7 +67,7 @@ struct LoadingView: View {
                     print(error)
                 }
             }, receiveValue: { response in
-                RealmManager.updateNicknameAndIcons(players: response.nicknameAndIcons)
+                RealmManager.shared.updateNicknameAndIcons(players: response.nicknameAndIcons)
             })
             .store(in: &task)
     }
@@ -75,7 +75,7 @@ struct LoadingView: View {
     private func getResultFromSplatNet2() {
         var pids: [String] = []
         var results: [(json: ResultCoop.Response, data: SplatNet2.Coop.Result)] = []
-        let lastJobId: Int = RealmManager.getLatestResultId()
+        let lastJobId: Int = RealmManager.shared.getLatestResultId()
         manager.getSummaryCoop(jobNum: lastJobId)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
@@ -111,7 +111,7 @@ struct LoadingView: View {
                             pids.append(contentsOf: response.data.results.map{ $0.pid })
                             results.append(response)
                             if results.count == jobIds.count {
-                                RealmManager.addNewResultsFromSplatNet2(from: results.map{ $0.data }, .splatnet2)
+                                RealmManager.shared.addNewResultsFromSplatNet2(from: results.map{ $0.data }, .splatnet2)
                                 if let accessToken = manager.apiToken {
                                     uploadToSalmonStats(accessToken: accessToken, results: results.compactMap{ $0.json.dictionaryObject })
                                 }

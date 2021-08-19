@@ -13,15 +13,15 @@ import SplatNet2
 
 class CoreRealmCoop: ObservableObject {
     private var token: NotificationToken?
-    @Published var resultCount: Int = RealmManager.Objects.results.count
-    @Published var waves: RealmSwift.Results<RealmCoopWave> = RealmManager.Objects.waves
-    @Published var players: RealmSwift.Results<RealmPlayer> = RealmManager.Objects.players
-    @Published var result: [RealmCoopResult] = Array(RealmManager.Objects.results.prefix(5))
-    @Published var latestShift: RealmSwift.Results<RealmCoopShift> = RealmManager.latestShiftStartTime
+    @Published var resultCount: Int = RealmManager.shared.results.count
+    @Published var waves: RealmSwift.Results<RealmCoopWave> = RealmManager.shared.waves
+    @Published var players: RealmSwift.Results<RealmPlayer> = RealmManager.shared.players
+    @Published var result: [RealmCoopResult] = Array(RealmManager.shared.results.prefix(5))
+    @Published var latestShift: RealmSwift.Results<RealmCoopShift> = RealmManager.shared.latestShiftStartTime
     
     // リザルト一覧
     var results: [UserCoopResult] {
-        let startTime: [Int] = Array(Set(RealmManager.Objects.results.map({ $0.startTime }))).sorted(by: >)
+        let startTime: [Int] = Array(Set(RealmManager.shared.results.map({ $0.startTime }))).sorted(by: >)
         return startTime.map({ UserCoopResult(startTime: $0) })
     }
     
@@ -32,7 +32,7 @@ class CoreRealmCoop: ObservableObject {
     
     init() {
         // 不要だとは思うが念の為にアップデートする
-        token = RealmManager.Objects.results.observe { [weak self] _ in
+        token = RealmManager.shared.results.observe { [weak self] _ in
             self?.objectWillChange.send()
         }
     }
@@ -48,13 +48,13 @@ class UserCoopResult: Identifiable {
     var results: RealmSwift.Results<RealmCoopResult>
         
     init(startTime: Int) {
-        self.phase = RealmManager.Objects.shift(startTime: startTime)
-        self.results = RealmManager.Objects.results(startTime: startTime)
+        self.phase = RealmManager.shared.shift(startTime: startTime)
+        self.results = RealmManager.shared.results(startTime: startTime)
     }
 
     init(startTime: Int, playerId: String) {
-        self.phase = RealmManager.Objects.shift(startTime: startTime)
-        self.results = RealmManager.Objects.results(startTime: startTime, memberId: playerId)
+        self.phase = RealmManager.shared.shift(startTime: startTime)
+        self.results = RealmManager.shared.results(startTime: startTime, memberId: playerId)
     }
 }
 
@@ -71,15 +71,15 @@ class CoopRecord: ObservableObject {
    
     // シフトごとの記録
     init(startTime: Int) {
-        let results = RealmManager.Objects.results(startTime: startTime)
-        let waves = RealmManager.Objects.waves(startTime: startTime)
+        let results = RealmManager.shared.results(startTime: startTime)
+        let waves = RealmManager.shared.waves(startTime: startTime)
         getRecordsFromDatabase(results: results, waves: waves)
     }
     
     // ステージごとの記録
     init(stageId: Int) {
-        let results = RealmManager.Objects.results(stageId: stageId)
-        let waves = RealmManager.Objects.waves(stageId: stageId)
+        let results = RealmManager.shared.results(stageId: stageId)
+        let waves = RealmManager.shared.waves(stageId: stageId)
         getRecordsFromDatabase(results: results, waves: waves)
     }
     

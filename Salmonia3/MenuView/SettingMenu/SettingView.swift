@@ -31,7 +31,8 @@ struct SettingView: View {
                 #if DEBUG
                 AccountPicker(manager: manager)
                 #else
-                SettingMenu(title: .SETTING_ACCOUNT, value: manager.account.nickname)
+                AccountPicker(manager: manager)
+//                SettingMenu(title: .SETTING_ACCOUNT, value: manager.account.nickname)
                 #endif
                 SettingMenu(title: .SETTING_SPLATNET2, value: manager.playerId)
                 SettingMenu(title: .RESULTS, value: manager.account.coop.jobNum)

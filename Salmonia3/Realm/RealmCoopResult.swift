@@ -80,6 +80,6 @@ final class RealmCoopResult: Object, Identifiable {
 
 extension RealmCoopResult {
     var indexOfResults: Int {
-        return (RealmManager.Objects.results(startTime: startTime).sorted(byKeyPath: "playTime", ascending: true).index(of: self) ?? -1) + 1
+        return (RealmManager.shared.results(startTime: startTime).sorted(byKeyPath: "playTime", ascending: true).index(of: self) ?? -1) + 1
     }
 }

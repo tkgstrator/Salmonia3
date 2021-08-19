@@ -72,7 +72,7 @@ struct ImportingView: View {
                                 DispatchQueue.main.async {
                                     progressModel.addValue(value: CGFloat(response.count))
                                 }
-                                RealmManager.addNewResultsFromSplatNet2(from: response, .salmonstats)
+                                RealmManager.shared.addNewResultsFromSplatNet2(from: response, .salmonstats)
                             }).store(in: &task)
                     }
                 }
@@ -117,7 +117,7 @@ struct ImportingView: View {
 //                                }, receiveValue: { results in
 //                                    DispatchQueue.main.async {
 //                                        progressModel.addValue(value: CGFloat(results.count))
-//                                        RealmManager.addNewResultsFromSalmonStats(from: results, pid: nsaid)
+//                                        RealmManager.shared.addNewResultsFromSalmonStats(from: results, pid: nsaid)
 //                                    }
 //                                })
 //                                .store(in: &task)
