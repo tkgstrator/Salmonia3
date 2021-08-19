@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import SwiftyStoreKit
+import StoreKit
 
 struct FreeProductView: View {
     @EnvironmentObject var appManager: AppManager
@@ -56,43 +58,47 @@ protocol ProductItemProtocol: Identifiable {
 struct PaidProductView: View {
     @EnvironmentObject var appManager: AppManager
     @AppStorage("loadingIcon") var loadingIcon: LoadingType = .LOADING_SNOW
+    @State var allAvailableItems: [SKProduct] = []
     
     var body: some View {
         List {
-            Section(header: EmptyView()) {
-                Toggle(isOn: $appManager.isPaid01, label: {
-                    VStack(alignment: .leading, spacing: nil) {
-                        Text(.FEATURE_PAID_01)
-                        Text(.FEATURE_PAID_01_DESC)
-                            .splatfont2(size: 12)
-                    }
-                })
-                Toggle(isOn: $appManager.isPaid02, label: {
-                    VStack(alignment: .leading, spacing: nil) {
-                        Text(.FEATURE_PAID_02)
-                        Text(.FEATURE_PAID_02_DESC)
-                            .splatfont2(size: 12)
-                    }
-                })
-                Toggle(isOn: $appManager.isPaid03, label: {
-                    VStack(alignment: .leading, spacing: nil) {
-                        Text(.FEATURE_PAID_03)
-                        Text(.FEATURE_PAID_03_DESC)
-                            .splatfont2(size: 12)
-                    }
-                })
-            }
-            Section(header: EmptyView()) {
-                Picker(selection: $loadingIcon, label: Text(.SETTING_LOADING_TYPE) ) {
-                    ForEach(LoadingType.allCases, id:\.rawValue) {
-                        Text($0.rawValue.localized).tag($0)
+            Section(header: Text("Paid").splatfont2(.orange, size: 14)) {
+                ForEach(allAvailableItems, id:\.self) { item in
+                    HStack {
+                        VStack(alignment: .leading, spacing: nil) {
+                            Text(item.productIdentifier)
+                                .splatfont2(size: 12)
+                            Text("\(item.localizedPrice ?? "-")")
+                        }
+                        Spacer()
+                        Button(action: { StoreKitManager.shared.purchaseItemFromAppStore(productId: item.productIdentifier) }, label: {
+                            Text("\(item.isPurchased ? "PURCHASED" : "PURCHASE")")
+                        })
                     }
                 }
-                .pickerStyle(MenuPickerStyle())
             }
+            Section(header: Text("Restore").splatfont2(.orange, size: 14)) {
+                Button(action: { StoreKitManager.shared.restorePurchases() }, label: {
+                    Text("Restore")
+                })
+            }
+            #if DEBUG
+            Section(header: Text("Lock").splatfont2(.orange, size: 14)) {
+                Button(action: { StoreKitManager.shared.lockPurchasedItes() }, label: {
+                    Text("Lock")
+                })
+            }
+            #endif
         }
         .navigationTitle(.TITLE_PAID_PRODUCT)
         .splatfont2(size: 16)
+        .onAppear(perform: getAllAvailableItems)
+    }
+    
+    func getAllAvailableItems() {
+        StoreKitManager.shared.retreiveProductInfo(productIds: StoreKitManager.StoreItem.allCases) { [self] products in
+            allAvailableItems = Array(products)
+        }
     }
 }
 

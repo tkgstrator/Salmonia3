@@ -21,7 +21,8 @@ struct SettingView: View {
     private let systemName: String = UIDevice.current.systemName
     private let deviceName: String = UIDevice.current.localizedModel
     private let appVersion: String = "\(String(describing: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")!))(\(String(describing: Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")!)))"
-    private let apiVersion: String = "1.11.0"
+    private let xProductVersion: String? = UserDefaults.standard.string(forKey: "xProductVersion")
+    private let apiVersion: String? = UserDefaults.standard.string(forKey: "apiVersion")
     
     var body: some View {
         List {
@@ -82,7 +83,7 @@ struct SettingView: View {
                 PrivacyButton
                 NavigationLink(destination: HelpView(), label: { Text(.TITLE_HELP) })
                 NavigationLink(destination: DetailView(), label: { Text(.SETTING_DETAIL) })
-                SettingMenu(title: .SETTING_API_VERSION, value: "\(apiVersion)")
+                SettingMenu(title: .SETTING_API_VERSION, value: "\(xProductVersion.stringValue) (\(apiVersion.stringValue))")
                 SettingMenu(title: .SETTING_APP_VERSION, value: "\(appVersion)")
             }
             
