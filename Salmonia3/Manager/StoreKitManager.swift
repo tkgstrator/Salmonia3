@@ -23,13 +23,14 @@ final class StoreKitManager {
     // MARK: プロダクトの購入
     /// プロダクトの購入
     func purchaseItemFromAppStore(productId: String) {
-        var product: StoreItem = StoreKitManager.StoreItem.init(rawValue: productId)!
+        let product: StoreItem = StoreKitManager.StoreItem(rawValue: productId)!
 
         SwiftyStoreKit.purchaseProduct(productId, quantity: 1, atomically: true) { result in
             switch result {
             case .success(let purchase):
                 // 購入成功した場合もログに出力
                 log.debug("Purchase Success: \(purchase.productId)")
+                product.setEnabled(true)
             case .error(let error):
                 // エラーが発生した場合はログに出力
                 log.error("Purchase Failure: \(error.localizedDescription)")
@@ -86,7 +87,7 @@ final class StoreKitManager {
     }
 }
 
-extension SKProduct {
+private extension SKProduct {
     func setEnabled(_ newValue: Bool) {
         UserDefaults.standard.set(newValue, forKey: self.productIdentifier)
     }
@@ -95,7 +96,7 @@ extension SKProduct {
     }
 }
 
-extension StoreKitManager.StoreItem {
+private extension StoreKitManager.StoreItem {
     func setEnabled(_ newValue: Bool) {
         UserDefaults.standard.set(newValue, forKey: self.rawValue)
     }
@@ -104,7 +105,7 @@ extension StoreKitManager.StoreItem {
     }
 }
 
-extension Purchase {
+private extension Purchase {
     func setEnabled(_ newValue: Bool) {
         UserDefaults.standard.set(newValue, forKey: self.productId)
     }
