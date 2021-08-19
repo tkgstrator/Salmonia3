@@ -81,13 +81,13 @@ final class StoreKitManager {
     // MARK: 購入済みのアイテムをロック
     /// 購入済みのアイテムをロック
     func lockPurchasedItes() {
-        for var item in StoreKitManager.StoreItem.allCases {
+        for item in StoreKitManager.StoreItem.allCases {
             item.setEnabled(false)
         }
     }
 }
 
-private extension SKProduct {
+extension SKProduct {
     func setEnabled(_ newValue: Bool) {
         UserDefaults.standard.set(newValue, forKey: self.productIdentifier)
     }

@@ -177,3 +177,6 @@
 "RESULT_MAX_GOLDEN_EGGS_NONIGHT" = "最高納品数(イベントなし)";
 "HEADER_SPECIAL_WEAPON" = "スペシャルウェポン";
 "SETTING_ACCOUNT" = "アカウント";
+"PAID" = "有料機能";
+"RESTORE" = "復元";
+"LOCK" = "リセット";

@@ -152,6 +152,9 @@ class LocalizableStrings {
         case RESULT_MAX_GOLDEN_EGGS
         case HEADER_SPECIAL_WEAPON
         case SETTING_ACCOUNT
+        case RESTORE
+        case PAID
+        case RESET
     }
 
 }
