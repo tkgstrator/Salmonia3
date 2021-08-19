@@ -266,6 +266,7 @@
 		10094BBA26CEA222001ACBDF /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				1081B767269D1FC30063D947 /* Objects */,
 				10377F7B25FCD9E800536A94 /* RealmManager.swift */,
 				10377F8525FD041900536A94 /* AppManager.swift */,
 				10D0177826C074B1000DCA1B /* StoreKitManager.swift */,
@@ -568,7 +569,6 @@
 			isa = PBXGroup;
 			children = (
 				10448BDB26652E6700FFB553 /* SRPower */,
-				1081B767269D1FC30063D947 /* Objects */,
 				107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */,
 				10CF09F325FB9BE100D2EEB1 /* RealmCoopResult.swift */,
 				1024661A25FE0929004DC043 /* RealmCoopShift.swift */,

@@ -11,6 +11,14 @@ import UIKit
 import GoogleMobileAds
 
 struct UIGoogleMobileAdsView: UIViewControllerRepresentable {
+    let adUnitId: String
+    
+    init(adUnitId: String) {
+        self.adUnitId = adUnitId
+    }
+    
+    func makeCoordinator() -> () {
+    }
     
     func makeUIViewController(context: Context) -> UIViewController {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
@@ -18,8 +26,7 @@ struct UIGoogleMobileAdsView: UIViewControllerRepresentable {
         let view = GADBannerView(adSize: kGADAdSizeBanner)
         let viewController = UIViewController()
         #if DEBUG
-//        view.adUnitID = "ca-app-pub-7107468397673752/4904180382"
-        view.adUnitID = "ca-app-pub-7107468397673752/3033508550"
+        view.adUnitID = adUnitId
         #else
         view.adUnitID = "ca-app-pub-7107468397673752/3033508550"
         #endif
@@ -29,13 +36,22 @@ struct UIGoogleMobileAdsView: UIViewControllerRepresentable {
         view.load(GADRequest())
         return viewController
     }
+    
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 
 }
 
 struct GoobleMobileAdsView: View {
+    var isAvailable: Bool
+    var adUnitId: String
+    
     var body: some View {
-        UIGoogleMobileAdsView()
-            .frame(width: 320, height: 50)
+        switch isAvailable {
+        case true:
+            UIGoogleMobileAdsView(adUnitId: adUnitId)
+                .frame(width: 320, height: 50)
+        case false:
+            EmptyView()
+        }
     }
 }
