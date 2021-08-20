@@ -2,7 +2,7 @@
 //  Font.swift
 //  Salmonia3
 //
-//  Created by Devonly on 3/13/21.
+//  Created by tkgstrator on 3/13/21.
 //
 
 import Foundation

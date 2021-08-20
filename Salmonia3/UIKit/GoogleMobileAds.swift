@@ -2,7 +2,7 @@
 //  GoogleMobileAds.swift
 //  Salmonia3
 //
-//  Created by Devonly on 3/20/21.
+//  Created by tkgstrator on 3/20/21.
 //
 
 import Foundation

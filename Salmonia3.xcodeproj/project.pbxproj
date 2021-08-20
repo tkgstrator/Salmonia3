@@ -421,7 +421,7 @@
 				10D0177D26C0985F000DCA1B /* Configuration.storekit */,
 				108C04072659847D008D2D8C /* GoogleService-Info.plist */,
 				10094BBA26CEA222001ACBDF /* Manager */,
-				107F9B3A2614A8CA001581C7 /* MenuView */,
+				107F9B3A2614A8CA001581C7 /* Views */,
 				10CF09F825FB9BEE00D2EEB1 /* Realm */,
 				10CF09F925FB9C4900D2EEB1 /* ObservableObject */,
 				10682EFF265000400035CC68 /* Enum */,
@@ -538,7 +538,7 @@
 			path = Wave;
 			sourceTree = "<group>";
 		};
-		107F9B3A2614A8CA001581C7 /* MenuView */ = {
+		107F9B3A2614A8CA001581C7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				10377FAB25FD165100536A94 /* Collection */,
@@ -546,7 +546,7 @@
 				102465EF25FDDAAA004DC043 /* SettingMenu */,
 				10377F8F25FD09D200536A94 /* Loading */,
 			);
-			path = MenuView;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		1081B767269D1FC30063D947 /* Objects */ = {

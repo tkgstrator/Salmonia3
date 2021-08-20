@@ -2,7 +2,7 @@
 //  Grade.swift
 //  Salmonia3
 //
-//  Created by Devonly on 3/16/21.
+//  Created by tkgstrator on 3/16/21.
 //
 
 import Foundation

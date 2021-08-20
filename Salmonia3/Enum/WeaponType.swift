@@ -1,7 +1,7 @@
 //
 //
 //
-//  Created by devonly on 2021/05/15.
+//  Created by tkgstrator on 2021/05/15.
 //  Salmonia3
 //  WeaponType.swift
 

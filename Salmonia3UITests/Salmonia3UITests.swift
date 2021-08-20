@@ -2,7 +2,7 @@
 //  Salmonia3UITests.swift
 //  Salmonia3UITests
 //
-//  Created by Devonly on 2021/03/11.
+//  Created by tkgstrator on 2021/03/11.
 //
 
 import XCTest

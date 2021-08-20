@@ -3,9 +3,10 @@ import Foundation
 class LocalizableStrings {
 
     enum Key: String {
+        case ALERT_ERROR
+        case ALERT_SIGN_IN
         case AUTHORIZED_WITH_BIOMETRICS
         case AUTHORIZED_WITH_PASSCODE
-        case ALERT_ERROR
         case BOSS_DEFEATED
         case BTN_CANCEL
         case BTN_CONFIRM
@@ -29,6 +30,8 @@ class LocalizableStrings {
         case ERROR_UNAVAILABLE
         case ERROR_UNKNOWN
         case ERROR_UPGRADE
+        case FEATURE_RESTORE_DESC
+        case FEATURE_RESET_DESC
         case FEATURE_FREE_01
         case FEATURE_FREE_01_DESC
         case FEATURE_FREE_02
@@ -45,6 +48,8 @@ class LocalizableStrings {
         case FEATURE_PAID_02_DESC
         case FEATURE_PAID_03
         case FEATURE_PAID_03_DESC
+        case FOOTER_SALMONSTATS
+        case FOOTER_SPLATNET2
         case GOLDEN_EGGS
         case HEADER_APPEARANCE
         case HEADER_APPLICATION
@@ -53,14 +58,25 @@ class LocalizableStrings {
         case HEADER_PRODUCT
         case HEADER_SALMONSTATS
         case HEADER_SCHEDULE
+        case HEADER_SPECIAL_WEAPON
         case HEADER_STAGE_RECORD
         case HEADER_STATS_AVG
         case HEADER_STATS_MAX
         case HEADER_USERINFO
+        case HELP_GET_RESULT
+        case HELP_IMPORT_RESULT
+        case LANPLAY_RECORDS
+        case LOCK
         case LOG_DOWNLOAD
         case LOG_UPLOADING
+        case PAID
         case PRODUCT_MULTI_ACCOUNT
+        case PURCHASE
+        case PURCHASED
+        case RESET
         case RESIGN_IN
+        case RESTORE
+        case RESTORE_MESSAGE
         case RESULTS
         case RESULT_CLEAR
         case RESULT_CLEAR_RATIO
@@ -77,7 +93,11 @@ class LocalizableStrings {
         case RESULT_HELP_COUNT
         case RESULT_JOB_NUM
         case RESULT_KILL_COUNT
+        case RESULT_MAX_GOLDEN_EGGS
+        case RESULT_MAX_GOLDEN_EGGS_NONIGHT
         case RESULT_MAX_GRADE
+        case RESULT_MAX_GRADE_NUM
+        case RESULT_MIN_MAX_GRADE
         case RESULT_PLAYER
         case RESULT_POWER_EGGS
         case RESULT_RATIO_GOLDEN_EGGS
@@ -86,46 +106,51 @@ class LocalizableStrings {
         case RESULT_SALMON_RATE
         case RESULT_TEAM_GOLDEN_EGGS
         case RESULT_TEAM_POWER_EGGS
+        case SALMON_RUN_RECORDS
+        case SALMON_STATS
+        case SETTING_ACCOUNT
         case SETTING_API_VERSION
         case SETTING_APP_VERSION
         case SETTING_DARKMODE
         case SETTING_DETAIL
         case SETTING_DEVICE
+        case SETTING_ENABLE_IMPORT
         case SETTING_ERASE_DATA
         case SETTING_FREE_PRODUCT
+        case SETTING_GENERAL
+        case SETTING_HELP
+        case SETTING_IMPORTANT
+        case SETTING_IMPORT_NUM
         case SETTING_IMPORT_RESULT
+        case SETTING_LISTSTYLE
+        case SETTING_LOADING_TYPE
+        case SETTING_LOG_SEND
         case SETTING_PAID_PRODUCT
         case SETTING_PRIVACY
         case SETTING_RESULTS
         case SETTING_RE_SIGN_IN
+        case SETTING_SPLATNET2
         case SETTING_SYSTEM
         case SETTING_UPDATE_NAME
         case SETTING_UPLOAD
-        case SETTING_LOADING_TYPE
-        case SETTING_LOG_SEND
-        case SETTING_IMPORT_NUM
-        case SETTING_SPLATNET2
-        case SETTING_LISTSTYLE
-        case SETTING_ENABLE_IMPORT
-        case SETTING_GENERAL
-        case SETTING_IMPORTANT
         case SHIFT_SCHEDULE
         case SUPPLIED_WEAPONS
-        case FOOTER_SPLATNET2
-        case FOOTER_SALMONSTATS
-        case TEXT_IMPORT
         case TEXT_CONFIRM
         case TEXT_ERASE_DATA
+        case TEXT_IMPORT
         case TEXT_RE_SIGN_IN
         case TEXT_SALMONIA
         case TEXT_SALMONSTATS
+        case TEXT_SIGN_IN
         case TEXT_TUTORIAL_SALMONSTATS
         case TEXT_WELCOME_SALMONSTATS
         case TEXT_WELCOME_SPLATNET2
         case TITLE_FREE_PRODUCT
+        case TITLE_HELP
         case TITLE_LOGGING_THREAD
         case TITLE_LOGIN
         case TITLE_PAID_PRODUCT
+        case TITLE_PLAYER_COLLECTION
         case TITLE_RESULT
         case TITLE_RESULT_COLLECTION
         case TITLE_RESULT_DETAIL
@@ -134,27 +159,8 @@ class LocalizableStrings {
         case TITLE_SHIFT_SCHEDULE
         case TITLE_SHIFT_STATS
         case TITLE_WAVE_ANALYSIS
-        case TITLE_WEAPON_ANALYSIS
         case TITLE_WAVE_COLLECTION
-        case TITLE_PLAYER_COLLECTION
-        case SALMON_RUN_RECORDS
-        case SALMON_STATS
-        case LANPLAY_RECORDS
-        case ALERT_SIGN_IN
-        case TEXT_SIGN_IN
-        case HELP_IMPORT_RESULT
-        case HELP_GET_RESULT
-        case SETTING_HELP
-        case TITLE_HELP
-        case RESULT_MAX_GRADE_NUM
-        case RESULT_MIN_MAX_GRADE
-        case RESULT_MAX_GOLDEN_EGGS_NONIGHT
-        case RESULT_MAX_GOLDEN_EGGS
-        case HEADER_SPECIAL_WEAPON
-        case SETTING_ACCOUNT
-        case RESTORE
-        case PAID
-        case RESET
+        case TITLE_WEAPON_ANALYSIS
     }
 
 }
