@@ -2,7 +2,7 @@
 //  View.swift
 //  Salmonia3
 //
-//  Created by devonly on 2021/05/19.
+//  Created by tkgstrator on 2021/05/19.
 //
 
 import Foundation

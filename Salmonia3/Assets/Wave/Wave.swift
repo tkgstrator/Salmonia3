@@ -2,7 +2,7 @@
 //  Wave.swift
 //  Salmonia3
 //
-//  Created by devonly on 2021/07/01.
+//  Created by tkgstrator on 2021/07/01.
 //
 
 import SwiftUI

@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  Salmonia3
 //
-//  Created by Devonly on 2021/03/11.
+//  Created by tkgstrator on 2021/03/11.
 //
 
 import SwiftUI
@@ -22,7 +22,7 @@ struct ContentView: View {
                 LoginMenu()
             }
         }
-        .overlay(GoobleMobileAdsView(isAvailable: !appManager.isPaid02, adUnitId: "ca-app-pub-7107468397673752/3033508550"), alignment: .bottom)
+        .overlay(GoobleMobileAdsView(isAvailable: !appManager.isPaid01, adUnitId: "ca-app-pub-7107468397673752/3033508550"), alignment: .bottom)
         .navigationViewStyle(SplitNavigationViewStyle())
     }
 }

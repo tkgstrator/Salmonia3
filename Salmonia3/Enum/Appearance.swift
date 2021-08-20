@@ -2,7 +2,7 @@
 //  Appearance.swift
 //  Salmonia3
 //
-//  Created by devonly on 2021/06/04.
+//  Created by tkgstrator on 2021/06/04.
 //
 
 import Foundation

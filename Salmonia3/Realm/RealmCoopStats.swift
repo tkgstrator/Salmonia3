@@ -2,7 +2,7 @@
 //  RealmCoopStats.swift
 //  Salmonia3
 //
-//  Created by Devonly on 3/23/21.
+//  Created by tkgstrator on 3/23/21.
 //
 
 import Foundation

@@ -2,7 +2,7 @@
 //  ShiftStats.swift
 //  Salmonia3
 //
-//  Created by devonly on 2021/04/09.
+//  Created by tkgstrator on 2021/04/09.
 //
 
 import Foundation

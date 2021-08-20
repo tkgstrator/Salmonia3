@@ -2,7 +2,7 @@
 //  SRPower.swift
 //  Salmonia3
 //
-//  Created by devonly on 2021/05/31.
+//  Created by tkgstrator on 2021/05/31.
 //
 
 import Foundation

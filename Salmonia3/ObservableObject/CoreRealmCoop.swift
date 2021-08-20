@@ -2,7 +2,7 @@
 //  CoreRealmCoop.swift
 //  Salmonia3
 //
-//  Created by Devonly on 2021/03/12.
+//  Created by tkgstrator on 2021/03/12.
 //
 
 import Foundation

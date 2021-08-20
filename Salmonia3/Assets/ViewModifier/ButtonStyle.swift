@@ -2,7 +2,7 @@
 //  ButtonStyle.swift
 //  Salmonia3
 //
-//  Created by Devonly on 3/25/21.
+//  Created by tkgstrator on 3/25/21.
 //
 
 import SwiftUI

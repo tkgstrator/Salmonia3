@@ -2,7 +2,7 @@
 //  AppManagers.swift
 //  Salmonia3
 //
-//  Created by Devonly on 3/13/21.
+//  Created by tkgstrator on 3/13/21.
 //
 
 import Foundation
@@ -10,6 +10,8 @@ import RealmSwift
 import SwiftUI
 import SplatNet2
 import Combine
+import SwiftyStoreKit
+import StoreKit
 
 class AppManager: ObservableObject {
     
@@ -46,7 +48,8 @@ class AppManager: ObservableObject {
     @AppStorage("FEATURE_DEBUG_02") var isDebug02: Bool = false //
     @AppStorage("FEATURE_DEBUG_03") var isDebug03: Bool = false //
     @AppStorage("FEATURE_DEBUG_04") var isDebug04: Bool = false //
-    @AppStorage("FEATURE_DEBUG_05") var isDebug05: Bool = false // 
+    @AppStorage("FEATURE_DEBUG_05") var isDebug05: Bool = false //
+    @Published var allAvailableProducts: [SKProduct] = []
 
     private var token: NSObserver = NSObserver()
     private var observer: [[NSKeyValueObservation?]] = Array(repeating: Array(repeating: nil, count: 5), count: 5)
@@ -128,6 +131,10 @@ class AppManager: ObservableObject {
         observer[4][4] = UserDefaults.standard.observe(\.FEATURE_OTHER_05, options: [.initial, .new], changeHandler: { [weak self] (_, _) in
             self?.objectWillChange.send()
         })
+        
+        StoreKitManager.shared.retreiveProductInfo(productIds: StoreKitManager.StoreItem.allCases) { [self] products in
+            allAvailableProducts = Array(products).sorted(by: { $0.productIdentifier > $1.productIdentifier })
+        }
     }
     
     func loggingToCloud(_ value: String) {
