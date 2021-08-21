@@ -23,7 +23,7 @@ final class CoopShiftStats: ObservableObject {
         // 現在時刻よりもあとのやつはデータが空なのでスキップ
         if startTime >= Int(Date().timeIntervalSince1970) { return }
         // 表示するプレイヤーIDを選択
-        let playerId: [String] = [manager.account.nsaid]
+        let playerId: String = manager.account.nsaid
         // 指定されたシフトIDでのデータを取得
         // 個人記録・全体記録・WAVE記録
         let playerResults = RealmManager.shared.playerResults(startTime: startTime, playerId: playerId)
@@ -31,17 +31,19 @@ final class CoopShiftStats: ObservableObject {
         let waves = RealmManager.shared.waves(startTime: startTime)
         
         self.records = CoopRecord(startTime: startTime)
-        //        self.resultMax = ResultMax(player: playerResults, result: results)
-        //        self.resultAvg = ResultAvg(player: playerResults, result: results)
-        //        self.overview = ResultOverView(results: results, player: playerResults)
-        //        self.weaponData = self.getWeaponData(startTime: startTime, nsaid: playerId)
         self.resultWave = waves.resultWaves
-        
+        self.resultMax = ResultMax(player: playerResults, result: results)
+        self.resultAvg = ResultAvg(player: playerResults, result: results)
+        self.overview = ResultOverView(results: results, player: playerResults)
+        self.weaponData = self.getWeaponData(startTime: startTime, nsaid: [playerId])
+
         self.token = RealmManager.shared.results.observe{ [weak self] _ in
+            self?.records = CoopRecord(startTime: startTime)
+            self?.resultWave = waves.resultWaves
             self?.resultMax = ResultMax(player: playerResults, result: results)
             self?.resultAvg = ResultAvg(player: playerResults, result: results)
             self?.overview = ResultOverView(results: results, player: playerResults)
-            self?.weaponData = self!.getWeaponData(startTime: startTime, nsaid: playerId)
+            self?.weaponData = self!.getWeaponData(startTime: startTime, nsaid: [playerId])
         }
     }
 
