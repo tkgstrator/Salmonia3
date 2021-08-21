@@ -9,14 +9,9 @@ import SwiftUI
 
 struct CoopShiftStatsView: View {
     
-    var stats: CoopShiftStats
+    @State var stats: CoopShiftStats = CoopShiftStats()
     var startTime: Int
 
-    init(startTime: Int) {
-        self.startTime = startTime
-        self.stats = CoopShiftStats(startTime: startTime)
-    }
-    
     var body: some View {
         TabView {
             StatsView(startTime: startTime, stats: stats)
@@ -33,6 +28,9 @@ struct CoopShiftStatsView: View {
                         .tag(3)
                 }
             }
+        }
+        .onWillAppear {
+            stats = CoopShiftStats(startTime: startTime)
         }
         .tabViewStyle(PageTabViewStyle())
         .navigationTitle(.TITLE_SHIFT_STATS)
