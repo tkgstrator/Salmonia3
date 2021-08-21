@@ -19,6 +19,8 @@ final class CoopShiftStats: ObservableObject {
     @Published var resultWave: [ResultWave] = []
     private var token: NotificationToken?
 
+    init() {}
+    
     init(startTime: Int) {
         // 現在時刻よりもあとのやつはデータが空なのでスキップ
         if startTime >= Int(Date().timeIntervalSince1970) { return }
@@ -51,7 +53,7 @@ final class CoopShiftStats: ObservableObject {
         token?.invalidate()
     }
     
-    // MARK: 指定されたスケジュールのブキのリストを返す
+    /// 指定されたスケジュールのブキのリストを返す
     private func getWeaponData(startTime: Int, nsaid: [String]) -> [ResultWeapon] {
         let shift: RealmCoopShift = RealmManager.shared.shift(startTime: startTime)
         let suppliedWepons: [Int] = RealmManager.shared.playerResults(startTime: startTime).flatMap{ $0.weaponList }
@@ -78,7 +80,7 @@ final class CoopShiftStats: ObservableObject {
         }
     }
 
-    // MARK: シフト統計の大雑把な値を返す
+    /// シフト統計の大雑把な値を返す
     final class ResultOverView {
         var jobNum: Int?
         var player: RealmSwift.Results<RealmPlayerResult>?
@@ -86,6 +88,8 @@ final class CoopShiftStats: ObservableObject {
         var clearRatio: Double?
         var goldenEggRatio: Double?
         var powerEggRatio: Double?
+        var crewAvg: Double?
+        
         lazy var specialWeapon = {
             return [
                 PieChartData(value: Double(self.player?.filter("specialId=%@", 2).count ?? 0), label: { AnyView(Image(SpecialType.init(rawValue: 2)!.image).resizable().frame(width: 35, height: 35, alignment: .center)) }),
@@ -107,7 +111,15 @@ final class CoopShiftStats: ObservableObject {
             self.clearRatio = calcRatio(results.filter("isClear=true").count, divideBy: jobNum)
             self.goldenEggRatio = calcRatio(player.sum(ofProperty: "goldenIkuraNum"), divideBy: results.sum(ofProperty: "goldenEggs"))
             self.powerEggRatio = calcRatio(player.sum(ofProperty: "ikuraNum"), divideBy: results.sum(ofProperty: "powerEggs"))
+            let players: [String] = results.flatMap({ $0.player.map({ $0.pid })})
+            print(players.count, Set(players).count, results.count)
             
+            if let jobNum = self.jobNum {
+                if jobNum > 1 {
+                    self.crewAvg = 3 * Double(Set(players).count - 4) / Double(players.count - results.count + 3)
+                }
+            }
+
 
             // MARK: 各オオモノの出現数を保存
             let bossAppearCount = Array(results.map({ $0.bossCounts })).sum()
@@ -123,7 +135,7 @@ final class CoopShiftStats: ObservableObject {
         }
     }
 
-    // MARK: 出現したブキのカウントを行う
+    /// 出現したブキのカウントを行う
     final class ResultWeapon: Identifiable {
         var id: String = UUID().uuidString
         var weaponId: Int
@@ -136,7 +148,7 @@ final class CoopShiftStats: ObservableObject {
         }
     }
     
-    // MARK: 最高の評価を取得
+    /// 最高の評価を取得
     final class ResultMax {
         var teamPowerEggs: Int?
         var teamGoldenEggs: Int?
@@ -158,7 +170,7 @@ final class CoopShiftStats: ObservableObject {
         }
     }
 
-    // MARK: 平均の評価を取得
+    /// 平均の評価を取得
     final class ResultAvg {
         var teamPowerEggs: Double?
         var teamGoldenEggs: Double?
@@ -180,7 +192,7 @@ final class CoopShiftStats: ObservableObject {
         }
     }
     
-    // MARK: 各潮位とイベントにおける納品数を計算する
+    /// 各潮位とイベントにおける納品数を計算する
     final class ResultWave: Identifiable {
         var id: UUID { UUID() }
         var goldenEggs: Double?
