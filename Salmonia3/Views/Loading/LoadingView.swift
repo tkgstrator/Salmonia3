@@ -94,7 +94,7 @@ struct LoadingView: View {
                     }
                 }
             }, receiveValue: { _ in
-                let jobIds: Range = Range(uncheckedBounds: (max(lastJobId, manager.account.coop.jobNum - 49), manager.account.coop.jobNum + 1))
+                let jobIds: Range = Range(uncheckedBounds: (max(lastJobId + 1, manager.account.coop.jobNum - 49), manager.account.coop.jobNum + 1))
                 progressModel.configure(maxValue: CGFloat(jobIds.count))
                 for jobId in jobIds {
                     manager.getResultCoopWithJSON(jobId: jobId)

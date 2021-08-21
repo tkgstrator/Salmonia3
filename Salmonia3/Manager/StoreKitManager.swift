@@ -56,9 +56,12 @@ final class StoreKitManager {
     
     // MARK: 購入済みのアイテムを復元
     /// 購入済みのアイテムを復元
-    func restorePurchases() {
-        SwiftyStoreKit.restorePurchases(atomically: true) { result in
-            for product in result.restoredPurchases {
+    func restorePurchases(completion: @escaping (Result<Bool, APPError>)->()) {
+        SwiftyStoreKit.restorePurchases(atomically: true) { results in
+            if results.restoreFailedPurchases.count > 0 {
+                completion(.failure(<#T##APPError#>))
+            }
+            for product in results.restoredPurchases {
                 if product.needsFinishTransaction {
                     SwiftyStoreKit.finishTransaction(product.transaction)
                 }
