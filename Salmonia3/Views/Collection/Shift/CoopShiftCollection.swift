@@ -13,6 +13,7 @@ struct CoopShiftCollection: View {
     @EnvironmentObject var appManager: AppManager
     @State var shifts: RealmSwift.Results<RealmCoopShift>
     var shiftNumber: Int
+    let playedShiftIds: [Int] = RealmManager.shared.shiftTimeList(nsaid: manager.playerId)
     
     init(displayFutureShift: Bool) {
         self._shifts = State(initialValue: RealmManager.shared.allShiftStartTime(displayFutureShift: displayFutureShift))
@@ -30,6 +31,12 @@ struct CoopShiftCollection: View {
                         .opacity(0.0)
                         CoopShift(shift: shifts[index])
                     }
+                    .overlay(
+                        Image(systemName: "checkmark")
+                            .font(.system(size: 18, weight: .bold))
+                            .foregroundColor(.primary)
+                            .opacity(playedShiftIds.contains(shifts[index].startTime) ? 1.0 : 0.0)
+                             , alignment: .topLeading)
                     .tag(index)
                 }
             }

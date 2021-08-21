@@ -112,8 +112,7 @@ final class CoopShiftStats: ObservableObject {
             self.goldenEggRatio = calcRatio(player.sum(ofProperty: "goldenIkuraNum"), divideBy: results.sum(ofProperty: "goldenEggs"))
             self.powerEggRatio = calcRatio(player.sum(ofProperty: "ikuraNum"), divideBy: results.sum(ofProperty: "powerEggs"))
             let players: [String] = results.flatMap({ $0.player.map({ $0.pid })})
-            print(players.count, Set(players).count, results.count)
-            
+
             if let jobNum = self.jobNum {
                 if jobNum > 1 {
                     self.crewAvg = 3 * Double(Set(players).count - 4) / Double(players.count - results.count + 3)
