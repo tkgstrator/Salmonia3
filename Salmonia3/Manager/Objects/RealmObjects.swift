@@ -17,7 +17,7 @@ extension RealmManager {
     }
     
     /// 指定されたプレイヤーIDが遊んだ全シフトIDを返す
-    private func shiftTimeList(nsaid: String) -> [Int] {
+    func shiftTimeList(nsaid: String) -> [Int] {
         return Array(Set(realm.objects(RealmCoopResult.self).filter("ANY player.pid=%@", nsaid).map{ $0.startTime })).sorted(by: >)
     }
     

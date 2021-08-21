@@ -17,7 +17,7 @@ struct StatsView: View {
             Section(header: Text(.HEADER_OVERVIEW).splatfont2(.orange, size: 14)) {
                 CoopShift(shift: try! RealmManager.shared.getShiftSchedule(startTime: startTime))
                 StatsColumn(title: .RESULT_JOB_NUM, value: stats.overview.jobNum)
-                StatsColumn(title: .RESULT_RATIO_GOLDEN_EGGS, value: stats.overview.crewAvg)
+                StatsColumn(title: .RESULT_CREW_AVG_NUM, value: stats.overview.crewAvg)
                 StatsColumn(title: .RESULT_CLEAR_RATIO, value: stats.overview.clearRatio)
                 StatsColumn(title: .RESULT_RATIO_POWER_EGGS, value: stats.overview.powerEggRatio)
                 StatsColumn(title: .RESULT_RATIO_GOLDEN_EGGS, value: stats.overview.goldenEggRatio)
