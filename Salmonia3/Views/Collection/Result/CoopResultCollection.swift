@@ -22,7 +22,11 @@ struct CoopResultCollection: View {
             NavigationLink(destination: LoadingView(), isActive: $isActive) { EmptyView() }
             switch appManager.listStyle {
             case .default:
-                PlainListStyleView
+                DefaultListStyleView
+            case .plain:
+                DefaultListStyleView
+            case .grouped:
+                GroupedListStyleView
             case .legacy:
                 LegacyListStyleView
             case .inset:
@@ -35,13 +39,10 @@ struct CoopResultCollection: View {
     }
     
     private var LegacyListStyleView: some View {
-//        GeometryReader { geometry in
-            PaginationView(axis: .horizontal, transitionStyle: .scroll, showsIndicators: true) {
-                ForEach(main.result) { result in
-                    CoopResultSimpleView(result: result)
-//                        .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
-                }
-//            }
+        PaginationView(axis: .horizontal, transitionStyle: .scroll, showsIndicators: true) {
+            ForEach(main.result) { result in
+                CoopResultSimpleView(result: result)
+            }
         }
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -83,6 +84,46 @@ struct CoopResultCollection: View {
             }
         }
         .listStyle(PlainListStyle())
+        .pullToRefresh(isShowing: $isShowing) { isActive.toggle() }
+    }
+    
+    private var GroupedListStyleView: some View {
+        List {
+            ForEach(main.results) { shift in
+                Section(header: CoopShift(shift: shift.phase)) {
+                    ForEach(shift.results, id:\.self) { result in
+                        ZStack(alignment: .leading) {
+                            NavigationLink(destination: CoopResultView(result: result)) {
+                                EmptyView()
+                            }
+                            .opacity(0.0)
+                            ResultOverview(result: result)
+                        }
+                    }
+                }
+            }
+        }
+        .listStyle(GroupedListStyle())
+        .pullToRefresh(isShowing: $isShowing) { isActive.toggle() }
+    }
+    
+    private var DefaultListStyleView: some View {
+        List {
+            ForEach(main.results) { shift in
+                Section(header: CoopShift(shift: shift.phase)) {
+                    ForEach(shift.results, id:\.self) { result in
+                        ZStack(alignment: .leading) {
+                            NavigationLink(destination: CoopResultView(result: result)) {
+                                EmptyView()
+                            }
+                            .opacity(0.0)
+                            ResultOverview(result: result)
+                        }
+                    }
+                }
+            }
+        }
+        .listStyle(DefaultListStyle())
         .pullToRefresh(isShowing: $isShowing) { isActive.toggle() }
     }
     

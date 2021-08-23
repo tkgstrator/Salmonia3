@@ -62,8 +62,8 @@
 "LoadingSnow" = "Default";
 "LoadingSpin" = "Spinner";
 "PAID" = "Paid";
-"PURCHASED" = "Purchased";
 "PRODUCT_MULTI_ACCOUNT"="Multi account";
+"PURCHASED" = "Purchased";
 "RESIGN_IN"="Re-sign in";
 "RESTORE" = "Restore";
 "RESTORE_MESSAGE" = "Restored all purchased product";
@@ -73,6 +73,7 @@
 "RESULT_CLEAR"="Clear";
 "RESULT_CLEAR_RATIO"="Clear ratio";
 "RESULT_CLEAR_WAVE"="Clear wave";
+"RESULT_CREW_AVG_NUM"="Freelance ratio";
 "RESULT_CREW_GRADE"="Crew grade";
 "RESULT_DEAD_COUNT"="Dead count";
 "RESULT_DEFEAT"="Defeated";
@@ -130,8 +131,10 @@
 "SETTING_UPLOAD"="Link with Salmon Stats";
 "SHIFT_SCHEDULE"="Shift Schedule";
 "STYLE_DEFAULT"="Default";
+"STYLE_GROUPED"="Grouped";
 "STYLE_INSET"="Inset";
 "STYLE_LEGACY"="Legacy";
+"STYLE_PLAIN"="Plain";
 "STYLE_SIDEBAR"="Sidebar";
 "SUPPLIED_WEAPONS"="Supplied Weapons";
 "TEXT_CONFIRM"="Are you sure?";
@@ -170,4 +173,3 @@
 "rush"="Rush";
 "the-mothership"="The Mothership";
 "water-levels"="-";
-"RESULT_CREW_AVG_NUM"="Freelance ratio";

@@ -61,7 +61,7 @@ struct SettingView: View {
                 Toggle(LocalizableStrings.Key.SETTING_DARKMODE.rawValue.localized, isOn: $appManager.isDarkMode)
                 HStack {
                     Picker(selection: $appManager.listStyle, label: Text(.SETTING_LISTSTYLE)) {
-                        ForEach(ListStyle.allCases, id:\.rawValue) {
+                        ForEach(ResultListStyle.allCases, id:\.rawValue) {
                             Text($0.rawValue.localized)
                                 .tag($0)
                         }
