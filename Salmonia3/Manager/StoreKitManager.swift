@@ -18,6 +18,7 @@ final class StoreKitManager {
     enum StoreItem: String, CaseIterable {
         case disableads     = "work.tkgstrator.disableads"
         case multiaccounts  = "work.tkgstrator.multiaccounts"
+        case lottery        = "work.tkgstrator.lottery"
     }
 
     // MARK: プロダクトの購入
@@ -56,11 +57,12 @@ final class StoreKitManager {
     
     // MARK: 購入済みのアイテムを復元
     /// 購入済みのアイテムを復元
-    func restorePurchases(completion: @escaping (Result<Bool, APPError>)->()) {
+    func restorePurchases(completion: @escaping (Result<Bool, SKError>)->()) {
         SwiftyStoreKit.restorePurchases(atomically: true) { results in
             if results.restoreFailedPurchases.count > 0 {
-                completion(.failure(<#T##APPError#>))
+                completion(.failure(.noRestoredProduct))
             }
+            
             for product in results.restoredPurchases {
                 if product.needsFinishTransaction {
                     SwiftyStoreKit.finishTransaction(product.transaction)
@@ -70,14 +72,18 @@ final class StoreKitManager {
                 switch StoreKitManager.StoreItem(rawValue: product.productId) {
                 case .disableads:
                     product.setEnabled(true)
-                    log.debug("Restore Success: \(result.restoredPurchases)")
+                    log.debug("Restore Success: \(product.productId)")
                 case .multiaccounts:
                     product.setEnabled(true)
-                    log.debug("Restore Success: \(result.restoredPurchases)")
+                    log.debug("Restore Success: \(product.productId)")
+                case .lottery:
+                    product.setEnabled(true)
+                    log.debug("Restore Success: \(product.productId)")
                 default:
-                    log.debug("Unknown Product: \(result.restoredPurchases)")
+                    log.debug("Unknown Product: \(product.productId)")
                 }
             }
+            completion(.success(true))
         }
     }
     

@@ -130,6 +130,12 @@ extension RealmManager {
             .filter("nsaid!=%@", manager.account.nsaid)
             .sorted(byKeyPath: "lastMatchedTime", ascending: false)
     }
+    
+    func players(startTime: Int) -> [String] {
+        return Array(Set(realm.objects(RealmCoopResult.self)
+            .filter("startTime=%@", startTime)
+            .flatMap({ Array($0.player.compactMap({ $0.pid })) })))
+    }
 }
 
 extension RealmSwift.Results where Element == RealmCoopWave {
