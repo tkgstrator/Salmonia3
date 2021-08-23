@@ -13,6 +13,7 @@
 		101C77D526497038005D603C /* CoopPlayerResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C77D426497038005D603C /* CoopPlayerResultView.swift */; };
 		101C77DA264C283C005D603C /* UsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C77D9264C283B005D603C /* UsernameView.swift */; };
 		10210F0926D18F4A00E4C7C4 /* LotteryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10210F0826D18F4A00E4C7C4 /* LotteryManager.swift */; };
+		10210F0C26D3D2F200E4C7C4 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 10210F0B26D3D2F200E4C7C4 /* SwiftUIX */; };
 		102465F125FDDABD004DC043 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102465F025FDDABD004DC043 /* SettingView.swift */; };
 		1024660325FDE916004DC043 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1024660525FDE916004DC043 /* Localizable.strings */; };
 		1024661125FDF411004DC043 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024661025FDF411004DC043 /* String.swift */; };
@@ -244,6 +245,7 @@
 				1081B766269C77C40063D947 /* SwiftyAPNGKit in Frameworks */,
 				1028D37226418EFD0034C075 /* MBCircleProgressBar in Frameworks */,
 				A8C5630EBE09FDEA7BF59B1C /* Pods_Salmonia3.framework in Frameworks */,
+				10210F0C26D3D2F200E4C7C4 /* SwiftUIX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,6 +650,7 @@
 				1081B762269C77AE0063D947 /* SwiftChart */,
 				1081B765269C77C40063D947 /* SwiftyAPNGKit */,
 				10094BB826CE9FC4001ACBDF /* SwiftyUI */,
+				10210F0B26D3D2F200E4C7C4 /* SwiftUIX */,
 			);
 			productName = Salmonia3;
 			productReference = 1059416325FA49E500C32D21 /* Salmonia3.app */;
@@ -734,6 +737,7 @@
 				1081B75E269C778D0063D947 /* XCRemoteSwiftPackageReference "MBCircleProgressBar" */,
 				1081B761269C77AE0063D947 /* XCRemoteSwiftPackageReference "SwiftChart" */,
 				1081B764269C77C40063D947 /* XCRemoteSwiftPackageReference "SwiftyAPNGKit" */,
+				10210F0A26D3D2F200E4C7C4 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 			);
 			productRefGroup = 1059416425FA49E500C32D21 /* Products */;
 			projectDirPath = "";
@@ -1277,6 +1281,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		10210F0A26D3D2F200E4C7C4 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.8;
+			};
+		};
 		104BD61E261C98800013CD27 /* XCRemoteSwiftPackageReference "url-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
@@ -1355,6 +1367,11 @@
 		10094BB826CE9FC4001ACBDF /* SwiftyUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftyUI;
+		};
+		10210F0B26D3D2F200E4C7C4 /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10210F0A26D3D2F200E4C7C4 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
 		};
 		1028D37126418EFD0034C075 /* MBCircleProgressBar */ = {
 			isa = XCSwiftPackageProductDependency;

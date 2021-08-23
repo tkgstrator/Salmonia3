@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIX
 
 struct CoopResultCollection: View {
     @EnvironmentObject var appManager: AppManager
@@ -34,17 +35,15 @@ struct CoopResultCollection: View {
     }
     
     private var LegacyListStyleView: some View {
-        GeometryReader { geometry in
-            ScrollView(.horizontal, showsIndicators: false) {
-                LazyHGrid(rows: Array(repeating: .init(.fixed(geometry.size.height)), count: 1), alignment: .center, spacing: 0, pinnedViews: []) {
-                    ForEach(main.result.indices) { index in
-                        CoopResultSimpleView(result: main.result[index])
-                            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
-                    }
+//        GeometryReader { geometry in
+            PaginationView(axis: .horizontal, transitionStyle: .scroll, showsIndicators: true) {
+                ForEach(main.result) { result in
+                    CoopResultSimpleView(result: result)
+//                        .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
                 }
-            }
-            .paging(geometry: geometry, index: $index, offset: $offset, orientation: $orientation)
+//            }
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     private var SidebarListStyleView: some View {
