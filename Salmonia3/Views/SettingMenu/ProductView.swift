@@ -91,13 +91,22 @@ struct PaidProductView_Previews: PreviewProvider {
 }
 
 struct RestoreButton: View {
+    @State var skerror: SKError?
     @State var isPresented: Bool = false
     
     var body: some View {
         VStack {
             Button(action: {
-                StoreKitManager.shared.restorePurchases()
-                isPresented.toggle()
+                StoreKitManager.shared.restorePurchases() { completion in
+                    switch completion {
+                    case .success:
+                        skerror = nil
+                        isPresented.toggle()
+                    case .failure(let error):
+                        skerror = error
+                        isPresented.toggle()
+                    }
+                }
             }, label: {
                 Image(systemName: "icloud.and.arrow.down")
                     .resizable()
@@ -115,7 +124,11 @@ struct RestoreButton: View {
             Text(.FEATURE_RESTORE_DESC)
         }
         .alert(isPresented: $isPresented) {
-            Alert(title: Text(.RESTORE), message: Text(.RESTORE_MESSAGE))
+            if let error = skerror {
+                return Alert(title: Text(.ALERT_ERROR), message: Text(error.localizedDescription))
+            } else {
+                return Alert(title: Text(.RESTORE), message: Text(.RESTORE_MESSAGE))
+            }
         }
     }
 }
@@ -152,8 +165,8 @@ struct PurchaseButton: View {
             Button(action: {
                 StoreKitManager.shared.purchaseItemFromAppStore(productId: product.productIdentifier)
             }, label: {
-                switch product.productIdentifier {
-                case "work.tkgstrator.disableads":
+                switch StoreKitManager.StoreItem(rawValue: product.productIdentifier)! {
+                case .disableads:
                     Image(systemName: "eye.slash")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -166,8 +179,21 @@ struct PurchaseButton: View {
                                                     .fill(product.isPurchased ? Color.blue : Color.red))
                                     .offset(x: 60, y: -40)
                         )
-                case "work.tkgstrator.multiaccounts":
+                case .multiaccounts:
                     Image(systemName: "person.3")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 60, height: 60, alignment: .center)
+                        .padding()
+                        .overlay(Circle().stroke(Color.primary, lineWidth: 3.0))
+                        .overlay(Text(product.isPurchased ? "PURCHASED".localized : product.localizedPrice ?? "-")
+                                    .padding(.horizontal)
+                                    .background(RoundedRectangle(cornerRadius: .infinity)
+                                                    .fill(product.isPurchased ? Color.blue : Color.red))
+                                    .offset(x: 60, y: -40)
+                        )
+                case .lottery:
+                    Image(systemName: "giftcard")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 60, height: 60, alignment: .center)

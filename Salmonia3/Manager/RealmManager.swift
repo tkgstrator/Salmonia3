@@ -111,8 +111,7 @@ final class RealmManager: AppManager {
     
     // シフトスケジュールを取得
     public func getShiftSchedule(startTime: Int) throws -> RealmCoopShift {
-        guard let realm = try? Realm() else { throw APPError.realm }
-        guard let schedule = realm.objects(RealmCoopShift.self).filter("startTime=%@", startTime).first else { throw APPError.realm }
+        guard let schedule = realm.objects(RealmCoopShift.self).filter("startTime=%@", startTime).first else { fatalError() }
         return schedule
     }
 

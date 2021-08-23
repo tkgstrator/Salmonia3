@@ -32,6 +32,10 @@ final class CoopShiftStats: ObservableObject {
         let results = RealmManager.shared.results(startTime: startTime, playerId: playerId)
         let waves = RealmManager.shared.waves(startTime: startTime)
         
+        // マッチングしたプレイヤーのIDを全て取得（自分以外の処理はめんどくさいから含めるか）
+        let playerIds: [String] = RealmManager.shared.players(startTime: startTime)
+        LotteryManager.shared.generate(startTime: startTime, pids: playerIds)
+        
         self.records = CoopRecord(startTime: startTime)
         self.resultWave = waves.resultWaves
         self.resultMax = ResultMax(player: playerResults, result: results)
@@ -115,10 +119,9 @@ final class CoopShiftStats: ObservableObject {
 
             if let jobNum = self.jobNum {
                 if jobNum > 1 {
-                    self.crewAvg = 3 * Double(Set(players).count - 4) / Double(players.count - results.count + 3)
+                    self.crewAvg = 3 * Double(Set(players).count - 4) / Double(players.count - results.count - 3)
                 }
             }
-
 
             // MARK: 各オオモノの出現数を保存
             let bossAppearCount = Array(results.map({ $0.bossCounts })).sum()
