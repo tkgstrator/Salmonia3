@@ -16,13 +16,16 @@ class CoreRealmCoop: ObservableObject {
     @Published var resultCount: Int = RealmManager.shared.results.count
     @Published var waves: RealmSwift.Results<RealmCoopWave> = RealmManager.shared.waves
     @Published var players: RealmSwift.Results<RealmPlayer> = RealmManager.shared.players
-    @Published var result: [RealmCoopResult] = Array(RealmManager.shared.results.prefix(5))
     @Published var latestShift: RealmSwift.Results<RealmCoopShift> = RealmManager.shared.latestShiftStartTime
     
     // リザルト一覧
     var results: [UserCoopResult] {
         let startTime: [Int] = Array(Set(RealmManager.shared.results.map({ $0.startTime }))).sorted(by: >)
         return startTime.map({ UserCoopResult(startTime: $0) })
+    }
+    
+    var result: RealmSwift.Results<RealmCoopResult> {
+        RealmManager.shared.results(playerId: manager.playerId)
     }
     
     // ステージ記録一覧
