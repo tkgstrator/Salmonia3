@@ -84,7 +84,6 @@ extension RealmManager {
     /// WAVEリザルトを全件返す
     var waves: RealmSwift.Results<RealmCoopWave> {
         return realm.objects(RealmCoopWave.self)
-            .filter("ANY result.pid=%@", manager.account.nsaid)
             .sorted(byKeyPath: "goldenIkuraNum", ascending: false)
     }
     
