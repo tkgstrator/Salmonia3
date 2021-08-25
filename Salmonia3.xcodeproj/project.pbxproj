@@ -420,11 +420,11 @@
 		1059416525FA49E500C32D21 /* Salmonia3 */ = {
 			isa = PBXGroup;
 			children = (
-				1059416625FA49E500C32D21 /* Salmonia3App.swift */,
-				1059416825FA49E500C32D21 /* ContentView.swift */,
 				1090C6A6263E902B000DD54C /* Salmonia3.entitlements */,
 				10D0177D26C0985F000DCA1B /* Configuration.storekit */,
 				108C04072659847D008D2D8C /* GoogleService-Info.plist */,
+				1059416625FA49E500C32D21 /* Salmonia3App.swift */,
+				1059416825FA49E500C32D21 /* ContentView.swift */,
 				10094BBA26CEA222001ACBDF /* Manager */,
 				107F9B3A2614A8CA001581C7 /* Views */,
 				10CF09F825FB9BEE00D2EEB1 /* Realm */,
@@ -1108,7 +1108,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1135,7 +1135,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
