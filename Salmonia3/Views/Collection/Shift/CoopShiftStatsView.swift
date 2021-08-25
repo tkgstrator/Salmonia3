@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIX
 
 struct CoopShiftStatsView: View {
     
@@ -14,37 +15,34 @@ struct CoopShiftStatsView: View {
     var startTime: Int
 
     var body: some View {
-        TabView(selection: $selection) {
-            StatsView(startTime: startTime, stats: stats)
-                .tabItem {
-                    Image(systemName: "info.circle")
-                }
-                .tag(0)
-            // 記録が0でないなら
-            if stats.overview.jobNum != nil {
-                StatsChartView(stats: stats)
-                    .tabItem {
-                        Image(systemName: "chart.pie")
-                    }
-                    .tag(1)
-                StatsWaveView(stats: stats)
-                    .tabItem {
-                        Image(systemName: "moon.stars")
-                    }
-                    .tag(2)
-                // ランダムブキがあるなら表示
-                if RealmManager.shared.shift(startTime: startTime).rareWeapon != nil {
+        switch RealmManager.shared.shiftTimeList(nsaid: manager.playerId).contains(startTime) {
+        case true:
+            switch RealmManager.shared.shift(startTime: startTime).rareWeapon != nil {
+            case true:
+                PaginationView {
+                    StatsView(startTime: startTime, stats: stats)
+                    StatsChartView(stats: stats)
+                    StatsWaveView(stats: stats)
                     StatsWeaponView(stats: stats)
-                        .tabItem {
-                            Image(systemName: "questionmark")
-                        }
-                        .tag(3)
+                }
+                .navigationTitle(.TITLE_SHIFT_STATS)
+                .onAppear {
+                    stats = CoopShiftStats(startTime: startTime)
+                }
+            case false:
+                PaginationView {
+                    StatsView(startTime: startTime, stats: stats)
+                    StatsChartView(stats: stats)
+                    StatsWaveView(stats: stats)
+                }
+                .navigationTitle(.TITLE_SHIFT_STATS)
+                .onAppear {
+                    stats = CoopShiftStats(startTime: startTime)
                 }
             }
+        case false:
+            StatsView(startTime: startTime, stats: stats)
+                .navigationTitle(.TITLE_SHIFT_STATS)
         }
-        .onAppear {
-            stats = CoopShiftStats(startTime: startTime)
-        }
-        .navigationTitle(.TITLE_SHIFT_STATS)
     }
 }
