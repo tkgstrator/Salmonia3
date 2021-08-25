@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIX
 
 fileprivate var formatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -19,15 +20,12 @@ struct CoopResultView: View {
     var result: RealmCoopResult
 
     var body: some View {
-        TabView {
+        PaginationView {
             CoopResultOverview(isVisible: $isVisible, result: result)
                 .padding(.bottom, 50)
-                .tag(0)
             CoopPlayerResultView(isVisible: $isVisible, result: result)
-                .tag(1)
         }
         .background(Color.black.edgesIgnoringSafeArea(.all))
-        .tabViewStyle(PageTabViewStyle())
         .navigationBarTitleDisplayMode(.inline)
     }
 }
