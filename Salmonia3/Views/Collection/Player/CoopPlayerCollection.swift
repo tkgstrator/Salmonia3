@@ -6,22 +6,32 @@
 //
 
 import SwiftUI
+import SwiftUIX
 import SwiftyUI
 import RealmSwift
 import URLImage
 
 struct CoopPlayerCollection: View {
     @EnvironmentObject var main: CoreRealmCoop
+    @State var playerName: String = ""
     
     var body: some View {
         List {
-            ForEach(main.players) { player in
+            ForEach(!playerName.isEmpty ? main.players.filter("nickname CONTAINS %@", playerName) : main.players) { player in
                 NavigationLink(destination: PlayerResultsView(player: player)) {
                     PlayerOverview(player: player)
                 }
             }
         }
         .navigationTitle(.TITLE_PLAYER_COLLECTION)
+        .navigationSearchBar({
+            SearchBar("ユーザ名", text: $playerName)
+                .searchBarStyle(.prominent)
+                .onCancel {
+                    playerName.removeAll()
+                }
+        })
+        .navigationSearchBarHiddenWhenScrolling(true)
     }
 }
 

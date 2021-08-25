@@ -25,6 +25,7 @@ struct CoopShiftStatsView: View {
                     StatsWaveView(stats: stats)
                     StatsWeaponView(stats: stats)
                 }
+                .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle(.TITLE_SHIFT_STATS)
                 .onAppear {
                     stats = CoopShiftStats(startTime: startTime)
@@ -35,6 +36,7 @@ struct CoopShiftStatsView: View {
                     StatsChartView(stats: stats)
                     StatsWaveView(stats: stats)
                 }
+                .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle(.TITLE_SHIFT_STATS)
                 .onAppear {
                     stats = CoopShiftStats(startTime: startTime)
@@ -42,6 +44,7 @@ struct CoopShiftStatsView: View {
             }
         case false:
             StatsView(startTime: startTime, stats: stats)
+                .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle(.TITLE_SHIFT_STATS)
         }
     }
