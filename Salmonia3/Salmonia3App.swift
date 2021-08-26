@@ -34,7 +34,8 @@ struct Salmonia3App: SwiftUI.App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LaunchScreenView()
+//            ContentView()
                 .environment(\.lineLimit, 1)
                 .environment(\.minimumScaleFactor, 0.5)
                 .environment(\.imageScale, .large)
@@ -49,6 +50,7 @@ struct Salmonia3App: SwiftUI.App {
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = true
+    var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         initFirebaseMobileAds()

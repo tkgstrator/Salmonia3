@@ -99,6 +99,7 @@ struct PlayerOverview: View {
         
     }
 }
+
 struct CoopPlayerCollection_Previews: PreviewProvider {
     static var previews: some View {
         CoopPlayerCollection()
