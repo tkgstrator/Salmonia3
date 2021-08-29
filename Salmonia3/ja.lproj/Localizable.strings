@@ -188,3 +188,5 @@
 "rush"="ラッシュ";
 "the-mothership"="ハコビヤ襲来";
 "water-levels"="-";
+"SETTING_LOGOUT_ALL"="全アカウントをログアウト";
+"TEXT_ALL_LOGOUT"="ログイン済みの全てのアカウントをログアウトします";

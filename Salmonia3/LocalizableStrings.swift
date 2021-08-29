@@ -133,6 +133,8 @@ class LocalizableStrings {
         case SETTING_SYSTEM
         case SETTING_UPDATE_NAME
         case SETTING_UPLOAD
+        case SETTING_LOGOUT_ALL
+        case TEXT_ALL_LOGOUT
         case SHIFT_SCHEDULE
         case SUPPLIED_WEAPONS
         case TEXT_CONFIRM
