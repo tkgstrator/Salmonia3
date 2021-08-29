@@ -34,8 +34,7 @@ struct Salmonia3App: SwiftUI.App {
 
     var body: some Scene {
         WindowGroup {
-            LaunchScreenView()
-//            ContentView()
+            ContentView()
                 .environment(\.lineLimit, 1)
                 .environment(\.minimumScaleFactor, 0.5)
                 .environment(\.imageScale, .large)

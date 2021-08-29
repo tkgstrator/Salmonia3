@@ -173,3 +173,5 @@
 "rush"="Rush";
 "the-mothership"="The Mothership";
 "water-levels"="-";
+"SETTING_LOGOUT_ALL"="Sign out";
+"TEXT_ALL_LOGOUT"="Sign out all accounts";

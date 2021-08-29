@@ -10,7 +10,7 @@ import LocalAuthentication
 
 struct DetailView: View {
     @EnvironmentObject var appManager: AppManager
-    @State var isToggle: [Bool] = Array(repeating: false, count: 2)
+    @State var isToggle: [Bool] = Array(repeating: false, count: 3)
     @State var isWarning: Bool = false
     @State private var warning: Warning?
     
@@ -38,8 +38,15 @@ struct DetailView: View {
                         warning = .signin
                     }
                 ))
-                Toggle(LocalizableStrings.Key.SETTING_ERASE_DATA.rawValue.localized, isOn: .init(
+                Toggle(LocalizableStrings.Key.SETTING_LOGOUT_ALL.rawValue.localized, isOn: .init(
                     get: { isToggle[1] },
+                    set: {
+                        let _ = $0
+                        warning = .logout
+                    }
+                ))
+                Toggle(LocalizableStrings.Key.SETTING_ERASE_DATA.rawValue.localized, isOn: .init(
+                    get: { isToggle[2] },
                     set: {
                         let _ = $0
                         warning = .erase
@@ -65,6 +72,9 @@ struct DetailView: View {
             try? RealmManager.shared.eraseAllRecord()
         case .signin:
             appManager.isFirstLaunch = true
+        case .logout:
+            manager.deleteAllAccounts()
+            appManager.isFirstLaunch = true
         }
     }
 }
@@ -83,6 +93,7 @@ private enum Warning: Int, Error, Identifiable {
     var id: Int { rawValue }
     case erase  = 0
     case signin = 1
+    case logout = 2
 }
 
 extension Warning: LocalizedError {
@@ -92,6 +103,8 @@ extension Warning: LocalizedError {
             return LocalizableStrings.Key.TEXT_ERASE_DATA.rawValue.localized
         case .signin:
             return LocalizableStrings.Key.TEXT_RE_SIGN_IN.rawValue.localized
+        case .logout:
+            return LocalizableStrings.Key.TEXT_ALL_LOGOUT.rawValue.localized
         }
     }
 }
