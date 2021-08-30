@@ -110,7 +110,13 @@ struct TopMenu: View {
     }
     
     var SalmonStats: some View {
-        Button(action: { selectedURL = URL(string: "https://salmon-stats-api.yuki.games/auth/twitter") }, label: { Text(.SALMON_STATS) })
+        Button(action: {
+            if let _ = manager.apiToken {
+                selectedURL = URL(string: "https://salmon-stats.yuki.games/players/\(manager.playerId)")
+            } else {
+                selectedURL = URL(string: "https://salmon-stats-api.yuki.games/auth/twitter")
+            }
+        }, label: { Text(.SALMON_STATS) })
     }
     
     var SalmonRecords: some View {
