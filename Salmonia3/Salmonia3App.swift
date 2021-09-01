@@ -122,8 +122,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         FirebaseApp.configure()
         ATTrackingManager.requestTrackingAuthorization(completionHandler: { _ in
             GADMobileAds.sharedInstance().start(completionHandler: nil)
-            print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
         })
+        print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
     }
     
     private func initSwiftyStoreKit() {
