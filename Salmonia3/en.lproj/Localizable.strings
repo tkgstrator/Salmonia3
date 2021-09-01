@@ -120,6 +120,7 @@
 "SETTING_LISTSTYLE"="Results Style";
 "SETTING_LOADING_TYPE" = "Indicator Type";
 "SETTING_LOADING_TYPE" = "Loading Indicator";
+"SETTING_LOGOUT_ALL"="Sign out";
 "SETTING_LOG_SEND"="Accept log to be sent";
 "SETTING_PAID_PRODUCT"="Paid Product";
 "SETTING_PRIVACY"="Privacy Poricy";
@@ -137,6 +138,7 @@
 "STYLE_PLAIN"="Plain";
 "STYLE_SIDEBAR"="Sidebar";
 "SUPPLIED_WEAPONS"="Supplied Weapons";
+"TEXT_ALL_LOGOUT"="Sign out all accounts";
 "TEXT_CONFIRM"="Are you sure?";
 "TEXT_ERASE_DATA"="It may take a minute to remove all data with this device. This operation can not undone.";
 "TEXT_IMPORT"="This operation may take a long time.";
@@ -173,5 +175,3 @@
 "rush"="Rush";
 "the-mothership"="The Mothership";
 "water-levels"="-";
-"SETTING_LOGOUT_ALL"="Sign out";
-"TEXT_ALL_LOGOUT"="Sign out all accounts";

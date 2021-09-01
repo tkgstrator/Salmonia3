@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10023BD726DE7136007BB899 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10023B9226DE6FA9007BB899 /* WidgetKit.framework */; };
+		10023BD826DE7136007BB899 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10023B9426DE6FA9007BB899 /* SwiftUI.framework */; };
+		10023BDB26DE7136007BB899 /* shiftwidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10023BDA26DE7136007BB899 /* shiftwidget.swift */; };
+		10023BDE26DE7137007BB899 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10023BDD26DE7137007BB899 /* Assets.xcassets */; };
+		10023BE026DE7137007BB899 /* shiftwidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 10023BDC26DE7136007BB899 /* shiftwidget.intentdefinition */; };
+		10023BE126DE7137007BB899 /* shiftwidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 10023BDC26DE7136007BB899 /* shiftwidget.intentdefinition */; };
+		10023BE426DE7137007BB899 /* shiftwidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 10023BD626DE7136007BB899 /* shiftwidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		10023BEC26DF26ED007BB899 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10023BEB26DF26ED007BB899 /* Schedule.swift */; };
+		10023BEF26DF2760007BB899 /* coop.json in Resources */ = {isa = PBXBuildFile; fileRef = 10023BEE26DF2760007BB899 /* coop.json */; };
+		10023BF126DF2A9D007BB899 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10023BEB26DF26ED007BB899 /* Schedule.swift */; };
 		10039F9626A45EA300B1546A /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10039F9526A45EA300B1546A /* GoogleMobileAds.xcframework */; };
 		10094BB926CE9FC4001ACBDF /* SwiftyUI in Frameworks */ = {isa = PBXBuildFile; productRef = 10094BB826CE9FC4001ACBDF /* SwiftyUI */; };
 		101C77CD26496FA6005D603C /* CoopPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C77CC26496FA6005D603C /* CoopPlayerView.swift */; };
@@ -45,6 +55,9 @@
 		104AA7DC2605E0C8007BDC24 /* GoogleMobileAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104AA7DB2605E0C8007BDC24 /* GoogleMobileAds.swift */; };
 		104BD608261C93630013CD27 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BD607261C93630013CD27 /* KeyStorage.swift */; };
 		104BD620261C98800013CD27 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 104BD61F261C98800013CD27 /* URLImage */; };
+		104DDC8326DF37700086B91E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104DDC8226DF37700086B91E /* Image.swift */; };
+		104DDC8426DF37700086B91E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104DDC8226DF37700086B91E /* Image.swift */; };
+		104DDC8526DF7E5E0086B91E /* Splatfont2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10377F6325FCD5CD00536A94 /* Splatfont2.ttf */; };
 		1052C2D026550E7800D3B9A9 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1052C2CF26550E7800D3B9A9 /* DetailView.swift */; };
 		10539190266BD8B5001025E1 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1053918F266BD8B5001025E1 /* HelpView.swift */; };
 		1053919C266D1703001025E1 /* RealmPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1053919B266D1703001025E1 /* RealmPlayer.swift */; };
@@ -77,7 +90,9 @@
 		1081B766269C77C40063D947 /* SwiftyAPNGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1081B765269C77C40063D947 /* SwiftyAPNGKit */; };
 		1081B769269D1FD60063D947 /* RealmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1081B768269D1FD60063D947 /* RealmObjects.swift */; };
 		1083857C265922700099475F /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 1083857B265922700099475F /* SwiftyBeaver */; };
-		108C04082659847D008D2D8C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 108C04072659847D008D2D8C /* GoogleService-Info.plist */; };
+		108BFD9C26DDC37800652271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 108BFD9B26DDC37800652271 /* GoogleService-Info.plist */; };
+		108BFD9D26DDC37800652271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 108BFD9B26DDC37800652271 /* GoogleService-Info.plist */; };
+		108BFD9E26DDC37800652271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 108BFD9B26DDC37800652271 /* GoogleService-Info.plist */; };
 		109EF35E260CAB7F00076157 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF35D260CAB7F00076157 /* ProductView.swift */; };
 		109EF375260CB01E00076157 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF374260CB01E00076157 /* ButtonStyle.swift */; };
 		10A08032262070A200BFDF59 /* CoopShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A08031262070A200BFDF59 /* CoopShiftStats.swift */; };
@@ -107,6 +122,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		10023BE226DE7137007BB899 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1059415B25FA49E500C32D21 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 10023BD526DE7136007BB899;
+			remoteInfo = shiftwidgetExtension;
+		};
 		1059417525FA49E900C32D21 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1059415B25FA49E500C32D21 /* Project object */;
@@ -123,7 +145,30 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		10023BA226DE6FAB007BB899 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				10023BE426DE7137007BB899 /* shiftwidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		10023B9226DE6FA9007BB899 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		10023B9426DE6FA9007BB899 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		10023BD626DE7136007BB899 /* shiftwidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = shiftwidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		10023BDA26DE7136007BB899 /* shiftwidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shiftwidget.swift; sourceTree = "<group>"; };
+		10023BDC26DE7136007BB899 /* shiftwidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = shiftwidget.intentdefinition; sourceTree = "<group>"; };
+		10023BDD26DE7137007BB899 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		10023BDF26DE7137007BB899 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10023BEB26DF26ED007BB899 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		10023BEE26DF2760007BB899 /* coop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = coop.json; sourceTree = "<group>"; };
 		10039F9526A45EA300B1546A /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleMobileAds.xcframework; sourceTree = "<group>"; };
 		10094BB726CE9F13001ACBDF /* SwiftyUI */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftyUI; path = ../SwiftyUI; sourceTree = "<group>"; };
 		100F564A262C308F00A1D1D0 /* SalmonStats */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SalmonStats; path = ../SalmonStats; sourceTree = "<group>"; };
@@ -159,6 +204,7 @@
 		10448BDC26652E7B00FFB553 /* SRPower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRPower.swift; sourceTree = "<group>"; };
 		104AA7DB2605E0C8007BDC24 /* GoogleMobileAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMobileAds.swift; sourceTree = "<group>"; };
 		104BD607261C93630013CD27 /* KeyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyStorage.swift; sourceTree = "<group>"; };
+		104DDC8226DF37700086B91E /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		1052C2CF26550E7800D3B9A9 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		1053918F266BD8B5001025E1 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		1053919B266D1703001025E1 /* RealmPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPlayer.swift; sourceTree = "<group>"; };
@@ -192,7 +238,7 @@
 		1079EAD12647E3540085008C /* CoopRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopRecordView.swift; sourceTree = "<group>"; };
 		107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopStats.swift; sourceTree = "<group>"; };
 		1081B768269D1FD60063D947 /* RealmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
-		108C04072659847D008D2D8C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		108BFD9B26DDC37800652271 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1090C681263DF125000DD54C /* SplatNet2 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SplatNet2; path = ../SplatNet2; sourceTree = "<group>"; };
 		1090C6A6263E902B000DD54C /* Salmonia3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Salmonia3.entitlements; sourceTree = "<group>"; };
 		109EF35D260CAB7F00076157 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
@@ -223,6 +269,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		10023BD326DE7136007BB899 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10023BD826DE7136007BB899 /* SwiftUI.framework in Frameworks */,
+				10023BD726DE7136007BB899 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1059416025FA49E500C32D21 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -267,6 +322,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10023BD926DE7136007BB899 /* Shiftwidget */ = {
+			isa = PBXGroup;
+			children = (
+				10023BEA26DF26E0007BB899 /* SplatNet2 */,
+				10023BDA26DE7136007BB899 /* shiftwidget.swift */,
+				10023BDC26DE7136007BB899 /* shiftwidget.intentdefinition */,
+				10023BDD26DE7137007BB899 /* Assets.xcassets */,
+				10023BDF26DE7137007BB899 /* Info.plist */,
+			);
+			path = Shiftwidget;
+			sourceTree = "<group>";
+		};
+		10023BEA26DF26E0007BB899 /* SplatNet2 */ = {
+			isa = PBXGroup;
+			children = (
+				10023BED26DF2752007BB899 /* Resources */,
+				10023BEB26DF26ED007BB899 /* Schedule.swift */,
+				104DDC8226DF37700086B91E /* Image.swift */,
+			);
+			path = SplatNet2;
+			sourceTree = "<group>";
+		};
+		10023BED26DF2752007BB899 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				10023BEE26DF2760007BB899 /* coop.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		10094BBA26CEA222001ACBDF /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,6 +485,7 @@
 				1059416525FA49E500C32D21 /* Salmonia3 */,
 				1059417725FA49E900C32D21 /* Salmonia3Tests */,
 				1059418225FA49E900C32D21 /* Salmonia3UITests */,
+				10023BD926DE7136007BB899 /* Shiftwidget */,
 				1059416425FA49E500C32D21 /* Products */,
 				F26C9AF62F71E5A45BADB2BA /* Pods */,
 				CC3D58FA9034E515205807EE /* Frameworks */,
@@ -412,6 +498,7 @@
 				1059416325FA49E500C32D21 /* Salmonia3.app */,
 				1059417425FA49E900C32D21 /* Salmonia3Tests.xctest */,
 				1059417F25FA49E900C32D21 /* Salmonia3UITests.xctest */,
+				10023BD626DE7136007BB899 /* shiftwidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -421,9 +508,9 @@
 			children = (
 				1090C6A6263E902B000DD54C /* Salmonia3.entitlements */,
 				10D0177D26C0985F000DCA1B /* Configuration.storekit */,
-				108C04072659847D008D2D8C /* GoogleService-Info.plist */,
 				1059416625FA49E500C32D21 /* Salmonia3App.swift */,
 				1059416825FA49E500C32D21 /* ContentView.swift */,
+				108BFD9B26DDC37800652271 /* GoogleService-Info.plist */,
 				10094BBA26CEA222001ACBDF /* Manager */,
 				107F9B3A2614A8CA001581C7 /* Views */,
 				10CF09F825FB9BEE00D2EEB1 /* Realm */,
@@ -601,6 +688,8 @@
 				10039F9526A45EA300B1546A /* GoogleMobileAds.xcframework */,
 				7B6419A3A4A135F484294BF5 /* Pods_Salmonia3.framework */,
 				F4CFAB4D922D35088435EF26 /* Pods_Salmonia3Tests.framework */,
+				10023B9226DE6FA9007BB899 /* WidgetKit.framework */,
+				10023B9426DE6FA9007BB899 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -619,6 +708,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		10023BD526DE7136007BB899 /* shiftwidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10023BE526DE7137007BB899 /* Build configuration list for PBXNativeTarget "shiftwidgetExtension" */;
+			buildPhases = (
+				10023BD226DE7136007BB899 /* Sources */,
+				10023BD326DE7136007BB899 /* Frameworks */,
+				10023BD426DE7136007BB899 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = shiftwidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = shiftwidgetExtension;
+			productReference = 10023BD626DE7136007BB899 /* shiftwidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		1059416225FA49E500C32D21 /* Salmonia3 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1059418825FA49E900C32D21 /* Build configuration list for PBXNativeTarget "Salmonia3" */;
@@ -628,10 +736,12 @@
 				1059416025FA49E500C32D21 /* Frameworks */,
 				1059416125FA49E500C32D21 /* Resources */,
 				1AC99CC90BF85D86A9A4136F /* [CP] Embed Pods Frameworks */,
+				10023BA226DE6FAB007BB899 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				10023BE326DE7137007BB899 /* PBXTargetDependency */,
 			);
 			name = Salmonia3;
 			packageProductDependencies = (
@@ -700,10 +810,13 @@
 		1059415B25FA49E500C32D21 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Magi Corporation";
 				TargetAttributes = {
+					10023BD526DE7136007BB899 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
 					1059416225FA49E500C32D21 = {
 						CreatedOnToolsVersion = 12.4;
 					};
@@ -746,11 +859,22 @@
 				1059416225FA49E500C32D21 /* Salmonia3 */,
 				1059417325FA49E900C32D21 /* Salmonia3Tests */,
 				1059417E25FA49E900C32D21 /* Salmonia3UITests */,
+				10023BD526DE7136007BB899 /* shiftwidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		10023BD426DE7136007BB899 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				104DDC8526DF7E5E0086B91E /* Splatfont2.ttf in Resources */,
+				10023BEF26DF2760007BB899 /* coop.json in Resources */,
+				10023BDE26DE7137007BB899 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1059416125FA49E500C32D21 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -763,9 +887,9 @@
 				10377F7725FCD8CD00536A94 /* Splatfont2.ttf in Resources */,
 				1059416E25FA49E900C32D21 /* Preview Assets.xcassets in Resources */,
 				1059416B25FA49E900C32D21 /* Assets.xcassets in Resources */,
+				108BFD9C26DDC37800652271 /* GoogleService-Info.plist in Resources */,
 				102C762E265A718600AEE20F /* LoadingIka.png in Resources */,
 				10D0177E26C0985F000DCA1B /* Configuration.storekit in Resources */,
-				108C04082659847D008D2D8C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -773,6 +897,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				108BFD9D26DDC37800652271 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -780,6 +905,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				108BFD9E26DDC37800652271 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -867,6 +993,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		10023BD226DE7136007BB899 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10023BF126DF2A9D007BB899 /* Schedule.swift in Sources */,
+				104DDC8426DF37700086B91E /* Image.swift in Sources */,
+				10023BDB26DE7136007BB899 /* shiftwidget.swift in Sources */,
+				10023BE026DE7137007BB899 /* shiftwidget.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1059415F25FA49E500C32D21 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -895,6 +1032,7 @@
 				10B62CA32669CC1400916A64 /* CoopWaveCollection.swift in Sources */,
 				1052C2D026550E7800D3B9A9 /* DetailView.swift in Sources */,
 				10377F9925FD09FF00536A94 /* LoggingThread.swift in Sources */,
+				10023BEC26DF26ED007BB899 /* Schedule.swift in Sources */,
 				105391AC266D23C4001025E1 /* CoopPlayerCollection.swift in Sources */,
 				105941A825FA4F9500C32D21 /* SalmonLoginMenu.swift in Sources */,
 				1059416725FA49E500C32D21 /* Salmonia3App.swift in Sources */,
@@ -920,6 +1058,7 @@
 				10CD8544268D40AA00A00162 /* CoopShiftStatsView.swift in Sources */,
 				10D2E1622655618B00AE584E /* LocalizableStrings.swift in Sources */,
 				10AD114D2600EB18008C0E64 /* Error.swift in Sources */,
+				10023BE126DE7137007BB899 /* shiftwidget.intentdefinition in Sources */,
 				105941AD25FA500500C32D21 /* TopMenu.swift in Sources */,
 				10D2E15A265557B200AE584E /* View.swift in Sources */,
 				10567DD8264ECDD0002654D3 /* SplatNet2.swift in Sources */,
@@ -928,6 +1067,7 @@
 				101C77CD26496FA6005D603C /* CoopPlayerView.swift in Sources */,
 				10682EED264FEEE80035CC68 /* StatsWeaponView.swift in Sources */,
 				1076C80C268D52DA00C43987 /* Wave.swift in Sources */,
+				104DDC8326DF37700086B91E /* Image.swift in Sources */,
 				1059419725FA4C0C00C32D21 /* Color.swift in Sources */,
 				1053919C266D1703001025E1 /* RealmPlayer.swift in Sources */,
 				109EF375260CB01E00076157 /* ButtonStyle.swift in Sources */,
@@ -957,6 +1097,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		10023BE326DE7137007BB899 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 10023BD526DE7136007BB899 /* shiftwidgetExtension */;
+			targetProxy = 10023BE226DE7137007BB899 /* PBXContainerItemProxy */;
+		};
 		1059417625FA49E900C32D21 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1059416225FA49E500C32D21 /* Salmonia3 */;
@@ -982,6 +1127,51 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		10023BE626DE7137007BB899 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D9HU6JZF2Q;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = shiftwidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3.shiftwidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		10023BE726DE7137007BB899 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D9HU6JZF2Q;
+				INFOPLIST_FILE = shiftwidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3.shiftwidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		1059418625FA49E900C32D21 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1104,6 +1294,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 56AB289C0D87612FB8D00999 /* Pods-Salmonia3.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
@@ -1131,6 +1322,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CA0FB8B78274FB434279E074 /* Pods-Salmonia3.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
@@ -1242,6 +1434,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		10023BE526DE7137007BB899 /* Build configuration list for PBXNativeTarget "shiftwidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10023BE626DE7137007BB899 /* Debug */,
+				10023BE726DE7137007BB899 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1059415E25FA49E500C32D21 /* Build configuration list for PBXProject "Salmonia3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
