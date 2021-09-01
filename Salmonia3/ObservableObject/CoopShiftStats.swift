@@ -61,7 +61,7 @@ final class CoopShiftStats: ObservableObject {
     private func getWeaponData(startTime: Int, nsaid: [String]) -> [ResultWeapon] {
         let shift: RealmCoopShift = RealmManager.shared.shift(startTime: startTime)
         let suppliedWepons: [Int] = RealmManager.shared.playerResults(startTime: startTime).flatMap{ $0.weaponList }
-        let allWeaponLists: [Int] = Array(WeaponType.allCases.map{ $0.rawValue })
+        let allWeaponLists: [Int] = IconWeapon.allCases.compactMap({ Int($0.rawValue) })
 
         switch shift.weaponList.contains(-1) {
             case true:
@@ -142,8 +142,7 @@ final class CoopShiftStats: ObservableObject {
         var id: String = UUID().uuidString
         var weaponId: Int
         var count: Int = 0
-        var image: String { String(weaponId).imageURL }
-        
+
         init(weaponId: Int, count: Int) {
             self.weaponId = weaponId
             self.count = count

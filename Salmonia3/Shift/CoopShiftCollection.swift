@@ -89,7 +89,7 @@ struct CoopShift: View {
     var InfoWeapon: some View {
         HStack {
             VStack(spacing: 0) {
-                Image(StageType(rawValue: shift.stageId)!.md5)
+                Image(stageId: shift.stageId)
                     .resizable().frame(width: 112, height: 63)
                     .clipShape(RoundedRectangle(cornerRadius: 8.0))
                 Text(StageType(rawValue: shift.stageId)!.name.localized)
@@ -118,12 +118,12 @@ struct CoopShift: View {
                     AnyView(
                         LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 30, maximum: 50)), count: 5), alignment: .center, spacing: 0) {
                             ForEach(shift.weaponList.indices) { idx in
-                                Image(String(shift.weaponList[idx]).imageURL)
+                                Image(weaponId: shift.weaponList[idx])
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(maxWidth: 45)
                             }
-                            Image(String(shift.rareWeapon.intValue).imageURL)
+                            Image(weaponId: shift.rareWeapon!)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(maxWidth: 45)
@@ -135,7 +135,7 @@ struct CoopShift: View {
                     AnyView(
                         LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 30, maximum: 50)), count: 4), alignment: .center, spacing: 0) {
                             ForEach(shift.weaponList.indices) { idx in
-                                Image(String(shift.weaponList[idx]).imageURL)
+                                Image(weaponId: shift.weaponList[idx])
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(maxWidth: 45)

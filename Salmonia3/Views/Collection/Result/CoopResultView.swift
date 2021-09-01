@@ -78,7 +78,7 @@ struct CoopResultOverview: View {
     // MARK: 概要を表示するビュー
     var ResultOverview: some View {
         ZStack(alignment: .center) {
-            Image(StageType(rawValue: result.stageId)!.md5)
+            Image(stageId: result.stageId)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .clipShape(RoundedRectangle(cornerRadius: 8.0))

@@ -24,10 +24,8 @@ struct Provider: IntentTimelineProvider {
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         let timeIntervalSince1970 = Int(Date().timeIntervalSince1970)
         let currentTime: Date = Date(timeIntervalSince1970: Double(timeIntervalSince1970 - timeIntervalSince1970 % 10))
-        let entryDate: [Date] = (0 ..< 6).compactMap{( Calendar.current.date(byAdding: .second, value: $0 * 10, to: currentTime) )}
+        let entryDate: [Date] = (0 ..< 60).compactMap{( Calendar.current.date(byAdding: .second, value: $0, to: currentTime) )}
         let entries: [ShiftSchedule] = entryDate.map({ ShiftSchedule(date: $0, configuration: ConfigurationIntent())})
-        
-        print(SplatNet2(userAgent: "Widget").account.coop.jobNum)
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
     }
@@ -44,20 +42,17 @@ struct ShiftSchedule: TimelineEntry {
         self.date = currentTime
         self.configuration = configuration
         self.schedule = WidgetManager.shared.getLatestShiftSchedule(currentTime: currentTime)
-        let formatter = DateComponentsFormatter()
-        formatter.unitsStyle = .positional
-        formatter.allowedUnits = [.hour, .minute, .second]
-    
+
         // 差分を計算
         if currentTime >= schedule.startTime {
             // 開催中
             let reminder = Calendar(identifier: .gregorian).dateComponents([.second], from: currentTime, to: schedule.endTime)
-            self.remindTime = formatter.string(from: reminder)!
+            self.remindTime = WidgetManager.shared.formatter.string(from: reminder)!
             self.isScheduleHeld = true
         } else {
             // 開催待ち
             let reminder = Calendar(identifier: .gregorian).dateComponents([.second], from: currentTime, to: schedule.startTime)
-            self.remindTime = formatter.string(from: reminder)!
+            self.remindTime = WidgetManager.shared.formatter.string(from: reminder)!
             self.isScheduleHeld = false
         }
     }
