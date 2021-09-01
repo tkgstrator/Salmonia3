@@ -30,7 +30,6 @@
 		1024661625FDFF0F004DC043 /* ImageResize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024661525FDFF0F004DC043 /* ImageResize.swift */; };
 		1024661B25FE0929004DC043 /* RealmCoopShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024661A25FE0929004DC043 /* RealmCoopShift.swift */; };
 		1024662525FE4012004DC043 /* CoopShiftCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024662425FE4012004DC043 /* CoopShiftCollection.swift */; };
-		1024662A25FE50A0004DC043 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024662925FE50A0004DC043 /* Int.swift */; };
 		1024663E26009956004DC043 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024663D26009956004DC043 /* Grade.swift */; };
 		1024664B2600D55E004DC043 /* StageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024664A2600D55E004DC043 /* StageType.swift */; };
 		1028D37226418EFD0034C075 /* MBCircleProgressBar in Frameworks */ = {isa = PBXBuildFile; productRef = 1028D37126418EFD0034C075 /* MBCircleProgressBar */; };
@@ -55,11 +54,13 @@
 		104AA7DC2605E0C8007BDC24 /* GoogleMobileAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104AA7DB2605E0C8007BDC24 /* GoogleMobileAds.swift */; };
 		104BD608261C93630013CD27 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BD607261C93630013CD27 /* KeyStorage.swift */; };
 		104BD620261C98800013CD27 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 104BD61F261C98800013CD27 /* URLImage */; };
-		104DDC8326DF37700086B91E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104DDC8226DF37700086B91E /* Image.swift */; };
-		104DDC8426DF37700086B91E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104DDC8226DF37700086B91E /* Image.swift */; };
 		104DDC8526DF7E5E0086B91E /* Splatfont2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10377F6325FCD5CD00536A94 /* Splatfont2.ttf */; };
 		104DDC8726DFB5E10086B91E /* SplatNet2 in Frameworks */ = {isa = PBXBuildFile; productRef = 104DDC8626DFB5E10086B91E /* SplatNet2 */; };
 		104DDC8926DFB7040086B91E /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 104DDC8826DFB7040086B91E /* BetterSafariView */; };
+		104DDC8E26DFE2C90086B91E /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104DDC8D26DFE2C90086B91E /* Weapon.swift */; };
+		104DDC9026DFE2E20086B91E /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104DDC8F26DFE2E20086B91E /* Stage.swift */; };
+		104DDC9126DFE32B0086B91E /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104DDC8D26DFE2C90086B91E /* Weapon.swift */; };
+		104DDC9226DFE32B0086B91E /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104DDC8F26DFE2E20086B91E /* Stage.swift */; };
 		1052C2D026550E7800D3B9A9 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1052C2CF26550E7800D3B9A9 /* DetailView.swift */; };
 		10539190266BD8B5001025E1 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1053918F266BD8B5001025E1 /* HelpView.swift */; };
 		1053919C266D1703001025E1 /* RealmPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1053919B266D1703001025E1 /* RealmPlayer.swift */; };
@@ -81,7 +82,6 @@
 		10682EED264FEEE80035CC68 /* StatsWeaponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682EEC264FEEE80035CC68 /* StatsWeaponView.swift */; };
 		10682EF3264FEF0A0035CC68 /* StatsWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682EF2264FEF0A0035CC68 /* StatsWaveView.swift */; };
 		10682EFB264FEF2A0035CC68 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682EFA264FEF2A0035CC68 /* StatsView.swift */; };
-		10682F01265000590035CC68 /* WeaponType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682F00265000590035CC68 /* WeaponType.swift */; };
 		10682F092650026D0035CC68 /* SpecialType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682F082650026D0035CC68 /* SpecialType.swift */; };
 		10682F112650046D0035CC68 /* SalmonidType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682F102650046D0035CC68 /* SalmonidType.swift */; };
 		1076C80C268D52DA00C43987 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1076C80B268D52DA00C43987 /* Wave.swift */; };
@@ -184,7 +184,6 @@
 		1024661525FDFF0F004DC043 /* ImageResize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResize.swift; sourceTree = "<group>"; };
 		1024661A25FE0929004DC043 /* RealmCoopShift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopShift.swift; sourceTree = "<group>"; };
 		1024662425FE4012004DC043 /* CoopShiftCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftCollection.swift; sourceTree = "<group>"; };
-		1024662925FE50A0004DC043 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		1024663D26009956004DC043 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		102466462600CE27004DC043 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1024664A2600D55E004DC043 /* StageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageType.swift; sourceTree = "<group>"; };
@@ -206,7 +205,8 @@
 		10448BDC26652E7B00FFB553 /* SRPower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRPower.swift; sourceTree = "<group>"; };
 		104AA7DB2605E0C8007BDC24 /* GoogleMobileAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMobileAds.swift; sourceTree = "<group>"; };
 		104BD607261C93630013CD27 /* KeyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyStorage.swift; sourceTree = "<group>"; };
-		104DDC8226DF37700086B91E /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		104DDC8D26DFE2C90086B91E /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
+		104DDC8F26DFE2E20086B91E /* Stage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage.swift; sourceTree = "<group>"; };
 		1052C2CF26550E7800D3B9A9 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		1053918F266BD8B5001025E1 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		1053919B266D1703001025E1 /* RealmPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPlayer.swift; sourceTree = "<group>"; };
@@ -233,7 +233,6 @@
 		10682EEC264FEEE80035CC68 /* StatsWeaponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsWeaponView.swift; sourceTree = "<group>"; };
 		10682EF2264FEF0A0035CC68 /* StatsWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsWaveView.swift; sourceTree = "<group>"; };
 		10682EFA264FEF2A0035CC68 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
-		10682F00265000590035CC68 /* WeaponType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponType.swift; sourceTree = "<group>"; };
 		10682F082650026D0035CC68 /* SpecialType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialType.swift; sourceTree = "<group>"; };
 		10682F102650046D0035CC68 /* SalmonidType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonidType.swift; sourceTree = "<group>"; };
 		1076C80B268D52DA00C43987 /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
@@ -343,7 +342,6 @@
 			children = (
 				10023BED26DF2752007BB899 /* Resources */,
 				10023BEB26DF26ED007BB899 /* Schedule.swift */,
-				104DDC8226DF37700086B91E /* Image.swift */,
 			);
 			path = SplatNet2;
 			sourceTree = "<group>";
@@ -437,7 +435,6 @@
 			children = (
 				10377FA325FD10FE00536A94 /* Optional.swift */,
 				1024661025FDF411004DC043 /* String.swift */,
-				1024662925FE50A0004DC043 /* Int.swift */,
 				104BD607261C93630013CD27 /* KeyStorage.swift */,
 				10D2E1542655548F00AE584E /* Text.swift */,
 				10D2E159265557B200AE584E /* View.swift */,
@@ -470,6 +467,15 @@
 				104AA7DB2605E0C8007BDC24 /* GoogleMobileAds.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		104DDC8A26DFE2500086B91E /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				104DDC8D26DFE2C90086B91E /* Weapon.swift */,
+				104DDC8F26DFE2E20086B91E /* Stage.swift */,
+			);
+			path = Image;
 			sourceTree = "<group>";
 		};
 		1053919A266D16E4001025E1 /* Player */ = {
@@ -614,11 +620,11 @@
 		10682EFF265000400035CC68 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
+				104DDC8A26DFE2500086B91E /* Image */,
 				1024663D26009956004DC043 /* Grade.swift */,
 				1024664A2600D55E004DC043 /* StageType.swift */,
 				10AD114C2600EB18008C0E64 /* Error.swift */,
 				10567DD7264ECDD0002654D3 /* SplatNet2.swift */,
-				10682F00265000590035CC68 /* WeaponType.swift */,
 				10682F082650026D0035CC68 /* SpecialType.swift */,
 				10682F102650046D0035CC68 /* SalmonidType.swift */,
 				10B62CAE2669D48E00916A64 /* Appearance.swift */,
@@ -1003,8 +1009,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				104DDC9126DFE32B0086B91E /* Weapon.swift in Sources */,
+				104DDC9226DFE32B0086B91E /* Stage.swift in Sources */,
 				10023BF126DF2A9D007BB899 /* Schedule.swift in Sources */,
-				104DDC8426DF37700086B91E /* Image.swift in Sources */,
 				10023BDB26DE7136007BB899 /* shiftwidget.swift in Sources */,
 				10023BE026DE7137007BB899 /* shiftwidget.intentdefinition in Sources */,
 			);
@@ -1020,7 +1027,6 @@
 				1079EAD22647E3540085008C /* CoopRecordView.swift in Sources */,
 				10377FA425FD10FE00536A94 /* Optional.swift in Sources */,
 				1024661625FDFF0F004DC043 /* ImageResize.swift in Sources */,
-				1024662A25FE50A0004DC043 /* Int.swift in Sources */,
 				10377F6525FCD63B00536A94 /* Font.swift in Sources */,
 				10539190266BD8B5001025E1 /* HelpView.swift in Sources */,
 				10A75A4B26AC1096005168DD /* StatsChartView.swift in Sources */,
@@ -1028,10 +1034,10 @@
 				10D2E1552655548F00AE584E /* Text.swift in Sources */,
 				10448BDD26652E7B00FFB553 /* SRPower.swift in Sources */,
 				1024663E26009956004DC043 /* Grade.swift in Sources */,
-				10682F01265000590035CC68 /* WeaponType.swift in Sources */,
 				104BD608261C93630013CD27 /* KeyStorage.swift in Sources */,
 				102465F125FDDABD004DC043 /* SettingView.swift in Sources */,
 				10CF09F425FB9BE100D2EEB1 /* RealmCoopResult.swift in Sources */,
+				104DDC9026DFE2E20086B91E /* Stage.swift in Sources */,
 				1059416925FA49E500C32D21 /* ContentView.swift in Sources */,
 				10682EF3264FEF0A0035CC68 /* StatsWaveView.swift in Sources */,
 				104AA7DC2605E0C8007BDC24 /* GoogleMobileAds.swift in Sources */,
@@ -1063,6 +1069,7 @@
 				1031728E262C355500CF8903 /* ImportingView.swift in Sources */,
 				10CD8544268D40AA00A00162 /* CoopShiftStatsView.swift in Sources */,
 				10D2E1622655618B00AE584E /* LocalizableStrings.swift in Sources */,
+				104DDC8E26DFE2C90086B91E /* Weapon.swift in Sources */,
 				10AD114D2600EB18008C0E64 /* Error.swift in Sources */,
 				10023BE126DE7137007BB899 /* shiftwidget.intentdefinition in Sources */,
 				105941AD25FA500500C32D21 /* TopMenu.swift in Sources */,
@@ -1073,7 +1080,6 @@
 				101C77CD26496FA6005D603C /* CoopPlayerView.swift in Sources */,
 				10682EED264FEEE80035CC68 /* StatsWeaponView.swift in Sources */,
 				1076C80C268D52DA00C43987 /* Wave.swift in Sources */,
-				104DDC8326DF37700086B91E /* Image.swift in Sources */,
 				1059419725FA4C0C00C32D21 /* Color.swift in Sources */,
 				1053919C266D1703001025E1 /* RealmPlayer.swift in Sources */,
 				109EF375260CB01E00076157 /* ButtonStyle.swift in Sources */,

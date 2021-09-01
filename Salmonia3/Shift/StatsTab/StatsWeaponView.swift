@@ -18,7 +18,7 @@ struct StatsWeaponView: View {
                 ForEach(stats.weaponData) { weapon in
                     ZStack(alignment: .bottomLeading) {
                         if weapon.count == 0 {
-                            Image(weapon.image)
+                            Image(weaponId: weapon.weaponId)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 50)
@@ -26,7 +26,7 @@ struct StatsWeaponView: View {
                                 .opacity(0.5)
                                 .padding(.all, 5)
                         } else {
-                            Image(weapon.image)
+                            Image(weaponId: weapon.weaponId)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 50)

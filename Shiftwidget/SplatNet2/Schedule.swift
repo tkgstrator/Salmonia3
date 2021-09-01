@@ -38,6 +38,13 @@ public final class WidgetManager {
     private let schedules: [Schedule]
     private let schedulesTime: [Date]
     
+    let formatter: DateComponentsFormatter = {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .positional
+        formatter.allowedUnits = [.hour, .minute, .second]
+        return formatter
+    }()
+    
     public init() {
         do {
             if let json = Bundle.main.url(forResource: "coop", withExtension: "json") {

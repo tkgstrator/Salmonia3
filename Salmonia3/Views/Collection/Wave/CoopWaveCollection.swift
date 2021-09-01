@@ -43,7 +43,7 @@ struct WaveOverview: View {
     var WeaponList: some View {
         LazyVGrid(columns: Array(repeating: .init(.flexible()), count: wave.weaponLists.count), spacing: 0) {
             ForEach(wave.weaponLists.indices, id:\.self) { index in
-                Image(String(wave.weaponLists[index]).imageURL)
+                Image(weaponId: wave.weaponLists[index])
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(minWidth: 30)

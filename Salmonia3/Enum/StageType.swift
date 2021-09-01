@@ -31,19 +31,4 @@ extension StageType {
             return "Ruins of Ark Polaris"
         }
     }
-
-    var md5: String {
-        switch self {
-        case .shakeup:
-            return "00963b1057a02a9ca5b3492aecc38f63"
-        case .shakeship:
-            return "0012a0d09f26225edde5fe2edc3fc015"
-        case .shakehouse:
-            return "dd2e2e1c801d4cf4322736b9aadd91f6"
-        case .shakelift:
-            return "49ca412e830695b6aeb26d74f898a7a5"
-        case .shakeride:
-            return "97d1cf22ecf5769735fd66477ba58ab8"
-        }
-    }
 }

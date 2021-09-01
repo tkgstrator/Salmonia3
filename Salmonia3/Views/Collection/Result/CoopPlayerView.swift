@@ -29,7 +29,7 @@ struct CoopPlayerView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(maxWidth: 35)
                             ForEach(player.weaponList.indices, id: \.self) { index in
-                                Image(String(player.weaponList[index]).imageURL)
+                                Image(weaponId: player.weaponList[index])
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(maxWidth: 35)
