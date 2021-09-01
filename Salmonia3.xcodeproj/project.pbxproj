@@ -58,6 +58,8 @@
 		104DDC8326DF37700086B91E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104DDC8226DF37700086B91E /* Image.swift */; };
 		104DDC8426DF37700086B91E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104DDC8226DF37700086B91E /* Image.swift */; };
 		104DDC8526DF7E5E0086B91E /* Splatfont2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10377F6325FCD5CD00536A94 /* Splatfont2.ttf */; };
+		104DDC8726DFB5E10086B91E /* SplatNet2 in Frameworks */ = {isa = PBXBuildFile; productRef = 104DDC8626DFB5E10086B91E /* SplatNet2 */; };
+		104DDC8926DFB7040086B91E /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 104DDC8826DFB7040086B91E /* BetterSafariView */; };
 		1052C2D026550E7800D3B9A9 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1052C2CF26550E7800D3B9A9 /* DetailView.swift */; };
 		10539190266BD8B5001025E1 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1053918F266BD8B5001025E1 /* HelpView.swift */; };
 		1053919C266D1703001025E1 /* RealmPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1053919B266D1703001025E1 /* RealmPlayer.swift */; };
@@ -275,6 +277,8 @@
 			files = (
 				10023BD826DE7136007BB899 /* SwiftUI.framework in Frameworks */,
 				10023BD726DE7136007BB899 /* WidgetKit.framework in Frameworks */,
+				104DDC8726DFB5E10086B91E /* SplatNet2 in Frameworks */,
+				104DDC8926DFB7040086B91E /* BetterSafariView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -722,6 +726,8 @@
 			);
 			name = shiftwidgetExtension;
 			packageProductDependencies = (
+				104DDC8626DFB5E10086B91E /* SplatNet2 */,
+				104DDC8826DFB7040086B91E /* BetterSafariView */,
 			);
 			productName = shiftwidgetExtension;
 			productReference = 10023BD626DE7136007BB899 /* shiftwidgetExtension.appex */;
@@ -1592,6 +1598,15 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 104BD61E261C98800013CD27 /* XCRemoteSwiftPackageReference "url-image" */;
 			productName = URLImage;
+		};
+		104DDC8626DFB5E10086B91E /* SplatNet2 */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SplatNet2;
+		};
+		104DDC8826DFB7040086B91E /* BetterSafariView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10CF098C25FB97CB00D2EEB1 /* XCRemoteSwiftPackageReference "BetterSafariView" */;
+			productName = BetterSafariView;
 		};
 		105391D42673E733001025E1 /* SwiftChart */ = {
 			isa = XCSwiftPackageProductDependency;

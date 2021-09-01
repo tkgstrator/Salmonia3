@@ -34,10 +34,9 @@ public final class Schedule: Codable {
 }
 
 public final class WidgetManager {
-    
     static let shared: WidgetManager = WidgetManager()
-    let schedules: [Schedule]
-    let schedulesTime: [Date]
+    private let schedules: [Schedule]
+    private let schedulesTime: [Date]
     
     public init() {
         do {
@@ -48,11 +47,8 @@ public final class WidgetManager {
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
                     return decoder
                 }()
-                // 現在時刻
-                let currentTime: Date = Date()
-                // 終了時間が現在時間よりもあとのものを表示
                 // JSONを読み込んでSchedule型に変換する
-                self.schedules = try decoder.decode([Schedule].self, from: data).filter({ $0.endTime > currentTime })
+                self.schedules = try decoder.decode([Schedule].self, from: data)
                 // ビューを更新する時間を取得
                 self.schedulesTime = schedules.map({ $0.startTime })
             } else {
@@ -63,4 +59,12 @@ public final class WidgetManager {
         }
     }
     
+    func getLatestShiftSchedule(currentTime: Date) -> Schedule {
+        return self.schedules.filter({ $0.startTime == getLatestShiftScheduleDate(currentTime: currentTime) }).first!
+    }
+    
+    func getLatestShiftScheduleDate(currentTime: Date = Date()) -> Date {
+        // 終了時間が現在時間よあとのシフトで、最も若いシフトの開始時間を取得する
+        return schedules.filter({ $0.endTime > currentTime }).map({ $0.startTime }).min()!
+    }
 }
