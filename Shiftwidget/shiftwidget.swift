@@ -12,14 +12,14 @@ import Intents
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> ShiftSchedule {
-        return ShiftSchedule(date: Date(timeIntervalSince1970: Double(1500696000)), configuration: ConfigurationIntent())
+        return ShiftSchedule(date: WidgetManager.shared.schedules.first!.startTime, configuration: ConfigurationIntent())
     }
-
+    
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (ShiftSchedule) -> ()) {
-        let entry = ShiftSchedule(date: Date(timeIntervalSince1970: Double(1500696000)), configuration: configuration)
+        let entry = ShiftSchedule(date: WidgetManager.shared.schedules.first!.startTime, configuration: configuration)
         completion(entry)
     }
-
+    
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         let entries: [ShiftSchedule] = WidgetManager.shared.schedulesTime.map({ ShiftSchedule(date: $0, configuration: ConfigurationIntent()) })
         let timeline = Timeline(entries: entries, policy: .atEnd)
@@ -35,7 +35,7 @@ struct ShiftSchedule: TimelineEntry {
     init(date: Date, configuration: ConfigurationIntent) {
         self.date = date
         self.configuration = configuration
-        self.schedule = WidgetManager.shared.schedules.filter({ $0.startTime == Int(date.timeIntervalSince1970) || $0.endTime == Int(date.timeIntervalSince1970) }).first!
+        self.schedule = WidgetManager.shared.schedules.filter({ $0.startTime == date }).first!
     }
 }
 
@@ -55,7 +55,7 @@ struct shiftwidgetEntryView : View {
             .resizable()
             .aspectRatio(contentMode: .fill)
             .overlay(
-                LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 60, maximum: 60)), count: 4), alignment: .center, spacing: 10, pinnedViews: [], content: {
+                LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 50, maximum: 50)), count: 4), alignment: .center, spacing: 10, pinnedViews: [], content: {
                     ForEach(entry.schedule.weaponList.indices) { index in
                         Image(weaponId: entry.schedule.weaponList[index])
                             .resizable()
@@ -67,7 +67,7 @@ struct shiftwidgetEntryView : View {
                 .offset(x: 0, y: 30)
             )
             .overlay(
-                Text(dateFormatter.string(from: Date(timeIntervalSince1970: Double(entry.schedule.startTime))))
+                Text(dateFormatter.string(from: entry.schedule.startTime))
                     .font(.custom("Splatfont2", size: 20))
                     .shadow(color: .black, radius: 0, x: 3, y: 3)
                     .offset(x: 0, y: 30),
@@ -79,7 +79,7 @@ struct shiftwidgetEntryView : View {
 @main
 struct shiftwidget: Widget {
     let kind: String = "shiftwidget"
-
+    
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             shiftwidgetEntryView(entry: entry)

@@ -13,8 +13,8 @@ import Foundation
 
 public final class Schedule: Codable {
     let stageId: Int
-    let startTime: Int
-    let endTime: Int
+    let startTime: Date
+    let endTime: Date
     let rareWeapon: Int?
     let weaponList: [Int]
     
@@ -22,8 +22,8 @@ public final class Schedule: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         self.stageId = try container.decode(Int.self, forKey: .stageId)
-        self.startTime = try container.decode(Int.self, forKey: .startTime)
-        self.endTime = try container.decode(Int.self, forKey: .endTime)
+        self.startTime = Date(timeIntervalSince1970: Double(try container.decode(Int.self, forKey: .startTime)))
+        self.endTime = Date(timeIntervalSince1970: Double(try container.decode(Int.self, forKey: .endTime)))
         self.weaponList = try container.decode([Int].self, forKey: .weaponList)
         if self.weaponList.contains(-1) {
             self.rareWeapon = try container.decode(Int.self, forKey: .rareWeapon)
@@ -48,10 +48,13 @@ public final class WidgetManager {
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
                     return decoder
                 }()
+                // 現在時刻
+                let currentTime: Date = Date()
+                // 終了時間が現在時間よりもあとのものを表示
                 // JSONを読み込んでSchedule型に変換する
-                self.schedules = try decoder.decode([Schedule].self, from: data)
-                // 現在時刻以降の時間を取得
-                self.schedulesTime = schedules.flatMap({ [$0.startTime, $0.endTime] }).filter({ $0 > Int(Date().timeIntervalSince1970) }).sorted().map({ Date(timeIntervalSince1970: Double($0)) })
+                self.schedules = try decoder.decode([Schedule].self, from: data).filter({ $0.endTime > currentTime })
+                // ビューを更新する時間を取得
+                self.schedulesTime = schedules.map({ $0.startTime })
             } else {
                 fatalError()
             }
