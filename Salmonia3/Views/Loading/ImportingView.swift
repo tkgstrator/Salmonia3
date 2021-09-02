@@ -77,55 +77,6 @@ struct ImportingView: View {
                     }
                 }
             }).store(in: &task)
-        
-//        SalmonStats.shared.getMetadata(nsaid: nsaid)
-//            .receive(on: DispatchQueue.main)
-//            .sink(receiveCompletion: { completion in
-//                switch completion {
-//                case .finished:
-//                    break
-//                case .failure(let error):
-//                    apiError = error
-//                }
-//            }, receiveValue: { metadata in
-//                DispatchQueue.main.async {
-//                    #if DEBUG
-//                    let maxValue: CGFloat = 500
-//                    progressModel.configure(maxValue: maxValue)
-//                    #else
-//                    let maxValue: CGFloat = CGFloat(metadata.map{ $0.results.clear + $0.results.fail }.reduce(0, +))
-//                    progressModel.configure(maxValue: maxValue)
-//                    #endif
-//                }
-//                for userdata in metadata {
-//                    #if DEBUG
-//                    let lastPageId: Int = 10
-//                    #else
-//                    let lastPageId: Int = Int((userdata.results.clear + userdata.results.fail) / appManager.importNum) + 1
-//                    #endif
-//                    for pageId in Range(1 ... lastPageId) {
-//                        dispatchQueue.async {
-//                            SalmonStats.shared.getResults(nsaid: userdata.playerId, pageId: pageId, count: appManager.importNum)
-//                                .receive(on: dispatchQueue)
-//                                .sink(receiveCompletion: { completion in
-//                                    switch completion {
-//                                    case .finished:
-//                                        print("FINISHED")
-//                                    case .failure(let error):
-//                                        apiError = error
-//                                    }
-//                                }, receiveValue: { results in
-//                                    DispatchQueue.main.async {
-//                                        progressModel.addValue(value: CGFloat(results.count))
-//                                        RealmManager.shared.addNewResultsFromSalmonStats(from: results, pid: nsaid)
-//                                    }
-//                                })
-//                                .store(in: &task)
-//                        }
-//                    }
-//                }
-//            })
-//            .store(in: &task)
     }
 }
 

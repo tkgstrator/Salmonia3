@@ -83,13 +83,6 @@ enum LoadingType: String, CaseIterable {
     case LOADING_SNOW   = "LoadingSnow"
 }
 
-struct PaidProductView_Previews: PreviewProvider {
-    static var previews: some View {
-        PaidProductView()
-            .environmentObject(AppManager())
-    }
-}
-
 struct RestoreButton: View {
     @State var skerror: SKError?
     @State var isPresented: Bool = false

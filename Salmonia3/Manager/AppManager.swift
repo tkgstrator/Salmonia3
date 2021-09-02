@@ -25,7 +25,7 @@ class AppManager: ObservableObject {
     // 課金機能
     @AppStorage("work.tkgstrator.disableads") var isPaid01: Bool = false
     @AppStorage("work.tkgstrator.multiaccounts") var isPaid02: Bool = false
-    @AppStorage("FEATURE_PAID_03") var isPaid03: Bool = false
+    @AppStorage("work.tkgstrator.gamingstyle") var isPaid03: Bool = false
     @AppStorage("FEATURE_PAID_04") var isPaid04: Bool = false
     @AppStorage("FEATURE_PAID_05") var isPaid05: Bool = false
 
@@ -49,6 +49,7 @@ class AppManager: ObservableObject {
     @AppStorage("FEATURE_DEBUG_03") var isDebug03: Bool = false //
     @AppStorage("FEATURE_DEBUG_04") var isDebug04: Bool = false //
     @AppStorage("FEATURE_DEBUG_05") var isDebug05: Bool = false //
+    
     @Published var allAvailableProducts: [SKProduct] = []
 
     private var token: NSObserver = NSObserver()

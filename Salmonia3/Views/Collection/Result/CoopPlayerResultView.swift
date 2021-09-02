@@ -31,11 +31,11 @@ struct CoopPlayerResultView: View {
                 }
             }
             Section(header: Text(.RESULT_SALMONIDS).splatfont2(.orange, size: 14)) {
-                ForEach(SalmonidType.allCases, id:\.self) { salmonid in
+                ForEach(Salmonids.allCases, id:\.self) { salmonid in
                     if result.bossCounts[salmonid.index] != 0 {
                         HStack(spacing: 0) {
                             VStack(spacing: 0) {
-                                Image(salmonid.image)
+                                Image(salmonId: salmonid.rawValue)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 30)

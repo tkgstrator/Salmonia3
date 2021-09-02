@@ -41,7 +41,7 @@ public final class WidgetManager {
     let formatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .positional
-        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.allowedUnits = [.day, .hour, .minute]
         return formatter
     }()
     

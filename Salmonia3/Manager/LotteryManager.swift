@@ -20,7 +20,6 @@ final class LotteryManager {
     func generate(startTime: Int, pids: [String]) {
         // シフト時間からアタリ番号を計算（全員が同じ番号になるようにする）
         let lotteryIds: [String] = pids.map({ md5HashToInt(from: $0, key: startTime) })
-        print(lotteryIds.sorted())
     }
     
     @usableFromInline

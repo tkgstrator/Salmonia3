@@ -147,7 +147,7 @@ struct CoopResultOverview: View {
                     .padding(.bottom, 10)
                     LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 4), alignment: .leading, spacing: 0, pinnedViews: []) {
                         ForEach(result.specialUsage[index].indices) { idx in
-                            Image(SpecialType.init(rawValue: result.specialUsage[index][idx])!.image)
+                            Image(specialId: result.specialUsage[index][idx])
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 28)

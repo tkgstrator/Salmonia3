@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-enum IconWeapon: String, CaseIterable {
+enum Weapon: String, CaseIterable {
     public enum Package {
         public static let namespace = "Weapon"
         public static let version = "1.0.0"
@@ -74,20 +74,11 @@ enum IconWeapon: String, CaseIterable {
 }
 
 extension Image {
-    init(_ symbol: IconStage) {
+    init(_ symbol: Stage) {
         self.init(symbol.imageName, bundle: .main)
-    }
-
-    init(_ symbol: IconWeapon) {
-        self.init(symbol.imageName, bundle: .main)
-    }
-
-    init(stageId: Int) {
-        self.init(IconStage(rawValue: String(stageId))!)
     }
     
-    init(weaponId: Int) {
-        print(weaponId)
-        self.init(IconWeapon(rawValue: String(weaponId))!)
+    init(stageId: Int) {
+        self.init(Stage(rawValue: String(stageId))!)
     }
 }

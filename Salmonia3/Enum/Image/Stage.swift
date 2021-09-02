@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-enum IconStage: String, CaseIterable {
+enum Stage: String, CaseIterable {
     public enum Package {
         public static let namespace = "Stage"
         public static let version = "1.0.0"
@@ -23,5 +23,36 @@ enum IconStage: String, CaseIterable {
     
     public var imageName: String {
         "\(Package.namespace)/\(rawValue)"
+    }
+    
+    var name: String {
+        switch self {
+        case .shakeup:
+            return "Spawning Grounds"
+        case .shakeship:
+            return "Marooner's Bay"
+        case .shakehouse:
+            return "Lost Outpost"
+        case .shakelift:
+            return "Salmonid Smokeyard"
+        case .shakeride:
+            return "Ruins of Ark Polaris"
+        }
+    }
+}
+
+extension Stage {
+    init?(rawValue: Int) {
+        self.init(rawValue: String(rawValue))
+    }
+}
+
+extension Image {
+    init(_ symbol: Weapon) {
+        self.init(symbol.imageName, bundle: .main)
+    }
+
+    init(weaponId: Int) {
+        self.init(Weapon(rawValue: String(weaponId))!)
     }
 }

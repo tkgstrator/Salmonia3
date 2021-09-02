@@ -61,7 +61,7 @@ final class CoopShiftStats: ObservableObject {
     private func getWeaponData(startTime: Int, nsaid: [String]) -> [ResultWeapon] {
         let shift: RealmCoopShift = RealmManager.shared.shift(startTime: startTime)
         let suppliedWepons: [Int] = RealmManager.shared.playerResults(startTime: startTime).flatMap{ $0.weaponList }
-        let allWeaponLists: [Int] = IconWeapon.allCases.compactMap({ Int($0.rawValue) })
+        let allWeaponLists: [Int] = Weapon.allCases.compactMap({ Int($0.rawValue) })
 
         switch shift.weaponList.contains(-1) {
             case true:
@@ -96,10 +96,10 @@ final class CoopShiftStats: ObservableObject {
         
         lazy var specialWeapon = {
             return [
-                PieChartData(value: Double(self.player?.filter("specialId=%@", 2).count ?? 0), label: { AnyView(Image(SpecialType.init(rawValue: 2)!.image).resizable().frame(width: 35, height: 35, alignment: .center)) }),
-                PieChartData(value: Double(self.player?.filter("specialId=%@", 7).count ?? 0), label: { AnyView(Image(SpecialType.init(rawValue: 7)!.image).resizable().frame(width: 35, height: 35, alignment: .center)) }),
-                PieChartData(value: Double(self.player?.filter("specialId=%@", 8).count ?? 0), label: { AnyView(Image(SpecialType.init(rawValue: 8)!.image).resizable().frame(width: 35, height: 35, alignment: .center)) }),
-                PieChartData(value: Double(self.player?.filter("specialId=%@", 9).count ?? 0), label: { AnyView(Image(SpecialType.init(rawValue: 9)!.image).resizable().frame(width: 35, height: 35, alignment: .center)) })
+                PieChartData(value: Double(self.player?.filter("specialId=%@", 2).count ?? 0), label: { AnyView(Image(specialId: 2).resizable().frame(width: 35, height: 35, alignment: .center)) }),
+                PieChartData(value: Double(self.player?.filter("specialId=%@", 7).count ?? 0), label: { AnyView(Image(specialId: 7).resizable().frame(width: 35, height: 35, alignment: .center)) }),
+                PieChartData(value: Double(self.player?.filter("specialId=%@", 8).count ?? 0), label: { AnyView(Image(specialId: 8).resizable().frame(width: 35, height: 35, alignment: .center)) }),
+                PieChartData(value: Double(self.player?.filter("specialId=%@", 9).count ?? 0), label: { AnyView(Image(specialId: 9).resizable().frame(width: 35, height: 35, alignment: .center)) })
             ]
         }()
         var playerBossDefeatedRatio: [Double?] = []

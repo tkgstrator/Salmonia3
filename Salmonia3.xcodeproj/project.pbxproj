@@ -10,7 +10,6 @@
 		10023BD726DE7136007BB899 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10023B9226DE6FA9007BB899 /* WidgetKit.framework */; };
 		10023BD826DE7136007BB899 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10023B9426DE6FA9007BB899 /* SwiftUI.framework */; };
 		10023BDB26DE7136007BB899 /* shiftwidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10023BDA26DE7136007BB899 /* shiftwidget.swift */; };
-		10023BDE26DE7137007BB899 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10023BDD26DE7137007BB899 /* Assets.xcassets */; };
 		10023BE026DE7137007BB899 /* shiftwidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 10023BDC26DE7136007BB899 /* shiftwidget.intentdefinition */; };
 		10023BE126DE7137007BB899 /* shiftwidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 10023BDC26DE7136007BB899 /* shiftwidget.intentdefinition */; };
 		10023BE426DE7137007BB899 /* shiftwidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 10023BD626DE7136007BB899 /* shiftwidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -61,6 +60,7 @@
 		104DDC9026DFE2E20086B91E /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104DDC8F26DFE2E20086B91E /* Stage.swift */; };
 		104DDC9126DFE32B0086B91E /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104DDC8D26DFE2C90086B91E /* Weapon.swift */; };
 		104DDC9226DFE32B0086B91E /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104DDC8F26DFE2E20086B91E /* Stage.swift */; };
+		104DDC9426DFEB530086B91E /* Special.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104DDC9326DFEB530086B91E /* Special.swift */; };
 		1052C2D026550E7800D3B9A9 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1052C2CF26550E7800D3B9A9 /* DetailView.swift */; };
 		10539190266BD8B5001025E1 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1053918F266BD8B5001025E1 /* HelpView.swift */; };
 		1053919C266D1703001025E1 /* RealmPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1053919B266D1703001025E1 /* RealmPlayer.swift */; };
@@ -82,7 +82,6 @@
 		10682EED264FEEE80035CC68 /* StatsWeaponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682EEC264FEEE80035CC68 /* StatsWeaponView.swift */; };
 		10682EF3264FEF0A0035CC68 /* StatsWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682EF2264FEF0A0035CC68 /* StatsWaveView.swift */; };
 		10682EFB264FEF2A0035CC68 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682EFA264FEF2A0035CC68 /* StatsView.swift */; };
-		10682F092650026D0035CC68 /* SpecialType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682F082650026D0035CC68 /* SpecialType.swift */; };
 		10682F112650046D0035CC68 /* SalmonidType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682F102650046D0035CC68 /* SalmonidType.swift */; };
 		1076C80C268D52DA00C43987 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1076C80B268D52DA00C43987 /* Wave.swift */; };
 		1079EAD22647E3540085008C /* CoopRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1079EAD12647E3540085008C /* CoopRecordView.swift */; };
@@ -99,6 +98,9 @@
 		109EF375260CB01E00076157 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF374260CB01E00076157 /* ButtonStyle.swift */; };
 		10A08032262070A200BFDF59 /* CoopShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A08031262070A200BFDF59 /* CoopShiftStats.swift */; };
 		10A75A4B26AC1096005168DD /* StatsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A75A4A26AC1096005168DD /* StatsChartView.swift */; };
+		10A7893426DFF994002F83EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1059416A25FA49E900C32D21 /* Assets.xcassets */; };
+		10A7893526DFFA62002F83EA /* Special.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104DDC9326DFEB530086B91E /* Special.swift */; };
+		10A7893726E0E801002F83EA /* Salmonids.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A7893626E0E801002F83EA /* Salmonids.swift */; };
 		10AD114D2600EB18008C0E64 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AD114C2600EB18008C0E64 /* Error.swift */; };
 		10B62CA32669CC1400916A64 /* CoopWaveCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B62CA22669CC1400916A64 /* CoopWaveCollection.swift */; };
 		10B62CAF2669D48E00916A64 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B62CAE2669D48E00916A64 /* Appearance.swift */; };
@@ -167,7 +169,6 @@
 		10023BD626DE7136007BB899 /* shiftwidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = shiftwidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		10023BDA26DE7136007BB899 /* shiftwidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shiftwidget.swift; sourceTree = "<group>"; };
 		10023BDC26DE7136007BB899 /* shiftwidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = shiftwidget.intentdefinition; sourceTree = "<group>"; };
-		10023BDD26DE7137007BB899 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10023BDF26DE7137007BB899 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10023BEB26DF26ED007BB899 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		10023BEE26DF2760007BB899 /* coop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = coop.json; sourceTree = "<group>"; };
@@ -207,6 +208,7 @@
 		104BD607261C93630013CD27 /* KeyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyStorage.swift; sourceTree = "<group>"; };
 		104DDC8D26DFE2C90086B91E /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		104DDC8F26DFE2E20086B91E /* Stage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage.swift; sourceTree = "<group>"; };
+		104DDC9326DFEB530086B91E /* Special.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Special.swift; sourceTree = "<group>"; };
 		1052C2CF26550E7800D3B9A9 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		1053918F266BD8B5001025E1 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		1053919B266D1703001025E1 /* RealmPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPlayer.swift; sourceTree = "<group>"; };
@@ -233,7 +235,6 @@
 		10682EEC264FEEE80035CC68 /* StatsWeaponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsWeaponView.swift; sourceTree = "<group>"; };
 		10682EF2264FEF0A0035CC68 /* StatsWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsWaveView.swift; sourceTree = "<group>"; };
 		10682EFA264FEF2A0035CC68 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
-		10682F082650026D0035CC68 /* SpecialType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialType.swift; sourceTree = "<group>"; };
 		10682F102650046D0035CC68 /* SalmonidType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonidType.swift; sourceTree = "<group>"; };
 		1076C80B268D52DA00C43987 /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
 		1079EAD12647E3540085008C /* CoopRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopRecordView.swift; sourceTree = "<group>"; };
@@ -246,6 +247,7 @@
 		109EF374260CB01E00076157 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		10A08031262070A200BFDF59 /* CoopShiftStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftStats.swift; sourceTree = "<group>"; };
 		10A75A4A26AC1096005168DD /* StatsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsChartView.swift; sourceTree = "<group>"; };
+		10A7893626E0E801002F83EA /* Salmonids.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salmonids.swift; sourceTree = "<group>"; };
 		10AD114C2600EB18008C0E64 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		10B62CA22669CC1400916A64 /* CoopWaveCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopWaveCollection.swift; sourceTree = "<group>"; };
 		10B62CAE2669D48E00916A64 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
@@ -331,7 +333,6 @@
 				10023BEA26DF26E0007BB899 /* SplatNet2 */,
 				10023BDA26DE7136007BB899 /* shiftwidget.swift */,
 				10023BDC26DE7136007BB899 /* shiftwidget.intentdefinition */,
-				10023BDD26DE7137007BB899 /* Assets.xcassets */,
 				10023BDF26DE7137007BB899 /* Info.plist */,
 			);
 			path = Shiftwidget;
@@ -474,6 +475,8 @@
 			children = (
 				104DDC8D26DFE2C90086B91E /* Weapon.swift */,
 				104DDC8F26DFE2E20086B91E /* Stage.swift */,
+				104DDC9326DFEB530086B91E /* Special.swift */,
+				10A7893626E0E801002F83EA /* Salmonids.swift */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -625,7 +628,6 @@
 				1024664A2600D55E004DC043 /* StageType.swift */,
 				10AD114C2600EB18008C0E64 /* Error.swift */,
 				10567DD7264ECDD0002654D3 /* SplatNet2.swift */,
-				10682F082650026D0035CC68 /* SpecialType.swift */,
 				10682F102650046D0035CC68 /* SalmonidType.swift */,
 				10B62CAE2669D48E00916A64 /* Appearance.swift */,
 			);
@@ -881,9 +883,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10A7893426DFF994002F83EA /* Assets.xcassets in Resources */,
 				104DDC8526DF7E5E0086B91E /* Splatfont2.ttf in Resources */,
 				10023BEF26DF2760007BB899 /* coop.json in Resources */,
-				10023BDE26DE7137007BB899 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1009,6 +1011,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10A7893526DFFA62002F83EA /* Special.swift in Sources */,
 				104DDC9126DFE32B0086B91E /* Weapon.swift in Sources */,
 				104DDC9226DFE32B0086B91E /* Stage.swift in Sources */,
 				10023BF126DF2A9D007BB899 /* Schedule.swift in Sources */,
@@ -1025,6 +1028,7 @@
 				1081B769269D1FD60063D947 /* RealmObjects.swift in Sources */,
 				105941A025FA4E2500C32D21 /* LoginMenu.swift in Sources */,
 				1079EAD22647E3540085008C /* CoopRecordView.swift in Sources */,
+				10A7893726E0E801002F83EA /* Salmonids.swift in Sources */,
 				10377FA425FD10FE00536A94 /* Optional.swift in Sources */,
 				1024661625FDFF0F004DC043 /* ImageResize.swift in Sources */,
 				10377F6525FCD63B00536A94 /* Font.swift in Sources */,
@@ -1048,6 +1052,7 @@
 				105391AC266D23C4001025E1 /* CoopPlayerCollection.swift in Sources */,
 				105941A825FA4F9500C32D21 /* SalmonLoginMenu.swift in Sources */,
 				1059416725FA49E500C32D21 /* Salmonia3App.swift in Sources */,
+				104DDC9426DFEB530086B91E /* Special.swift in Sources */,
 				10BBBEA226049EF400DA79C9 /* CoopResultView.swift in Sources */,
 				101C77D526497038005D603C /* CoopPlayerResultView.swift in Sources */,
 				10210F0926D18F4A00E4C7C4 /* LotteryManager.swift in Sources */,
@@ -1057,7 +1062,6 @@
 				1024661125FDF411004DC043 /* String.swift in Sources */,
 				10D0177926C074B1000DCA1B /* StoreKitManager.swift in Sources */,
 				10682EFB264FEF2A0035CC68 /* StatsView.swift in Sources */,
-				10682F092650026D0035CC68 /* SpecialType.swift in Sources */,
 				105391A4266D1C6F001025E1 /* CoreRealmPlayer.swift in Sources */,
 				10CF0A0525FBA6BF00D2EEB1 /* RealmCoopWave.swift in Sources */,
 				10B62CAF2669D48E00916A64 /* Appearance.swift in Sources */,
@@ -1154,7 +1158,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 0.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3.shiftwidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1177,7 +1181,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 0.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3.shiftwidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1313,7 +1317,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1341,7 +1345,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
