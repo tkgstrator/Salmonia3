@@ -95,7 +95,6 @@
 		108BFD9D26DDC37800652271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 108BFD9B26DDC37800652271 /* GoogleService-Info.plist */; };
 		108BFD9E26DDC37800652271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 108BFD9B26DDC37800652271 /* GoogleService-Info.plist */; };
 		109EF35E260CAB7F00076157 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF35D260CAB7F00076157 /* ProductView.swift */; };
-		109EF375260CB01E00076157 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF374260CB01E00076157 /* ButtonStyle.swift */; };
 		10A08032262070A200BFDF59 /* CoopShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A08031262070A200BFDF59 /* CoopShiftStats.swift */; };
 		10A75A4B26AC1096005168DD /* StatsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A75A4A26AC1096005168DD /* StatsChartView.swift */; };
 		10A7893426DFF994002F83EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1059416A25FA49E900C32D21 /* Assets.xcassets */; };
@@ -244,7 +243,6 @@
 		1090C681263DF125000DD54C /* SplatNet2 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SplatNet2; path = ../SplatNet2; sourceTree = "<group>"; };
 		1090C6A6263E902B000DD54C /* Salmonia3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Salmonia3.entitlements; sourceTree = "<group>"; };
 		109EF35D260CAB7F00076157 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
-		109EF374260CB01E00076157 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		10A08031262070A200BFDF59 /* CoopShiftStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftStats.swift; sourceTree = "<group>"; };
 		10A75A4A26AC1096005168DD /* StatsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsChartView.swift; sourceTree = "<group>"; };
 		10A7893626E0E801002F83EA /* Salmonids.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salmonids.swift; sourceTree = "<group>"; };
@@ -604,7 +602,6 @@
 				105941BD25FA525100C32D21 /* Background.swift */,
 				10377F6425FCD63B00536A94 /* Font.swift */,
 				1024661525FDFF0F004DC043 /* ImageResize.swift */,
-				109EF374260CB01E00076157 /* ButtonStyle.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -1086,7 +1083,6 @@
 				1076C80C268D52DA00C43987 /* Wave.swift in Sources */,
 				1059419725FA4C0C00C32D21 /* Color.swift in Sources */,
 				1053919C266D1703001025E1 /* RealmPlayer.swift in Sources */,
-				109EF375260CB01E00076157 /* ButtonStyle.swift in Sources */,
 				10682F112650046D0035CC68 /* SalmonidType.swift in Sources */,
 				10A08032262070A200BFDF59 /* CoopShiftStats.swift in Sources */,
 				10377FAD25FD166200536A94 /* CoopResultCollection.swift in Sources */,

@@ -38,10 +38,9 @@ struct SalmonLoginMenu: View {
             VStack(spacing: 40) {
                 Button(action: { oauthURL = URL(string: "https://salmon-stats-api.yuki.games/auth/twitter") }, label: {
                     Text(.BTN_SIGN_IN)
-                            .splatfont2(.cloud, size: 20)
+                            .splatfont2(size: 20)
                 })
             }
-            .buttonStyle(BlueButtonStyle())
             .position(x: geometry.frame(in: .local).midX, y: 3 * geometry.size.height / 4)
         }
         .overlay(Helpbutton, alignment: .topTrailing)
@@ -67,7 +66,6 @@ struct SalmonLoginMenu: View {
         .alert(isPresented: $isAlertShowing) {
             Alert(title: Text(.ALERT_SIGN_IN), message: Text(.TEXT_SIGN_IN), dismissButton: .default(Text(.BTN_CONFIRM)))
         }
-        .background(BackGround)
         .navigationBarBackButtonHidden(true)
         .navigationTitle(.TITLE_LOGIN)
     }
@@ -75,12 +73,5 @@ struct SalmonLoginMenu: View {
     var Helpbutton: some View {
         Button(action: { isPresented.toggle() },
                label: { Image(systemName: "questionmark.circle").resizable().frame(width: 35, height: 35).foregroundColor(.white).padding(.all, 20) })
-    }
-    
-    var BackGround: some View {
-        Group {
-            LinearGradient(gradient: Gradient(colors: [.blue, .river]), startPoint: .top, endPoint: .bottom)
-                .edgesIgnoringSafeArea(.all)
-        }
     }
 }
