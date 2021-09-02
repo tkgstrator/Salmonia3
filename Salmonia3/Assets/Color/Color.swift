@@ -8,14 +8,37 @@
 import Foundation
 import SwiftUI
 
-// 新しく定義した色を使う
+enum EXColor: String, CaseIterable {
+    public enum Package {
+        public static let namespace = "Color"
+        public static let version = "1.0.0"
+    }
+    
+    case blackrussian   = "#0A1128"
+    case dodgerblue     = "#1DA1FF"
+    case sapphire       = "#001F54"
+    case maire          = "#2A270B"
+    case easternblue    = "#1282A2"
+    case seashell       = "#FEFCFB"
+    case safetyorange   = "#FF7500"
+    
+    public var colorCode: String {
+        "\(Package.namespace)/\(rawValue)"
+    }
+}
+
 extension Color {
-    static let cloud    = Color("cloud")
-    static let river    = Color("river")
-    static let orange   = Color("orange")
-    static let carrot   = Color("carrot")
-    static let dark     = Color("dark")
-    static let silver   = Color("silver")
-    static let dust     = Color("dust")
-    static let magnet   = Color("magnet")
+    init(_ symbol: EXColor) {
+        self.init(symbol.colorCode, bundle: .main)
+    }
+}
+
+extension Color {
+    static let blackrussian   = Color(.blackrussian)
+    static let dodgerblue     = Color(.dodgerblue)
+    static let sapphire       = Color(.sapphire)
+    static let maire          = Color(.maire)
+    static let easternblue    = Color(.easternblue)
+    static let seashell       = Color(.seashell)
+    static let safetyorange   = Color(.safetyorange)
 }

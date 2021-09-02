@@ -33,7 +33,7 @@ struct LoginMenu: View {
                 }
                 .padding(.horizontal, 10)
                 .position(x: geometry.frame(in: .local).midX, y: geometry.size.height / 4)
-                Button(action: { isAuthorized.toggle()}, label: { Text(.BTN_SIGN_IN).splatfont2(.cloud, size: 20) })
+                Button(action: { isAuthorized.toggle()}, label: { Text(.BTN_SIGN_IN).splatfont2(size: 20) })
                     .authorize(isPresented: $isAuthorized) { completion in
                         switch completion {
                         case .success(let value):
@@ -42,7 +42,6 @@ struct LoginMenu: View {
                             apiError = error
                         }
                     }
-                .buttonStyle(BlueButtonStyle())
                 .position(x: geometry.frame(in: .local).midX, y: 3 * geometry.size.height / 4)
             }
             .overlay(Helpbutton, alignment: .topTrailing)
@@ -62,20 +61,11 @@ struct LoginMenu: View {
             .preferredControlAccentColor(.accentColor)
             .dismissButtonStyle(.done)
         }
-        .background(BackGround)
         .navigationTitle(.TITLE_LOGIN)
     }
 
     var Helpbutton: some View {
         Button(action: { isPresented.toggle() },
                label: { Image(systemName: "questionmark.circle").resizable().frame(width: 35, height: 35).foregroundColor(.white).padding(.all, 20) })
-    }
-    
-    var BackGround: some View {
-        Group {
-            LinearGradient(gradient: Gradient(colors: [.blue, .river]), startPoint: .top, endPoint: .bottom)
-                .edgesIgnoringSafeArea(.all)
-            NavigationLink(destination: SalmonLoginMenu(), isActive: $isActive) { EmptyView() }
-        }
     }
 }
