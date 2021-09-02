@@ -24,7 +24,7 @@ struct CoopPlayerView: View {
                     // MARK: 支給ブキとスペシャルの表示
                     HStack {
                         LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 4), alignment: .leading, spacing: 0, pinnedViews: []) {
-                            Image(SpecialType.init(rawValue: player.specialId)!.image)
+                            Image(specialId: player.specialId)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(maxWidth: 35)

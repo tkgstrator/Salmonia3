@@ -49,7 +49,6 @@ struct LoadingView: View {
                         apiError = error
                     }
                 }, receiveValue: { response in
-                    print(response)
                 })
                 .store(in: &task)
         }
@@ -64,7 +63,6 @@ struct LoadingView: View {
                     break
                 case .failure(let error):
                     apiError = error
-                    print(error)
                 }
             }, receiveValue: { response in
                 RealmManager.shared.updateNicknameAndIcons(players: response.nicknameAndIcons)
@@ -90,7 +88,6 @@ struct LoadingView: View {
                         }
                     default:
                         apiError = error
-                        print(error)
                     }
                 }
             }, receiveValue: { _ in

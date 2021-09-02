@@ -23,8 +23,8 @@ struct Provider: IntentTimelineProvider {
     
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         let timeIntervalSince1970 = Int(Date().timeIntervalSince1970)
-        let currentTime: Date = Date(timeIntervalSince1970: Double(timeIntervalSince1970 - timeIntervalSince1970 % 10))
-        let entryDate: [Date] = (0 ..< 60).compactMap{( Calendar.current.date(byAdding: .second, value: $0, to: currentTime) )}
+        let currentTime: Date = Date(timeIntervalSince1970: Double(timeIntervalSince1970 - timeIntervalSince1970 % 60))
+        let entryDate: [Date] = (0 ... 1).compactMap{( Calendar.current.date(byAdding: .minute, value: $0, to: currentTime) )}
         let entries: [ShiftSchedule] = entryDate.map({ ShiftSchedule(date: $0, configuration: ConfigurationIntent())})
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
@@ -80,7 +80,7 @@ struct shiftwidgetEntryView : View {
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .padding(4)
-                            .background(Circle().fill(Color.black))
+                            .background(Circle().fill(Color.black.opacity(0.8)))
                     }
                 })
                 .offset(x: 0, y: 30)

@@ -25,6 +25,7 @@ let log = SwiftyBeaver.self
 let console = ConsoleDestination()
 let file = FileDestination()
 let cloud = SBPlatformDestination(appID: "k6Pxwd", appSecret: "iqnaqabvjpwGitdb6au4wDo0UphgshBz", encryptionKey: "vb8cesft69mtFmPbeRe8iIuXohHbrmno")
+
 // Salmon Statsインスタンスの初期化
 var manager: SalmonStats = SalmonStats()
 
@@ -101,11 +102,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                             // インスタンスを更新
                             manager = SalmonStats(version: response.xProductVersion)
                         } else {
-                            print("ERROR")
                         }
                     }
                 case .failure(let error):
-                    print(error)
+                    break
                 }
             }
     }
