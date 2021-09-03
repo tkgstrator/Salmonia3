@@ -9,9 +9,11 @@ import Foundation
 import SwiftUI
 
 extension Text {
-    
     init(_ content: LocalizableStrings.Key) {
         self.init(content.rawValue.localized)
     }
     
+//    init<T: StringProtocol>(_ content: T?) {
+//        self.init(verbatim: content?.description.localized ?? "-")
+//    }
 }

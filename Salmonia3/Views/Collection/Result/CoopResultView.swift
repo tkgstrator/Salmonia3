@@ -23,7 +23,7 @@ struct CoopResultView: View {
         PaginationView {
             CoopResultOverview(isVisible: $isVisible, result: result)
                 .padding(.bottom, 50)
-            CoopPlayerResultView(isVisible: $isVisible, result: result)
+            CoopPlayerResultView(result: result)
         }
         .background(Color.black.edgesIgnoringSafeArea(.all))
         .navigationBarTitleDisplayMode(.inline)
@@ -93,12 +93,12 @@ struct CoopResultOverview: View {
                 DangerRate
                 // MARK: イクラ数の表示
                 LazyHStack {
-                    Image("49c944e4edf1abee295b6db7525887bd")
+                    Image(Egg.golden)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 24, height: 24)
                     Text(verbatim: "x\(result.goldenEggs)")
-                    Image("f812db3e6de0479510cd02684131e15a")
+                    Image(Egg.power)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 24, height: 24)
@@ -139,7 +139,7 @@ struct CoopResultOverview: View {
                     .clipShape(RoundedRectangle(cornerRadius: 3))
                     .padding(.bottom, 10)
                     LazyHStack {
-                        Image("49c944e4edf1abee295b6db7525887bd")
+                        Image(Egg.golden)
                             .resizable()
                             .frame(width: 15, height: 15)
                         Text("RESULT_APPEARANCES_\(result.wave[index].goldenIkuraPopNum)")

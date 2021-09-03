@@ -48,14 +48,14 @@ struct CoopPlayerView: View {
                     Spacer()
                     HStack {
                         HStack {
-                            Image("49c944e4edf1abee295b6db7525887bd")
+                            Image(Egg.golden)
                                 .resizable()
                                 .frame(width: 15, height: 15)
                             Spacer()
                             Text(verbatim: "x \(player.goldenIkuraNum)")
                         }
                         HStack {
-                            Image("f812db3e6de0479510cd02684131e15a")
+                            Image(Egg.power)
                                 .resizable()
                                 .frame(width: 15, height: 15)
                             Spacer()

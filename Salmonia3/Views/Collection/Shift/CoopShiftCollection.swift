@@ -106,7 +106,7 @@ struct CoopShift: View {
                     Spacer()
                     if let average = average {
                         HStack {
-                            Image("49c944e4edf1abee295b6db7525887bd").resize()
+                            Image(Egg.golden).resize()
                             Text("x\(average.golden.stringValue)")
                                 .splatfont2(size: 14)
                                 .textCase(nil)

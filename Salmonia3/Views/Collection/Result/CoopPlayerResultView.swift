@@ -7,108 +7,147 @@
 
 import SwiftUI
 import RealmSwift
+import URLImage
 
 struct CoopPlayerResultView: View {
-    @Binding var isVisible: Bool
-    @AppStorage("FEATURE_FREE_03") var isFree03: Bool = false
-    var result: RealmCoopResult
-
-    var body: some View {
-        List {
-            Section(header: Text(.RESULT_PLAYER).splatfont2(.orange, size: 14)) {
-                HStack(alignment: .top, spacing: 0) {
-                    Text("").frame(width: 30)
-                    LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: 0, pinnedViews: []) {
-                        ForEach(result.player.indices, id: \.self) { index in
-                            VStack {
-                                Image(systemName: "circle")
-                                Text(result.player[index].name.stringValue((isVisible || (index == 0 && !isFree03))))
-                                    .splatfont2(size: 12)
-                            }
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
-                }
-            }
-            Section(header: Text(.RESULT_SALMONIDS).splatfont2(.orange, size: 14)) {
-                ForEach(Salmonids.allCases, id:\.self) { salmonid in
-                    if result.bossCounts[salmonid.index] != 0 {
-                        HStack(spacing: 0) {
-                            VStack(spacing: 0) {
-                                Image(salmonId: salmonid.rawValue)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 30)
-                                if result.bossKillCounts[salmonid.index] == result.bossCounts[salmonid.index] {
-                                    Text("\(result.bossKillCounts[salmonid.index])/\(result.bossCounts[salmonid.index])")
-                                        .splatfont2(.yellow, size: 14)
-                                        .shadow(color: .black, radius: 0, x: 1, y: 1)
-                                        .frame(width: 40, height: 16)
-                                } else {
-                                    Text("\(result.bossKillCounts[salmonid.index])/\(result.bossCounts[salmonid.index])")
-                                        .splatfont2(size: 14)
-                                        .frame(width: 40, height: 16)
-                                }
-                            }
-                            .frame(width: 30)
-                            LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: nil, pinnedViews: []) {
-                                ForEach(result.player.indices, id: \.self) { index in
-                                    if result.player[index].bossKillCounts[salmonid.index] == result.player.map { $0.bossKillCounts[salmonid.index] }.max() {
-                                        Text("\(result.player[index].bossKillCounts[salmonid.index])")
-                                            .splatfont2(.yellow, size: 18)
-                                            .shadow(color: .black, radius: 0, x: 1, y: 1)
-                                    } else {
-                                        Text("\(result.player[index].bossKillCounts[salmonid.index])")
-                                            .splatfont2(size: 18)
-                                    }
-                                }
-                            }
-                            .frame(maxWidth: .infinity)
-                        }
-                    }
-                }
-            }
-            Section(header: Text(.RESULT_EVALUATION).splatfont2(.orange, size: 14)) {
-                HStack(spacing: 0) {
-                    Text(.RESULT_KILL_COUNT)
-                        .frame(width: 30)
-                    LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: nil, pinnedViews: []) {
-                        ForEach(result.player.indices, id: \.self) { index in
-                            Text("\(result.player[index].bossKillCounts.sum())")
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
-                }
-                HStack(spacing: 0) {
-                    Text(.RESULT_EGG_COUNT)
-                        .frame(width: 30)
-                    LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: nil, pinnedViews: []) {
-                        ForEach(result.player.indices, id: \.self) { index in
-                            Text("\(result.player[index].goldenIkuraNum)")
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
-                }
-                EmptyView()
-                    .padding(.bottom, 50)
-            }
-            .splatfont2(size: 16)
-        }
-
+    @AppStorage("FEATURE_OTHER_05") var resultStyle: ResultStyle = .lemontea
+    let bossCounts: [Int]
+    let result: RealmCoopResult
+    //    let bossKillCounts: [Int]
+    let playerBossKillCounts: [[Int]]
+    
+    init(result: RealmCoopResult) {
+        self.result = result
+        self.bossCounts = Array(result.bossCounts)
+//        self.bossKillCounts = Array(result.bossKillCounts)
+        self.playerBossKillCounts = Array(result.player.map({ Array($0.bossKillCounts) })).transpose()
+        print(bossCounts)
+        print(playerBossKillCounts)
     }
-
-    var Header: some View {
-        HStack {
-            ForEach(result.player, id: \.self) { player in
-                VStack(spacing: 0) {
-                    Image(systemName: "circle")
-                    Text(isVisible ? player.name.stringValue : "-")
-                        .lineLimit(1)
-                }
-                .font(.custom("Splatfont2", size: 12))
-                .frame(maxWidth: .infinity)
-            }
+  
+    var body: some View {
+        GeometryReader { geometry in
+            ScrollView(.vertical, showsIndicators: false, content: {
+                LazyVStack(spacing: nil, pinnedViews: [.sectionHeaders], content: {
+                    Section(header: playerHeader, content: {
+                        ForEach(Array(zip(Salmonid.allCases.indices, Salmonid.allCases)), id:\.0) { index, salmonid in
+                            if bossCounts[index] > 0 {
+                                switch resultStyle {
+                                case .salmonrec:
+                                    BarChartView(salmonId: salmonid, values: playerBossKillCounts[index], maxValue: bossCounts[index])
+                                case .barleyural:
+                                    CircleChartView(salmonId: salmonid, values: playerBossKillCounts[index], maxValue: bossCounts[index])
+                                default:
+                                    CircleChartView(salmonId: salmonid, values: playerBossKillCounts[index], maxValue: bossCounts[index])
+                                }
+                            }
+                        }
+                    })
+                })
+            })
         }
-        .padding(.leading, 45)
+    }
+    
+    var playerHeader: some View {
+        LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 60, maximum: 80)), count: 4), alignment: .center, spacing: nil, pinnedViews: [], content: {
+            ForEach(result.player.indices, id:\.self) { index in
+                VStack(alignment: .center, spacing: nil, content: {
+                    URLImage(url: result.player[index].thumbnailURL, content: { thumbnailImage in
+                        thumbnailImage
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .mask(Circle())
+                    })
+                    #warning("ここに金イクラとか表示する")
+                })
+            }
+        })
     }
 }
+
+struct CircleChartView: View {
+    let salmonId: Salmonid
+    let values: [Int]
+    let maxValue: Int
+    
+    var body: some View {
+        LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 80)), count: values.count + 1), alignment: .center, spacing: 20, pinnedViews: [], content: {
+            Image(salmonId: salmonId.rawValue)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+            ForEach(values.indices) { index in
+                Circle()
+                    .trim(from: 0.0, to: CGFloat(values[index]) / CGFloat(values.max()!))
+                    .stroke(Color.dodgerblue, lineWidth: 5)
+//                    .stroke(values[index] == values.max()! ? Color.safetyorange : Color.dodgerblue, lineWidth: 5)
+                    .rotationEffect(.degrees(-90))
+                    .background(
+                        Circle()
+                            .stroke(Color.gray.opacity(0.2), lineWidth: 5)
+                    )
+                    .overlay(
+                        Text("\(values[index])")
+                            .splatfont2(.primary, size: 16),
+                        alignment: .center
+                    )
+                    .padding(.horizontal, 4)
+            }
+        })
+        .padding()
+    }
+}
+
+struct BarChartView: View {
+    let salmonId: Salmonid
+    let colors: [Color] = [.venitianred, .deepskyblue, .salam, .turbo]
+    let values: [Int]
+    let maxValue: Int
+    let maxWidth: CGFloat = min(340, UIScreen.main.bounds.width - 100)
+    
+    var body: some View {
+        HStack(alignment: .center, spacing: nil, content: {
+            Image(salmonId: salmonId.rawValue)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(maxWidth: 60)
+            VStack(alignment: .leading, spacing: 0, content: {
+                Rectangle()
+                    .fill(Color.gray.opacity(0.5))
+                    .frame(width: maxWidth, height: 20)
+                    .overlay(
+                        Text("\(maxValue)")
+                            .splatfont2(.primary, size: 16),
+                        alignment: .center
+                    )
+                HStack(alignment: .center, spacing: 0, content: {
+                    ForEach(values.indices, id: \.self) { index in
+                        Rectangle()
+                            .fill(colors[index])
+                            .frame(width: maxWidth * CGFloat(values[index]) / CGFloat(maxValue), height: 20)
+                            .overlay(
+                                Text("\(values[index])")
+                                    .splatfont2(.white, size: 16),
+                                alignment: .center
+                            )
+                    }
+                })
+            })
+        })
+        .padding()
+    }
+}
+
+// 二次元行列の転置行列を計算する
+extension Array where Element: Collection, Element.Index == Int {
+    func transpose() -> [[Element.Element]] {
+        return self.isEmpty ? [] : (0...(self.first!.endIndex - 1)).map { i -> [Element.Element] in self.map { $0[i] } }
+    }
+}
+
+//struct CoopPlayerResultView_Previews: PreviewProvider {
+//    static let result = RealmManager.shared.results.first!
+//    static var previews: some View {
+//        CoopPlayerResultView()
+//            .previewLayout(.fixed(width: 414, height: 896))
+//    }
+//}

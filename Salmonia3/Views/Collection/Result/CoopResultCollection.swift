@@ -215,13 +215,13 @@ struct ResultOverview: View {
     var ResultEggs: some View {
         VStack(alignment: .leading, spacing: 5) {
             HStack {
-                Image("49c944e4edf1abee295b6db7525887bd").resize()
+                Image(Egg.golden).resize()
                 Text("x\(result.goldenEggs)")
                     .splatfont2(size: 16)
                     .frame(width: 50, height: 22, alignment: .leading)
             }
             HStack {
-                Image("f812db3e6de0479510cd02684131e15a").resize()
+                Image(Egg.power).resize()
                 Text("x\(result.powerEggs)")
                     .splatfont2(size: 16)
                     .frame(width: 50, height: 22, alignment: .leading)

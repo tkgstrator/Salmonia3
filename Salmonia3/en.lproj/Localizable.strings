@@ -97,7 +97,7 @@
 "RESULT_RATING_%@"="Rating %@";
 "RESULT_RATIO_GOLDEN_EGGS"="Ratio golden eggs";
 "RESULT_RATIO_POWER_EGGS"="Ratio power eggs";
-"RESULT_SALMONIDS"="Salmonids";
+"RESULT_SALMONIDS"="Salmonid";
 "RESULT_SALMON_RATE"="Salmon Rate";
 "RESULT_TEAM_GOLDEN_EGGS"="Team golden eggs";
 "RESULT_TEAM_POWER_EGGS"="Team power eggs";
@@ -131,10 +131,14 @@
 "SETTING_UPDATE_NAME"="Update Nickname";
 "SETTING_UPLOAD"="Link with Salmon Stats";
 "SHIFT_SCHEDULE"="Shift Schedule";
+"STYLE_BARLEY"="@barley_ural";
 "STYLE_DEFAULT"="Default";
+"STYLE_DEFAULT"="default";
 "STYLE_GROUPED"="Grouped";
 "STYLE_INSET"="Inset";
 "STYLE_LEGACY"="Legacy";
+"STYLE_LEGACY"="SalmonRec";
+"STYLE_LEMON"="@leamon0617tea";
 "STYLE_PLAIN"="Plain";
 "STYLE_SIDEBAR"="Sidebar";
 "SUPPLIED_WEAPONS"="Supplied Weapons";

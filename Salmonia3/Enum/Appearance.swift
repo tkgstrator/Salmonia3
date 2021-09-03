@@ -21,7 +21,7 @@ enum ResultListStyle: String, CaseIterable, Identifiable {
 
 enum ResultStyle: String, CaseIterable, Identifiable {
     var id: String { rawValue }
-    case salmonrec  = "STYLE_LEGACY"
+    case salmonrec  = "STYLE_SALMONREC"
     case barleyural = "STYLE_BARLEY"
     case lemontea   = "STYLE_LEMON"
     case `default`  = "STYLE_DEFAULT"

@@ -71,6 +71,18 @@ struct SettingView: View {
                     Text(appManager.listStyle.rawValue.localized)
                         .foregroundColor(.secondary)
                 }
+                HStack {
+                    Picker(selection: $appManager.resultStyle, label: Text(.SETTING_RESULTSTYLE)) {
+                        ForEach(ResultStyle.allCases, id:\.rawValue) {
+                            Text($0.rawValue.localized)
+                                .tag($0)
+                        }
+                    }
+                    .pickerStyle(MenuPickerStyle())
+                    Spacer()
+                    Text(appManager.resultStyle.rawValue.localized)
+                        .foregroundColor(.secondary)
+                }
             }
             
             Section(header: Text(.HEADER_PRODUCT).splatfont2(.orange, size: 14)) {
