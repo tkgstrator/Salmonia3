@@ -195,7 +195,6 @@ final class CoopShiftStats: ObservableObject {
     
     /// 各潮位とイベントにおける納品数を計算する
     final class ResultWave: Identifiable {
-        var id: UUID { UUID() }
         var goldenEggs: Double?
         var count: Int?
         var tide: Int

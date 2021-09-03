@@ -124,7 +124,7 @@ struct CoopResultOverview: View {
                             .padding(.horizontal, 5)
                             .frame(maxWidth: .infinity)
                             .frame(height: 36)
-                            .background(Color.blackrussian)
+                            .background(Color.maire)
                             .splatfont2(size: 26)
                         Text("\(result.wave[index].ikuraNum)")
                             .foregroundColor(.red)
