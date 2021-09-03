@@ -381,7 +381,7 @@
 		101C77CB26496F6F005D603C /* Shift */ = {
 			isa = PBXGroup;
 			children = (
-				10682EF1264FEEF00035CC68 /* StatsTab */,
+				10682EF1264FEEF00035CC68 /* StatsView */,
 				1024662425FE4012004DC043 /* CoopShiftCollection.swift */,
 				10CD8543268D40A900A00162 /* CoopShiftStatsView.swift */,
 			);
@@ -609,7 +609,7 @@
 			path = ViewModifier;
 			sourceTree = "<group>";
 		};
-		10682EF1264FEEF00035CC68 /* StatsTab */ = {
+		10682EF1264FEEF00035CC68 /* StatsView */ = {
 			isa = PBXGroup;
 			children = (
 				10682EEC264FEEE80035CC68 /* StatsWeaponView.swift */,
@@ -617,7 +617,7 @@
 				10682EFA264FEF2A0035CC68 /* StatsView.swift */,
 				10A75A4A26AC1096005168DD /* StatsChartView.swift */,
 			);
-			path = StatsTab;
+			path = StatsView;
 			sourceTree = "<group>";
 		};
 		10682EFF265000400035CC68 /* Enum */ = {
