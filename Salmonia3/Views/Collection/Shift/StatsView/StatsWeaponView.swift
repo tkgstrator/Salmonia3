@@ -9,9 +9,9 @@ import Foundation
 import SwiftUI
 
 struct StatsWeaponView: View {
+    @EnvironmentObject var stats: CoopShiftStats
     typealias WeaponList = CoopShiftStats.ResultWeapon
-    @ObservedObject var stats: CoopShiftStats
-    
+
     var body: some View {
         ScrollView {
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: min(5, stats.weaponData.count)), alignment: .center, spacing: nil, pinnedViews: []) {

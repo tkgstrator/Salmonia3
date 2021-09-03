@@ -19,7 +19,7 @@ struct TopMenu: View {
     @State var isShowing: Bool = false
     @State var isActive: Bool = false
     @State var selectedURL: URL? = nil
-
+    
     var body: some View {
         ZStack {
             NavigationLink(destination: LoadingView(), isActive: $isActive) { EmptyView() }
@@ -31,15 +31,18 @@ struct TopMenu: View {
                     Players
                     SalmonStats
                     #if DEBUG
-//                    SalmonRecords
-//                    LanPlayRecords
+                    //                    SalmonRecords
+                    //                    LanPlayRecords
                     #endif
                 }
                 Section(header: Text(.HEADER_SCHEDULE).splatfont2(.orange, size: 14)) {
                     ForEach(main.latestShift, id:\.self) { shift in
-                        NavigationLink(destination: CoopShiftStatsView(startTime: shift.startTime), label: {
-                            CoopShift(shift: shift)
-                        })
+                        NavigationLink(
+                            destination: CoopShiftStatsView(startTime: shift.startTime)
+                                .environmentObject(CoopShiftStats(startTime: shift.startTime)),
+                            label: {
+                                CoopShift(shift: shift)
+                            })
                     }
                     NavigationLink(destination: CoopShiftCollection(displayFutureShift: appManager.isFree02)) {
                         Text(.TITLE_SHIFT_SCHEDULE)
@@ -76,7 +79,7 @@ struct TopMenu: View {
         .listStyle(GroupedListStyle())
         .navigationTitle(.TITLE_SALMONIA)
     }
-
+    
     var Overview: some View {
         NavigationLink(destination: SettingView()) {
             HStack {
@@ -87,7 +90,7 @@ struct TopMenu: View {
             }
         }
     }
-
+    
     var Results: some View {
         NavigationLink(destination: CoopResultCollection()) {
             Text(.TITLE_RESULT_COLLECTION)
@@ -122,7 +125,7 @@ struct TopMenu: View {
     var SalmonRecords: some View {
         Button(action: { selectedURL = URL(string: "https://gungeespla.github.io/salmon_run_records/") }, label: { Text(.SALMON_RUN_RECORDS) })
     }
-
+    
     var LanPlayRecords: some View {
         Button(action: { selectedURL = URL(string: "https://salmonrun-records.netlify.app/") }, label: { Text(.LANPLAY_RECORDS) })
     }

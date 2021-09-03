@@ -9,8 +9,8 @@ import SwiftUI
 import SwiftChart
 
 struct StatsView: View {
+    @EnvironmentObject var stats: CoopShiftStats
     var startTime: Int
-    var stats: CoopShiftStats
 
     var body: some View {
         List {
