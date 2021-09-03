@@ -1,5 +1,5 @@
 //
-//  Salmonids.swift
+//  Salmonid.swift
 //  Salmonia3
 //
 //  Created by devonly on 2021/09/02.
@@ -9,9 +9,9 @@
 import Foundation
 import SwiftUI
 
-enum Salmonids: String, CaseIterable {
+enum Salmonid: String, CaseIterable {
     public enum Package {
-        public static let namespace = "Salmonids"
+        public static let namespace = "Salmonid"
         public static let version = "1.0.0"
     }
     
@@ -54,20 +54,20 @@ enum Salmonids: String, CaseIterable {
     
     // 指定されたオオモノシャケのインデックスを返す
     var index: Int {
-        return Salmonids.allCases.firstIndex(of: self)!
+        return Salmonid.allCases.firstIndex(of: self)!
     }
 }
 
 extension Image {
-    init(_ symbol: Salmonids) {
+    init(_ symbol: Salmonid) {
         self.init(symbol.imageName, bundle: .main)
     }
     
     init(salmonId: Int) {
-        self.init(Salmonids(rawValue: String(salmonId))!)
+        self.init(Salmonid(rawValue: String(salmonId))!)
     }
 
     init(salmonId: String) {
-        self.init(Salmonids(rawValue: salmonId)!)
+        self.init(Salmonid(rawValue: salmonId)!)
     }
 }

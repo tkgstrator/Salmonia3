@@ -48,11 +48,11 @@ extension Stage {
 }
 
 extension Image {
-    init(_ symbol: Weapon) {
+    init(_ symbol: Stage) {
         self.init(symbol.imageName, bundle: .main)
     }
-
-    init(weaponId: Int) {
-        self.init(Weapon(rawValue: String(weaponId))!)
+    
+    init(stageId: Int) {
+        self.init(Stage(rawValue: String(stageId))!)
     }
 }

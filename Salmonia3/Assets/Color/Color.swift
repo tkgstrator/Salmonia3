@@ -21,6 +21,10 @@ enum EXColor: String, CaseIterable {
     case easternblue    = "#1282A2"
     case seashell       = "#FEFCFB"
     case safetyorange   = "#FF7500"
+    case turbo          = "#F7CA18"
+    case venitianred    = "#CF000F"
+    case deepskyblue    = "#19B5FE"
+    case salam          = "#1E824C"
     
     public var colorCode: String {
         "\(Package.namespace)/\(rawValue)"
@@ -34,11 +38,15 @@ extension Color {
 }
 
 extension Color {
-    static let blackrussian   = Color(.blackrussian)
-    static let dodgerblue     = Color(.dodgerblue)
-    static let sapphire       = Color(.sapphire)
-    static let maire          = Color(.maire)
-    static let easternblue    = Color(.easternblue)
-    static let seashell       = Color(.seashell)
-    static let safetyorange   = Color(.safetyorange)
+    static let blackrussian     = Color(.blackrussian)
+    static let dodgerblue       = Color(.dodgerblue)
+    static let sapphire         = Color(.sapphire)
+    static let maire            = Color(.maire)
+    static let easternblue      = Color(.easternblue)
+    static let seashell         = Color(.seashell)
+    static let safetyorange     = Color(.safetyorange)
+    static let turbo            = Color(.turbo)
+    static let venitianred      = Color(.venitianred)
+    static let deepskyblue      = Color(.deepskyblue)
+    static let salam            = Color(.salam)
 }

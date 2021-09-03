@@ -83,6 +83,7 @@
 		10682EF3264FEF0A0035CC68 /* StatsWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682EF2264FEF0A0035CC68 /* StatsWaveView.swift */; };
 		10682EFB264FEF2A0035CC68 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682EFA264FEF2A0035CC68 /* StatsView.swift */; };
 		10682F112650046D0035CC68 /* SalmonidType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682F102650046D0035CC68 /* SalmonidType.swift */; };
+		1071595226E2274A0066DB74 /* Egg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071595126E2274A0066DB74 /* Egg.swift */; };
 		1076C80C268D52DA00C43987 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1076C80B268D52DA00C43987 /* Wave.swift */; };
 		1079EAD22647E3540085008C /* CoopRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1079EAD12647E3540085008C /* CoopRecordView.swift */; };
 		107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */; };
@@ -235,6 +236,7 @@
 		10682EF2264FEF0A0035CC68 /* StatsWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsWaveView.swift; sourceTree = "<group>"; };
 		10682EFA264FEF2A0035CC68 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		10682F102650046D0035CC68 /* SalmonidType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonidType.swift; sourceTree = "<group>"; };
+		1071595126E2274A0066DB74 /* Egg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Egg.swift; sourceTree = "<group>"; };
 		1076C80B268D52DA00C43987 /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
 		1079EAD12647E3540085008C /* CoopRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopRecordView.swift; sourceTree = "<group>"; };
 		107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopStats.swift; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 		10377FAB25FD165100536A94 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
+				101C77CB26496F6F005D603C /* Shift */,
 				1053919A266D16E4001025E1 /* Player */,
 				10B62CA72669CC1C00916A64 /* Wave */,
 				101C77CA26496F64005D603C /* Result */,
@@ -475,6 +478,7 @@
 				104DDC8F26DFE2E20086B91E /* Stage.swift */,
 				104DDC9326DFEB530086B91E /* Special.swift */,
 				10A7893626E0E801002F83EA /* Salmonids.swift */,
+				1071595126E2274A0066DB74 /* Egg.swift */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -533,7 +537,6 @@
 				102C75D52659B9E500AEE20F /* Resources */,
 				1059416F25FA49E900C32D21 /* Info.plist */,
 				1059416A25FA49E900C32D21 /* Assets.xcassets */,
-				101C77CB26496F6F005D603C /* Shift */,
 				10D2E1612655618B00AE584E /* LocalizableStrings.swift */,
 				1024660525FDE916004DC043 /* Localizable.strings */,
 				1059416C25FA49E900C32D21 /* Preview Content */,
@@ -1037,6 +1040,7 @@
 				1024663E26009956004DC043 /* Grade.swift in Sources */,
 				104BD608261C93630013CD27 /* KeyStorage.swift in Sources */,
 				102465F125FDDABD004DC043 /* SettingView.swift in Sources */,
+				1071595226E2274A0066DB74 /* Egg.swift in Sources */,
 				10CF09F425FB9BE100D2EEB1 /* RealmCoopResult.swift in Sources */,
 				104DDC9026DFE2E20086B91E /* Stage.swift in Sources */,
 				1059416925FA49E500C32D21 /* ContentView.swift in Sources */,
@@ -1313,7 +1317,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1341,7 +1345,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;

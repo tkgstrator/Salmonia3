@@ -67,6 +67,10 @@ enum Weapon: String, CaseIterable {
     case umbrellaNormal             = "6000"
     case umbrellaWide               = "6010"
     case umbrellaCompact            = "6020"
+    case shooterBlasterBurst        = "20000"
+    case umbrellaAutoAssault        = "20010"
+    case chargerSpark               = "20020"
+    case slosherVase                = "20030"
 
     public var imageName: String {
         "\(Package.namespace)/\(rawValue)"
@@ -74,11 +78,12 @@ enum Weapon: String, CaseIterable {
 }
 
 extension Image {
-    init(_ symbol: Stage) {
+    init(_ symbol: Weapon) {
         self.init(symbol.imageName, bundle: .main)
     }
-    
-    init(stageId: Int) {
-        self.init(Stage(rawValue: String(stageId))!)
+
+    init(weaponId: Int) {
+        print(weaponId)
+        self.init(Weapon(rawValue: String(weaponId))!)
     }
 }

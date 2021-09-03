@@ -135,6 +135,14 @@ extension RealmManager {
             .filter("startTime=%@", startTime)
             .flatMap({ Array($0.player.compactMap({ $0.pid })) })))
     }
+    
+    func thumbnailURL(playerId: String) -> URL {
+        let thumbnailURL = realm.objects(RealmPlayer.self)
+            .filter("nsaid=%@", playerId)
+            .first!
+            .thumbnailURL
+        return URL(string: thumbnailURL)!
+    }
 }
 
 extension RealmSwift.Results where Element == RealmCoopWave {
