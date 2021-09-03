@@ -84,7 +84,7 @@
 		10682EFB264FEF2A0035CC68 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682EFA264FEF2A0035CC68 /* StatsView.swift */; };
 		10682F112650046D0035CC68 /* SalmonidType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10682F102650046D0035CC68 /* SalmonidType.swift */; };
 		1071595226E2274A0066DB74 /* Egg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071595126E2274A0066DB74 /* Egg.swift */; };
-		1076C80C268D52DA00C43987 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1076C80B268D52DA00C43987 /* Wave.swift */; };
+		1071595626E24C2F0066DB74 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071595526E24C2F0066DB74 /* Wave.swift */; };
 		1079EAD22647E3540085008C /* CoopRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1079EAD12647E3540085008C /* CoopRecordView.swift */; };
 		107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */; };
 		1081B760269C778D0063D947 /* MBCircleProgressBar in Frameworks */ = {isa = PBXBuildFile; productRef = 1081B75F269C778D0063D947 /* MBCircleProgressBar */; };
@@ -237,7 +237,7 @@
 		10682EFA264FEF2A0035CC68 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		10682F102650046D0035CC68 /* SalmonidType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonidType.swift; sourceTree = "<group>"; };
 		1071595126E2274A0066DB74 /* Egg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Egg.swift; sourceTree = "<group>"; };
-		1076C80B268D52DA00C43987 /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
+		1071595526E24C2F0066DB74 /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
 		1079EAD12647E3540085008C /* CoopRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopRecordView.swift; sourceTree = "<group>"; };
 		107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopStats.swift; sourceTree = "<group>"; };
 		1081B768269D1FD60063D947 /* RealmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
@@ -479,6 +479,7 @@
 				104DDC9326DFEB530086B91E /* Special.swift */,
 				10A7893626E0E801002F83EA /* Salmonids.swift */,
 				1071595126E2274A0066DB74 /* Egg.swift */,
+				1071595526E24C2F0066DB74 /* Wave.swift */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -581,7 +582,6 @@
 		1059419525FA4BF600C32D21 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				1076C80A268D52CE00C43987 /* Wave */,
 				10377F6025FCD5A400536A94 /* Fonts */,
 				105941B125FA519A00C32D21 /* ViewModifier */,
 				1059419425FA4BE900C32D21 /* Color */,
@@ -632,14 +632,6 @@
 				10B62CAE2669D48E00916A64 /* Appearance.swift */,
 			);
 			path = Enum;
-			sourceTree = "<group>";
-		};
-		1076C80A268D52CE00C43987 /* Wave */ = {
-			isa = PBXGroup;
-			children = (
-				1076C80B268D52DA00C43987 /* Wave.swift */,
-			);
-			path = Wave;
 			sourceTree = "<group>";
 		};
 		107F9B3A2614A8CA001581C7 /* Views */ = {
@@ -1080,11 +1072,11 @@
 				105941AD25FA500500C32D21 /* TopMenu.swift in Sources */,
 				10D2E15A265557B200AE584E /* View.swift in Sources */,
 				10567DD8264ECDD0002654D3 /* SplatNet2.swift in Sources */,
+				1071595626E24C2F0066DB74 /* Wave.swift in Sources */,
 				10CF0A0025FBA5BC00D2EEB1 /* RealmPlayerResult.swift in Sources */,
 				1024662525FE4012004DC043 /* CoopShiftCollection.swift in Sources */,
 				101C77CD26496FA6005D603C /* CoopPlayerView.swift in Sources */,
 				10682EED264FEEE80035CC68 /* StatsWeaponView.swift in Sources */,
-				1076C80C268D52DA00C43987 /* Wave.swift in Sources */,
 				1059419725FA4C0C00C32D21 /* Color.swift in Sources */,
 				1053919C266D1703001025E1 /* RealmPlayer.swift in Sources */,
 				10682F112650046D0035CC68 /* SalmonidType.swift in Sources */,

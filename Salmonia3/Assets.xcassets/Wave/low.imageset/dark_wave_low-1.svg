@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="124" viewBox="0 0 128 124">
+  <g id="楕円形_1" data-name="楕円形 1" fill="none" stroke="#fefcfb" stroke-width="5">
+    <ellipse cx="64" cy="62" rx="64" ry="62" stroke="none"/>
+    <ellipse cx="64" cy="62" rx="61.5" ry="59.5" fill="none"/>
+  </g>
+  <path id="パス_1" data-name="パス 1" d="M772.667,29.333S790,14.667,816,29.333s43.333,0,43.333,0l-8.667,8-9.333,6-17.333,4H808.667l-20-4L776,33.333Z" transform="translate(-752 73)" fill="#3bb4d6"/>
+  <g id="楕円形_4" data-name="楕円形 4" fill="none" stroke="#0a1128" stroke-width="5">
+    <ellipse cx="64" cy="62" rx="64" ry="62" stroke="none"/>
+    <ellipse cx="64" cy="62" rx="61.5" ry="59.5" fill="none"/>
+  </g>
+</svg>
