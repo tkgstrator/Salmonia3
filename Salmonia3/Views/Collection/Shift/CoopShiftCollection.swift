@@ -8,6 +8,7 @@
 import SwiftUI
 import RealmSwift
 
+// シフト一覧を表示
 struct CoopShiftCollection: View {
     @Environment(\.presentationMode) var present
     @EnvironmentObject var appManager: AppManager
@@ -25,9 +26,12 @@ struct CoopShiftCollection: View {
             List {
                 ForEach(shifts.indices, id:\.self) { index in
                     ZStack(alignment: .leading) {
-                        NavigationLink(destination: CoopShiftStatsView(startTime: shifts[index].startTime), label: {
-                            EmptyView()
-                        })
+                        NavigationLink(
+                            destination: CoopShiftStatsView(startTime: shifts[index].startTime)
+                                .environmentObject(CoopShiftStats(startTime: shifts[index].startTime)),
+                            label: {
+                                EmptyView()
+                            })
                         .opacity(0.0)
                         CoopShift(shift: shifts[index])
                     }

@@ -9,8 +9,7 @@ import SwiftUI
 import SwiftUIX
 
 struct CoopShiftStatsView: View {
-    
-    @State var stats: CoopShiftStats = CoopShiftStats()
+    @EnvironmentObject var stats: CoopShiftStats
     @State var selection: Int = 0
     var startTime: Int
 
@@ -27,9 +26,6 @@ struct CoopShiftStatsView: View {
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle(.TITLE_SHIFT_STATS)
-                .onAppear {
-                    stats = CoopShiftStats(startTime: startTime)
-                }
             case false:
                 PaginationView {
                     StatsView(startTime: startTime, stats: stats)
@@ -38,14 +34,13 @@ struct CoopShiftStatsView: View {
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle(.TITLE_SHIFT_STATS)
-                .onAppear {
-                    stats = CoopShiftStats(startTime: startTime)
-                }
             }
         case false:
-            StatsView(startTime: startTime, stats: stats)
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationTitle(.TITLE_SHIFT_STATS)
+            PaginationView {
+                StatsView(startTime: startTime, stats: stats)
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle(.TITLE_SHIFT_STATS)
         }
     }
 }
