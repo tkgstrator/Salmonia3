@@ -86,6 +86,11 @@
 		1071595226E2274A0066DB74 /* Egg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071595126E2274A0066DB74 /* Egg.swift */; };
 		1071595626E24C2F0066DB74 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071595526E24C2F0066DB74 /* Wave.swift */; };
 		1071595826E2734F0066DB74 /* ResultIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071595726E2734F0066DB74 /* ResultIcon.swift */; };
+		1071595D26E278FF0066DB74 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071595C26E278FE0066DB74 /* Account.swift */; };
+		1071595F26E2790A0066DB74 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071595E26E2790A0066DB74 /* Product.swift */; };
+		1071596126E279190066DB74 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071596026E279190066DB74 /* Appearance.swift */; };
+		1071596326E2799F0066DB74 /* SettingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071596226E2799F0066DB74 /* SettingMenu.swift */; };
+		1071596626E27B140066DB74 /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071596526E27B140066DB74 /* SettingType.swift */; };
 		1079EAD22647E3540085008C /* CoopRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1079EAD12647E3540085008C /* CoopRecordView.swift */; };
 		107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */; };
 		1081B760269C778D0063D947 /* MBCircleProgressBar in Frameworks */ = {isa = PBXBuildFile; productRef = 1081B75F269C778D0063D947 /* MBCircleProgressBar */; };
@@ -104,7 +109,7 @@
 		10A7893726E0E801002F83EA /* Salmonids.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A7893626E0E801002F83EA /* Salmonids.swift */; };
 		10AD114D2600EB18008C0E64 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AD114C2600EB18008C0E64 /* Error.swift */; };
 		10B62CA32669CC1400916A64 /* CoopWaveCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B62CA22669CC1400916A64 /* CoopWaveCollection.swift */; };
-		10B62CAF2669D48E00916A64 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B62CAE2669D48E00916A64 /* Appearance.swift */; };
+		10B62CAF2669D48E00916A64 /* ResultStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B62CAE2669D48E00916A64 /* ResultStyle.swift */; };
 		10BBBEA226049EF400DA79C9 /* CoopResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBBEA126049EF400DA79C9 /* CoopResultView.swift */; };
 		10CD8544268D40AA00A00162 /* CoopShiftStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD8543268D40A900A00162 /* CoopShiftStatsView.swift */; };
 		10CF098E25FB97CB00D2EEB1 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF098D25FB97CB00D2EEB1 /* BetterSafariView */; };
@@ -240,6 +245,11 @@
 		1071595126E2274A0066DB74 /* Egg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Egg.swift; sourceTree = "<group>"; };
 		1071595526E24C2F0066DB74 /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
 		1071595726E2734F0066DB74 /* ResultIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultIcon.swift; sourceTree = "<group>"; };
+		1071595C26E278FE0066DB74 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		1071595E26E2790A0066DB74 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		1071596026E279190066DB74 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		1071596226E2799F0066DB74 /* SettingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenu.swift; sourceTree = "<group>"; };
+		1071596526E27B140066DB74 /* SettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingType.swift; sourceTree = "<group>"; };
 		1079EAD12647E3540085008C /* CoopRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopRecordView.swift; sourceTree = "<group>"; };
 		107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopStats.swift; sourceTree = "<group>"; };
 		1081B768269D1FD60063D947 /* RealmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
@@ -252,7 +262,7 @@
 		10A7893626E0E801002F83EA /* Salmonids.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salmonids.swift; sourceTree = "<group>"; };
 		10AD114C2600EB18008C0E64 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		10B62CA22669CC1400916A64 /* CoopWaveCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopWaveCollection.swift; sourceTree = "<group>"; };
-		10B62CAE2669D48E00916A64 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		10B62CAE2669D48E00916A64 /* ResultStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultStyle.swift; sourceTree = "<group>"; };
 		10BBBEA126049EF400DA79C9 /* CoopResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopResultView.swift; sourceTree = "<group>"; };
 		10CD8543268D40A900A00162 /* CoopShiftStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftStatsView.swift; sourceTree = "<group>"; };
 		10CF09F325FB9BE100D2EEB1 /* RealmCoopResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopResult.swift; sourceTree = "<group>"; };
@@ -393,7 +403,8 @@
 		102465EF25FDDAAA004DC043 /* SettingMenu */ = {
 			isa = PBXGroup;
 			children = (
-				102465F025FDDABD004DC043 /* SettingView.swift */,
+				1071596426E279E80066DB74 /* Menu */,
+				1071595926E278DB0066DB74 /* Section */,
 				1052C2CF26550E7800D3B9A9 /* DetailView.swift */,
 				109EF35D260CAB7F00076157 /* ProductView.swift */,
 				1053918F266BD8B5001025E1 /* HelpView.swift */,
@@ -632,9 +643,29 @@
 				10AD114C2600EB18008C0E64 /* Error.swift */,
 				10567DD7264ECDD0002654D3 /* SplatNet2.swift */,
 				10682F102650046D0035CC68 /* SalmonidType.swift */,
-				10B62CAE2669D48E00916A64 /* Appearance.swift */,
+				10B62CAE2669D48E00916A64 /* ResultStyle.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		1071595926E278DB0066DB74 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				1071595C26E278FE0066DB74 /* Account.swift */,
+				1071595E26E2790A0066DB74 /* Product.swift */,
+				1071596026E279190066DB74 /* Appearance.swift */,
+				102465F025FDDABD004DC043 /* SettingView.swift */,
+				1071596526E27B140066DB74 /* SettingType.swift */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		1071596426E279E80066DB74 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				1071596226E2799F0066DB74 /* SettingMenu.swift */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		107F9B3A2614A8CA001581C7 /* Views */ = {
@@ -1032,8 +1063,10 @@
 				105941BE25FA525100C32D21 /* Background.swift in Sources */,
 				10D2E1552655548F00AE584E /* Text.swift in Sources */,
 				10448BDD26652E7B00FFB553 /* SRPower.swift in Sources */,
+				1071595F26E2790A0066DB74 /* Product.swift in Sources */,
 				1024663E26009956004DC043 /* Grade.swift in Sources */,
 				1071595826E2734F0066DB74 /* ResultIcon.swift in Sources */,
+				1071596626E27B140066DB74 /* SettingType.swift in Sources */,
 				104BD608261C93630013CD27 /* KeyStorage.swift in Sources */,
 				102465F125FDDABD004DC043 /* SettingView.swift in Sources */,
 				1071595226E2274A0066DB74 /* Egg.swift in Sources */,
@@ -1041,6 +1074,7 @@
 				104DDC9026DFE2E20086B91E /* Stage.swift in Sources */,
 				1059416925FA49E500C32D21 /* ContentView.swift in Sources */,
 				10682EF3264FEF0A0035CC68 /* StatsWaveView.swift in Sources */,
+				1071596326E2799F0066DB74 /* SettingMenu.swift in Sources */,
 				104AA7DC2605E0C8007BDC24 /* GoogleMobileAds.swift in Sources */,
 				10B62CA32669CC1400916A64 /* CoopWaveCollection.swift in Sources */,
 				1052C2D026550E7800D3B9A9 /* DetailView.swift in Sources */,
@@ -1061,11 +1095,13 @@
 				10682EFB264FEF2A0035CC68 /* StatsView.swift in Sources */,
 				105391A4266D1C6F001025E1 /* CoreRealmPlayer.swift in Sources */,
 				10CF0A0525FBA6BF00D2EEB1 /* RealmCoopWave.swift in Sources */,
-				10B62CAF2669D48E00916A64 /* Appearance.swift in Sources */,
+				10B62CAF2669D48E00916A64 /* ResultStyle.swift in Sources */,
 				10377F8625FD041900536A94 /* AppManager.swift in Sources */,
+				1071595D26E278FF0066DB74 /* Account.swift in Sources */,
 				10377F9125FD09E800536A94 /* LoadingView.swift in Sources */,
 				102C75DF2659BA5700AEE20F /* LoadingIndicator.swift in Sources */,
 				107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */,
+				1071596126E279190066DB74 /* Appearance.swift in Sources */,
 				10CF09FB25FB9C6B00D2EEB1 /* CoreRealmCoop.swift in Sources */,
 				1031728E262C355500CF8903 /* ImportingView.swift in Sources */,
 				10CD8544268D40AA00A00162 /* CoopShiftStatsView.swift in Sources */,

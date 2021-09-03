@@ -1,5 +1,5 @@
 //
-//  Appearance.swift
+//  ResultStyle.swift
 //  Salmonia3
 //
 //  Created by tkgstrator on 2021/06/04.
@@ -17,6 +17,10 @@ enum ResultListStyle: String, CaseIterable, Identifiable {
     case `default`  = "STYLE_DEFAULT"
     case sidebar    = "STYLE_SIDEBAR"
     case inset      = "STYLE_INSET"
+
+    func setValue() {
+        UserDefaults.standard.setValue(self.rawValue, forKey: "FEATURE_OTHER_04")
+    }
 }
 
 enum ResultStyle: String, CaseIterable, Identifiable {
@@ -25,4 +29,8 @@ enum ResultStyle: String, CaseIterable, Identifiable {
     case barleyural = "STYLE_BARLEY"
     case lemontea   = "STYLE_LEMON"
     case `default`  = "STYLE_DEFAULT"
+
+    func setValue() {
+        UserDefaults.standard.setValue(self.rawValue, forKey: "FEATURE_OTHER_05")
+    }
 }
