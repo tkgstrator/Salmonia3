@@ -37,6 +37,8 @@ struct CoopPlayerResultView: View {
                                     BarChartView(salmonId: salmonid, values: playerBossKillCounts[index], maxValue: bossCounts[index])
                                 case .barleyural:
                                     CircleChartView(salmonId: salmonid, values: playerBossKillCounts[index], maxValue: bossCounts[index])
+                                case .lemontea:
+                                    LemonTeaView(result: result)
                                 default:
                                     CircleChartView(salmonId: salmonid, values: playerBossKillCounts[index], maxValue: bossCounts[index])
                                 }
@@ -49,7 +51,7 @@ struct CoopPlayerResultView: View {
     }
     
     var playerHeader: some View {
-        LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 60, maximum: 80)), count: 4), alignment: .center, spacing: nil, pinnedViews: [], content: {
+        LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 60, maximum: 80)), count: 4), alignment: .center, spacing: 5, pinnedViews: [], content: {
             ForEach(result.player.indices, id:\.self) { index in
                 VStack(alignment: .center, spacing: nil, content: {
                     URLImage(url: result.player[index].thumbnailURL, content: { thumbnailImage in
@@ -58,6 +60,7 @@ struct CoopPlayerResultView: View {
                             .aspectRatio(contentMode: .fill)
                             .mask(Circle())
                     })
+                    .padding(.horizontal, 4)
                     #warning("ここに金イクラとか表示する")
                 })
             }
@@ -71,16 +74,14 @@ struct CircleChartView: View {
     let maxValue: Int
     
     var body: some View {
-        LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 80)), count: values.count + 1), alignment: .center, spacing: 20, pinnedViews: [], content: {
-            Image(salmonId: salmonId.rawValue)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
+        LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 60, maximum: 80)), count: values.count), alignment: .center, spacing: 5, pinnedViews: [], content: {
             ForEach(values.indices) { index in
                 Circle()
                     .trim(from: 0.0, to: CGFloat(values[index]) / CGFloat(values.max()!))
                     .stroke(Color.dodgerblue, lineWidth: 5)
 //                    .stroke(values[index] == values.max()! ? Color.safetyorange : Color.dodgerblue, lineWidth: 5)
                     .rotationEffect(.degrees(-90))
+                    .frame(width: 55, height: 55)
                     .background(
                         Circle()
                             .stroke(Color.gray.opacity(0.2), lineWidth: 5)
@@ -90,10 +91,39 @@ struct CircleChartView: View {
                             .splatfont2(.primary, size: 16),
                         alignment: .center
                     )
-                    .padding(.horizontal, 4)
+                    .padding(8)
             }
         })
-        .padding()
+        .overlay(
+            Image(salmonId: salmonId.rawValue)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 50, height: 50)
+                .offset(x: -20, y: 0)
+            ,
+            alignment: .leading
+        )
+        .padding(.horizontal)
+    }
+}
+
+struct LemonTeaView: View {
+    let result: RealmCoopResult
+    
+    var body: some View {
+        LazyHGrid(rows: Array(repeating: .init(.flexible()), count: result.player.count), alignment: .center, spacing: nil, pinnedViews: [], content: {
+            playerResult
+        })
+    }
+    
+    var playerResult: some View {
+        ForEach(result.player.indices, id:\.self) { index in
+            URLImage(url: result.player[index].thumbnailURL, content: { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            })
+        }
     }
 }
 
@@ -133,7 +163,7 @@ struct BarChartView: View {
                 })
             })
         })
-        .padding()
+        .padding(.horizontal)
     }
 }
 
