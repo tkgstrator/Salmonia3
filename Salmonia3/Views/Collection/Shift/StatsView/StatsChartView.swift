@@ -10,8 +10,8 @@ import SwiftUI
 import SwiftChart
 
 struct StatsChartView: View {
-    var stats: CoopShiftStats
-    
+    @EnvironmentObject var stats: CoopShiftStats
+
     var body: some View {
         List {
             Section(header: Text(.HEADER_SPECIAL_WEAPON).splatfont2(.orange, size: 14)) {

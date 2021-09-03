@@ -9,8 +9,8 @@ import Foundation
 import SwiftUI
 
 struct StatsWaveView: View {
-    @ObservedObject var stats: CoopShiftStats
-    
+    @EnvironmentObject var stats: CoopShiftStats
+
     var body: some View {
         ScrollView {
             LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 200)), count: 3), alignment: .center, spacing: nil, pinnedViews: []) {

@@ -19,25 +19,25 @@ struct CoopShiftStatsView: View {
             switch RealmManager.shared.shift(startTime: startTime).rareWeapon != nil {
             case true:
                 PaginationView {
-                    StatsView(startTime: startTime, stats: stats)
-                    StatsChartView(stats: stats)
-                    StatsWaveView(stats: stats)
-                    StatsWeaponView(stats: stats)
+                    StatsView(startTime: startTime)
+                    StatsChartView()
+                    StatsWaveView()
+                    StatsWeaponView()
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle(.TITLE_SHIFT_STATS)
             case false:
                 PaginationView {
-                    StatsView(startTime: startTime, stats: stats)
-                    StatsChartView(stats: stats)
-                    StatsWaveView(stats: stats)
+                    StatsView(startTime: startTime)
+                    StatsChartView()
+                    StatsWaveView()
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle(.TITLE_SHIFT_STATS)
             }
         case false:
             PaginationView {
-                StatsView(startTime: startTime, stats: stats)
+                StatsView(startTime: startTime)
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(.TITLE_SHIFT_STATS)
