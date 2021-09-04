@@ -31,7 +31,7 @@ final class RealmCoopShift: Object, Identifiable {
         switch self.weaponList.contains(-1) {
         case true:
             // 緑ランダム編成
-            return Weapon.allCases.filter({ Int($0.rawValue)! >= 0 }).map({ Int($0.rawValue)! }) + [rareWeapon!]
+            return Weapon.allCases.filter({ Int($0.rawValue)! >= 0 && Int($0.rawValue)! < 20000 }).map({ Int($0.rawValue)! }) + [rareWeapon!]
         case false:
             switch self.weaponList.contains(-2) {
             case true:
