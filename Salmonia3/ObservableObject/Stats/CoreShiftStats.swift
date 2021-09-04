@@ -27,6 +27,8 @@ class CoopShiftStats: ObservableObject {
         let playerId: String = manager.account.nsaid
         // 必要なデータをRealmから取得
         let playerResults = RealmManager.shared.playerResults(startTime: startTime, playerId: playerId)
+        // リザルト件数が0なら何もせずにリターン
+        if playerResults.count == 0 { return }
         let allResults = RealmManager.shared.results(startTime: startTime, playerId: playerId)
         let waves = RealmManager.shared.waves(startTime: startTime)
         
@@ -35,10 +37,10 @@ class CoopShiftStats: ObservableObject {
         let weaponsList = RealmManager.shared.shift(startTime: startTime).weaponsList
         // そのブキが支給された回数を計算する
         self.weapons = weaponsList.map({ weaponId in
-            return ResultWeapon(weaponId: weaponId, prob: Double(suppliedWeapons.count(weaponId)) / Double(suppliedWeapons.count))
+            let count = suppliedWeapons.count(weaponId)
+            return ResultWeapon(weaponId: weaponId, count: count, prob: Double(count) / Double(suppliedWeapons.count))
         })
-        
-        
+
         // 支給されたスペシャルの情報
         let suppliedSpecials: [(Int, Int)] = RealmManager.shared.suppliedSpecial(startTime: startTime)
         self.specials = suppliedSpecials.map({ ResultSpecial(specialId: $0, count: $1, prob:  Double($1) / Double(suppliedSpecials.map({ $1 }).reduce(0, +))) }).sorted(by: { $0.count > $1.count })
@@ -84,12 +86,14 @@ class CoopShiftStats: ObservableObject {
     }
     
     /// 支給さればブキを管理するクラス
-    class ResultWeapon {
+    struct ResultWeapon: Hashable {
         let weaponId: Int
+        let count: Int
         let prob: String
         
-        init(weaponId: Int, prob: Double) {
+        init(weaponId: Int, count: Int, prob: Double) {
             self.weaponId = weaponId
+            self.count = count
             self.prob = String(format: "%.1f%%", prob * 100)
         }
     }
@@ -137,6 +141,7 @@ class CoopShiftStats: ObservableObject {
         
         init() {}
         init(player: RealmSwift.Results<RealmPlayerResult>, result: RealmSwift.Results<RealmCoopResult>) {
+            guard let _ = result.first else { return }
             self.teamPowerEggs = result.max(ofProperty: "powerEggs")
             self.teamGoldenEggs = result.max(ofProperty: "goldenEggs")
             self.powerEggs = player.max(ofProperty: "ikuraNum")
@@ -159,6 +164,7 @@ class CoopShiftStats: ObservableObject {
         
         init() {}
         init(player: RealmSwift.Results<RealmPlayerResult>, result: RealmSwift.Results<RealmCoopResult>) {
+            guard let _ = result.first else { return }
             self.teamPowerEggs = result.average(ofProperty: "powerEggs")
             self.teamGoldenEggs = result.average(ofProperty: "goldenEggs")
             self.powerEggs = player.average(ofProperty: "ikuraNum")

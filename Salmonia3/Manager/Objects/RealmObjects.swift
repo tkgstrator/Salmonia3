@@ -146,7 +146,7 @@ extension RealmManager {
     
     func suppliedSpecial(startTime: Int) -> [(Int, Int)] {
         let specialWeapons: [Int] = RealmManager.shared.playerResults(startTime: startTime).map({ $0.specialId })
-        return Special.allCases.map({ (Int($0.rawValue)!, specialWeapons.count(Int($0.rawValue)!)) })
+        return Special.allCases.filter({ Int($0.rawValue)! >= 0 }).map({ (Int($0.rawValue)!, specialWeapons.count(Int($0.rawValue)!)) })
     }
 }
 
