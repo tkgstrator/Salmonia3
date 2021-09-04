@@ -9,17 +9,64 @@
 import SwiftUI
 
 struct StatsChartView: View {
-    @EnvironmentObject var stats: CoopShiftStats
+//    @EnvironmentObject var stats: CoopShiftStats
 
     var body: some View {
         ScrollView {
-            PieChartView()
+            LazyVStack(alignment: .center, spacing: nil, pinnedViews: [], content: {
+                Text("スペシャルウェポン")
+                    .splatfont2(.blackrussian, size: 18)
+                HStack(alignment: .center, spacing: nil, content: {
+                    VStack(alignment: .center, spacing: 10, content: {
+                        ForEach([2, 7, 8, 9], id:\.self) { specialId in
+                            HStack(alignment: .center, spacing: nil, content: {
+                                Image(specialId: specialId)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 36, height: 36)
+                                    .mask(Circle())
+                                    .overlay(Circle().strokeBorder(Color.blackrussian, lineWidth: 1))
+                                Text(String(format: "%.02f%%", 100 * 0.3333))
+                                    .splatfont2(.orange, size: 20)
+                                    .padding(.horizontal)
+                            })
+                        }
+                    })
+                    PieChartView()
+                        .aspectRatio(contentMode: .fit)
+                })
+                Image(ResultIcon.dot)
+                Text("支給されたブキ")
+                    .splatfont2(.blackrussian, size: 18)
+                LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 60, maximum: 120)), count: 4), alignment: .center, spacing: nil, pinnedViews: [], content: {
+                    ForEach(Weapon.allCases.filter({ Int($0.rawValue)! >= 0 }), id:\.rawValue) { weapon in
+                        Capsule().fill(Color.blackrussian).frame(width: 80, height: 36)
+                            .overlay(
+                                Image(weapon)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 36, height: 36)
+                                    .mask(Circle())
+                                    .overlay(Circle().stroke(Color.gray, lineWidth: 1))
+                                ,
+                                alignment: .leading
+                            )
+                            .overlay(
+                                Text("10.0%")
+                                    .splatfont2(.seashell, size: 13)
+                                    .offset(x: 40, y: 0),
+                                alignment: .leading
+                            )
+                    }
+                })
+                .padding(.horizontal, 2)
+            })
         }
     }
 }
 
 struct PieChartView: View {
-    let values: [Int] = [10, 20, 30, 40]
+    let values: [Int] = [10, 20, 30, 60]
     
     var body: some View {
         Circle()
@@ -122,6 +169,8 @@ fileprivate extension Array where Element == Int {
 
 struct PieChartView_Previews: PreviewProvider {
     static var previews: some View {
-        PieChartView()
+        StatsChartView()
+            .preferredColorScheme(.dark)
+            .previewDevice("iPhone 8")
     }
 }
