@@ -83,7 +83,7 @@ struct CoopResultOverview: View {
                 .aspectRatio(contentMode: .fill)
                 .clipShape(RoundedRectangle(cornerRadius: 8.0))
                 .frame(height: 120)
-                .mask(Image("2ce11ebf110993621bedd8e747d7b1b").resizable())
+//                .mask(Image("2ce11ebf110993621bedd8e747d7b1b").resizable())
             LazyVStack(spacing: 0) {
                 // MARK: プレイ時間の表示
                 Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(result.playTime))))

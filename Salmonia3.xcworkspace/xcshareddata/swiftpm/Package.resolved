@@ -74,15 +74,6 @@
         }
       },
       {
-        "package": "SwiftChart",
-        "repositoryURL": "https://github.com/tkgstrator/SwiftChart",
-        "state": {
-          "branch": null,
-          "revision": "c09e9c7891c96a0b169795e66005c1b13dc55e92",
-          "version": "0.0.1"
-        }
-      },
-      {
         "package": "Introspect",
         "repositoryURL": "https://github.com/siteline/SwiftUI-Introspect.git",
         "state": {
