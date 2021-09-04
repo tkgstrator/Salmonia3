@@ -22,7 +22,6 @@ struct CoopShiftStatsView: View {
                     StatsView(startTime: startTime)
                     StatsChartView()
                     StatsWaveView()
-                    StatsWeaponView()
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle(.TITLE_SHIFT_STATS)

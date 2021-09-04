@@ -143,6 +143,11 @@ extension RealmManager {
             .thumbnailURL
         return URL(string: thumbnailURL)!
     }
+    
+    func suppliedSpecial(startTime: Int) -> [(Int, Int)] {
+        let specialWeapons: [Int] = RealmManager.shared.playerResults(startTime: startTime).map({ $0.specialId })
+        return Special.allCases.map({ (Int($0.rawValue)!, specialWeapons.count(Int($0.rawValue)!)) })
+    }
 }
 
 extension RealmSwift.Results where Element == RealmCoopWave {

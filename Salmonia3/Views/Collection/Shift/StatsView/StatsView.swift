@@ -39,15 +39,6 @@ struct StatsView: View {
                 StatsColumn(title: .RESULT_HELP_COUNT, value: stats.resultAvg.helpCount)
                 StatsColumn(title: .RESULT_DEAD_COUNT, value: stats.resultAvg.deadCount)
             }
-            ForEach(WaterLevel.allCases, id:\.rawValue) { tide in
-                Section(header: Text(tide.waterLevel.localized).splatfont2(.orange, size: 14)) {
-                    ForEach(EventType.allCases, id:\.rawValue) { event in
-                        if let goldenEggs = stats.records.goldenEggs[tide.rawValue][event.rawValue]?.goldenEggs {
-                            StatsColumn(title: event.eventType, value: goldenEggs)
-                        }
-                    }
-                }
-            }
         }
     }
 }

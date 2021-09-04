@@ -9,8 +9,8 @@ import Foundation
 import SwiftUI
 
 struct StatsWeaponView: View {
-    @EnvironmentObject var stats: CoopShiftStats
-    typealias WeaponList = CoopShiftStats.ResultWeapon
+    @EnvironmentObject var stats: ShiftStats
+    typealias WeaponList = ShiftStats.ResultWeapon
 
     var body: some View {
         ScrollView {
