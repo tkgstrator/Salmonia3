@@ -10,7 +10,7 @@ import RealmSwift
 import SalmonStats
 import SplatNet2
 
-final class RealmPlayerResult: Object {
+final class RealmPlayerResult: Object, Identifiable {
     @Persisted var name: String?
     @Persisted(indexed: true) var pid: String
     @Persisted var deadCount: Int

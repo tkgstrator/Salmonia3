@@ -66,7 +66,6 @@
 		1053919C266D1703001025E1 /* RealmPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1053919B266D1703001025E1 /* RealmPlayer.swift */; };
 		105391A4266D1C6F001025E1 /* CoreRealmPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105391A3266D1C6F001025E1 /* CoreRealmPlayer.swift */; };
 		105391AC266D23C4001025E1 /* CoopPlayerCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105391AB266D23C4001025E1 /* CoopPlayerCollection.swift */; };
-		105391D52673E733001025E1 /* SwiftChart in Frameworks */ = {isa = PBXBuildFile; productRef = 105391D42673E733001025E1 /* SwiftChart */; };
 		10567DD8264ECDD0002654D3 /* SplatNet2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10567DD7264ECDD0002654D3 /* SplatNet2.swift */; };
 		1059416725FA49E500C32D21 /* Salmonia3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059416625FA49E500C32D21 /* Salmonia3App.swift */; };
 		1059416925FA49E500C32D21 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1059416825FA49E500C32D21 /* ContentView.swift */; };
@@ -94,7 +93,6 @@
 		1079EAD22647E3540085008C /* CoopRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1079EAD12647E3540085008C /* CoopRecordView.swift */; };
 		107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */; };
 		1081B760269C778D0063D947 /* MBCircleProgressBar in Frameworks */ = {isa = PBXBuildFile; productRef = 1081B75F269C778D0063D947 /* MBCircleProgressBar */; };
-		1081B763269C77AE0063D947 /* SwiftChart in Frameworks */ = {isa = PBXBuildFile; productRef = 1081B762269C77AE0063D947 /* SwiftChart */; };
 		1081B766269C77C40063D947 /* SwiftyAPNGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1081B765269C77C40063D947 /* SwiftyAPNGKit */; };
 		1081B769269D1FD60063D947 /* RealmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1081B768269D1FD60063D947 /* RealmObjects.swift */; };
 		1083857C265922700099475F /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 1083857B265922700099475F /* SwiftyBeaver */; };
@@ -308,8 +306,6 @@
 				102C75EB2659C5A600AEE20F /* SwiftyAPNGKit in Frameworks */,
 				10039F9626A45EA300B1546A /* GoogleMobileAds.xcframework in Frameworks */,
 				1081B760269C778D0063D947 /* MBCircleProgressBar in Frameworks */,
-				105391D52673E733001025E1 /* SwiftChart in Frameworks */,
-				1081B763269C77AE0063D947 /* SwiftChart in Frameworks */,
 				10317286262C32FB00CF8903 /* SalmonStats in Frameworks */,
 				1083857C265922700099475F /* SwiftyBeaver in Frameworks */,
 				104BD620261C98800013CD27 /* URLImage in Frameworks */,
@@ -795,9 +791,7 @@
 				1028D37126418EFD0034C075 /* MBCircleProgressBar */,
 				1083857B265922700099475F /* SwiftyBeaver */,
 				102C75EA2659C5A600AEE20F /* SwiftyAPNGKit */,
-				105391D42673E733001025E1 /* SwiftChart */,
 				1081B75F269C778D0063D947 /* MBCircleProgressBar */,
-				1081B762269C77AE0063D947 /* SwiftChart */,
 				1081B765269C77C40063D947 /* SwiftyAPNGKit */,
 				10094BB826CE9FC4001ACBDF /* SwiftyUI */,
 				10210F0B26D3D2F200E4C7C4 /* SwiftUIX */,
@@ -888,7 +882,6 @@
 				104BD61E261C98800013CD27 /* XCRemoteSwiftPackageReference "url-image" */,
 				1083857A265922700099475F /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
 				1081B75E269C778D0063D947 /* XCRemoteSwiftPackageReference "MBCircleProgressBar" */,
-				1081B761269C77AE0063D947 /* XCRemoteSwiftPackageReference "SwiftChart" */,
 				1081B764269C77C40063D947 /* XCRemoteSwiftPackageReference "SwiftyAPNGKit" */,
 				10210F0A26D3D2F200E4C7C4 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 			);
@@ -1349,7 +1342,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1377,7 +1370,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1556,14 +1549,6 @@
 				minimumVersion = 0.0.2;
 			};
 		};
-		1081B761269C77AE0063D947 /* XCRemoteSwiftPackageReference "SwiftChart" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tkgstrator/SwiftChart";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.1;
-			};
-		};
 		1081B764269C77C40063D947 /* XCRemoteSwiftPackageReference "SwiftyAPNGKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/tkgstrator/SwiftyAPNGKit";
@@ -1650,19 +1635,10 @@
 			package = 10CF098C25FB97CB00D2EEB1 /* XCRemoteSwiftPackageReference "BetterSafariView" */;
 			productName = BetterSafariView;
 		};
-		105391D42673E733001025E1 /* SwiftChart */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SwiftChart;
-		};
 		1081B75F269C778D0063D947 /* MBCircleProgressBar */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1081B75E269C778D0063D947 /* XCRemoteSwiftPackageReference "MBCircleProgressBar" */;
 			productName = MBCircleProgressBar;
-		};
-		1081B762269C77AE0063D947 /* SwiftChart */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1081B761269C77AE0063D947 /* XCRemoteSwiftPackageReference "SwiftChart" */;
-			productName = SwiftChart;
 		};
 		1081B765269C77C40063D947 /* SwiftyAPNGKit */ = {
 			isa = XCSwiftPackageProductDependency;

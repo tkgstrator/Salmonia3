@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftChart
 
 struct StatsView: View {
     @EnvironmentObject var stats: CoopShiftStats

@@ -8,7 +8,6 @@
 import Foundation
 import RealmSwift
 import SwiftUI
-import SwiftChart
 
 final class CoopShiftStats: ObservableObject {
     @Published var resultAvg: ResultAvg = ResultAvg()
@@ -94,14 +93,6 @@ final class CoopShiftStats: ObservableObject {
         var powerEggRatio: Double?
         var crewAvg: Double?
         
-        lazy var specialWeapon = {
-            return [
-                PieChartData(value: Double(self.player?.filter("specialId=%@", 2).count ?? 0), label: { AnyView(Image(specialId: 2).resizable().frame(width: 35, height: 35, alignment: .center)) }),
-                PieChartData(value: Double(self.player?.filter("specialId=%@", 7).count ?? 0), label: { AnyView(Image(specialId: 7).resizable().frame(width: 35, height: 35, alignment: .center)) }),
-                PieChartData(value: Double(self.player?.filter("specialId=%@", 8).count ?? 0), label: { AnyView(Image(specialId: 8).resizable().frame(width: 35, height: 35, alignment: .center)) }),
-                PieChartData(value: Double(self.player?.filter("specialId=%@", 9).count ?? 0), label: { AnyView(Image(specialId: 9).resizable().frame(width: 35, height: 35, alignment: .center)) })
-            ]
-        }()
         var playerBossDefeatedRatio: [Double?] = []
         var otherBossDefeatedRatio: [Double?] = []
         var teamBossDefeatedRatio: [Double?] = []

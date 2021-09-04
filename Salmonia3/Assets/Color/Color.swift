@@ -25,6 +25,7 @@ enum EXColor: String, CaseIterable {
     case venitianred    = "#CF000F"
     case deepskyblue    = "#19B5FE"
     case salam          = "#1E824C"
+    case moonyellow     = "#E9C71D"
     
     public var colorCode: String {
         "\(Package.namespace)/\(rawValue)"
@@ -49,4 +50,17 @@ extension Color {
     static let venitianred      = Color(.venitianred)
     static let deepskyblue      = Color(.deepskyblue)
     static let salam            = Color(.salam)
+    static let moonyellow       = Color(.moonyellow)
+}
+
+extension Color {
+    public static var random: Color {
+        return Color(red: .random(), green: .random(), blue: .random())
+    }
+}
+
+extension Double {
+    static func random() -> Double {
+        return Double(arc4random()) / Double(UINT32_MAX)
+    }
 }
