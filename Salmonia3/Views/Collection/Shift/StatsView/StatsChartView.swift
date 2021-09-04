@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct StatsChartView: View {
-//    @EnvironmentObject var stats: CoopShiftStats
+    @EnvironmentObject var stats: CoopShiftStats
 
     var body: some View {
         ScrollView {
@@ -18,21 +18,22 @@ struct StatsChartView: View {
                     .splatfont2(.blackrussian, size: 18)
                 HStack(alignment: .center, spacing: nil, content: {
                     VStack(alignment: .center, spacing: 10, content: {
-                        ForEach([2, 7, 8, 9], id:\.self) { specialId in
+                        ForEach(stats.specials, id:\.self) { special in
                             HStack(alignment: .center, spacing: nil, content: {
-                                Image(specialId: specialId)
+                                Image(specialId: special.specialId)
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: 36, height: 36)
                                     .mask(Circle())
                                     .overlay(Circle().strokeBorder(Color.blackrussian, lineWidth: 1))
-                                Text(String(format: "%.02f%%", 100 * 0.3333))
+                                Text(special.prob)
                                     .splatfont2(.orange, size: 20)
                                     .padding(.horizontal)
+                                    .frame(width: 100)
                             })
                         }
                     })
-                    PieChartView()
+                    PieChartView(specials: stats.specials)
                         .aspectRatio(contentMode: .fit)
                 })
                 Image(ResultIcon.dot)
@@ -60,13 +61,22 @@ struct StatsChartView: View {
                     }
                 })
                 .padding(.horizontal, 2)
+                Image(ResultIcon.dot)
             })
         }
     }
 }
 
 struct PieChartView: View {
-    let values: [Int] = [10, 20, 30, 60]
+    let specials: [CoopShiftStats.ResultSpecial]
+    let jobNum: Int
+    let angles: [AnglePair]
+
+    init(specials: [CoopShiftStats.ResultSpecial]) {
+        self.specials = specials
+        self.jobNum = specials.map({ $0.count }).reduce(0, +)
+        self.angles = specials.anglePairs
+    }
     
     var body: some View {
         Circle()
@@ -79,42 +89,40 @@ struct PieChartView: View {
             .overlay(
                 VStack(alignment: .center, spacing: -20, content: {
                     Text("今回のバイト回数")
-                    Text("\(values.reduce(0, +))回")
+                    Text("\(jobNum)回")
                 })
                 .splatfont2(.seashell, size: 20)
             )
-            .overlay(specialLayer)
-    }
-    
-    var specialLayer: some View {
-        ZStack(alignment: .center, content: {
-            ForEach(values.getOffset(), id:\.self) { value in
-                Image(specialId: 2)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 30, height: 30)
-                    .offset(x: 80 * cos(value), y: 80 * sin(value))
-            }
-        })
     }
     
     var cirlceLayer: some View {
         ZStack(alignment: .center, content: {
-            ForEach(values.generateAngles(), id:\.self) { anglePair in
-                Pie(startAngle: anglePair.startAngle, endAngle: anglePair.endAngle)
+            ForEach(angles, id:\.self) { angle in
+                Pie(startAngle: angle.startAngle, endAngle: angle.endAngle)
                     .fill(Color.random)
+            }
+            ForEach(angles, id:\.self) { angle in
+                Image(specialId: angle.specialId)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 36, height: 36)
+                    .offset(x: 80 * cos(angle.offsetAngle), y: 80 * sin(angle.offsetAngle))
             }
         })
     }
 }
 
 struct AnglePair: Hashable {
+    let specialId: Int
     let startAngle: Angle
     let endAngle: Angle
+    let offsetAngle: CGFloat
     
-    internal init(startAngle: Angle, endAngle: Angle) {
+    internal init(specialId: Int, startAngle: Angle, endAngle: Angle, offsetAngle: CGFloat) {
+        self.specialId = specialId
         self.startAngle = startAngle
         self.endAngle = endAngle
+        self.offsetAngle = offsetAngle
     }
 }
 
@@ -128,8 +136,8 @@ struct Pie: Shape {
         let path = Path { path in
             path.addArc(center: center,
                         radius: radius,
-                        startAngle: startAngle - .degrees(90),
-                        endAngle: endAngle - .degrees(90),
+                        startAngle: startAngle,
+                        endAngle: endAngle,
                         clockwise: false)
             path.addLine(to: center)
         }
@@ -137,31 +145,20 @@ struct Pie: Shape {
     }
 }
 
-fileprivate extension Array where Element == Int {
-    func getOffset() -> [CGFloat] {
-        var angles: [CGFloat] = []
-        var currentAngle: Angle = .degrees(-90)
-        var tmpAngle: Angle = .degrees(-90)
-        let totalValue: Int = self.reduce(0, +)
-        
-        for value in self {
-            tmpAngle = currentAngle + .degrees(360 * CGFloat(value / 2) / CGFloat(totalValue))
-            angles.append(CGFloat(tmpAngle.degrees / 180 * .pi))
-            currentAngle += .degrees(360 * CGFloat(value) / CGFloat(totalValue))
-        }
-        print(angles)
-        return angles
-    }
-    
-    func generateAngles() -> [AnglePair] {
-        let totalValue: Int = self.reduce(0, +)
-        var startAngle: Angle = .degrees(0)
+fileprivate extension Array where Element == CoopShiftStats.ResultSpecial {
+    var anglePairs: [AnglePair] {
+        let totalValue: Int = self.map({ $0.count }).reduce(0, +)
+        var startAngle: Angle = .degrees(-90)
         var angles: [AnglePair] = []
         
-        for value in self {
-            let endAngle = startAngle + .degrees(360 * CGFloat(value) / CGFloat(totalValue))
-            angles.append(AnglePair(startAngle: startAngle, endAngle: endAngle))
-            startAngle = endAngle
+        for special in self {
+            let value = special.count
+            if value >= 1 {
+                let endAngle = startAngle + .degrees(360 * CGFloat(value) / CGFloat(totalValue))
+                let offsetAngle = CGFloat(((startAngle + endAngle) / 2).degrees / 180 * .pi)
+                angles.append(AnglePair(specialId: special.specialId, startAngle: startAngle, endAngle: endAngle, offsetAngle: offsetAngle))
+                startAngle = endAngle
+            }
         }
         return angles
     }

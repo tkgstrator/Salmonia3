@@ -83,7 +83,6 @@ extension Image {
     }
 
     init(weaponId: Int) {
-        print(weaponId)
         self.init(Weapon(rawValue: String(weaponId))!)
     }
 }

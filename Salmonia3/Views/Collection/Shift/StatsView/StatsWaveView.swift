@@ -35,7 +35,7 @@ struct StatsWaveView: View {
                                         alignment: .center
                                     )
                                     .overlay(
-                                        Text(stats.resultWave.filter({ $0.tide == waterLevel.rawValue && $0.event == eventType.rawValue }).first!.goldenEggs.stringValue)
+                                        Text(stats.resultWave.filter({ $0.waterLevel == waterLevel && $0.eventType == eventType }).first!.goldenIkuraAvg.stringValue)
                                             .splatfont2(.blackrussian, size: 20)
                                             .offset(x: 0, y: 20),
                                         alignment: .center
