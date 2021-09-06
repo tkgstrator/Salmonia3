@@ -12,7 +12,7 @@ struct StatsWaveView: View {
     @EnvironmentObject var stats: CoopShiftStats
     
     var body: some View {
-        ScrollView {
+        ScrollView(.vertical, showsIndicators: false, content: {
             LazyVStack(alignment: .center, spacing: nil, pinnedViews: [.sectionHeaders], content: {
                 Section(header: waveHeader, content: {
                     ForEach(EventType.allCases) { eventType in
@@ -29,6 +29,8 @@ struct StatsWaveView: View {
                         LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 128)), count: 3), alignment: .center, spacing: nil, pinnedViews: [], content: {
                             ForEach(WaterLevel.allCases) { waterLevel in
                                 Image(waterLevel: waterLevel.rawValue)
+                                    .resizable()
+                                    .padding(.horizontal, 4)
                                     .overlay(
                                         Text(eventType.eventType.localized)
                                             .splatfont2(.blackrussian, size: 20),
@@ -49,7 +51,7 @@ struct StatsWaveView: View {
                     }
                 })
             })
-        }
+        })
         .background(Color.seashell.edgesIgnoringSafeArea(.all))
         .splatfont2(size: 14)
     }

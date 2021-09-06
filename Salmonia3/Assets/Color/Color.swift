@@ -26,6 +26,7 @@ enum EXColor: String, CaseIterable {
     case deepskyblue    = "#19B5FE"
     case salam          = "#1E824C"
     case moonyellow     = "#E9C71D"
+    case dimgray        = "#707070"
     
     public var colorCode: String {
         "\(Package.namespace)/\(rawValue)"
@@ -51,6 +52,7 @@ extension Color {
     static let deepskyblue      = Color(.deepskyblue)
     static let salam            = Color(.salam)
     static let moonyellow       = Color(.moonyellow)
+    static let dimgray          = Color(.dimgray)
 }
 
 extension Color {

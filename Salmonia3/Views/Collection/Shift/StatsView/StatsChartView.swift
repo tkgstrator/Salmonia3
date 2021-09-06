@@ -11,6 +11,7 @@ import SwiftUI
 struct StatsChartView: View {
     @EnvironmentObject var stats: CoopShiftStats
     @State var isPresented: Bool = false
+    var chartColors: [Color] = [.safetyorange, .easternblue, .dimgray, .blackrussian]
     
     /// スペシャルウェポンのチャートを表示
     var specialWeaponChart: some View {
@@ -28,7 +29,7 @@ struct StatsChartView: View {
                                 .mask(Circle())
                                 .overlay(Circle().strokeBorder(Color.blackrussian, lineWidth: 1))
                             Text(special.prob)
-                                .splatfont2(.safetyorange, size: 20)
+                                .splatfont2(chartColors[stats.specials.firstIndex(of: special)!], size: 20)
                                 .padding(.horizontal)
                                 .frame(width: 100)
                         })
@@ -86,7 +87,7 @@ struct SuppliedWeaponView: View {
     var body: some View {
         LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 60, maximum: 120)), count: 4), alignment: .center, spacing: nil, pinnedViews: [], content: {
             ForEach(weapons.filter({ $0.count > 0 }), id:\.self) { weapon in
-                Capsule().fill(Color.blackrussian).frame(width: 80, height: 36)
+                Capsule().fill(Color.blackrussian).frame(width: 85, height: 36)
                     .overlay(
                         Image(weaponId: weapon.weaponId)
                             .resizable()
@@ -101,7 +102,7 @@ struct SuppliedWeaponView: View {
                         Text(isPresented ? weapon.prob : "\(weapon.count)")
                             .splatfont2(.seashell, size: 13)
                             .padding(.trailing, 8)
-                            .frame(width: 80, alignment: .trailing)
+                            .frame(width: 85, alignment: .trailing)
                         ,
                         alignment: .leading
                     )
@@ -114,10 +115,11 @@ struct SuppliedWeaponView: View {
 }
 
 struct PieChartView: View {
+    let chartColors: [Color] = [.safetyorange, .easternblue, .dimgray, .blackrussian]
     let specials: [CoopShiftStats.ResultSpecial]
     let jobNum: Int
     let angles: [AnglePair]
-    
+
     init(specials: [CoopShiftStats.ResultSpecial]) {
         self.specials = specials
         self.jobNum = specials.map({ $0.count }).reduce(0, +)
@@ -145,7 +147,7 @@ struct PieChartView: View {
         ZStack(alignment: .center, content: {
             ForEach(angles, id:\.self) { angle in
                 Pie(startAngle: angle.startAngle, endAngle: angle.endAngle)
-                    .fill(Color.random)
+                    .fill(chartColors[angles.firstIndex(of: angle)!])
             }
             ForEach(angles, id:\.self) { angle in
                 Image(specialId: angle.specialId)
