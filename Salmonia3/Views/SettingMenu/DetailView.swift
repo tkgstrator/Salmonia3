@@ -16,7 +16,7 @@ struct DetailView: View {
     
     var body: some View {
         List {
-            Section(header: Text(.SETTING_GENERAL).splatfont2(.orange, size: 14)) {
+            Section(header: Text(.SETTING_GENERAL).splatfont2(.safetyorange, size: 14)) {
                 Toggle(LocalizableStrings.Key.SETTING_LOG_SEND.rawValue.localized, isOn: $appManager.isDebugMode)
                 HStack {
                     Picker(selection: $appManager.importNum, label: Text(.SETTING_IMPORT_NUM)) {
@@ -30,7 +30,7 @@ struct DetailView: View {
                         .foregroundColor(.secondary)
                 }
             }
-            Section(header: Text(.SETTING_IMPORTANT).splatfont2(.orange, size: 14)) {
+            Section(header: Text(.SETTING_IMPORTANT).splatfont2(.safetyorange, size: 14)) {
                 Toggle(LocalizableStrings.Key.SETTING_RE_SIGN_IN.rawValue.localized, isOn: .init(
                     get: { isToggle[0] },
                     set: {

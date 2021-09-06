@@ -11,6 +11,7 @@ import SwiftUI
 import SplatNet2
 import Combine
 import SwiftyAPNGKit
+import SDWebImageSwiftUI
 
 struct LoginMenu: View {
     @State var isActive: Bool = false
@@ -19,6 +20,7 @@ struct LoginMenu: View {
     @State var isAuthorized: Bool = false
     @State var task = Set<AnyCancellable>()
     @State var apiError: APIError?
+    @State var isAnimating: Bool = true
 
     var body: some View {
         GeometryReader { geometry in
@@ -26,6 +28,10 @@ struct LoginMenu: View {
                 VStack {
                     Text(.TEXT_SALMONIA)
                         .splatfont2(size: 36)
+                    
+                    WebImage(forResource: "LoadingIka", isAnimating: $isAnimating)
+                        .resizable()
+                        .frame(width: 128, height: 128)
                     Text(.TEXT_WELCOME_SPLATNET2)
                         .splatfont2(.secondary, size: 18)
                         .multilineTextAlignment(.center)
@@ -67,5 +73,13 @@ struct LoginMenu: View {
     var Helpbutton: some View {
         Button(action: { isPresented.toggle() },
                label: { Image(systemName: "questionmark.circle").resizable().frame(width: 35, height: 35).foregroundColor(.white).padding(.all, 20) })
+    }
+}
+
+
+extension WebImage {
+    init(forResource: String, isAnimating: Binding<Bool>) {
+        let url = Bundle.main.url(forResource: forResource, withExtension: "png")
+        self.init(url: url, isAnimating: isAnimating)
     }
 }

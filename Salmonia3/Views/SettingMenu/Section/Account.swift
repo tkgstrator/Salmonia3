@@ -14,7 +14,7 @@ extension Setting.Sections {
         @EnvironmentObject var appManager: AppManager
         
         var body: some View {
-            Section(header: Text(.HEADER_USERINFO).splatfont2(.orange, size: 14),
+            Section(header: Text(.HEADER_USERINFO).splatfont2(.safetyorange, size: 14),
                     footer: Text(.FOOTER_SPLATNET2).splatfont2(.secondary, size: 13).environment(\.lineLimit, 2)) {
                 switch appManager.isPaid02 {
                 case true:

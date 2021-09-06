@@ -11,7 +11,7 @@ import SwiftUI
 extension Setting.Sections {
     struct Product: View {
         var body: some View {
-            Section(header: Text(.HEADER_PRODUCT).splatfont2(.orange, size: 14)) {
+            Section(header: Text(.HEADER_PRODUCT).splatfont2(.safetyorange, size: 14)) {
                 NavigationLink(destination: FreeProductView(), label: { Text(.SETTING_FREE_PRODUCT) })
                 NavigationLink(destination: PaidProductView(), label: { Text(.SETTING_PAID_PRODUCT) })
             }
