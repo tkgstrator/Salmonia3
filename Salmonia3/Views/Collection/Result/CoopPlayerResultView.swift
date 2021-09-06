@@ -148,7 +148,7 @@ struct LemonTeaView: View {
                 LazyVGrid(columns: Array(repeating: .init(.fixed(maxWidth / 7)), count: 7), alignment: .center, spacing: nil, pinnedViews: [], content: {
                     ForEach([0, 10, 20, 30, 40, 50, 66], id:\.self) { index in
                         Text("\(index)")
-                            .splatfont2(.orange, size: 10)
+                            .splatfont2(.safetyorange, size: 10)
                     }
                 }),
                 alignment: .bottom

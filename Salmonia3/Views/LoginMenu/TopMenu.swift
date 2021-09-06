@@ -24,7 +24,7 @@ struct TopMenu: View {
         ZStack {
             NavigationLink(destination: LoadingView(), isActive: $isActive) { EmptyView() }
             List {
-                Section(header: Text(.HEADER_OVERVIEW).splatfont2(.orange, size: 14)) {
+                Section(header: Text(.HEADER_OVERVIEW).splatfont2(.safetyorange, size: 14)) {
                     Overview
                     Results
                     Waves
@@ -35,7 +35,7 @@ struct TopMenu: View {
                     //                    LanPlayRecords
                     #endif
                 }
-                Section(header: Text(.HEADER_SCHEDULE).splatfont2(.orange, size: 14)) {
+                Section(header: Text(.HEADER_SCHEDULE).splatfont2(.safetyorange, size: 14)) {
                     ForEach(main.latestShift, id:\.self) { shift in
                         NavigationLink(
                             destination: CoopShiftStatsView(startTime: shift.startTime)
@@ -48,7 +48,7 @@ struct TopMenu: View {
                         Text(.TITLE_SHIFT_SCHEDULE)
                     }
                 }
-                Section(header: Text(.HEADER_STAGE_RECORD).splatfont2(.orange, size: 14)) {
+                Section(header: Text(.HEADER_STAGE_RECORD).splatfont2(.safetyorange, size: 14)) {
                     ForEach(StageType.allCases, id:\.self) { stage in
                         NavigationLink(destination: CoopRecordView(stageId: stage.rawValue)) {
                             Text(stage.name.localized)

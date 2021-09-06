@@ -107,7 +107,7 @@ struct CoopPlayerView: View {
             }
         }
         .frame(height: 12)
-        .splatfont2(.orange, size: 13)
+        .splatfont2(.safetyorange, size: 13)
     }
 }
 

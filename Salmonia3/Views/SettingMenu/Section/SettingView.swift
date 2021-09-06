@@ -32,7 +32,7 @@ struct SettingView: View {
             Sections.Appearance()
             
             /// SalmonStats更新機能
-//            Section(header: Text(.HEADER_SALMONSTATS).splatfont2(.orange, size: 14),
+//            Section(header: Text(.HEADER_SALMONSTATS).splatfont2(.safetyorange, size: 14),
 //                    footer: Text(.FOOTER_SALMONSTATS).splatfont2(.secondary, size: 13).environment(\.lineLimit, 2)) {
 //                SettingMenu(title: .SETTING_UPLOAD, value: !(manager.apiToken?.isEmpty ?? true))
 //                Button(action: { isPresented.toggle() }, label: { Text(.SETTING_IMPORT_RESULT) })
@@ -61,7 +61,7 @@ struct SettingView: View {
     }
     
     var accountInfoSection: some View {
-        Section(header: Text(.HEADER_USERINFO).splatfont2(.orange, size: 14),
+        Section(header: Text(.HEADER_USERINFO).splatfont2(.safetyorange, size: 14),
                 footer: Text(.FOOTER_SPLATNET2).splatfont2(.secondary, size: 13).environment(\.lineLimit, 2)) {
             switch appManager.isPaid02 {
             case true:
@@ -76,7 +76,7 @@ struct SettingView: View {
    
     /// 課金機能へのNavigationLink
     var productLinkSection: some View {
-        Section(header: Text(.HEADER_PRODUCT).splatfont2(.orange, size: 14)) {
+        Section(header: Text(.HEADER_PRODUCT).splatfont2(.safetyorange, size: 14)) {
             NavigationLink(destination: FreeProductView(), label: { Text(.SETTING_FREE_PRODUCT) })
             NavigationLink(destination: PaidProductView(), label: { Text(.SETTING_PAID_PRODUCT) })
         }
@@ -84,7 +84,7 @@ struct SettingView: View {
     
     var appearanceSection: some View {
         /// 見た目を変更
-        Section(header: Text(.HEADER_APPEARANCE).splatfont2(.orange, size: 14)) {
+        Section(header: Text(.HEADER_APPEARANCE).splatfont2(.safetyorange, size: 14)) {
             Toggle(LocalizableStrings.Key.SETTING_DARKMODE.rawValue.localized, isOn: $appManager.isDarkMode)
             Button(action: {}, label: {
                 Text(appManager.resultStyle.rawValue.localized)
@@ -107,7 +107,7 @@ struct SettingView: View {
     
     /// アプリケーションの基本情報
     var applicationInfoSection: some View {
-        Section(header: Text(.HEADER_APPLICATION).splatfont2(.orange, size: 14)) {
+        Section(header: Text(.HEADER_APPLICATION).splatfont2(.safetyorange, size: 14)) {
             privacyButton
             NavigationLink(destination: HelpView(), label: { Text(.TITLE_HELP) })
             NavigationLink(destination: DetailView(), label: { Text(.SETTING_DETAIL) })

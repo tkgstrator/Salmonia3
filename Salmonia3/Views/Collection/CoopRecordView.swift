@@ -19,7 +19,7 @@ struct CoopRecordView: View {
     
     var body: some View {
         List {
-            Section(header: Text(.HEADER_OVERVIEW).splatfont2(.orange, size: 14)) {
+            Section(header: Text(.HEADER_OVERVIEW).splatfont2(.safetyorange, size: 14)) {
                 RecordColumn(title: .RESULT_JOB_NUM, value: record.jobNum)
                 RecordColumn(title: .RESULT_MAX_GRADE, value: record.maxGrade)
                 RecordColumn(title: .RESULT_MAX_GRADE_NUM, value: record.counterStepNum)
@@ -28,7 +28,7 @@ struct CoopRecordView: View {
                 RecordColumn(title: .RESULT_MAX_GOLDEN_EGGS_NONIGHT, value: record.maxGoldenEggs.nonight)
             }
             ForEach(WaterLevel.allCases, id:\.self) { tide in
-                Section(header: Text(tide.waterLevel.localized).splatfont2(.orange, size: 14)) {
+                Section(header: Text(tide.waterLevel.localized).splatfont2(.safetyorange, size: 14)) {
                     ForEach(EventType.allCases, id:\.self) { event in
                         if let goldenEggs = record.goldenEggs[tide.rawValue][event.rawValue]?.goldenEggs {
                             RecordColumn(title: event.eventType, value: goldenEggs)

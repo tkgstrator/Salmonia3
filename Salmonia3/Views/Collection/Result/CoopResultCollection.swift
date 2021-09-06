@@ -206,7 +206,7 @@ struct ResultOverview: View {
         } else {
             return AnyView(
                 Text(.RESULT_DEFEAT)
-                    .splatfont(.orange, size: 14)
+                    .splatfont(.safetyorange, size: 14)
                     .frame(width: 70)
             )
         }
