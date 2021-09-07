@@ -11,15 +11,6 @@
         }
       },
       {
-        "package": "APNGKit",
-        "repositoryURL": "https://github.com/onevcat/APNGKit.git",
-        "state": {
-          "branch": null,
-          "revision": "10129abce1fcb98ddbded7e50be18f9da0771ed1",
-          "version": "1.2.2"
-        }
-      },
-      {
         "package": "BetterSafariView",
         "repositoryURL": "https://github.com/stleamist/BetterSafariView.git",
         "state": {
@@ -44,15 +35,6 @@
           "branch": null,
           "revision": "84e546727d66f1adc5439debad16270d0fdd04e7",
           "version": "4.2.2"
-        }
-      },
-      {
-        "package": "MBCircleProgressBar",
-        "repositoryURL": "https://github.com/tkgstrator/MBCircleProgressBar",
-        "state": {
-          "branch": null,
-          "revision": "6a623d17a81dbd57a48b3c8cd47a2e51bc5493bc",
-          "version": "0.0.2"
         }
       },
       {
@@ -116,15 +98,6 @@
           "branch": null,
           "revision": "6aa1b4ec2e0d3e5cfc7494c84519402a16dd1316",
           "version": "0.0.8"
-        }
-      },
-      {
-        "package": "SwiftyAPNGKit",
-        "repositoryURL": "https://github.com/tkgstrator/SwiftyAPNGKit",
-        "state": {
-          "branch": null,
-          "revision": "958738a8e1431e181d9f5f7a8f4d727e33386172",
-          "version": "0.0.2"
         }
       },
       {

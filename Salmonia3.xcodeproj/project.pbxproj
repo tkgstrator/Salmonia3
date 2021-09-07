@@ -30,7 +30,6 @@
 		1024661B25FE0929004DC043 /* RealmCoopShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024661A25FE0929004DC043 /* RealmCoopShift.swift */; };
 		1024662525FE4012004DC043 /* CoopShiftCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024662425FE4012004DC043 /* CoopShiftCollection.swift */; };
 		1024663E26009956004DC043 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024663D26009956004DC043 /* Grade.swift */; };
-		1024664B2600D55E004DC043 /* StageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024664A2600D55E004DC043 /* StageType.swift */; };
 		1028D37226418EFD0034C075 /* MBCircleProgressBar in Frameworks */ = {isa = PBXBuildFile; productRef = 1028D37126418EFD0034C075 /* MBCircleProgressBar */; };
 		102C75DF2659BA5700AEE20F /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102C75DE2659BA5700AEE20F /* LoadingIndicator.swift */; };
 		102C75EB2659C5A600AEE20F /* SwiftyAPNGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 102C75EA2659C5A600AEE20F /* SwiftyAPNGKit */; };
@@ -87,8 +86,6 @@
 		1071596926E3BFA20066DB74 /* CoreShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071596826E3BFA20066DB74 /* CoreShiftStats.swift */; };
 		1079EAD22647E3540085008C /* CoopRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1079EAD12647E3540085008C /* CoopRecordView.swift */; };
 		107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */; };
-		1081B760269C778D0063D947 /* MBCircleProgressBar in Frameworks */ = {isa = PBXBuildFile; productRef = 1081B75F269C778D0063D947 /* MBCircleProgressBar */; };
-		1081B766269C77C40063D947 /* SwiftyAPNGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1081B765269C77C40063D947 /* SwiftyAPNGKit */; };
 		1081B769269D1FD60063D947 /* RealmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1081B768269D1FD60063D947 /* RealmObjects.swift */; };
 		1083857C265922700099475F /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 1083857B265922700099475F /* SwiftyBeaver */; };
 		108BFD9C26DDC37800652271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 108BFD9B26DDC37800652271 /* GoogleService-Info.plist */; };
@@ -191,7 +188,6 @@
 		1024662425FE4012004DC043 /* CoopShiftCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftCollection.swift; sourceTree = "<group>"; };
 		1024663D26009956004DC043 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		102466462600CE27004DC043 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1024664A2600D55E004DC043 /* StageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageType.swift; sourceTree = "<group>"; };
 		102C75DE2659BA5700AEE20F /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		1031728D262C355500CF8903 /* ImportingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportingView.swift; sourceTree = "<group>"; };
 		10377F6125FCD5C200536A94 /* RobotoMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoMono.ttf; sourceTree = "<group>"; };
@@ -304,13 +300,11 @@
 				10CF09B825FB9AC100D2EEB1 /* Realm in Frameworks */,
 				102C75EB2659C5A600AEE20F /* SwiftyAPNGKit in Frameworks */,
 				10039F9626A45EA300B1546A /* GoogleMobileAds.xcframework in Frameworks */,
-				1081B760269C778D0063D947 /* MBCircleProgressBar in Frameworks */,
 				10317286262C32FB00CF8903 /* SalmonStats in Frameworks */,
 				1083857C265922700099475F /* SwiftyBeaver in Frameworks */,
 				104BD620261C98800013CD27 /* URLImage in Frameworks */,
 				10AF87E326E63DFF00D1C35E /* SDWebImageSwiftUI in Frameworks */,
 				10CF098E25FB97CB00D2EEB1 /* BetterSafariView in Frameworks */,
-				1081B766269C77C40063D947 /* SwiftyAPNGKit in Frameworks */,
 				1028D37226418EFD0034C075 /* MBCircleProgressBar in Frameworks */,
 				A8C5630EBE09FDEA7BF59B1C /* Pods_Salmonia3.framework in Frameworks */,
 				10210F0C26D3D2F200E4C7C4 /* SwiftUIX in Frameworks */,
@@ -632,7 +626,6 @@
 			children = (
 				104DDC8A26DFE2500086B91E /* Image */,
 				1024663D26009956004DC043 /* Grade.swift */,
-				1024664A2600D55E004DC043 /* StageType.swift */,
 				10AD114C2600EB18008C0E64 /* Error.swift */,
 				10567DD7264ECDD0002654D3 /* SplatNet2.swift */,
 				10B62CAE2669D48E00916A64 /* ResultStyle.swift */,
@@ -806,8 +799,6 @@
 				1028D37126418EFD0034C075 /* MBCircleProgressBar */,
 				1083857B265922700099475F /* SwiftyBeaver */,
 				102C75EA2659C5A600AEE20F /* SwiftyAPNGKit */,
-				1081B75F269C778D0063D947 /* MBCircleProgressBar */,
-				1081B765269C77C40063D947 /* SwiftyAPNGKit */,
 				10094BB826CE9FC4001ACBDF /* SwiftyUI */,
 				10210F0B26D3D2F200E4C7C4 /* SwiftUIX */,
 				10AF87E226E63DFF00D1C35E /* SDWebImageSwiftUI */,
@@ -897,8 +888,6 @@
 				10CF09B625FB9AC100D2EEB1 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				104BD61E261C98800013CD27 /* XCRemoteSwiftPackageReference "url-image" */,
 				1083857A265922700099475F /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
-				1081B75E269C778D0063D947 /* XCRemoteSwiftPackageReference "MBCircleProgressBar" */,
-				1081B764269C77C40063D947 /* XCRemoteSwiftPackageReference "SwiftyAPNGKit" */,
 				10210F0A26D3D2F200E4C7C4 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 				10AF87E126E63DFF00D1C35E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
@@ -1130,7 +1119,6 @@
 				1053919C266D1703001025E1 /* RealmPlayer.swift in Sources */,
 				10377FAD25FD166200536A94 /* CoopResultCollection.swift in Sources */,
 				10AF87F026E6E8A600D1C35E /* PlayerHeaders.swift in Sources */,
-				1024664B2600D55E004DC043 /* StageType.swift in Sources */,
 				10AF87EC26E6E7D500D1C35E /* BirChartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1557,22 +1545,6 @@
 				minimumVersion = 2.2.3;
 			};
 		};
-		1081B75E269C778D0063D947 /* XCRemoteSwiftPackageReference "MBCircleProgressBar" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tkgstrator/MBCircleProgressBar";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.2;
-			};
-		};
-		1081B764269C77C40063D947 /* XCRemoteSwiftPackageReference "SwiftyAPNGKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tkgstrator/SwiftyAPNGKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.2;
-			};
-		};
 		1083857A265922700099475F /* XCRemoteSwiftPackageReference "SwiftyBeaver" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyBeaver/SwiftyBeaver";
@@ -1658,16 +1630,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 10CF098C25FB97CB00D2EEB1 /* XCRemoteSwiftPackageReference "BetterSafariView" */;
 			productName = BetterSafariView;
-		};
-		1081B75F269C778D0063D947 /* MBCircleProgressBar */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1081B75E269C778D0063D947 /* XCRemoteSwiftPackageReference "MBCircleProgressBar" */;
-			productName = MBCircleProgressBar;
-		};
-		1081B765269C77C40063D947 /* SwiftyAPNGKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1081B764269C77C40063D947 /* XCRemoteSwiftPackageReference "SwiftyAPNGKit" */;
-			productName = SwiftyAPNGKit;
 		};
 		1083857B265922700099475F /* SwiftyBeaver */ = {
 			isa = XCSwiftPackageProductDependency;
