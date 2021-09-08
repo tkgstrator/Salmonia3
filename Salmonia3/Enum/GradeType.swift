@@ -8,17 +8,15 @@
 import Foundation
 import SwiftUI
 
-enum SRGrade: Int, CaseIterable {
+enum GradeType: Int, CaseIterable {
     case intern         = 0
     case apparentice    = 1
     case parttimer      = 2
     case gogetter       = 3
     case overachiver    = 4
     case profresshional = 5
-}
-
-extension SRGrade {
-    var name: String {
+    
+    var localizedName: String {
         switch self {
         case .intern:
             return "Intern"

@@ -10,7 +10,6 @@ import BetterSafariView
 import SwiftUI
 import SplatNet2
 import Combine
-import SwiftyAPNGKit
 import SDWebImageSwiftUI
 
 struct LoginMenu: View {

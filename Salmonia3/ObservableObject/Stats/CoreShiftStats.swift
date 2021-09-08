@@ -196,7 +196,7 @@ fileprivate extension RealmSwift.Results where Element == RealmCoopWave {
         var waves: [CoopShiftStats.ResultWave] = []
         for eventType in EventType.allCases {
             for waterLevel in WaterLevel.allCases {
-                let results = self.filter("eventType=%@ AND waterLevel=%@", eventType.eventType, waterLevel.waterLevel)
+                let results = self.filter("eventType=%@ AND waterLevel=%@", eventType.localizedName, waterLevel.localizedName)
                 let goldenIkuraAvg: Double? = results.average(ofProperty: "goldenIkuraNum")
                 let goldenIkuraMax: Int? = results.max(ofProperty: "goldenIkuraNum")
                 waves.append(CoopShiftStats.ResultWave(waterLevel: waterLevel, eventType: eventType, goldenIkuraAvg: goldenIkuraAvg, goldenIkuraMax: goldenIkuraMax))

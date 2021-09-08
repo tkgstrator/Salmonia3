@@ -17,7 +17,7 @@ struct CircleChartView: View {
     let playerBossKillCounts: [[Int]]
     
     var playerResult: some View {
-        ForEach(Array(zip(Salmonid.allCases.indices, Salmonid.allCases)), id:\.0) { index, salmonId in
+        ForEach(Array(zip(SalmonidType.allCases.indices, SalmonidType.allCases)), id:\.0) { index, salmonId in
             if bossCounts[index] > 0 {
                 LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 60, maximum: 100)), count: player.count), alignment: .center, spacing: 5, pinnedViews: [], content: {
                     ForEach(playerBossKillCounts[index].indices, id:\.self) { playerIndex in

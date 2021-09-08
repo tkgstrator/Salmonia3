@@ -21,7 +21,7 @@ struct BarChartView: View {
         ScrollView(.vertical, showsIndicators: false, content: {
             LazyVStack(spacing: nil, pinnedViews: [.sectionHeaders], content: {
                 Section(header: PlayerHeaders(player: player), content: {
-                    ForEach(Array(zip(Salmonid.allCases.indices, Salmonid.allCases)), id:\.0) { index, salmonId in
+                    ForEach(Array(zip(SalmonidType.allCases.indices, SalmonidType.allCases)), id:\.0) { index, salmonId in
                         if bossCounts[index] > 0 {
                             HStack(alignment: .center, spacing: nil, content: {
                                 Image(salmonId: salmonId.rawValue)

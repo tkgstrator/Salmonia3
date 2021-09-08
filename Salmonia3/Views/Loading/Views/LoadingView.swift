@@ -10,7 +10,6 @@ import SwiftUI
 import SplatNet2
 import SalmonStats
 import RealmSwift
-import MBCircleProgressBar
 import Combine
 
 struct LoadingView: View {
@@ -20,20 +19,10 @@ struct LoadingView: View {
     
     @State var apiError: APIError?
     @State private var task = Set<AnyCancellable>()
-    @State var progressModel = MBCircleProgressModel(progressColor: .red, emptyLineColor: .gray)
     private let dispatchQueue: DispatchQueue = DispatchQueue(label: "LoadingView")
     
     var body: some View {
-        LoggingThread(progressModel: progressModel)
-            .onAppear(perform: getResultFromSplatNet2)
-            .alert(item: $apiError) { error in
-                Alert(title: Text("ALERT_ERROR"),
-                      message: Text(error.localizedDescription),
-                      dismissButton: .default(Text("BTN_DISMISS"), action: {
-//                        appManager.loggingToCloud(error.errorDescription!)
-                        present.wrappedValue.dismiss()
-                      }))
-            }
+        Text("Naymo")
     }
     
     private func uploadToSalmonStats(accessToken: String, results: [[String: Any]]) {
@@ -92,12 +81,10 @@ struct LoadingView: View {
                 }
             }, receiveValue: { _ in
                 let jobIds: Range = Range(uncheckedBounds: (max(lastJobId + 1, manager.account.coop.jobNum - 49), manager.account.coop.jobNum + 1))
-                progressModel.configure(maxValue: CGFloat(jobIds.count))
                 for jobId in jobIds {
                     manager.getResultCoopWithJSON(jobId: jobId)
                         .receive(on: DispatchQueue.main)
                         .sink(receiveCompletion: { completion in
-                            progressModel.addValue(value: 1)
                             switch completion {
                             case .finished:
                                 break

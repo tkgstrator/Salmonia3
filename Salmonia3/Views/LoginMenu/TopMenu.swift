@@ -51,7 +51,7 @@ struct TopMenu: View {
                 Section(header: Text(.HEADER_STAGE_RECORD).splatfont2(.safetyorange, size: 14)) {
                     ForEach(StageType.allCases, id:\.self) { stage in
                         NavigationLink(destination: CoopRecordView(stageId: stage.rawValue)) {
-                            Text(stage.name.localized)
+                            Text(stage.localizedName)
                         }
                     }
                 }

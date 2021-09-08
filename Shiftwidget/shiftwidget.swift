@@ -75,8 +75,8 @@ struct shiftwidgetEntryView : View {
             .aspectRatio(contentMode: .fill)
             .overlay(
                 LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 50, maximum: 50)), count: 4), alignment: .center, spacing: 10, pinnedViews: [], content: {
-                    ForEach(entry.schedule.weaponList.indices) { index in
-                        Image(weaponId: entry.schedule.weaponList[index])
+                    ForEach(Array(entry.schedule.weaponList), id:\.self) { weapon in
+                        Image(weaponId: weapon)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .padding(4)
