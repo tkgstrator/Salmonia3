@@ -178,7 +178,7 @@ struct ResultOverview: View {
         if result.isClear {
             return AnyView(
                 HStack {
-                    Text(SRGrade(rawValue: result.gradeId.intValue)!.name)
+                    Text(GradeType(rawValue: result.gradeId.intValue)!.localizedName)
                     Text("\(result.gradePoint.intValue)")
                     Text("↑").splatfont(.red, size: 14)
                 }
@@ -187,7 +187,7 @@ struct ResultOverview: View {
         } else {
             return AnyView(
                 HStack {
-                    Text(SRGrade(rawValue: result.gradeId.intValue)!.name)
+                    Text(GradeType(rawValue: result.gradeId.intValue)!.localizedName)
                     Text("\(result.gradePoint.intValue)")
                     Text(result.gradePointDelta.intValue == 0 ? "→" : "↓")
                 }

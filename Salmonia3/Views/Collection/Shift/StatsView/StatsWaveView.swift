@@ -32,7 +32,7 @@ struct StatsWaveView: View {
                                     .resizable()
                                     .padding(.horizontal, 4)
                                     .overlay(
-                                        Text(eventType.eventType.localized)
+                                        Text(eventType.localizedName)
                                             .splatfont2(.blackrussian, size: 20),
                                         alignment: .center
                                     )
@@ -59,7 +59,7 @@ struct StatsWaveView: View {
     var waveHeader: some View {
         LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 128)), count: 3), alignment: .center, spacing: nil, pinnedViews: [.sectionHeaders]) {
             ForEach(WaterLevel.allCases) { tide in
-                Text(tide.waterLevel.localized)
+                Text(tide.localizedName)
                     .splatfont2(.blackrussian, size: 20)
             }
         }

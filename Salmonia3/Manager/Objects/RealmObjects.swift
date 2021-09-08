@@ -146,14 +146,14 @@ extension RealmManager {
     
     func suppliedSpecial(startTime: Int) -> [(Int, Int)] {
         let specialWeapons: [Int] = RealmManager.shared.playerResults(startTime: startTime).map({ $0.specialId })
-        return Special.allCases.filter({ Int($0.rawValue)! >= 0 }).map({ (Int($0.rawValue)!, specialWeapons.count(Int($0.rawValue)!)) })
+        return SpecialType.allCases.filter({ $0.rawValue >= 0 }).map({ ($0.rawValue, specialWeapons.count($0.rawValue)) })
     }
 }
 
 extension RealmSwift.Results where Element == RealmCoopWave {
     /// WAVEリザルトから指定された潮位とイベントでの最高納品数を返す
     func maxGoldenEggs(eventType: EventType, waterLevel: WaterLevel) -> Int? {
-        self.filter("eventType=%@ AND waterLevel=%@", eventType.eventType, waterLevel.waterLevel).max(ofProperty: "goldenIkuraNum")
+        self.filter("eventType=%@ AND waterLevel=%@", eventType.localizedName, waterLevel.localizedName).max(ofProperty: "goldenIkuraNum")
     }
 }
 

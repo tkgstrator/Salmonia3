@@ -31,12 +31,12 @@ final class RealmCoopShift: Object, Identifiable {
         switch self.weaponList.contains(-1) {
         case true:
             // 緑ランダム編成
-            return Weapon.allCases.filter({ Int($0.rawValue)! >= 0 && Int($0.rawValue)! < 20000 }).map({ Int($0.rawValue)! }) + [rareWeapon!]
+            return WeaponType.allCases.filter({ $0.rawValue >= 0 && $0.rawValue < 20000 }).map({ $0.rawValue }) + [rareWeapon!]
         case false:
             switch self.weaponList.contains(-2) {
             case true:
                 // 黄金編成
-                return Weapon.allCases.filter({ Int($0.rawValue)! >= 20000 }).map({ Int($0.rawValue)! })
+                return WeaponType.allCases.filter({ $0.rawValue >= 20000 }).map({ $0.rawValue })
             case false:
                 // 通常編成
                 return Array(self.weaponList)

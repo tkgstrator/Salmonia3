@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import MBCircleProgressBar
 import SplatNet2
 import Combine
 
@@ -17,7 +16,6 @@ struct UsernameView: View {
 
     @State private var apiError: APIError?
     @State private var task = Set<AnyCancellable>()
-    @State private var progressModel = MBCircleProgressModel(progressColor: .red, emptyLineColor: .gray)
     @State private var players: [NicknameIcons.Response.NicknameIcon] = []
 
     private func dismiss() {
@@ -25,7 +23,7 @@ struct UsernameView: View {
     }
     
     var body: some View {
-        LoggingThread(progressModel: progressModel)
+        Text("Nyamo")
             .onAppear(perform: getNicknameAndIcons)
             .onDisappear{ RealmManager.shared.updateNicknameAndIcons(players: players) }
             .alert(item: $apiError) { error in
@@ -40,8 +38,7 @@ struct UsernameView: View {
 
     func getNicknameAndIcons() {
         let nsaids: [String] = RealmManager.shared.getNicknames()
-        progressModel.configure(maxValue: CGFloat(nsaids.count))
-        
+
         for nsaid in nsaids.chunked(by: 200) {
             manager.getNicknameAndIcons(playerId: nsaid)
                 .receive(on: DispatchQueue.main)
@@ -53,7 +50,6 @@ struct UsernameView: View {
                         apiError = error
                     }
                 }, receiveValue: { response in
-                    progressModel.addValue(value: CGFloat(nsaid.count))
                     players.append(contentsOf: response.nicknameAndIcons)
                 })
                 .store(in: &task)

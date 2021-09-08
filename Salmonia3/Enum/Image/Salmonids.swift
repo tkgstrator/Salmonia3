@@ -9,21 +9,21 @@
 import Foundation
 import SwiftUI
 
-enum Salmonid: String, CaseIterable {
+enum SalmonidType: Int, CaseIterable {
     public enum Package {
         public static let namespace = "Salmonid"
         public static let version = "1.0.0"
     }
     
-    case goldie     = "3"
-    case steelhead  = "6"
-    case flyfish    = "9"
-    case scrapper   = "12"
-    case steeleel   = "13"
-    case tower      = "14"
-    case maws       = "15"
-    case griller    = "16"
-    case drizzler   = "19"
+    case goldie     = 3
+    case steelhead  = 6
+    case flyfish    = 9
+    case scrapper   = 12
+    case steeleel   = 13
+    case tower      = 14
+    case maws       = 15
+    case griller    = 16
+    case drizzler   = 19
 
     public var imageName: String {
         "\(Package.namespace)/\(rawValue)"
@@ -54,20 +54,16 @@ enum Salmonid: String, CaseIterable {
     
     // 指定されたオオモノシャケのインデックスを返す
     var index: Int {
-        return Salmonid.allCases.firstIndex(of: self)!
+        return SalmonidType.allCases.firstIndex(of: self)!
     }
 }
 
 extension Image {
-    init(_ symbol: Salmonid) {
+    init(_ symbol: SalmonidType) {
         self.init(symbol.imageName, bundle: .main)
     }
     
     init(salmonId: Int) {
-        self.init(Salmonid(rawValue: String(salmonId))!)
-    }
-
-    init(salmonId: String) {
-        self.init(Salmonid(rawValue: salmonId)!)
+        self.init(SalmonidType(rawValue: salmonId)!)
     }
 }

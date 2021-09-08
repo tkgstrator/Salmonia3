@@ -28,17 +28,17 @@ struct CoopRecordView: View {
                 RecordColumn(title: .RESULT_MAX_GOLDEN_EGGS_NONIGHT, value: record.maxGoldenEggs.nonight)
             }
             ForEach(WaterLevel.allCases, id:\.self) { tide in
-                Section(header: Text(tide.waterLevel.localized).splatfont2(.safetyorange, size: 14)) {
+                Section(header: Text(tide.localizedName).splatfont2(.safetyorange, size: 14)) {
                     ForEach(EventType.allCases, id:\.self) { event in
                         if let goldenEggs = record.goldenEggs[tide.rawValue][event.rawValue]?.goldenEggs {
-                            RecordColumn(title: event.eventType, value: goldenEggs)
+                            RecordColumn(title: event.localizedName, value: goldenEggs)
                         }
                     }
                     
                 }
             }
         }
-        .navigationTitle(StageType.init(rawValue: stageId)!.name.localized)
+        .navigationTitle(StageType.init(rawValue: stageId)!.localizedName)
     }
 }
 

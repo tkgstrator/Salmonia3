@@ -7,28 +7,19 @@
 
 import Foundation
 import SwiftUI
-import MBCircleProgressBar
 
 struct LoggingThread: View {
-    @ObservedObject var progressModel: MBCircleProgressModel
     @Environment(\.presentationMode) var present
 
     var body: some View {
         VStack {
             Credit
             Divider()
-            MBCircleProgressView(data: progressModel)
-                .frame(width: 200, height: 200, alignment: .center)
-                .overlay(LoadingIndicator(loading: !progressModel.isCompleted), alignment: .bottom)
             Spacer()
-        }
-        .onChange(of: progressModel.isCompleted) { value in
-            if value { present.wrappedValue.dismiss() }
         }
         .onAppear(perform: enableAutoLock)
         .onDisappear(perform: disableAutoLock)
         .navigationTitle(.TITLE_LOGGING_THREAD)
-        .navigationBarBackButtonHidden(!progressModel.isCompleted)
     }
 
     var Credit: some View {
