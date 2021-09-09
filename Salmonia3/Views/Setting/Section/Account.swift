@@ -24,6 +24,12 @@ extension Setting.Sections {
                 }
                 SettingMenu(title: .SETTING_SPLATNET2, value: manager.playerId)
                 SettingMenu(title: .RESULTS, value: manager.account.coop.jobNum)
+                Button(action: {
+                    appManager.isSignedIn.toggle()
+                }, label: {
+                    Text("ログアウト")
+                })
+                
             }
         }
     }

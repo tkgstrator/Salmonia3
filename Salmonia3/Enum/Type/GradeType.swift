@@ -19,17 +19,17 @@ enum GradeType: Int, CaseIterable {
     var localizedName: String {
         switch self {
         case .intern:
-            return "Intern"
+            return "Intern".localized
         case .apparentice:
-            return "Apparentice"
+            return "Apparentice".localized
         case .parttimer:
-            return "Part-Timer"
+            return "Part-Timer".localized
         case .gogetter:
-            return "Go-Getter"
+            return "Go-Getter".localized
         case .overachiver:
-            return "Overachiver"
+            return "Overachiver".localized
         case .profresshional:
-            return "Profressional"
+            return "Profressional".localized
         }
     }
 }

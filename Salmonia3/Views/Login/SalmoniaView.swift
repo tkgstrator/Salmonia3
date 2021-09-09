@@ -11,7 +11,7 @@ import SwiftUIRefresh
 import URLImage
 import BetterSafariView
 
-struct TopMenu: View {
+struct SalmoniaView: View {
     @EnvironmentObject var appManager: AppManager
     @EnvironmentObject var main: CoreRealmCoop
     
@@ -19,7 +19,18 @@ struct TopMenu: View {
     @State var isShowing: Bool = false
     @State var isActive: Bool = false
     @State var selectedURL: URL? = nil
+    let refreshHelper = RefreshHelper()
     
+    class RefreshHelper {
+        var parent: SalmoniaView?
+        var refreshControl: UIRefreshControl?
+        
+        @objc func didRefresh() {
+            guard let parent = parent, let refreshControl = refreshControl else { return }
+            parent.isActive.toggle()
+            refreshControl.endRefreshing()
+        }
+    }
     var body: some View {
         ZStack {
             NavigationLink(destination: LoadingView(), isActive: $isActive) { EmptyView() }
@@ -30,10 +41,6 @@ struct TopMenu: View {
                     Waves
                     Players
                     SalmonStats
-                    #if DEBUG
-                    //                    SalmonRecords
-                    //                    LanPlayRecords
-                    #endif
                 }
                 Section(header: Text(.HEADER_SCHEDULE).splatfont2(.safetyorange, size: 14)) {
                     ForEach(main.latestShift, id:\.self) { shift in
@@ -56,12 +63,14 @@ struct TopMenu: View {
                     }
                 }
             }
-            .pullToRefresh(isShowing: $isShowing) {
-                isActive.toggle()
-            }
-            .onChange(of: isActive) { _ in
-                isShowing = false
-            }
+            .introspectTableView(customize: { tableView in
+                let refreshControl = UIRefreshControl()
+                refreshHelper.parent = self
+                refreshHelper.refreshControl = refreshControl
+                
+                refreshControl.addTarget(refreshHelper, action: #selector(RefreshHelper.didRefresh), for: .valueChanged)
+                tableView.refreshControl = refreshControl
+            })
             .safariView(item: $selectedURL) { selectedURL in
                 SafariView(
                     url: selectedURL,
@@ -76,7 +85,7 @@ struct TopMenu: View {
             }
         }
         .splatfont2(size: 16)
-        .listStyle(GroupedListStyle())
+        .navigationBarBackButtonHidden(true)
         .navigationTitle(.TITLE_SALMONIA)
     }
     

@@ -18,6 +18,7 @@ enum ResultIcon: String, CaseIterable {
     case dot    = "dot"
     case rescue = "rescue"
     case death  = "death"
+    case wave   = "wave"
 
     public var imageName: String {
         "\(Package.namespace)/\(rawValue)"
