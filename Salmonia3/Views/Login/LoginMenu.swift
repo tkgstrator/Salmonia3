@@ -63,21 +63,21 @@ struct Wave: View {
     @State var offset: Angle = Angle(degrees: 0)
     let height: CGFloat = UIScreen.main.bounds.height
     let width: CGFloat = UIScreen.main.bounds.width
+    let color: Color = .safetyorange
     
     var body: some View {
         ZStack(alignment: .top, content: {
             Color.whitesmoke.frame(width: width, height: height).edgesIgnoringSafeArea(.all)
             CustomWave(startAngle: Angle(degrees: 0), offset: offset / 2)
-                .fill(Color.navyblue.opacity(0.2))
+                .fill(color.opacity(0.2))
                 .frame(width: width, height: height * 1.05 * 4 / 5)
             CustomWave(startAngle: Angle(degrees: 0), offset: offset)
-                .fill(Color.navyblue.opacity(0.5))
+                .fill(color.opacity(0.5))
                 .frame(width: width, height: height * 4 / 5)
             CustomWave(startAngle: Angle(degrees: 40), offset: -offset)
-                .fill(Color.navyblue.opacity(0.9))
+                .fill(color.opacity(0.9))
                 .frame(width: width, height: height * 4 / 5)
         })
-        .background(Color.red.opacity(0.3))
         .onAppear {
             withAnimation(Animation.linear(duration: 6).repeatForever(autoreverses: false)) {
                 offset = Angle(degrees: 720)
