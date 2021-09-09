@@ -71,10 +71,10 @@ struct DetailView: View {
         case .erase:
             try? RealmManager.shared.eraseAllRecord()
         case .signin:
-            appManager.isFirstLaunch = true
+            appManager.isSignedIn = false
         case .logout:
             manager.deleteAllAccounts()
-            appManager.isFirstLaunch = true
+            appManager.isSignedIn = false
         }
     }
 }

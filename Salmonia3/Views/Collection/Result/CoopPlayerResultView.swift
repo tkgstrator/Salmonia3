@@ -10,7 +10,7 @@ import RealmSwift
 import URLImage
 
 struct CoopPlayerResultView: View {
-    @AppStorage("FEATURE_OTHER_05") var resultStyle: ResultStyle = .lemontea
+    @AppStorage("FEATURE_OTHER_05") var resultStyle: ResultStyle = .salmonrec
     let colors: [Color] = [.venitianred, .deepskyblue, .salam, .turbo]
     let bossCounts: [Int]
     let result: RealmCoopResult
@@ -26,8 +26,8 @@ struct CoopPlayerResultView: View {
   
     var body: some View {
         switch resultStyle {
-        case .lemontea:
-            LemonTeaView(result: result)
+//        case .lemontea:
+//            LemonTeaView(result: result)
         case .salmonrec:
             BarChartView(player: result.player, bossCounts: bossCounts, playerBossKillCounts: playerBossKillCounts)
         case .barleyural:

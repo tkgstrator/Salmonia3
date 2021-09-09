@@ -49,7 +49,7 @@ struct Salmonia3App: SwiftUI.App {
 
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-    @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = true
+    @AppStorage("isSignedIn") var isSignedIn: Bool = true
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
@@ -154,7 +154,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             }
             let keychain = Keychain(server: "tkgstrator.work", protocolType: .https)
             try? keychain.removeAll()
-            isFirstLaunch = true
+            isSignedIn = true
         }
     }
     

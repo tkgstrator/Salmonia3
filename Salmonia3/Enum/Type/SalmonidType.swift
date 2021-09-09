@@ -1,5 +1,5 @@
 //
-//  Salmonid.swift
+//  SalmonidType.swift
 //  Salmonia3
 //
 //  Created by devonly on 2021/09/02.

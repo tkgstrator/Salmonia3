@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="198">
+<style type="text/css"><![CDATA[
+]]></style>
+  <defs>
+    <linearGradient id="color" x1="50%" x2="50%" y1="-10.959%" y2="100%">
+      <stop stop-color="#006EF9" stop-opacity=".25" offset="0%"/>
+      <stop stop-color="#005CCF" offset="100%"/>
+    </linearGradient>
+  </defs>
+  <path class="wave" fill="url(#color)" fill-rule="evenodd" d="M.005 121C311 121 409.898-.25 811 0c400 0 500 121 789 121v77H0s.005-48 .005-77z" transform="matrix(-1 0 0 1 1600 0)"/>
+</svg>

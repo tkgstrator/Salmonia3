@@ -168,7 +168,7 @@
 "TEXT_SIGN_IN"="Twitterアカウントでログイン後、画面を閉じずにSalmon Statsの設定画面を開いてConnect with Salmoniaのボタンを押してください。";
 "TEXT_TUTORIAL_SALMONSTATS"="Twitterアカウントでログイン後、Salmon Statsの設定からConnect with Salmoniaのボタンを押します。";
 "TEXT_WELCOME_SALMONSTATS"="SalmoniaはSalmon StatsへのリザルトのアップロードにTwitterアカウントの情報を必要とします。";
-"TEXT_WELCOME_SPLATNET2"="Salmoniaの利用にはNintendo Switch Onlineでのログインが必要です。Salmoniaは許可なしにあらゆる情報を第三者のサービスに提供しません。";
+"TEXT_WELCOME_SPLATNET2"="Salmoniaの利用にはNintendo Switch Onlineでのログインが必要です。 Salmoniaは許可なしにあらゆる情報を第三者のサービスに提供しません。";
 "TITLE_FREE_PRODUCT"="無料機能";
 "TITLE_HELP"="使い方解説";
 "TITLE_LOGGING_THREAD"="ログ";
