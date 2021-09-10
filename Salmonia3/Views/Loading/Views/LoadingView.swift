@@ -16,13 +16,22 @@ struct LoadingView: View {
     @Environment(\.presentationMode) var present
     @EnvironmentObject var appManager: AppManager
     @AppStorage("apiToken") var apiToken: String?
-    
+
+    @State var currentValue: Int = 0
+    @State var maxValue: Int = 0
     @State var apiError: APIError?
+
     @State private var task = Set<AnyCancellable>()
     private let dispatchQueue: DispatchQueue = DispatchQueue(label: "LoadingView")
     
     var body: some View {
-        Text("Naymo")
+        LoggingThread(currentValue: currentValue, maxValue: maxValue)
+            .onWillAppear {
+                getResultFromSplatNet2()
+            }
+            .alert(item: $apiError, content: { apiError in
+                Alert(title: "ERROR".localized, message: apiError.localizedDescription)
+            })
     }
     
     private func uploadToSalmonStats(accessToken: String, results: [[String: Any]]) {
@@ -62,7 +71,7 @@ struct LoadingView: View {
     private func getResultFromSplatNet2() {
         var pids: [String] = []
         var results: [(json: ResultCoop.Response, data: SplatNet2.Coop.Result)] = []
-        let lastJobId: Int = RealmManager.shared.getLatestResultId()
+        let lastJobId: Int = RealmManager.shared.getLatestResultId() - 10
         manager.getSummaryCoop(jobNum: lastJobId)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
@@ -72,7 +81,7 @@ struct LoadingView: View {
                 case .failure(let error):
                     switch error {
                     case .nonewresults:
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             present.wrappedValue.dismiss()
                         }
                     default:
@@ -81,12 +90,16 @@ struct LoadingView: View {
                 }
             }, receiveValue: { _ in
                 let jobIds: Range = Range(uncheckedBounds: (max(lastJobId + 1, manager.account.coop.jobNum - 49), manager.account.coop.jobNum + 1))
+                maxValue = jobIds.count
                 for jobId in jobIds {
                     manager.getResultCoopWithJSON(jobId: jobId)
                         .receive(on: DispatchQueue.main)
                         .sink(receiveCompletion: { completion in
                             switch completion {
                             case .finished:
+                                withAnimation() {
+                                    currentValue += 1
+                                }
                                 break
                             case .failure(let error):
                                 apiError = error
@@ -100,6 +113,9 @@ struct LoadingView: View {
                                     uploadToSalmonStats(accessToken: accessToken, results: results.compactMap{ $0.json.dictionaryObject })
                                 }
                                 getNicknameIcons(pid: pids)
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                                    present.wrappedValue.dismiss()
+                                }
                             }
                         })
                         .store(in: &task)

@@ -31,58 +31,58 @@ struct SalmoniaView: View {
             refreshControl.endRefreshing()
         }
     }
+    
     var body: some View {
-        ZStack {
-            NavigationLink(destination: LoadingView(), isActive: $isActive) { EmptyView() }
-            List {
-                Section(header: Text(.HEADER_OVERVIEW).splatfont2(.safetyorange, size: 14)) {
-                    Overview
-                    Results
-                    Waves
-                    Players
-                    SalmonStats
+        List {
+            Section(header: Text(.HEADER_OVERVIEW).splatfont2(.safetyorange, size: 14)) {
+                Overview
+                Results
+                Waves
+                Players
+                SalmonStats
+            }
+            Section(header: Text(.HEADER_SCHEDULE).splatfont2(.safetyorange, size: 14)) {
+                ForEach(main.latestShift, id:\.self) { shift in
+                    NavigationLink(
+                        destination: CoopShiftStatsView(startTime: shift.startTime)
+                            .environmentObject(CoopShiftStats(startTime: shift.startTime)),
+                        label: {
+                            CoopShift(shift: shift)
+                        })
                 }
-                Section(header: Text(.HEADER_SCHEDULE).splatfont2(.safetyorange, size: 14)) {
-                    ForEach(main.latestShift, id:\.self) { shift in
-                        NavigationLink(
-                            destination: CoopShiftStatsView(startTime: shift.startTime)
-                                .environmentObject(CoopShiftStats(startTime: shift.startTime)),
-                            label: {
-                                CoopShift(shift: shift)
-                            })
-                    }
-                    NavigationLink(destination: CoopShiftCollection(displayFutureShift: appManager.isFree02)) {
-                        Text(.TITLE_SHIFT_SCHEDULE)
-                    }
+                NavigationLink(destination: CoopShiftCollection(displayFutureShift: appManager.isFree02)) {
+                    Text(.TITLE_SHIFT_SCHEDULE)
                 }
-                Section(header: Text(.HEADER_STAGE_RECORD).splatfont2(.safetyorange, size: 14)) {
-                    ForEach(StageType.allCases, id:\.self) { stage in
-                        NavigationLink(destination: CoopRecordView(stageId: stage.rawValue)) {
-                            Text(stage.localizedName)
-                        }
+            }
+            Section(header: Text(.HEADER_STAGE_RECORD).splatfont2(.safetyorange, size: 14)) {
+                ForEach(StageType.allCases, id:\.self) { stage in
+                    NavigationLink(destination: CoopRecordView(stageId: stage.rawValue)) {
+                        Text(stage.localizedName)
                     }
                 }
             }
-            .introspectTableView(customize: { tableView in
-                let refreshControl = UIRefreshControl()
-                refreshHelper.parent = self
-                refreshHelper.refreshControl = refreshControl
-                
-                refreshControl.addTarget(refreshHelper, action: #selector(RefreshHelper.didRefresh), for: .valueChanged)
-                tableView.refreshControl = refreshControl
-            })
-            .safariView(item: $selectedURL) { selectedURL in
-                SafariView(
-                    url: selectedURL,
-                    configuration: SafariView.Configuration(
-                        entersReaderIfAvailable: false,
-                        barCollapsingEnabled: true
-                    )
+        }
+        .listStyle(GroupedListStyle())
+        .overlay(NavigationLink(destination: LoadingView(), isActive: $isActive) { EmptyView() })
+        .introspectTableView(customize: { tableView in
+            let refreshControl = UIRefreshControl()
+            refreshHelper.parent = self
+            refreshHelper.refreshControl = refreshControl
+            
+            refreshControl.addTarget(refreshHelper, action: #selector(RefreshHelper.didRefresh), for: .valueChanged)
+            tableView.refreshControl = refreshControl
+        })
+        .safariView(item: $selectedURL) { selectedURL in
+            SafariView(
+                url: selectedURL,
+                configuration: SafariView.Configuration(
+                    entersReaderIfAvailable: false,
+                    barCollapsingEnabled: true
                 )
-                .preferredBarAccentColor(.clear)
-                .preferredControlAccentColor(.accentColor)
-                .dismissButtonStyle(.done)
-            }
+            )
+            .preferredBarAccentColor(.clear)
+            .preferredControlAccentColor(.accentColor)
+            .dismissButtonStyle(.done)
         }
         .splatfont2(size: 16)
         .navigationBarBackButtonHidden(true)

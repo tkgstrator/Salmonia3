@@ -21,7 +21,8 @@ struct LoginMenu: View {
         ZStack(alignment: .bottom, content: {
             ScrollView(.vertical, showsIndicators: false, content: {
                 Text(.TEXT_WELCOME_SPLATNET2)
-                    .font(.custom("Splatfont2", size: 16))
+                    .font(.custom("Splatfont2", size: 18))
+                    .multilineTextAlignment(.center)
                     .lineLimit(3)
                     .offset(x: 0, y: 100)
                     .padding()
@@ -44,7 +45,7 @@ struct LoginMenu: View {
             isPresented.toggle()
         }, label: {
             RoundedRectangle(cornerRadius: 10).fill(Color.whitesmoke).frame(width: 240, height: 50)
-                .overlay(Text(.BTN_SIGN_IN).foregroundColor(.navyblue).font(.custom("Splatfont2", size: 20)))
+                .overlay(Text(.BTN_SIGN_IN).foregroundColor(.safetyorange).font(.custom("Splatfont2", size: 20)))
         })
         .padding()
         .authorize(isPresented: $isPresented, completion: { result in

@@ -33,7 +33,6 @@
 		10317286262C32FB00CF8903 /* SalmonStats in Frameworks */ = {isa = PBXBuildFile; productRef = 10317285262C32FB00CF8903 /* SalmonStats */; };
 		1031728E262C355500CF8903 /* ImportingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1031728D262C355500CF8903 /* ImportingView.swift */; };
 		10377F6525FCD63B00536A94 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F6425FCD63B00536A94 /* Font.swift */; };
-		10377F7525FCD8CD00536A94 /* RobotoMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10377F6125FCD5C200536A94 /* RobotoMono.ttf */; };
 		10377F7625FCD8CD00536A94 /* Splatfont1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10377F6225FCD5C800536A94 /* Splatfont1.ttf */; };
 		10377F7725FCD8CD00536A94 /* Splatfont2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10377F6325FCD5CD00536A94 /* Splatfont2.ttf */; };
 		10377F7C25FCD9E800536A94 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10377F7B25FCD9E800536A94 /* RealmManager.swift */; };
@@ -78,6 +77,7 @@
 		107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */; };
 		1081B769269D1FD60063D947 /* RealmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1081B768269D1FD60063D947 /* RealmObjects.swift */; };
 		1083857C265922700099475F /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 1083857B265922700099475F /* SwiftyBeaver */; };
+		108684E826EB5D7F00E28C7C /* RobotoMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 108684E726EB5D7F00E28C7C /* RobotoMono.ttf */; };
 		108BFD9C26DDC37800652271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 108BFD9B26DDC37800652271 /* GoogleService-Info.plist */; };
 		108BFD9D26DDC37800652271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 108BFD9B26DDC37800652271 /* GoogleService-Info.plist */; };
 		108BFD9E26DDC37800652271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 108BFD9B26DDC37800652271 /* GoogleService-Info.plist */; };
@@ -187,7 +187,6 @@
 		1024663D26009956004DC043 /* GradeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeType.swift; sourceTree = "<group>"; };
 		102466462600CE27004DC043 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1031728D262C355500CF8903 /* ImportingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportingView.swift; sourceTree = "<group>"; };
-		10377F6125FCD5C200536A94 /* RobotoMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoMono.ttf; sourceTree = "<group>"; };
 		10377F6225FCD5C800536A94 /* Splatfont1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Splatfont1.ttf; sourceTree = "<group>"; };
 		10377F6325FCD5CD00536A94 /* Splatfont2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Splatfont2.ttf; sourceTree = "<group>"; };
 		10377F6425FCD63B00536A94 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -234,6 +233,7 @@
 		1079EAD12647E3540085008C /* CoopRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopRecordView.swift; sourceTree = "<group>"; };
 		107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopStats.swift; sourceTree = "<group>"; };
 		1081B768269D1FD60063D947 /* RealmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
+		108684E726EB5D7F00E28C7C /* RobotoMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoMono.ttf; sourceTree = "<group>"; };
 		108BFD9B26DDC37800652271 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1090C681263DF125000DD54C /* SplatNet2 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SplatNet2; path = ../SplatNet2; sourceTree = "<group>"; };
 		1090C6A6263E902B000DD54C /* Salmonia3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Salmonia3.entitlements; sourceTree = "<group>"; };
@@ -410,7 +410,7 @@
 		10377F6025FCD5A400536A94 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				10377F6125FCD5C200536A94 /* RobotoMono.ttf */,
+				108684E726EB5D7F00E28C7C /* RobotoMono.ttf */,
 				10377F6225FCD5C800536A94 /* Splatfont1.ttf */,
 				10377F6325FCD5CD00536A94 /* Splatfont2.ttf */,
 			);
@@ -928,12 +928,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10377F7525FCD8CD00536A94 /* RobotoMono.ttf in Resources */,
 				10377F7625FCD8CD00536A94 /* Splatfont1.ttf in Resources */,
 				1024660325FDE916004DC043 /* Localizable.strings in Resources */,
 				10377F7725FCD8CD00536A94 /* Splatfont2.ttf in Resources */,
 				1059416E25FA49E900C32D21 /* Preview Assets.xcassets in Resources */,
 				10AF87E726E643A400D1C35E /* LoadingIka.png in Resources */,
+				108684E826EB5D7F00E28C7C /* RobotoMono.ttf in Resources */,
 				1059416B25FA49E900C32D21 /* Assets.xcassets in Resources */,
 				108BFD9C26DDC37800652271 /* GoogleService-Info.plist in Resources */,
 				10D0177E26C0985F000DCA1B /* Configuration.storekit in Resources */,
