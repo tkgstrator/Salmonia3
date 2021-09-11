@@ -71,7 +71,11 @@ struct LoadingView: View {
     private func getResultFromSplatNet2() {
         var pids: [String] = []
         var results: [(json: ResultCoop.Response, data: SplatNet2.Coop.Result)] = []
+        #if DEBUG
         let lastJobId: Int = RealmManager.shared.getLatestResultId() - 10
+        #else
+        let lastJobId: Int = RealmManager.shared.getLatestResultId()
+        #endif
         manager.getSummaryCoop(jobNum: lastJobId)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
@@ -95,26 +99,42 @@ struct LoadingView: View {
                     manager.getResultCoopWithJSON(jobId: jobId)
                         .receive(on: DispatchQueue.main)
                         .sink(receiveCompletion: { completion in
-                            switch completion {
-                            case .finished:
+                            // 一つ処理が終わるとインクリメントする
+                            DispatchQueue.main.async {
                                 withAnimation() {
                                     currentValue += 1
                                 }
+                            }
+                            switch completion {
+                            case .finished:
                                 break
                             case .failure(let error):
-                                apiError = error
+                                switch error {
+                                case .notfound:
+                                    // 404の場合はスルーする
+                                    break
+                                default:
+                                    apiError = error
+                                }
                             }
                         }, receiveValue: { response in
+                            // 一緒に遊んだプレイヤーのIDを取得して追加
                             pids.append(contentsOf: response.data.results.map{ $0.pid })
                             results.append(response)
-                            if results.count == jobIds.count {
-                                RealmManager.shared.addNewResultsFromSplatNet2(from: results.map{ $0.data }, .splatnet2)
-                                if let accessToken = manager.apiToken {
-                                    uploadToSalmonStats(accessToken: accessToken, results: results.compactMap{ $0.json.dictionaryObject })
-                                }
-                                getNicknameIcons(pid: pids)
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                                    present.wrappedValue.dismiss()
+                            dispatchQueue.async {
+                                // 全てのリクエストが終わったら
+                                if currentValue == jobIds.count - 1 {
+                                    // SplatNet2形式のリザルトをRealmに追加する
+                                    RealmManager.shared.addNewResultsFromSplatNet2(from: results.map{ $0.data }, .splatnet2)
+                                    // アクセストークンを使って書き込み
+                                    
+                                    if let accessToken = manager.apiToken {
+                                        uploadToSalmonStats(accessToken: accessToken, results: results.compactMap{ $0.json.dictionaryObject })
+                                    }
+                                    getNicknameIcons(pid: pids)
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                                        present.wrappedValue.dismiss()
+                                    }
                                 }
                             }
                         })

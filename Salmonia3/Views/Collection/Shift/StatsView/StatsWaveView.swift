@@ -52,6 +52,9 @@ struct StatsWaveView: View {
                 })
             })
         })
+        .onAppear {
+            print(stats.resultWave.map({ $0.goldenIkuraAvg }))
+        }
         .background(Color.seashell.edgesIgnoringSafeArea(.all))
         .splatfont2(size: 14)
     }

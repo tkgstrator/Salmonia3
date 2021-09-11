@@ -13,6 +13,7 @@ struct LoggingThread: View {
     @Environment(\.presentationMode) var present
     var currentValue: Int = 30
     var maxValue: Int = 100
+    private let cirlceSize: CGSize = CGSize(width: 140, height: 140)
     
     init(currentValue: Int, maxValue: Int) {
         self.currentValue = currentValue
@@ -28,22 +29,31 @@ struct LoggingThread: View {
             scrollView.isScrollEnabled = false
         })
         .overlay(circleProgress, alignment: .center)
+        .overlay(textProgress, alignment: .center)
         .background(Wave().edgesIgnoringSafeArea(.all))
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
         .navigationTitle(.TITLE_LOGGING_THREAD)
+    }
+    
+    var textProgress: some View {
+        Text(String(format: "%02d/%02d", currentValue, maxValue))
+            .font(.custom("Splatfont2", size: 22))
+            .foregroundColor(.whitesmoke)
+            .animation(nil)
     }
     
     var circleProgress: some View {
         Circle()
             .trim(from: 0.0, to: CGFloat(currentValue) / CGFloat(maxValue))
-            .stroke(Color.whitesmoke, lineWidth: 15)
+            .stroke(Color.whitesmoke, lineWidth: 10)
             .rotationEffect(.degrees(-90))
-            .frame(width: 200, height: 200)
+            .frame(cirlceSize)
             .background(Circle()
-                        .stroke(Color.envy, lineWidth: 15)
-                        .frame(width: 200, height: 200))
-            .overlay(Circle().fill(Color.safetyorange.opacity(0.5)).frame(width: 185, height: 185))
+                        .stroke(Color.envy, lineWidth: 10)
+                        .frame(cirlceSize))
+            .overlay(Circle().fill(Color.safetyorange.opacity(0.5)).frame(width: cirlceSize.width - 10, height: cirlceSize.height - 10))
             .background(Circle().fill(Color.white))
     }
 
