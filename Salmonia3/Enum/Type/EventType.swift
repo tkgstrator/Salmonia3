@@ -18,22 +18,26 @@ enum EventType: Int, CaseIterable, Identifiable {
     case fog        = 5
     case cohock     = 6
     
-    var localizedName: String {
+    var eventName: String {
         switch self {
         case .noevent:
-            return "water-levels".localized
+            return "water-levels"
         case .rush:
-            return "rush".localized
+            return "rush"
         case .goldie:
-            return "goldie-seeking".localized
+            return "goldie-seeking"
         case .griller:
-            return "griller".localized
+            return "griller"
         case .mothership:
-            return "the-mothership".localized
+            return "the-mothership"
         case .fog:
-            return "fog".localized
+            return "fog"
         case .cohock:
-            return "cohock-charge".localized
+            return "cohock-charge"
         }
+    }
+    
+    var localizedName: String {
+        self.eventName.localized
     }
 }

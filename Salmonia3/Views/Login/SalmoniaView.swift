@@ -14,24 +14,11 @@ import BetterSafariView
 struct SalmoniaView: View {
     @EnvironmentObject var appManager: AppManager
     @EnvironmentObject var main: CoreRealmCoop
-    
     @State var isPresented: Bool = false
     @State var isShowing: Bool = false
     @State var isActive: Bool = false
     @State var selectedURL: URL? = nil
-    let refreshHelper = RefreshHelper()
-    
-    class RefreshHelper {
-        var parent: SalmoniaView?
-        var refreshControl: UIRefreshControl?
-        
-        @objc func didRefresh() {
-            guard let parent = parent, let refreshControl = refreshControl else { return }
-            parent.isActive.toggle()
-            refreshControl.endRefreshing()
-        }
-    }
-    
+
     var body: some View {
         List {
             Section(header: Text(.HEADER_OVERVIEW).splatfont2(.safetyorange, size: 14)) {
@@ -64,13 +51,11 @@ struct SalmoniaView: View {
         }
         .listStyle(GroupedListStyle())
         .overlay(NavigationLink(destination: LoadingView(), isActive: $isActive) { EmptyView() })
-        .introspectTableView(customize: { tableView in
-            let refreshControl = UIRefreshControl()
-            refreshHelper.parent = self
-            refreshHelper.refreshControl = refreshControl
-            
-            refreshControl.addTarget(refreshHelper, action: #selector(RefreshHelper.didRefresh), for: .valueChanged)
-            tableView.refreshControl = refreshControl
+        .pullToRefresh(isShowing: $isShowing, onRefresh: {
+            isActive.toggle()
+            DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+                isShowing.toggle()
+            })
         })
         .safariView(item: $selectedURL) { selectedURL in
             SafariView(

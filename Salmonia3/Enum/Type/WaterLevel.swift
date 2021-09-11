@@ -21,22 +21,22 @@ enum WaterLevel: Int, CaseIterable, Identifiable {
     case high   = 2
     
     var localizedName: String {
-        internalName.localized
+        waterName.localized
     }
     
-    private var internalName: String {
+    var waterName: String {
         switch self {
             case .low:
                 return "low"
             case .middle:
-                return "middle"
+                return "normal"
             case .high:
                 return "high"
         }
     }
     
     public var imageName: String {
-        "\(Package.namespace)/\(internalName)"
+        "\(Package.namespace)/\(waterName)"
     }
 }
 

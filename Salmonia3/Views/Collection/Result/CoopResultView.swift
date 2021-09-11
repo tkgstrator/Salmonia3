@@ -17,6 +17,7 @@ fileprivate var formatter: DateFormatter = {
 
 struct CoopResultView: View {
     @State var isVisible: Bool = true
+    @State var selection: Int = 0
     var result: RealmCoopResult
 
     var body: some View {
@@ -24,7 +25,9 @@ struct CoopResultView: View {
             CoopResultOverview(isVisible: $isVisible, result: result)
                 .padding(.bottom, 50)
             CoopPlayerResultView(result: result)
+                .padding(.bottom, 50)
         }
+        .currentPageIndex($selection)
         .background(Color.black.edgesIgnoringSafeArea(.all))
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -40,7 +43,6 @@ struct CoopResultSimpleView: View {
             .navigationTitle(.TITLE_RESULT_DETAIL)
             .navigationBarTitleDisplayMode(.inline)
     }
-
 }
 
 struct CoopResultOverview: View {
@@ -58,7 +60,6 @@ struct CoopResultOverview: View {
                 ResultPlayer
             }
         }
-        .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(.TITLE_RESULT_DETAIL)
     }
 

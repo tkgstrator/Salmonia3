@@ -634,14 +634,6 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
-		1071596726E3BF400066DB74 /* Stats */ = {
-			isa = PBXGroup;
-			children = (
-				1071596826E3BFA20066DB74 /* CoreShiftStats.swift */,
-			);
-			path = Stats;
-			sourceTree = "<group>";
-		};
 		107F9B3A2614A8CA001581C7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -728,8 +720,8 @@
 		10CF09F925FB9C4900D2EEB1 /* ObservableObject */ = {
 			isa = PBXGroup;
 			children = (
-				1071596726E3BF400066DB74 /* Stats */,
 				10CF09FA25FB9C6B00D2EEB1 /* CoreRealmCoop.swift */,
+				1071596826E3BFA20066DB74 /* CoreShiftStats.swift */,
 				105391A3266D1C6F001025E1 /* CoreRealmPlayer.swift */,
 			);
 			path = ObservableObject;
@@ -1356,7 +1348,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1384,7 +1376,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;

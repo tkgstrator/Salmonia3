@@ -23,6 +23,7 @@ struct CoopShiftStatsView: View {
                     StatsChartView()
                     StatsWaveView()
                 }
+                .pageIndicatorTintColor(.primary)
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle(.TITLE_SHIFT_STATS)
             case false:
@@ -31,6 +32,7 @@ struct CoopShiftStatsView: View {
                     StatsChartView()
                     StatsWaveView()
                 }
+                .pageIndicatorTintColor(.primary)
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle(.TITLE_SHIFT_STATS)
             }
@@ -38,6 +40,7 @@ struct CoopShiftStatsView: View {
             PaginationView {
                 StatsView(startTime: startTime)
             }
+            .pageIndicatorTintColor(.primary)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(.TITLE_SHIFT_STATS)
         }

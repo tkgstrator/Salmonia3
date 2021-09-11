@@ -53,6 +53,7 @@ struct SettingView: View {
 
         }
         .font(.custom("Splatfont2", size: 16))
+        .background(Wave().edgesIgnoringSafeArea(.all))
         .onWillDisappear {
             appManager.objectWillChange.send()
             results.objectWillChange.send()

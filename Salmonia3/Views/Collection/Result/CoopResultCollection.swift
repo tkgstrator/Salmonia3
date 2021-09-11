@@ -16,7 +16,7 @@ struct CoopResultCollection: View {
     @State private var index: Int = 0
     @State private var offset: CGFloat = 0
     @State private var orientation: UIInterfaceOrientation = .portrait
-    
+
     var body: some View {
         ZStack {
             NavigationLink(destination: LoadingView(), isActive: $isActive) { EmptyView() }
@@ -64,7 +64,12 @@ struct CoopResultCollection: View {
             }
         }
         .listStyle(SidebarListStyle())
-        .pullToRefresh(isShowing: $isShowing) { isActive.toggle() }
+        .pullToRefresh(isShowing: $isShowing, onRefresh: {
+            isActive.toggle()
+            DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+                isShowing.toggle()
+            })
+        })
     }
     
     private var PlainListStyleView: some View {
@@ -84,7 +89,12 @@ struct CoopResultCollection: View {
             }
         }
         .listStyle(PlainListStyle())
-        .pullToRefresh(isShowing: $isShowing) { isActive.toggle() }
+        .pullToRefresh(isShowing: $isShowing, onRefresh: {
+            isActive.toggle()
+            DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+                isShowing.toggle()
+            })
+        })
     }
     
     private var GroupedListStyleView: some View {
@@ -104,7 +114,12 @@ struct CoopResultCollection: View {
             }
         }
         .listStyle(GroupedListStyle())
-        .pullToRefresh(isShowing: $isShowing) { isActive.toggle() }
+        .pullToRefresh(isShowing: $isShowing, onRefresh: {
+            isActive.toggle()
+            DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+                isShowing.toggle()
+            })
+        })
     }
     
     private var DefaultListStyleView: some View {
@@ -124,7 +139,12 @@ struct CoopResultCollection: View {
             }
         }
         .listStyle(DefaultListStyle())
-        .pullToRefresh(isShowing: $isShowing) { isActive.toggle() }
+        .pullToRefresh(isShowing: $isShowing, onRefresh: {
+            isActive.toggle()
+            DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+                isShowing.toggle()
+            })
+        })
     }
     
     private var InsetListStyleView: some View {
@@ -144,8 +164,12 @@ struct CoopResultCollection: View {
             }
         }
         .listStyle(InsetGroupedListStyle())
-        .pullToRefresh(isShowing: $isShowing) { isActive.toggle() }
-        
+        .pullToRefresh(isShowing: $isShowing, onRefresh: {
+            isActive.toggle()
+            DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+                isShowing.toggle()
+            })
+        })
     }
 }
 
