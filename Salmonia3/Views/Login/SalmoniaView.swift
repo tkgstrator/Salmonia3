@@ -16,7 +16,6 @@ struct SalmoniaView: View {
     @EnvironmentObject var main: CoreRealmCoop
     @State var isPresented: Bool = false
     @State var isShowing: Bool = false
-    @State var isActive: Bool = false
     @State var selectedURL: URL? = nil
 
     var body: some View {
@@ -50,9 +49,8 @@ struct SalmoniaView: View {
             }
         }
         .listStyle(GroupedListStyle())
-        .overlay(NavigationLink(destination: LoadingView(), isActive: $isActive) { EmptyView() })
         .pullToRefresh(isShowing: $isShowing, onRefresh: {
-            isActive.toggle()
+            appManager.isLoading.toggle()
             DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
                 isShowing.toggle()
             })

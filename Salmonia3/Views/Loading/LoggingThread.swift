@@ -8,18 +8,14 @@
 import Foundation
 import SwiftUI
 import Introspect
+import SplatNet2
 
 struct LoggingThread: View {
     @Environment(\.presentationMode) var present
-    var currentValue: Int = 30
-    var maxValue: Int = 100
+    @State var currentValue: Int = 30
+    @State var maxValue: Int = 100
     private let cirlceSize: CGSize = CGSize(width: 140, height: 140)
     
-    init(currentValue: Int, maxValue: Int) {
-        self.currentValue = currentValue
-        self.maxValue = maxValue
-    }
-
     var body: some View {
         ScrollView(.vertical, showsIndicators: false, content: {
             LazyVStack(alignment: .center, spacing: nil, pinnedViews: [], content: {
@@ -28,6 +24,13 @@ struct LoggingThread: View {
         }).introspectScrollView(customize: { scrollView in
             scrollView.isScrollEnabled = false
         })
+//        .onReceive(NotificationCenter.default.publisher(for: SplatNet2.download), perform: { notification in
+//            guard let progress = notification.object as? SplatNet2.Progress else { return }
+//            withAnimation(.easeInOut) {
+//                maxValue = progress.maxValue
+//                currentValue = progress.currentValue
+//            }
+//        })
         .overlay(circleProgress, alignment: .center)
         .overlay(textProgress, alignment: .center)
         .background(Wave().edgesIgnoringSafeArea(.all))
