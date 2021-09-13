@@ -50,6 +50,7 @@ class AppManager: ObservableObject {
     @AppStorage("FEATURE_DEBUG_04") var isDebug04: Bool = false //
     @AppStorage("FEATURE_DEBUG_05") var isDebug05: Bool = false //
     
+    @Published var isLoading: Bool = false
     @Published var allAvailableProducts: [SKProduct] = []
 
     private var token: NSObserver = NSObserver()

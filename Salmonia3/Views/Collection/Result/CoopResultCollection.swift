@@ -254,35 +254,3 @@ struct ResultOverview: View {
         .frame(width: 55)
     }
 }
-
-fileprivate extension ScrollView {
-    func paging(geometry: GeometryProxy, index: Binding<Int>, offset: Binding<CGFloat>, orientation: Binding<UIInterfaceOrientation>) -> some View {
-        return self
-            .content.offset(x: offset.wrappedValue)
-            .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
-                guard let status = UIApplication.shared.windows.first?.windowScene?.interfaceOrientation else { return }
-                if !UIDevice.current.orientation.isFlat {
-                    if (orientation.wrappedValue.isPortrait != status.isPortrait) || (orientation.wrappedValue.isLandscape != status.isLandscape) {
-                        offset.wrappedValue = -(geometry.size.height + (UIApplication.shared.windows.first?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0)) * CGFloat(index.wrappedValue)
-                        orientation.wrappedValue = status
-                    }
-                }
-            }
-            .gesture(DragGesture()
-                        .onChanged({ value in
-                            offset.wrappedValue = value.translation.width - geometry.size.width * CGFloat(index.wrappedValue)
-                        })
-                        .onEnded({ value in
-                            let scrollThreshold = geometry.size.width / 2
-                            if value.predictedEndTranslation.width < -scrollThreshold {
-                                index.wrappedValue = min(index.wrappedValue + 1, 4)
-                            } else if value.predictedEndTranslation.width > scrollThreshold {
-                                index.wrappedValue = max(index.wrappedValue - 1, 0)
-                            }
-                            withAnimation {
-                                offset.wrappedValue = -geometry.size.width * CGFloat(index.wrappedValue)
-                            }
-                        })
-            )
-    }
-}
