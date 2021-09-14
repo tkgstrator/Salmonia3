@@ -13,10 +13,12 @@ import Combine
 import SDWebImageSwiftUI
 
 struct LoginMenu: View {
+    @State var signInState: SplatNet2.SignInState = .none
     @State var angle: Angle = Angle(degrees: 0)
     @State var isPresented: Bool = false
     @State var isActive: Bool = false
-
+    let circleSize: CGSize = CGSize(width: 120, height: 120)
+    
     var body: some View {
         ZStack(alignment: .bottom, content: {
             ScrollView(.vertical, showsIndicators: false, content: {
@@ -25,19 +27,46 @@ struct LoginMenu: View {
                     .multilineTextAlignment(.center)
                     .lineLimit(3)
                     .offset(x: 0, y: 100)
-                    .padding()
+                    .padding(.horizontal, 20)
                     .foregroundColor(.whitesmoke)
+                    .frame(width: 340)
+                circleProgress
+                    .visible(signInState != .none)
+                Text("GETTING_\(signInState.localizedDescription)")
+                    .font(.custom("Splatfont2", size: 18))
+                    .visible(signInState != .none)
+                    .transition(.scale)
             }).introspectScrollView(customize: { scrollView in
                 scrollView.isScrollEnabled = false
             })
             signInButton
-                .offset(x: 0, y: -140)
+                .offset(x: 0, y: -200)
         })
+        .onReceive(NotificationCenter.default.publisher(for: SplatNet2.signIn), perform: { notification in
+            withAnimation {
+                guard let state = notification.object as? SplatNet2.SignInState else { return }
+                signInState = state
+            }
+        })
+        .frame(UIScreen.main.bounds.size)
         .background(Wave().edgesIgnoringSafeArea(.all))
         .navigationTitle(.TITLE_SALMONIA)
         .preferredColorScheme(.dark)
         .navigationViewStyle(StackNavigationViewStyle())
         .navigationBarBackButtonHidden(true)
+    }
+    
+    var circleProgress: some View {
+        Circle()
+            .trim(from: 0.0, to: CGFloat(signInState.rawValue) / CGFloat(9))
+            .stroke(Color.whitesmoke, lineWidth: 6)
+            .rotationEffect(.degrees(-90))
+            .frame(circleSize)
+            .background(Circle()
+                        .stroke(Color.envy, lineWidth: 6)
+                        .frame(circleSize))
+            .overlay(Circle().fill(Color.safetyorange.opacity(0.5)).frame(width: circleSize.width - 6, height: circleSize.height - 6))
+            .background(Circle().fill(Color.white))
     }
    
     var signInButton: some View {
@@ -86,10 +115,6 @@ struct Wave: View {
                 offset = Angle(degrees: 720)
             }
         }
-        .onDisappear {
-            withAnimation(Animation.linear(duration: 6).repeatForever(while: false, autoreverses: false)) {
-            }
-        }
     }
 }
 
@@ -110,14 +135,14 @@ struct CustomWave: Shape {
         var path = Path()
         
         //        path.move(to: CGPoint(x: rect.maxX + 5, y: waveHeight))
-        path.move(to: CGPoint(x: rect.maxX + 5, y: rect.maxY - waveHeight))
-        path.addLine(to: CGPoint(x: rect.maxX + 5, y: 0))
-        path.addLine(to: CGPoint(x: -5, y: 0))
-        path.addLine(to: CGPoint(x: -5, y: rect.maxY - waveHeight))
+        path.move(to: CGPoint(x: rect.maxX, y: rect.maxY - waveHeight))
+        path.addLine(to: CGPoint(x: rect.maxX, y: 0))
+        path.addLine(to: CGPoint(x: 0, y: 0))
+        path.addLine(to: CGPoint(x: 0, y: rect.maxY - waveHeight))
         
-        for angle in stride(from: 0.0, to: 360.0, by: 5) {
+        for angle in stride(from: 0.0, to: 360.0, by: 0.5) {
             let theta: Double = Angle(degrees: startAngle.degrees + angle + offset.degrees).radians
-            let x = CGFloat(angle / 360.0) * (rect.width + 10)
+            let x = CGFloat(angle / 360.0) * (rect.width)
             let y = rect.maxY + CGFloat(sin(theta)) * waveHeight / 2 - waveHeight / 2
             path.addLine(to: CGPoint(x: x, y: y))
         }
@@ -142,6 +167,33 @@ extension WebImage {
     init(forResource: String, isAnimating: Binding<Bool>) {
         let url = Bundle.main.url(forResource: forResource, withExtension: "png")
         self.init(url: url, isAnimating: isAnimating)
+    }
+}
+
+extension SplatNet2.SignInState {
+    var localizedDescription: String {
+        switch self {
+        case .none:
+            return ""
+        case .sessiontoken:
+            return "session token"
+        case .accesstoken:
+            return "access token"
+        case .s2shashnso:
+            return "s2s hash"
+        case .splatoontoken:
+            return "splatoon token"
+        case .splatoonaccesstoken:
+            return "splatoon access token"
+        case .iksmsession:
+            return "iksm session"
+        case .s2shashapp:
+            return "s2s hash"
+        case .flapgapp:
+            return "f"
+        case .flapgnso:
+            return "f"
+        }
     }
 }
 

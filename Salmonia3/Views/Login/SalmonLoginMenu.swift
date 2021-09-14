@@ -31,8 +31,9 @@ struct SalmonLoginMenu: View {
                 scrollView.isScrollEnabled = false
             })
             signInButton
-                .offset(x: 0, y: -140)
+                .offset(x: 0, y: -200)
         })
+        .frame(UIScreen.main.bounds.size)
         .background(Wave().edgesIgnoringSafeArea(.all))
         .navigationTitle(.TITLE_SALMONIA)
         .preferredColorScheme(.dark)
