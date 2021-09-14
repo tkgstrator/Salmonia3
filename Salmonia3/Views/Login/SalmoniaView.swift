@@ -48,6 +48,9 @@ struct SalmoniaView: View {
                 }
             }
         }
+        .introspectTableView(customize: { tableView in
+            tableView.showsVerticalScrollIndicator = false
+        })
         .listStyle(GroupedListStyle())
         .background(NavigationLink(destination: LoadingView(), isActive: $appManager.isLoading) { EmptyView() })
         .pullToRefresh(isShowing: $isShowing, onRefresh: {
