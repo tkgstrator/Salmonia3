@@ -73,7 +73,7 @@ struct LoadingView: View {
     
     private func getResultFromSplatNet2() {
         #if DEBUG
-        let latestJobId: Int = RealmManager.shared.getLatestResultId() - 10
+        let latestJobId: Int = RealmManager.shared.getLatestResultId() - 3
         #else
         let latestJobId: Int = RealmManager.shared.getLatestResultId()
         #endif
@@ -85,6 +85,10 @@ struct LoadingView: View {
                 if let apiToken = apiToken {
                     uploadToSalmonStats(accessToken: apiToken, results: results.json.map({ $0.dictionaryObject! }))
                 }
+                getNicknameIcons(pid: results.data.flatMap({ $0.results.map({ $0.pid} )}))
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                    present.wrappedValue.dismiss()
+                })
             case .failure(let error):
                 apiError = error
             }
