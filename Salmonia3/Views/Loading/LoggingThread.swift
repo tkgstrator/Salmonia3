@@ -24,13 +24,13 @@ struct LoggingThread: View {
         }).introspectScrollView(customize: { scrollView in
             scrollView.isScrollEnabled = false
         })
-//        .onReceive(NotificationCenter.default.publisher(for: SplatNet2.download), perform: { notification in
-//            guard let progress = notification.object as? SplatNet2.Progress else { return }
-//            withAnimation(.easeInOut) {
-//                maxValue = progress.maxValue
-//                currentValue = progress.currentValue
-//            }
-//        })
+        .onReceive(NotificationCenter.default.publisher(for: SplatNet2.download), perform: { notification in
+            guard let progress = notification.object as? SplatNet2.Progress else { return }
+            withAnimation(.easeInOut) {
+                maxValue = progress.maxValue
+                currentValue = progress.currentValue
+            }
+        })
         .overlay(circleProgress, alignment: .center)
         .overlay(textProgress, alignment: .center)
         .background(Wave().edgesIgnoringSafeArea(.all))

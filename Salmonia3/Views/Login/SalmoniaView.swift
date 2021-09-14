@@ -49,6 +49,7 @@ struct SalmoniaView: View {
             }
         }
         .listStyle(GroupedListStyle())
+        .background(NavigationLink(destination: LoadingView(), isActive: $appManager.isLoading) { EmptyView() })
         .pullToRefresh(isShowing: $isShowing, onRefresh: {
             appManager.isLoading.toggle()
             DispatchQueue.main.asyncAfter(deadline: .now(), execute: {

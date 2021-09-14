@@ -82,8 +82,12 @@ struct Wave: View {
             })
         }
         .onAppear {
-            withAnimation(Animation.linear(duration: 6).repeatForever(autoreverses: false)) {
+            withAnimation(Animation.linear(duration: 6).repeatForever(while: true, autoreverses: false)) {
                 offset = Angle(degrees: 720)
+            }
+        }
+        .onDisappear {
+            withAnimation(Animation.linear(duration: 6).repeatForever(while: false, autoreverses: false)) {
             }
         }
     }
@@ -111,7 +115,7 @@ struct CustomWave: Shape {
         path.addLine(to: CGPoint(x: -5, y: 0))
         path.addLine(to: CGPoint(x: -5, y: rect.maxY - waveHeight))
         
-        for angle in stride(from: 0.0, to: 360.0, by: 1) {
+        for angle in stride(from: 0.0, to: 360.0, by: 5) {
             let theta: Double = Angle(degrees: startAngle.degrees + angle + offset.degrees).radians
             let x = CGFloat(angle / 360.0) * (rect.width + 10)
             let y = rect.maxY + CGFloat(sin(theta)) * waveHeight / 2 - waveHeight / 2
@@ -122,6 +126,17 @@ struct CustomWave: Shape {
     }
     
 }
+
+extension Animation {
+    func `repeatForever`(while expression: Bool, autoreverses: Bool = false) -> Animation {
+        if expression {
+            return self.repeatForever(autoreverses: autoreverses)
+        } else {
+            return self
+        }
+    }
+}
+
 
 extension WebImage {
     init(forResource: String, isAnimating: Binding<Bool>) {

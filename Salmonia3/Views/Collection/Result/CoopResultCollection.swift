@@ -64,12 +64,6 @@ struct CoopResultCollection: View {
             }
         }
         .listStyle(SidebarListStyle())
-        .pullToRefresh(isShowing: $isShowing, onRefresh: {
-            isActive.toggle()
-            DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
-                isShowing.toggle()
-            })
-        })
     }
     
     private var PlainListStyleView: some View {
@@ -89,12 +83,6 @@ struct CoopResultCollection: View {
             }
         }
         .listStyle(PlainListStyle())
-        .pullToRefresh(isShowing: $isShowing, onRefresh: {
-            isActive.toggle()
-            DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
-                isShowing.toggle()
-            })
-        })
     }
     
     private var GroupedListStyleView: some View {
@@ -114,12 +102,6 @@ struct CoopResultCollection: View {
             }
         }
         .listStyle(GroupedListStyle())
-        .pullToRefresh(isShowing: $isShowing, onRefresh: {
-            isActive.toggle()
-            DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
-                isShowing.toggle()
-            })
-        })
     }
     
     private var DefaultListStyleView: some View {
@@ -139,12 +121,6 @@ struct CoopResultCollection: View {
             }
         }
         .listStyle(DefaultListStyle())
-        .pullToRefresh(isShowing: $isShowing, onRefresh: {
-            isActive.toggle()
-            DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
-                isShowing.toggle()
-            })
-        })
     }
     
     private var InsetListStyleView: some View {
@@ -164,12 +140,6 @@ struct CoopResultCollection: View {
             }
         }
         .listStyle(InsetGroupedListStyle())
-        .pullToRefresh(isShowing: $isShowing, onRefresh: {
-            isActive.toggle()
-            DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
-                isShowing.toggle()
-            })
-        })
     }
 }
 
