@@ -29,7 +29,7 @@ extension Setting.Sections {
             Section(header: Text(.HEADER_APPEARANCE).splatfont2(.safetyorange, size: 14)) {
                 Toggle(LocalizableStrings.Key.SETTING_DARKMODE.rawValue.localized, isOn: $appManager.isDarkMode)
                 HStack(alignment: .center, spacing: nil, content: {
-                    Text(.SETTING_RESULTSTYLE)
+                    Text(.SETTING_LISTSTYLE)
                     Spacer()
                     Button(action: { actionSheetItem = actionsItem[0] }, label: {
                         Text(appManager.listStyle.rawValue.localized)
