@@ -70,7 +70,6 @@ struct PlayerResultsView: View {
                 }
             }
         }
-        .listStyle(PlainListStyle())
         .navigationTitle(nickname)
     }
 }

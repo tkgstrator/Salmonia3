@@ -9,11 +9,12 @@ import Foundation
 import SwiftUI
 import Introspect
 import SplatNet2
+import SalmonStats
 
 struct LoggingThread: View {
     @Environment(\.presentationMode) var present
-    @State var currentValue: Int = 30
-    @State var maxValue: Int = 100
+    @State var currentValue: Int = 0
+    @State var maxValue: Int = 0
     private let cirlceSize: CGSize = CGSize(width: 140, height: 140)
     
     var body: some View {
@@ -24,11 +25,29 @@ struct LoggingThread: View {
         }).introspectScrollView(customize: { scrollView in
             scrollView.isScrollEnabled = false
         })
+        .onReceive(NotificationCenter.default.publisher(for: SalmonStats.imported), perform: { notification in
+            guard let progress = notification.object as? SplatNet2.Progress else { return }
+            print(progress)
+            withAnimation(.easeInOut) {
+                maxValue = progress.maxValue
+                currentValue = progress.currentValue
+            }
+            if maxValue == currentValue {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+                    present.wrappedValue.dismiss()
+                })
+            }
+        })
         .onReceive(NotificationCenter.default.publisher(for: SplatNet2.download), perform: { notification in
             guard let progress = notification.object as? SplatNet2.Progress else { return }
             withAnimation(.easeInOut) {
                 maxValue = progress.maxValue
                 currentValue = progress.currentValue
+            }
+            if maxValue == currentValue {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+                    present.wrappedValue.dismiss()
+                })
             }
         })
         .overlay(circleProgress, alignment: .center)

@@ -63,7 +63,12 @@ struct LoadingView: View {
                 case .finished:
                     break
                 case .failure(let error):
-                    apiError = error
+                    switch error {
+                    case .nonewresults:
+                        present.wrappedValue.dismiss()
+                    default:
+                        apiError = error
+                    }
                 }
             }, receiveValue: { response in
                 RealmManager.shared.updateNicknameAndIcons(players: response.nicknameAndIcons)
@@ -86,9 +91,6 @@ struct LoadingView: View {
                     uploadToSalmonStats(accessToken: apiToken, results: results.json.map({ $0.dictionaryObject! }))
                 }
                 getNicknameIcons(pid: results.data.flatMap({ $0.results.map({ $0.pid} )}))
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                    present.wrappedValue.dismiss()
-                })
             case .failure(let error):
                 apiError = error
             }

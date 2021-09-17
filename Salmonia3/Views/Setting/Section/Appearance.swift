@@ -12,7 +12,6 @@ extension Setting.Sections {
     struct Appearance: View {
         @EnvironmentObject var appManager: AppManager
         @State var actionSheetItem: ActionSheet?
-        // Dynamic ActionSheet
         @State var actionsItem: [ActionSheet] = [
             ActionSheet(title: Text("リザルト一覧表示形式"),
                         message: Text("好きなスタイルを選択してください"),

@@ -17,55 +17,23 @@ struct ImportingView: View {
     @State var apiError: APIError? = nil
     
     var body: some View {
-        Text("Nyamo")
+        LoggingThread()
             .onAppear(perform: importResultFromSalmonStats)
+            .alert(item: $apiError, content: { apiError in
+                Alert(title: "ERROR".localized, message: apiError.localizedDescription)
+            })
             .navigationTitle(.TITLE_LOGGING_THREAD)
     }
     
     private func importResultFromSalmonStats() {
-        let dispatchQueue = DispatchQueue(label: "Network Publisher")
-
-        manager.getMetadata(nsaid: manager.playerId)
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    apiError = error
-                }
-            }, receiveValue: { response in
-                DispatchQueue.main.async {
-                    #if DEBUG
-                    let maxValue: CGFloat = 500
-                    #else
-                    let maxValue: CGFloat = CGFloat(response.map{ $0.results.clear + $0.results.fail }.reduce(0, +))
-                    #endif
-                    
-                    #if DEBUG
-                    let lastPageId: Int = 10
-                    #else
-                    let lastPageId: Int = Int(maxValue / 50) + 1
-                    #endif
-                    
-                    for pageId in Range(1 ... lastPageId) {
-                        manager.getResults(nsaid: manager.playerId, pageId: pageId, count: 50)
-                            .receive(on: DispatchQueue.main)
-                            .sink(receiveCompletion: { completion in
-                                switch completion {
-                                case .finished:
-                                    break
-                                case .failure(let error):
-                                    apiError = error
-                                }
-                            }, receiveValue: { response in
-                                DispatchQueue.main.async {
-                                }
-                                RealmManager.shared.addNewResultsFromSplatNet2(from: response, .salmonstats)
-                            }).store(in: &task)
-                    }
-                }
-            }).store(in: &task)
+        manager.getAllResults(nsaid: manager.playerId) { completion in
+            switch completion {
+            case .success(let results):
+                RealmManager.shared.addNewResultsFromSplatNet2(from: results, .salmonstats)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 

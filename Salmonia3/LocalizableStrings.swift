@@ -165,6 +165,8 @@ class LocalizableStrings {
         case TITLE_WAVE_COLLECTION
         case TITLE_WEAPON_ANALYSIS
         case RESULT_CREW_AVG_NUM
+        case NIGHT_WAVE
+        case NO_NIGHT_WAVE
     }
 
 }

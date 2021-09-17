@@ -23,9 +23,7 @@ struct CoopResultView: View {
     var body: some View {
         PaginationView {
             CoopResultOverview(isVisible: $isVisible, result: result)
-                .padding(.bottom, 50)
             CoopPlayerResultView(result: result)
-                .padding(.bottom, 50)
         }
         .currentPageIndex($selection)
         .background(Color.black.edgesIgnoringSafeArea(.all))
@@ -144,6 +142,7 @@ struct CoopResultOverview: View {
                             .resizable()
                             .frame(width: 15, height: 15)
                         Text("RESULT_APPEARANCES_\(result.wave[index].goldenIkuraPopNum)")
+                            .minimumScaleFactor(0.5)
                     }
                     .padding(.bottom, 10)
                     LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 4), alignment: .leading, spacing: 0, pinnedViews: []) {

@@ -196,3 +196,5 @@
 "the-mothership"="ハコビヤ襲来";
 "water-levels"="-";
 "GETTING_%@"="%@を取得しています";
+"NIGHT_WAVE"="夜WAVE";
+"NO_NIGHT_WAVE"="昼WAVE";
