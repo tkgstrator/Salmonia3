@@ -82,7 +82,7 @@
 		108BFD9C26DDC37800652271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 108BFD9B26DDC37800652271 /* GoogleService-Info.plist */; };
 		108BFD9D26DDC37800652271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 108BFD9B26DDC37800652271 /* GoogleService-Info.plist */; };
 		108BFD9E26DDC37800652271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 108BFD9B26DDC37800652271 /* GoogleService-Info.plist */; };
-		109EF35E260CAB7F00076157 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF35D260CAB7F00076157 /* ProductView.swift */; };
+		109EF35E260CAB7F00076157 /* PurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF35D260CAB7F00076157 /* PurchaseButton.swift */; };
 		10A75A4B26AC1096005168DD /* StatsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A75A4A26AC1096005168DD /* StatsChartView.swift */; };
 		10A7893426DFF994002F83EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1059416A25FA49E900C32D21 /* Assets.xcassets */; };
 		10A7893726E0E801002F83EA /* SalmonidType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A7893626E0E801002F83EA /* SalmonidType.swift */; };
@@ -121,6 +121,10 @@
 		10D2E1552655548F00AE584E /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D2E1542655548F00AE584E /* Text.swift */; };
 		10D2E15A265557B200AE584E /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D2E159265557B200AE584E /* View.swift */; };
 		10D2E1622655618B00AE584E /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D2E1612655618B00AE584E /* LocalizableStrings.swift */; };
+		10E8BD9D26F50E6200B09B33 /* LockButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E8BD9C26F50E6200B09B33 /* LockButton.swift */; };
+		10E8BD9F26F50E9000B09B33 /* RestoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E8BD9E26F50E9000B09B33 /* RestoreButton.swift */; };
+		10E8BDA126F50EB900B09B33 /* PaidProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E8BDA026F50EB900B09B33 /* PaidProductView.swift */; };
+		10E8BDA326F50EDC00B09B33 /* FreeProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E8BDA226F50EDC00B09B33 /* FreeProductView.swift */; };
 		2E38FBBA890FA31FB3591447 /* Pods_Salmonia3Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4CFAB4D922D35088435EF26 /* Pods_Salmonia3Tests.framework */; };
 		A8C5630EBE09FDEA7BF59B1C /* Pods_Salmonia3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6419A3A4A135F484294BF5 /* Pods_Salmonia3.framework */; };
 /* End PBXBuildFile section */
@@ -239,7 +243,7 @@
 		108BFD9B26DDC37800652271 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1090C681263DF125000DD54C /* SplatNet2 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SplatNet2; path = ../SplatNet2; sourceTree = "<group>"; };
 		1090C6A6263E902B000DD54C /* Salmonia3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Salmonia3.entitlements; sourceTree = "<group>"; };
-		109EF35D260CAB7F00076157 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		109EF35D260CAB7F00076157 /* PurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseButton.swift; sourceTree = "<group>"; };
 		10A75A4A26AC1096005168DD /* StatsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsChartView.swift; sourceTree = "<group>"; };
 		10A7893626E0E801002F83EA /* SalmonidType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonidType.swift; sourceTree = "<group>"; };
 		10AD114C2600EB18008C0E64 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -268,6 +272,10 @@
 		10D2E1542655548F00AE584E /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		10D2E159265557B200AE584E /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		10D2E1612655618B00AE584E /* LocalizableStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
+		10E8BD9C26F50E6200B09B33 /* LockButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockButton.swift; sourceTree = "<group>"; };
+		10E8BD9E26F50E9000B09B33 /* RestoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreButton.swift; sourceTree = "<group>"; };
+		10E8BDA026F50EB900B09B33 /* PaidProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaidProductView.swift; sourceTree = "<group>"; };
+		10E8BDA226F50EDC00B09B33 /* FreeProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeProductView.swift; sourceTree = "<group>"; };
 		2F2E5792249C15DC27343CA1 /* Pods-Salmonia3Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salmonia3Tests.debug.xcconfig"; path = "Target Support Files/Pods-Salmonia3Tests/Pods-Salmonia3Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		40DFE28342F9F06B5E95E99C /* Pods-Salmonia3Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salmonia3Tests.release.xcconfig"; path = "Target Support Files/Pods-Salmonia3Tests/Pods-Salmonia3Tests.release.xcconfig"; sourceTree = "<group>"; };
 		56AB289C0D87612FB8D00999 /* Pods-Salmonia3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salmonia3.debug.xcconfig"; path = "Target Support Files/Pods-Salmonia3/Pods-Salmonia3.debug.xcconfig"; sourceTree = "<group>"; };
@@ -392,10 +400,11 @@
 		102465EF25FDDAAA004DC043 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				1071596426E279E80066DB74 /* Menu */,
+				10E8BD9B26F50E5100B09B33 /* Product */,
+				102465F025FDDABD004DC043 /* SettingView.swift */,
+				1071596226E2799F0066DB74 /* SettingMenu.swift */,
 				1071595926E278DB0066DB74 /* Section */,
 				1052C2CF26550E7800D3B9A9 /* DetailView.swift */,
-				109EF35D260CAB7F00076157 /* ProductView.swift */,
 				1053918F266BD8B5001025E1 /* HelpView.swift */,
 			);
 			path = Setting;
@@ -622,19 +631,10 @@
 				1071595C26E278FE0066DB74 /* Account.swift */,
 				1071595E26E2790A0066DB74 /* Product.swift */,
 				1071596026E279190066DB74 /* Appearance.swift */,
-				102465F025FDDABD004DC043 /* SettingView.swift */,
 				1013EFAB26F0F83400943D37 /* SettingType.swift */,
 				1013EFAD26F1180000943D37 /* SalmonStats.swift */,
 			);
 			path = Section;
-			sourceTree = "<group>";
-		};
-		1071596426E279E80066DB74 /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-				1071596226E2799F0066DB74 /* SettingMenu.swift */,
-			);
-			path = Menu;
 			sourceTree = "<group>";
 		};
 		107F9B3A2614A8CA001581C7 /* Views */ = {
@@ -728,6 +728,18 @@
 				105391A3266D1C6F001025E1 /* CoreRealmPlayer.swift */,
 			);
 			path = ObservableObject;
+			sourceTree = "<group>";
+		};
+		10E8BD9B26F50E5100B09B33 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				109EF35D260CAB7F00076157 /* PurchaseButton.swift */,
+				10E8BDA226F50EDC00B09B33 /* FreeProductView.swift */,
+				10E8BDA026F50EB900B09B33 /* PaidProductView.swift */,
+				10E8BD9E26F50E9000B09B33 /* RestoreButton.swift */,
+				10E8BD9C26F50E6200B09B33 /* LockButton.swift */,
+			);
+			path = Product;
 			sourceTree = "<group>";
 		};
 		CC3D58FA9034E515205807EE /* Frameworks */ = {
@@ -1052,7 +1064,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				109EF35E260CAB7F00076157 /* ProductView.swift in Sources */,
+				109EF35E260CAB7F00076157 /* PurchaseButton.swift in Sources */,
 				1081B769269D1FD60063D947 /* RealmObjects.swift in Sources */,
 				10AF87FA26E79A6600D1C35E /* WaterLevel.swift in Sources */,
 				105941A025FA4E2500C32D21 /* LoginMenu.swift in Sources */,
@@ -1070,6 +1082,7 @@
 				1024663E26009956004DC043 /* GradeType.swift in Sources */,
 				1013EFAC26F0F83400943D37 /* SettingType.swift in Sources */,
 				1071595826E2734F0066DB74 /* ResultIcon.swift in Sources */,
+				10E8BD9D26F50E6200B09B33 /* LockButton.swift in Sources */,
 				102465F125FDDABD004DC043 /* SettingView.swift in Sources */,
 				1071595226E2274A0066DB74 /* Egg.swift in Sources */,
 				10CF09F425FB9BE100D2EEB1 /* RealmCoopResult.swift in Sources */,
@@ -1082,6 +1095,7 @@
 				10B62CA32669CC1400916A64 /* CoopWaveCollection.swift in Sources */,
 				1052C2D026550E7800D3B9A9 /* DetailView.swift in Sources */,
 				10377F9925FD09FF00536A94 /* LoggingThread.swift in Sources */,
+				10E8BDA126F50EB900B09B33 /* PaidProductView.swift in Sources */,
 				10023BEC26DF26ED007BB899 /* Schedule.swift in Sources */,
 				105391AC266D23C4001025E1 /* CoopPlayerCollection.swift in Sources */,
 				10AF87F926E79A6600D1C35E /* StageType.swift in Sources */,
@@ -1100,6 +1114,7 @@
 				10682EFB264FEF2A0035CC68 /* StatsView.swift in Sources */,
 				10AF87EA26E6E7AC00D1C35E /* CircleChartView.swift in Sources */,
 				105391A4266D1C6F001025E1 /* CoreRealmPlayer.swift in Sources */,
+				10E8BDA326F50EDC00B09B33 /* FreeProductView.swift in Sources */,
 				10CF0A0525FBA6BF00D2EEB1 /* RealmCoopWave.swift in Sources */,
 				1013EFAE26F1180000943D37 /* SalmonStats.swift in Sources */,
 				10B62CAF2669D48E00916A64 /* ResultStyle.swift in Sources */,
@@ -1109,6 +1124,7 @@
 				107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */,
 				1071596126E279190066DB74 /* Appearance.swift in Sources */,
 				10CF09FB25FB9C6B00D2EEB1 /* CoreRealmCoop.swift in Sources */,
+				10E8BD9F26F50E9000B09B33 /* RestoreButton.swift in Sources */,
 				1031728E262C355500CF8903 /* ImportingView.swift in Sources */,
 				10AF87EE26E6E80500D1C35E /* LemonTeaView.swift in Sources */,
 				10CD8544268D40AA00A00162 /* CoopShiftStatsView.swift in Sources */,

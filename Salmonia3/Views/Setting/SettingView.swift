@@ -15,11 +15,16 @@ struct SettingView: View {
     typealias Sections = Setting.Sections
 
     var body: some View {
-        List {
+        Form {
             Sections.Account()
             Sections.SalmonStats()
             Sections.Product()
             Sections.Appearance()
+            Section(header: Text(.SETTING_DETAIL).splatfont2(.safetyorange, size: 14), content: {
+                NavigationLink(destination: Sections.Detail(), label: {
+                    Text(.SETTING_DETAIL)
+                })
+            })
         }
         .font(.custom("Splatfont2", size: 16))
         .navigationTitle(.TITLE_SETTINGS)
