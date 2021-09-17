@@ -18,10 +18,10 @@ struct StatsWaveView: View {
                     ForEach(EventType.allCases) { eventType in
                         switch eventType {
                         case .noevent:
-                            Text("昼WAVE")
+                            Text(.NO_NIGHT_WAVE)
                                 .splatfont2(.blackrussian, size: 20)
                         case .rush:
-                            Text("夜WAVE")
+                            Text(.NO_NIGHT_WAVE)
                                 .splatfont2(.blackrussian, size: 20)
                         default:
                             EmptyView()
@@ -30,6 +30,7 @@ struct StatsWaveView: View {
                             ForEach(WaterLevel.allCases) { waterLevel in
                                 Image(waterLevel: waterLevel.rawValue)
                                     .resizable()
+                                    .aspectRatio(contentMode: .fit)
                                     .padding(.horizontal, 4)
                                     .overlay(
                                         Text(eventType.localizedName)

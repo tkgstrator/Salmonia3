@@ -179,3 +179,6 @@
 "rush"="Rush";
 "the-mothership"="The Mothership";
 "water-levels"="-";
+"NIGHT_WAVE"="Night";
+"NO_NIGHT_WAVE"="No Event";
+"GETTING_%@"="Getting %@";
