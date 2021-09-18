@@ -12,47 +12,26 @@ import Combine
 struct UsernameView: View {
     @Environment(\.presentationMode) var present
     @EnvironmentObject var appManager: AppManager
-    @AppStorage("apiToken") var apiToken: String?
-
+    
     @State private var apiError: APIError?
     @State private var task = Set<AnyCancellable>()
     @State private var players: [NicknameIcons.Response.NicknameIcon] = []
 
-    private func dismiss() {
-        DispatchQueue.main.async { present.wrappedValue.dismiss() }
-    }
-    
+
     var body: some View {
-        Text("Nyamo")
+        LoggingThread()
             .onAppear(perform: getNicknameAndIcons)
-            .onDisappear{ RealmManager.shared.updateNicknameAndIcons(players: players) }
-            .alert(item: $apiError) { error in
-                Alert(title: Text("ALERT_ERROR"),
-                      message: Text(error.localizedDescription),
-                      dismissButton: .default(Text("BTN_DISMISS"), action: {
-//                        appManager.loggingToCloud(error.errorDescription!)
-                        present.wrappedValue.dismiss()
-                      }))
-            }
     }
 
     func getNicknameAndIcons() {
         let nsaids: [String] = RealmManager.shared.getNicknames()
-
-        for nsaid in nsaids.chunked(by: 200) {
-            manager.getNicknameAndIcons(playerId: nsaid)
-                .receive(on: DispatchQueue.main)
-                .sink(receiveCompletion: { completion in
-                    switch completion {
-                    case .finished:
-                        break
-                    case .failure(let error):
-                        apiError = error
-                    }
-                }, receiveValue: { response in
-                    players.append(contentsOf: response.nicknameAndIcons)
-                })
-                .store(in: &task)
+        manager.getNicknameAndIcons(playerId: nsaids) { completion in
+            switch completion {
+            case .success(let response):
+                RealmManager.shared.updateNicknameAndIcons(players: response)
+            case .failure(let error):
+                apiError = error
+            }
         }
     }
 }

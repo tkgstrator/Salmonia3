@@ -198,3 +198,9 @@
 "GETTING_%@"="%@を取得しています";
 "NIGHT_WAVE"="夜WAVE";
 "NO_NIGHT_WAVE"="昼WAVE";
+"TEXT_SIGN_OUT"="全てのニンテンドースイッチオンラインのアカウントからログアウトします。保存されているデータは削除されません。";
+"SETTING_SIGN_OUT"="ログアウト";
+"TEXT_ERASE_DATA"="全てのデータを削除します。 アカウントはログアウトされません。";
+"SETTING_ADD_ACCOUNT"="アカウント追加";
+"HEADER_DATA"="データ管理";
+"HEADER_PRIVACY"="プライバシー";

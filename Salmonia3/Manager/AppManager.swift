@@ -16,15 +16,21 @@ import StoreKit
 class AppManager: ObservableObject {
     
     // 無料機能
+    /// クマブキ表示するかどうか
     @AppStorage("FEATURE_FREE_01") var isFree01: Bool = false // クマブキ表示
+    /// ローテーション表示するかどうか
     @AppStorage("FEATURE_FREE_02") var isFree02: Bool = false // ローテーション表示
+    /// ニックネームを隠すかどうか
     @AppStorage("FEATURE_FREE_03") var isFree03: Bool = false // ニックネームを隠す
     @AppStorage("FEATURE_FREE_04") var isFree04: Bool = false
     @AppStorage("FEATURE_FREE_05") var isFree05: Bool = false
 
     // 課金機能
+    /// 広告を表示するかどうか
     @AppStorage("work.tkgstrator.disableads") var isPaid01: Bool = false
+    /// 複数アカウントを有効かどうか
     @AppStorage("work.tkgstrator.multiaccounts") var isPaid02: Bool = false
+    /// ゲーミングモードが有効かどうか
     @AppStorage("work.tkgstrator.gamingstyle") var isPaid03: Bool = false
     @AppStorage("FEATURE_PAID_04") var isPaid04: Bool = false
     @AppStorage("FEATURE_PAID_05") var isPaid05: Bool = false
@@ -142,7 +148,7 @@ class AppManager: ObservableObject {
     func loggingToCloud(_ value: String) {
         // ログ機能がオンの場合
         if isDebugMode {
-//            log.error("nsaid: \(String(describing: manager.)), session: \(String(describing: manager.iksmSession!)), apiver: \(manager.version), value: \(value)")
+            log.error("nsaid: \(manager.playerId)")
         }
     }
 }

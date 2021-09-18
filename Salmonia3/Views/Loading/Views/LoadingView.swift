@@ -26,13 +26,9 @@ struct LoadingView: View {
     
     var body: some View {
         LoggingThread(currentValue: currentValue, maxValue: maxValue)
-            .onAppear {
-                currentValue = 0
-                maxValue = 0
-                getResultFromSplatNet2()
-            }
+            .onAppear(perform: getResultFromSplatNet2)
             .alert(item: $apiError, content: { apiError in
-                Alert(title: "ERROR".localized, message: apiError.localizedDescription)
+                Alert(title: Text(apiError.error), message: Text(apiError.localizedDescription), dismissButton: .default(Text(.BTN_CONFIRM), action: { present.wrappedValue.dismiss() }))
             })
     }
 
@@ -56,24 +52,14 @@ struct LoadingView: View {
     }
     
     private func getNicknameIcons(pid: [String]) {
-        manager.getNicknameAndIcons(playerId: Array(Set(pid)))
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    switch error {
-                    case .nonewresults:
-                        present.wrappedValue.dismiss()
-                    default:
-                        apiError = error
-                    }
-                }
-            }, receiveValue: { response in
-                RealmManager.shared.updateNicknameAndIcons(players: response.nicknameAndIcons)
-            })
-            .store(in: &task)
+        manager.getNicknameAndIcons(playerId: Array(Set(pid))) { completion in
+            switch completion {
+            case .success(let response):
+                RealmManager.shared.updateNicknameAndIcons(players: response)
+            case .failure(let error):
+                apiError = error
+            }
+        }
     }
     
     private func getResultFromSplatNet2() {
