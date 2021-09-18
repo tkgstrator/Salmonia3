@@ -30,6 +30,8 @@ class LocalizableStrings {
         case ERROR_UNAVAILABLE
         case ERROR_UNKNOWN
         case ERROR_UPGRADE
+        case FOOTER_SIGN_OUT
+        case FOOTER_ERASE_DATA
         case FEATURE_RESTORE_DESC
         case FEATURE_RESET_DESC
         case FEATURE_FREE_01
@@ -145,9 +147,12 @@ class LocalizableStrings {
         case TEXT_SALMONIA
         case TEXT_SALMONSTATS
         case TEXT_SIGN_IN
+        case TEXT_SIGN_OUT
         case TEXT_TUTORIAL_SALMONSTATS
         case TEXT_WELCOME_SALMONSTATS
         case TEXT_WELCOME_SPLATNET2
+        case SETTING_SIGN_OUT
+        case SETTING_ADD_ACCOUNT
         case TITLE_FREE_PRODUCT
         case TITLE_HELP
         case TITLE_LOGGING_THREAD
@@ -167,6 +172,8 @@ class LocalizableStrings {
         case RESULT_CREW_AVG_NUM
         case NIGHT_WAVE
         case NO_NIGHT_WAVE
+        case HEADER_DATA
+        case HEADER_PRIVACY
     }
 
 }

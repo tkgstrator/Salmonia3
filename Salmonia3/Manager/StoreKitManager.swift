@@ -43,11 +43,6 @@ final class StoreKitManager {
     /// サーバからデータを取得
     func retreiveProductInfo(productIds: [StoreItem], completion: @escaping (Set<SKProduct>) -> ()) {
         SwiftyStoreKit.retrieveProductsInfo(Set(productIds.map({ $0.rawValue }))) { result in
-            for product in result.retrievedProducts {
-                if let price = product.localizedPrice {
-                    log.debug("Product: \(product.localizedDescription), Price: \(price)")
-                }
-            }
             if let invalidProductId = result.invalidProductIDs.first {
                 log.error("Invalid Product: \(invalidProductId)")
             }

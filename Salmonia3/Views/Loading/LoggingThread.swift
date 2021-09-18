@@ -27,15 +27,16 @@ struct LoggingThread: View {
         })
         .onReceive(NotificationCenter.default.publisher(for: SalmonStats.imported), perform: { notification in
             guard let progress = notification.object as? SplatNet2.Progress else { return }
-            print(progress)
             withAnimation(.easeInOut) {
                 maxValue = progress.maxValue
                 currentValue = progress.currentValue
             }
             if maxValue == currentValue {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-                    present.wrappedValue.dismiss()
-                })
+                if present.wrappedValue.isPresented {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+                        present.wrappedValue.dismiss()
+                    })
+                }
             }
         })
         .onReceive(NotificationCenter.default.publisher(for: SplatNet2.download), perform: { notification in
@@ -45,9 +46,11 @@ struct LoggingThread: View {
                 currentValue = progress.currentValue
             }
             if maxValue == currentValue {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-                    present.wrappedValue.dismiss()
-                })
+                if present.wrappedValue.isPresented {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+                        present.wrappedValue.dismiss()
+                    })
+                }
             }
         })
         .overlay(circleProgress, alignment: .center)
