@@ -146,10 +146,14 @@ class AppManager: ObservableObject {
     }
     
     func loggingToCloud(_ value: String) {
+        #if DEBUG
+        log.debug("nsaid: \(manager.playerId), description: \(value)")
+        #else
         // ログ機能がオンの場合
         if isDebugMode {
             log.error("nsaid: \(manager.playerId)")
         }
+        #endif
     }
 }
 

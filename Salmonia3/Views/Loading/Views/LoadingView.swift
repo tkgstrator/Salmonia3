@@ -79,6 +79,7 @@ struct LoadingView: View {
                 getNicknameIcons(pid: results.data.flatMap({ $0.results.map({ $0.pid} )}))
             case .failure(let error):
                 apiError = error
+                appManager.loggingToCloud(error.localizedDescription)
             }
         }
     }

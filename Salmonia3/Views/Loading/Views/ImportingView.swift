@@ -20,7 +20,7 @@ struct ImportingView: View {
         LoggingThread()
             .onAppear(perform: importResultFromSalmonStats)
             .alert(item: $apiError, content: { apiError in
-                Alert(title: "ERROR".localized, message: apiError.localizedDescription)
+                Alert(title: Text(apiError.error), message: Text(apiError.localizedDescription), dismissButton: .default(Text(.BTN_CONFIRM), action: { present.wrappedValue.dismiss() }))
             })
             .navigationTitle(.TITLE_LOGGING_THREAD)
     }
@@ -31,7 +31,8 @@ struct ImportingView: View {
             case .success(let results):
                 RealmManager.shared.addNewResultsFromSplatNet2(from: results, .salmonstats)
             case .failure(let error):
-                print(error)
+                apiError = error
+                appManager.loggingToCloud(error.localizedDescription)
             }
         }
     }
