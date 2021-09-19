@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-import SwiftUIRefresh
+import SwiftyUI
 import URLImage
 import BetterSafariView
 
@@ -51,12 +51,14 @@ struct SalmoniaView: View {
         .introspectTableView(customize: { tableView in
             tableView.showsVerticalScrollIndicator = false
         })
-        .background(NavigationLink(destination: LoadingView(), isActive: $appManager.isLoading) { EmptyView() })
         .pullToRefresh(isShowing: $isShowing, onRefresh: {
-            appManager.isLoading.toggle()
-            DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
-                isShowing.toggle()
-            })
+            isPresented.toggle()
+            isShowing.toggle()
+        })
+        .present(isPresented: $isPresented, transitionStyle: .flipHorizontal, presentationStyle: .fullScreen, content: {
+            LoadingView()
+                .environmentObject(appManager)
+                .environment(\.modalIsPresented, .constant(PresentationStyle($isPresented)))
         })
         .safariView(item: $selectedURL) { selectedURL in
             SafariView(

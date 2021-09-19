@@ -26,9 +26,10 @@ struct TutorialView: View {
                 .foregroundColor(.white)
         })
         .alert(isPresented: $isShowing, content: {
-            Alert(title: Text(.TITLE_TUTORIAL), message: Text(.TEXT_TUTORIAL), primaryButton: .default(Text(.PLAY_VIDEO), action: {
+            Alert(title: Text(.TEXT_TUTORIAL), message: Text(.TEXT_TUTORIAL), primaryButton: .default(Text(.PLAY_VIDEO), action: {
                 isPresented.toggle()
-            }), secondaryButton: .cancel())
+            }),
+            secondaryButton: .destructive(Text(.BTN_CANCEL)))
         })
         .sheet(isPresented: $isPresented, content: {
             VideoPlayer(url: url, play: $isPlaying)

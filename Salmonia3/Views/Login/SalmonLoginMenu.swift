@@ -35,6 +35,7 @@ struct SalmonLoginMenu: View {
         })
         .frame(UIScreen.main.bounds.size)
         .background(Wave().edgesIgnoringSafeArea(.all))
+        .navigationBarItems(trailing: TutorialView())
         .navigationTitle(.TITLE_SALMONIA)
         .preferredColorScheme(.dark)
         .navigationViewStyle(StackNavigationViewStyle())

@@ -13,6 +13,7 @@ import SplatNet2
 struct ImportingView: View {
     @EnvironmentObject var appManager: AppManager
     @Environment(\.modalIsPresented) var present
+    @Environment(\.presentationMode) var presentationMode
     @State var task = Set<AnyCancellable>()
     @State var apiError: APIError = .fatalerror
     @State var isPresented: Bool = false
@@ -32,7 +33,11 @@ struct ImportingView: View {
             switch completion {
             case .success(let results):
                 RealmManager.shared.addNewResultsFromSplatNet2(from: results, .salmonstats)
-                present.wrappedValue.dismiss()
+                if presentationMode.wrappedValue.isPresented {
+                    presentationMode.wrappedValue.dismiss()
+                } else {
+                    present.wrappedValue.dismiss()
+                }
             case .failure(let error):
                 apiError = error
                 isPresented.toggle()

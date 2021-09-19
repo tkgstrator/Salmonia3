@@ -92,15 +92,6 @@
         }
       },
       {
-        "package": "SwiftUIRefresh",
-        "repositoryURL": "https://github.com/siteline/SwiftUIRefresh",
-        "state": {
-          "branch": null,
-          "revision": "fa8fac7b5eb5c729983a8bef65f094b5e0d12014",
-          "version": "0.0.3"
-        }
-      },
-      {
         "package": "SwiftUIX",
         "repositoryURL": "https://github.com/SwiftUIX/SwiftUIX",
         "state": {

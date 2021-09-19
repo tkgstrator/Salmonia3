@@ -110,7 +110,6 @@
 		10BBBEA226049EF400DA79C9 /* CoopResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBBEA126049EF400DA79C9 /* CoopResultView.swift */; };
 		10CD8544268D40AA00A00162 /* CoopShiftStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD8543268D40A900A00162 /* CoopShiftStatsView.swift */; };
 		10CF098E25FB97CB00D2EEB1 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF098D25FB97CB00D2EEB1 /* BetterSafariView */; };
-		10CF099425FB97F300D2EEB1 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF099325FB97F300D2EEB1 /* SwiftUIRefresh */; };
 		10CF09A025FB984400D2EEB1 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF099F25FB984400D2EEB1 /* SwiftyStoreKit */; };
 		10CF09B825FB9AC100D2EEB1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF09B725FB9AC100D2EEB1 /* Realm */; };
 		10CF09BA25FB9AC100D2EEB1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF09B925FB9AC100D2EEB1 /* RealmSwift */; };
@@ -312,7 +311,6 @@
 				10D0177726C06DED000DCA1B /* StoreKit.framework in Frameworks */,
 				10CF09BA25FB9AC100D2EEB1 /* RealmSwift in Frameworks */,
 				1009518526F780300099AA2B /* VideoPlayer in Frameworks */,
-				10CF099425FB97F300D2EEB1 /* SwiftUIRefresh in Frameworks */,
 				10CF09B825FB9AC100D2EEB1 /* Realm in Frameworks */,
 				10039F9626A45EA300B1546A /* GoogleMobileAds.xcframework in Frameworks */,
 				10317286262C32FB00CF8903 /* SalmonStats in Frameworks */,
@@ -820,7 +818,6 @@
 			name = Salmonia3;
 			packageProductDependencies = (
 				10CF098D25FB97CB00D2EEB1 /* BetterSafariView */,
-				10CF099325FB97F300D2EEB1 /* SwiftUIRefresh */,
 				10CF099F25FB984400D2EEB1 /* SwiftyStoreKit */,
 				10CF09B725FB9AC100D2EEB1 /* Realm */,
 				10CF09B925FB9AC100D2EEB1 /* RealmSwift */,
@@ -911,7 +908,6 @@
 			mainGroup = 1059415A25FA49E500C32D21;
 			packageReferences = (
 				10CF098C25FB97CB00D2EEB1 /* XCRemoteSwiftPackageReference "BetterSafariView" */,
-				10CF099225FB97F300D2EEB1 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
 				10CF099E25FB984400D2EEB1 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
 				10CF09B625FB9AC100D2EEB1 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				104BD61E261C98800013CD27 /* XCRemoteSwiftPackageReference "url-image" */,
@@ -1624,14 +1620,6 @@
 				minimumVersion = 2.3.1;
 			};
 		};
-		10CF099225FB97F300D2EEB1 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/siteline/SwiftUIRefresh";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.3;
-			};
-		};
 		10CF099E25FB984400D2EEB1 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bizz84/SwiftyStoreKit.git";
@@ -1697,11 +1685,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 10CF098C25FB97CB00D2EEB1 /* XCRemoteSwiftPackageReference "BetterSafariView" */;
 			productName = BetterSafariView;
-		};
-		10CF099325FB97F300D2EEB1 /* SwiftUIRefresh */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 10CF099225FB97F300D2EEB1 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */;
-			productName = SwiftUIRefresh;
 		};
 		10CF099F25FB984400D2EEB1 /* SwiftyStoreKit */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -39,6 +39,10 @@ struct LoggingThread: View {
                 currentValue = progress.currentValue
             }
         })
+        .onAppear {
+            currentValue = 0
+            maxValue = 0
+        }
         .overlay(circleProgress, alignment: .center)
         .overlay(textProgress, alignment: .center)
         .background(Wave().edgesIgnoringSafeArea(.all))
@@ -58,10 +62,9 @@ struct LoggingThread: View {
     
     var circleProgress: some View {
         Circle()
-            .trim(from: 0.0, to: CGFloat(currentValue) / CGFloat(maxValue))
+            .trim(from: 0.0, to: currentValue == 0 ? 0.0 : CGFloat(currentValue) / CGFloat(maxValue))
             .stroke(Color.whitesmoke, lineWidth: 10)
             .rotationEffect(.degrees(-90))
-            .visible(currentValue != 0)
             .frame(cirlceSize)
             .background(Circle()
                         .stroke(Color.envy, lineWidth: 10)
