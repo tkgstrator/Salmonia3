@@ -51,11 +51,12 @@ struct LoginMenu: View {
         .frame(UIScreen.main.bounds.size)
         .background(Wave().edgesIgnoringSafeArea(.all))
         .navigationTitle(.TITLE_SALMONIA)
+        .navigationBarItems(trailing: TutorialView())
         .preferredColorScheme(.dark)
         .navigationViewStyle(StackNavigationViewStyle())
         .navigationBarBackButtonHidden(true)
     }
-    
+
     var circleProgress: some View {
         Circle()
             .trim(from: 0.0, to: CGFloat(signInState.rawValue) / CGFloat(9))

@@ -21,6 +21,7 @@ struct UsernameView: View {
     var body: some View {
         LoggingThread()
             .onAppear(perform: getNicknameAndIcons)
+            .preferredColorScheme(.dark)
     }
 
     func getNicknameAndIcons() {

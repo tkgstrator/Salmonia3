@@ -30,6 +30,7 @@ struct LoadingView: View {
             .alert(item: $apiError, content: { apiError in
                 Alert(title: Text(apiError.error), message: Text(apiError.localizedDescription), dismissButton: .default(Text(.BTN_CONFIRM), action: { present.wrappedValue.dismiss() }))
             })
+            .preferredColorScheme(.dark)
     }
 
     private func uploadToSalmonStats(accessToken: String, results: [[String: Any]]) {
@@ -63,12 +64,8 @@ struct LoadingView: View {
     }
     
     private func getResultFromSplatNet2() {
-        #if DEBUG
-        let latestJobId: Int = RealmManager.shared.getLatestResultId() - 3
-        #else
         let latestJobId: Int = RealmManager.shared.getLatestResultId()
-        #endif
-        
+
         manager.getResultCoopWithJSON(latestJobId: latestJobId) { response in
             switch response {
             case .success(let results):
@@ -78,8 +75,15 @@ struct LoadingView: View {
                 }
                 getNicknameIcons(pid: results.data.flatMap({ $0.results.map({ $0.pid} )}))
             case .failure(let error):
-                apiError = error
-                appManager.loggingToCloud(error.localizedDescription)
+                switch error {
+                case .nonewresults:
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                        present.wrappedValue.dismiss()
+                    })
+                default:
+                    apiError = error
+                    appManager.loggingToCloud(error.localizedDescription)
+                }
             }
         }
     }

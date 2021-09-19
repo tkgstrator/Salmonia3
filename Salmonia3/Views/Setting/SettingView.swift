@@ -30,16 +30,13 @@ struct SettingView: View {
         }
         .font(.custom("Splatfont2", size: 16))
         .navigationTitle(.TITLE_SETTINGS)
-        .navigationBarItems(trailing: addAccountButton)
-    }
-    
-    var addAccountButton: some View {
-        Image(systemName: "plus.circle")
-            .resizable()
-            .imageScale(.large)
-            .foregroundColor(.blue)
-            .disabled(appManager.isPaid02)
-            .buttonStyle(DefaultButtonStyle())
+        .navigationBarItems(trailing: AddAccountButton())
+        .onReceive(NotificationCenter.default.publisher(for: SplatNet2.account), perform: { notification in
+            if let account = notification.object as? UserInfo {
+                manager.account = account
+                appManager.objectWillChange.send()
+            }
+        })
     }
 }
 
