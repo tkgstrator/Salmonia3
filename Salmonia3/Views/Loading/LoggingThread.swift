@@ -31,26 +31,12 @@ struct LoggingThread: View {
                 maxValue = progress.maxValue
                 currentValue = progress.currentValue
             }
-            if maxValue == currentValue {
-                if present.wrappedValue.isPresented {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-                        present.wrappedValue.dismiss()
-                    })
-                }
-            }
         })
         .onReceive(NotificationCenter.default.publisher(for: SplatNet2.download), perform: { notification in
             guard let progress = notification.object as? SplatNet2.Progress else { return }
             withAnimation(.easeInOut) {
                 maxValue = progress.maxValue
                 currentValue = progress.currentValue
-            }
-            if maxValue == currentValue {
-                if present.wrappedValue.isPresented {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-                        present.wrappedValue.dismiss()
-                    })
-                }
             }
         })
         .overlay(circleProgress, alignment: .center)
@@ -59,6 +45,7 @@ struct LoggingThread: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
+        .preferredColorScheme(.dark)
         .navigationTitle(.TITLE_LOGGING_THREAD)
     }
     
@@ -74,6 +61,7 @@ struct LoggingThread: View {
             .trim(from: 0.0, to: CGFloat(currentValue) / CGFloat(maxValue))
             .stroke(Color.whitesmoke, lineWidth: 10)
             .rotationEffect(.degrees(-90))
+            .visible(currentValue != 0)
             .frame(cirlceSize)
             .background(Circle()
                         .stroke(Color.envy, lineWidth: 10)
@@ -85,11 +73,6 @@ struct LoggingThread: View {
     var credit: some View {
         LazyVStack {
             LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 130)), count: 2), alignment: .center, spacing: nil, pinnedViews: [], content: {
-//                Section(header: Text("Developer").font(.custom("Splatfont2", size: 18)), content: {
-//                    Link(destination: URL(string: "https://twitter.com/tkgling")!, label: {
-//                        Text("tkgling")
-//                    })
-//                })
                 Section(header: Text("Startup Projects").font(.custom("Splatfont2", size: 19)).frame(width: 260).overlay(
                             Rectangle().frame(height: 1).offset(x: 0, y: -2), alignment: .bottom), content: {
                     Link(destination: URL(string: "https://twitter.com/Yukinkling")!, label: {

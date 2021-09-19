@@ -28,7 +28,7 @@ enum ResultStyle: String, CaseIterable, Identifiable {
     case salmonrec  = "STYLE_SALMONREC"
     case barleyural = "STYLE_BARLEY"
 //    case lemontea   = "STYLE_LEMON"
-    case `default`  = "STYLE_DEFAULT"
+//    case `default`  = "STYLE_DEFAULT"
 
     func setValue() {
         UserDefaults.standard.setValue(self.rawValue, forKey: "FEATURE_OTHER_05")

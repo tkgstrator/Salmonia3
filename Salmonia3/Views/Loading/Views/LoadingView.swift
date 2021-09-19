@@ -16,21 +16,16 @@ struct LoadingView: View {
     @Environment(\.presentationMode) var present
     @EnvironmentObject var appManager: AppManager
     @AppStorage("apiToken") var apiToken: String?
-
-    @State var currentValue: Int = 0
-    @State var maxValue: Int = 0
-    @State var apiError: APIError?
-
+    @State var apiError: APIError = .fatalerror
+    @State var isPresented: Bool = false
     @State private var task = Set<AnyCancellable>()
-    private let dispatchQueue: DispatchQueue = DispatchQueue(label: "LoadingView")
-    
+
     var body: some View {
-        LoggingThread(currentValue: currentValue, maxValue: maxValue)
+        LoggingThread()
             .onAppear(perform: getResultFromSplatNet2)
-            .alert(item: $apiError, content: { apiError in
-                Alert(title: Text(apiError.error), message: Text(apiError.localizedDescription), dismissButton: .default(Text(.BTN_CONFIRM), action: { present.wrappedValue.dismiss() }))
+            .alert(isPresented: $isPresented, content: {
+                return Alert(title: Text(apiError.error), message: Text(apiError.localizedDescription), dismissButton: .default(Text(.BTN_CONFIRM), action: { present.wrappedValue.dismiss() }))
             })
-            .preferredColorScheme(.dark)
     }
 
     private func uploadToSalmonStats(accessToken: String, results: [[String: Any]]) {
@@ -41,12 +36,13 @@ struct LoadingView: View {
                 .sink(receiveCompletion: { completion in
                     switch completion {
                     case .finished:
-                        break
+                        present.wrappedValue.dismiss()
                     case .failure(let error):
                         apiError = error
+                        isPresented.toggle()
+                        appManager.loggingToCloud(error.localizedDescription)
                     }
-                }, receiveValue: { response in
-                    print(response)
+                }, receiveValue: { _ in
                 })
                 .store(in: &task)
         }
@@ -59,6 +55,8 @@ struct LoadingView: View {
                 RealmManager.shared.updateNicknameAndIcons(players: response)
             case .failure(let error):
                 apiError = error
+                isPresented.toggle()
+                appManager.loggingToCloud(error.localizedDescription)
             }
         }
     }
@@ -82,6 +80,7 @@ struct LoadingView: View {
                     })
                 default:
                     apiError = error
+                    isPresented.toggle()
                     appManager.loggingToCloud(error.localizedDescription)
                 }
             }

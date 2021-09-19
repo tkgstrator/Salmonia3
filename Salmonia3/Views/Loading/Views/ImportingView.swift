@@ -12,18 +12,18 @@ import SplatNet2
 
 struct ImportingView: View {
     @EnvironmentObject var appManager: AppManager
-    @Environment(\.presentationMode) var present
+    @Environment(\.modalIsPresented) var present
     @State var task = Set<AnyCancellable>()
-    @State var apiError: APIError? = nil
+    @State var apiError: APIError = .fatalerror
+    @State var isPresented: Bool = false
     
     var body: some View {
         LoggingThread()
             .onAppear(perform: importResultFromSalmonStats)
-            .alert(item: $apiError, content: { apiError in
-                Alert(title: Text(apiError.error), message: Text(apiError.localizedDescription), dismissButton: .default(Text(.BTN_CONFIRM), action: { present.wrappedValue.dismiss() }))
+            .alert(isPresented: $isPresented, content: {
+                return Alert(title: Text(apiError.error), message: Text(apiError.localizedDescription), dismissButton: .default(Text(.BTN_CONFIRM), action: { present.wrappedValue.dismiss() }))
             })
             .navigationTitle(.TITLE_LOGGING_THREAD)
-            .preferredColorScheme(.dark)
     }
     
     private func importResultFromSalmonStats() {
@@ -32,8 +32,10 @@ struct ImportingView: View {
             switch completion {
             case .success(let results):
                 RealmManager.shared.addNewResultsFromSplatNet2(from: results, .salmonstats)
+                present.wrappedValue.dismiss()
             case .failure(let error):
                 apiError = error
+                isPresented.toggle()
                 appManager.loggingToCloud(error.localizedDescription)
             }
         }

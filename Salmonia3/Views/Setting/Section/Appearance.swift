@@ -13,13 +13,13 @@ extension Setting.Sections {
         @EnvironmentObject var appManager: AppManager
         @State var actionSheetItem: ActionSheet?
         @State var actionsItem: [ActionSheet] = [
-            ActionSheet(title: Text("リザルト一覧表示形式"),
-                        message: Text("好きなスタイルを選択してください"),
+            ActionSheet(title: Text(.SETTING_LISTSTYLE),
+                        message: Text(.TEXT_CHOOSE_STYLE),
                         buttons: ResultListStyle.allCases.map({ style in
                                                                 .default(Text(style.rawValue.localized), action: { style.setValue() } )})
                             + [.cancel()]),
-            ActionSheet(title: Text("リザルト詳細表示形式"),
-                        message: Text("好きなスタイルを選択してください"),
+            ActionSheet(title: Text(.SETTING_RESULTSTYLE),
+                        message: Text(.TEXT_CHOOSE_STYLE),
                         buttons: ResultStyle.allCases.map({ style in
                                                             .default(Text(style.rawValue.localized), action: { style.setValue() } )})
                             + [.cancel()]),
