@@ -25,9 +25,10 @@ struct AddAccountButton: View {
         })
         .buttonStyle(DefaultButtonStyle())
         .alert(isPresented: $isPresented, content: {
-            Alert(title: Text("アカウント追加"), message: Text("アカウントを追加します"), primaryButton: .default(Text(.BTN_CONFIRM), action: {
+            Alert(title: Text(.BTN_ADD_ACCOUNT), message: Text(.TEXT_ADD_ACCOUNT), primaryButton: .default(Text(.BTN_CONFIRM), action: {
                 appManager.isSignedIn.toggle()
-            }), secondaryButton: .cancel())
+            }),
+            secondaryButton: .destructive(Text(.BTN_CANCEL)))
         })
     }
 }

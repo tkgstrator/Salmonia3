@@ -22,6 +22,7 @@ extension Setting.Sections {
     }
     
     private struct SalmonStatsButton: View {
+        @EnvironmentObject var appManager: AppManager
         @State var isPresented: Bool = false
         @State var isActive: Bool = false
         
@@ -33,10 +34,13 @@ extension Setting.Sections {
                           primaryButton: .default(Text(.BTN_CONFIRM), action: { isActive.toggle() }),
                           secondaryButton: .destructive(Text(.BTN_CANCEL)))
                 }
-                .present(isPresented: $isActive, transitionStyle: .flipHorizontal, presentationStyle: .fullScreen, content: {
+                .fullScreenCover(isPresented: $isActive, content: {
                     ImportingView()
-                        .environment(\.modalIsPresented, .constant(PresentationStyle($isActive)))
+                        .environmentObject(appManager)
                 })
+//                .present(isPresented: $isActive, transitionStyle: .flipHorizontal, presentationStyle: .fullScreen, content: {
+//                        .environment(\.modalIsPresented, .constant(PresentationStyle($isActive)))
+//                })
         }
     }
     
@@ -52,10 +56,13 @@ extension Setting.Sections {
                           primaryButton: .default(Text(.BTN_CONFIRM), action: { isActive.toggle() }),
                           secondaryButton: .destructive(Text(.BTN_CANCEL)))
                 }
-                .present(isPresented: $isActive, transitionStyle: .flipHorizontal, presentationStyle: .fullScreen, content: {
+                .fullScreenCover(isPresented: $isActive, content: {
                     UsernameView()
-                        .environment(\.modalIsPresented, .constant(PresentationStyle($isActive)))
                 })
+//                .present(isPresented: $isActive, transitionStyle: .flipHorizontal, presentationStyle: .fullScreen, content: {
+//                    UsernameView()
+//                        .environment(\.modalIsPresented, .constant(PresentationStyle($isActive)))
+//                })
         }
     }
 }

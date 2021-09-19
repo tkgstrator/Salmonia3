@@ -8,6 +8,7 @@ class LocalizableStrings {
         case AUTHORIZED_WITH_BIOMETRICS
         case AUTHORIZED_WITH_PASSCODE
         case BOSS_DEFEATED
+        case BTN_ADD_ACCOUNT
         case BTN_CANCEL
         case BTN_CONFIRM
         case BTN_DISMISS
@@ -30,10 +31,6 @@ class LocalizableStrings {
         case ERROR_UNAVAILABLE
         case ERROR_UNKNOWN
         case ERROR_UPGRADE
-        case FOOTER_SIGN_OUT
-        case FOOTER_ERASE_DATA
-        case FEATURE_RESTORE_DESC
-        case FEATURE_RESET_DESC
         case FEATURE_FREE_01
         case FEATURE_FREE_01_DESC
         case FEATURE_FREE_02
@@ -50,13 +47,19 @@ class LocalizableStrings {
         case FEATURE_PAID_02_DESC
         case FEATURE_PAID_03
         case FEATURE_PAID_03_DESC
+        case FEATURE_RESET_DESC
+        case FEATURE_RESTORE_DESC
+        case FOOTER_ERASE_DATA
         case FOOTER_SALMONSTATS
+        case FOOTER_SIGN_OUT
         case FOOTER_SPLATNET2
         case GOLDEN_EGGS
         case HEADER_APPEARANCE
         case HEADER_APPLICATION
+        case HEADER_DATA
         case HEADER_DEVICE
         case HEADER_OVERVIEW
+        case HEADER_PRIVACY
         case HEADER_PRODUCT
         case HEADER_SALMONSTATS
         case HEADER_SCHEDULE
@@ -71,7 +74,10 @@ class LocalizableStrings {
         case LOCK
         case LOG_DOWNLOAD
         case LOG_UPLOADING
+        case NIGHT_WAVE
+        case NO_NIGHT_WAVE
         case PAID
+        case PLAY_VIDEO
         case PRODUCT_MULTI_ACCOUNT
         case PURCHASE
         case PURCHASED
@@ -83,6 +89,7 @@ class LocalizableStrings {
         case RESULT_CLEAR
         case RESULT_CLEAR_RATIO
         case RESULT_CLEAR_WAVE
+        case RESULT_CREW_AVG_NUM
         case RESULT_CREW_GRADE
         case RESULT_DEAD_COUNT
         case RESULT_DEFEAT
@@ -111,6 +118,7 @@ class LocalizableStrings {
         case SALMON_RUN_RECORDS
         case SALMON_STATS
         case SETTING_ACCOUNT
+        case SETTING_ADD_ACCOUNT
         case SETTING_API_VERSION
         case SETTING_APP_VERSION
         case SETTING_DARKMODE
@@ -126,20 +134,23 @@ class LocalizableStrings {
         case SETTING_IMPORT_RESULT
         case SETTING_LISTSTYLE
         case SETTING_LOADING_TYPE
+        case SETTING_LOGOUT_ALL
         case SETTING_LOG_SEND
         case SETTING_PAID_PRODUCT
         case SETTING_PRIVACY
         case SETTING_RESULTS
+        case SETTING_RESULTSTYLE
         case SETTING_RE_SIGN_IN
+        case SETTING_SIGN_OUT
         case SETTING_SPLATNET2
         case SETTING_SYSTEM
         case SETTING_UPDATE_NAME
         case SETTING_UPLOAD
-        case SETTING_LOGOUT_ALL
-        case SETTING_RESULTSTYLE
-        case TEXT_ALL_LOGOUT
         case SHIFT_SCHEDULE
         case SUPPLIED_WEAPONS
+        case TEXT_ADD_ACCOUNT
+        case TEXT_ALL_LOGOUT
+        case TEXT_CHOOSE_STYLE
         case TEXT_CONFIRM
         case TEXT_ERASE_DATA
         case TEXT_IMPORT
@@ -148,11 +159,10 @@ class LocalizableStrings {
         case TEXT_SALMONSTATS
         case TEXT_SIGN_IN
         case TEXT_SIGN_OUT
+        case TEXT_TUTORIAL
         case TEXT_TUTORIAL_SALMONSTATS
         case TEXT_WELCOME_SALMONSTATS
         case TEXT_WELCOME_SPLATNET2
-        case SETTING_SIGN_OUT
-        case SETTING_ADD_ACCOUNT
         case TITLE_FREE_PRODUCT
         case TITLE_HELP
         case TITLE_LOGGING_THREAD
@@ -166,19 +176,10 @@ class LocalizableStrings {
         case TITLE_SETTINGS
         case TITLE_SHIFT_SCHEDULE
         case TITLE_SHIFT_STATS
+        case TITLE_TUTORIAL
         case TITLE_WAVE_ANALYSIS
         case TITLE_WAVE_COLLECTION
         case TITLE_WEAPON_ANALYSIS
-        case RESULT_CREW_AVG_NUM
-        case NIGHT_WAVE
-        case NO_NIGHT_WAVE
-        case HEADER_DATA
-        case HEADER_PRIVACY
-        case TITLE_TUTORIAL
-        case TEXT_TUTORIAL
-        case PLAY_VIDEO
-        case TEXT_CHOOSE_STYLE
-        
     }
 
 }

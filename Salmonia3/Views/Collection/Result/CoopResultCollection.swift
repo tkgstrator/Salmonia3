@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftUIX
+import SwiftyUI
 
 struct CoopResultCollection: View {
     @EnvironmentObject var appManager: AppManager
@@ -16,10 +17,10 @@ struct CoopResultCollection: View {
     @State private var index: Int = 0
     @State private var offset: CGFloat = 0
     @State private var orientation: UIInterfaceOrientation = .portrait
+    @State private var isPresented: Bool = false
 
     var body: some View {
-        ZStack {
-            NavigationLink(destination: LoadingView(), isActive: $isActive) { EmptyView() }
+        Group {
             switch appManager.listStyle {
             case .default:
                 DefaultListStyleView
@@ -36,6 +37,15 @@ struct CoopResultCollection: View {
             }
         }
         .navigationTitle(.TITLE_RESULT_COLLECTION)
+        .pullToRefresh(isShowing: $isShowing, onRefresh: {
+            isPresented.toggle()
+            isShowing.toggle()
+        })
+        .present(isPresented: $isPresented, transitionStyle: .flipHorizontal, presentationStyle: .fullScreen, content: {
+            LoadingView()
+                .environmentObject(appManager)
+                .environment(\.modalIsPresented, .constant(PresentationStyle($isPresented)))
+        })
     }
     
     private var LegacyListStyleView: some View {

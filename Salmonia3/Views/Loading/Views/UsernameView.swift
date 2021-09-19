@@ -11,8 +11,8 @@ import SwiftyUI
 import Combine
 
 struct UsernameView: View {
-    @Environment(\.presentationMode) var presentationMode
     @Environment(\.modalIsPresented) var present
+    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var appManager: AppManager
     @State private var isPresented: Bool = false
     @State private var apiError: APIError = .fatalerror
@@ -32,7 +32,11 @@ struct UsernameView: View {
             switch completion {
             case .success(let response):
                 RealmManager.shared.updateNicknameAndIcons(players: response)
-                present.wrappedValue.dismiss()
+                if presentationMode.wrappedValue.isPresented {
+                    presentationMode.wrappedValue.dismiss()
+                } else {
+                    present.wrappedValue.dismiss()
+                }
             case .failure(let error):
                 apiError = error
                 isPresented.toggle()

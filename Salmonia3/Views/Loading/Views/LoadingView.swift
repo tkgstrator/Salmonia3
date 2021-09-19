@@ -13,7 +13,7 @@ import RealmSwift
 import Combine
 
 struct LoadingView: View {
-    @Environment(\.presentationMode) var present
+    @Environment(\.modalIsPresented) var present
     @EnvironmentObject var appManager: AppManager
     @AppStorage("apiToken") var apiToken: String?
     @State var apiError: APIError = .fatalerror
