@@ -180,10 +180,12 @@
 		10023BEE26DF2760007BB899 /* coop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = coop.json; sourceTree = "<group>"; };
 		10039F9526A45EA300B1546A /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleMobileAds.xcframework; sourceTree = "<group>"; };
 		10094BB726CE9F13001ACBDF /* SwiftyUI */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftyUI; path = ../SwiftyUI; sourceTree = "<group>"; };
-		1009517E26F700BE0099AA2B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = en; path = en.lproj/shiftwidget.intentdefinition; sourceTree = "<group>"; };
 		1009518126F70EC20099AA2B /* AddAccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountButton.swift; sourceTree = "<group>"; };
 		1009518626F7804B0099AA2B /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		1009518A26F784240099AA2B /* tutorial.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = tutorial.mp4; path = ../../../Desktop/tutorial.mp4; sourceTree = "<group>"; };
+		1009519826F803800099AA2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/shiftwidget.intentdefinition; sourceTree = "<group>"; };
+		1009519A26F803850099AA2B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/shiftwidget.strings; sourceTree = "<group>"; };
+		1009519C26F803880099AA2B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/shiftwidget.strings; sourceTree = "<group>"; };
 		100F564A262C308F00A1D1D0 /* SalmonStats */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SalmonStats; path = ../SalmonStats; sourceTree = "<group>"; };
 		1013EFAB26F0F83400943D37 /* SettingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingType.swift; sourceTree = "<group>"; };
 		1013EFAD26F1180000943D37 /* SalmonStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonStats.swift; sourceTree = "<group>"; };
@@ -904,6 +906,7 @@
 			knownRegions = (
 				en,
 				ja,
+				Base,
 			);
 			mainGroup = 1059415A25FA49E500C32D21;
 			packageReferences = (
@@ -1196,7 +1199,9 @@
 		1009517F26F700BE0099AA2B /* shiftwidget.intentdefinition */ = {
 			isa = PBXVariantGroup;
 			children = (
-				1009517E26F700BE0099AA2B /* en */,
+				1009519826F803800099AA2B /* Base */,
+				1009519A26F803850099AA2B /* en */,
+				1009519C26F803880099AA2B /* ja */,
 			);
 			name = shiftwidget.intentdefinition;
 			sourceTree = "<group>";
