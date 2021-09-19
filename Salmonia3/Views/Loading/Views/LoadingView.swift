@@ -15,7 +15,6 @@ import Combine
 struct LoadingView: View {
     @Environment(\.modalIsPresented) var present
     @EnvironmentObject var appManager: AppManager
-    @AppStorage("apiToken") var apiToken: String?
     @State var apiError: APIError = .fatalerror
     @State var isPresented: Bool = false
     @State private var task = Set<AnyCancellable>()
@@ -68,16 +67,14 @@ struct LoadingView: View {
             switch response {
             case .success(let results):
                 RealmManager.shared.addNewResultsFromSplatNet2(from: results.data, .splatnet2)
-                if let apiToken = apiToken {
+                if let apiToken = manager.apiToken {
                     uploadToSalmonStats(accessToken: apiToken, results: results.json.map({ $0.dictionaryObject! }))
                 }
                 getNicknameIcons(pid: results.data.flatMap({ $0.results.map({ $0.pid} )}))
             case .failure(let error):
                 switch error {
                 case .nonewresults:
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                        present.wrappedValue.dismiss()
-                    })
+                    present.wrappedValue.dismiss()
                 default:
                     apiError = error
                     isPresented.toggle()
