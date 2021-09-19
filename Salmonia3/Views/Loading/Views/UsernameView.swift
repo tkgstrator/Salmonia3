@@ -7,31 +7,36 @@
 
 import SwiftUI
 import SplatNet2
+import SwiftyUI
 import Combine
 
 struct UsernameView: View {
-    @Environment(\.presentationMode) var present
+    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.modalIsPresented) var present
     @EnvironmentObject var appManager: AppManager
-    
-    @State private var apiError: APIError?
-    @State private var task = Set<AnyCancellable>()
+    @State private var isPresented: Bool = false
+    @State private var apiError: APIError = .fatalerror
     @State private var players: [NicknameIcons.Response.NicknameIcon] = []
-
 
     var body: some View {
         LoggingThread()
             .onAppear(perform: getNicknameAndIcons)
-            .preferredColorScheme(.dark)
+            .alert(isPresented: $isPresented, content: {
+                return Alert(title: Text(apiError.error), message: Text(apiError.localizedDescription), dismissButton: .default(Text(.BTN_CONFIRM), action: { present.wrappedValue.dismiss() }))
+            })
     }
 
-    func getNicknameAndIcons() {
+    private func getNicknameAndIcons() {
         let nsaids: [String] = RealmManager.shared.getNicknames()
         manager.getNicknameAndIcons(playerId: nsaids) { completion in
             switch completion {
             case .success(let response):
                 RealmManager.shared.updateNicknameAndIcons(players: response)
+                present.wrappedValue.dismiss()
             case .failure(let error):
                 apiError = error
+                isPresented.toggle()
+                appManager.loggingToCloud(error.localizedDescription)
             }
         }
     }

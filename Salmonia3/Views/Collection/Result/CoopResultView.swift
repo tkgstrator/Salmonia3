@@ -142,6 +142,7 @@ struct CoopResultOverview: View {
                             .resizable()
                             .frame(width: 15, height: 15)
                         Text("RESULT_APPEARANCES_\(result.wave[index].goldenIkuraPopNum)")
+                            .font(.custom("Splatfont2", size: 13))
                             .minimumScaleFactor(0.5)
                     }
                     .padding(.bottom, 10)

@@ -21,6 +21,7 @@
 		1009518226F70EC20099AA2B /* AddAccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1009518126F70EC20099AA2B /* AddAccountButton.swift */; };
 		1009518526F780300099AA2B /* VideoPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 1009518426F780300099AA2B /* VideoPlayer */; };
 		1009518726F7804B0099AA2B /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1009518626F7804B0099AA2B /* TutorialView.swift */; };
+		1009518B26F7850F0099AA2B /* tutorial.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1009518A26F784240099AA2B /* tutorial.mp4 */; };
 		1013EFAC26F0F83400943D37 /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1013EFAB26F0F83400943D37 /* SettingType.swift */; };
 		1013EFAE26F1180000943D37 /* SalmonStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1013EFAD26F1180000943D37 /* SalmonStats.swift */; };
 		101C77CD26496FA6005D603C /* CoopPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C77CC26496FA6005D603C /* CoopPlayerView.swift */; };
@@ -408,9 +409,9 @@
 			isa = PBXGroup;
 			children = (
 				10E8BD9B26F50E5100B09B33 /* Product */,
+				1071595926E278DB0066DB74 /* Section */,
 				102465F025FDDABD004DC043 /* SettingView.swift */,
 				1071596226E2799F0066DB74 /* SettingMenu.swift */,
-				1071595926E278DB0066DB74 /* Section */,
 				1052C2CF26550E7800D3B9A9 /* DetailView.swift */,
 				1053918F266BD8B5001025E1 /* HelpView.swift */,
 			);
@@ -946,6 +947,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1009518B26F7850F0099AA2B /* tutorial.mp4 in Resources */,
 				10377F7625FCD8CD00536A94 /* Splatfont1.ttf in Resources */,
 				1024660325FDE916004DC043 /* Localizable.strings in Resources */,
 				10377F7725FCD8CD00536A94 /* Splatfont2.ttf in Resources */,
@@ -1221,7 +1223,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = shiftwidget/Info.plist;
@@ -1246,7 +1248,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				INFOPLIST_FILE = shiftwidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -1391,7 +1393,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1419,7 +1421,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;

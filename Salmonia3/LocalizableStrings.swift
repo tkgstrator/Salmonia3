@@ -177,6 +177,8 @@ class LocalizableStrings {
         case TITLE_TUTORIAL
         case TEXT_TUTORIAL
         case PLAY_VIDEO
+        case TEXT_CHOOSE_STYLE
+        
     }
 
 }
