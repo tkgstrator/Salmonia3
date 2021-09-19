@@ -174,6 +174,9 @@ class LocalizableStrings {
         case NO_NIGHT_WAVE
         case HEADER_DATA
         case HEADER_PRIVACY
+        case TITLE_TUTORIAL
+        case TEXT_TUTORIAL
+        case PLAY_VIDEO
     }
 
 }

@@ -10,14 +10,17 @@
 		10023BD726DE7136007BB899 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10023B9226DE6FA9007BB899 /* WidgetKit.framework */; };
 		10023BD826DE7136007BB899 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10023B9426DE6FA9007BB899 /* SwiftUI.framework */; };
 		10023BDB26DE7136007BB899 /* shiftwidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10023BDA26DE7136007BB899 /* shiftwidget.swift */; };
-		10023BE026DE7137007BB899 /* shiftwidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 10023BDC26DE7136007BB899 /* shiftwidget.intentdefinition */; };
-		10023BE126DE7137007BB899 /* shiftwidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 10023BDC26DE7136007BB899 /* shiftwidget.intentdefinition */; };
 		10023BE426DE7137007BB899 /* shiftwidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 10023BD626DE7136007BB899 /* shiftwidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		10023BEC26DF26ED007BB899 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10023BEB26DF26ED007BB899 /* Schedule.swift */; };
 		10023BEF26DF2760007BB899 /* coop.json in Resources */ = {isa = PBXBuildFile; fileRef = 10023BEE26DF2760007BB899 /* coop.json */; };
 		10023BF126DF2A9D007BB899 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10023BEB26DF26ED007BB899 /* Schedule.swift */; };
 		10039F9626A45EA300B1546A /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10039F9526A45EA300B1546A /* GoogleMobileAds.xcframework */; };
 		10094BB926CE9FC4001ACBDF /* SwiftyUI in Frameworks */ = {isa = PBXBuildFile; productRef = 10094BB826CE9FC4001ACBDF /* SwiftyUI */; };
+		1009517C26F700BE0099AA2B /* shiftwidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 1009517F26F700BE0099AA2B /* shiftwidget.intentdefinition */; };
+		1009517D26F700BE0099AA2B /* shiftwidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 1009517F26F700BE0099AA2B /* shiftwidget.intentdefinition */; };
+		1009518226F70EC20099AA2B /* AddAccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1009518126F70EC20099AA2B /* AddAccountButton.swift */; };
+		1009518526F780300099AA2B /* VideoPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 1009518426F780300099AA2B /* VideoPlayer */; };
+		1009518726F7804B0099AA2B /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1009518626F7804B0099AA2B /* TutorialView.swift */; };
 		1013EFAC26F0F83400943D37 /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1013EFAB26F0F83400943D37 /* SettingType.swift */; };
 		1013EFAE26F1180000943D37 /* SalmonStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1013EFAD26F1180000943D37 /* SalmonStats.swift */; };
 		101C77CD26496FA6005D603C /* CoopPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C77CC26496FA6005D603C /* CoopPlayerView.swift */; };
@@ -172,12 +175,15 @@
 		10023B9426DE6FA9007BB899 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		10023BD626DE7136007BB899 /* shiftwidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = shiftwidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		10023BDA26DE7136007BB899 /* shiftwidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shiftwidget.swift; sourceTree = "<group>"; };
-		10023BDC26DE7136007BB899 /* shiftwidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = shiftwidget.intentdefinition; sourceTree = "<group>"; };
 		10023BDF26DE7137007BB899 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10023BEB26DF26ED007BB899 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		10023BEE26DF2760007BB899 /* coop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = coop.json; sourceTree = "<group>"; };
 		10039F9526A45EA300B1546A /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleMobileAds.xcframework; sourceTree = "<group>"; };
 		10094BB726CE9F13001ACBDF /* SwiftyUI */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftyUI; path = ../SwiftyUI; sourceTree = "<group>"; };
+		1009517E26F700BE0099AA2B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = en; path = en.lproj/shiftwidget.intentdefinition; sourceTree = "<group>"; };
+		1009518126F70EC20099AA2B /* AddAccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountButton.swift; sourceTree = "<group>"; };
+		1009518626F7804B0099AA2B /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		1009518A26F784240099AA2B /* tutorial.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = tutorial.mp4; path = ../../../Desktop/tutorial.mp4; sourceTree = "<group>"; };
 		100F564A262C308F00A1D1D0 /* SalmonStats */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SalmonStats; path = ../SalmonStats; sourceTree = "<group>"; };
 		1013EFAB26F0F83400943D37 /* SettingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingType.swift; sourceTree = "<group>"; };
 		1013EFAD26F1180000943D37 /* SalmonStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonStats.swift; sourceTree = "<group>"; };
@@ -304,6 +310,7 @@
 				10CF09A025FB984400D2EEB1 /* SwiftyStoreKit in Frameworks */,
 				10D0177726C06DED000DCA1B /* StoreKit.framework in Frameworks */,
 				10CF09BA25FB9AC100D2EEB1 /* RealmSwift in Frameworks */,
+				1009518526F780300099AA2B /* VideoPlayer in Frameworks */,
 				10CF099425FB97F300D2EEB1 /* SwiftUIRefresh in Frameworks */,
 				10CF09B825FB9AC100D2EEB1 /* Realm in Frameworks */,
 				10039F9626A45EA300B1546A /* GoogleMobileAds.xcframework in Frameworks */,
@@ -340,7 +347,7 @@
 			children = (
 				10023BEA26DF26E0007BB899 /* SplatNet2 */,
 				10023BDA26DE7136007BB899 /* shiftwidget.swift */,
-				10023BDC26DE7136007BB899 /* shiftwidget.intentdefinition */,
+				1009517F26F700BE0099AA2B /* shiftwidget.intentdefinition */,
 				10023BDF26DE7137007BB899 /* Info.plist */,
 			);
 			path = Shiftwidget;
@@ -413,6 +420,7 @@
 		102C75D52659B9E500AEE20F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1009518A26F784240099AA2B /* tutorial.mp4 */,
 				10AF87E626E643A400D1C35E /* LoadingIka.png */,
 			);
 			path = Resources;
@@ -585,6 +593,7 @@
 			isa = PBXGroup;
 			children = (
 				1059419F25FA4E2500C32D21 /* LoginMenu.swift */,
+				1009518626F7804B0099AA2B /* TutorialView.swift */,
 				105941A725FA4F9500C32D21 /* SalmonLoginMenu.swift */,
 				105941AC25FA500500C32D21 /* SalmoniaView.swift */,
 			);
@@ -738,6 +747,7 @@
 				10E8BDA026F50EB900B09B33 /* PaidProductView.swift */,
 				10E8BD9E26F50E9000B09B33 /* RestoreButton.swift */,
 				10E8BD9C26F50E6200B09B33 /* LockButton.swift */,
+				1009518126F70EC20099AA2B /* AddAccountButton.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -819,6 +829,7 @@
 				10094BB826CE9FC4001ACBDF /* SwiftyUI */,
 				10210F0B26D3D2F200E4C7C4 /* SwiftUIX */,
 				10AF87E226E63DFF00D1C35E /* SDWebImageSwiftUI */,
+				1009518426F780300099AA2B /* VideoPlayer */,
 			);
 			productName = Salmonia3;
 			productReference = 1059416325FA49E500C32D21 /* Salmonia3.app */;
@@ -894,7 +905,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 				ja,
 			);
 			mainGroup = 1059415A25FA49E500C32D21;
@@ -907,6 +917,7 @@
 				1083857A265922700099475F /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
 				10210F0A26D3D2F200E4C7C4 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 				10AF87E126E63DFF00D1C35E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				1009518326F7802F0099AA2B /* XCRemoteSwiftPackageReference "VideoPlayer" */,
 			);
 			productRefGroup = 1059416425FA49E500C32D21 /* Products */;
 			projectDirPath = "";
@@ -1056,7 +1067,7 @@
 				10AF880026E7C2B200D1C35E /* String.swift in Sources */,
 				10023BF126DF2A9D007BB899 /* Schedule.swift in Sources */,
 				10023BDB26DE7136007BB899 /* shiftwidget.swift in Sources */,
-				10023BE026DE7137007BB899 /* shiftwidget.intentdefinition in Sources */,
+				1009517D26F700BE0099AA2B /* shiftwidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1092,6 +1103,7 @@
 				1071596326E2799F0066DB74 /* SettingMenu.swift in Sources */,
 				104AA7DC2605E0C8007BDC24 /* GoogleMobileAds.swift in Sources */,
 				10B62CA32669CC1400916A64 /* CoopWaveCollection.swift in Sources */,
+				1009518726F7804B0099AA2B /* TutorialView.swift in Sources */,
 				1052C2D026550E7800D3B9A9 /* DetailView.swift in Sources */,
 				10377F9925FD09FF00536A94 /* LoggingThread.swift in Sources */,
 				10E8BDA126F50EB900B09B33 /* PaidProductView.swift in Sources */,
@@ -1115,6 +1127,7 @@
 				105391A4266D1C6F001025E1 /* CoreRealmPlayer.swift in Sources */,
 				10E8BDA326F50EDC00B09B33 /* FreeProductView.swift in Sources */,
 				10CF0A0525FBA6BF00D2EEB1 /* RealmCoopWave.swift in Sources */,
+				1009518226F70EC20099AA2B /* AddAccountButton.swift in Sources */,
 				1013EFAE26F1180000943D37 /* SalmonStats.swift in Sources */,
 				10B62CAF2669D48E00916A64 /* ResultStyle.swift in Sources */,
 				10377F8625FD041900536A94 /* AppManager.swift in Sources */,
@@ -1129,7 +1142,7 @@
 				10CD8544268D40AA00A00162 /* CoopShiftStatsView.swift in Sources */,
 				10D2E1622655618B00AE584E /* LocalizableStrings.swift in Sources */,
 				10AD114D2600EB18008C0E64 /* Error.swift in Sources */,
-				10023BE126DE7137007BB899 /* shiftwidget.intentdefinition in Sources */,
+				1009517C26F700BE0099AA2B /* shiftwidget.intentdefinition in Sources */,
 				105941AD25FA500500C32D21 /* SalmoniaView.swift in Sources */,
 				10D2E15A265557B200AE584E /* View.swift in Sources */,
 				10CF0A0025FBA5BC00D2EEB1 /* RealmPlayerResult.swift in Sources */,
@@ -1182,6 +1195,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		1009517F26F700BE0099AA2B /* shiftwidget.intentdefinition */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1009517E26F700BE0099AA2B /* en */,
+			);
+			name = shiftwidget.intentdefinition;
+			sourceTree = "<group>";
+		};
 		1024660525FDE916004DC043 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1200,6 +1221,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = shiftwidget/Info.plist;
@@ -1224,6 +1246,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				INFOPLIST_FILE = shiftwidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -1368,7 +1391,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1396,7 +1419,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1551,6 +1574,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1009518326F7802F0099AA2B /* XCRemoteSwiftPackageReference "VideoPlayer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/wxxsw/VideoPlayer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.3;
+			};
+		};
 		10210F0A26D3D2F200E4C7C4 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
@@ -1621,6 +1652,11 @@
 		10094BB826CE9FC4001ACBDF /* SwiftyUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftyUI;
+		};
+		1009518426F780300099AA2B /* VideoPlayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1009518326F7802F0099AA2B /* XCRemoteSwiftPackageReference "VideoPlayer" */;
+			productName = VideoPlayer;
 		};
 		10210F0B26D3D2F200E4C7C4 /* SwiftUIX */ = {
 			isa = XCSwiftPackageProductDependency;

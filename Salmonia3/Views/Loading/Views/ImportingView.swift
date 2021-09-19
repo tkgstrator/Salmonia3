@@ -23,10 +23,12 @@ struct ImportingView: View {
                 Alert(title: Text(apiError.error), message: Text(apiError.localizedDescription), dismissButton: .default(Text(.BTN_CONFIRM), action: { present.wrappedValue.dismiss() }))
             })
             .navigationTitle(.TITLE_LOGGING_THREAD)
+            .preferredColorScheme(.dark)
     }
     
     private func importResultFromSalmonStats() {
-        manager.getAllResults(nsaid: manager.playerId) { completion in
+        let nsaid: String = manager.playerId
+        manager.getAllResults(nsaid: nsaid) { completion in
             switch completion {
             case .success(let results):
                 RealmManager.shared.addNewResultsFromSplatNet2(from: results, .salmonstats)

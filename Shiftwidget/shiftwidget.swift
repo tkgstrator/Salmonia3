@@ -9,7 +9,6 @@
 import WidgetKit
 import SwiftUI
 import Intents
-import SplatNet2
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> ShiftSchedule {
@@ -70,13 +69,14 @@ struct shiftwidgetEntryView : View {
     var entry: Provider.Entry
     
     var body: some View {
+//        Text("Nyamo")
         Image(stageId: entry.schedule.stageId)
             .resizable()
             .aspectRatio(contentMode: .fill)
             .overlay(
                 LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 50, maximum: 50)), count: 4), alignment: .center, spacing: 10, pinnedViews: [], content: {
-                    ForEach(Array(entry.schedule.weaponList), id:\.self) { weapon in
-                        Image(weaponId: weapon)
+                    ForEach(entry.schedule.weaponList.indices) { index in
+                        Image(weaponId: entry.schedule.weaponList[index])
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .padding(4)
@@ -88,6 +88,7 @@ struct shiftwidgetEntryView : View {
             .overlay(
                 VStack(alignment: .center, spacing: 4, content: {
                     Text(dateFormatter.string(from: entry.schedule.startTime))
+                        .foregroundColor(.white)
                         .font(.custom("Splatfont2", size: 20))
                         .shadow(color: .black, radius: 0, x: 3, y: 3)
                         .offset(x: 0, y: 20)
@@ -98,16 +99,10 @@ struct shiftwidgetEntryView : View {
                 }),
                 alignment: .top
             )
-//            .overlay(
-//                Text("\(SplatNet2(userAgent: "Widget").account.nsaid)")
-//                    .font(.custom("Splatfont2", size: 16))
-//                    .background(Capsule().fill(Color.red))
-//                    .offset(x: 0, y: 20),
-//                alignment: .topTrailing
-//            )
             .overlay(
                 VStack(alignment: .center, spacing: nil, content: {
                     Text(entry.isScheduleHeld ? "Open" : "Close")
+                        .foregroundColor(.white)
                         .font(.custom("Splatfont2", size: 16))
                         .frame(height: 24)
                         .padding(.horizontal, 6)
