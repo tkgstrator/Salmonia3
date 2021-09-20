@@ -86,8 +86,8 @@ struct SuppliedWeaponView: View {
     
     var body: some View {
         LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 60, maximum: 120)), count: 4), alignment: .center, spacing: nil, pinnedViews: [], content: {
-            ForEach(weapons.filter({ $0.count > 0 }), id:\.self) { weapon in
-                Capsule().fill(Color.blackrussian).frame(width: 85, height: 36)
+            ForEach(weapons, id:\.self) { weapon in
+                Capsule().fill(weapon.count == 0 ? Color.gray.opacity(0.5) : Color.blackrussian).frame(width: 85, height: 36)
                     .overlay(
                         Image(weaponId: weapon.weaponId)
                             .resizable()
