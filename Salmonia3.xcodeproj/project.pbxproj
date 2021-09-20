@@ -527,6 +527,7 @@
 				10D0177D26C0985F000DCA1B /* Configuration.storekit */,
 				1059416625FA49E500C32D21 /* Salmonia3App.swift */,
 				1059416825FA49E500C32D21 /* ContentView.swift */,
+				105941AC25FA500500C32D21 /* SalmoniaView.swift */,
 				108BFD9B26DDC37800652271 /* GoogleService-Info.plist */,
 				10094BBA26CEA222001ACBDF /* Manager */,
 				107F9B3A2614A8CA001581C7 /* Views */,
@@ -596,7 +597,6 @@
 				1059419F25FA4E2500C32D21 /* LoginMenu.swift */,
 				1009518626F7804B0099AA2B /* TutorialView.swift */,
 				105941A725FA4F9500C32D21 /* SalmonLoginMenu.swift */,
-				105941AC25FA500500C32D21 /* SalmoniaView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
