@@ -33,7 +33,7 @@ final class RealmCoopResult: Object, Identifiable {
     @Persisted var bossKillCounts: List<Int>
     @Persisted var wave: List<RealmCoopWave>
     @Persisted var player: List<RealmPlayerResult>
-
+    
     var specialUsage: [[Int]] {
         // ここのコードを修正予定
         var usage: [[Int]] = []
@@ -46,7 +46,7 @@ final class RealmCoopResult: Object, Identifiable {
         }
         return usage
     }
-
+    
     convenience init(from result: SplatNet2.Coop.Result, pid: String, environment: RealmManager.Environment.Server = .splatnet2) {
         self.init()
         self.stageId = result.stageId

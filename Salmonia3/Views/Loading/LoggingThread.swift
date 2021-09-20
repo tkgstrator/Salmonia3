@@ -26,17 +26,21 @@ struct LoggingThread: View {
             scrollView.isScrollEnabled = false
         })
         .onReceive(NotificationCenter.default.publisher(for: SalmonStats.imported), perform: { notification in
-            guard let progress = notification.object as? SplatNet2.Progress else { return }
-            withAnimation(.easeInOut) {
-                maxValue = progress.maxValue
-                currentValue = progress.currentValue
+            DispatchQueue.main.async {
+                guard let progress = notification.object as? SplatNet2.Progress else { return }
+                withAnimation(.easeInOut) {
+                    maxValue = progress.maxValue
+                    currentValue = progress.currentValue
+                }
             }
         })
         .onReceive(NotificationCenter.default.publisher(for: SplatNet2.download), perform: { notification in
-            guard let progress = notification.object as? SplatNet2.Progress else { return }
-            withAnimation(.easeInOut) {
-                maxValue = progress.maxValue
-                currentValue = progress.currentValue
+            DispatchQueue.main.async {
+                guard let progress = notification.object as? SplatNet2.Progress else { return }
+                withAnimation(.easeInOut) {
+                    maxValue = progress.maxValue
+                    currentValue = progress.currentValue
+                }
             }
         })
         .onAppear {

@@ -44,6 +44,34 @@ final class RealmManager: AppManager {
             self.realm = try! Realm(configuration: config)
         }
     }
+   
+    /// 複数のデータを書き込み
+    @discardableResult
+    func save<T: Object>(_ objects: Array<T>) {
+        if realm.isInWriteTransaction {
+            for object in objects {
+                realm.create(T.self, value: object, update: .all)
+            }
+        } else {
+            realm.beginWrite()
+            for object in objects {
+                realm.create(T.self, value: object, update: .all)
+            }
+            try? realm.commitWrite()
+        }
+    }
+
+    /// 一件のデータを書き込み
+    @discardableResult
+    func save<T: Object>(_ object: T) {
+        if realm.isInWriteTransaction {
+            realm.create(T.self, value: object, update: .all)
+        } else {
+            try? realm.write {
+                realm.create(T.self, value: object, update: .all)
+            }
+        }
+    }
 
     /// 直近の二回のバイトシフトのIdを返す
     public var latestShiftStartTime: RealmSwift.Results<RealmCoopShift> {
@@ -141,8 +169,9 @@ final class RealmManager: AppManager {
     }
 
     // MARK: 新しいリザルトを追加
+    /// なんかこのメソッド重いんだが
     public func addNewResultsFromSplatNet2(from results: [SplatNet2.Coop.Result], _ environment: Environment.Server = .splatnet2) {
-        DispatchQueue(label: "Realm Manager").async {
+        DispatchQueue(label: "Realm Manager").sync {
             autoreleasepool {
                 guard let realm = try? Realm() else { return }
                 realm.beginWrite()
@@ -152,7 +181,7 @@ final class RealmManager: AppManager {
                     case true:
                         result.duplicatedResult.setValue(result.salmonId, forKey: "salmonId")
                     case false:
-                        realm.create(RealmCoopResult.self, value: result, update: .all)
+                        self.save(result)
                     }
                 }
                 try? realm.commitWrite()
@@ -163,11 +192,7 @@ final class RealmManager: AppManager {
     // MARK: データ削除
      func eraseAllRecord() throws {
         guard let realm = try? Realm() else { return }
-        #if DEBUG
-        #else
         UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
-        #endif
-        // クラッシュするバグ対策(クラッシュしたが)
         autoreleasepool {
             realm.beginWrite()
             realm.delete(realm.objects(RealmCoopResult.self))
