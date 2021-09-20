@@ -22,7 +22,7 @@ private struct LogoutButton: View {
             Alert(title: Text(.SETTING_SIGN_OUT), message: Text(.TEXT_SIGN_OUT), primaryButton: .default(Text(.BTN_CONFIRM), action: {
                 manager.deleteAllAccounts()
                 appManager.isSignedIn.toggle()
-            }), secondaryButton: .cancel())
+            }), secondaryButton: .destructive(Text(.BTN_CANCEL)))
         })
     }
 }
@@ -38,7 +38,7 @@ private struct EraseButton: View {
         .alert(isPresented: $isPresented, content: {
             Alert(title: Text(.SETTING_ERASE_DATA), message: Text(.TEXT_ERASE_DATA), primaryButton: .default(Text(.BTN_CONFIRM), action: {
                 try? RealmManager.shared.eraseAllRecord()
-            }), secondaryButton: .cancel())
+            }), secondaryButton: .destructive(Text(.BTN_CANCEL)))
         })
     }
 }
