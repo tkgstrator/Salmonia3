@@ -181,7 +181,7 @@ final class RealmManager: AppManager {
                     case true:
                         result.duplicatedResult.setValue(result.salmonId, forKey: "salmonId")
                     case false:
-                        self.save(result)
+                        realm.create(RealmCoopResult.self, value: result, update: .all)
                     }
                 }
                 try? realm.commitWrite()
