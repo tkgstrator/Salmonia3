@@ -12,7 +12,7 @@ struct FreeProductView: View {
     @EnvironmentObject var appManager: AppManager
 
     var body: some View {
-        Form {
+        List {
             Toggle(isOn: $appManager.isFree01, label: {
                 LazyVStack(alignment: .leading, spacing: nil, pinnedViews: [], content: {
                     Text(.FEATURE_FREE_01)

@@ -48,7 +48,7 @@ extension Setting.Sections {
         @EnvironmentObject var appManager: AppManager
 
         var body: some View {
-            Form {
+            List {
                 Section(header: Text(.HEADER_PRIVACY).splatfont2(.safetyorange, size: 14)) {
                     Toggle(LocalizableStrings.Key.SETTING_LOG_SEND.rawValue.localized, isOn: $appManager.isDebugMode)
                 }

@@ -16,7 +16,7 @@ struct SettingView: View {
     @EnvironmentObject var appManager: AppManager
 
     var body: some View {
-        Form {
+        List {
             Sections.Account()
             Sections.SalmonStats()
             Sections.Product()
