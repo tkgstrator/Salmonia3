@@ -46,7 +46,7 @@ final class RealmManager: AppManager {
     }
    
     /// 複数のデータを書き込み
-    @discardableResult
+//    @discardableResult
     func save<T: Object>(_ objects: Array<T>) {
         if realm.isInWriteTransaction {
             for object in objects {
@@ -62,7 +62,7 @@ final class RealmManager: AppManager {
     }
 
     /// 一件のデータを書き込み
-    @discardableResult
+//    @discardableResult
     func save<T: Object>(_ object: T) {
         if realm.isInWriteTransaction {
             realm.create(T.self, value: object, update: .all)

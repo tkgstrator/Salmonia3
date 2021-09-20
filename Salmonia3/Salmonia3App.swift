@@ -104,7 +104,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                         } else {
                         }
                     }
-                case .failure(let error):
+                case .failure(_):
                     break
                 }
             }
