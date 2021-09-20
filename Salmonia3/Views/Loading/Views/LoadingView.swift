@@ -61,8 +61,12 @@ struct LoadingView: View {
     }
     
     private func getResultFromSplatNet2() {
+        #if DEBUG
+        let latestJobId: Int = RealmManager.shared.getLatestResultId() - 4
+        #else
         let latestJobId: Int = RealmManager.shared.getLatestResultId()
-
+        #endif
+        
         manager.getResultCoopWithJSON(latestJobId: latestJobId) { response in
             switch response {
             case .success(let results):
