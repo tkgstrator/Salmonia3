@@ -32,8 +32,8 @@ struct CoopPlayerResultView: View {
             BarChartView(player: result.player, bossCounts: bossCounts, playerBossKillCounts: playerBossKillCounts)
         case .barleyural:
             CircleChartView(player: result.player, bossCounts: bossCounts, playerBossKillCounts: playerBossKillCounts)
-        default:
-            CircleChartView(player: result.player, bossCounts: bossCounts, playerBossKillCounts: playerBossKillCounts)
+//        default:
+//            CircleChartView(player: result.player, bossCounts: bossCounts, playerBossKillCounts: playerBossKillCounts)
         }
     }
 }

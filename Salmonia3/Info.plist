@@ -17,7 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<string>31</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-7107468397673752~2469588733</string>
 	<key>GADIsAdManagerApp</key>
@@ -28,6 +28,10 @@
 	<string>Salmonia3 required the camera acccess.</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Authorize with Face ID</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>ConfigurationIntent</string>
+	</array>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>This itentifier will be used to deliver persoalized ads to you.</string>
 	<key>SKAdNetworkItems</key>

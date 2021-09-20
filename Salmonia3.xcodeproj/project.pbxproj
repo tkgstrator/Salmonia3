@@ -16,7 +16,6 @@
 		10023BF126DF2A9D007BB899 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10023BEB26DF26ED007BB899 /* Schedule.swift */; };
 		10039F9626A45EA300B1546A /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10039F9526A45EA300B1546A /* GoogleMobileAds.xcframework */; };
 		10094BB926CE9FC4001ACBDF /* SwiftyUI in Frameworks */ = {isa = PBXBuildFile; productRef = 10094BB826CE9FC4001ACBDF /* SwiftyUI */; };
-		1009517C26F700BE0099AA2B /* shiftwidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 1009517F26F700BE0099AA2B /* shiftwidget.intentdefinition */; };
 		1009517D26F700BE0099AA2B /* shiftwidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 1009517F26F700BE0099AA2B /* shiftwidget.intentdefinition */; };
 		1009518226F70EC20099AA2B /* AddAccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1009518126F70EC20099AA2B /* AddAccountButton.swift */; };
 		1009518526F780300099AA2B /* VideoPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 1009518426F780300099AA2B /* VideoPlayer */; };
@@ -86,6 +85,7 @@
 		108BFD9C26DDC37800652271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 108BFD9B26DDC37800652271 /* GoogleService-Info.plist */; };
 		108BFD9D26DDC37800652271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 108BFD9B26DDC37800652271 /* GoogleService-Info.plist */; };
 		108BFD9E26DDC37800652271 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 108BFD9B26DDC37800652271 /* GoogleService-Info.plist */; };
+		108FF88E26F8B7A500EC7262 /* shiftwidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 1009517F26F700BE0099AA2B /* shiftwidget.intentdefinition */; };
 		109EF35E260CAB7F00076157 /* PurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF35D260CAB7F00076157 /* PurchaseButton.swift */; };
 		10A75A4B26AC1096005168DD /* StatsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A75A4A26AC1096005168DD /* StatsChartView.swift */; };
 		10A7893426DFF994002F83EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1059416A25FA49E900C32D21 /* Assets.xcassets */; };
@@ -1115,6 +1115,7 @@
 				105941A825FA4F9500C32D21 /* SalmonLoginMenu.swift in Sources */,
 				1059416725FA49E500C32D21 /* Salmonia3App.swift in Sources */,
 				10BBBEA226049EF400DA79C9 /* CoopResultView.swift in Sources */,
+				108FF88E26F8B7A500EC7262 /* shiftwidget.intentdefinition in Sources */,
 				101C77D526497038005D603C /* CoopPlayerResultView.swift in Sources */,
 				10210F0926D18F4A00E4C7C4 /* LotteryManager.swift in Sources */,
 				101C77DA264C283C005D603C /* UsernameView.swift in Sources */,
@@ -1143,7 +1144,6 @@
 				10CD8544268D40AA00A00162 /* CoopShiftStatsView.swift in Sources */,
 				10D2E1622655618B00AE584E /* LocalizableStrings.swift in Sources */,
 				10AD114D2600EB18008C0E64 /* Error.swift in Sources */,
-				1009517C26F700BE0099AA2B /* shiftwidget.intentdefinition in Sources */,
 				105941AD25FA500500C32D21 /* SalmoniaView.swift in Sources */,
 				10D2E15A265557B200AE584E /* View.swift in Sources */,
 				10CF0A0025FBA5BC00D2EEB1 /* RealmPlayerResult.swift in Sources */,
@@ -1224,7 +1224,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 31;
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = shiftwidget/Info.plist;
@@ -1249,7 +1249,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 31;
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				INFOPLIST_FILE = shiftwidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -1394,7 +1394,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 31;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1422,7 +1422,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 31;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
