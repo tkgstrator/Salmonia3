@@ -17,18 +17,21 @@ class CoreRealmCoop: ObservableObject {
     @Published var waves: RealmSwift.Results<RealmCoopWave> = RealmManager.shared.waves
     @Published var players: RealmSwift.Results<RealmPlayer> = RealmManager.shared.players
     @Published var latestShift: RealmSwift.Results<RealmCoopShift> = RealmManager.shared.latestShiftStartTime
-    
-    // リザルト一覧
+    @Published var clearResults: UserOverview = UserOverview()
+    /// リザルト一覧で表示するためのリザルト
     var results: [UserCoopResult] {
         let startTime: [Int] = Array(Set(RealmManager.shared.results.map({ $0.startTime }))).sorted(by: >)
         return startTime.map({ UserCoopResult(startTime: $0) })
     }
     
+    /// どこで使っているのかわからない選択中のプレイヤーの全リザルト
     var result: RealmSwift.Results<RealmCoopResult> {
         RealmManager.shared.results(playerId: manager.playerId)
     }
     
-    // ステージ記録一覧
+    /// 各WAVEの勝率とかを求めるやつ
+    
+    /// ステージ記録一覧
     var records: [CoopRecord] {
         return StageType.allCases.map{ CoopRecord(stageId: $0.rawValue) }
     }
@@ -41,6 +44,56 @@ class CoreRealmCoop: ObservableObject {
     }
     
     deinit {
+    }
+}
+
+class UserOverview: Identifiable {
+    /// 全バイト回数(計算するのがめんどくさいので)
+    var total: Int = 0
+    /// 全バイトのクリア回数
+    var clear: Int = 0
+    /// 全バイトの失敗回数
+    var failure: Result.FailureReason = Result.FailureReason()
+    /// 各WAVEをクリアしたかどうか
+    /// 各WAVEをクリアしたかどうか
+    var waves: [Result] = Array(repeating: Result(), count: 3)
+    /// 全潮位・イベント・WAVEでのクリア率
+    var results: [[[Result]]] = Array(repeating: Array(repeating: Array(repeating: Result(), count: 3), count: 7), count: 5)
+    
+    init() {
+        let results = RealmManager.shared.results
+        self.total = results.count
+        self.clear = results.filter("isClear==true").count
+        self.waves = [0, 1, 2].map({ Result(success: results.filter("isClear==true OR failureWave > %@", $0).count,
+                                        failure: (results.filter("isClear==false AND failureWave==%@ AND failureReason==%@", $0, "time_limit").count,
+                                                  results.filter("isClear==false AND failureWave==%@ AND failureReason==%@", $0, "wipe_out").count)) })
+        self.failure = Result.FailureReason(timeLimit: waves.map({ $0.failure.timeLimit }).reduce(0, +), wipeOut: waves.map({ $0.failure.wipeOut }).reduce(0, +))
+    }
+    
+    struct Result: Identifiable, Hashable {
+        static func == (lhs: UserOverview.Result, rhs: UserOverview.Result) -> Bool {
+            lhs.id == rhs.id
+        }
+        var id: UUID = UUID()
+        var success: Int = 0
+        var failure: FailureReason = FailureReason()
+
+        internal init() {}
+        
+        internal init(success: Int, failure: (Int, Int)) {
+            self.success = success
+            self.failure = FailureReason(timeLimit: failure.0, wipeOut: failure.1)
+        }
+        
+        struct FailureReason: Hashable {
+            var timeLimit: Int = 0
+            var wipeOut: Int = 0
+            
+            internal init(timeLimit: Int = 0, wipeOut: Int = 0) {
+                self.timeLimit = timeLimit
+                self.wipeOut = wipeOut
+            }
+        }
     }
 }
 

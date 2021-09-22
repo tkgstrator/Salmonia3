@@ -30,6 +30,11 @@ struct AddAccountButton: View {
             }),
             secondaryButton: .destructive(Text(.BTN_CANCEL)))
         })
+        .fullScreenCover(isPresented: $appManager.isSignedIn, content: {
+            NavigationView {
+                LoginMenu()
+            }
+        }).transition(.identity)
     }
 }
 

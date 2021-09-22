@@ -13,14 +13,9 @@ struct ContentView: View {
     
     var body: some View {
         SalmoniaView()
-        .fullScreenCover(isPresented: $appManager.isSignedIn, content: {
-            NavigationView {
-                LoginMenu()
-            }
-        })
-        .preferredColorScheme(appManager.isDarkMode ? .dark : .light)
-//        .overlay(GoobleMobileAdsView(isAvailable: !appManager.isPaid01, adUnitId: "ca-app-pub-7107468397673752/3033508550"), alignment: .bottom)
-        .navigationViewStyle(SplitNavigationViewStyle())
+            .preferredColorScheme(appManager.isDarkMode ? .dark : .light)
+            //        .overlay(GoobleMobileAdsView(isAvailable: !appManager.isPaid01, adUnitId: "ca-app-pub-7107468397673752/3033508550"), alignment: .bottom)
+            .navigationViewStyle(SplitNavigationViewStyle())
     }
 }
 
