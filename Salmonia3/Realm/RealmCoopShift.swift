@@ -9,15 +9,17 @@ import Foundation
 import RealmSwift
 import SplatNet2
 
-final class RealmCoopShift: Object, Identifiable {
+final class RealmCoopShift: Object, Identifiable, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var startTime: Int
     @Persisted var endTime: Int
     @Persisted var stageId: Int
     @Persisted var rareWeapon: Int?
     @Persisted var weaponList: List<Int>
     
-    convenience init(from response: ScheduleCoop.Response) {
-        self.init()
+    override init() {}
+    
+    init(from response: ScheduleCoop.Response) {
+        super.init()
         self.startTime = response.startTime
         self.endTime = response.endTime
         self.stageId = response.stageId
@@ -44,3 +46,7 @@ final class RealmCoopShift: Object, Identifiable {
         }
     }
 }
+
+//extension RealmCoopShift: Identifiable {
+//    public var id: UUID { UUID() }
+//}

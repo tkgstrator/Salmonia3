@@ -19,7 +19,7 @@ final class LotteryManager {
     /// 自分のID, シフトID, マッチングしたプレイヤーのIDからくじを生成する
     func generate(startTime: Int, pids: [String]) {
         // シフト時間からアタリ番号を計算（全員が同じ番号になるようにする）
-        let lotteryIds: [String] = pids.map({ md5HashToInt(from: $0, key: startTime) })
+//        let lotteryIds: [String] = pids.map({ md5HashToInt(from: $0, key: startTime) })
     }
     
     @usableFromInline

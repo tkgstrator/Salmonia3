@@ -25,7 +25,7 @@ struct LoginMenu: View {
                 Text(.TEXT_WELCOME_SPLATNET2)
                     .font(.custom("Splatfont2", size: 18))
                     .multilineTextAlignment(.center)
-                    .lineLimit(3)
+                    .lineLimit(5)
                     .offset(x: 0, y: 100)
                     .padding(.horizontal, 20)
                     .foregroundColor(.whitesmoke)
