@@ -27,19 +27,19 @@ struct SalmoniaView: View {
     var body: some View {
         TabView(selection: $selection, content: {
             NavigationView {
+                CoopResultCollection()
+            }
+            .tabItem {
+                Image(systemName: "gearshape")
+                Text(.TITLE_SETTINGS)
+            }
+            .tag(0)
+            NavigationView {
                 ScheduleView()
             }
             .tabItem {
                 Image(systemName: "calendar")
                 Text(.TITLE_SHIFT_SCHEDULE)
-            }
-            .tag(0)
-            NavigationView {
-                SettingView()
-            }
-            .tabItem {
-                Image(systemName: "gearshape")
-                Text(.TITLE_SETTINGS)
             }
             .tag(1)
             NavigationView {

@@ -211,3 +211,9 @@
 "TEXT_ADD_ACCOUNT"="アカウントを追加します";
 "BTN_ADD_ACCOUNT"="アカウント追加";
 "TITLE_USER"="ユーザ";
+"FAILURE_WAVE_%lld"="Wave %lld失敗";
+"CLEAR_WAVE"="クリア";
+"FAILURE_TIME_LIMIT"="時間切れ";
+"FAILURE_WIPE_OUT"="ゼンメツ";
+"HEADER_FAILURE_WAVE"="失敗WAVE";
+"HEADER_FAILURE_REASON"="失敗理由";

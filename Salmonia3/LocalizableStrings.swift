@@ -181,6 +181,14 @@ class LocalizableStrings {
         case TITLE_WAVE_ANALYSIS
         case TITLE_WAVE_COLLECTION
         case TITLE_WEAPON_ANALYSIS
+        case FAILURE_WAVE_1
+        case FAILURE_WAVE_2
+        case FAILURE_WAVE_3
+        case FAILURE_WIPE_OUT
+        case FAILURE_TIME_LIMIT
+        case HEADER_FAILURE_REASON
+        case HEADER_FAILURE_WAVE
+        case CLEAR_WAVE
     }
 
 }

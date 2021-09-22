@@ -90,6 +90,12 @@
 		109E892526FAA1FD002B192D /* Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109E892426FAA1FC002B192D /* Environments.swift */; };
 		109E892926FB209F002B192D /* tutorial.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 109E892826FB209F002B192D /* tutorial.mp4 */; };
 		109E892B26FB456E002B192D /* CoopShiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109E892A26FB456E002B192D /* CoopShiftView.swift */; };
+		109E892D26FB58BA002B192D /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109E892C26FB58BA002B192D /* UserView.swift */; };
+		109E893026FB6493002B192D /* SpecialPieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109E892F26FB6493002B192D /* SpecialPieChartView.swift */; };
+		109E893426FB64D6002B192D /* AnglePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109E893326FB64D6002B192D /* AnglePair.swift */; };
+		109E893626FB6500002B192D /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109E893526FB6500002B192D /* Pie.swift */; };
+		109E893826FB660D002B192D /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109E893726FB660D002B192D /* ChartView.swift */; };
+		109E893A26FBC4ED002B192D /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109E893926FBC4ED002B192D /* FontAwesome.swift */; };
 		109EF35E260CAB7F00076157 /* PurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF35D260CAB7F00076157 /* PurchaseButton.swift */; };
 		10A75A4B26AC1096005168DD /* StatsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A75A4A26AC1096005168DD /* StatsChartView.swift */; };
 		10A7893426DFF994002F83EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1059416A25FA49E900C32D21 /* Assets.xcassets */; };
@@ -260,6 +266,12 @@
 		109E892426FAA1FC002B192D /* Environments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environments.swift; sourceTree = "<group>"; };
 		109E892826FB209F002B192D /* tutorial.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = tutorial.mp4; sourceTree = "<group>"; };
 		109E892A26FB456E002B192D /* CoopShiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftView.swift; sourceTree = "<group>"; };
+		109E892C26FB58BA002B192D /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		109E892F26FB6493002B192D /* SpecialPieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialPieChartView.swift; sourceTree = "<group>"; };
+		109E893326FB64D6002B192D /* AnglePair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnglePair.swift; sourceTree = "<group>"; };
+		109E893526FB6500002B192D /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
+		109E893726FB660D002B192D /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		109E893926FBC4ED002B192D /* FontAwesome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
 		109EF35D260CAB7F00076157 /* PurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseButton.swift; sourceTree = "<group>"; };
 		10A75A4A26AC1096005168DD /* StatsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsChartView.swift; sourceTree = "<group>"; };
 		10A7893626E0E801002F83EA /* SalmonidType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonidType.swift; sourceTree = "<group>"; };
@@ -596,6 +608,7 @@
 		10682EF1264FEEF00035CC68 /* StatsView */ = {
 			isa = PBXGroup;
 			children = (
+				109E893226FB64C0002B192D /* Chart */,
 				10682EF2264FEF0A0035CC68 /* StatsWaveView.swift */,
 				10682EFA264FEF2A0035CC68 /* StatsView.swift */,
 				10A75A4A26AC1096005168DD /* StatsChartView.swift */,
@@ -609,6 +622,7 @@
 				10AF880226E8E4E400D1C35E /* Style */,
 				10AF880126E8E4DE00D1C35E /* Type */,
 				1071595126E2274A0066DB74 /* Egg.swift */,
+				109E893926FBC4ED002B192D /* FontAwesome.swift */,
 				1071595726E2734F0066DB74 /* ResultIcon.swift */,
 				10AD114C2600EB18008C0E64 /* Error.swift */,
 				10B62CAE2669D48E00916A64 /* ResultStyle.swift */,
@@ -658,6 +672,7 @@
 				108FF89426F9FA7E00EC7262 /* Overview.swift */,
 				108FF89626F9FA8700EC7262 /* ScheduleView.swift */,
 				108FF89A26F9FAA000EC7262 /* Settings.swift */,
+				109E892C26FB58BA002B192D /* UserView.swift */,
 			);
 			path = Salmonia;
 			sourceTree = "<group>";
@@ -712,6 +727,17 @@
 				109E892426FAA1FC002B192D /* Environments.swift */,
 			);
 			path = Environment;
+			sourceTree = "<group>";
+		};
+		109E893226FB64C0002B192D /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				109E892F26FB6493002B192D /* SpecialPieChartView.swift */,
+				109E893326FB64D6002B192D /* AnglePair.swift */,
+				109E893526FB6500002B192D /* Pie.swift */,
+				109E893726FB660D002B192D /* ChartView.swift */,
+			);
+			path = Chart;
 			sourceTree = "<group>";
 		};
 		10AF87E826E6E79A00D1C35E /* ResultStyle */ = {
@@ -1120,6 +1146,7 @@
 				10A75A4B26AC1096005168DD /* StatsChartView.swift in Sources */,
 				105941BE25FA525100C32D21 /* Background.swift in Sources */,
 				10D2E1552655548F00AE584E /* Text.swift in Sources */,
+				109E893026FB6493002B192D /* SpecialPieChartView.swift in Sources */,
 				10448BDD26652E7B00FFB553 /* SRPower.swift in Sources */,
 				1071595F26E2790A0066DB74 /* Product.swift in Sources */,
 				1024663E26009956004DC043 /* GradeType.swift in Sources */,
@@ -1137,6 +1164,7 @@
 				1071596326E2799F0066DB74 /* SettingMenu.swift in Sources */,
 				104AA7DC2605E0C8007BDC24 /* GoogleMobileAds.swift in Sources */,
 				10B62CA32669CC1400916A64 /* CoopWaveCollection.swift in Sources */,
+				109E893426FB64D6002B192D /* AnglePair.swift in Sources */,
 				1009518726F7804B0099AA2B /* TutorialView.swift in Sources */,
 				1052C2D026550E7800D3B9A9 /* DetailView.swift in Sources */,
 				10377F9925FD09FF00536A94 /* LoggingThread.swift in Sources */,
@@ -1153,6 +1181,7 @@
 				101C77DA264C283C005D603C /* UsernameView.swift in Sources */,
 				10377F7C25FCD9E800536A94 /* RealmManager.swift in Sources */,
 				1024661B25FE0929004DC043 /* RealmCoopShift.swift in Sources */,
+				109E892D26FB58BA002B192D /* UserView.swift in Sources */,
 				1024661125FDF411004DC043 /* String.swift in Sources */,
 				109E892B26FB456E002B192D /* CoopShiftView.swift in Sources */,
 				10D0177926C074B1000DCA1B /* StoreKitManager.swift in Sources */,
@@ -1173,10 +1202,12 @@
 				10CF09FB25FB9C6B00D2EEB1 /* CoreRealmCoop.swift in Sources */,
 				10E8BD9F26F50E9000B09B33 /* RestoreButton.swift in Sources */,
 				1031728E262C355500CF8903 /* ImportingView.swift in Sources */,
+				109E893A26FBC4ED002B192D /* FontAwesome.swift in Sources */,
 				10AF87EE26E6E80500D1C35E /* LemonTeaView.swift in Sources */,
 				10CD8544268D40AA00A00162 /* CoopShiftStatsView.swift in Sources */,
 				10D2E1622655618B00AE584E /* LocalizableStrings.swift in Sources */,
 				10AD114D2600EB18008C0E64 /* Error.swift in Sources */,
+				109E893626FB6500002B192D /* Pie.swift in Sources */,
 				105941AD25FA500500C32D21 /* SalmoniaView.swift in Sources */,
 				10D2E15A265557B200AE584E /* View.swift in Sources */,
 				10CF0A0025FBA5BC00D2EEB1 /* RealmPlayerResult.swift in Sources */,
@@ -1186,6 +1217,7 @@
 				109E892526FAA1FD002B192D /* Environments.swift in Sources */,
 				10E8BDA526F53EED00B09B33 /* AppInformation.swift in Sources */,
 				1053919C266D1703001025E1 /* RealmPlayer.swift in Sources */,
+				109E893826FB660D002B192D /* ChartView.swift in Sources */,
 				10AF87FD26E79ABA00D1C35E /* EventType.swift in Sources */,
 				10377FAD25FD166200536A94 /* CoopResultCollection.swift in Sources */,
 				10AF87F026E6E8A600D1C35E /* PlayerHeaders.swift in Sources */,
