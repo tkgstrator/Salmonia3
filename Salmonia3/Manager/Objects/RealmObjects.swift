@@ -21,6 +21,16 @@ extension RealmManager {
         return Array(Set(realm.objects(RealmCoopResult.self).filter("ANY player.pid=%@", nsaid).map{ $0.startTime })).sorted(by: >)
     }
     
+    /// 表示すべきシフトのIDを返す
+    var shiftIds: [Int] {
+        switch UserDefaults.standard.FEATURE_FREE_02 {
+        case true:
+            return Array(realm.objects(RealmCoopShift.self).map({ $0.startTime }))
+        case false:
+            return Array(realm.objects(RealmCoopShift.self).filter("startTime <= %@", Int(Date().timeIntervalSince1970)).map({ $0.startTime }))
+        }
+    }
+    
     func shiftResults(nsaid: String) -> [UserCoopResult] {
         return shiftTimeList(nsaid: nsaid).map({ UserCoopResult(startTime: $0, playerId: nsaid)})
     }

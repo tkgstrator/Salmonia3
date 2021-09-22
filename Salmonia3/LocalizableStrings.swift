@@ -163,6 +163,7 @@ class LocalizableStrings {
         case TEXT_TUTORIAL_SALMONSTATS
         case TEXT_WELCOME_SALMONSTATS
         case TEXT_WELCOME_SPLATNET2
+        case TITLE_USER
         case TITLE_FREE_PRODUCT
         case TITLE_HELP
         case TITLE_LOGGING_THREAD
