@@ -23,6 +23,13 @@ extension Setting.Sections {
                 }
                 SettingMenu(title: .SETTING_SPLATNET2, value: manager.playerId)
                 SettingMenu(title: .RESULTS, value: manager.account.coop.jobNum)
+                #if DEBUG
+                Button(action: {
+                    manager.account.iksmSession = ""
+                }, label: {
+                    Text("ERASE ACCOUNT TOKEN")
+                })
+                #endif
             }
         }
     }

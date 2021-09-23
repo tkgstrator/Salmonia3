@@ -12,6 +12,7 @@ import LocalAuthentication
 private struct LogoutButton: View {
     @EnvironmentObject var appManager: AppManager
     @State var isPresented: Bool = false
+    
     var body: some View {
         Button(action: {
             isPresented.toggle()
@@ -24,11 +25,17 @@ private struct LogoutButton: View {
                 appManager.isSignedIn.toggle()
             }), secondaryButton: .destructive(Text(.BTN_CANCEL)))
         })
+        .fullScreenCover(isPresented: $appManager.isSignedIn, content: {
+            NavigationView {
+                LoginMenu()
+            }
+        }).transition(.identity)
     }
 }
 
 private struct EraseButton: View {
     @State var isPresented: Bool = false
+    
     var body: some View {
         Button(action: {
             isPresented.toggle()
