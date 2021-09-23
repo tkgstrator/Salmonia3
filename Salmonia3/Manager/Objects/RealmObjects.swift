@@ -140,6 +140,12 @@ extension RealmManager {
             .sorted(byKeyPath: "lastMatchedTime", ascending: false)
     }
     
+    /// 指定されたプレイヤーIDのプレイヤー情報を返す
+    func findPlayers(pid: [String]) -> RealmSwift.Results<RealmPlayer> {
+        return realm.objects(RealmPlayer.self)
+            .filter("nsaid IN %@", pid)
+    }
+    
     func players(startTime: Int) -> [String] {
         return Array(Set(realm.objects(RealmCoopResult.self)
             .filter("startTime=%@", startTime)

@@ -23,15 +23,12 @@ struct ContentView: View {
                 Text(.TITLE_SETTINGS)
             }
             .tag(0)
-            NavigationView {
-                StageRecordView()
-            }
-            .navigationViewStyle(StackNavigationViewStyle())
+            StageRecordView()
             .tabItem {
                 Image(systemName: "gearshape")
                 Text(.TITLE_RECORD)
             }
-            .tag(0)
+            .tag(1)
             NavigationView {
                 ScheduleView()
             }
@@ -39,7 +36,7 @@ struct ContentView: View {
                 Image(systemName: "calendar")
                 Text(.TITLE_SHIFT_SCHEDULE)
             }
-            .tag(1)
+            .tag(2)
             NavigationView {
                 Overview()
             }
@@ -48,7 +45,7 @@ struct ContentView: View {
                 Image(systemName: "person")
                 Text(.TITLE_USER)
             }
-            .tag(2)
+            .tag(3)
         })
         .preferredColorScheme(appManager.isDarkMode ? .dark : .light)
         //        .overlay(GoobleMobileAdsView(isAvailable: !appManager.isPaid01, adUnitId: "ca-app-pub-7107468397673752/3033508550"), alignment: .bottom)
