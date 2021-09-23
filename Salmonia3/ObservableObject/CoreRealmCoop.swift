@@ -124,7 +124,17 @@ class UserCoopRecord: Identifiable {
         
         for stageId in StageType.allCases {
             let waves = RealmManager.shared.waves(stageId: stageId.rawValue)
+            let results = RealmManager.shared.results(stageId: stageId.rawValue)
+            
+            // 夜込み最高記録を計算
+            let total = Array(results.sorted(byKeyPath: "goldenEggs", ascending: false).prefix(3)).map({ Record(stageId: stageId, powerEggs: $0.powerEggs, goldenEggs: $0.goldenEggs, players: $0.players, weaponList: $0.weaponLists, recordType: .total) })
+            records.append(contentsOf: total)
 
+            // 昼のみ最高記録を計算
+            let nonight = results.filter("SUBQUERY(wave, $wave, $wave.eventType=%@).@count==3", "water-levels").sorted(byKeyPath: "goldenEggs", ascending: false).prefix(3).map({ Record(stageId: stageId, powerEggs: $0.powerEggs, goldenEggs: $0.goldenEggs, players: $0.players, weaponList: $0.weaponLists, recordType: .nonight) })
+            records.append(contentsOf: nonight)
+
+            // 各イベント・潮位についてTOP3の記録を抽出
             for eventType in EventType.allCases {
                 for waterLevel in WaterLevel.allCases {
                     let results = Array(waves.filter("eventType=%@ AND waterLevel=%@", eventType.eventName, waterLevel.waterName).sorted(byKeyPath: "goldenIkuraNum", ascending: false).prefix(3))
@@ -144,8 +154,9 @@ class UserCoopRecord: Identifiable {
         var powerEggs: Int
         var players: [RealmPlayer]
         var weaponList: [Int]
-
-        internal init(stageId: StageType, waterLevel: WaterLevel, eventType: EventType, powerEggs: Int, goldenEggs: Int, players: [RealmPlayer], weaponList: [Int]) {
+        var recordType: RecordType
+        
+        internal init(stageId: StageType, waterLevel: WaterLevel = .middle, eventType: EventType = .noevent, powerEggs: Int, goldenEggs: Int, players: [RealmPlayer], weaponList: [Int], recordType: RecordType = .wave) {
             self.stageId = stageId
             self.waterLevel = waterLevel
             self.eventType = eventType
@@ -153,6 +164,13 @@ class UserCoopRecord: Identifiable {
             self.goldenEggs = goldenEggs
             self.players = players
             self.weaponList = weaponList
+            self.recordType = recordType
+        }
+        
+        enum RecordType: CaseIterable {
+            case wave
+            case nonight
+            case total
         }
     }
 }

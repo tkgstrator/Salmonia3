@@ -30,12 +30,28 @@ private struct RecordView: View {
     
     var body: some View {
         ScrollView(showsIndicators: false, content: {
-            ForEach(WaterLevel.allCases, id:\.rawValue) { waterLevel in
-                ForEach(EventType.allCases, id:\.rawValue) { eventType in
-                    if records.filter({ $0.waterLevel == waterLevel && $0.eventType == eventType }).map({ $0.goldenEggs }).reduce(0, +) != 0 {
+            // 夜込み記録
+            Section(header: Text(.NIGHT_WAVE).font(.custom("Splatfont2", size: 20)), content: {
+                LazyVGrid(columns: Array(repeating: .init(.flexible()), count: UIDevice.current.userInterfaceIdiom == .pad ? 3 : 1), alignment: .center, spacing: nil, pinnedViews: [], content: {
+                    ForEach(records.filter({ $0.recordType == .total })) { record in
+                        RecordCardViewPad(record: record)
+                    }
+                })
+            })
+            // 昼のみ記録
+            Section(header: Text(.NO_NIGHT_WAVE).font(.custom("Splatfont2", size: 20)), content: {
+                LazyVGrid(columns: Array(repeating: .init(.flexible()), count: UIDevice.current.userInterfaceIdiom == .pad ? 3 : 1), alignment: .center, spacing: nil, pinnedViews: [], content: {
+                    ForEach(records.filter({ $0.recordType == .nonight })) { record in
+                        RecordCardViewPad(record: record)
+                    }
+                })
+            })
+            ForEach(EventType.allCases, id:\.rawValue) { eventType in
+                ForEach(WaterLevel.allCases.reversed(), id:\.rawValue) { waterLevel in
+                    if records.filter({ $0.waterLevel == waterLevel && $0.eventType == eventType && $0.recordType == .wave }).map({ $0.goldenEggs }).reduce(0, +) != 0 {
                         Section(header: Text("\(waterLevel.localizedName) - \(eventType.localizedName)").font(.custom("Splatfont2", size: 20)), content: {
                             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: UIDevice.current.userInterfaceIdiom == .pad ? 3 : 1), alignment: .center, spacing: nil, pinnedViews: [], content: {
-                                ForEach(records.filter({ $0.waterLevel == waterLevel && $0.eventType == eventType })) { record in
+                                ForEach(records.filter({ $0.waterLevel == waterLevel && $0.eventType == eventType && $0.recordType == .wave })) { record in
                                     RecordCardViewPad(record: record)
                                 }
                             })
