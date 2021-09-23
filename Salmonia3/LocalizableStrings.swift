@@ -189,6 +189,7 @@ class LocalizableStrings {
         case HEADER_FAILURE_REASON
         case HEADER_FAILURE_WAVE
         case CLEAR_WAVE
+        case TITLE_RECORD
     }
 
 }

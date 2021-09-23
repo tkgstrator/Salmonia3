@@ -75,7 +75,6 @@
 		1071596126E279190066DB74 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071596026E279190066DB74 /* Appearance.swift */; };
 		1071596326E2799F0066DB74 /* SettingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071596226E2799F0066DB74 /* SettingMenu.swift */; };
 		1071596926E3BFA20066DB74 /* CoreShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071596826E3BFA20066DB74 /* CoreShiftStats.swift */; };
-		1079EAD22647E3540085008C /* CoopRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1079EAD12647E3540085008C /* CoopRecordView.swift */; };
 		107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */; };
 		1081B769269D1FD60063D947 /* RealmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1081B768269D1FD60063D947 /* RealmObjects.swift */; };
 		1083857C265922700099475F /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 1083857B265922700099475F /* SwiftyBeaver */; };
@@ -96,6 +95,7 @@
 		109E893626FB6500002B192D /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109E893526FB6500002B192D /* Pie.swift */; };
 		109E893826FB660D002B192D /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109E893726FB660D002B192D /* ChartView.swift */; };
 		109E893A26FBC4ED002B192D /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109E893926FBC4ED002B192D /* FontAwesome.swift */; };
+		109E894226FCAFAA002B192D /* StageRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109E894126FCAFAA002B192D /* StageRecordView.swift */; };
 		109EF35E260CAB7F00076157 /* PurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109EF35D260CAB7F00076157 /* PurchaseButton.swift */; };
 		10A75A4B26AC1096005168DD /* StatsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A75A4A26AC1096005168DD /* StatsChartView.swift */; };
 		10A7893426DFF994002F83EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1059416A25FA49E900C32D21 /* Assets.xcassets */; };
@@ -251,7 +251,6 @@
 		1071596026E279190066DB74 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		1071596226E2799F0066DB74 /* SettingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenu.swift; sourceTree = "<group>"; };
 		1071596826E3BFA20066DB74 /* CoreShiftStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreShiftStats.swift; sourceTree = "<group>"; };
-		1079EAD12647E3540085008C /* CoopRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopRecordView.swift; sourceTree = "<group>"; };
 		107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopStats.swift; sourceTree = "<group>"; };
 		1081B768269D1FD60063D947 /* RealmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
 		108684E726EB5D7F00E28C7C /* RobotoMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoMono.ttf; sourceTree = "<group>"; };
@@ -272,6 +271,7 @@
 		109E893526FB6500002B192D /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
 		109E893726FB660D002B192D /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		109E893926FBC4ED002B192D /* FontAwesome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
+		109E894126FCAFAA002B192D /* StageRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageRecordView.swift; sourceTree = "<group>"; };
 		109EF35D260CAB7F00076157 /* PurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseButton.swift; sourceTree = "<group>"; };
 		10A75A4A26AC1096005168DD /* StatsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsChartView.swift; sourceTree = "<group>"; };
 		10A7893626E0E801002F83EA /* SalmonidType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonidType.swift; sourceTree = "<group>"; };
@@ -457,7 +457,6 @@
 			children = (
 				1053919A266D16E4001025E1 /* Player */,
 				101C77CA26496F64005D603C /* Result */,
-				1079EAD12647E3540085008C /* CoopRecordView.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -665,6 +664,7 @@
 		108FF89326F9FA6C00EC7262 /* Salmonia */ = {
 			isa = PBXGroup;
 			children = (
+				109E894026FCAF9A002B192D /* Records */,
 				108FF89F26F9FBFF00EC7262 /* Settings */,
 				108FF89E26F9FB2200EC7262 /* WaveResults */,
 				108FF89D26F9FB0D00EC7262 /* Results */,
@@ -738,6 +738,14 @@
 				109E893726FB660D002B192D /* ChartView.swift */,
 			);
 			path = Chart;
+			sourceTree = "<group>";
+		};
+		109E894026FCAF9A002B192D /* Records */ = {
+			isa = PBXGroup;
+			children = (
+				109E894126FCAFAA002B192D /* StageRecordView.swift */,
+			);
+			path = Records;
 			sourceTree = "<group>";
 		};
 		10AF87E826E6E79A00D1C35E /* ResultStyle */ = {
@@ -1136,7 +1144,6 @@
 				1081B769269D1FD60063D947 /* RealmObjects.swift in Sources */,
 				10AF87FA26E79A6600D1C35E /* WaterLevel.swift in Sources */,
 				105941A025FA4E2500C32D21 /* LoginMenu.swift in Sources */,
-				1079EAD22647E3540085008C /* CoopRecordView.swift in Sources */,
 				10A7893726E0E801002F83EA /* SalmonidType.swift in Sources */,
 				10377FA425FD10FE00536A94 /* Optional.swift in Sources */,
 				1024661625FDFF0F004DC043 /* ImageResize.swift in Sources */,
@@ -1181,6 +1188,7 @@
 				101C77DA264C283C005D603C /* UsernameView.swift in Sources */,
 				10377F7C25FCD9E800536A94 /* RealmManager.swift in Sources */,
 				1024661B25FE0929004DC043 /* RealmCoopShift.swift in Sources */,
+				109E894226FCAFAA002B192D /* StageRecordView.swift in Sources */,
 				109E892D26FB58BA002B192D /* UserView.swift in Sources */,
 				1024661125FDF411004DC043 /* String.swift in Sources */,
 				109E892B26FB456E002B192D /* CoopShiftView.swift in Sources */,

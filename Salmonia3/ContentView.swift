@@ -7,15 +7,52 @@
 
 import SwiftUI
 import SwiftyUI
+import SDWebImageSwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var appManager: AppManager
+    @State var selection: Int = 0
     
     var body: some View {
-        SalmoniaView()
-            .preferredColorScheme(appManager.isDarkMode ? .dark : .light)
-            //        .overlay(GoobleMobileAdsView(isAvailable: !appManager.isPaid01, adUnitId: "ca-app-pub-7107468397673752/3033508550"), alignment: .bottom)
-            .navigationViewStyle(SplitNavigationViewStyle())
+        TabView(selection: $selection, content: {
+            NavigationView {
+                CoopResultCollection()
+            }
+            .tabItem {
+                Image(systemName: "gearshape")
+                Text(.TITLE_SETTINGS)
+            }
+            .tag(0)
+            NavigationView {
+                StageRecordView()
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
+            .tabItem {
+                Image(systemName: "gearshape")
+                Text(.TITLE_RECORD)
+            }
+            .tag(0)
+            NavigationView {
+                ScheduleView()
+            }
+            .tabItem {
+                Image(systemName: "calendar")
+                Text(.TITLE_SHIFT_SCHEDULE)
+            }
+            .tag(1)
+            NavigationView {
+                Overview()
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
+            .tabItem {
+                Image(systemName: "person")
+                Text(.TITLE_USER)
+            }
+            .tag(2)
+        })
+        .preferredColorScheme(appManager.isDarkMode ? .dark : .light)
+        //        .overlay(GoobleMobileAdsView(isAvailable: !appManager.isPaid01, adUnitId: "ca-app-pub-7107468397673752/3033508550"), alignment: .bottom)
+        .navigationViewStyle(SplitNavigationViewStyle())
     }
 }
 
