@@ -92,6 +92,7 @@ struct LoginMenu: View {
 
 struct Wave: View {
     @State var offset: Angle = Angle(degrees: 0)
+    @State var isAnimating: Bool = false
     let height: CGFloat = UIScreen.main.bounds.height
     let width: CGFloat = UIScreen.main.bounds.width
     let color: Color = .safetyorange
@@ -112,9 +113,15 @@ struct Wave: View {
             })
         }
         .onAppear {
-            withAnimation(Animation.linear(duration: 6).repeatForever(while: true, autoreverses: false)) {
-                offset = Angle(degrees: 720)
+            isAnimating.toggle()
+            if isAnimating {
+                withAnimation(Animation.linear(duration: 6).repeatForever(while: true, autoreverses: false)) {
+                    offset = Angle(degrees: 720)
+                }
             }
+        }
+        .onDisappear {
+            isAnimating.toggle()
         }
     }
 }

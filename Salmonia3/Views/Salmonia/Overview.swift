@@ -117,24 +117,21 @@ struct Overview: View {
                 failureReasonChart
             })
         })
-        .navigationBarItems(trailing: Button(action: {
-            isPresented.toggle()
-        }, label: {
+        .navigationBarItems(trailing: NavigationLink(destination: SettingView().navigationViewStyle(SplitNavigationViewStyle()), label: {
             Image(systemName: "gearshape")
         }))
-        .sheet(isPresented: $isPresented, content: {
-            NavigationView {
-                SettingView()
-                    .environmentObject(appManager)
-                    .preferredColorScheme(appManager.isDarkMode ? .dark : .light)
-            }
-        })
         .onAppear {
             print(dump(results.clearResults))
         }
-        .overlay(NavigationLink(destination: LoadingView(), isActive: $isShowing, label: { EmptyView() }))
+//        .overlay(NavigationLink(destination: LoadingView(), isActive: $isShowing, label: { EmptyView() }))
         .pullToRefresh(isShowing: $isShowing, onRefresh: {
+            isPresented.toggle()
             isShowing.toggle()
+        })
+        .present(isPresented: $isPresented, transitionStyle: .flipHorizontal, presentationStyle: .fullScreen, content: {
+            LoadingView()
+                .environmentObject(appManager)
+                .environment(\.modalIsPresented, .constant(PresentationStyle($isPresented)))
         })
         .navigationTitle(.TITLE_USER)
     }
