@@ -18,6 +18,7 @@ class CoreRealmCoop: ObservableObject {
     @Published var players: RealmSwift.Results<RealmPlayer> = RealmManager.shared.players
     @Published var latestShift: RealmSwift.Results<RealmCoopShift> = RealmManager.shared.latestShiftStartTime
     @Published var clearResults: UserOverview = UserOverview()
+    @Published var records: UserCoopRecord = UserCoopRecord()
     
     /// リザルト一覧で表示するためのリザルト
     var results: [UserCoopResult] {
@@ -115,6 +116,46 @@ class UserCoopResult: Identifiable {
     }
 }
 
+class UserCoopRecord: Identifiable {
+    var id: UUID = UUID()
+    var records: [Record] = []
+
+    internal init() {
+        
+        for stageId in StageType.allCases {
+            let waves = RealmManager.shared.waves(stageId: stageId.rawValue)
+
+            for eventType in EventType.allCases {
+                for waterLevel in WaterLevel.allCases {
+                    let results = Array(waves.filter("eventType=%@ AND waterLevel=%@", eventType.eventName, waterLevel.waterName).sorted(byKeyPath: "goldenIkuraNum", ascending: false).prefix(3))
+                    let record = results.map({ Record(stageId: stageId, waterLevel: waterLevel, eventType: eventType, powerEggs: $0.ikuraNum, goldenEggs: $0.goldenIkuraNum, players: $0.players, weaponList: $0.weaponLists) })
+                    records.append(contentsOf: record)
+                }
+            }
+        }
+    }
+    
+    class Record: Identifiable {
+        var id: UUID = UUID()
+        var stageId: StageType
+        var waterLevel: WaterLevel
+        var eventType: EventType
+        var goldenEggs: Int
+        var powerEggs: Int
+        var players: [RealmPlayer]
+        var weaponList: [Int]
+
+        internal init(stageId: StageType, waterLevel: WaterLevel, eventType: EventType, powerEggs: Int, goldenEggs: Int, players: [RealmPlayer], weaponList: [Int]) {
+            self.stageId = stageId
+            self.waterLevel = waterLevel
+            self.eventType = eventType
+            self.powerEggs = powerEggs
+            self.goldenEggs = goldenEggs
+            self.players = players
+            self.weaponList = weaponList
+        }
+    }
+}
 // MARK: ステージキロク
 //#warning("将来的にこれ削除したい")
 //class CoopRecord: ObservableObject {
@@ -124,34 +165,34 @@ class UserCoopResult: Identifiable {
 //    var minimumStepNum: Int?
 //    var goldenEggs: [[GoldenEggsRecord?]] = Array(repeating: Array(repeating: nil, count: 7), count: 3)
 //    var maxGoldenEggs: (all: Int?, nonight: Int?) = (all: .none, nonight: .none)
-//    
+//
 //    init() {}
-//   
+//
 //    // シフトごとの記録
 //    init(startTime: Int) {
 //        let results = RealmManager.shared.results(startTime: startTime)
 //        let waves = RealmManager.shared.waves(startTime: startTime)
 //        getRecordsFromDatabase(results: results, waves: waves)
 //    }
-//    
+//
 //    // ステージごとの記録
 //    init(stageId: Int) {
 //        let results = RealmManager.shared.results(stageId: stageId)
 //        let waves = RealmManager.shared.waves(stageId: stageId)
 //        getRecordsFromDatabase(results: results, waves: waves)
 //    }
-//    
+//
 //    func getRecordsFromDatabase(results: RealmSwift.Results<RealmCoopResult>, waves: RealmSwift.Results<RealmCoopWave>) {
 //        if results.count != 0 {
 //            self.jobNum = results.count
 //            self.maxGrade = results.max(ofProperty: "gradePoint")
 //            self.counterStepNum = results.counterStepNum
 //            self.minimumStepNum = results.minimumStepNum
-//            
+//
 //            // 最高納品数
 //            maxGoldenEggs = (all: results.max(ofProperty: "goldenEggs"),
 //                             nonight: results.filter("SUBQUERY(wave, $wave, $wave.eventType=%@).@count==3", "water-levels").max(ofProperty: "goldenEggs"))
-//            
+//
 //            // MARK: WAVE納品キロク
 //            for waterLevel in WaterLevel.allCases {
 //                for eventType in EventType.allCases {

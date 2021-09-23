@@ -97,6 +97,14 @@ extension RealmCoopWave {
         let startTime = self.result.first!.startTime
         return Array(RealmManager.shared.shift(startTime: startTime).weaponList)
     }
+    
+    var players: [RealmPlayer] {
+        Array(RealmManager.shared.findPlayers(pid: self.result.first!.player.map({ $0.pid })))
+    }
+    
+    var playTime: Int {
+        self.result.first!.playTime
+    }
 }
 
 extension RealmCoopWave: Identifiable {
