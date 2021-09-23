@@ -34,7 +34,7 @@ private struct RecordView: View {
                 ForEach(EventType.allCases, id:\.rawValue) { eventType in
                     if records.filter({ $0.waterLevel == waterLevel && $0.eventType == eventType }).map({ $0.goldenEggs }).reduce(0, +) != 0 {
                         Section(header: Text("\(waterLevel.localizedName) - \(eventType.localizedName)").font(.custom("Splatfont2", size: 20)), content: {
-                            LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 3), alignment: .center, spacing: nil, pinnedViews: [], content: {
+                            LazyVGrid(columns: Array(repeating: .init(.flexible()), count: UIDevice.current.userInterfaceIdiom == .pad ? 3 : 1), alignment: .center, spacing: nil, pinnedViews: [], content: {
                                 ForEach(records.filter({ $0.waterLevel == waterLevel && $0.eventType == eventType })) { record in
                                     RecordCardViewPad(record: record)
                                 }
