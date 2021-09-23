@@ -33,9 +33,9 @@ class CoreRealmCoop: ObservableObject {
     /// 各WAVEの勝率とかを求めるやつ
     
     /// ステージ記録一覧
-    var records: [CoopRecord] {
-        return StageType.allCases.map{ CoopRecord(stageId: $0.rawValue) }
-    }
+//    var records: [CoopRecord] {
+//        return StageType.allCases.map{ CoopRecord(stageId: $0.rawValue) }
+//    }
     
     init() {
         // 不要だとは思うが念の為にアップデートする
@@ -116,56 +116,58 @@ class UserCoopResult: Identifiable {
 }
 
 // MARK: ステージキロク
-class CoopRecord: ObservableObject {
-    var jobNum: Int?
-    var maxGrade: Int?
-    var counterStepNum: Int = 0
-    var minimumStepNum: Int?
-    var goldenEggs: [[GoldenEggsRecord?]] = Array(repeating: Array(repeating: nil, count: 7), count: 3)
-    var maxGoldenEggs: (all: Int?, nonight: Int?) = (all: .none, nonight: .none)
-    
-    init() {}
-   
-    // シフトごとの記録
-    init(startTime: Int) {
-        let results = RealmManager.shared.results(startTime: startTime)
-        let waves = RealmManager.shared.waves(startTime: startTime)
-        getRecordsFromDatabase(results: results, waves: waves)
-    }
-    
-    // ステージごとの記録
-    init(stageId: Int) {
-        let results = RealmManager.shared.results(stageId: stageId)
-        let waves = RealmManager.shared.waves(stageId: stageId)
-        getRecordsFromDatabase(results: results, waves: waves)
-    }
-    
-    func getRecordsFromDatabase(results: RealmSwift.Results<RealmCoopResult>, waves: RealmSwift.Results<RealmCoopWave>) {
-        if results.count != 0 {
-            self.jobNum = results.count
-            self.maxGrade = results.max(ofProperty: "gradePoint")
-            self.counterStepNum = results.counterStepNum
-            self.minimumStepNum = results.minimumStepNum
-            
-            // 最高納品数
-            maxGoldenEggs = (all: results.max(ofProperty: "goldenEggs"),
-                             nonight: results.filter("SUBQUERY(wave, $wave, $wave.eventType=%@).@count==3", "water-levels").max(ofProperty: "goldenEggs"))
-            
-            // MARK: WAVE納品キロク
-            for waterLevel in WaterLevel.allCases {
-                for eventType in EventType.allCases {
-                    if let goldenEgg: Int = waves.maxGoldenEggs(eventType: eventType, waterLevel: waterLevel) {
-                        self.goldenEggs[waterLevel.rawValue][eventType.rawValue] = GoldenEggsRecord(goldenEggs: goldenEgg)
-                    }
-                }
-            }
-        }
-    }
-}
-
-struct GoldenEggsRecord {
-    var goldenEggs: Int?
-    var playTime: Int? = 0
-    var tide: Int = 0
-    var event: Int = 0
-}
+//#warning("将来的にこれ削除したい")
+//class CoopRecord: ObservableObject {
+//    var jobNum: Int?
+//    var maxGrade: Int?
+//    var counterStepNum: Int = 0
+//    var minimumStepNum: Int?
+//    var goldenEggs: [[GoldenEggsRecord?]] = Array(repeating: Array(repeating: nil, count: 7), count: 3)
+//    var maxGoldenEggs: (all: Int?, nonight: Int?) = (all: .none, nonight: .none)
+//    
+//    init() {}
+//   
+//    // シフトごとの記録
+//    init(startTime: Int) {
+//        let results = RealmManager.shared.results(startTime: startTime)
+//        let waves = RealmManager.shared.waves(startTime: startTime)
+//        getRecordsFromDatabase(results: results, waves: waves)
+//    }
+//    
+//    // ステージごとの記録
+//    init(stageId: Int) {
+//        let results = RealmManager.shared.results(stageId: stageId)
+//        let waves = RealmManager.shared.waves(stageId: stageId)
+//        getRecordsFromDatabase(results: results, waves: waves)
+//    }
+//    
+//    func getRecordsFromDatabase(results: RealmSwift.Results<RealmCoopResult>, waves: RealmSwift.Results<RealmCoopWave>) {
+//        if results.count != 0 {
+//            self.jobNum = results.count
+//            self.maxGrade = results.max(ofProperty: "gradePoint")
+//            self.counterStepNum = results.counterStepNum
+//            self.minimumStepNum = results.minimumStepNum
+//            
+//            // 最高納品数
+//            maxGoldenEggs = (all: results.max(ofProperty: "goldenEggs"),
+//                             nonight: results.filter("SUBQUERY(wave, $wave, $wave.eventType=%@).@count==3", "water-levels").max(ofProperty: "goldenEggs"))
+//            
+//            // MARK: WAVE納品キロク
+//            for waterLevel in WaterLevel.allCases {
+//                for eventType in EventType.allCases {
+//                    if let goldenEgg: Int = waves.maxGoldenEggs(eventType: eventType, waterLevel: waterLevel) {
+//                        self.goldenEggs[waterLevel.rawValue][eventType.rawValue] = GoldenEggsRecord(goldenEggs: goldenEgg)
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
+//
+//#warning("将来的にこれ削除したい")
+//struct GoldenEggsRecord {
+//    var goldenEggs: Int?
+//    var playTime: Int? = 0
+//    var tide: Int = 0
+//    var event: Int = 0
+//}
