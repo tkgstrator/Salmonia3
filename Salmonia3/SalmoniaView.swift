@@ -45,6 +45,7 @@ struct SalmoniaView: View {
             NavigationView {
                 Overview()
             }
+            .navigationViewStyle(StackNavigationViewStyle())
             .tabItem {
                 Image(systemName: "person")
                 Text(.TITLE_USER)

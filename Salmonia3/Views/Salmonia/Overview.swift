@@ -46,12 +46,16 @@ struct Overview: View {
             VStack(alignment: .center, spacing: nil, content: {
                 HStack(alignment: .center, spacing: nil, content: {
                     Text(.FAILURE_TIME_LIMIT)
+                    Spacer()
                     Text(String(format: "%.2f%%", 100 * Double(results.clearResults.failure.timeLimit) / Double(results.clearResults.total - results.clearResults.clear)))
                 })
+                .padding(.trailing)
                 HStack(alignment: .center, spacing: nil, content: {
                     Text(.FAILURE_WIPE_OUT)
+                    Spacer()
                     Text(String(format: "%.2f%%", 100 * Double(results.clearResults.failure.wipeOut) / Double(results.clearResults.total - results.clearResults.clear)))
                 })
+                .padding(.trailing)
             })
             .font(.custom("Splatfont2", size: 16))
             Spacer()
@@ -132,6 +136,7 @@ struct Overview: View {
         .pullToRefresh(isShowing: $isShowing, onRefresh: {
             isShowing.toggle()
         })
+        .navigationTitle(.TITLE_USER)
     }
 }
 

@@ -195,7 +195,7 @@
 "TEXT_ADD_ACCOUNT"="Add another NSO account.";
 "BTN_ADD_ACCOUNT"="Add account";
 "TITLE_USER"="User";
-"FAILURE_WAVE_%lld"="Failed in Wave %lld";
+"FAILURE_WAVE_%lld"="in Wave %lld";
 "CLEAR_WAVE"="Clear";
 "FAILURE_TIME_LIMIT"="Time limit";
 "FAILURE_WIPE_OUT"="Wipe out";

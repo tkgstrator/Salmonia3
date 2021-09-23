@@ -18,6 +18,7 @@ class CoreRealmCoop: ObservableObject {
     @Published var players: RealmSwift.Results<RealmPlayer> = RealmManager.shared.players
     @Published var latestShift: RealmSwift.Results<RealmCoopShift> = RealmManager.shared.latestShiftStartTime
     @Published var clearResults: UserOverview = UserOverview()
+    
     /// リザルト一覧で表示するためのリザルト
     var results: [UserCoopResult] {
         let startTime: [Int] = Array(Set(RealmManager.shared.results.map({ $0.startTime }))).sorted(by: >)
@@ -64,7 +65,7 @@ class UserOverview: Identifiable {
         let results = RealmManager.shared.results
         self.total = results.count
         self.clear = results.filter("isClear==true").count
-        self.waves = [0, 1, 2].map({ Result(success: results.filter("isClear==true OR failureWave > %@", $0).count,
+        self.waves = [1, 2, 3].map({ Result(success: results.filter("isClear==true OR failureWave > %@", $0).count,
                                         failure: (results.filter("isClear==false AND failureWave==%@ AND failureReason==%@", $0, "time_limit").count,
                                                   results.filter("isClear==false AND failureWave==%@ AND failureReason==%@", $0, "wipe_out").count)) })
         self.failure = Result.FailureReason(timeLimit: waves.map({ $0.failure.timeLimit }).reduce(0, +), wipeOut: waves.map({ $0.failure.wipeOut }).reduce(0, +))
