@@ -82,4 +82,12 @@ extension RealmCoopResult {
     var indexOfResults: Int {
         return (RealmManager.shared.results(startTime: startTime).sorted(byKeyPath: "playTime", ascending: true).index(of: self) ?? -1) + 1
     }
+    
+    var players: [RealmPlayer] {
+        Array(RealmManager.shared.findPlayers(pid: self.player.map({ $0.pid }).sorted()))
+    }
+    
+    var weaponLists: [Int] {
+        Array(RealmManager.shared.shift(startTime: self.startTime).weaponList)
+    }
 }

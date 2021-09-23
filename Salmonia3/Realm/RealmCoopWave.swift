@@ -99,7 +99,7 @@ extension RealmCoopWave {
     }
     
     var players: [RealmPlayer] {
-        Array(RealmManager.shared.findPlayers(pid: self.result.first!.player.map({ $0.pid })))
+        Array(RealmManager.shared.findPlayers(pid: self.result.first!.player.map({ $0.pid }).sorted()))
     }
     
     var playTime: Int {
