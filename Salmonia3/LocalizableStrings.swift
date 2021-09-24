@@ -190,6 +190,9 @@ class LocalizableStrings {
         case HEADER_FAILURE_WAVE
         case CLEAR_WAVE
         case TITLE_RECORD
+        case TITLE_COLLECTION
+        case SETTING_SALMONSTATS
+        case TITLE_SALMONSTATS
     }
 
 }

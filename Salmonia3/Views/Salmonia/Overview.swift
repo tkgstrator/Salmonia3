@@ -9,6 +9,7 @@
 import SwiftUI
 import SwiftyUI
 import SDWebImageSwiftUI
+import BetterSafariView
 
 struct Overview: View {
     @EnvironmentObject var appManager: AppManager
@@ -121,13 +122,16 @@ struct Overview: View {
                 failureReasonChart
             })
         })
-        .navigationBarItems(trailing: NavigationLink(destination: SettingView().navigationViewStyle(SplitNavigationViewStyle()), label: {
-            Image(systemName: "gearshape")
-        }))
+        .navigationBarItems(
+            leading:
+                SalmonStatsButton(),
+            trailing:
+                NavigationLink(destination: SettingView().navigationViewStyle(SplitNavigationViewStyle()), label: {
+                    Image(systemName: "gearshape")
+                }))
         .onAppear {
-            print(dump(results.clearResults))
+//            print(dump(results.clearResults))
         }
-//        .overlay(NavigationLink(destination: LoadingView(), isActive: $isShowing, label: { EmptyView() }))
         .pullToRefresh(isShowing: $isShowing, onRefresh: {
             isPresented.toggle()
             isShowing.toggle()
@@ -137,7 +141,34 @@ struct Overview: View {
                 .environmentObject(appManager)
                 .environment(\.modalIsPresented, .constant(PresentationStyle($isPresented)))
         })
+        .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(.TITLE_USER)
+    }
+}
+
+struct SalmonStatsButton: View {
+    @State var isPresented: Bool = false
+    
+    var body: some View {
+        Button(action: {
+            isPresented.toggle()
+        }, label: {
+            Image(systemName: "safari")
+                .resizable()
+                .imageScale(.large)
+        })
+        .safariView(isPresented: $isPresented, content: {
+            SafariView(
+                url: URL(string: "https://salmon-stats.yuki.games/players/\(manager.playerId)")!,
+                configuration: SafariView.Configuration(
+                    entersReaderIfAvailable: false,
+                    barCollapsingEnabled: true
+                )
+            )
+            .preferredBarAccentColor(.clear)
+            .preferredControlAccentColor(.accentColor)
+            .dismissButtonStyle(.done)
+        })
     }
 }
 

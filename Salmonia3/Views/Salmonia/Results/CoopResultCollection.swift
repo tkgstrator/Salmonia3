@@ -36,6 +36,7 @@ struct CoopResultCollection: View {
                 SidebarListStyleView
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(.TITLE_RESULT_COLLECTION)
         .pullToRefresh(isShowing: $isShowing, onRefresh: {
             isPresented.toggle()

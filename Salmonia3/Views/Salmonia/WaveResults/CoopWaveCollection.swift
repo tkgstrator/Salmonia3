@@ -22,6 +22,7 @@ struct CoopWaveCollection: View {
                 }
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(.TITLE_WAVE_COLLECTION)
     }
 }
@@ -32,21 +33,20 @@ struct WaveOverview: View {
     var body: some View {
         HStack(spacing: 0) {
             StageInfo
-            Spacer()
-            WeaponList
-            Spacer()
-            ResultEggs
+            VStack(alignment: .trailing, spacing: 4, content: {
+                ResultEggs
+                WeaponList
+            })
         }
         .frame(maxWidth: .infinity)
     }
     
     var WeaponList: some View {
-        LazyVGrid(columns: Array(repeating: .init(.flexible()), count: wave.weaponLists.count), spacing: 0) {
+        LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 4), spacing: 0) {
             ForEach(wave.weaponLists.indices, id:\.self) { index in
                 Image(weaponId: wave.weaponLists[index])
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(minWidth: 30)
             }
         }
         
@@ -66,20 +66,28 @@ struct WaveOverview: View {
     }
     
     var ResultEggs: some View {
-        VStack(alignment: .leading, spacing: 5) {
-            HStack {
-                Image(Egg.golden).resize()
+        HStack(content: {
+            HStack(content: {
+                Image(Egg.golden)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 20)
                 Text("x\(wave.goldenIkuraNum)")
-                    .frame(width: 50, height: 18, alignment: .leading)
-            }
-            HStack {
-                Image(Egg.power).resize()
+            })
+            .padding(.horizontal, 8)
+            .background(Capsule().fill(Color.black.opacity(0.85)))
+            HStack(content: {
+                Image(Egg.power)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 20)
                 Text("x\(wave.ikuraNum)")
-                    .frame(width: 50, height: 18, alignment: .leading)
-            }
-        }
-        .frame(width: 55)
-        .splatfont2(size: 14)
+            })
+            .padding(.horizontal, 8)
+            .background(Capsule().fill(Color.black.opacity(0.85)))
+        })
+        .minimumScaleFactor(1.0)
+        .font(.custom("Splatfont2", size: 14))
     }
 }
 

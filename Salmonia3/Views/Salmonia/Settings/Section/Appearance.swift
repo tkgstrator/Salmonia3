@@ -28,6 +28,7 @@ extension Setting.Sections {
         var body: some View {
             Section(header: Text(.HEADER_APPEARANCE).splatfont2(.safetyorange, size: 14)) {
                 Toggle(LocalizableStrings.Key.SETTING_DARKMODE.rawValue.localized, isOn: $appManager.isDarkMode)
+                Toggle(LocalizableStrings.Key.SETTING_SALMONSTATS.rawValue.localized, isOn: $appManager.isFree04)
                 HStack(alignment: .center, spacing: nil, content: {
                     Text(.SETTING_LISTSTYLE)
                     Spacer()

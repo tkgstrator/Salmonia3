@@ -22,6 +22,7 @@ class AppManager: ObservableObject {
     @AppStorage("FEATURE_FREE_02") var isFree02: Bool = false // ローテーション表示
     /// ニックネームを隠すかどうか
     @AppStorage("FEATURE_FREE_03") var isFree03: Bool = false // ニックネームを隠す
+    /// Salmon Statsをタブに表示するかどうか
     @AppStorage("FEATURE_FREE_04") var isFree04: Bool = false
     @AppStorage("FEATURE_FREE_05") var isFree05: Bool = false
 

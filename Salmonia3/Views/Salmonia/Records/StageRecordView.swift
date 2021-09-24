@@ -15,14 +15,21 @@ struct StageRecordView: View {
     
     var body: some View {
         PaginationView {
+//            NavigationView {
+//                CoopWaveCollection()
+//            }
+//            .navigationViewStyle(StackNavigationViewStyle())
+//            .navigationTitle(.TITLE_WAVE_COLLECTION)
             ForEach(StageType.allCases, id:\.rawValue) { stageId in
                 NavigationView {
                     RecordView(records: result.records.records.filter({ $0.stageId == stageId }))
+                        .navigationBarTitleDisplayMode(.inline)
                         .navigationTitle(stageId.localizedName)
                 }
                 .navigationViewStyle(StackNavigationViewStyle())
             }
         }
+//        .tabViewStyle(PageTabViewStyle())
         .pageIndicatorTintColor(.primary)
     }
 }
