@@ -123,22 +123,22 @@ class UserCoopRecord: Identifiable {
     internal init() {
         
         for stageId in StageType.allCases {
-            let waves = RealmManager.shared.waves(stageId: stageId.rawValue)
-            let results = RealmManager.shared.results(stageId: stageId.rawValue)
+            let waves = RealmManager.shared.allWaves(stageId: stageId.rawValue)
+            let results = RealmManager.shared.allResults(stageId: stageId.rawValue)
             
             // 夜込み最高記録を計算
-            let total = Array(results.sorted(byKeyPath: "goldenEggs", ascending: false).prefix(3)).map({ Record(stageId: stageId, powerEggs: $0.powerEggs, goldenEggs: $0.goldenEggs, players: $0.players, weaponList: $0.weaponLists, recordType: .total) })
+            let total = Array(results.sorted(byKeyPath: "goldenEggs", ascending: false).prefix(3)).map({ Record(stageId: stageId, playTime: $0.playTime, powerEggs: $0.powerEggs, goldenEggs: $0.goldenEggs, players: $0.players, weaponList: $0.weaponLists, recordType: .total) })
             records.append(contentsOf: total)
 
             // 昼のみ最高記録を計算
-            let nonight = results.filter("SUBQUERY(wave, $wave, $wave.eventType=%@).@count==3", "water-levels").sorted(byKeyPath: "goldenEggs", ascending: false).prefix(3).map({ Record(stageId: stageId, powerEggs: $0.powerEggs, goldenEggs: $0.goldenEggs, players: $0.players, weaponList: $0.weaponLists, recordType: .nonight) })
+            let nonight = results.filter("SUBQUERY(wave, $wave, $wave.eventType=%@).@count==3", "water-levels").sorted(byKeyPath: "goldenEggs", ascending: false).prefix(3).map({ Record(stageId: stageId, playTime: $0.playTime, powerEggs: $0.powerEggs, goldenEggs: $0.goldenEggs, players: $0.players, weaponList: $0.weaponLists, recordType: .nonight) })
             records.append(contentsOf: nonight)
 
             // 各イベント・潮位についてTOP3の記録を抽出
             for eventType in EventType.allCases {
                 for waterLevel in WaterLevel.allCases {
                     let results = Array(waves.filter("eventType=%@ AND waterLevel=%@", eventType.eventName, waterLevel.waterName).sorted(byKeyPath: "goldenIkuraNum", ascending: false).prefix(3))
-                    let record = results.map({ Record(stageId: stageId, waterLevel: waterLevel, eventType: eventType, powerEggs: $0.ikuraNum, goldenEggs: $0.goldenIkuraNum, players: $0.players, weaponList: $0.weaponLists) })
+                    let record = results.map({ Record(stageId: stageId, playTime: $0.playTime, waterLevel: waterLevel, eventType: eventType, powerEggs: $0.ikuraNum, goldenEggs: $0.goldenIkuraNum, players: $0.players, weaponList: $0.weaponLists) })
                     records.append(contentsOf: record)
                 }
             }
@@ -147,6 +147,7 @@ class UserCoopRecord: Identifiable {
     
     class Record: Identifiable {
         var id: UUID = UUID()
+        var playTime: Int
         var stageId: StageType
         var waterLevel: WaterLevel
         var eventType: EventType
@@ -156,7 +157,7 @@ class UserCoopRecord: Identifiable {
         var weaponList: [Int]
         var recordType: RecordType
         
-        internal init(stageId: StageType, waterLevel: WaterLevel = .middle, eventType: EventType = .noevent, powerEggs: Int, goldenEggs: Int, players: [RealmPlayer], weaponList: [Int], recordType: RecordType = .wave) {
+        internal init(stageId: StageType, playTime: Int, waterLevel: WaterLevel = .middle, eventType: EventType = .noevent, powerEggs: Int, goldenEggs: Int, players: [RealmPlayer], weaponList: [Int], recordType: RecordType = .wave) {
             self.stageId = stageId
             self.waterLevel = waterLevel
             self.eventType = eventType
@@ -165,6 +166,7 @@ class UserCoopRecord: Identifiable {
             self.players = players
             self.weaponList = weaponList
             self.recordType = recordType
+            self.playTime = playTime
         }
         
         enum RecordType: CaseIterable {

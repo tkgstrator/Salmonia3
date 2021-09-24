@@ -35,11 +35,22 @@ extension RealmManager {
         return shiftTimeList(nsaid: nsaid).map({ UserCoopResult(startTime: $0, playerId: nsaid)})
     }
     
-    /// リザルトを全件返す
+    /// 現在のプレイヤーのリザルトを全件返す
     var results: RealmSwift.Results<RealmCoopResult> {
         return realm.objects(RealmCoopResult.self)
             .filter("pid=%@", manager.account.nsaid)
             .sorted(byKeyPath: "playTime", ascending: false)
+    }
+
+    /// 全プレイヤーのリザルトを全件返す
+    var allResults: RealmSwift.Results<RealmCoopResult> {
+        return realm.objects(RealmCoopResult.self)
+            .sorted(byKeyPath: "playTime", ascending: false)
+    }
+    
+    func result(playTime: Int) -> RealmCoopResult {
+        realm.objects(RealmCoopResult.self)
+            .filter("playTime=%@", playTime).first!
     }
     
     /// 指定されたプレイヤーIDのリザルトを全件返す
@@ -91,6 +102,13 @@ extension RealmManager {
             .sorted(byKeyPath: "playTime", ascending: false)
     }
     
+    /// 全プレイヤーのリザルトを全件返す
+    func allResults(stageId: Int) -> RealmSwift.Results<RealmCoopResult> {
+        return realm.objects(RealmCoopResult.self)
+            .filter("stageId=%@", stageId)
+            .sorted(byKeyPath: "playTime", ascending: false)
+    }
+    
     /// WAVEリザルトを全件返す
     var waves: RealmSwift.Results<RealmCoopWave> {
         return realm.objects(RealmCoopWave.self)
@@ -108,7 +126,13 @@ extension RealmManager {
         return realm.objects(RealmCoopWave.self)
             .filter("ANY result.pid=%@ AND ANY result.stageId=%@", manager.account.nsaid, stageId)
     }
-    
+
+    /// ステージIDを指定して全プレイヤーのWAVEリザルトを全件返す
+    func allWaves(stageId: Int) -> RealmSwift.Results<RealmCoopWave> {
+        return realm.objects(RealmCoopWave.self)
+            .filter("ANY result.stageId=%@", stageId)
+    }
+
     /// プレイヤーIDを指定してプレイヤーリザルトを全件返す
     func playerResults(playerId: String) -> RealmSwift.Results<RealmPlayerResult> {
         return realm.objects(RealmPlayerResult.self)

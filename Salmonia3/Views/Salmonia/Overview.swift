@@ -25,6 +25,7 @@ struct Overview: View {
                         Spacer()
                         Text(String(format: "%.2f%%", 100 * Double(wave.failure.timeLimit + wave.failure.wipeOut) / Double(results.clearResults.total)))
                     })
+                    .frame(maxWidth: 200)
                     .padding(.trailing)
                 }
                 HStack(alignment: .center, spacing: nil, content: {
@@ -32,6 +33,7 @@ struct Overview: View {
                     Spacer()
                     Text(String(format: "%.2f%%", 100 * Double(results.clearResults.clear) / Double(results.clearResults.total)))
                 })
+                .frame(maxWidth: 200)
                 .padding(.trailing)
             })
             .font(.custom("Splatfont2", size: 16))

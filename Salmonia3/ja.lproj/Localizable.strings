@@ -207,7 +207,7 @@
 "normal"="通常";
 "rush"="ラッシュ";
 "the-mothership"="ハコビヤ襲来";
-"water-levels"="-";
+"water-levels"="イベントなし";
 "TEXT_ADD_ACCOUNT"="アカウントを追加します";
 "BTN_ADD_ACCOUNT"="アカウント追加";
 "TITLE_USER"="ユーザ";
@@ -217,3 +217,4 @@
 "FAILURE_WIPE_OUT"="ゼンメツ";
 "HEADER_FAILURE_WAVE"="失敗WAVE";
 "HEADER_FAILURE_REASON"="失敗理由";
+"TITLE_RECORD"="記錄";

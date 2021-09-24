@@ -64,15 +64,15 @@ struct CoopPlayerView: View {
                     }
                     HStack {
                         HStack {
-                            Image("657f8b8da628ef83cf69101b6817150a")
+                            Image(.rescue)
                                 .resizable()
                                 .frame(width: 33.4, height: 12.8)
                             Spacer()
                             Text(verbatim: "x \(player.helpCount)")
                         }
                         HStack {
-                            Image("2e8d6dbf9112a879d4ceb15403d10a78")
-                                .resizable()
+                            Image(.help)
+                            .resizable()
                                 .frame(width: 33.4, height: 12.8)
                             Spacer()
                             Text(verbatim: "x \(player.deadCount)")
