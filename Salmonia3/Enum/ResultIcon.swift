@@ -17,7 +17,7 @@ enum ResultIcon: String, CaseIterable {
     
     case dot    = "dot"
     case rescue = "rescue"
-    case death  = "death"
+    case help   = "help"
     case wave   = "wave"
 
     public var imageName: String {

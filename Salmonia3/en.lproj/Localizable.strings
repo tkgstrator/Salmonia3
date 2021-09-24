@@ -65,7 +65,7 @@
 "LoadingSnow" = "Default";
 "LoadingSpin" = "Spinner";
 "NIGHT_WAVE"="Night";
-"NO_NIGHT_WAVE"="No Event";
+"NO_NIGHT_WAVE"="No Night Event";
 "PAID" = "Paid";
 "PLAY_VIDEO"="Play";
 "PRODUCT_MULTI_ACCOUNT"="Multi account";
@@ -191,7 +191,7 @@
 "normal"="Normal";
 "rush"="Rush";
 "the-mothership"="The Mothership";
-"water-levels"="-";
+"water-levels"="No Event";
 "TEXT_ADD_ACCOUNT"="Add another NSO account.";
 "BTN_ADD_ACCOUNT"="Add account";
 "TITLE_USER"="User";

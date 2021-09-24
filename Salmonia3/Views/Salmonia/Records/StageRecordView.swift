@@ -8,6 +8,7 @@
 
 import SwiftUI
 import SwiftUIX
+import Introspect
 
 struct StageRecordView: View {
     @EnvironmentObject var result: CoreRealmCoop
@@ -22,43 +23,92 @@ struct StageRecordView: View {
                 .navigationViewStyle(StackNavigationViewStyle())
             }
         }
+        .pageIndicatorTintColor(.primary)
     }
 }
 
 private struct RecordView: View {
+    @State var waterLevel: WaterLevel = .middle
     let records: [UserCoopRecord.Record]
+    
+    /// 夜込み記録
+    var nightRecordView: some View {
+        VStack(alignment: .leading, spacing: 4, content: {
+            HStack(alignment: .center, spacing: nil) {
+                Text(.NIGHT_WAVE).font(.custom("Splatfont2", size: 16))
+                Spacer()
+            }
+            .padding(.leading)
+            LazyVGrid(columns: Array(repeating: .init(.flexible()), count:3), alignment: .center, spacing: nil, pinnedViews: [], content: {
+                ForEach(records.filter({ $0.recordType == .total })) { record in
+                    switch UIDevice.current.userInterfaceIdiom {
+                    case .phone:
+                        RecordCardViewPhone(record: record)
+                    default:
+                        RecordCardViewPad(record: record)
+                    }
+                }
+            })
+        })
+    }
+    
+    /// 昼のみ記録
+    var nonightRecordView: some View {
+        VStack(alignment: .leading, spacing: 4, content: {
+            HStack(alignment: .center, spacing: nil) {
+                Text(.NO_NIGHT_WAVE).font(.custom("Splatfont2", size: 16))
+                Spacer()
+            }
+            .padding(.leading)
+            LazyVGrid(columns: Array(repeating: .init(.flexible()), count:3), alignment: .center, spacing: nil, pinnedViews: [], content: {
+                ForEach(records.filter({ $0.recordType == .nonight })) { record in
+                    switch UIDevice.current.userInterfaceIdiom {
+                    case .phone:
+                        RecordCardViewPhone(record: record)
+                    default:
+                        RecordCardViewPad(record: record)
+                    }
+                }
+            })
+        })
+   }
+    
+    var waveRecordView: some View {
+        ForEach(EventType.allCases, id:\.rawValue) { eventType in
+            if records.filter({ $0.waterLevel == waterLevel && $0.eventType == eventType && $0.recordType == .wave }).map({ $0.goldenEggs }).reduce(0, +) != 0 {
+                VStack(alignment: .leading, spacing:4, content: {
+                    HStack(alignment: .center, spacing: nil) {
+                        Text(eventType.localizedName).font(.custom("Splatfont2", size: 16))
+                        Spacer()
+                    }
+                    .padding(.leading)
+                    LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 3), alignment: .center, spacing: nil, pinnedViews: [], content: {
+                        ForEach(records.filter({ $0.waterLevel == waterLevel && $0.eventType == eventType && $0.recordType == .wave })) { record in
+                            switch UIDevice.current.userInterfaceIdiom {
+                            case .phone:
+                                RecordCardViewPhone(record: record)
+                            default:
+                                RecordCardViewPad(record: record)
+                            }
+                        }
+                    })
+                })
+            }
+        }
+    }
     
     var body: some View {
         ScrollView(showsIndicators: false, content: {
-            // 夜込み記録
-            Section(header: Text(.NIGHT_WAVE).font(.custom("Splatfont2", size: 20)), content: {
-                LazyVGrid(columns: Array(repeating: .init(.flexible()), count: UIDevice.current.userInterfaceIdiom == .pad ? 3 : 1), alignment: .center, spacing: nil, pinnedViews: [], content: {
-                    ForEach(records.filter({ $0.recordType == .total })) { record in
-                        RecordCardViewPad(record: record)
-                    }
-                })
-            })
-            // 昼のみ記録
-            Section(header: Text(.NO_NIGHT_WAVE).font(.custom("Splatfont2", size: 20)), content: {
-                LazyVGrid(columns: Array(repeating: .init(.flexible()), count: UIDevice.current.userInterfaceIdiom == .pad ? 3 : 1), alignment: .center, spacing: nil, pinnedViews: [], content: {
-                    ForEach(records.filter({ $0.recordType == .nonight })) { record in
-                        RecordCardViewPad(record: record)
-                    }
-                })
-            })
-            ForEach(EventType.allCases, id:\.rawValue) { eventType in
-                ForEach(WaterLevel.allCases.reversed(), id:\.rawValue) { waterLevel in
-                    if records.filter({ $0.waterLevel == waterLevel && $0.eventType == eventType && $0.recordType == .wave }).map({ $0.goldenEggs }).reduce(0, +) != 0 {
-                        Section(header: Text("\(waterLevel.localizedName) - \(eventType.localizedName)").font(.custom("Splatfont2", size: 20)), content: {
-                            LazyVGrid(columns: Array(repeating: .init(.flexible()), count: UIDevice.current.userInterfaceIdiom == .pad ? 3 : 1), alignment: .center, spacing: nil, pinnedViews: [], content: {
-                                ForEach(records.filter({ $0.waterLevel == waterLevel && $0.eventType == eventType && $0.recordType == .wave })) { record in
-                                    RecordCardViewPad(record: record)
-                                }
-                            })
-                        })
-                    }
+            Picker("WATER_LEVEL", selection: $waterLevel) {
+                ForEach(WaterLevel.allCases, id:\.rawValue) { waterLevel in
+                    Text(waterLevel.localizedName)
+                        .tag(waterLevel)
                 }
             }
+            .pickerStyle(SegmentedPickerStyle())
+            nightRecordView
+            nonightRecordView
+            waveRecordView
         })
     }
     
@@ -66,36 +116,32 @@ private struct RecordView: View {
         let record: UserCoopRecord.Record
         
         var body: some View {
-            HStack(alignment: .center, spacing: nil, content: {
-                LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 2), alignment: .center, spacing: nil, pinnedViews: [], content: {
-                    ForEach(record.players, id:\.self) { player in
-                        Text(player.nickname)
-                            .font(.custom("Splatfont2", size: 12))
-                    }
+            VStack(alignment: .trailing, spacing: 4, content: {
+                HStack(alignment: .center, spacing: nil, content: {
+                    Image(.golden)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 14, height: 14)
+                    Text("x\(record.goldenEggs)")
+                        .font(.custom("Splatfont2", size: 14))
+                        .frame(height: 22)
+                        .foregroundColor(.yellow)
                 })
-                Spacer()
-                VStack(alignment: .trailing, spacing: 0, content: {
-                    HStack(alignment: .center, spacing: nil, content: {
-                        Image(.golden)
+                .padding(.horizontal, 8)
+                .background(Capsule().fill(Color.black.opacity(0.8)))
+                LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: 2), count: 4), alignment: .center, spacing: 0, content: {
+                    ForEach(record.weaponList.indices) { index in
+                        Image(weaponId: record.weaponList[index])
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 16, height: 16)
-                        Text("x\(record.goldenEggs)")
-                            .font(.custom("Splatfont2", size: 12))
-                    })
-                    LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 4), alignment: .center, spacing: 0, content: {
-                        ForEach(record.weaponList.indices) { index in
-                            Image(weaponId: record.weaponList[index])
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 24, height: 24)
-                        }
-                    })
+                            .padding(2)
+                            .background(Circle().fill(Color.black.opacity(0.95)))
+                    }
                 })
+                .padding(.top, 6)
             })
-            .padding()
-            .foregroundColor(.seashell)
-            .background(RoundedRectangle(cornerRadius: 10).fill(Color.gray))
+            .padding(4)
+            .background(RoundedRectangle(cornerRadius: 10).fill(Color.safetyorange))
         }
     }
     
@@ -107,6 +153,7 @@ private struct RecordView: View {
                 ForEach(record.players, id:\.self) { player in
                     Text(player.nickname)
                         .font(.custom("Splatfont2", size: 16))
+                        .shadow(color: .black, radius: 0, x: 0, y: 2)
                 }
             })
         }
@@ -152,12 +199,14 @@ private struct RecordView: View {
         }
         
         var body: some View {
-            VStack(alignment: .center, spacing: 0, content: {
-                weaponList
-                recordDetail
-                playerList
+            NavigationLink(destination: CoopResultView(result: RealmManager.shared.result(playTime: record.playTime)), label: {
+                VStack(alignment: .center, spacing: 0, content: {
+                    weaponList
+                    recordDetail
+                    playerList
+                })
             })
-//            .foregroundColor(.seashell)
+            .buttonStyle(PlainButtonStyle())
             .background(RoundedRectangle(cornerRadius: 10).fill(Color.safetyorange))
         }
     }
