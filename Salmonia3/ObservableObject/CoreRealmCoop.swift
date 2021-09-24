@@ -31,16 +31,12 @@ class CoreRealmCoop: ObservableObject {
         RealmManager.shared.results(playerId: manager.playerId)
     }
     
-    /// 各WAVEの勝率とかを求めるやつ
-    
-    /// ステージ記録一覧
-//    var records: [CoopRecord] {
-//        return StageType.allCases.map{ CoopRecord(stageId: $0.rawValue) }
-//    }
-    
     init() {
         // 不要だとは思うが念の為にアップデートする
         token = RealmManager.shared.results.observe { [weak self] _ in
+            // これらはアップデートしないと更新されない
+            self?.clearResults = UserOverview()
+            self?.records = UserCoopRecord()
             self?.objectWillChange.send()
         }
     }
