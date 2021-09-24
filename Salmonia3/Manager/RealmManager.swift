@@ -177,11 +177,16 @@ final class RealmManager: AppManager {
                 realm.beginWrite()
                 for result in results {
                     let result: RealmCoopResult = RealmCoopResult(from: result, pid: manager.playerId, environment: environment)
-                    switch !result.duplicatedResult.isEmpty {
+                    switch result.duplicatedResult.isEmpty {
                     case true:
-                        result.duplicatedResult.setValue(result.salmonId, forKey: "salmonId")
-                    case false:
                         realm.create(RealmCoopResult.self, value: result, update: .all)
+                    case false:
+                        switch environment {
+                        case .splatnet2:
+                            result.duplicatedResult.setValue(result.jobId, forKey: "jobId")
+                        case .salmonstats:
+                            result.duplicatedResult.setValue(result.salmonId, forKey: "salmonId")
+                        }
                     }
                 }
                 try? realm.commitWrite()

@@ -176,7 +176,7 @@
 "TITLE_RESULT_DETAIL"="Result Detail";
 "TITLE_SALMONIA"="Salmonia";
 "TITLE_SETTINGS"="Settings";
-"TITLE_SHIFT_SCHEDULE"="Shift Schedule";
+"TITLE_SHIFT_SCHEDULE"="Schedule";
 "TITLE_SHIFT_STATS"="Shift Stats";
 "TITLE_TUTORIAL"="How to sign in";
 "TITLE_WAVE_ANALYSIS"="Wave Analysis";
@@ -202,3 +202,6 @@
 "HEADER_FAILURE_WAVE"="Failure Wave";
 "HEADER_FAILURE_REASON"="Failure Reason";
 "TITLE_RECORD"="Records";
+"TITLE_COLLECTION"="Collection";
+"SETTING_SALMONSTATS"="Display Salmon Stats on Tab";
+"TITLE_SALMONSTATS"="Salmon Stats";
