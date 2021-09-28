@@ -63,7 +63,7 @@ struct CoopResultCollection: View {
     private var SidebarListStyleView: some View {
         List {
             ForEach(main.results) { shift in
-                Section(header: CoopShift(shift: shift.phase)) {
+                Section(header: CoopShiftView().environment(\.coopshift, shift.phase)) {
                     ForEach(shift.results, id:\.self) { result in
                         ZStack(alignment: .leading) {
                             NavigationLink(destination: CoopResultView(result: result)) {
@@ -120,7 +120,7 @@ struct CoopResultCollection: View {
     private var DefaultListStyleView: some View {
         List {
             ForEach(main.results) { shift in
-                Section(header: CoopShift(shift: shift.phase)) {
+                Section(header: CoopShiftView().environment(\.coopshift, shift.phase)) {
                     ForEach(shift.results, id:\.self) { result in
                         ZStack(alignment: .leading) {
                             NavigationLink(destination: CoopResultView(result: result)) {
@@ -207,14 +207,14 @@ struct ResultOverview: View {
         if result.isClear {
             return AnyView(
                 Text(.RESULT_CLEAR)
-                    .splatfont(.green, size: 14)
-                    .frame(width: 70)
+                    .splatfont(.green, size: 13)
+                    .frame(width: 60)
             )
         } else {
             return AnyView(
                 Text(.RESULT_DEFEAT)
-                    .splatfont(.safetyorange, size: 14)
-                    .frame(width: 70)
+                    .splatfont(.safetyorange, size: 13)
+                    .frame(width: 60)
             )
         }
     }
@@ -224,16 +224,16 @@ struct ResultOverview: View {
             HStack {
                 Image(Egg.golden).resize()
                 Text("x\(result.goldenEggs)")
-                    .splatfont2(size: 16)
-                    .frame(width: 50, height: 22, alignment: .leading)
+                    .splatfont2(size: 15)
+                    .frame(width: 45, height: 22, alignment: .leading)
             }
             HStack {
                 Image(Egg.power).resize()
                 Text("x\(result.powerEggs)")
-                    .splatfont2(size: 16)
+                    .splatfont2(size: 15)
                     .frame(width: 50, height: 22, alignment: .leading)
             }
         }
-        .frame(width: 55)
+        .frame(width: 50)
     }
 }
