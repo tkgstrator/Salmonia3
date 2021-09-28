@@ -13,13 +13,14 @@ import Introspect
 struct StageRecordView: View {
     @EnvironmentObject var result: CoreRealmCoop
     
+    enum RecordType: Int, CaseIterable {
+        case golden
+        case power
+        case overview
+    }
+    
     var body: some View {
         PaginationView {
-//            NavigationView {
-//                CoopWaveCollection()
-//            }
-//            .navigationViewStyle(StackNavigationViewStyle())
-//            .navigationTitle(.TITLE_WAVE_COLLECTION)
             ForEach(StageType.allCases, id:\.rawValue) { stageId in
                 NavigationView {
                     RecordView(records: result.records.records.filter({ $0.stageId == stageId }))
@@ -29,7 +30,6 @@ struct StageRecordView: View {
                 .navigationViewStyle(StackNavigationViewStyle())
             }
         }
-//        .tabViewStyle(PageTabViewStyle())
         .pageIndicatorTintColor(.primary)
     }
 }
