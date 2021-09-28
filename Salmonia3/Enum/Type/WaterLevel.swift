@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import RealmSwift
 import SwiftUI
 
-enum WaterLevel: Int, CaseIterable, Identifiable {
+enum WaterLevel: Int, CaseIterable, Identifiable, PersistableEnum {
     var id: Int { rawValue }
     public enum Package {
         public static let namespace = "Wave"

@@ -40,7 +40,7 @@ final class RealmManager: AppManager {
         } catch {
             var config = Realm.Configuration.defaultConfiguration
             config.deleteRealmIfMigrationNeeded = true
-            config.schemaVersion = schemeVersion
+            config.schemaVersion = schemeVersion * 2
             self.realm = try! Realm(configuration: config)
         }
     }

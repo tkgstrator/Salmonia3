@@ -74,7 +74,7 @@
 		1071596126E279190066DB74 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071596026E279190066DB74 /* Appearance.swift */; };
 		1071596326E2799F0066DB74 /* SettingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071596226E2799F0066DB74 /* SettingMenu.swift */; };
 		1071596926E3BFA20066DB74 /* CoreShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071596826E3BFA20066DB74 /* CoreShiftStats.swift */; };
-		107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */; };
+		107D8A2C260A0D83005DCC83 /* RealmStatsRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D8A2B260A0D83005DCC83 /* RealmStatsRecord.swift */; };
 		1081B769269D1FD60063D947 /* RealmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1081B768269D1FD60063D947 /* RealmObjects.swift */; };
 		1083857C265922700099475F /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 1083857B265922700099475F /* SwiftyBeaver */; };
 		108684E826EB5D7F00E28C7C /* RobotoMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 108684E726EB5D7F00E28C7C /* RobotoMono.ttf */; };
@@ -101,7 +101,6 @@
 		10A7893726E0E801002F83EA /* SalmonidType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A7893626E0E801002F83EA /* SalmonidType.swift */; };
 		10AD114D2600EB18008C0E64 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AD114C2600EB18008C0E64 /* Error.swift */; };
 		10AF14B127029CC400F7F8AC /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = 10AF14B027029CC400F7F8AC /* default.png */; };
-		10AF14B427036AB200F7F8AC /* records.json in Resources */ = {isa = PBXBuildFile; fileRef = 10AF14B327036AB200F7F8AC /* records.json */; };
 		10AF87E326E63DFF00D1C35E /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 10AF87E226E63DFF00D1C35E /* SDWebImageSwiftUI */; };
 		10AF87E726E643A400D1C35E /* LoadingIka.png in Resources */ = {isa = PBXBuildFile; fileRef = 10AF87E626E643A400D1C35E /* LoadingIka.png */; };
 		10AF87EA26E6E7AC00D1C35E /* CircleChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AF87E926E6E7AC00D1C35E /* CircleChartView.swift */; };
@@ -118,6 +117,9 @@
 		10AF880426E8E59E00D1C35E /* WeaponType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AF87F426E79A6600D1C35E /* WeaponType.swift */; };
 		10B62CA32669CC1400916A64 /* CoopWaveCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B62CA22669CC1400916A64 /* CoopWaveCollection.swift */; };
 		10B62CAF2669D48E00916A64 /* ResultStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B62CAE2669D48E00916A64 /* ResultStyle.swift */; };
+		10BAE3282703D33600DB98D0 /* records.json in Resources */ = {isa = PBXBuildFile; fileRef = 10BAE3272703D33600DB98D0 /* records.json */; };
+		10BAE32A2703D7FC00DB98D0 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BAE3292703D7FC00DB98D0 /* RecordType.swift */; };
+		10BAE32D2703DD2800DB98D0 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10BAE32C2703DD2800DB98D0 /* RealmSwift */; };
 		10BBBEA226049EF400DA79C9 /* CoopResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBBEA126049EF400DA79C9 /* CoopResultView.swift */; };
 		10CD8544268D40AA00A00162 /* CoopShiftStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD8543268D40A900A00162 /* CoopShiftStatsView.swift */; };
 		10CF098E25FB97CB00D2EEB1 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF098D25FB97CB00D2EEB1 /* BetterSafariView */; };
@@ -251,7 +253,7 @@
 		1071596026E279190066DB74 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		1071596226E2799F0066DB74 /* SettingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenu.swift; sourceTree = "<group>"; };
 		1071596826E3BFA20066DB74 /* CoreShiftStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreShiftStats.swift; sourceTree = "<group>"; };
-		107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopStats.swift; sourceTree = "<group>"; };
+		107D8A2B260A0D83005DCC83 /* RealmStatsRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStatsRecord.swift; sourceTree = "<group>"; };
 		1081B768269D1FD60063D947 /* RealmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
 		108684E726EB5D7F00E28C7C /* RobotoMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoMono.ttf; sourceTree = "<group>"; };
 		108BFD9B26DDC37800652271 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -277,7 +279,6 @@
 		10A7893626E0E801002F83EA /* SalmonidType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonidType.swift; sourceTree = "<group>"; };
 		10AD114C2600EB18008C0E64 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		10AF14B027029CC400F7F8AC /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
-		10AF14B327036AB200F7F8AC /* records.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = records.json; sourceTree = "<group>"; };
 		10AF87E626E643A400D1C35E /* LoadingIka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoadingIka.png; sourceTree = "<group>"; };
 		10AF87E926E6E7AC00D1C35E /* CircleChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleChartView.swift; sourceTree = "<group>"; };
 		10AF87EB26E6E7D500D1C35E /* BirChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirChartView.swift; sourceTree = "<group>"; };
@@ -290,6 +291,8 @@
 		10AF87FC26E79ABA00D1C35E /* EventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
 		10B62CA22669CC1400916A64 /* CoopWaveCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopWaveCollection.swift; sourceTree = "<group>"; };
 		10B62CAE2669D48E00916A64 /* ResultStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultStyle.swift; sourceTree = "<group>"; };
+		10BAE3272703D33600DB98D0 /* records.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = records.json; sourceTree = "<group>"; };
+		10BAE3292703D7FC00DB98D0 /* RecordType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
 		10BBBEA126049EF400DA79C9 /* CoopResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopResultView.swift; sourceTree = "<group>"; };
 		10CD8543268D40A900A00162 /* CoopShiftStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftStatsView.swift; sourceTree = "<group>"; };
 		10CF09F325FB9BE100D2EEB1 /* RealmCoopResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopResult.swift; sourceTree = "<group>"; };
@@ -323,6 +326,7 @@
 				10023BD826DE7136007BB899 /* SwiftUI.framework in Frameworks */,
 				10023BD726DE7136007BB899 /* WidgetKit.framework in Frameworks */,
 				104DDC8726DFB5E10086B91E /* SplatNet2 in Frameworks */,
+				10BAE32D2703DD2800DB98D0 /* RealmSwift in Frameworks */,
 				104DDC8926DFB7040086B91E /* BetterSafariView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,8 +421,8 @@
 			isa = PBXGroup;
 			children = (
 				109E892826FB209F002B192D /* tutorial.mp4 */,
+				10BAE3272703D33600DB98D0 /* records.json */,
 				10AF87E626E643A400D1C35E /* LoadingIka.png */,
-				10AF14B327036AB200F7F8AC /* records.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -620,13 +624,10 @@
 		10682EFF265000400035CC68 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
+				10BAE32B2703DA0900DB98D0 /* Image */,
 				10AF880226E8E4E400D1C35E /* Style */,
 				10AF880126E8E4DE00D1C35E /* Type */,
-				1071595126E2274A0066DB74 /* Egg.swift */,
-				109E893926FBC4ED002B192D /* FontAwesome.swift */,
-				1071595726E2734F0066DB74 /* ResultIcon.swift */,
 				10AD114C2600EB18008C0E64 /* Error.swift */,
-				10B62CAE2669D48E00916A64 /* ResultStyle.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -781,9 +782,10 @@
 		10AF880126E8E4DE00D1C35E /* Type */ = {
 			isa = PBXGroup;
 			children = (
+				10BAE3292703D7FC00DB98D0 /* RecordType.swift */,
 				10AF87FC26E79ABA00D1C35E /* EventType.swift */,
-				10AF87F526E79A6600D1C35E /* StageType.swift */,
 				10AF87F626E79A6600D1C35E /* WaterLevel.swift */,
+				10AF87F526E79A6600D1C35E /* StageType.swift */,
 				10AF87F726E79A6600D1C35E /* SpecialType.swift */,
 				10AF87F426E79A6600D1C35E /* WeaponType.swift */,
 				10A7893626E0E801002F83EA /* SalmonidType.swift */,
@@ -795,15 +797,26 @@
 		10AF880226E8E4E400D1C35E /* Style */ = {
 			isa = PBXGroup;
 			children = (
+				10B62CAE2669D48E00916A64 /* ResultStyle.swift */,
 			);
 			path = Style;
+			sourceTree = "<group>";
+		};
+		10BAE32B2703DA0900DB98D0 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				1071595126E2274A0066DB74 /* Egg.swift */,
+				109E893926FBC4ED002B192D /* FontAwesome.swift */,
+				1071595726E2734F0066DB74 /* ResultIcon.swift */,
+			);
+			path = Image;
 			sourceTree = "<group>";
 		};
 		10CF09F825FB9BEE00D2EEB1 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
 				10448BDB26652E6700FFB553 /* SRPower */,
-				107D8A2B260A0D83005DCC83 /* RealmCoopStats.swift */,
+				107D8A2B260A0D83005DCC83 /* RealmStatsRecord.swift */,
 				10CF09F325FB9BE100D2EEB1 /* RealmCoopResult.swift */,
 				1024661A25FE0929004DC043 /* RealmCoopShift.swift */,
 				10CF09FF25FBA5BC00D2EEB1 /* RealmPlayerResult.swift */,
@@ -879,6 +892,7 @@
 			packageProductDependencies = (
 				104DDC8626DFB5E10086B91E /* SplatNet2 */,
 				104DDC8826DFB7040086B91E /* BetterSafariView */,
+				10BAE32C2703DD2800DB98D0 /* RealmSwift */,
 			);
 			productName = shiftwidgetExtension;
 			productReference = 10023BD626DE7136007BB899 /* shiftwidgetExtension.appex */;
@@ -1039,7 +1053,7 @@
 				108684E826EB5D7F00E28C7C /* RobotoMono.ttf in Resources */,
 				1059416B25FA49E900C32D21 /* Assets.xcassets in Resources */,
 				108BFD9C26DDC37800652271 /* GoogleService-Info.plist in Resources */,
-				10AF14B427036AB200F7F8AC /* records.json in Resources */,
+				10BAE3282703D33600DB98D0 /* records.json in Resources */,
 				10D0177E26C0985F000DCA1B /* Configuration.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1226,7 +1240,8 @@
 				10377F8625FD041900536A94 /* AppManager.swift in Sources */,
 				1071595D26E278FF0066DB74 /* Account.swift in Sources */,
 				10377F9125FD09E800536A94 /* LoadingView.swift in Sources */,
-				107D8A2C260A0D83005DCC83 /* RealmCoopStats.swift in Sources */,
+				107D8A2C260A0D83005DCC83 /* RealmStatsRecord.swift in Sources */,
+				10BAE32A2703D7FC00DB98D0 /* RecordType.swift in Sources */,
 				1071596126E279190066DB74 /* Appearance.swift in Sources */,
 				10CF09FB25FB9C6B00D2EEB1 /* CoreRealmCoop.swift in Sources */,
 				10E8BD9F26F50E9000B09B33 /* RestoreButton.swift in Sources */,
@@ -1779,6 +1794,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 10AF87E126E63DFF00D1C35E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		10BAE32C2703DD2800DB98D0 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10CF09B625FB9AC100D2EEB1 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
 		};
 		10CF098D25FB97CB00D2EEB1 /* BetterSafariView */ = {
 			isa = XCSwiftPackageProductDependency;

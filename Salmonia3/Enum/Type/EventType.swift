@@ -7,9 +7,9 @@
 //
 
 import Foundation
+import RealmSwift
 
-enum EventType: Int, CaseIterable, Identifiable {
-    var id: Int { rawValue }
+enum EventType: Int, CaseIterable, Identifiable, PersistableEnum {
     case noevent    = 0
     case rush       = 1
     case goldie     = 2
@@ -17,27 +17,25 @@ enum EventType: Int, CaseIterable, Identifiable {
     case mothership = 4
     case fog        = 5
     case cohock     = 6
-    
-    var eventName: String {
+
+    var id: Int { rawValue }
+
+    var localizedName: String {
         switch self {
         case .noevent:
-            return "water-levels"
+            return "water-levels".localized
         case .rush:
-            return "rush"
+            return "rush".localized
         case .goldie:
-            return "goldie-seeking"
+            return "goldie-seeking".localized
         case .griller:
-            return "griller"
+            return "griller".localized
         case .mothership:
-            return "the-mothership"
+            return "the-mothership".localized
         case .fog:
-            return "fog"
+            return "fog".localized
         case .cohock:
-            return "cohock-charge"
+            return "cohock-charge".localized
         }
-    }
-    
-    var localizedName: String {
-        self.eventName.localized
     }
 }

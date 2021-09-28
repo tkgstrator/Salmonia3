@@ -7,21 +7,22 @@
 //
 
 import Foundation
+import RealmSwift
 import SwiftUI
 
-enum StageType: Int, CaseIterable {
-    var id: Int { rawValue }
-    public enum Package {
-        public static let namespace = "Stage"
-        public static let version = "1.0.0"
-    }
-    
+enum StageType: Int, CaseIterable, PersistableEnum, Codable {
     case shakeup    = 5000
     case shakeship  = 5001
     case shakehouse = 5002
     case shakelift  = 5003
     case shakeride  = 5004
     
+    var id: Int { rawValue }
+    public enum Package {
+        public static let namespace = "Stage"
+        public static let version = "1.0.0"
+    }
+
     public var imageName: String {
         "\(Package.namespace)/\(rawValue)"
     }

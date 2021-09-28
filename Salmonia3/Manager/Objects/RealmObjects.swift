@@ -193,7 +193,7 @@ extension RealmManager {
 extension RealmSwift.Results where Element == RealmCoopWave {
     /// WAVEリザルトから指定された潮位とイベントでの最高納品数を返す
     func maxGoldenEggs(eventType: EventType, waterLevel: WaterLevel) -> Int? {
-        self.filter("eventType=%@ AND waterLevel=%@", eventType.eventName, waterLevel.waterName).max(ofProperty: "goldenIkuraNum")
+        self.filter("eventType=%@ AND waterLevel=%@", eventType.rawValue, waterLevel.rawValue).max(ofProperty: "goldenIkuraNum")
     }
 }
 
