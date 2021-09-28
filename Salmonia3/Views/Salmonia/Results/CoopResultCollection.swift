@@ -40,7 +40,9 @@ struct CoopResultCollection: View {
         .navigationTitle(.TITLE_RESULT_COLLECTION)
         .pullToRefresh(isShowing: $isShowing, onRefresh: {
             isPresented.toggle()
-            isShowing.toggle()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                self.isShowing.toggle()
+            })
         })
         .present(isPresented: $isPresented, transitionStyle: .flipHorizontal, presentationStyle: .fullScreen, content: {
             LoadingView()

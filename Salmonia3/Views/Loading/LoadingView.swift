@@ -15,14 +15,13 @@ import Combine
 struct LoadingView: View {
     @Environment(\.modalIsPresented) var present
     @EnvironmentObject var appManager: AppManager
-    @State var apiError: APIError = .fatalerror
-    @State var isPresented: Bool = false
+    @State var apiError: APIError?
     @State private var task = Set<AnyCancellable>()
 
     var body: some View {
         LoggingThread()
             .onAppear(perform: getResultFromSplatNet2)
-            .alert(isPresented: $isPresented, content: {
+            .alert(item: $apiError, content: { apiError in
                 return Alert(title: Text(apiError.error), message: Text(apiError.localizedDescription), dismissButton: .default(Text(.BTN_CONFIRM), action: { present.wrappedValue.dismiss() }))
             })
     }
@@ -38,7 +37,6 @@ struct LoadingView: View {
                         present.wrappedValue.dismiss()
                     case .failure(let error):
                         apiError = error
-                        isPresented.toggle()
                         appManager.loggingToCloud(error.localizedDescription)
                     }
                 }, receiveValue: { _ in
@@ -54,7 +52,6 @@ struct LoadingView: View {
                 RealmManager.shared.updateNicknameAndIcons(players: response)
             case .failure(let error):
                 apiError = error
-                isPresented.toggle()
                 appManager.loggingToCloud(error.localizedDescription)
             }
         }
@@ -81,7 +78,6 @@ struct LoadingView: View {
                     present.wrappedValue.dismiss()
                 default:
                     apiError = error
-                    isPresented.toggle()
                     appManager.loggingToCloud(error.localizedDescription)
                 }
             }

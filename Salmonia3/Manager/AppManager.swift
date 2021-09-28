@@ -44,7 +44,7 @@ class AppManager: ObservableObject {
     @AppStorage("FEATURE_GAME_05") var isGame05: Bool = false
     
     // その他の機能
-    @AppStorage("FEATURE_OTHER_01") var isSignedIn: Bool = false              // 初回起動かどうかのフラグ
+    @AppStorage("FEATURE_OTHER_01") var isFirstLaunch: Bool = true              // 初回起動かどうかのフラグ
     @AppStorage("FEATURE_OTHER_02") var importNum: Int = 50                     // 一度にSalmon Statsから取得するリザルトの件数
     @AppStorage("FEATURE_OTHER_03") var isDarkMode: Bool = false                // ダークモード判定
     @AppStorage("FEATURE_OTHER_04") var listStyle: ResultListStyle = .default   // リストスタイル

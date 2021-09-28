@@ -105,6 +105,11 @@ struct ContentView: View {
         })
         .preferredColorScheme(appManager.isDarkMode ? .dark : .light)
         .navigationViewStyle(SplitNavigationViewStyle())
+        .fullScreenCover(isPresented: $appManager.isFirstLaunch, content: {
+            NavigationView {
+                LoginMenu()
+            }
+        })
     }
 }
 

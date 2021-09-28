@@ -54,7 +54,7 @@ struct SalmonLoginMenu: View {
             WebAuthenticationSession(url: URL(string: "https://salmon-stats-api.yuki.games/auth/twitter")!, callbackURLScheme: "salmon-stats") { callbackURL, _ in
                 guard let accessToken = callbackURL?.absoluteString.capture(pattern: "api-token=(.*)", group: 1) else { return }
                 manager.apiToken = accessToken
-                appManager.isSignedIn.toggle()
+                appManager.isFirstLaunch.toggle()
             }
             .prefersEphemeralWebBrowserSession(false)
         })
