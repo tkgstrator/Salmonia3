@@ -26,11 +26,11 @@ struct AddAccountButton: View {
         .buttonStyle(DefaultButtonStyle())
         .alert(isPresented: $isPresented, content: {
             Alert(title: Text(.BTN_ADD_ACCOUNT), message: Text(.TEXT_ADD_ACCOUNT), primaryButton: .default(Text(.BTN_CONFIRM), action: {
-                appManager.isSignedIn.toggle()
+                appManager.isFirstLaunch.toggle()
             }),
             secondaryButton: .destructive(Text(.BTN_CANCEL)))
         })
-        .fullScreenCover(isPresented: $appManager.isSignedIn, content: {
+        .fullScreenCover(isPresented: $appManager.isFirstLaunch, content: {
             NavigationView {
                 LoginMenu()
             }

@@ -43,25 +43,30 @@ struct Salmonia3App: SwiftUI.App {
                 .environmentObject(CoreRealmCoop())
                 .environmentObject(AppManager())
                 .listStyle(GroupedListStyle())
+                .onAppear(perform: initFirebaseMobileAds)
         }
+    }
+    
+    private func initFirebaseMobileAds() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            ATTrackingManager.requestTrackingAuthorization(completionHandler: { _ in
+                GADMobileAds.sharedInstance().start(completionHandler: nil)
+            })
+        })
+        print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
     }
 }
 
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-    @AppStorage("isSignedIn") var isSignedIn: Bool = true
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-        initFirebaseMobileAds()
+        FirebaseApp.configure()
         initSwiftyStoreKit()
         initSwiftyBeaver()
         updateKeychainAccess()
-        
-        // X-Product Versionの更新
         updateXProductVersion()
-
-        // シフト情報の取得
         try? RealmManager.shared.addNewRotation(from: SplatNet2.shiftSchedule)
         return true
     }
@@ -82,7 +87,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
     
     private func updateXProductVersion() {
-        AF.request("https://salmonia-api.herokuapp.com", method: .get)
+        AF.request("https://h505nylwxl.execute-api.ap-northeast-1.amazonaws.com/dev/version", method: .get)
             .validate(statusCode: 200...200)
             .validate(contentType: ["application/json"])
             .responseJSON { response in
@@ -104,8 +109,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                         } else {
                         }
                     }
-                case .failure(_):
-                    break
+                case .failure(let error):
+                    log.error(error.localizedDescription)
                 }
             }
     }
@@ -115,15 +120,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         console.format = "$DHH:mm:ss$d $L $M"
         log.addDestination(console)
         log.addDestination(cloud)
-    }
-    
-    private func initFirebaseMobileAds() {
-        // MARK: Firebaseの設定
-        FirebaseApp.configure()
-        ATTrackingManager.requestTrackingAuthorization(completionHandler: { _ in
-            GADMobileAds.sharedInstance().start(completionHandler: nil)
-        })
-        print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
     }
     
     private func initSwiftyStoreKit() {
@@ -136,7 +132,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                         SwiftyStoreKit.finishTransaction(purchase.transaction)
                     }
                 case .failed, .purchasing, .deferred:
-                    break
+                    log.error("SwiftyStoreKit: CompleteTransactions \(purchase.productId)")
                 default:
                     break
                 }
@@ -154,7 +150,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             }
             let keychain = Keychain(server: "tkgstrator.work", protocolType: .https)
             try? keychain.removeAll()
-            isSignedIn = true
         }
     }
     

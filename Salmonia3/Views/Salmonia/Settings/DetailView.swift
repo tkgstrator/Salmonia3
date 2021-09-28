@@ -22,10 +22,10 @@ private struct LogoutButton: View {
         .alert(isPresented: $isPresented, content: {
             Alert(title: Text(.SETTING_SIGN_OUT), message: Text(.TEXT_SIGN_OUT), primaryButton: .default(Text(.BTN_CONFIRM), action: {
                 manager.deleteAllAccounts()
-                appManager.isSignedIn.toggle()
+                appManager.isFirstLaunch.toggle()
             }), secondaryButton: .destructive(Text(.BTN_CANCEL)))
         })
-        .fullScreenCover(isPresented: $appManager.isSignedIn, content: {
+        .fullScreenCover(isPresented: $appManager.isFirstLaunch, content: {
             NavigationView {
                 LoginMenu()
             }
