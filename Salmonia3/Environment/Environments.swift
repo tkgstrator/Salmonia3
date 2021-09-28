@@ -16,6 +16,12 @@ class Salmonia3 {
             
             typealias Value = RealmCoopShift
         }
+
+        struct Wave: EnvironmentKey {
+            static var defaultValue: RealmCoopWave = RealmCoopWave()
+            
+            typealias Value = RealmCoopWave
+        }
     }
 }
 
@@ -26,6 +32,15 @@ extension EnvironmentValues {
         }
         set {
             self[Salmonia3.Environment.CoopShift.self] = newValue
+        }
+    }
+    
+    var wave: RealmCoopWave {
+        get {
+            return self[Salmonia3.Environment.Wave.self]
+        }
+        set {
+            self[Salmonia3.Environment.Wave.self] = newValue
         }
     }
 }

@@ -10,7 +10,7 @@ import RealmSwift
 import SalmonStats
 import SplatNet2
 
-final class RealmCoopWave: Object {
+final class RealmCoopWave: Object, ObjectKeyIdentifiable {
     @Persisted var eventType: String
     @Persisted var waterLevel: String
     @Persisted(indexed: true) var goldenIkuraNum: Int
@@ -28,16 +28,6 @@ final class RealmCoopWave: Object {
         self.quotaNum = result.quotaNum
         self.ikuraNum = result.ikuraNum
     }
-    
-//    convenience init(from result: SalmonStats.ResultCoop.ResultWave) {
-//        self.init()
-//        self.eventType = SplatNet2Metadata.EventType(rawValue: result.eventType)!.eventType
-//        self.waterLevel = SplatNet2Metadata.WaterLevel(rawValue: result.waterLevel)!.waterLevel
-//        self.goldenIkuraNum = result.goldenIkuraNum
-//        self.goldenIkuraPopNum = result.goldenIkuraPopNum
-//        self.quotaNum = result.quotaNum
-//        self.ikuraNum = result.ikuraNum
-//    }
 }
 
 fileprivate final class SplatNet2Metadata {
