@@ -6,19 +6,21 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct CoopWaveCollection: View {
-    @EnvironmentObject var main: CoreRealmCoop
-    
+    @ObservedResults(RealmCoopWave.self) var waves
+
     var body: some View {
         List {
-            ForEach(main.waves.indices, id:\.self) { index in
+            ForEach(waves) { wave in
                 ZStack(alignment: .leading) {
-                    NavigationLink(destination: CoopResultView(result: main.waves[index].result.first!)) {
+                    NavigationLink(destination: CoopResultView(result: wave.result.first!)) {
                         EmptyView()
                     }
                     .opacity(0.0)
-                    WaveOverview(wave: main.waves[index])
+                    WaveOverview()
+                        .environment(\.wave, wave)
                 }
             }
         }
@@ -28,8 +30,8 @@ struct CoopWaveCollection: View {
 }
 
 struct WaveOverview: View {
-    @StateObject var wave: RealmCoopWave
-    
+    @Environment(\.wave) var wave
+
     var body: some View {
         HStack(spacing: 0) {
             StageInfo
