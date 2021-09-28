@@ -113,54 +113,55 @@ struct CoopResultOverview: View {
 
     // MARK: 各WAVEの情報を表示
     var ResultWave: some View {
-        LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 140), alignment: .top), count: result.wave.count)) {
-            ForEach(result.wave.indices, id: \.self) { index in
-                LazyVStack(spacing: 0) {
-                    LazyVStack(spacing: 0) {
-                        Text("RESULT_WAVE_\(index + 1)")
-                            .foregroundColor(.black)
-                        Text("\(result.wave[index].goldenIkuraNum)/\(result.wave[index].quotaNum)")
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 5)
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 36)
-                            .background(Color.maire)
-                            .splatfont2(size: 26)
-                        Text("\(result.wave[index].ikuraNum)")
-                            .foregroundColor(.red)
-                        Text(result.wave[index].waterLevel.localized)
-                            .frame(height: 24)
-                            .foregroundColor(.black)
-                        Text(result.wave[index].eventType.localized)
-                            .frame(height: 24)
-                            .foregroundColor(.black)
-                    }
-                    .background(Color.yellow)
-                    .clipShape(RoundedRectangle(cornerRadius: 3))
-                    .padding(.bottom, 10)
-                    LazyHStack {
-                        Image(Egg.golden)
-                            .resizable()
-                            .frame(width: 15, height: 15)
-                        Text("RESULT_APPEARANCES_\(result.wave[index].goldenIkuraPopNum)")
-                            .font(.custom("Splatfont2", size: 13))
-                            .minimumScaleFactor(0.5)
-                    }
-                    .padding(.bottom, 10)
-                    LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 4), alignment: .leading, spacing: 0, pinnedViews: []) {
-                        ForEach(result.specialUsage[index].indices) { idx in
-                            Image(specialId: result.specialUsage[index][idx])
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 28)
-                        }
-                    }
-                }
-            }
-        }
-        .frame(minHeight: 120)
-        .splatfont2(.white, size: 16)
-        .padding(.horizontal, 5)
+        Text("Nyamo")
+//        LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 140), alignment: .top), count: result.wave.count)) {
+//            ForEach(result.wave.indices, id: \.self) { index in
+//                LazyVStack(spacing: 0) {
+//                    LazyVStack(spacing: 0) {
+//                        Text("RESULT_WAVE_\(index + 1)")
+//                            .foregroundColor(.black)
+//                        Text("\(result.wave[index].goldenIkuraNum)/\(result.wave[index].quotaNum)")
+//                            .foregroundColor(.white)
+//                            .padding(.horizontal, 5)
+//                            .frame(maxWidth: .infinity)
+//                            .frame(height: 36)
+//                            .background(Color.maire)
+//                            .splatfont2(size: 26)
+//                        Text("\(result.wave[index].ikuraNum)")
+//                            .foregroundColor(.red)
+//                        Text(result.wave[index].waterLevel.localized)
+//                            .frame(height: 24)
+//                            .foregroundColor(.black)
+//                        Text(result.wave[index].eventType.localized)
+//                            .frame(height: 24)
+//                            .foregroundColor(.black)
+//                    }
+//                    .background(Color.yellow)
+//                    .clipShape(RoundedRectangle(cornerRadius: 3))
+//                    .padding(.bottom, 10)
+//                    LazyHStack {
+//                        Image(Egg.golden)
+//                            .resizable()
+//                            .frame(width: 15, height: 15)
+//                        Text("RESULT_APPEARANCES_\(result.wave[index].goldenIkuraPopNum)")
+//                            .font(.custom("Splatfont2", size: 13))
+//                            .minimumScaleFactor(0.5)
+//                    }
+//                    .padding(.bottom, 10)
+//                    LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 4), alignment: .leading, spacing: 0, pinnedViews: []) {
+//                        ForEach(result.specialUsage[index].indices) { idx in
+//                            Image(specialId: result.specialUsage[index][idx])
+//                                .resizable()
+//                                .aspectRatio(contentMode: .fit)
+//                                .frame(width: 28)
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        .frame(minHeight: 120)
+//        .splatfont2(.white, size: 16)
+//        .padding(.horizontal, 5)
     }
 
     // MARK: 各プレイヤーの情報を表示

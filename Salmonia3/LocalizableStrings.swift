@@ -193,6 +193,7 @@ class LocalizableStrings {
         case TITLE_COLLECTION
         case SETTING_SALMONSTATS
         case TITLE_SALMONSTATS
+        case LAST_MATCHED_TIME
     }
 
 }

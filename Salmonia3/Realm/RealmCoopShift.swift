@@ -15,6 +15,7 @@ final class RealmCoopShift: Object, Identifiable, ObjectKeyIdentifiable {
     @Persisted var stageId: Int
     @Persisted var rareWeapon: Int?
     @Persisted var weaponList: List<Int>
+    @Persisted var records: List<RealmStatsRecord>
     
     override init() {}
     
@@ -29,6 +30,7 @@ final class RealmCoopShift: Object, Identifiable, ObjectKeyIdentifiable {
         self.weaponList.append(objectsIn: response.weaponList)
     }
     
+    /// 支給されるブキ一覧を返す
     var weaponsList: [Int] {
         switch self.weaponList.contains(-1) {
         case true:

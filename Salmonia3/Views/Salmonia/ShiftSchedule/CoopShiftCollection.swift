@@ -71,6 +71,7 @@ struct CoopShift: View {
     
     init(shift: RealmCoopShift, results: RealmSwift.Results<RealmCoopResult>? = nil) {
         self._shift = StateObject(wrappedValue: shift)
+        
         if let results = results {
             average = (power: results.average(ofProperty: "powerEggs"), golden: results.average(ofProperty: "goldenEggs"))
             maximum = (power: results.max(ofProperty: "powerEggs"), golden: results.max(ofProperty: "goldenEggs"))

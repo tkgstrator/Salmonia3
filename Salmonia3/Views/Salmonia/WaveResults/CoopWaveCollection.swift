@@ -58,8 +58,8 @@ struct WaveOverview: View {
         VStack(alignment: .leading, spacing: 0) {
             Text(StageType.init(rawValue: wave.result.first!.stageId)!.localizedName)
             HStack {
-                Text(wave.waterLevel.tide.localized)
-                Text(wave.eventType.localized)
+                Text(wave.waterLevel.localizedName)
+                Text(wave.eventType.localizedName)
             }
             .splatfont2(size: 16)
         }

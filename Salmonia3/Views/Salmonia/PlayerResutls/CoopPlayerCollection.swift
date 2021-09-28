@@ -72,6 +72,7 @@ struct PlayerResultsView: View {
                 }
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(nickname)
     }
 }
@@ -80,24 +81,28 @@ struct PlayerOverview: View {
     let player: RealmPlayer
     var dateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy MM/dd HH:mm"
+        dateFormatter.dateFormat = "yyyy MM/dd"
         return dateFormatter
     }
     
     var body: some View {
-        HStack {
-            URLImage(url: URL(string: player.thumbnailURL)!) { image in image.resizable().clipShape(Circle()) }
-                .frame(width: 70, height: 70)
-            Spacer()
-            Text(player.nickname)
-                .splatfont2(size: 18)
-            Spacer()
-            VStack(alignment: .trailing) {
+        VStack(spacing: nil, content: {
+            HStack(content: {
+                URLImage(url: URL(string: player.thumbnailURL)!) { image in image.resizable().clipShape(Circle()) }
+                    .frame(width: 40, height: 40)
+                    .padding(.trailing)
+                Text(player.nickname)
+                    .splatfont2(size: 16)
+                Spacer()
+            })
+            HStack(content: {
+                Text(.LAST_MATCHED_TIME)
                 Text(dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(player.lastMatchedTime))))
-            }
-            .splatfont2(size: 16)
-        }
-        
+                Spacer()
+                Text("RESULT_MATCHING_\(String(player.matching))")
+            })
+            .splatfont2(size: 14)
+        })
     }
 }
 
