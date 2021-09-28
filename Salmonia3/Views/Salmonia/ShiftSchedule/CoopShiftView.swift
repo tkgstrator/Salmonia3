@@ -30,8 +30,8 @@ struct CoopShiftView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 8.0))
                     Text(StageType(rawValue: shift.stageId)!.localizedName)
                         .font(.custom("Splatfont2", size: 14))
-                        .textCase(nil)
-                        .frame(width: 112 * 5/6, height: 16)
+//                        .minimumScaleFactor(1.0)
+                        .frame(width: 112, height: 16)
                         .padding(.bottom, 8)
                 })
                 switch shift.weaponList.contains(-1) {
@@ -42,6 +42,7 @@ struct CoopShiftView: View {
                 }
             })
         })
+        .foregroundColor(.primary)
     }
     
     var currentTime: some View {

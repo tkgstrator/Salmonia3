@@ -17,7 +17,17 @@ struct ContentView: View {
     @State var selection: Int = 0
     
     struct CollectionView: View {
-        @State var collectionType: Bool = true
+        @State var collectionType: CollectionType = .result
+        
+        enum CollectionType: Int, CaseIterable {
+            case result
+            case wave
+            case player
+            
+            mutating func toggle() {
+                self = CollectionType(rawValue: (self.rawValue + 1) % 3)!
+            }
+        }
         
         var toggleButton: some View {
             Button(action: {
@@ -32,11 +42,14 @@ struct ContentView: View {
         var body: some View {
             NavigationView {
                 switch collectionType {
-                case true:
+                case .result:
                     CoopResultCollection()
                         .navigationBarItems(trailing: toggleButton)
-                case false:
+                case .wave:
                     CoopWaveCollection()
+                        .navigationBarItems(trailing: toggleButton)
+                case .player:
+                    CoopPlayerCollection()
                         .navigationBarItems(trailing: toggleButton)
                 }
             }

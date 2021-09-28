@@ -37,22 +37,12 @@ struct ScheduleView: View {
                             .foregroundColor(.primary)
                             .opacity(playedShiftIds.contains(shift.startTime) ? 1.0 : 0.0)
                         , alignment: .topLeading)
-//                    .tag(index)
                 }
             }
         }
-        .onAppear {
-            //            .onAppear{ scrollTo(proxy: proxy) }
-        }
         .navigationTitle(.TITLE_SHIFT_SCHEDULE)
     }
-    
-    private func scrollTo(proxy: ScrollViewProxy) {
-        //        if !present.wrappedValue.isPresented {
-        //            proxy.scrollTo(shiftNumber, anchor: .center)
-        //        }
-    }
-    
+
 }
 
 extension NSPredicate {
