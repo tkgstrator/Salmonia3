@@ -12,12 +12,12 @@ import RealmSwift
 import URLImage
 
 struct CoopPlayerCollection: View {
-    @EnvironmentObject var main: CoreRealmCoop
+    @ObservedResults(RealmPlayer.self, sortDescriptor: SortDescriptor(keyPath: "lastMatchedTime", ascending: false)) var players
     @State var playerName: String = ""
     
     var body: some View {
         List {
-            ForEach(!playerName.isEmpty ? main.players.filter("nickname CONTAINS %@", playerName) : main.players) { player in
+            ForEach(players) { player in
                 NavigationLink(destination: PlayerResultsView(player: player)) {
                     PlayerOverview(player: player)
                 }
@@ -25,11 +25,13 @@ struct CoopPlayerCollection: View {
         }
         .navigationTitle(.TITLE_PLAYER_COLLECTION)
         .navigationSearchBar({
-            SearchBar("ユーザ名", text: $playerName)
-                .searchBarStyle(.prominent)
-                .onCancel {
-                    playerName.removeAll()
-                }
+            SearchBar("ユーザ名", text: $playerName, onEditingChanged: { _ in
+                $players.filter = NSPredicate(format: "nickname CONTAINS %@", argumentArray: [playerName])
+            })
+            .searchBarStyle(.prominent)
+            .onCancel {
+                playerName.removeAll()
+            }
         })
         .navigationSearchBarHiddenWhenScrolling(true)
     }
@@ -75,7 +77,7 @@ struct PlayerResultsView: View {
 }
 
 struct PlayerOverview: View {
-    @StateObject var player: RealmPlayer
+    let player: RealmPlayer
     var dateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy MM/dd HH:mm"
