@@ -160,6 +160,7 @@ private struct RecordView: View {
                 ForEach(record.players, id:\.self) { player in
                     Text(player.nickname)
                         .font(.custom("Splatfont2", size: 16))
+                        .foregroundColor(.whitesmoke)
                         .shadow(color: .black, radius: 0, x: 0, y: 2)
                 }
             })
@@ -174,6 +175,7 @@ private struct RecordView: View {
                         .frame(width: 25, height: 25)
                     Text("x\(record.powerEggs)")
                         .font(.custom("Splatfont2", size: 18))
+                        .foregroundColor(.whitesmoke)
                         .minimumScaleFactor(1.0)
                 })
                 .padding(.horizontal)
@@ -185,6 +187,7 @@ private struct RecordView: View {
                         .frame(width: 25, height: 25)
                     Text("x\(record.goldenEggs)")
                         .font(.custom("Splatfont2", size: 18))
+                        .foregroundColor(.whitesmoke)
                         .minimumScaleFactor(1.0)
                 })
                 .padding(.horizontal)
