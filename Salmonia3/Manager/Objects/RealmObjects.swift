@@ -177,10 +177,10 @@ extension RealmManager {
     }
     
     func thumbnailURL(playerId: String) -> URL {
-        let thumbnailURL = realm.objects(RealmPlayer.self)
-            .filter("nsaid=%@", playerId)
-            .first!
-            .thumbnailURL
+        guard let thumbnailURL = realm.objects(RealmPlayer.self)
+                .filter("nsaid=%@", playerId)
+                .first?
+                .thumbnailURL else { return Bundle.main.url(forResource: "default", withExtension: "png")! }
         return URL(string: thumbnailURL)!
     }
     

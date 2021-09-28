@@ -129,18 +129,6 @@ struct Overview: View {
                 NavigationLink(destination: SettingView().navigationViewStyle(SplitNavigationViewStyle()), label: {
                     Image(systemName: "gearshape")
                 }))
-        .onAppear {
-//            print(dump(results.clearResults))
-        }
-        .pullToRefresh(isShowing: $isShowing, onRefresh: {
-            isPresented.toggle()
-            isShowing.toggle()
-        })
-        .present(isPresented: $isPresented, transitionStyle: .flipHorizontal, presentationStyle: .fullScreen, content: {
-            LoadingView()
-                .environmentObject(appManager)
-                .environment(\.modalIsPresented, .constant(PresentationStyle($isPresented)))
-        })
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(.TITLE_USER)
     }
