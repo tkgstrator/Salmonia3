@@ -480,7 +480,6 @@
 		1053919A266D16E4001025E1 /* Player */ = {
 			isa = PBXGroup;
 			children = (
-				105391AB266D23C4001025E1 /* CoopPlayerCollection.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -664,10 +663,11 @@
 		108FF89326F9FA6C00EC7262 /* Salmonia */ = {
 			isa = PBXGroup;
 			children = (
+				108FF89D26F9FB0D00EC7262 /* Results */,
+				108FF89E26F9FB2200EC7262 /* WaveResults */,
+				10AF14B227031B1C00F7F8AC /* PlayerResutls */,
 				109E894026FCAF9A002B192D /* Records */,
 				108FF89F26F9FBFF00EC7262 /* Settings */,
-				108FF89E26F9FB2200EC7262 /* WaveResults */,
-				108FF89D26F9FB0D00EC7262 /* Results */,
 				108FF89C26F9FAF100EC7262 /* ShiftSchedule */,
 				108FF89426F9FA7E00EC7262 /* Overview.swift */,
 				108FF89626F9FA8700EC7262 /* ScheduleView.swift */,
@@ -754,6 +754,14 @@
 				10AF14B027029CC400F7F8AC /* default.png */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		10AF14B227031B1C00F7F8AC /* PlayerResutls */ = {
+			isa = PBXGroup;
+			children = (
+				105391AB266D23C4001025E1 /* CoopPlayerCollection.swift */,
+			);
+			path = PlayerResutls;
 			sourceTree = "<group>";
 		};
 		10AF87E826E6E79A00D1C35E /* ResultStyle */ = {

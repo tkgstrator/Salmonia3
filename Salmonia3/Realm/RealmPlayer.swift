@@ -10,7 +10,7 @@ import RealmSwift
 import SalmonStats
 import SplatNet2
 
-final class RealmPlayer: Object, Identifiable {
+final class RealmPlayer: Object, Identifiable, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var nsaid: String
     @Persisted var nickname: String
     @Persisted var thumbnailURL: String
@@ -27,6 +27,7 @@ final class RealmPlayer: Object, Identifiable {
         self.nickname = account.nickname
         self.thumbnailURL = account.thumbnailUrl
         
+        // マッチング回数とかを計算するところ
         guard let realm = try? Realm() else { return }
         let results = realm.objects(RealmPlayerResult.self).filter("pid=%@", account.nsaId)
         self.matching = results.count
