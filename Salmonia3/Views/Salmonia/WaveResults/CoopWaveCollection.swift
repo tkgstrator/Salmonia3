@@ -9,7 +9,7 @@ import SwiftUI
 import RealmSwift
 
 struct CoopWaveCollection: View {
-    @ObservedResults(RealmCoopWave.self) var waves
+    @ObservedResults(RealmCoopWave.self, sortDescriptor: SortDescriptor(keyPath: "goldenIkuraNum", ascending: false)) var waves
 
     var body: some View {
         List {
