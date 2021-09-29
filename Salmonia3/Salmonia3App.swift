@@ -63,7 +63,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         FirebaseApp.configure()
-        importSalmonStatsRecord()
+//        importSalmonStatsRecord()
         initSwiftyStoreKit()
         initSwiftyBeaver()
         updateKeychainAccess()
@@ -85,20 +85,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-    }
-    
-    private func importSalmonStatsRecord() {
-        guard let json = Bundle.main.url(forResource: "records", withExtension: "json") else { return }
-        guard let records = try? Data(contentsOf: json) else { return }
-        
-        let decoder: JSONDecoder = {
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            return decoder
-        }()
-        
-        guard let statsrecord = try? decoder.decode([RealmStatsRecord.StatsRecord].self, from: records) else { return }
-        print(statsrecord.first)
     }
     
     private func updateXProductVersion() {

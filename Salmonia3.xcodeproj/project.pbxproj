@@ -117,9 +117,9 @@
 		10AF880426E8E59E00D1C35E /* WeaponType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AF87F426E79A6600D1C35E /* WeaponType.swift */; };
 		10B62CA32669CC1400916A64 /* CoopWaveCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B62CA22669CC1400916A64 /* CoopWaveCollection.swift */; };
 		10B62CAF2669D48E00916A64 /* ResultStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B62CAE2669D48E00916A64 /* ResultStyle.swift */; };
-		10BAE3282703D33600DB98D0 /* records.json in Resources */ = {isa = PBXBuildFile; fileRef = 10BAE3272703D33600DB98D0 /* records.json */; };
 		10BAE32A2703D7FC00DB98D0 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BAE3292703D7FC00DB98D0 /* RecordType.swift */; };
 		10BAE32D2703DD2800DB98D0 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10BAE32C2703DD2800DB98D0 /* RealmSwift */; };
+		10BAE32F2703F36A00DB98D0 /* records.json in Resources */ = {isa = PBXBuildFile; fileRef = 10BAE32E2703F36A00DB98D0 /* records.json */; };
 		10BBBEA226049EF400DA79C9 /* CoopResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBBEA126049EF400DA79C9 /* CoopResultView.swift */; };
 		10CD8544268D40AA00A00162 /* CoopShiftStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD8543268D40A900A00162 /* CoopShiftStatsView.swift */; };
 		10CF098E25FB97CB00D2EEB1 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF098D25FB97CB00D2EEB1 /* BetterSafariView */; };
@@ -291,8 +291,8 @@
 		10AF87FC26E79ABA00D1C35E /* EventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
 		10B62CA22669CC1400916A64 /* CoopWaveCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopWaveCollection.swift; sourceTree = "<group>"; };
 		10B62CAE2669D48E00916A64 /* ResultStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultStyle.swift; sourceTree = "<group>"; };
-		10BAE3272703D33600DB98D0 /* records.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = records.json; sourceTree = "<group>"; };
 		10BAE3292703D7FC00DB98D0 /* RecordType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
+		10BAE32E2703F36A00DB98D0 /* records.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = records.json; sourceTree = "<group>"; };
 		10BBBEA126049EF400DA79C9 /* CoopResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopResultView.swift; sourceTree = "<group>"; };
 		10CD8543268D40A900A00162 /* CoopShiftStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftStatsView.swift; sourceTree = "<group>"; };
 		10CF09F325FB9BE100D2EEB1 /* RealmCoopResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopResult.swift; sourceTree = "<group>"; };
@@ -421,7 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				109E892826FB209F002B192D /* tutorial.mp4 */,
-				10BAE3272703D33600DB98D0 /* records.json */,
+				10BAE32E2703F36A00DB98D0 /* records.json */,
 				10AF87E626E643A400D1C35E /* LoadingIka.png */,
 			);
 			path = Resources;
@@ -1053,7 +1053,7 @@
 				108684E826EB5D7F00E28C7C /* RobotoMono.ttf in Resources */,
 				1059416B25FA49E900C32D21 /* Assets.xcassets in Resources */,
 				108BFD9C26DDC37800652271 /* GoogleService-Info.plist in Resources */,
-				10BAE3282703D33600DB98D0 /* records.json in Resources */,
+				10BAE32F2703F36A00DB98D0 /* records.json in Resources */,
 				10D0177E26C0985F000DCA1B /* Configuration.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

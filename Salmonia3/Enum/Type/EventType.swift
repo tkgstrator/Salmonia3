@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-enum EventType: Int, CaseIterable, Identifiable, PersistableEnum {
+enum EventType: Int, CaseIterable, Identifiable, PersistableEnum, Codable {
     case noevent    = 0
     case rush       = 1
     case goldie     = 2

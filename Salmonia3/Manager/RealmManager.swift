@@ -40,7 +40,7 @@ final class RealmManager: AppManager {
         } catch {
             var config = Realm.Configuration.defaultConfiguration
             config.deleteRealmIfMigrationNeeded = true
-            config.schemaVersion = schemeVersion * 2
+            config.schemaVersion = schemeVersion
             self.realm = try! Realm(configuration: config)
         }
     }
@@ -130,10 +130,28 @@ final class RealmManager: AppManager {
         }
     }
     
-    public func addNewRotation(from rotation: [ScheduleCoop.Response]) throws {
+    public func addNewRotation(from rotations: [ScheduleCoop.Response]) throws {
+        guard let json = Bundle.main.url(forResource: "records", withExtension: "json") else { return }
+        guard let data = try? Data(contentsOf: json) else { return }
+        
+        let decoder: JSONDecoder = {
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            return decoder
+        }()
+        guard let records = try? decoder.decode([RealmStatsRecord.StatsRecord].self, from: data) else { return }
+
         realm.beginWrite()
-        let rotations: [RealmCoopShift] = rotation.map{ RealmCoopShift(from: $0) }
-        let _ = rotations.map{ realm.create(RealmCoopShift.self, value: $0, update: .all) }
+        for rotation in rotations {
+            /// 記錄があるシフトなら記錄も書き込む
+            if let record = records.filter({ $0.startTime == rotation.startTime }).first {
+                let shift = RealmCoopShift(from: rotation, records: record.records)
+                realm.create(RealmCoopShift.self, value: shift, update: .all)
+            } else {
+                let shift = RealmCoopShift(from: rotation)
+                realm.create(RealmCoopShift.self, value: shift, update: .all)
+            }
+        }
         try? realm.commitWrite()
     }
     
