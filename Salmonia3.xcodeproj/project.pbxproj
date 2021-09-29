@@ -410,13 +410,6 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
-		101C77CA26496F64005D603C /* Result */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Result;
-			sourceTree = "<group>";
-		};
 		102C75D52659B9E500AEE20F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -459,15 +452,6 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		10377FAB25FD165100536A94 /* Collection */ = {
-			isa = PBXGroup;
-			children = (
-				1053919A266D16E4001025E1 /* Player */,
-				101C77CA26496F64005D603C /* Result */,
-			);
-			path = Collection;
-			sourceTree = "<group>";
-		};
 		10448BDB26652E6700FFB553 /* SRPower */ = {
 			isa = PBXGroup;
 			children = (
@@ -482,13 +466,6 @@
 				104AA7DB2605E0C8007BDC24 /* GoogleMobileAds.swift */,
 			);
 			path = UIKit;
-			sourceTree = "<group>";
-		};
-		1053919A266D16E4001025E1 /* Player */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Player;
 			sourceTree = "<group>";
 		};
 		1059415A25FA49E500C32D21 = {
@@ -651,7 +628,6 @@
 				108FF89326F9FA6C00EC7262 /* Salmonia */,
 				10377F8F25FD09D200536A94 /* Loading */,
 				1059419E25FA4DDE00C32D21 /* Login */,
-				10377FAB25FD165100536A94 /* Collection */,
 			);
 			path = Views;
 			sourceTree = "<group>";
