@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct CoopShiftView: View {
+    @EnvironmentObject var appManager: AppManager
     @Environment(\.coopshift) var shift
     
     private let formatter: DateFormatter = {
@@ -34,7 +35,7 @@ struct CoopShiftView: View {
                         .frame(width: 112, height: 16)
                         .padding(.bottom, 8)
                 })
-                switch shift.weaponList.contains(-1) {
+                switch (shift.weaponList.contains(-1) && appManager.isFree01) {
                 case true:
                     randomShiftWeapon
                 case false:

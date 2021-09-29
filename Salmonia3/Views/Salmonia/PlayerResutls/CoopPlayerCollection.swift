@@ -89,7 +89,7 @@ struct PlayerOverview: View {
         VStack(spacing: nil, content: {
             HStack(content: {
                 URLImage(url: URL(string: player.thumbnailURL)!) { image in image.resizable().clipShape(Circle()) }
-                    .frame(width: 40, height: 40)
+                    .frame(width: 30, height: 30)
                     .padding(.trailing)
                 Text(player.nickname)
                     .splatfont2(size: 16)

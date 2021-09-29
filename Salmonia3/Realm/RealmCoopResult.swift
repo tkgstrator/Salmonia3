@@ -87,7 +87,7 @@ extension RealmCoopResult {
         Array(RealmManager.shared.findPlayers(pid: self.player.map({ $0.pid }).sorted()))
     }
     
-    var weaponLists: [Int] {
+    var weaponList: [Int] {
         Array(RealmManager.shared.shift(startTime: self.startTime).weaponList)
     }
 }

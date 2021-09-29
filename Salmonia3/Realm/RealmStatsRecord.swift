@@ -73,4 +73,18 @@ class RealmStatsRecord: Object, ObjectKeyIdentifiable {
             }
         }
     }
+    
+    var stage: StageType {
+        guard let stageId = self.shift.first?.stageId, let stage = StageType(rawValue: stageId) else { return .shakeup }
+        return stage
+    }
+    
+    var weaponList: [Int] {
+        guard let weaponList = self.shift.first?.weaponList else { return [0, 0, 0, 0] }
+        return Array(weaponList)
+    }
+    
+    var wave: RealmCoopWave {
+        RealmCoopWave(from: self)
+    }
 }

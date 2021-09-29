@@ -105,6 +105,13 @@ struct ContentView: View {
                 .overlay(googleMobileAds, alignment: .bottom)
                 .tag(3)
             }
+            SalmonStatsRecord()
+                .tabItem {
+                    Image(systemName: "person")
+                    Text(.TITLE_USER)
+                }
+                .overlay(googleMobileAds, alignment: .bottom)
+                .tag(4)
             NavigationView {
                 Overview()
             }
@@ -114,7 +121,7 @@ struct ContentView: View {
                 Text(.TITLE_USER)
             }
             .overlay(googleMobileAds, alignment: .bottom)
-            .tag(4)
+            .tag(5)
         })
         .preferredColorScheme(appManager.isDarkMode ? .dark : .light)
         .navigationViewStyle(SplitNavigationViewStyle())

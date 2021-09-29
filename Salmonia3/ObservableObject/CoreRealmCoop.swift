@@ -123,18 +123,18 @@ class UserCoopRecord: Identifiable {
             let results = RealmManager.shared.allResults(stageId: stageId.rawValue)
             
             // 夜込み最高記録を計算
-            let total = Array(results.sorted(byKeyPath: "goldenEggs", ascending: false).prefix(3)).map({ Record(stageId: stageId, playTime: $0.playTime, powerEggs: $0.powerEggs, goldenEggs: $0.goldenEggs, players: $0.players, weaponList: $0.weaponLists, recordType: .total) })
+            let total = Array(results.sorted(byKeyPath: "goldenEggs", ascending: false).prefix(3)).map({ Record(stageId: stageId, playTime: $0.playTime, powerEggs: $0.powerEggs, goldenEggs: $0.goldenEggs, players: $0.players, weaponList: $0.weaponList, recordType: .total) })
             records.append(contentsOf: total)
 
             // 昼のみ最高記録を計算
-            let nonight = results.filter("SUBQUERY(wave, $wave, $wave.eventType=%@).@count==3", 0).sorted(byKeyPath: "goldenEggs", ascending: false).prefix(3).map({ Record(stageId: stageId, playTime: $0.playTime, powerEggs: $0.powerEggs, goldenEggs: $0.goldenEggs, players: $0.players, weaponList: $0.weaponLists, recordType: .nonight) })
+            let nonight = results.filter("SUBQUERY(wave, $wave, $wave.eventType=%@).@count==3", 0).sorted(byKeyPath: "goldenEggs", ascending: false).prefix(3).map({ Record(stageId: stageId, playTime: $0.playTime, powerEggs: $0.powerEggs, goldenEggs: $0.goldenEggs, players: $0.players, weaponList: $0.weaponList, recordType: .nonight) })
             records.append(contentsOf: nonight)
 
             // 各イベント・潮位についてTOP3の記録を抽出
             for eventType in EventType.allCases {
                 for waterLevel in WaterLevel.allCases {
                     let results = Array(waves.filter("eventType=%@ AND waterLevel=%@", eventType.rawValue, waterLevel.rawValue).sorted(byKeyPath: "goldenIkuraNum", ascending: false).prefix(3))
-                    let record = results.map({ Record(stageId: stageId, playTime: $0.playTime, waterLevel: waterLevel, eventType: eventType, powerEggs: $0.ikuraNum, goldenEggs: $0.goldenIkuraNum, players: $0.players, weaponList: $0.weaponLists) })
+                    let record = results.map({ Record(stageId: stageId, playTime: $0.playTime, waterLevel: waterLevel, eventType: eventType, powerEggs: $0.ikuraNum, goldenEggs: $0.goldenIkuraNum, players: $0.players, weaponList: $0.weaponList) })
                     records.append(contentsOf: record)
                 }
             }
