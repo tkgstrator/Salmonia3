@@ -10,14 +10,14 @@ import Foundation
 import RealmSwift
 
 /// 記錄の種類を返すEnum
-enum RecordType: Int, PersistableEnum {
+enum RecordType: Int, PersistableEnum, Codable {
     case total
     case nonight
     case wave
     
 }
 
-enum RecordTypeEgg: Int, PersistableEnum {
+enum RecordTypeEgg: Int, PersistableEnum, Codable {
     case power
     case golden
 }

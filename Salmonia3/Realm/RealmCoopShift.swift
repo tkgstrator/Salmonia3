@@ -30,6 +30,28 @@ final class RealmCoopShift: Object, Identifiable, ObjectKeyIdentifiable {
         self.weaponList.append(objectsIn: response.weaponList)
     }
     
+    init(from response: ScheduleCoop.Response, records: RealmStatsRecord.StatsRecord.Records) {
+        super.init()
+        self.startTime = response.startTime
+        self.endTime = response.endTime
+        self.stageId = response.stageId
+        if response.weaponList.contains(-1) {
+            self.rareWeapon = response.rareWeapon
+        }
+        self.weaponList.append(objectsIn: response.weaponList)
+        let goldenEggs = [
+            RealmStatsRecord(from: records.goldenEggs.total, startTime: startTime, recordType: .total, recordTypeEgg: .golden),
+            RealmStatsRecord(from: records.goldenEggs.noNightEvent, startTime: startTime, recordType: .nonight, recordTypeEgg: .golden)
+        ] + records.goldenEggs.waves.map({ RealmStatsRecord(from: $0, startTime: startTime, recordType: .wave, recordTypeEgg: .golden)})
+        let powerEggs = [
+            RealmStatsRecord(from: records.powerEggs.total, startTime: startTime, recordType: .total, recordTypeEgg: .power),
+            RealmStatsRecord(from: records.powerEggs.noNightEvent, startTime: startTime, recordType: .nonight, recordTypeEgg: .power)
+        ] + records.powerEggs.waves.map({ RealmStatsRecord(from: $0, startTime: startTime, recordType: .wave, recordTypeEgg: .power)})
+
+        self.records.append(objectsIn: goldenEggs.compactMap({ $0 }))
+        self.records.append(objectsIn: powerEggs.compactMap({ $0 }))
+    }
+    
     /// 支給されるブキ一覧を返す
     var weaponsList: [Int] {
         switch self.weaponList.contains(-1) {
