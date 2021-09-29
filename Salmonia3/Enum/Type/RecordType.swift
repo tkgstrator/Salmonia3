@@ -15,6 +15,17 @@ enum RecordType: Int, PersistableEnum, Codable {
     case nonight
     case wave
     
+    var localizedName: String {
+        switch self {
+        case .total:
+            return "NIGHT_WAVE".localized
+        case .nonight:
+            return "NO_NIGHT_WAVE".localized
+        case .wave:
+            return "WAVE_RECORD".localized
+        }
+    }
+    
 }
 
 enum RecordTypeEgg: Int, PersistableEnum, Codable {

@@ -120,6 +120,9 @@
 		10BAE32A2703D7FC00DB98D0 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BAE3292703D7FC00DB98D0 /* RecordType.swift */; };
 		10BAE32D2703DD2800DB98D0 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10BAE32C2703DD2800DB98D0 /* RealmSwift */; };
 		10BAE32F2703F36A00DB98D0 /* records.json in Resources */ = {isa = PBXBuildFile; fileRef = 10BAE32E2703F36A00DB98D0 /* records.json */; };
+		10BAE3322703FCEB00DB98D0 /* SalmonStatsRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BAE3312703FCEB00DB98D0 /* SalmonStatsRecord.swift */; };
+		10BAE3342703FDA300DB98D0 /* WaveOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BAE3332703FDA300DB98D0 /* WaveOverview.swift */; };
+		10BAE336270409F800DB98D0 /* CoopWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BAE335270409F800DB98D0 /* CoopWave.swift */; };
 		10BBBEA226049EF400DA79C9 /* CoopResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBBEA126049EF400DA79C9 /* CoopResultView.swift */; };
 		10CD8544268D40AA00A00162 /* CoopShiftStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD8543268D40A900A00162 /* CoopShiftStatsView.swift */; };
 		10CF098E25FB97CB00D2EEB1 /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 10CF098D25FB97CB00D2EEB1 /* BetterSafariView */; };
@@ -293,6 +296,9 @@
 		10B62CAE2669D48E00916A64 /* ResultStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultStyle.swift; sourceTree = "<group>"; };
 		10BAE3292703D7FC00DB98D0 /* RecordType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
 		10BAE32E2703F36A00DB98D0 /* records.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = records.json; sourceTree = "<group>"; };
+		10BAE3312703FCEB00DB98D0 /* SalmonStatsRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonStatsRecord.swift; sourceTree = "<group>"; };
+		10BAE3332703FDA300DB98D0 /* WaveOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveOverview.swift; sourceTree = "<group>"; };
+		10BAE335270409F800DB98D0 /* CoopWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopWave.swift; sourceTree = "<group>"; };
 		10BBBEA126049EF400DA79C9 /* CoopResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopResultView.swift; sourceTree = "<group>"; };
 		10CD8543268D40A900A00162 /* CoopShiftStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoopShiftStatsView.swift; sourceTree = "<group>"; };
 		10CF09F325FB9BE100D2EEB1 /* RealmCoopResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopResult.swift; sourceTree = "<group>"; };
@@ -684,6 +690,8 @@
 			isa = PBXGroup;
 			children = (
 				10B62CA22669CC1400916A64 /* CoopWaveCollection.swift */,
+				10BAE3332703FDA300DB98D0 /* WaveOverview.swift */,
+				10BAE335270409F800DB98D0 /* CoopWave.swift */,
 			);
 			path = WaveResults;
 			sourceTree = "<group>";
@@ -724,6 +732,7 @@
 			isa = PBXGroup;
 			children = (
 				109E894126FCAFAA002B192D /* StageRecordView.swift */,
+				10BAE3312703FCEB00DB98D0 /* SalmonStatsRecord.swift */,
 			);
 			path = Records;
 			sourceTree = "<group>";
@@ -1161,6 +1170,7 @@
 				108FF89726F9FA8700EC7262 /* ScheduleView.swift in Sources */,
 				10377F6525FCD63B00536A94 /* Font.swift in Sources */,
 				10539190266BD8B5001025E1 /* HelpView.swift in Sources */,
+				10BAE3322703FCEB00DB98D0 /* SalmonStatsRecord.swift in Sources */,
 				10A75A4B26AC1096005168DD /* StatsChartView.swift in Sources */,
 				105941BE25FA525100C32D21 /* Background.swift in Sources */,
 				10D2E1552655548F00AE584E /* Text.swift in Sources */,
@@ -1169,6 +1179,7 @@
 				1071595F26E2790A0066DB74 /* Product.swift in Sources */,
 				1024663E26009956004DC043 /* GradeType.swift in Sources */,
 				1013EFAC26F0F83400943D37 /* SettingType.swift in Sources */,
+				10BAE3342703FDA300DB98D0 /* WaveOverview.swift in Sources */,
 				108FF89B26F9FAA000EC7262 /* Settings.swift in Sources */,
 				1071595826E2734F0066DB74 /* ResultIcon.swift in Sources */,
 				10E8BD9D26F50E6200B09B33 /* LockButton.swift in Sources */,
@@ -1234,6 +1245,7 @@
 				101C77CD26496FA6005D603C /* CoopPlayerView.swift in Sources */,
 				1059419725FA4C0C00C32D21 /* Color.swift in Sources */,
 				109E892526FAA1FD002B192D /* Environments.swift in Sources */,
+				10BAE336270409F800DB98D0 /* CoopWave.swift in Sources */,
 				10E8BDA526F53EED00B09B33 /* AppInformation.swift in Sources */,
 				1053919C266D1703001025E1 /* RealmPlayer.swift in Sources */,
 				109E893826FB660D002B192D /* ChartView.swift in Sources */,

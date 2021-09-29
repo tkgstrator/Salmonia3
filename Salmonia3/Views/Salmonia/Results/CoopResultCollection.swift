@@ -169,7 +169,7 @@ struct ResultOverview: View {
         ZStack(alignment: .topLeading) {
             Text("\(result.indexOfResults)")
                 .splatfont2(size: 12)
-                .offset(y: -10)
+                .offset(y: 0)
             HStack(spacing: 0) {
                 ResultJob
                 Spacer()

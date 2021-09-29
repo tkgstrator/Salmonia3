@@ -28,72 +28,36 @@ final class RealmCoopWave: Object, ObjectKeyIdentifiable {
         self.quotaNum = result.quotaNum
         self.ikuraNum = result.ikuraNum
     }
+    
+    convenience init(from record: RealmStatsRecord) {
+        self.init()
+        self.eventType = record.eventType ?? .noevent
+        self.waterLevel = record.waterLevel ?? .middle
+        self.goldenIkuraNum = record.goldenEggs
+        self.ikuraNum = record.powerEggs
+        self.quotaNum = 0
+        self.goldenIkuraPopNum = 0
+    }
 }
 
-//fileprivate final class SplatNet2Metadata {
-//    enum EventType: Int {
-//        case noevent = 0
-//        case rush = 1
-//        case goldie = 2
-//        case griller = 3
-//        case mothership = 4
-//        case fog = 5
-//        case cohock = 6
-//    }
-//
-//    enum WaterLevel: Int {
-//        case low = 0
-//        case normal = 1
-//        case high = 2
-//    }
-//}
-//
-//fileprivate extension SplatNet2Metadata.EventType {
-//    var eventType: String {
-//        switch self {
-//        case .noevent:
-//            return "water-levels"
-//        case .rush:
-//            return "rush"
-//        case .goldie:
-//            return "goldie-seeking"
-//        case .griller:
-//            return "griller"
-//        case .mothership:
-//            return "the-mothership"
-//        case .fog:
-//            return "fog"
-//        case .cohock:
-//            return "cohock-charge"
-//        }
-//    }
-//}
-//
-//fileprivate extension SplatNet2Metadata.WaterLevel {
-//    var waterLevel: String {
-//        switch self {
-//        case .low:
-//            return "low"
-//        case .normal:
-//            return "normal"
-//        case .high:
-//            return "high"
-//        }
-//    }
-//}
-
 extension RealmCoopWave {
-    var weaponLists: [Int] {
-        let startTime = self.result.first!.startTime
+    var weaponList: [Int] {
+        guard let startTime = self.result.first?.startTime else { return [0, 0, 0, 0] }
         return Array(RealmManager.shared.shift(startTime: startTime).weaponList)
     }
     
     var players: [RealmPlayer] {
-        Array(RealmManager.shared.findPlayers(pid: self.result.first!.player.map({ $0.pid }).sorted()))
+        guard let players = self.result.first?.player else { return [] }
+        return Array(RealmManager.shared.findPlayers(pid: players.map({ $0.pid }).sorted()))
     }
     
     var playTime: Int {
         self.result.first!.playTime
+    }
+    
+    var stage: StageType {
+        guard let stageId = self.result.first?.stageId, let stage = StageType(rawValue: stageId) else { return .shakeup }
+        return stage
     }
 }
 

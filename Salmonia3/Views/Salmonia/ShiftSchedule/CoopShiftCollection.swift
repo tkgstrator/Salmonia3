@@ -46,6 +46,7 @@ struct CoopShiftCollection: View {
             }
             .onAppear{ scrollTo(proxy: proxy) }
         }
+        .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(.TITLE_SHIFT_SCHEDULE)
     }
     

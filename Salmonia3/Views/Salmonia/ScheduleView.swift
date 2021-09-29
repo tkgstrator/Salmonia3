@@ -40,6 +40,7 @@ struct ScheduleView: View {
                 }
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(.TITLE_SHIFT_SCHEDULE)
     }
 

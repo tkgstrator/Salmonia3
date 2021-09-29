@@ -18,9 +18,9 @@ class Salmonia3 {
         }
 
         struct Wave: EnvironmentKey {
-            static var defaultValue: RealmCoopWave = RealmCoopWave()
+            static var defaultValue: CoopWave = CoopWave()
             
-            typealias Value = RealmCoopWave
+            typealias Value = CoopWave
         }
     }
 }
@@ -35,7 +35,7 @@ extension EnvironmentValues {
         }
     }
     
-    var wave: RealmCoopWave {
+    var wave: CoopWave {
         get {
             return self[Salmonia3.Environment.Wave.self]
         }
