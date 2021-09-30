@@ -188,7 +188,7 @@
 "TITLE_PAID_PRODUCT"="有料機能";
 "TITLE_PLAYER_COLLECTION"="一緒に遊んだ仲間";
 "TITLE_RESULT"="リザルト";
-"TITLE_RESULT_COLLECTION"="リザルト一覧";
+"TITLE_RESULT_COLLECTION"="リザルト履歴";
 "TITLE_RESULT_DETAIL"="リザルト詳細";
 "TITLE_SALMONIA"="Salmonia";
 "TITLE_SETTINGS"="アプリ設定";
@@ -196,7 +196,7 @@
 "TITLE_SHIFT_STATS"="シフト統計";
 "TITLE_TUTORIAL"="ログイン方法解説";
 "TITLE_WAVE_ANALYSIS"="WAVE分析";
-"TITLE_WAVE_COLLECTION"="WAVE一覧";
+"TITLE_WAVE_COLLECTION"="個人WAVE記錄";
 "TITLE_WEAPON_ANALYSIS"="ブキ分析";
 "cohock-charge"="ドスコイ大量発生";
 "fog"="霧";
@@ -222,3 +222,4 @@
 "SETTING_SALMONSTATS"="タブにSalmon Statsを追加";
 "TITLE_SALMONSTATS"="Salmon Stats";
 "LAST_MATCHED_TIME"="最後に遊んだ日";
+"RANKED_COUNT_%lld"="ランキング掲載回数x%lld";

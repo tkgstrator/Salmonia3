@@ -31,8 +31,19 @@ extension RealmManager {
         }
     }
     
+    /// 指定されたプレイヤーのリザルト一覧を返す
     func shiftResults(nsaid: String) -> [UserCoopResult] {
         return shiftTimeList(nsaid: nsaid).map({ UserCoopResult(startTime: $0, playerId: nsaid)})
+    }
+    
+    /// グローバルのWAVEレコードをすべて返す
+    var records: RealmSwift.Results<RealmStatsRecord> {
+        realm.objects(RealmStatsRecord.self)
+    }
+    
+    /// 金イクラ記錄か赤イクラ記錄かを返す
+    func records(type: RecordTypeEgg) -> RealmSwift.Results<RealmStatsRecord> {
+        realm.objects(RealmStatsRecord.self).filter("recordTypeEgg=%@", type.rawValue)
     }
     
     /// 現在のプレイヤーのリザルトを全件返す

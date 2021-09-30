@@ -130,10 +130,23 @@ final class RealmManager: AppManager {
         }
     }
     
+    public func addNewMembersFromRecord() {
+        guard let json = Bundle.main.url(forResource: "players", withExtension: "json") else { return }
+        guard let data = try? Data(contentsOf: json) else { return }
+        let decoder: JSONDecoder = {
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            return decoder
+        }()
+        guard let players = try? decoder.decode([ExNicknameAndIcons].self, from: data) else { return }
+        realm.beginWrite()
+        save(players.compactMap({ RealmPlayer(from: $0) }))
+        try? realm.commitWrite()
+    }
+    
     public func addNewRotation(from rotations: [ScheduleCoop.Response]) throws {
         guard let json = Bundle.main.url(forResource: "records", withExtension: "json") else { return }
         guard let data = try? Data(contentsOf: json) else { return }
-        
         let decoder: JSONDecoder = {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -153,6 +166,7 @@ final class RealmManager: AppManager {
             }
         }
         try? realm.commitWrite()
+        addNewMembersFromRecord()
     }
     
     // シフトスケジュールを取得
@@ -167,18 +181,13 @@ final class RealmManager: AppManager {
  
     // MARK: ユーザ名やサムネイルを更新し、RealmPlayerのオブジェクトを作成
     public func updateNicknameAndIcons(players: [NicknameIcons.Response.NicknameIcon]) {
-        DispatchQueue(label: "Realm Manager").async {
-            autoreleasepool {
-                guard let realm = try? Realm() else { return }
-                realm.beginWrite()
-                for player in players {
-                    realm.create(RealmPlayer.self, value: RealmPlayer(from: player), update: .all)
-                    let result = realm.objects(RealmPlayerResult.self).filter("pid=%@", player.nsaId)
-                    result.setValue(player.nickname, forKey: "name")
-                }
-                try? realm.commitWrite()
-            }
+        realm.beginWrite()
+        for player in players {
+            realm.create(RealmPlayer.self, value: RealmPlayer(from: player), update: .all)
+            let result = realm.objects(RealmPlayerResult.self).filter("pid=%@", player.nsaId)
+            result.setValue(player.nickname, forKey: "name")
         }
+        try? realm.commitWrite()
     }
     
     // MARK: 新しいプレイヤーを追加/更新
