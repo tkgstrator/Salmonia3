@@ -153,6 +153,7 @@ private struct RecordView: View {
     }
     
     private struct RecordCardViewPad: View {
+        @State var isPresented: Bool = false
         let record: UserCoopRecord.Record
         
         var playerList: some View {
@@ -209,15 +210,20 @@ private struct RecordView: View {
         }
         
         var body: some View {
-            NavigationLink(destination: CoopResultView(result: RealmManager.shared.result(playTime: record.playTime)), label: {
+            Button(action: {
+                isPresented.toggle()
+            }, label: {
                 VStack(alignment: .center, spacing: 0, content: {
                     weaponList
                     recordDetail
                     playerList
                 })
+                .background(RoundedRectangle(cornerRadius: 10).fill(Color.safetyorange))
             })
             .buttonStyle(PlainButtonStyle())
-            .background(RoundedRectangle(cornerRadius: 10).fill(Color.safetyorange))
+            .sheet(isPresented: $isPresented, content: {
+                CoopResultView(result: RealmManager.shared.result(playTime: record.playTime))
+            })
         }
     }
 }

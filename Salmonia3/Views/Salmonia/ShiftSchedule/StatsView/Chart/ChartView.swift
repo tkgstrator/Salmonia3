@@ -25,11 +25,11 @@ struct PieChartView: View {
     var body: some View {
         Circle()
             .strokeBorder(Color.blackrussian, lineWidth: 3)
-            .frame(width: 200, height: 200)
+            .frame(width: 160, height: 160)
             .background(cirlceLayer)
             .overlay(Circle()
                         .fill(Color.blackrussian)
-                        .frame(width: 124, height: 124))
+                        .frame(width: 100, height: 100))
             .overlay(
                 VStack(alignment: .center, spacing: -20, content: {
                     Text(caption)

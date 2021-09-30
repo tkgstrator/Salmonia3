@@ -74,6 +74,7 @@
 		1071596126E279190066DB74 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071596026E279190066DB74 /* Appearance.swift */; };
 		1071596326E2799F0066DB74 /* SettingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071596226E2799F0066DB74 /* SettingMenu.swift */; };
 		1071596926E3BFA20066DB74 /* CoreShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1071596826E3BFA20066DB74 /* CoreShiftStats.swift */; };
+		10746500270552D800CA2111 /* players.json in Resources */ = {isa = PBXBuildFile; fileRef = 107464FF270552D800CA2111 /* players.json */; };
 		107D8A2C260A0D83005DCC83 /* RealmStatsRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D8A2B260A0D83005DCC83 /* RealmStatsRecord.swift */; };
 		1081B769269D1FD60063D947 /* RealmObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1081B768269D1FD60063D947 /* RealmObjects.swift */; };
 		1083857C265922700099475F /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = 1083857B265922700099475F /* SwiftyBeaver */; };
@@ -256,6 +257,7 @@
 		1071596026E279190066DB74 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		1071596226E2799F0066DB74 /* SettingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenu.swift; sourceTree = "<group>"; };
 		1071596826E3BFA20066DB74 /* CoreShiftStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreShiftStats.swift; sourceTree = "<group>"; };
+		107464FF270552D800CA2111 /* players.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = players.json; path = ../../../stats/players.json; sourceTree = "<group>"; };
 		107D8A2B260A0D83005DCC83 /* RealmStatsRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStatsRecord.swift; sourceTree = "<group>"; };
 		1081B768269D1FD60063D947 /* RealmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
 		108684E726EB5D7F00E28C7C /* RobotoMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoMono.ttf; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 			children = (
 				109E892826FB209F002B192D /* tutorial.mp4 */,
 				10BAE32E2703F36A00DB98D0 /* records.json */,
+				107464FF270552D800CA2111 /* players.json */,
 				10AF87E626E643A400D1C35E /* LoadingIka.png */,
 			);
 			path = Resources;
@@ -1037,6 +1040,7 @@
 				10AF87E726E643A400D1C35E /* LoadingIka.png in Resources */,
 				108684E826EB5D7F00E28C7C /* RobotoMono.ttf in Resources */,
 				1059416B25FA49E900C32D21 /* Assets.xcassets in Resources */,
+				10746500270552D800CA2111 /* players.json in Resources */,
 				108BFD9C26DDC37800652271 /* GoogleService-Info.plist in Resources */,
 				10BAE32F2703F36A00DB98D0 /* records.json in Resources */,
 				10D0177E26C0985F000DCA1B /* Configuration.storekit in Resources */,

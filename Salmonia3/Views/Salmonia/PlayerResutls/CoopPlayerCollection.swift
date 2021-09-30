@@ -12,15 +12,19 @@ import RealmSwift
 import URLImage
 
 struct CoopPlayerCollection: View {
-    @ObservedResults(RealmPlayer.self, sortDescriptor: SortDescriptor(keyPath: "lastMatchedTime", ascending: false)) var players
+    @ObservedResults(RealmPlayer.self, filter: NSPredicate(format: "lastMatchedTime!=0"), sortDescriptor: SortDescriptor(keyPath: "lastMatchedTime", ascending: false)) var players
     @State var playerName: String = ""
     
     var body: some View {
         List {
             ForEach(players) { player in
-                NavigationLink(destination: PlayerResultsView(player: player)) {
+                ZStack(content: {
+                    NavigationLink(destination: PlayerResultsView(player: player)) {
+                        EmptyView()
+                    }
+                    .opacity(0.0)
                     PlayerOverview(player: player)
-                }
+                })
             }
         }
         .navigationTitle(.TITLE_PLAYER_COLLECTION)
@@ -86,19 +90,26 @@ struct PlayerOverview: View {
     }
     
     var body: some View {
-        VStack(spacing: nil, content: {
-            HStack(content: {
-                URLImage(url: URL(string: player.thumbnailURL)!) { image in image.resizable().clipShape(Circle()) }
-                    .frame(width: 30, height: 30)
-                    .padding(.trailing)
-                Text(player.nickname)
-                    .splatfont2(size: 16)
-                Spacer()
+        HStack(alignment: .center, spacing: nil, content: {
+            VStack(alignment: .leading, spacing: 0, content: {
+                HStack(alignment: .center, spacing: nil, content: {
+                    URLImage(url: URL(string: player.thumbnailURL)!) { image in image.resizable().clipShape(Circle()) }
+                        .frame(width: 30, height: 30)
+                        .padding(.trailing)
+                    Text(player.nickname)
+                        .splatfont2(size: 16)
+                })
+                HStack(content: {
+                    Text(.LAST_MATCHED_TIME)
+                    Text(dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(player.lastMatchedTime))))
+                })
+                .splatfont2(size: 14)
             })
-            HStack(content: {
-                Text(.LAST_MATCHED_TIME)
-                Text(dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(player.lastMatchedTime))))
-                Spacer()
+            Spacer()
+            VStack(alignment: .trailing, content: {
+                #if DEBUG
+                Text("RANKED_COUNT_\(player.rankedCount)")
+                #endif
                 Text("RESULT_MATCHING_\(String(player.matching))")
             })
             .splatfont2(size: 14)

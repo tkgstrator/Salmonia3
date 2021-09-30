@@ -59,6 +59,7 @@ struct LoadingView: View {
     
     func getResultFromSplatNet2() {
         #if DEBUG
+        print(manager.account.iksmSession)
         let latestJobId: Int = RealmManager.shared.getLatestResultId() - 4
         #else
         let latestJobId: Int = RealmManager.shared.getLatestResultId()
