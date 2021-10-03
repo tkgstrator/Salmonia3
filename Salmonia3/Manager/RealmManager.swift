@@ -198,27 +198,23 @@ final class RealmManager: AppManager {
     // MARK: 新しいリザルトを追加
     /// なんかこのメソッド重いんだが
     public func addNewResultsFromSplatNet2(from results: [SplatNet2.Coop.Result], _ environment: Environment.Server = .splatnet2) {
-        DispatchQueue(label: "Realm Manager").sync {
-            autoreleasepool {
-                guard let realm = try? Realm() else { return }
-                realm.beginWrite()
-                for result in results {
-                    let result: RealmCoopResult = RealmCoopResult(from: result, pid: manager.playerId, environment: environment)
-                    switch result.duplicatedResult.isEmpty {
-                    case true:
-                        realm.create(RealmCoopResult.self, value: result, update: .all)
-                    case false:
-                        switch environment {
-                        case .splatnet2:
-                            result.duplicatedResult.setValue(result.jobId, forKey: "jobId")
-                        case .salmonstats:
-                            result.duplicatedResult.setValue(result.salmonId, forKey: "salmonId")
-                        }
-                    }
+        guard let realm = try? Realm() else { return }
+        realm.beginWrite()
+        for result in results {
+            let result: RealmCoopResult = RealmCoopResult(from: result, pid: manager.playerId, environment: environment)
+            switch result.duplicatedResult.isEmpty {
+            case true:
+                realm.create(RealmCoopResult.self, value: result, update: .all)
+            case false:
+                switch environment {
+                case .splatnet2:
+                    result.duplicatedResult.setValue(result.jobId, forKey: "jobId")
+                case .salmonstats:
+                    result.duplicatedResult.setValue(result.salmonId, forKey: "salmonId")
                 }
-                try? realm.commitWrite()
             }
         }
+        try? realm.commitWrite()
     }
 
     // MARK: データ削除

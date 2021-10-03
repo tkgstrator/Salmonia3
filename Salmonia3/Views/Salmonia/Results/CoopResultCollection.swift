@@ -25,7 +25,7 @@ struct CoopResultCollection: View {
             case .default:
                 DefaultListStyleView
             case .plain:
-                DefaultListStyleView
+                PlainListStyleView
             case .grouped:
                 GroupedListStyleView
             case .legacy:

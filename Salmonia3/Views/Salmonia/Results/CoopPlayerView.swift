@@ -9,16 +9,16 @@ import SwiftUI
 import RealmSwift
 
 struct CoopPlayerView: View {
+    @EnvironmentObject var appManager: AppManager
     var player: RealmPlayerResult
-    var isVisible: Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(alignment: .bottom) {
                 VStack(spacing: 3) {
                     // MARK: プレイヤーデータの表示
-                    Text(player.name.stringValue(isVisible))
-                        .splatfont2(.white, size: 18)
+                    Text((appManager.isFree05 || !(appManager.isFree03 && !player.isFirstPlayer)) ? player.name.stringValue : "-")
+                    .splatfont2(.white, size: 18)
                         .frame(height: 12)
                         .padding(.bottom, 5)
                     // MARK: 支給ブキとスペシャルの表示
@@ -72,7 +72,7 @@ struct CoopPlayerView: View {
                         }
                         HStack {
                             Image(.help)
-                            .resizable()
+                                .resizable()
                                 .frame(width: 33.4, height: 12.8)
                             Spacer()
                             Text(verbatim: "x \(player.deadCount)")
@@ -84,7 +84,7 @@ struct CoopPlayerView: View {
         .splatfont2(.white, size: 16)
         .frame(height: 80)
     }
-   
+    
     // MARK: マッチングとレーティング
     var advancedResult: some View {
         VStack(alignment: .trailing, spacing: 5) {
@@ -97,7 +97,7 @@ struct CoopPlayerView: View {
             HStack {
                 Spacer()
                 // MARK: 自分自身はマッチングした回数を表示しない
-                if player.isOwner {
+                if player.isFirstPlayer {
                     Text("")
                         .frame(height: 10)
                 } else {
@@ -108,18 +108,5 @@ struct CoopPlayerView: View {
         }
         .frame(height: 12)
         .splatfont2(.safetyorange, size: 13)
-    }
-}
-
-extension Optional where Wrapped == String {
-    func stringValue(_ isVisible: Bool) -> String {
-        if isVisible { return self.stringValue }
-        return "-"
-    }
-}
-
-extension RealmPlayerResult {
-    var isOwner: Bool {
-        return self.result.first?.player.first!.pid == self.pid
     }
 }

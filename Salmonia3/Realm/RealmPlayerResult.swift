@@ -10,7 +10,7 @@ import RealmSwift
 import SalmonStats
 import SplatNet2
 
-final class RealmPlayerResult: Object, Identifiable {
+final class RealmPlayerResult: Object, ObjectKeyIdentifiable {
     @Persisted var name: String?
     @Persisted(indexed: true) var pid: String
     @Persisted var deadCount: Int
@@ -39,7 +39,18 @@ final class RealmPlayerResult: Object, Identifiable {
 }
 
 extension RealmPlayerResult {
+    /// Nintendo Switch Onlineの画像
     var thumbnailURL: URL {
         RealmManager.shared.thumbnailURL(playerId: self.pid)
     }
+    
+    /// 自身が操作したプレイヤーかどうかのフラグ
+    var isFirstPlayer: Bool {
+        guard let firstPlayer = self.result.first?.player.first else { return false }
+        return firstPlayer.pid == self.pid
+    }
+}
+
+extension RealmPlayerResult: Identifiable {
+    var id: String { self.pid }
 }

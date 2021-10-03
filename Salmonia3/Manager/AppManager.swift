@@ -24,6 +24,7 @@ class AppManager: ObservableObject {
     @AppStorage("FEATURE_FREE_03") var isFree03: Bool = false // ニックネームを隠す
     /// Salmon Statsをタブに表示するかどうか
     @AppStorage("FEATURE_FREE_04") var isFree04: Bool = false
+    /// プレイヤー名を表示にするかどうか
     @AppStorage("FEATURE_FREE_05") var isFree05: Bool = false
 
     // 課金機能
