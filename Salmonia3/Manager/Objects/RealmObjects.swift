@@ -12,8 +12,7 @@ import RealmSwift
 extension RealmManager {
     /// 指定されたシフトIDのシフト情報を返す
     func shift(startTime: Int) -> RealmCoopShift {
-        return realm.objects(RealmCoopShift.self)
-            .filter("startTime=%@", startTime).first!
+        return realm.object(ofType: RealmCoopShift.self, forPrimaryKey: startTime)!
     }
     
     /// 指定されたプレイヤーIDが遊んだ全シフトIDを返す
@@ -60,8 +59,7 @@ extension RealmManager {
     }
     
     func result(playTime: Int) -> RealmCoopResult {
-        realm.objects(RealmCoopResult.self)
-            .filter("playTime=%@", playTime).first!
+        realm.object(ofType: RealmCoopResult.self, forPrimaryKey: playTime)!
     }
     
     /// 指定されたプレイヤーIDのリザルトを全件返す
