@@ -22,7 +22,7 @@ struct CoopResultView: View {
 
     var body: some View {
         PaginationView {
-            CoopResultOverview(isVisible: $isVisible, result: result)
+            CoopResultOverview(result: result)
             CoopPlayerResultView(result: result)
         }
         .currentPageIndex($selection)
@@ -32,11 +32,10 @@ struct CoopResultView: View {
 }
 
 struct CoopResultSimpleView: View {
-    @State var isVisible: Bool = true
     var result: RealmCoopResult
 
     var body: some View {
-        CoopResultOverview(isVisible: $isVisible, result: result)
+        CoopResultOverview(result: result)
             .background(Color.black.edgesIgnoringSafeArea(.all))
             .navigationTitle(.TITLE_RESULT_DETAIL)
             .navigationBarTitleDisplayMode(.inline)
@@ -44,8 +43,7 @@ struct CoopResultSimpleView: View {
 }
 
 struct CoopResultOverview: View {
-    @Binding var isVisible: Bool
-    @AppStorage("FEATURE_FREE_03") var isHidden: Bool = false
+    @EnvironmentObject var appManager: AppManager
     var result: RealmCoopResult
 
     var body: some View {
@@ -62,17 +60,17 @@ struct CoopResultOverview: View {
     }
 
     // 切り替え用のボタン
-    var SRButton: some View {
-        HStack {
-            Button(action: { isVisible.toggle() }) {
-                Image(systemName: "person.circle.fill")
-                    .imageScale(.large)
-                    .grayscale(isVisible ? 1.0 : 0.99)
-                    .opacity(isVisible ? 1.0 : 0.5)
-                    .padding(.all, 10)
-            }
-        }
-    }
+//    var SRButton: some View {
+//        HStack {
+//            Button(action: { isVisible.toggle() }) {
+//                Image(systemName: "person.circle.fill")
+//                    .imageScale(.large)
+//                    .grayscale(isVisible ? 1.0 : 0.99)
+//                    .opacity(isVisible ? 1.0 : 0.5)
+//                    .padding(.all, 10)
+//            }
+//        }
+//    }
 
     // MARK: 概要を表示するビュー
     var ResultOverview: some View {
@@ -106,31 +104,31 @@ struct CoopResultOverview: View {
                 .shadow(color: .black, radius: 0, x: 1, y: 1)
             }
         }
-        .overlay(SRButton, alignment: .topTrailing)
+//        .overlay(SRButton, alignment: .topTrailing)
         .splatfont2(.white, size: 20)
     }
 
     // MARK: 各WAVEの情報を表示
     var ResultWave: some View {
         LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 140), alignment: .top), count: result.wave.count)) {
-            ForEach(result.wave.indices) { index in
+            ForEach(result.wave) { wave in
                 LazyVStack(spacing: 0) {
                     LazyVStack(spacing: 0) {
-                        Text("RESULT_WAVE_\(index + 1)")
+                        Text("RESULT_WAVE_\(wave.index + 1)")
                             .foregroundColor(.black)
-                        Text("\(result.wave[index].goldenIkuraNum)/\(result.wave[index].quotaNum)")
+                        Text("\(wave.goldenIkuraNum)/\(wave.quotaNum)")
                             .foregroundColor(.white)
                             .padding(.horizontal, 5)
                             .frame(maxWidth: .infinity)
                             .frame(height: 36)
                             .background(Color.maire)
                             .splatfont2(size: 26)
-                        Text("\(result.wave[index].ikuraNum)")
+                        Text("\(wave.ikuraNum)")
                             .foregroundColor(.red)
-                        Text(result.wave[index].waterLevel.localizedName)
+                        Text(wave.waterLevel.localizedName)
                             .frame(height: 24)
                             .foregroundColor(.black)
-                        Text(result.wave[index].eventType.localizedName)
+                        Text(wave.eventType.localizedName)
                             .frame(height: 24)
                             .foregroundColor(.black)
                     }
@@ -141,14 +139,14 @@ struct CoopResultOverview: View {
                         Image(Egg.golden)
                             .resizable()
                             .frame(width: 15, height: 15)
-                        Text("RESULT_APPEARANCES_\(result.wave[index].goldenIkuraPopNum)")
+                        Text("RESULT_APPEARANCES_\(wave.goldenIkuraPopNum)")
                             .font(.custom("Splatfont2", size: 13))
                             .minimumScaleFactor(0.5)
                     }
                     .padding(.bottom, 10)
                     LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 4), alignment: .leading, spacing: 0, pinnedViews: []) {
-                        ForEach(result.specialUsage[index].indices) { idx in
-                            Image(specialId: result.specialUsage[index][idx])
+                        ForEach(wave.specialUsage.indices) { index in
+                            Image(specialId: wave.specialUsage[index])
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 28)
@@ -165,10 +163,9 @@ struct CoopResultOverview: View {
     // MARK: 各プレイヤーの情報を表示
     var ResultPlayer: some View {
         LazyHGrid(rows: Array(repeating: .init(.flexible(minimum: 80)), count: result.player.count), spacing: 10) {
-            ForEach(result.player.indices, id: \.self) { index in
-                // MARK: 表示させるかどうかのフラグをつける
-                NavigationLink(destination: PlayerResultsView(player: result.player[index])) {
-                    CoopPlayerView(player: result.player[index], isVisible: (isVisible || (index == 0 && !isHidden)))
+            ForEach(result.player) { player in
+                NavigationLink(destination: PlayerResultsView(player: player)) {
+                    CoopPlayerView(player: player)
                         .padding(.vertical, 15)
                 }
             }

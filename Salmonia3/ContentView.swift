@@ -15,48 +15,7 @@ import BetterSafariView
 struct ContentView: View {
     @EnvironmentObject var appManager: AppManager
     @State var selection: Int = 0
-    
-    struct CollectionView: View {
-        @State var collectionType: CollectionType = .result
-        
-        enum CollectionType: Int, CaseIterable {
-            case result
-            case wave
-            case player
-            
-            mutating func toggle() {
-                self = CollectionType(rawValue: (self.rawValue + 1) % 3)!
-            }
-        }
-        
-        var toggleButton: some View {
-            Button(action: {
-                collectionType.toggle()
-            }, label: {
-                Image(systemName: "switch.2")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            })
-        }
-        
-        var body: some View {
-            NavigationView {
-                switch collectionType {
-                case .result:
-                    CoopResultCollection()
-                        .navigationBarItems(trailing: toggleButton)
-                case .wave:
-                    CoopWaveCollection()
-                        .navigationBarItems(trailing: toggleButton)
-                case .player:
-                    CoopPlayerCollection()
-                        .navigationBarItems(trailing: toggleButton)
-                }
-            }
-            .navigationViewStyle(SplitNavigationViewStyle())
-        }
-    }
-    
+
     var googleMobileAds: some View {
         GoobleMobileAdsView(isAvailable: !appManager.isPaid01, adUnitId: "ca-app-pub-7107468397673752/3033508550")
     }
