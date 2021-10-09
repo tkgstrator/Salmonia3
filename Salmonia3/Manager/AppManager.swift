@@ -34,7 +34,8 @@ class AppManager: ObservableObject {
     @AppStorage("work.tkgstrator.multiaccounts") var isPaid02: Bool = false
     /// ゲーミングモードが有効かどうか
     @AppStorage("work.tkgstrator.gamingstyle") var isPaid03: Bool = false
-    @AppStorage("FEATURE_PAID_04") var isPaid04: Bool = false
+    /// APIをアップデートするかどうか
+    @AppStorage("work.tkgstrator.upgradeapi") var isPaid04: Bool = false
     @AppStorage("FEATURE_PAID_05") var isPaid05: Bool = false
 
     // ゲーミング機能
@@ -65,7 +66,6 @@ class AppManager: ObservableObject {
     private var observer: [[NSKeyValueObservation?]] = Array(repeating: Array(repeating: nil, count: 5), count: 5)
     
     init() {
-
         observer[0][0] = UserDefaults.standard.observe(\.FEATURE_PAID_01, options: [.initial, .new], changeHandler: { [weak self] (_, _) in
             self?.objectWillChange.send()
         })
@@ -168,30 +168,39 @@ enum LogType: String, CaseIterable {
 }
 
 extension UserDefaults {
+    /// クマブキ表示するかどうか
     @objc dynamic var FEATURE_FREE_01: Bool {
         return bool(forKey: "FEATURE_FREE_01")
     }
+    /// 将来のローテーションを表示するかどうか
     @objc dynamic var FEATURE_FREE_02: Bool {
         return bool(forKey: "FEATURE_FREE_02")
     }
+    /// ニックネームを表示するかどうか
     @objc dynamic var FEATURE_FREE_03: Bool {
         return bool(forKey: "FEATURE_FREE_03")
     }
+    /// Salmon Statsタブを表示するかどうか
     @objc dynamic var FEATURE_FREE_04: Bool {
         return bool(forKey: "FEATURE_FREE_04")
     }
+    /// 自身のプレイヤー名を表示するかどうか
     @objc dynamic var FEATURE_FREE_05: Bool {
         return bool(forKey: "FEATURE_FREE_05")
     }
+    /// 広告を表示するかどうか
     @objc dynamic var FEATURE_PAID_01: Bool {
         return bool(forKey: "FEATURE_PAID_01")
     }
+    /// 複数アカウントが有効化どうか
     @objc dynamic var FEATURE_PAID_02: Bool {
         return bool(forKey: "FEATURE_PAID_02")
     }
+    /// ゲーミングモードが有効化どうか
     @objc dynamic var FEATURE_PAID_03: Bool {
         return bool(forKey: "FEATURE_PAID_03")
     }
+    /// APIをアップデートするかどうか
     @objc dynamic var FEATURE_PAID_04: Bool {
         return bool(forKey: "FEATURE_PAID_04")
     }

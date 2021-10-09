@@ -88,34 +88,35 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
     
     private func updateXProductVersion() {
-        AF.request("https://h505nylwxl.execute-api.ap-northeast-1.amazonaws.com/dev/version", method: .get)
-            .validate(statusCode: 200...200)
-            .validate(contentType: ["application/json"])
-            .responseJSON { response in
-                switch response.result {
-                case .success:
-                    if let data = response.data {
+        if UserDefaults.standard.FEATURE_PAID_05 {
+            AF.request("https://api.splatnet2.com/version", method: .get)
+                .validate(statusCode: 200...200)
+                .validate(contentType: ["application/json"])
+                .responseJSON { response in
+                    switch response.result {
+                    case .success:
                         let decoder: JSONDecoder = {
                             let decoder = JSONDecoder()
                             decoder.keyDecodingStrategy = .convertFromSnakeCase
                             return decoder
                         }()
+                        guard let data = response.data else { return }
                         
                         // APIのバージョンを更新
-                        if let response = try? decoder.decode(XProductVersion.self, from: data) {
-                            UserDefaults.standard.setValue(response.xProductVersion, forKey: "xProductVersion")
-                            UserDefaults.standard.setValue(response.apiVersion, forKey: "apiVersion")
-                            // インスタンスを更新
-                            manager = SalmonStats(version: response.xProductVersion)
-                        } else {
-                        }
+                        guard let response = try? decoder.decode(XProductVersion.self, from: data) else { return }
+                        UserDefaults.standard.setValue(response.xProductVersion, forKey: "xProductVersion")
+                        UserDefaults.standard.setValue(response.apiVersion, forKey: "apiVersion")
+                    
+                        // インスタンスを更新
+                        manager = SalmonStats(version: response.xProductVersion)
+                    case .failure(let error):
+                        log.error(error.localizedDescription)
                     }
-                case .failure(let error):
-                    log.error(error.localizedDescription)
                 }
-            }
+        }
     }
-    
+   
+    /// SwiftyBeaverを初期化
     private func initSwiftyBeaver() {
         // MARK: SwiftyBeaverの設定
         console.format = "$DHH:mm:ss$d $L $M"
@@ -123,8 +124,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         log.addDestination(cloud)
     }
     
+    /// SwiftyStoreKitを初期化
     private func initSwiftyStoreKit() {
-        // MARK: SwiftyStoreKitの設定
+        /// 購入中処理があれば処理を完了させる
         SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
             for purchase in purchases {
                 switch purchase.transaction.transactionState {

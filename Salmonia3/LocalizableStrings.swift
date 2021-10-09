@@ -194,6 +194,7 @@ class LocalizableStrings {
         case SETTING_SALMONSTATS
         case TITLE_SALMONSTATS
         case LAST_MATCHED_TIME
+        case TEXT_PURCHASED
     }
 
 }

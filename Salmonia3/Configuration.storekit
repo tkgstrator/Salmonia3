@@ -43,33 +43,48 @@
       "productID" : "work.tkgstrator.multiaccounts",
       "referenceName" : "Multiple Accounts",
       "type" : "NonConsumable"
-    },
-    {
-      "displayPrice" : "0.99",
-      "familyShareable" : false,
-      "internalID" : "19FA6126",
-      "localizations" : [
-        {
-          "description" : "You can try luck every shift.",
-          "displayName" : "Lottery",
-          "locale" : "en_US"
-        },
-        {
-          "description" : "毎シフト運試しができます",
-          "displayName" : "宝くじ",
-          "locale" : "ja"
-        }
-      ],
-      "productID" : "work.tkgstrator.lottery",
-      "referenceName" : "Lottery",
-      "type" : "NonConsumable"
     }
   ],
   "settings" : {
 
   },
   "subscriptionGroups" : [
+    {
+      "id" : "05063560",
+      "localizations" : [
 
+      ],
+      "name" : "work.tkgstrator",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "displayPrice" : "0.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "7252479D",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Apply Nintendo API changes without app update",
+              "displayName" : "API Update",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "アプリのアップデートなしにログイン使用の変更に対応",
+              "displayName" : "APIアップデート",
+              "locale" : "ja"
+            }
+          ],
+          "productID" : "work.tkgstrator.upgradeapi",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "API Upgrade",
+          "subscriptionGroupID" : "05063560",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
   ],
   "version" : {
     "major" : 1,
