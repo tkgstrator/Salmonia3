@@ -16,7 +16,7 @@ extension SKProduct {
     }
 }
 
-final class StoreKitManager {
+final class StoreKitManager: ObservableObject {
     private init() {}
     static let shared: StoreKitManager = StoreKitManager()
     
@@ -50,6 +50,7 @@ final class StoreKitManager {
 
     func setValue(product: StoreItem, _ newValue: Bool) {
         UserDefaults.standard.setValue(newValue, forKey: product.rawValue)
+        objectWillChange.send()
     }
 
     /// プロダクトの購入
@@ -70,9 +71,6 @@ final class StoreKitManager {
     /// サーバからデータを取得
     func retreiveProductInfo(productIds: [StoreItem], completion: @escaping (Set<SKProduct>) -> ()) {
         SwiftyStoreKit.retrieveProductsInfo(Set(productIds.map({ $0.rawValue }))) { result in
-            for product in result.retrievedProducts {
-                print(product.productIdentifier)
-            }
             if let invalidProductId = result.invalidProductIDs.first {
                 log.error("Invalid Product: \(invalidProductId)")
             }

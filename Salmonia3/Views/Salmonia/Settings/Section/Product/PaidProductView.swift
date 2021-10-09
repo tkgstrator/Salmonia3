@@ -45,6 +45,9 @@ struct PaidProductView: View {
                     .padding()
                 }
                 restoreButton
+                #if DEBUG
+                lockButton
+                #endif
             })
         }
         .splatfont2(size: 16)
@@ -90,7 +93,7 @@ struct PaidProductView: View {
             StoreKitManager.shared.lockPurchasedItes()
         }, label: {
             Circle().stroke(Color.primary, lineWidth: 3.0)
-                .frame(width: 80, height: 80)
+                .frame(width: 70, height: 70)
                 .overlay(Image(systemName: "lock").resizable().aspectRatio(contentMode: .fit).padding())
         })
     }
