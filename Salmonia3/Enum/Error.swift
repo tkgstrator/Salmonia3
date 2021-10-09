@@ -11,8 +11,8 @@ enum APPError: Error {
 
 }
 
-enum SKError: Error, Identifiable {
-    var id: UUID { UUID() }
+enum SKError: Int, Error, Identifiable {
+    var id: Int { rawValue }
     case unknown
     case clientInvalid
     case paymentCancelled

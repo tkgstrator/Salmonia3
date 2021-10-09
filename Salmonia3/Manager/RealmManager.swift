@@ -16,7 +16,7 @@ final class RealmManager: AppManager {
     public static let shared = RealmManager()
     internal var realm: Realm
     
-    private let schemeVersion: UInt64 = 8192
+    private let schemeVersion: UInt64 = 16384
     private var task = Set<AnyCancellable>()
     
     // 環境設定のためのEnum
