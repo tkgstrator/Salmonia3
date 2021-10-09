@@ -11,7 +11,7 @@
       "localizations" : [
         {
           "description" : "Disable advertisement",
-          "displayName" : "Disable ads",
+          "displayName" : "Disable Ads",
           "locale" : "en_US"
         },
         {

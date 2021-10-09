@@ -60,7 +60,6 @@ class AppManager: ObservableObject {
     @AppStorage("FEATURE_DEBUG_05") var isDebug05: Bool = false //
     
     @Published var isLoading: Bool = false
-    @Published var allAvailableProducts: [SKProduct] = []
 
     private var token: NSObserver = NSObserver()
     private var observer: [[NSKeyValueObservation?]] = Array(repeating: Array(repeating: nil, count: 5), count: 5)
@@ -141,19 +140,14 @@ class AppManager: ObservableObject {
         observer[4][4] = UserDefaults.standard.observe(\.FEATURE_OTHER_05, options: [.initial, .new], changeHandler: { [weak self] (_, _) in
             self?.objectWillChange.send()
         })
-        
-        StoreKitManager.shared.retreiveProductInfo(productIds: StoreKitManager.StoreItem.allCases) { [self] products in
-            allAvailableProducts = Array(products).sorted(by: { $0.productIdentifier > $1.productIdentifier })
-        }
     }
     
     func loggingToCloud(_ value: String) {
         #if DEBUG
         log.debug("nsaid: \(manager.playerId), description: \(value)")
         #else
-        // ログ機能がオンの場合
         if isDebugMode {
-            log.error("nsaid: \(manager.playerId)")
+            log.debug("nsaid: \(manager.playerId), description: \(value)")
         }
         #endif
     }
