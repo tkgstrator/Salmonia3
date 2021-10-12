@@ -87,10 +87,6 @@ struct CoopPlayerView: View {
                 Text(player.name ?? "-")
                     .visible(!appManager.isFree05 || player.isFirstPlayer && !appManager.isFree03)
                     .splatfont2(.white, size: 22)
-                    .onAppear {
-                        print("isFree05", appManager.isFree05)
-                        print(!appManager.isFree05 || player.isFirstPlayer && !appManager.isFree03)
-                    }
             })
             Spacer()
             LazyVStack(alignment: .trailing, spacing: -10, content: {
