@@ -415,13 +415,6 @@
 			path = iOS15;
 			sourceTree = "<group>";
 		};
-		10080C2E271505C0006B883E /* iOS14 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = iOS14;
-			sourceTree = "<group>";
-		};
 		10094BBA26CEA222001ACBDF /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -697,7 +690,6 @@
 		108FF89D26F9FB0D00EC7262 /* Results */ = {
 			isa = PBXGroup;
 			children = (
-				10080C2E271505C0006B883E /* iOS14 */,
 				10080C2D271505AB006B883E /* iOS15 */,
 				10AF87E826E6E79A00D1C35E /* ResultStyle */,
 				10BBBEA126049EF400DA79C9 /* CoopResultView.swift */,
