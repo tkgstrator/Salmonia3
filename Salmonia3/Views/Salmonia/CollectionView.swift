@@ -27,13 +27,13 @@ struct CollectionView: View {
     
     var anonymousButton: some View {
         Button(action: {
-            appManager.isFree03.toggle()
+            appManager.isFree05.toggle()
         }, label: {
             Image(systemName: "person")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
         })
-        .foregroundColor(!appManager.isFree03 ? .blue : .gray)
+        .foregroundColor(!appManager.isFree05 ? .blue : .gray)
     }
     
     var toggleButton: some View {

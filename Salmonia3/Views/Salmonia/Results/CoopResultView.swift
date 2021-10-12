@@ -26,7 +26,7 @@ struct CoopResultView: View {
             CoopPlayerResultView(result: result)
         }
         .currentPageIndex($selection)
-        .background(Color.black.edgesIgnoringSafeArea(.all))
+        .background(Color.black)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
@@ -116,7 +116,7 @@ private struct CoopResultOverview: View {
                             .frame(height: 26)
                             .minimumScaleFactor(1.0)
                     })
-                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.yellow))
+                        .background(RoundedRectangle(cornerRadius: 4).fill(Color.yellow))
                         .frame(minHeight: 140)
                     HStack(content: {
                         Image(Egg.golden)
