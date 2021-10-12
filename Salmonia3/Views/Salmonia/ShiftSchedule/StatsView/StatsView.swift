@@ -14,7 +14,7 @@ struct StatsView: View {
     var body: some View {
         List {
             Section(header: Text(.HEADER_OVERVIEW).splatfont2(.safetyorange, size: 14)) {
-                CoopShift(shift: try! RealmManager.shared.getShiftSchedule(startTime: startTime))
+                CoopShiftView().environment(\.coopshift, RealmManager.shared.shift(startTime: startTime))
                 StatsColumn(title: .RESULT_JOB_NUM, value: stats.overview.jobNum)
                 StatsColumn(title: .RESULT_CREW_AVG_NUM, value: stats.overview.crewAvg)
                 StatsColumn(title: .RESULT_CLEAR_RATIO, value: stats.overview.clearRatio)
