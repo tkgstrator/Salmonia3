@@ -12,19 +12,12 @@ struct ResultOverview: View {
     @StateObject var result: RealmCoopResult
     
     var body: some View {
-        ZStack(alignment: .topLeading) {
-            Text("\(result.indexOfResults)")
-                .splatfont2(size: 12)
-                .offset(y: 0)
-            HStack(spacing: 0) {
-                ResultJob
-                Spacer()
-                ResultGrade
-                Spacer()
-                ResultEggs
-            }
+        switch result.isClear {
+            case true:
+                resultClear
+            case false:
+                EmptyView()
         }
-        .frame(maxWidth: .infinity)
     }
     
     var ResultGrade: some View {
@@ -49,37 +42,58 @@ struct ResultOverview: View {
         }
     }
     
-    var ResultJob: some View {
-        if result.isClear {
-            return AnyView(
-                Text(.RESULT_CLEAR)
-                    .splatfont(.green, size: 13)
-                    .frame(width: 60)
-            )
-        } else {
-            return AnyView(
-                Text(.RESULT_DEFEAT)
-                    .splatfont(.safetyorange, size: 13)
-                    .frame(width: 60)
-            )
-        }
+    var resultClear: some View {
+        HStack(alignment: .top, content: {
+            LazyVStack(alignment: .leading, spacing: nil, content: {
+                LazyHStack(spacing: nil, content: {
+                    Text("\(result.indexOfResults)")
+                        .splatfont2(size: 13)
+                    Text(.RESULT_CLEAR)
+                        .splatfont(.green, size: 13)
+                })
+                LazyHStack(content: {
+                    Text(GradeType(rawValue: result.gradeId.intValue)!.localizedName)
+                    Text("\(result.gradePoint.intValue)")
+                    Text("↑").splatfont(.red, size: 14)
+                })
+                    .splatfont(size: 14)
+            })
+            Spacer()
+            LazyVStack(content: {
+                resultEggs
+            })
+        })
     }
     
-    var ResultEggs: some View {
-        VStack(alignment: .leading, spacing: 5) {
-            HStack {
-                Image(Egg.golden).resize()
+    var resultFailure: some View {
+        Text(.RESULT_DEFEAT)
+            .splatfont(.safetyorange, size: 13)
+    }
+    
+    var resultEggs: some View {
+        HStack(content: {
+            HStack(content: {
+                Image(Egg.golden)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 20)
                 Text("x\(result.goldenEggs)")
-                    .splatfont2(size: 15)
-                    .frame(width: 45, height: 22, alignment: .leading)
-            }
-            HStack {
-                Image(Egg.power).resize()
+                    .foregroundColor(.whitesmoke)
+            })
+            .padding(.horizontal, 8)
+            .background(Capsule().fill(Color.black.opacity(0.85)))
+            HStack(content: {
+                Image(Egg.power)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 20)
                 Text("x\(result.powerEggs)")
-                    .splatfont2(size: 15)
-                    .frame(width: 50, height: 22, alignment: .leading)
-            }
-        }
-        .frame(width: 50)
+                    .foregroundColor(.whitesmoke)
+            })
+            .padding(.horizontal, 8)
+            .background(Capsule().fill(Color.black.opacity(0.85)))
+        })
+        .minimumScaleFactor(1.0)
+        .font(.custom("Splatfont2", size: 14))
     }
 }
