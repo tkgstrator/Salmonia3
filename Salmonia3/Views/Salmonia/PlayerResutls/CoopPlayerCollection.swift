@@ -63,7 +63,7 @@ struct PlayerResultsView: View {
     var body: some View {
         List {
             ForEach(main) { shift in
-                Section(header: CoopShift(shift: shift.phase, results: shift.results)) {
+                Section(header: CoopShiftView().environment(\.coopshift, shift.phase)) {
                     ForEach(shift.results, id:\.self) { result in
                         ZStack(alignment: .leading) {
                             NavigationLink(destination: CoopResultView(result: result)) {
