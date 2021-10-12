@@ -22,13 +22,13 @@ struct CoopResultCollection: View {
     @State private var isPresented: Bool = false
 
     init() {
-        let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .white
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        if #available(iOS 15.0, *) {
-            let tableView = UITableView.appearance()
-            tableView.sectionHeaderTopPadding = 0
-        }
+//        let appearance = UINavigationBarAppearance()
+//        appearance.backgroundColor = .white
+//        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+//        if #available(iOS 15.0, *) {
+//            let tableView = UITableView.appearance()
+//            tableView.sectionHeaderTopPadding = 0
+//        }
     }
     
     var body: some View {
@@ -78,6 +78,9 @@ struct CoopResultCollection: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(.TITLE_RESULT_COLLECTION)
+            .pullToRefresh(isShowing: $isShowing, onRefresh: {
+                isPresented.toggle()
+            })
             .present(isPresented: $isPresented, transitionStyle: .flipHorizontal, presentationStyle: .fullScreen, content: {
                 LoadingView()
                     .environmentObject(appManager)
@@ -117,7 +120,7 @@ struct CoopResultCollection: View {
     private var PlainListStyleView: some View {
         List {
             ForEach(main.results) { shift in
-                Section(header: CoopShift(shift: shift.phase)) {
+                Section(header: CoopShiftView().environment(\.coopshift, shift.phase)) {
                     ForEach(shift.results, id:\.self) { result in
                         ZStack(alignment: .leading) {
                             NavigationLink(destination: CoopResultView(result: result)) {
@@ -136,7 +139,7 @@ struct CoopResultCollection: View {
     private var GroupedListStyleView: some View {
         List {
             ForEach(main.results) { shift in
-                Section(header: CoopShift(shift: shift.phase)) {
+                Section(header: CoopShiftView().environment(\.coopshift, shift.phase)) {
                     ForEach(shift.results, id:\.self) { result in
                         ZStack(alignment: .leading) {
                             NavigationLink(destination: CoopResultView(result: result)) {
@@ -174,7 +177,7 @@ struct CoopResultCollection: View {
     private var InsetListStyleView: some View {
         List {
             ForEach(main.results) { shift in
-                Section(header: CoopShift(shift: shift.phase)) {
+                Section(header: CoopShiftView().environment(\.coopshift, shift.phase)) {
                     ForEach(shift.results, id:\.self) { result in
                         ZStack(alignment: .leading) {
                             NavigationLink(destination: CoopResultView(result: result)) {

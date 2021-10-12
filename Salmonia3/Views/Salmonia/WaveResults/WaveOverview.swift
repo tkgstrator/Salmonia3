@@ -23,7 +23,7 @@ struct WaveOverview: View {
     }
     
     var WeaponList: some View {
-        LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 4), spacing: 0) {
+        LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 50)), count: 4), spacing: 0) {
             ForEach(wave.weaponList.indices, id:\.self) { index in
                 Image(weaponId: wave.weaponList[index])
                     .resizable()
@@ -43,7 +43,7 @@ struct WaveOverview: View {
                 }
                 .splatfont2(size: 16)
             }
-            if let recordType = wave.recordType, let recordTypeEgg = wave.recordTypeEgg {
+            if let recordType = wave.recordType {
                 HStack {
                     Text(recordType.localizedName)
                 }
