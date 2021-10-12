@@ -59,19 +59,6 @@ struct CoopResultOverview: View {
         .navigationTitle(.TITLE_RESULT_DETAIL)
     }
 
-    // 切り替え用のボタン
-//    var SRButton: some View {
-//        HStack {
-//            Button(action: { isVisible.toggle() }) {
-//                Image(systemName: "person.circle.fill")
-//                    .imageScale(.large)
-//                    .grayscale(isVisible ? 1.0 : 0.99)
-//                    .opacity(isVisible ? 1.0 : 0.5)
-//                    .padding(.all, 10)
-//            }
-//        }
-//    }
-
     // MARK: 概要を表示するビュー
     var ResultOverview: some View {
         ZStack(alignment: .center) {
@@ -104,7 +91,6 @@ struct CoopResultOverview: View {
                 .shadow(color: .black, radius: 0, x: 1, y: 1)
             }
         }
-//        .overlay(SRButton, alignment: .topTrailing)
         .splatfont2(.white, size: 20)
     }
 

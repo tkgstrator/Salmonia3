@@ -32,7 +32,7 @@ struct CoopShiftCollection: View {
                             label: {
                                 EmptyView()
                             })
-                        .opacity(0.0)
+                            .opacity(0.0)
                         CoopShift(shift: shifts[index])
                     }
                     .overlay(
@@ -40,7 +40,7 @@ struct CoopShiftCollection: View {
                             .font(.system(size: 18, weight: .bold))
                             .foregroundColor(.primary)
                             .opacity(playedShiftIds.contains(shifts[index].startTime) ? 1.0 : 0.0)
-                             , alignment: .topLeading)
+                        , alignment: .topLeading)
                     .tag(index)
                 }
             }
@@ -62,7 +62,7 @@ struct CoopShift: View {
     @StateObject var shift: RealmCoopShift
     var average: (power: Double?, golden: Double?)?
     var maximum: (power: Int?, golden: Int?)?
-
+    
     var formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone.current
@@ -89,71 +89,54 @@ struct CoopShift: View {
             .splatfont2(size: 16)
             InfoWeapon
         }
-        .frame(maxWidth: .infinity)
+//        .frame(maxWidth: .infinity)
+    }
+    
+    private var randomWeaponList: some View {
+        LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 30, maximum: 40)), count: 5), alignment: .center, spacing: 0) {
+            ForEach(shift.weaponList.indices) { idx in
+                Image(weaponId: shift.weaponList[idx])
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
+            Image(weaponId: shift.rareWeapon!)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+        }
+    }
+    
+    private var normalWeaponList: some View {
+        LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 30, maximum: 40)), count: 4), alignment: .center, spacing: 0) {
+            ForEach(shift.weaponList.indices) { idx in
+                Image(weaponId: shift.weaponList[idx])
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
+        }
     }
     
     var InfoWeapon: some View {
-        HStack {
-            VStack(spacing: 0) {
+        LazyHStack(content: {
+            LazyVStack(spacing: 0, content: {
                 Image(stageId: shift.stageId)
                     .resizable().frame(width: 112, height: 63)
                     .clipShape(RoundedRectangle(cornerRadius: 8.0))
                 Text(StageType(rawValue: shift.stageId)!.localizedName)
                     .splatfont2(size: 16)
-                    .textCase(nil)
                     .padding(.bottom, 8)
-            }
-            VStack(alignment: .leading, spacing: 5) {
-                HStack {
-                    Text(.SUPPLIED_WEAPONS)
-                        .textCase(nil)
-                        .splatfont2(size: 16)
-                    // 金イクラ数平均とか出すと良いかも
-                    Spacer()
-                    if let average = average {
-                        HStack {
-                            Image(Egg.golden).resize()
-                            Text("x\(average.golden.stringValue)")
-                                .splatfont2(size: 14)
-                                .textCase(nil)
-                        }
-                    }
+            })
+            LazyVStack(alignment: .leading, spacing: 5, content: {
+//                Text(.SUPPLIED_WEAPONS)
+                Text("AaAAAAAAAAAAAAAAAAAA")
+                    .splatfont2(size: 16)
+                switch shift.weaponList.contains(-1) {
+                    case true:
+                        randomWeaponList
+                    case false:
+                        normalWeaponList
                 }
-                .frame(maxWidth: 250)
-                if appManager.isFree01 && shift.weaponList.contains(-1) {
-                    AnyView(
-                        LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 30, maximum: 50)), count: 5), alignment: .center, spacing: 0) {
-                            ForEach(shift.weaponList.indices) { idx in
-                                Image(weaponId: shift.weaponList[idx])
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(maxWidth: 45)
-                            }
-                            Image(weaponId: shift.rareWeapon!)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(maxWidth: 45)
-                        }
-                        .padding(.bottom, 20)
-                        .frame(maxWidth: 250)
-                    )
-                } else {
-                    AnyView(
-                        LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 30, maximum: 50)), count: 4), alignment: .center, spacing: 0) {
-                            ForEach(shift.weaponList.indices) { idx in
-                                Image(weaponId: shift.weaponList[idx])
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(maxWidth: 45)
-                            }
-                        }
-                        .padding(.bottom, 20)
-                        .frame(maxWidth: 250)
-                    )
-                }
-                
-            }
-        }
+            })
+        })
     }
 }
 //

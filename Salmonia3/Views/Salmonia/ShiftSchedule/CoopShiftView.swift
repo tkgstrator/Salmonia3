@@ -31,7 +31,7 @@ struct CoopShiftView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 8.0))
                     Text(StageType(rawValue: shift.stageId)!.localizedName)
                         .font(.custom("Splatfont2", size: 14))
-//                        .minimumScaleFactor(1.0)
+                        .minimumScaleFactor(0.8)
                         .frame(width: 112, height: 16)
                         .padding(.bottom, 8)
                 })
@@ -56,12 +56,12 @@ struct CoopShiftView: View {
     }
     
     var normalShiftWeapon: some View {
-        VStack(alignment: .center, spacing: 0, content: {
+        LazyVStack(alignment: .leading, spacing: 0, content: {
             Text(.SUPPLIED_WEAPONS)
                 .textCase(nil)
                 .font(.custom("Splatfont2", size: 14))
-                .frame(maxWidth: .infinity, alignment: .leading)
-            LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 50)), count: 4), alignment: .center, spacing: 0, pinnedViews: [], content: {
+//                .frame(maxWidth: .infinity, alignment: .leading)
+            LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 40, maximum: 50)), count: 4), alignment: .center, spacing: 0, pinnedViews: [], content: {
                 ForEach(shift.weaponList.indices) { index in
                     Image(weaponId: shift.weaponList[index])
                         .resizable()
@@ -73,12 +73,12 @@ struct CoopShiftView: View {
 
     
     var randomShiftWeapon: some View {
-        VStack(alignment: .center, spacing: 0, content: {
+        LazyVStack(alignment: .center, spacing: 0, content: {
             Text(.SUPPLIED_WEAPONS)
                 .textCase(nil)
                 .font(.custom("Splatfont2", size: 14))
                 .frame(maxWidth: .infinity, alignment: .leading)
-            LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 5), alignment: .center, spacing: 0, pinnedViews: [], content: {
+            LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 40, maximum: 50)), count: 5), alignment: .center, spacing: 0, pinnedViews: [], content: {
                 ForEach(shift.weaponList.indices) { index in
                     Image(weaponId: shift.weaponList[index])
                         .resizable()
