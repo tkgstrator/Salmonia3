@@ -82,8 +82,8 @@ private struct CoopResultOverview: View {
                     .frame(width: 24, height: 24)
                 Text(verbatim: "x\(result.powerEggs)")
             })
-            .shadow(color: .black, radius: 0, x: 1, y: 1)
-            .splatfont2(.white, size: 20)
+                .shadow(color: .black, radius: 0, x: 1, y: 1)
+                .splatfont2(.white, size: 20)
         })
             .background(Image(stageId: result.stageId).resizable().aspectRatio(contentMode: .fill))
             .frame(height: 120)
@@ -93,44 +93,61 @@ private struct CoopResultOverview: View {
         LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 140), alignment: .top), count: result.wave.count)) {
             ForEach(result.wave) { wave in
                 VStack(alignment: .center, spacing: 0, content: {
-                    Text("RESULT_WAVE_\(wave.index + 1)")
-                        .foregroundColor(.black)
-                    Text("\(wave.goldenIkuraNum)/\(wave.quotaNum)")
-                        .foregroundColor(.white)
-                        .splatfont2(size: 22)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 36)
-                        .minimumScaleFactor(1.0)
-                        .backgroundFill(.maire)
-                    Text("\(wave.ikuraNum)")
-                        .foregroundColor(.red)
-                        .frame(height: 26)
-                        .minimumScaleFactor(1.0)
-                    Text(wave.waterLevel.localizedName)
-                        .foregroundColor(.black)
-                        .frame(height: 26)
-                        .minimumScaleFactor(1.0)
-                    Text(wave.eventType.localizedName)
-                        .foregroundColor(.black)
-                        .frame(height: 26)
-                        .minimumScaleFactor(1.0)
+                    VStack(spacing: 0, content: {
+                        Text("RESULT_WAVE_\(wave.index + 1)")
+                            .foregroundColor(.black)
+                        Text("\(wave.goldenIkuraNum)/\(wave.quotaNum)")
+                            .foregroundColor(.white)
+                            .splatfont2(size: 22)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 36)
+                            .minimumScaleFactor(1.0)
+                            .backgroundFill(.maire)
+                        Text("\(wave.ikuraNum)")
+                            .foregroundColor(.red)
+                            .frame(height: 26)
+                            .minimumScaleFactor(1.0)
+                        Text(wave.waterLevel.localizedName)
+                            .foregroundColor(.black)
+                            .frame(height: 26)
+                            .minimumScaleFactor(1.0)
+                        Text(wave.eventType.localizedName)
+                            .foregroundColor(.black)
+                            .frame(height: 26)
+                            .minimumScaleFactor(1.0)
+                    })
+                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.yellow))
+                        .frame(minHeight: 140)
+                    HStack(content: {
+                        Image(Egg.golden)
+                            .resizable()
+                            .frame(width: 15, height: 15)
+                        Text("RESULT_APPEARANCES_\(wave.goldenIkuraPopNum)")
+                            .font(.custom("Splatfont2", size: 13))
+                            .minimumScaleFactor(0.5)
+                    })
+                    LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 4), alignment: .leading, spacing: 0, pinnedViews: []) {
+                        ForEach(wave.specialUsage.indices) { index in
+                            Image(specialId: wave.specialUsage[index])
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        }
+                    }
                 })
-                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.yellow))
-                    .frame(minHeight: 140)
             }
         }
         .splatfont2(.white, size: 16)
     }
     
     var ResultPlayer: some View {
-        LazyHGrid(rows: Array(repeating: .init(.flexible(minimum: 80)), count: result.player.count), spacing: 10) {
+        LazyVStack(content: {
             ForEach(result.player) { player in
                 NavigationLink(destination: PlayerResultsView(player: player)) {
                     CoopPlayerView(player: player)
-                        .padding(.vertical, 15)
+                        .padding(.bottom, 8)
                 }
             }
-        }
+        })
     }
 }
 

@@ -12,101 +12,91 @@ struct CoopPlayerView: View {
     @EnvironmentObject var appManager: AppManager
     var player: RealmPlayerResult
     
+    var weaponList: some View {
+        LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 20, maximum: 35)), count: 4), alignment: .leading, spacing: 0) {
+            Image(specialId: player.specialId)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            ForEach(player.weaponList.indices, id: \.self) { index in
+                Image(weaponId: player.weaponList[index])
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
+        }
+        .frame(minWidth: 80)
+    }
+    
+    var eggResult: some View {
+        LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 40, maximum: 80)), count: 2), alignment: .center, spacing: 0, pinnedViews: [], content: {
+            HStack(content: {
+                Image(.golden)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 20)
+                Spacer()
+                Text(verbatim: "x \(player.goldenIkuraNum)")
+            })
+            HStack(content: {
+                Image(.rescue)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 20)
+                Spacer()
+                Text(verbatim: "x \(player.helpCount)")
+            })
+            HStack(content: {
+                Image(.power)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 20)
+                Spacer()
+                Text(verbatim: "x \(player.ikuraNum)")
+            })
+            HStack(content: {
+                Image(.help)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 20)
+                Spacer()
+                Text(verbatim: "x \(player.deadCount)")
+            })
+        })
+    }
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            HStack(alignment: .bottom) {
-                VStack(spacing: 3) {
-                    // MARK: プレイヤーデータの表示
-                    Text((appManager.isFree05 || !(appManager.isFree03 && !player.isFirstPlayer)) ? player.name.stringValue : "-")
+        LazyVStack(alignment: .center, spacing: 0) {
+            HStack(alignment: .firstTextBaseline, spacing: nil, content: {
+                Text((appManager.isFree05 || !(appManager.isFree03 && !player.isFirstPlayer)) ? player.name.stringValue : "-")
                     .splatfont2(.white, size: 18)
-                        .frame(height: 12)
-                        .padding(.bottom, 5)
-                    // MARK: 支給ブキとスペシャルの表示
-                    HStack {
-                        LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 4), alignment: .leading, spacing: 0, pinnedViews: []) {
-                            Image(specialId: player.specialId)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(maxWidth: 35)
-                            ForEach(player.weaponList.indices, id: \.self) { index in
-                                Image(weaponId: player.weaponList[index])
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(maxWidth: 35)
-                            }
-                        }
-                    }
-                    // MARK: 討伐したオオモノ数の表示
+                    .padding(.leading)
+                Spacer()
+                VStack(alignment: .trailing, spacing: 5) {
+                    HStack(content: {
+                        Spacer()
+                        Text("RESULT_RATING_\(String(player.srpower))")
+                            .frame(height: 10)
+                    })
+                    HStack(content: {
+                        Spacer()
+                        Text(player.isFirstPlayer ? "" : "RESULT_MATCHING_\(String(player.matching))")
+                    })
+                }
+                .frame(height: 12)
+                .minimumScaleFactor(1.0)
+                .splatfont2(.safetyorange, size: 13)
+            })
+                .frame(height: 54)
+            HStack(alignment: .top, spacing: nil, content: {
+                VStack(content: {
+                    weaponList
                     Text("RESULT_BOSS_DEFEATED_\(player.bossKillCounts.sum())")
                         .foregroundColor(.yellow)
                         .shadow(color: .black, radius: 0, x: 1, y: 1)
-                }
-                Spacer()
-                // MARK: レーティングとマッチング回数の表示
-                VStack(spacing: 0) {
-                    advancedResult
-                    Spacer()
-                    HStack {
-                        HStack {
-                            Image(Egg.golden)
-                                .resizable()
-                                .frame(width: 15, height: 15)
-                            Spacer()
-                            Text(verbatim: "x \(player.goldenIkuraNum)")
-                        }
-                        HStack {
-                            Image(Egg.power)
-                                .resizable()
-                                .frame(width: 15, height: 15)
-                            Spacer()
-                            Text(verbatim: "x \(player.ikuraNum)")
-                        }
-                    }
-                    HStack {
-                        HStack {
-                            Image(.rescue)
-                                .resizable()
-                                .frame(width: 33.4, height: 12.8)
-                            Spacer()
-                            Text(verbatim: "x \(player.helpCount)")
-                        }
-                        HStack {
-                            Image(.help)
-                                .resizable()
-                                .frame(width: 33.4, height: 12.8)
-                            Spacer()
-                            Text(verbatim: "x \(player.deadCount)")
-                        }
-                    }
-                }
-            }
+                })
+                eggResult
+            })
         }
+        //            .frame(width: geometry.frame(in: .global).width)
         .splatfont2(.white, size: 16)
-        .frame(height: 80)
-    }
-    
-    // MARK: マッチングとレーティング
-    var advancedResult: some View {
-        VStack(alignment: .trailing, spacing: 5) {
-            HStack {
-                Spacer()
-                // MARK: レーティングを計算
-                Text("RESULT_RATING_\(String(player.srpower))")
-                    .frame(height: 10)
-            }
-            HStack {
-                Spacer()
-                // MARK: 自分自身はマッチングした回数を表示しない
-                if player.isFirstPlayer {
-                    Text("")
-                        .frame(height: 10)
-                } else {
-                    Text("RESULT_MATCHING_\(String(player.matching))")
-                        .frame(height: 10)
-                }
-            }
-        }
-        .frame(height: 12)
-        .splatfont2(.safetyorange, size: 13)
     }
 }
