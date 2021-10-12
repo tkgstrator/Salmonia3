@@ -107,7 +107,7 @@ struct Overview: View {
         })
         .padding()
     }
-    
+
     var body: some View {
         ScrollView(.vertical, showsIndicators: false, content: {
             Section(header: Text(.HEADER_OVERVIEW).font(.custom("Splatfont2", size: 16)), content: {

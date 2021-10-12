@@ -14,12 +14,14 @@
 		10023BEF26DF2760007BB899 /* coop.json in Resources */ = {isa = PBXBuildFile; fileRef = 10023BEE26DF2760007BB899 /* coop.json */; };
 		10023BF126DF2A9D007BB899 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10023BEB26DF26ED007BB899 /* Schedule.swift */; };
 		10039F9626A45EA300B1546A /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10039F9526A45EA300B1546A /* GoogleMobileAds.xcframework */; };
+		10080C30271505F5006B883E /* ResultOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10080C2F271505F5006B883E /* ResultOverview.swift */; };
 		10094BB926CE9FC4001ACBDF /* SwiftyUI in Frameworks */ = {isa = PBXBuildFile; productRef = 10094BB826CE9FC4001ACBDF /* SwiftyUI */; };
 		1009517D26F700BE0099AA2B /* shiftwidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 1009517F26F700BE0099AA2B /* shiftwidget.intentdefinition */; };
 		1009518226F70EC20099AA2B /* AddAccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1009518126F70EC20099AA2B /* AddAccountButton.swift */; };
 		1009518526F780300099AA2B /* VideoPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 1009518426F780300099AA2B /* VideoPlayer */; };
 		1009518726F7804B0099AA2B /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1009518626F7804B0099AA2B /* TutorialView.swift */; };
 		100F30482711CBFF0070DF6A /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100F30472711CBFF0070DF6A /* View.swift */; };
+		100F304B271452890070DF6A /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 100F304A271452890070DF6A /* SwiftUIRefresh */; };
 		1013EFAC26F0F83400943D37 /* SettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1013EFAB26F0F83400943D37 /* SettingType.swift */; };
 		1013EFAE26F1180000943D37 /* SalmonStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1013EFAD26F1180000943D37 /* SalmonStats.swift */; };
 		101C77CD26496FA6005D603C /* CoopPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C77CC26496FA6005D603C /* CoopPlayerView.swift */; };
@@ -194,6 +196,7 @@
 		10023BEB26DF26ED007BB899 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		10023BEE26DF2760007BB899 /* coop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = coop.json; sourceTree = "<group>"; };
 		10039F9526A45EA300B1546A /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleMobileAds.xcframework; sourceTree = "<group>"; };
+		10080C2F271505F5006B883E /* ResultOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOverview.swift; sourceTree = "<group>"; };
 		10094BB726CE9F13001ACBDF /* SwiftyUI */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftyUI; path = ../SwiftyUI; sourceTree = "<group>"; };
 		1009518126F70EC20099AA2B /* AddAccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountButton.swift; sourceTree = "<group>"; };
 		1009518626F7804B0099AA2B /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
@@ -339,6 +342,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				100F304B271452890070DF6A /* SwiftUIRefresh in Frameworks */,
 				10094BB926CE9FC4001ACBDF /* SwiftyUI in Frameworks */,
 				10CF09A025FB984400D2EEB1 /* SwiftyStoreKit in Frameworks */,
 				10D0177726C06DED000DCA1B /* StoreKit.framework in Frameworks */,
@@ -400,6 +404,22 @@
 				10023BEE26DF2760007BB899 /* coop.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		10080C2D271505AB006B883E /* iOS15 */ = {
+			isa = PBXGroup;
+			children = (
+				10377FAC25FD166200536A94 /* CoopResultCollection.swift */,
+				10080C2F271505F5006B883E /* ResultOverview.swift */,
+			);
+			path = iOS15;
+			sourceTree = "<group>";
+		};
+		10080C2E271505C0006B883E /* iOS14 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = iOS14;
 			sourceTree = "<group>";
 		};
 		10094BBA26CEA222001ACBDF /* Manager */ = {
@@ -677,9 +697,10 @@
 		108FF89D26F9FB0D00EC7262 /* Results */ = {
 			isa = PBXGroup;
 			children = (
+				10080C2E271505C0006B883E /* iOS14 */,
+				10080C2D271505AB006B883E /* iOS15 */,
 				10AF87E826E6E79A00D1C35E /* ResultStyle */,
 				10BBBEA126049EF400DA79C9 /* CoopResultView.swift */,
-				10377FAC25FD166200536A94 /* CoopResultCollection.swift */,
 				101C77CC26496FA6005D603C /* CoopPlayerView.swift */,
 				101C77D426497038005D603C /* CoopPlayerResultView.swift */,
 			);
@@ -909,6 +930,7 @@
 				10210F0B26D3D2F200E4C7C4 /* SwiftUIX */,
 				10AF87E226E63DFF00D1C35E /* SDWebImageSwiftUI */,
 				1009518426F780300099AA2B /* VideoPlayer */,
+				100F304A271452890070DF6A /* SwiftUIRefresh */,
 			);
 			productName = Salmonia3;
 			productReference = 1059416325FA49E500C32D21 /* Salmonia3.app */;
@@ -997,6 +1019,7 @@
 				10210F0A26D3D2F200E4C7C4 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 				10AF87E126E63DFF00D1C35E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				1009518326F7802F0099AA2B /* XCRemoteSwiftPackageReference "VideoPlayer" */,
+				100F3049271452890070DF6A /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
 			);
 			productRefGroup = 1059416425FA49E500C32D21 /* Products */;
 			projectDirPath = "";
@@ -1183,6 +1206,7 @@
 				102465F125FDDABD004DC043 /* SettingView.swift in Sources */,
 				1071595226E2274A0066DB74 /* Egg.swift in Sources */,
 				108FF89526F9FA7E00EC7262 /* Overview.swift in Sources */,
+				10080C30271505F5006B883E /* ResultOverview.swift in Sources */,
 				10CF09F425FB9BE100D2EEB1 /* RealmCoopResult.swift in Sources */,
 				1059416925FA49E500C32D21 /* ContentView.swift in Sources */,
 				10682EF3264FEF0A0035CC68 /* StatsWaveView.swift in Sources */,
@@ -1317,7 +1341,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = shiftwidget/Info.plist;
@@ -1342,7 +1366,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				INFOPLIST_FILE = shiftwidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -1487,7 +1511,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1515,7 +1539,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1678,6 +1702,14 @@
 				minimumVersion = 1.2.3;
 			};
 		};
+		100F3049271452890070DF6A /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUIRefresh";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.3;
+			};
+		};
 		10210F0A26D3D2F200E4C7C4 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
@@ -1745,6 +1777,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1009518326F7802F0099AA2B /* XCRemoteSwiftPackageReference "VideoPlayer" */;
 			productName = VideoPlayer;
+		};
+		100F304A271452890070DF6A /* SwiftUIRefresh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 100F3049271452890070DF6A /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */;
+			productName = SwiftUIRefresh;
 		};
 		10210F0B26D3D2F200E4C7C4 /* SwiftUIX */ = {
 			isa = XCSwiftPackageProductDependency;

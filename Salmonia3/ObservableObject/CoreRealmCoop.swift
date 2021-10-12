@@ -45,6 +45,7 @@ class CoreRealmCoop: ObservableObject {
     }
 }
 
+/// ユーザの大まかな記錄
 class UserOverview: Identifiable {
     /// 全バイト回数(計算するのがめんどくさいので)
     var total: Int = 0
@@ -57,7 +58,7 @@ class UserOverview: Identifiable {
     var waves: [Result] = Array(repeating: Result(), count: 3)
     /// 全潮位・イベント・WAVEでのクリア率
     var results: [[[Result]]] = Array(repeating: Array(repeating: Array(repeating: Result(), count: 3), count: 7), count: 5)
-    
+
     init() {
         let results = RealmManager.shared.results
         self.total = results.count
@@ -67,7 +68,8 @@ class UserOverview: Identifiable {
                                                   results.filter("isClear==false AND failureWave==%@ AND failureReason==%@", $0, "wipe_out").count)) })
         self.failure = Result.FailureReason(timeLimit: waves.map({ $0.failure.timeLimit }).reduce(0, +), wipeOut: waves.map({ $0.failure.wipeOut }).reduce(0, +))
     }
-    
+
+    /// 失敗数や成功数の記錄
     struct Result: Identifiable, Hashable {
         static func == (lhs: UserOverview.Result, rhs: UserOverview.Result) -> Bool {
             lhs.id == rhs.id
@@ -95,7 +97,7 @@ class UserOverview: Identifiable {
     }
 }
 
-// MARK: リザルト一覧で使うデータ
+/// リザルト一覧で使うデータ
 class UserCoopResult: Identifiable {
     var id: UUID = UUID()
     var phase: RealmCoopShift
@@ -112,16 +114,19 @@ class UserCoopResult: Identifiable {
     }
 }
 
+/// ステージごとの金イクラ記錄
 class UserCoopRecord: Identifiable {
     var id: UUID = UUID()
     var records: [Record] = []
+    var overview: [Overview] = []
 
     internal init() {
-        
         for stageId in StageType.allCases {
             let waves = RealmManager.shared.allWaves(stageId: stageId.rawValue)
             let results = RealmManager.shared.allResults(stageId: stageId.rawValue)
-            
+            /// 概要を追加
+            overview.append(Overview(stageId: stageId, results: results))
+
             // 夜込み最高記録を計算
             let total = Array(results.sorted(byKeyPath: "goldenEggs", ascending: false).prefix(3)).map({ Record(stageId: stageId, playTime: $0.playTime, powerEggs: $0.powerEggs, goldenEggs: $0.goldenEggs, players: $0.players, weaponList: $0.weaponList, recordType: .total) })
             records.append(contentsOf: total)
@@ -141,8 +146,26 @@ class UserCoopRecord: Identifiable {
         }
     }
     
+    /// ステージごとの大まかな記錄
+    struct Overview: Identifiable, Hashable {
+        var id: Int { stageId.rawValue }
+        var stageId: StageType
+        var jobNum: Int?
+        var maxGrade: Int?
+        var counter999Num: Int?
+        var counter999StepNum: Int?
+        
+        internal init(stageId: StageType, results: RealmSwift.Results<RealmCoopResult>) {
+            self.stageId = stageId
+            self.jobNum = results.count == 0 ? nil : results.count
+            self.counter999Num = results.counterStepNum == 0 ? nil : results.counterStepNum
+            self.counter999StepNum = results.minimumStepNum
+            self.maxGrade = results.max(ofProperty: "gradePoint")
+        }
+    }
+    
+    /// 納品記錄
     class Record: Identifiable {
-        var id: UUID = UUID()
         var playTime: Int
         var stageId: StageType
         var waterLevel: WaterLevel
@@ -172,59 +195,3 @@ class UserCoopRecord: Identifiable {
         }
     }
 }
-// MARK: ステージキロク
-//#warning("将来的にこれ削除したい")
-//class CoopRecord: ObservableObject {
-//    var jobNum: Int?
-//    var maxGrade: Int?
-//    var counterStepNum: Int = 0
-//    var minimumStepNum: Int?
-//    var goldenEggs: [[GoldenEggsRecord?]] = Array(repeating: Array(repeating: nil, count: 7), count: 3)
-//    var maxGoldenEggs: (all: Int?, nonight: Int?) = (all: .none, nonight: .none)
-//
-//    init() {}
-//
-//    // シフトごとの記録
-//    init(startTime: Int) {
-//        let results = RealmManager.shared.results(startTime: startTime)
-//        let waves = RealmManager.shared.waves(startTime: startTime)
-//        getRecordsFromDatabase(results: results, waves: waves)
-//    }
-//
-//    // ステージごとの記録
-//    init(stageId: Int) {
-//        let results = RealmManager.shared.results(stageId: stageId)
-//        let waves = RealmManager.shared.waves(stageId: stageId)
-//        getRecordsFromDatabase(results: results, waves: waves)
-//    }
-//
-//    func getRecordsFromDatabase(results: RealmSwift.Results<RealmCoopResult>, waves: RealmSwift.Results<RealmCoopWave>) {
-//        if results.count != 0 {
-//            self.jobNum = results.count
-//            self.maxGrade = results.max(ofProperty: "gradePoint")
-//            self.counterStepNum = results.counterStepNum
-//            self.minimumStepNum = results.minimumStepNum
-//
-//            // 最高納品数
-//            maxGoldenEggs = (all: results.max(ofProperty: "goldenEggs"),
-//                             nonight: results.filter("SUBQUERY(wave, $wave, $wave.eventType=%@).@count==3", "water-levels").max(ofProperty: "goldenEggs"))
-//
-//            // MARK: WAVE納品キロク
-//            for waterLevel in WaterLevel.allCases {
-//                for eventType in EventType.allCases {
-//                    if let goldenEgg: Int = waves.maxGoldenEggs(eventType: eventType, waterLevel: waterLevel) {
-//                        self.goldenEggs[waterLevel.rawValue][eventType.rawValue] = GoldenEggsRecord(goldenEggs: goldenEgg)
-//                    }
-//                }
-//            }
-//        }
-//    }
-//}
-//
-//#warning("将来的にこれ削除したい")
-//struct GoldenEggsRecord {
-//    var goldenEggs: Int?
-//    var playTime: Int? = 0
-//    var tide: Int = 0
-//    var event: Int = 0
-//}

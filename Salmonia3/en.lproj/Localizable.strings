@@ -206,3 +206,6 @@
 "SETTING_SALMONSTATS"="Display Salmon Stats on Tab";
 "TITLE_SALMONSTATS"="Salmon Stats";
 "TEXT_PURCHASED"="Purchased";
+"HEADER_MAXGRADE"="Max grade";
+"HEADER_999COUNTS"="Counts of 999";
+"HEADER_MIN999COUNTS"="Minimum attempts to 999";
