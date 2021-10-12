@@ -41,6 +41,7 @@ struct PaidProductView: View {
                             .multilineTextAlignment(.center)
                             .lineLimit(3)
                         .splatfont2(size: 12)
+                        Spacer()
                     })
                     .padding()
                 }

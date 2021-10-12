@@ -195,6 +195,10 @@ class LocalizableStrings {
         case TITLE_SALMONSTATS
         case LAST_MATCHED_TIME
         case TEXT_PURCHASED
+//        case HEADER_STAGE_RECORD
+//        case HEADER_MAXGRADE
+//        case HEADER_999COUNTS
+//        case HEADER_MIN999COUNTS
     }
 
 }

@@ -224,3 +224,6 @@
 "LAST_MATCHED_TIME"="最後に遊んだ日";
 "RANKED_COUNT_%lld"="ランキング掲載回数x%lld";
 "TEXT_PURCHASED"="購入済み";
+"HEADER_MAXGRADE"="最高評価";
+"HEADER_999COUNTS"="カンスト回数";
+"HEADER_MIN999COUNTS"="最短カンストバイト回数";

@@ -8,6 +8,8 @@
 import SwiftUI
 import SwiftUIX
 import SwiftyUI
+import SwiftUIRefresh
+
 
 struct CoopResultCollection: View {
     @EnvironmentObject var appManager: AppManager
@@ -19,38 +21,69 @@ struct CoopResultCollection: View {
     @State private var orientation: UIInterfaceOrientation = .portrait
     @State private var isPresented: Bool = false
 
+    init() {
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .white
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        if #available(iOS 15.0, *) {
+            let tableView = UITableView.appearance()
+            tableView.sectionHeaderTopPadding = 0
+        }
+    }
+    
     var body: some View {
-        Group {
-            switch appManager.listStyle {
-            case .default:
-                DefaultListStyleView
-            case .plain:
-                PlainListStyleView
-            case .grouped:
-                GroupedListStyleView
-            case .legacy:
-                LegacyListStyleView
-            case .inset:
-                InsetListStyleView
-            case .sidebar:
-                SidebarListStyleView
+        if #available(iOS 15.0, *) {
+            Group {
+                switch appManager.listStyle {
+                    case .default:
+                        DefaultListStyleView
+                    case .plain:
+                        PlainListStyleView
+                    case .grouped:
+                        GroupedListStyleView
+                    case .legacy:
+                        LegacyListStyleView
+                    case .inset:
+                        InsetListStyleView
+                    case .sidebar:
+                        SidebarListStyleView
+                }
             }
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle(.TITLE_RESULT_COLLECTION)
+            .refreshable {
+                isPresented.toggle()
+            }
+            .fullScreenCover(isPresented: $isPresented, onDismiss: {}, content: {
+                LoadingView()
+                    .environmentObject(appManager)
+                    .environment(\.modalIsPresented, .constant(PresentationStyle($isPresented)))
+            })
+        } else {
+            Group {
+                switch appManager.listStyle {
+                    case .default:
+                        DefaultListStyleView
+                    case .plain:
+                        PlainListStyleView
+                    case .grouped:
+                        GroupedListStyleView
+                    case .legacy:
+                        LegacyListStyleView
+                    case .inset:
+                        InsetListStyleView
+                    case .sidebar:
+                        SidebarListStyleView
+                }
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle(.TITLE_RESULT_COLLECTION)
+            .present(isPresented: $isPresented, transitionStyle: .flipHorizontal, presentationStyle: .fullScreen, content: {
+                LoadingView()
+                    .environmentObject(appManager)
+                    .environment(\.modalIsPresented, .constant(PresentationStyle($isPresented)))
+            })
         }
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle(.TITLE_RESULT_COLLECTION)
-        .pullToRefresh(isShowing: $isShowing, onRefresh: {
-            isPresented.toggle()
-            isShowing = false
-        })
-        .onDisappear {
-            isShowing = false
-        }
-        
-        .present(isPresented: $isPresented, transitionStyle: .flipHorizontal, presentationStyle: .fullScreen, content: {
-            LoadingView()
-                .environmentObject(appManager)
-                .environment(\.modalIsPresented, .constant(PresentationStyle($isPresented)))
-        })
     }
     
     private var LegacyListStyleView: some View {
@@ -155,87 +188,5 @@ struct CoopResultCollection: View {
             }
         }
         .listStyle(InsetGroupedListStyle())
-    }
-}
-
-struct CoopResultCollection_Previews: PreviewProvider {
-    static var previews: some View {
-        CoopResultCollection()
-    }
-}
-
-struct ResultOverview: View {
-    @StateObject var result: RealmCoopResult
-    
-    var body: some View {
-        ZStack(alignment: .topLeading) {
-            Text("\(result.indexOfResults)")
-                .splatfont2(size: 12)
-                .offset(y: 0)
-            HStack(spacing: 0) {
-                ResultJob
-                Spacer()
-                ResultGrade
-                Spacer()
-                ResultEggs
-            }
-        }
-        .frame(maxWidth: .infinity)
-    }
-    
-    var ResultGrade: some View {
-        if result.isClear {
-            return AnyView(
-                HStack {
-                    Text(GradeType(rawValue: result.gradeId.intValue)!.localizedName)
-                    Text("\(result.gradePoint.intValue)")
-                    Text("↑").splatfont(.red, size: 14)
-                }
-                .splatfont(size: 14)
-            )
-        } else {
-            return AnyView(
-                HStack {
-                    Text(GradeType(rawValue: result.gradeId.intValue)!.localizedName)
-                    Text("\(result.gradePoint.intValue)")
-                    Text(result.gradePointDelta.intValue == 0 ? "→" : "↓")
-                }
-                .splatfont(.gray, size: 14)
-            )
-        }
-    }
-    
-    var ResultJob: some View {
-        if result.isClear {
-            return AnyView(
-                Text(.RESULT_CLEAR)
-                    .splatfont(.green, size: 13)
-                    .frame(width: 60)
-            )
-        } else {
-            return AnyView(
-                Text(.RESULT_DEFEAT)
-                    .splatfont(.safetyorange, size: 13)
-                    .frame(width: 60)
-            )
-        }
-    }
-    
-    var ResultEggs: some View {
-        VStack(alignment: .leading, spacing: 5) {
-            HStack {
-                Image(Egg.golden).resize()
-                Text("x\(result.goldenEggs)")
-                    .splatfont2(size: 15)
-                    .frame(width: 45, height: 22, alignment: .leading)
-            }
-            HStack {
-                Image(Egg.power).resize()
-                Text("x\(result.powerEggs)")
-                    .splatfont2(size: 15)
-                    .frame(width: 50, height: 22, alignment: .leading)
-            }
-        }
-        .frame(width: 50)
     }
 }

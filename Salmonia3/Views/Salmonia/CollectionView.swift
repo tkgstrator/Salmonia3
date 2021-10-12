@@ -8,6 +8,7 @@
 
 import SwiftUI
 import SwiftUIX
+import SwiftUIRefresh
 import SwiftyUI
 
 struct CollectionView: View {

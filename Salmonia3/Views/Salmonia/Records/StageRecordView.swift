@@ -12,25 +12,101 @@ import Introspect
 
 struct StageRecordView: View {
     @EnvironmentObject var result: CoreRealmCoop
+    @State var recordType: RecordType = .golden
     
     enum RecordType: Int, CaseIterable {
         case golden
-        case power
+//        case power
         case overview
+        
+        mutating func toggle() {
+            self = RecordType(rawValue: (self.rawValue + 1) % RecordType.allCases.count)!
+        }
     }
     
-    var body: some View {
+    var toggleButton: some View {
+        Button(action: {
+            recordType.toggle()
+        }, label: {
+            Image(systemName: "switch.2")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+        })
+    }
+    
+    var recordOverview: some View {
+        PaginationView {
+            ForEach(StageType.allCases, id:\.rawValue) { stageId in
+                NavigationView {
+                    RecordOverview(record: result.records.overview.filter({ $0.stageId == stageId }).first!)
+                        .navigationBarTitleDisplayMode(.inline)
+                        .navigationTitle(stageId.localizedName)
+                        .navigationBarItems(trailing: toggleButton)
+                }
+                .navigationViewStyle(StackNavigationViewStyle())
+            }
+        }
+        .edgesIgnoringSafeArea(.top)
+        .pageIndicatorTintColor(.primary)
+    }
+    
+    var recordView: some View {
         PaginationView {
             ForEach(StageType.allCases, id:\.rawValue) { stageId in
                 NavigationView {
                     RecordView(records: result.records.records.filter({ $0.stageId == stageId }))
                         .navigationBarTitleDisplayMode(.inline)
                         .navigationTitle(stageId.localizedName)
+                        .navigationBarItems(trailing: toggleButton)
                 }
                 .navigationViewStyle(StackNavigationViewStyle())
             }
         }
+        .edgesIgnoringSafeArea(.top)
         .pageIndicatorTintColor(.primary)
+    }
+    
+    var body: some View {
+        switch recordType {
+        case .overview:
+            recordOverview
+        default:
+            recordView
+        }
+    }
+}
+
+private struct RecordOverview: View {
+    let record: UserCoopRecord.Overview
+    
+    var body: some View {
+        List {
+            HStack(content: {
+                Text(.RESULT_JOB_NUM)
+                Spacer()
+                Text(record.jobNum.stringValue)
+                    .foregroundColor(.secondary)
+            })
+            HStack(content: {
+                Text(.RESULT_MAX_GRADE)
+                Spacer()
+                Text(record.maxGrade.stringValue)
+                    .foregroundColor(.secondary)
+            })
+            HStack(content: {
+                Text(.RESULT_MAX_GRADE_NUM)
+                Spacer()
+                Text(record.counter999Num.stringValue)
+                    .foregroundColor(.secondary)
+            })
+            HStack(content: {
+                Text(.RESULT_MIN_MAX_GRADE)
+                Spacer()
+                Text(record.counter999StepNum.stringValue)
+                    .foregroundColor(.secondary)
+            })
+        }
+        .splatfont2(size: 16)
     }
 }
 
@@ -78,7 +154,7 @@ private struct RecordView: View {
                 }
             })
         })
-   }
+    }
     
     var waveRecordView: some View {
         ForEach(EventType.allCases, id:\.rawValue) { eventType in
@@ -153,6 +229,7 @@ private struct RecordView: View {
     }
     
     private struct RecordCardViewPad: View {
+        @EnvironmentObject var appManager: AppManager
         @State var isPresented: Bool = false
         let record: UserCoopRecord.Record
         
@@ -214,8 +291,8 @@ private struct RecordView: View {
                 isPresented.toggle()
             }, label: {
                 VStack(alignment: .center, spacing: 0, content: {
-                    weaponList
                     recordDetail
+                    weaponList
                     playerList
                 })
                 .background(RoundedRectangle(cornerRadius: 10).fill(Color.safetyorange))
@@ -223,6 +300,7 @@ private struct RecordView: View {
             .buttonStyle(PlainButtonStyle())
             .sheet(isPresented: $isPresented, content: {
                 CoopResultView(result: RealmManager.shared.result(playTime: record.playTime))
+                    .environmentObject(appManager)
             })
         }
     }
