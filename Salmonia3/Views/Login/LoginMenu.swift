@@ -42,21 +42,21 @@ struct LoginMenu: View {
             signInButton
                 .offset(x: 0, y: -200)
         })
-        .onReceive(NotificationCenter.default.publisher(for: SplatNet2.signIn), perform: { notification in
-            withAnimation {
-                guard let state = notification.object as? SplatNet2.SignInState else { return }
-                signInState = state
-            }
-        })
-        .frame(UIScreen.main.bounds.size)
-        .background(Wave().edgesIgnoringSafeArea(.all))
-        .navigationTitle(.TITLE_SALMONIA)
-        .navigationBarItems(trailing: TutorialView())
-        .preferredColorScheme(.dark)
-        .navigationViewStyle(StackNavigationViewStyle())
-        .navigationBarBackButtonHidden(true)
+            .onReceive(NotificationCenter.default.publisher(for: SplatNet2.signIn), perform: { notification in
+                withAnimation {
+                    guard let state = notification.object as? SplatNet2.SignInState else { return }
+                    signInState = state
+                }
+            })
+            .frame(UIScreen.main.bounds.size)
+            .background(Wave().edgesIgnoringSafeArea(.all))
+            .navigationTitle(.TITLE_SALMONIA)
+            .navigationBarItems(trailing: TutorialView())
+            .preferredColorScheme(.dark)
+            .navigationViewStyle(StackNavigationViewStyle())
+            .navigationBarBackButtonHidden(true)
     }
-
+    
     var circleProgress: some View {
         Circle()
             .trim(from: 0.0, to: CGFloat(signInState.rawValue) / CGFloat(9))
@@ -64,12 +64,12 @@ struct LoginMenu: View {
             .rotationEffect(.degrees(-90))
             .frame(circleSize)
             .background(Circle()
-                        .stroke(Color.envy, lineWidth: 6)
-                        .frame(circleSize))
+                            .stroke(Color.envy, lineWidth: 6)
+                            .frame(circleSize))
             .overlay(Circle().fill(Color.safetyorange.opacity(0.5)).frame(width: circleSize.width - 6, height: circleSize.height - 6))
             .background(Circle().fill(Color.white))
     }
-   
+    
     var signInButton: some View {
         Button(action: {
             isPresented.toggle()
@@ -77,16 +77,17 @@ struct LoginMenu: View {
             RoundedRectangle(cornerRadius: 10).fill(Color.whitesmoke).frame(width: 240, height: 50)
                 .overlay(Text(.BTN_SIGN_IN).foregroundColor(.safetyorange).font(.custom("Splatfont2", size: 20)))
         })
-        .padding()
-        .authorize(isPresented: $isPresented, completion: { result in
-            switch result {
-            case .success:
-                isActive.toggle()
-            case .failure(let error):
-                print(error)
-            }
-        })
-        .overlay(NavigationLink(destination: SalmonLoginMenu(), isActive: $isActive, label: { EmptyView() }))
+            .padding()
+            .authorize(isPresented: $isPresented, completion: { result in
+                switch result {
+                    case .success(let value):
+                        print(value)
+                        isActive.toggle()
+                    case .failure(let error):
+                        print(error)
+                }
+            })
+            .overlay(NavigationLink(destination: SalmonLoginMenu(), isActive: $isActive, label: { EmptyView() }))
     }
 }
 
@@ -181,26 +182,26 @@ extension WebImage {
 extension SplatNet2.SignInState {
     var localizedDescription: String {
         switch self {
-        case .none:
-            return ""
-        case .sessiontoken:
-            return "session token"
-        case .accesstoken:
-            return "access token"
-        case .s2shashnso:
-            return "s2s hash"
-        case .splatoontoken:
-            return "splatoon token"
-        case .splatoonaccesstoken:
-            return "splatoon access token"
-        case .iksmsession:
-            return "iksm session"
-        case .s2shashapp:
-            return "s2s hash"
-        case .flapgapp:
-            return "f"
-        case .flapgnso:
-            return "f"
+            case .none:
+                return ""
+            case .sessiontoken:
+                return "session token"
+            case .accesstoken:
+                return "access token"
+            case .s2shashnso:
+                return "s2s hash"
+            case .splatoontoken:
+                return "splatoon token"
+            case .splatoonaccesstoken:
+                return "splatoon access token"
+            case .iksmsession:
+                return "iksm session"
+            case .s2shashapp:
+                return "s2s hash"
+            case .flapgapp:
+                return "f"
+            case .flapgnso:
+                return "f"
         }
     }
 }

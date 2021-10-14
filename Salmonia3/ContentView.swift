@@ -64,18 +64,18 @@ struct ContentView: View {
                 .overlay(googleMobileAds, alignment: .bottom)
                 .tag(3)
             }
-            #if DEBUG
-            NavigationView {
-                SalmonStatsRecord()
-            }
-            .navigationViewStyle(SplitNavigationViewStyle())
-            .tabItem {
-                Image(systemName: "person")
-                Text(.TITLE_USER)
-            }
-            .overlay(googleMobileAds, alignment: .bottom)
-            .tag(4)
-            #endif
+//            #if DEBUG
+//            NavigationView {
+//                SalmonStatsRecord()
+//            }
+//            .navigationViewStyle(SplitNavigationViewStyle())
+//            .tabItem {
+//                Image(systemName: "person")
+//                Text(.TITLE_USER)
+//            }
+//            .overlay(googleMobileAds, alignment: .bottom)
+//            .tag(4)
+//            #endif
             NavigationView {
                 Overview()
             }

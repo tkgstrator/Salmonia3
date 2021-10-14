@@ -63,10 +63,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         FirebaseApp.configure()
-//        importSalmonStatsRecord()
         initSwiftyStoreKit()
         initSwiftyBeaver()
-        updateKeychainAccess()
         updateXProductVersion()
         try? RealmManager.shared.addNewRotation(from: SplatNet2.shiftSchedule)
         return true
@@ -88,7 +86,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
     
     private func updateXProductVersion() {
-        if UserDefaults.standard.FEATURE_PAID_05 {
+        switch UserDefaults.standard.FEATURE_FREE_05 {
+            case true:
             AF.request("https://api.splatnet2.com/version", method: .get)
                 .validate(statusCode: 200...200)
                 .validate(contentType: ["application/json"])
@@ -102,17 +101,20 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                         }()
                         guard let data = response.data else { return }
                         
-                        // APIのバージョンを更新
                         guard let response = try? decoder.decode(XProductVersion.self, from: data) else { return }
-                        UserDefaults.standard.setValue(response.xProductVersion, forKey: "xProductVersion")
-                        UserDefaults.standard.setValue(response.apiVersion, forKey: "apiVersion")
-                    
-                        // インスタンスを更新
+                        UserDefaults.standard.setValue(response.xProductVersion, forKey: "APP_X_PRODUCT_VERSION")
+                        UserDefaults.standard.setValue(response.apiVersion, forKey: "APP_API_VERSION")
                         manager = SalmonStats(version: response.xProductVersion)
                     case .failure(let error):
                         log.error(error.localizedDescription)
                     }
                 }
+            case false:
+                let xProductVersion: String = "1.13.0"
+                let apiVersion: String = "20211001"
+                UserDefaults.standard.setValue(xProductVersion, forKey: "APP_X_PRODUCT_VERSION")
+                UserDefaults.standard.setValue(apiVersion, forKey: "APP_API_VERSION")
+                manager = SalmonStats(version: xProductVersion)
         }
     }
    
@@ -143,19 +145,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         }
     }
 
-    private func updateKeychainAccess() {
-        // MARK: 旧バージョンからキーチェインを削除して更新する仕組み
-        let servers: [String] = Keychain.allItems(.internetPassword).compactMap({ $0["key"] as? String }).filter({ !$0.isEmpty })
-        if !servers.isEmpty {
-            for server in servers {
-                let keychain = Keychain(server: server, protocolType: .https)
-                try? keychain.removeAll()
-            }
-            let keychain = Keychain(server: "tkgstrator.work", protocolType: .https)
-            try? keychain.removeAll()
-        }
-    }
-    
     private struct XProductVersion: Codable {
         let xProductVersion: String
         let apiVersion: String
