@@ -209,3 +209,7 @@
 "HEADER_MAXGRADE"="Max grade";
 "HEADER_999COUNTS"="Counts of 999";
 "HEADER_MIN999COUNTS"="Minimum attempts to 999";
+"TEXT_MAIN_WEAPON"="Main Weapon";
+"TEXT_SUPPLIED_WEAPON"="Supplied Weapon";
+"TEXT_NOT_SUPPLIED_WEAPON"="Not Supplied";
+"TEXT_SPECIAL_WEAPON"="Special Weapon";
