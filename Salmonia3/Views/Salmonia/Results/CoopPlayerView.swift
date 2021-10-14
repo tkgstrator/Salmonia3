@@ -105,5 +105,6 @@ struct CoopPlayerView: View {
             Divider()
         })
             .padding(.horizontal)
+            .frame(maxWidth: 400)
     }
 }
