@@ -16,7 +16,7 @@ struct StageRecordView: View {
     
     enum RecordType: Int, CaseIterable {
         case golden
-//        case power
+        //        case power
         case overview
         
         mutating func toggle() {
@@ -68,10 +68,10 @@ struct StageRecordView: View {
     
     var body: some View {
         switch recordType {
-        case .overview:
-            recordOverview
-        default:
-            recordView
+            case .overview:
+                recordOverview
+            default:
+                recordView
         }
     }
 }
@@ -125,10 +125,10 @@ private struct RecordView: View {
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count:3), alignment: .center, spacing: nil, pinnedViews: [], content: {
                 ForEach(records.filter({ $0.recordType == .total })) { record in
                     switch UIDevice.current.userInterfaceIdiom {
-                    case .phone:
-                        RecordCardViewPhone(record: record)
-                    default:
-                        RecordCardViewPad(record: record)
+                        case .phone:
+                            RecordCardViewPhone(record: record)
+                        default:
+                            RecordCardViewPad(record: record)
                     }
                 }
             })
@@ -146,10 +146,10 @@ private struct RecordView: View {
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count:3), alignment: .center, spacing: nil, pinnedViews: [], content: {
                 ForEach(records.filter({ $0.recordType == .nonight })) { record in
                     switch UIDevice.current.userInterfaceIdiom {
-                    case .phone:
-                        RecordCardViewPhone(record: record)
-                    default:
-                        RecordCardViewPad(record: record)
+                        case .phone:
+                            RecordCardViewPhone(record: record)
+                        default:
+                            RecordCardViewPad(record: record)
                     }
                 }
             })
@@ -168,10 +168,10 @@ private struct RecordView: View {
                     LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 3), alignment: .center, spacing: nil, pinnedViews: [], content: {
                         ForEach(records.filter({ $0.waterLevel == waterLevel && $0.eventType == eventType && $0.recordType == .wave })) { record in
                             switch UIDevice.current.userInterfaceIdiom {
-                            case .phone:
-                                RecordCardViewPhone(record: record)
-                            default:
-                                RecordCardViewPad(record: record)
+                                case .phone:
+                                    RecordCardViewPhone(record: record)
+                                default:
+                                    RecordCardViewPad(record: record)
                             }
                         }
                     })
@@ -210,8 +210,8 @@ private struct RecordView: View {
                         .frame(height: 22)
                         .foregroundColor(.yellow)
                 })
-                .padding(.horizontal, 8)
-                .background(Capsule().fill(Color.black.opacity(0.8)))
+                    .padding(.horizontal, 8)
+                    .background(Capsule().fill(Color.black.opacity(0.8)))
                 LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: 2), count: 4), alignment: .center, spacing: 0, content: {
                     ForEach(record.weaponList.indices) { index in
                         Image(weaponId: record.weaponList[index])
@@ -221,10 +221,10 @@ private struct RecordView: View {
                             .background(Circle().fill(Color.black.opacity(0.95)))
                     }
                 })
-                .padding(.top, 6)
+                    .padding(.top, 6)
             })
-            .padding(4)
-            .background(RoundedRectangle(cornerRadius: 10).fill(Color.safetyorange))
+                .padding(4)
+                .background(RoundedRectangle(cornerRadius: 10).fill(Color.safetyorange))
         }
     }
     
@@ -256,8 +256,8 @@ private struct RecordView: View {
                         .foregroundColor(.whitesmoke)
                         .minimumScaleFactor(1.0)
                 })
-                .padding(.horizontal)
-                .background(Capsule().fill(Color.black.opacity(0.8)))
+                    .padding(.horizontal)
+                    .background(Capsule().fill(Color.black.opacity(0.8)))
                 HStack(alignment: .center, spacing: nil, content: {
                     Image(.golden)
                         .resizable()
@@ -268,8 +268,8 @@ private struct RecordView: View {
                         .foregroundColor(.whitesmoke)
                         .minimumScaleFactor(1.0)
                 })
-                .padding(.horizontal)
-                .background(Capsule().fill(Color.black.opacity(0.8)))
+                    .padding(.horizontal)
+                    .background(Capsule().fill(Color.black.opacity(0.8)))
             })
         }
         
@@ -283,7 +283,7 @@ private struct RecordView: View {
                         .background(Circle().fill(Color.black.opacity(0.95)))
                 }
             })
-            .padding(.vertical, 4)
+                .padding(.vertical, 4)
         }
         
         var body: some View {
@@ -295,13 +295,14 @@ private struct RecordView: View {
                     weaponList
                     playerList
                 })
-                .background(RoundedRectangle(cornerRadius: 10).fill(Color.safetyorange))
+                    .padding(6)
+                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.safetyorange))
             })
-            .buttonStyle(PlainButtonStyle())
-            .sheet(isPresented: $isPresented, content: {
-                CoopResultView(result: RealmManager.shared.result(playTime: record.playTime))
-                    .environmentObject(appManager)
-            })
+                .buttonStyle(PlainButtonStyle())
+                .sheet(isPresented: $isPresented, content: {
+                    CoopResultView(result: RealmManager.shared.result(playTime: record.playTime))
+                        .environmentObject(appManager)
+                })
         }
     }
 }
