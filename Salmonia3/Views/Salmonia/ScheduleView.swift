@@ -12,8 +12,6 @@ import RealmSwift
 import SDWebImageSwiftUI
 
 struct ScheduleView: View {
-    @Environment(\.presentationMode) var present
-    @EnvironmentObject var appManager: AppManager
     @ObservedResults(RealmCoopShift.self, filter: NSPredicate("startTime", valuesIn: RealmManager.shared.shiftIds), sortDescriptor: SortDescriptor(keyPath: "startTime", ascending: false)) var shifts
     let playedShiftIds: [Int] = RealmManager.shared.shiftTimeList(nsaid: manager.playerId)
     

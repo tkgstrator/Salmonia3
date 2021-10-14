@@ -61,7 +61,7 @@ struct CoopShiftView: View {
                 .textCase(nil)
                 .font(.custom("Splatfont2", size: 14))
 //                .frame(maxWidth: .infinity, alignment: .leading)
-            LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 40, maximum: 50)), count: 4), alignment: .center, spacing: 0, pinnedViews: [], content: {
+            LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 35, maximum: 50)), count: 4), alignment: .center, spacing: 0, pinnedViews: [], content: {
                 ForEach(shift.weaponList.indices) { index in
                     Image(weaponId: shift.weaponList[index])
                         .resizable()
@@ -78,7 +78,7 @@ struct CoopShiftView: View {
                 .textCase(nil)
                 .font(.custom("Splatfont2", size: 14))
                 .frame(maxWidth: .infinity, alignment: .leading)
-            LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 40, maximum: 50)), count: 5), alignment: .center, spacing: 0, pinnedViews: [], content: {
+            LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 30, maximum: 50)), count: 5), alignment: .center, spacing: 0, pinnedViews: [], content: {
                 ForEach(shift.weaponList.indices) { index in
                     Image(weaponId: shift.weaponList[index])
                         .resizable()

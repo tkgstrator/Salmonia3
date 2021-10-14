@@ -20,73 +20,33 @@ struct CoopResultCollection: View {
     @State private var offset: CGFloat = 0
     @State private var orientation: UIInterfaceOrientation = .portrait
     @State private var isPresented: Bool = false
-
-    init() {
-//        let appearance = UINavigationBarAppearance()
-//        appearance.backgroundColor = .white
-//        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-//        if #available(iOS 15.0, *) {
-//            let tableView = UITableView.appearance()
-//            tableView.sectionHeaderTopPadding = 0
-//        }
-    }
     
     var body: some View {
-        if #available(iOS 15.0, *) {
-            Group {
-                switch appManager.listStyle {
-                    case .default:
-                        DefaultListStyleView
-                    case .plain:
-                        PlainListStyleView
-                    case .grouped:
-                        GroupedListStyleView
-                    case .legacy:
-                        LegacyListStyleView
-                    case .inset:
-                        InsetListStyleView
-                    case .sidebar:
-                        SidebarListStyleView
-                }
+        Group {
+            switch appManager.listStyle {
+                case .default:
+                    DefaultListStyleView
+                case .plain:
+                    PlainListStyleView
+                case .grouped:
+                    GroupedListStyleView
+                case .legacy:
+                    LegacyListStyleView
+                case .inset:
+                    InsetListStyleView
+                case .sidebar:
+                    SidebarListStyleView
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle(.TITLE_RESULT_COLLECTION)
-            .refreshable {
-                isPresented.toggle()
-            }
-            .fullScreenCover(isPresented: $isPresented, onDismiss: {}, content: {
-                LoadingView()
-                    .environmentObject(appManager)
-                    .environment(\.modalIsPresented, .constant(PresentationStyle($isPresented)))
-            })
-        } else {
-            Group {
-                switch appManager.listStyle {
-                    case .default:
-                        DefaultListStyleView
-                    case .plain:
-                        PlainListStyleView
-                    case .grouped:
-                        GroupedListStyleView
-                    case .legacy:
-                        LegacyListStyleView
-                    case .inset:
-                        InsetListStyleView
-                    case .sidebar:
-                        SidebarListStyleView
-                }
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle(.TITLE_RESULT_COLLECTION)
-            .pullToRefresh(isShowing: $isShowing, onRefresh: {
-                isPresented.toggle()
-            })
-            .present(isPresented: $isPresented, transitionStyle: .flipHorizontal, presentationStyle: .fullScreen, content: {
-                LoadingView()
-                    .environmentObject(appManager)
-                    .environment(\.modalIsPresented, .constant(PresentationStyle($isPresented)))
-            })
         }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(.TITLE_RESULT_COLLECTION)
+        .refreshable {
+            isPresented.toggle()
+        }
+        .fullScreenCover(isPresented: $isPresented, onDismiss: {}, content: {
+            LoadingView()
+                .environmentObject(appManager)
+        })
     }
     
     private var LegacyListStyleView: some View {

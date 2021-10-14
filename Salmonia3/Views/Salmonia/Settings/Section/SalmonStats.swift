@@ -38,9 +38,6 @@ extension Setting.Sections {
                     ImportingView()
                         .environmentObject(appManager)
                 })
-//                .present(isPresented: $isActive, transitionStyle: .flipHorizontal, presentationStyle: .fullScreen, content: {
-//                        .environment(\.modalIsPresented, .constant(PresentationStyle($isActive)))
-//                })
         }
     }
     
@@ -59,10 +56,6 @@ extension Setting.Sections {
                 .fullScreenCover(isPresented: $isActive, content: {
                     UsernameView()
                 })
-//                .present(isPresented: $isActive, transitionStyle: .flipHorizontal, presentationStyle: .fullScreen, content: {
-//                    UsernameView()
-//                        .environment(\.modalIsPresented, .constant(PresentationStyle($isActive)))
-//                })
         }
     }
 }

@@ -12,7 +12,6 @@ import SplatNet2
 
 struct ImportingView: View {
     @EnvironmentObject var appManager: AppManager
-    @Environment(\.modalIsPresented) var present
     @Environment(\.presentationMode) var presentationMode
     @State var task = Set<AnyCancellable>()
     @State var apiError: APIError = .fatalerror
@@ -22,7 +21,7 @@ struct ImportingView: View {
         LoggingThread()
             .onAppear(perform: importResultFromSalmonStats)
             .alert(isPresented: $isPresented, content: {
-                return Alert(title: Text(apiError.error), message: Text(apiError.localizedDescription), dismissButton: .default(Text(.BTN_CONFIRM), action: { present.wrappedValue.dismiss() }))
+                return Alert(title: Text(apiError.error), message: Text(apiError.localizedDescription), dismissButton: .default(Text(.BTN_CONFIRM), action: { presentationMode.wrappedValue.dismiss() }))
             })
             .navigationTitle(.TITLE_LOGGING_THREAD)
     }
@@ -33,11 +32,7 @@ struct ImportingView: View {
             switch completion {
             case .success(let results):
                 RealmManager.shared.addNewResultsFromSplatNet2(from: results, .salmonstats)
-                if presentationMode.wrappedValue.isPresented {
-                    presentationMode.wrappedValue.dismiss()
-                } else {
-                    present.wrappedValue.dismiss()
-                }
+                presentationMode.wrappedValue.dismiss()
             case .failure(let error):
                 apiError = error
                 isPresented.toggle()

@@ -104,5 +104,6 @@ struct CoopPlayerView: View {
             playerResult
             Divider()
         })
+            .padding(.horizontal)
     }
 }
