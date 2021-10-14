@@ -11,7 +11,6 @@ import SwiftyUI
 import Combine
 
 struct UsernameView: View {
-    @Environment(\.modalIsPresented) var present
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var appManager: AppManager
     @State private var isPresented: Bool = false
@@ -22,7 +21,7 @@ struct UsernameView: View {
         LoggingThread()
             .onAppear(perform: getNicknameAndIcons)
             .alert(isPresented: $isPresented, content: {
-                return Alert(title: Text(apiError.error), message: Text(apiError.localizedDescription), dismissButton: .default(Text(.BTN_CONFIRM), action: { present.wrappedValue.dismiss() }))
+                return Alert(title: Text(apiError.error), message: Text(apiError.localizedDescription), dismissButton: .default(Text(.BTN_CONFIRM), action: { presentationMode.wrappedValue.dismiss() }))
             })
     }
 
@@ -32,11 +31,7 @@ struct UsernameView: View {
             switch completion {
             case .success(let response):
                 RealmManager.shared.updateNicknameAndIcons(players: response)
-                if presentationMode.wrappedValue.isPresented {
-                    presentationMode.wrappedValue.dismiss()
-                } else {
-                    present.wrappedValue.dismiss()
-                }
+                presentationMode.wrappedValue.dismiss()
             case .failure(let error):
                 apiError = error
                 isPresented.toggle()

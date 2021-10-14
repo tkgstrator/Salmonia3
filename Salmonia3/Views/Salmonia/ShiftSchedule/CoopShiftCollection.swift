@@ -10,8 +10,6 @@ import RealmSwift
 
 // シフト一覧を表示
 struct CoopShiftCollection: View {
-    @Environment(\.presentationMode) var present
-    @EnvironmentObject var appManager: AppManager
     @State var shifts: RealmSwift.Results<RealmCoopShift>
     var shiftNumber: Int
     let playedShiftIds: [Int] = RealmManager.shared.shiftTimeList(nsaid: manager.playerId)
@@ -51,9 +49,6 @@ struct CoopShiftCollection: View {
     }
     
     private func scrollTo(proxy: ScrollViewProxy) {
-        if !present.wrappedValue.isPresented {
-            proxy.scrollTo(shiftNumber, anchor: .center)
-        }
     }
 }
 

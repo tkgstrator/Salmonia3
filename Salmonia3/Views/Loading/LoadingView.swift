@@ -13,7 +13,7 @@ import RealmSwift
 import Combine
 
 struct LoadingView: View {
-    @Environment(\.modalIsPresented) var present
+    @Environment(\.presentationMode) var present
     @EnvironmentObject var appManager: AppManager
     @State var apiError: APIError?
     @State private var task = Set<AnyCancellable>()

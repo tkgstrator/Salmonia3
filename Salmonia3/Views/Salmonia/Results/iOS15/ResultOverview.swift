@@ -16,29 +16,7 @@ struct ResultOverview: View {
             case true:
                 resultClear
             case false:
-                EmptyView()
-        }
-    }
-    
-    var ResultGrade: some View {
-        if result.isClear {
-            return AnyView(
-                HStack {
-                    Text(GradeType(rawValue: result.gradeId.intValue)!.localizedName)
-                    Text("\(result.gradePoint.intValue)")
-                    Text("↑").splatfont(.red, size: 14)
-                }
-                .splatfont(size: 14)
-            )
-        } else {
-            return AnyView(
-                HStack {
-                    Text(GradeType(rawValue: result.gradeId.intValue)!.localizedName)
-                    Text("\(result.gradePoint.intValue)")
-                    Text(result.gradePointDelta.intValue == 0 ? "→" : "↓")
-                }
-                .splatfont(.gray, size: 14)
-            )
+                resultFailure
         }
     }
     
@@ -58,16 +36,28 @@ struct ResultOverview: View {
                 })
                     .splatfont(size: 14)
             })
-            Spacer()
-            LazyVStack(content: {
-                resultEggs
-            })
         })
+            .overlay(resultEggs, alignment: .topTrailing)
     }
     
     var resultFailure: some View {
-        Text(.RESULT_DEFEAT)
-            .splatfont(.safetyorange, size: 13)
+        HStack(alignment: .top, content: {
+            LazyVStack(alignment: .leading, spacing: nil, content: {
+                LazyHStack(spacing: nil, content: {
+                    Text("\(result.indexOfResults)")
+                        .splatfont2(size: 13)
+                    Text(.RESULT_DEFEAT)
+                        .splatfont(.safetyorange, size: 13)
+                })
+                LazyHStack(content: {
+                    Text(GradeType(rawValue: result.gradeId.intValue)!.localizedName)
+                    Text("\(result.gradePoint.intValue)")
+                    Text(result.gradePointDelta.intValue == 0 ? "→" : "↓")
+                })
+                    .splatfont(size: 14)
+            })
+        })
+            .overlay(resultEggs, alignment: .topTrailing)
     }
     
     var resultEggs: some View {
