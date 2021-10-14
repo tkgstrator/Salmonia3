@@ -227,3 +227,7 @@
 "HEADER_MAXGRADE"="最高評価";
 "HEADER_999COUNTS"="カンスト回数";
 "HEADER_MIN999COUNTS"="最短カンストバイト回数";
+"TEXT_MAIN_WEAPON"="メインウェポン";
+"TEXT_SUPPLIED_WEAPON"="支給ブキ";
+"TEXT_NOT_SUPPLIED_WEAPON"="未支給ブキ";
+"TEXT_SPECIAL_WEAPON"="スペシャルウェポン";

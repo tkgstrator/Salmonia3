@@ -16,7 +16,7 @@ struct StatsChartView: View {
     /// スペシャルウェポンのチャートを表示
     var specialWeaponChart: some View {
         Group {
-            Text("スペシャルウェポン")
+            Text(.TEXT_SPECIAL_WEAPON)
                 .splatfont2(.blackrussian, size: 18)
             HStack(alignment: .center, spacing: nil, content: {
                 VStack(alignment: .center, spacing: 10, content: {
@@ -44,7 +44,7 @@ struct StatsChartView: View {
     /// メインウェポンのチャートを表示
     var mainWeaponChart: some View {
         Group {
-            Text("メインウェポン")
+            Text(.TEXT_MAIN_WEAPON)
                 .splatfont2(.blackrussian, size: 18)
             SuppliedWeaponView(isPresented: $isPresented, weapons: stats.weapons)
             .padding(.horizontal, 2)
@@ -53,10 +53,10 @@ struct StatsChartView: View {
     
     var randomWeaponChart: some View {
         Group {
-            Text("支給されたブキ")
+            Text(.TEXT_SUPPLIED_WEAPON)
                 .splatfont2(.blackrussian, size: 18)
             SuppliedWeaponView(isPresented: $isPresented, weapons: stats.weapons.filter({ $0.count > 0 }))
-            Text("支給されていないブキ")
+            Text(.TEXT_NOT_SUPPLIED_WEAPON)
                 .splatfont2(.blackrussian, size: 18)
             SuppliedWeaponView(isPresented: $isPresented, weapons: stats.weapons.filter({ $0.count == 0 }))
             .padding(.horizontal, 2)

@@ -80,6 +80,7 @@ struct PaidProductView: View {
                 .splatfont2(size: 14)
             Text(.FEATURE_RESTORE_DESC)
                 .splatfont2(size: 12)
+            Spacer()
         })
         .alert(item: $skerror) { skerror in
             Alert(title: Text(.ALERT_ERROR), message: Text(skerror.localizedDescription))
