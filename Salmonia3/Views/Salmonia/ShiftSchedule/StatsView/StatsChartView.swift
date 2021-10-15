@@ -27,6 +27,7 @@ struct StatsChartView: View {
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 36, height: 36)
                                 .mask(Circle())
+                                .padding(4)
                                 .overlay(Circle().strokeBorder(Color.blackrussian, lineWidth: 1))
                             Text(special.prob)
                                 .splatfont2(chartColors[stats.specials.firstIndex(of: special)!], size: 20)
