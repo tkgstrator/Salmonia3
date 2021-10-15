@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
         "state": {
           "branch": null,
-          "revision": "f96b619bcb2383b43d898402283924b80e2c4bae",
-          "version": "5.4.3"
+          "revision": "d120af1e8638c7da36c8481fd61a66c0c08dc4fc",
+          "version": "5.4.4"
         }
       },
       {
@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/stleamist/BetterSafariView.git",
         "state": {
           "branch": null,
-          "revision": "561919b490eddf8f999b0f855cbf237001cbfccd",
-          "version": "2.3.1"
+          "revision": "be7248720af18c57c7a1348b20f6212379b28c6b",
+          "version": "2.4.0"
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/groue/CombineExpectations.git",
         "state": {
           "branch": null,
-          "revision": "5118f805bdeac7e81dc8e92c78b7ce475201dec8",
-          "version": "0.9.0"
+          "revision": "04d4e4b21c9e8361925f03f64a7ecda89ef9974f",
+          "version": "0.10.0"
         }
       },
       {
@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/realm/realm-cocoa",
         "state": {
           "branch": null,
-          "revision": "77658519b13388c098a7624a94491738f8bb2983",
-          "version": "10.10.0"
+          "revision": "7ca0ce1dd58553d5be1ec9cc7283b068c256979d",
+          "version": "10.17.0"
         }
       },
       {
@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/realm/realm-core",
         "state": {
           "branch": null,
-          "revision": "95da0df7815d7cbaff14ed5e8b73fe4c2a992816",
-          "version": "11.0.4"
+          "revision": "23f60515a00f076a9e3f2dc672fe1ae07601ee90",
+          "version": "11.4.1"
         }
       },
       {
@@ -69,8 +69,8 @@
         "repositoryURL": "https://github.com/SDWebImage/SDWebImage.git",
         "state": {
           "branch": null,
-          "revision": "76dd4b49110b8624317fc128e7fa0d8a252018bc",
-          "version": "5.11.1"
+          "revision": "d6367439527663d2038ca445a3c3c4e4bac40d60",
+          "version": "5.12.0"
         }
       },
       {
@@ -96,8 +96,8 @@
         "repositoryURL": "https://github.com/SwiftUIX/SwiftUIX",
         "state": {
           "branch": null,
-          "revision": "6aa1b4ec2e0d3e5cfc7494c84519402a16dd1316",
-          "version": "0.0.8"
+          "revision": "ac4959d321d2fbf6b66720426ef0716b6865ddd8",
+          "version": "0.1.0"
         }
       },
       {
