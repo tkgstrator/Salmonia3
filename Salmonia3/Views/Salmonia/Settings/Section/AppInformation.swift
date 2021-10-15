@@ -11,8 +11,8 @@ import SwiftUI
 extension Setting.Sections {
     struct AppInformation: View {
         private let appVersion: String = "\(String(describing: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")!))(\(String(describing: Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")!)))"
-        private let xProductVersion: String = UserDefaults.standard.string(forKey: "xProductVersion") ?? "-"
-        private let apiVersion: String = UserDefaults.standard.string(forKey: "apiVersion") ?? "-"
+        @AppStorage("APP_X_PRODUCT_VERSION") var xProductVersion: String = "1.0.0"
+        @AppStorage("APP_API_VERSION") var apiVersion: String = "19700101"
         
         var body: some View {
             Section(header: Text(.HEADER_APPLICATION).splatfont2(.safetyorange, size: 14)) {
