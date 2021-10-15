@@ -22,12 +22,12 @@ struct ResultOverview: View {
     
     var resultClear: some View {
         HStack(alignment: .top, content: {
-            LazyVStack(alignment: .leading, spacing: nil, content: {
+            LazyVStack(alignment: .leading, spacing: 0, content: {
                 LazyHStack(spacing: nil, content: {
                     Text("\(result.indexOfResults)")
                         .splatfont2(size: 13)
                     Text(.RESULT_CLEAR)
-                        .splatfont(.green, size: 13)
+                        .splatfont(.green, size: 14)
                 })
                 LazyHStack(content: {
                     Text(GradeType(rawValue: result.gradeId.intValue)!.localizedName)
@@ -42,12 +42,12 @@ struct ResultOverview: View {
     
     var resultFailure: some View {
         HStack(alignment: .top, content: {
-            LazyVStack(alignment: .leading, spacing: nil, content: {
+            LazyVStack(alignment: .leading, spacing: 0, content: {
                 LazyHStack(spacing: nil, content: {
                     Text("\(result.indexOfResults)")
                         .splatfont2(size: 13)
                     Text(.RESULT_DEFEAT)
-                        .splatfont(.safetyorange, size: 13)
+                        .splatfont(.safetyorange, size: 14)
                 })
                 LazyHStack(content: {
                     Text(GradeType(rawValue: result.gradeId.intValue)!.localizedName)
