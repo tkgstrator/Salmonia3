@@ -8,6 +8,7 @@
 import Foundation
 import SalmonStats
 import SwiftUI
+import SwiftyUI
 import SplatNet2
 import RealmSwift
 

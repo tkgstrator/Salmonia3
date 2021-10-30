@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftyUI
 
 struct ResultOverview: View {
     let result: RealmCoopResult
@@ -38,14 +39,14 @@ struct ResultOverview: View {
 //                    Text("\(result.indexOfResults)")
 //                        .font(.Splatfont2, size: 13)
                     Text("Clear")
-                        .font(.Splatfont2, size: 13, foregroundColor: .green)
+                        .font(systemName: .Splatfont2, size: 13, foregroundColor: .green)
                 })
                 LazyHStack(content: {
                     Text(result.gradeId.localized)
                     Text(result.gradePoint)
-                    Text("↑").font(.Splatfont, size: 14, foregroundColor: .red)
+                    Text("↑").font(systemName: .Splatfont, size: 14, foregroundColor: .red)
                 })
-                    .font(.Splatfont, size: 14)
+                    .font(systemName: .Splatfont, size: 14)
             })
         })
     }
@@ -57,14 +58,14 @@ struct ResultOverview: View {
 //                    Text("\(result.indexOfResults)")
 //                        .font(.Splatfont2, size: 13)
                     Text("Defeated")
-                        .font(.Splatfont2, size: 13, foregroundColor: .safetyorange)
+                        .font(systemName: .Splatfont2, size: 13, foregroundColor: .safetyorange)
                 })
                 LazyHStack(content: {
                     Text(result.gradeId.localized)
                     Text(result.gradePoint)
                     Text(result.gradePointDelta == 0 ? "→" : "↓")
                 })
-                    .font(.Splatfont, size: 14)
+                    .font(systemName: .Splatfont, size: 14)
             })
         })
     }
@@ -97,7 +98,7 @@ struct ResultOverview: View {
                 .background(Capsule().fill(Color.blackrussian.opacity(0.85)))
         })
             .minimumScaleFactor(1.0)
-            .font(.Splatfont2, size: 14)
+            .font(systemName: .Splatfont2, size: 14)
     }
     
     

@@ -35,7 +35,7 @@ struct PieChartView: View {
                     Text(caption)
                     Text("\(jobNum)回")
                 })
-                    .font(.Splatfont2, size: 20, foregroundColor: .seashell)
+                    .font(systemName: .Splatfont2, size: 20, foregroundColor: .seashell)
             )
     }
     
