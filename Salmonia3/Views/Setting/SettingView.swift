@@ -161,7 +161,7 @@ private struct FontStylePicker: View {
             Picker(selection: $appManager.apperances.fontStyle, content: {
                 ForEach(FontStyle.allCases) { font in
                     Text(font.rawValue)
-                        .font(font, size: 16)
+                        .font(systemName: font, size: 16)
                         .tag(font)
                 }
             }, label: { Text("Font Style") })

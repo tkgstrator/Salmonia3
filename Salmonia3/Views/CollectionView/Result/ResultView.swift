@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftyUI
 
 struct ResultView: View {
     let result: RealmCoopResult
@@ -34,9 +35,9 @@ struct ResultView: View {
         VStack(alignment: .center, spacing: 0, content: {
             Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(result.playTime))))
                 .shadow(color: .black, radius: 0, x: 2, y: 2)
-                .font(.Splatfont2, size: 20, foregroundColor: .white)
+                .font(systemName: .Splatfont2, size: 20, foregroundColor: .white)
             Text("RESULT_HAZARD_LEVEL_MAX")
-                .font(.Splatfont2, size: 20, foregroundColor: .yellow)
+                .font(systemName: .Splatfont2, size: 20, foregroundColor: .yellow)
             HStack(content: {
                 Image(.golden)
                     .resizable()
@@ -50,7 +51,7 @@ struct ResultView: View {
                 Text("x\(result.powerEggs)")
             })
                 .shadow(color: .black, radius: 0, x: 1, y: 1)
-                .font(.Splatfont2, size: 20, foregroundColor: .white)
+                .font(systemName: .Splatfont2, size: 20, foregroundColor: .white)
         })
     }
     
@@ -62,7 +63,7 @@ struct ResultView: View {
                         Text("RESULT_WAVE_")
                             .foregroundColor(.black)
                         Text("\(wave.goldenIkuraNum)/\(wave.quotaNum)")
-                            .font(.Splatfont2, size: 22, foregroundColor: .white)
+                            .font(systemName: .Splatfont2, size: 22, foregroundColor: .white)
                             .frame(maxWidth: .infinity)
                             .frame(height: 36)
                             .minimumScaleFactor(1.0)
@@ -87,7 +88,7 @@ struct ResultView: View {
                             .resizable()
                             .frame(width: 15, height: 15)
                         Text("RESULT_APPEARANCES_\(wave.goldenIkuraPopNum)")
-                            .font(.Splatfont2, size: 13)
+                            .font(systemName: .Splatfont2, size: 13)
                             .lineLimit(1)
                     })
 //                    LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 4), alignment: .leading, spacing: 0, pinnedViews: []) {
@@ -100,7 +101,7 @@ struct ResultView: View {
                 })
             }
         }
-        .font(.Splatfont2, size: 16, foregroundColor: .white)
+        .font(systemName: .Splatfont2, size: 16, foregroundColor: .white)
     }
 }
 

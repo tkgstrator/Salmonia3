@@ -34,7 +34,7 @@ struct ContentView: View {
                 })
                 .tag(3)
         })
-            .font(appManager.apperances.fontStyle, size: 16)
+            .font(systemName: appManager.apperances.fontStyle, size: 16)
             .preferredColorScheme(appManager.apperances.colorScheme)
     }
 }
