@@ -10,12 +10,12 @@ import SwiftUI
 struct LoggingThread: View {
     var body: some View {
         GeometryReader(content: { geometry in
-            DeveloperCredid
+            DeveloperCredit
                 .position(x: geometry.frame(in: .local).midX, y: 80)
         })
     }
     
-    var DeveloperCredid: some View {
+    var DeveloperCredit: some View {
         LazyVGrid(columns: Array(repeating: .init(), count: 2), alignment: .center, spacing: nil, pinnedViews: [], content: {
             Section(header: Text("Startup Projects").overlay(
                         Rectangle().frame(height: 1).offset(x: 0, y: -2), alignment: .bottom), content: {

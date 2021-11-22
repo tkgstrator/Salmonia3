@@ -15,19 +15,9 @@ struct LoadingView: View {
     var body: some View {
         LoggingThread()
             .background(BackgroundWave())
-            .onAppear(perform: loadResultsFromSplatNet2)
     }
     
     func loadResultsFromSplatNet2() {
-        appManager.getResultCoopWithJSON(latestJobId: 3580, promise: { completion in
-            switch completion {
-                case .success(let results):
-                    appManager.save(results.data)
-                    dismiss()
-                case .failure(let error):
-                    print(error)
-            }
-        })
     }
 }
 

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftUIX
 import RealmSwift
 import Alamofire
 
@@ -26,24 +25,17 @@ struct ResultCollectionView: View {
             })
                 .listStyle(.plain)
                 .refreshable {
-                    isPresented.toggle()
+                    appManager.isLoading.toggle()
                 }
-                .onAppear {
-                    isPresented = false
-                }
-                .fullScreenCover(isPresented: $isPresented, onDismiss: { isPresented = false }, content: {
-                    LoadingView()
-                        .environmentObject(appManager)
-                })
                 .navigationTitle("Results")
         })
             .overlay(refreshButton, alignment: .bottomTrailing)
     }
     
     var refreshButton: some View {
-        Button(action: { isPresented.toggle() }, label: { Image(.refresh).resizable().aspectRatio(contentMode: .fit).frame(width: 35) })
+        Button(action: { appManager.isLoading.toggle() }, label: { Image(.refresh).resizable().aspectRatio(contentMode: .fit).frame(width: 35) })
             .buttonStyle(GrowingButtonStyle())
-            .visible(appManager.apperances.refreshStyle == .button)
+//            .visible(appManager.apperances.refreshStyle == .button)
             .padding()
     }
 }

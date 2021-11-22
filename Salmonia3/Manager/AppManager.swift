@@ -28,9 +28,10 @@ final class AppManager: SalmonStats, ObservableObject {
         super.init(version: "1.13.2")
     }
     
-    /// アプリの外見
+    @Published var isLoading: Bool = false
+    /// アプリの外見の設定
     @Published var apperances: Appearances = Appearances.shared
-    /// アプリの設定
+    /// アプリの詳細の設定
     @Published var application: Application = Application.shared
     /// Firestore接続用インスタンス
     private let firestore: Firestore = Firestore.firestore()
