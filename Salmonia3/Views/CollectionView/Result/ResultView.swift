@@ -67,7 +67,6 @@ struct ResultView: View {
                             .frame(maxWidth: .infinity)
                             .frame(height: 36)
                             .minimumScaleFactor(1.0)
-                            .backgroundFill(.maire)
                         Text("\(wave.ikuraNum)")
                             .foregroundColor(.red)
                             .frame(height: 26)

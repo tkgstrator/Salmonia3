@@ -36,6 +36,11 @@ struct ContentView: View {
         })
             .font(systemName: appManager.apperances.fontStyle, size: 16)
             .preferredColorScheme(appManager.apperances.colorScheme)
+            .fullScreenCover(isPresented: $appManager.isLoading, onDismiss: { appManager.isLoading = false }, content: {
+                LoadingView()
+                    .environmentObject(appManager)
+                    .font(systemName: appManager.apperances.fontStyle, size: 16)
+            })
     }
 }
 
