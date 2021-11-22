@@ -18,16 +18,16 @@ final class RealmCoopWave: Object, ObjectKeyIdentifiable {
     @Persisted var quotaNum: Int
     @Persisted var ikuraNum: Int
     @Persisted(originProperty: "wave") var result: LinkingObjects<RealmCoopResult>
-
-    convenience init(from result: SplatNet2.Coop.ResultWave) {
-        self.init()
-        self.eventType = EventType(rawValue: result.eventType)!
-        self.waterLevel = WaterLevel(rawValue: result.waterLevel)!
-        self.goldenIkuraNum = result.goldenIkuraNum
-        self.goldenIkuraPopNum = result.goldenIkuraPopNum
-        self.quotaNum = result.quotaNum
-        self.ikuraNum = result.ikuraNum
-    }
+//
+//    convenience init(from result: SplatNet2.Coop.ResultWave) {
+//        self.init()
+//        self.eventType = EventType(rawValue: result.eventType)!
+//        self.waterLevel = WaterLevel(rawValue: result.waterLevel)!
+//        self.goldenIkuraNum = result.goldenIkuraNum
+//        self.goldenIkuraPopNum = result.goldenIkuraPopNum
+//        self.quotaNum = result.quotaNum
+//        self.ikuraNum = result.ikuraNum
+//    }
 }
 
 extension RealmCoopWave: Identifiable {
