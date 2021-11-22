@@ -38,21 +38,12 @@
         }
       },
       {
-        "package": "CombineExpectations",
-        "repositoryURL": "https://github.com/groue/CombineExpectations.git",
-        "state": {
-          "branch": null,
-          "revision": "04d4e4b21c9e8361925f03f64a7ecda89ef9974f",
-          "version": "0.10.0"
-        }
-      },
-      {
         "package": "Firebase",
         "repositoryURL": "https://github.com/firebase/firebase-ios-sdk.git",
         "state": {
-          "branch": null,
-          "revision": "2064534407804195d62f48531155ef41ddf1ce22",
-          "version": "8.9.0"
+          "branch": "master",
+          "revision": "fb0a2e0a8ee5ff68783fba9db784a604fba433cc",
+          "version": null
         }
       },
       {
@@ -60,8 +51,8 @@
         "repositoryURL": "https://github.com/google/GoogleAppMeasurement.git",
         "state": {
           "branch": null,
-          "revision": "1f13198b27eb2ac844953dad267bc25639128c41",
-          "version": "8.9.0"
+          "revision": "9b2f6aca5b4685c45f9f5481f19bee8e7982c538",
+          "version": "8.9.1"
         }
       },
       {
@@ -78,8 +69,8 @@
         "repositoryURL": "https://github.com/quanghits/GoogleMobileAds",
         "state": {
           "branch": null,
-          "revision": "7bddc774dcc3ce064e76ea0dbbd2b181193b542d",
-          "version": "8.12.0"
+          "revision": "ef2f9a6dcd27c43aa49e66b561e9dd678b0d5618",
+          "version": "8.13.0"
         }
       },
       {
@@ -159,8 +150,8 @@
         "repositoryURL": "https://github.com/realm/realm-cocoa",
         "state": {
           "branch": null,
-          "revision": "9f43d0da902c55b493d6c8bb63203764caa8acbe",
-          "version": "10.18.0"
+          "revision": "bdbbd57f411a0f4e72b359113dbc6d23fdf96680",
+          "version": "10.20.0"
         }
       },
       {
@@ -168,8 +159,17 @@
         "repositoryURL": "https://github.com/realm/realm-core",
         "state": {
           "branch": null,
-          "revision": "23f60515a00f076a9e3f2dc672fe1ae07601ee90",
-          "version": "11.4.1"
+          "revision": "c3c11a841642ac93c27bd1edd61f989fc0bfb809",
+          "version": "11.6.1"
+        }
+      },
+      {
+        "package": "SplatNet2",
+        "repositoryURL": "/Users/devonly/Developer/SplatNet2",
+        "state": {
+          "branch": "hash",
+          "revision": "7cd5628cc525575986833d3e3d29f4bfc62d3a66",
+          "version": null
         }
       },
       {
@@ -182,6 +182,15 @@
         }
       },
       {
+        "package": "CodableDictionary",
+        "repositoryURL": "https://github.com/YOCKOW/SwiftCodableDictionary.git",
+        "state": {
+          "branch": null,
+          "revision": "0f09cec3062dfacc4e91f22753126c3ecbc28252",
+          "version": "1.0.1"
+        }
+      },
+      {
         "package": "Introspect",
         "repositoryURL": "https://github.com/siteline/SwiftUI-Introspect.git",
         "state": {
@@ -191,12 +200,12 @@
         }
       },
       {
-        "package": "SwiftUIX",
-        "repositoryURL": "https://github.com/SwiftUIX/SwiftUIX",
+        "package": "SwiftyJSON",
+        "repositoryURL": "https://github.com/SwiftyJSON/SwiftyJSON.git",
         "state": {
           "branch": null,
-          "revision": "ac4959d321d2fbf6b66720426ef0716b6865ddd8",
-          "version": "0.1.0"
+          "revision": "b3dcd7dbd0d488e1a7077cb33b00f2083e382f07",
+          "version": "5.0.1"
         }
       }
     ]

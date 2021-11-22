@@ -22,17 +22,13 @@
 		101AED5A271E3946009556B2 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED59271E3946009556B2 /* SettingView.swift */; };
 		101AED5C271E3B0F009556B2 /* SalmonStatsLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED5B271E3B0F009556B2 /* SalmonStatsLoginView.swift */; };
 		101AED61271E3F2B009556B2 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED60271E3F2B009556B2 /* Icon.swift */; };
-		107DB665272CF5DC00A5A6E5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 107DB664272CF5DC00A5A6E5 /* FirebaseAnalytics */; };
-		107DB667272CF5DC00A5A6E5 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 107DB666272CF5DC00A5A6E5 /* FirebaseDatabase */; };
 		107DB66A272CF67900A5A6E5 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 107DB669272CF67900A5A6E5 /* GoogleMobileAds */; };
 		107DB66F272CF89A00A5A6E5 /* SwiftyUI in Frameworks */ = {isa = PBXBuildFile; productRef = 107DB66E272CF89A00A5A6E5 /* SwiftyUI */; };
 		1094284F271E458F0072425E /* SalmonStats in Frameworks */ = {isa = PBXBuildFile; productRef = 1094284E271E458F0072425E /* SalmonStats */; };
-		10942851271E458F0072425E /* SplatNet2 in Frameworks */ = {isa = PBXBuildFile; productRef = 10942850271E458F0072425E /* SplatNet2 */; };
 		109F97E6272490C600AB1FA3 /* LoggingThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97E5272490C600AB1FA3 /* LoggingThread.swift */; };
 		109F97E8272490CE00AB1FA3 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97E7272490CE00AB1FA3 /* LoadingView.swift */; };
 		109F97EB272491E600AB1FA3 /* ResultCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97EA272491E500AB1FA3 /* ResultCollectionView.swift */; };
 		109F97F02724A11900AB1FA3 /* GrowingButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97EF2724A11900AB1FA3 /* GrowingButtonStyle.swift */; };
-		109F97F32724A31000AB1FA3 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 109F97F22724A31000AB1FA3 /* SwiftUIX */; };
 		109F97F62724AD7800AB1FA3 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97F52724AD7800AB1FA3 /* ResultView.swift */; };
 		109F97F82724ADB600AB1FA3 /* ResultOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97F72724ADB600AB1FA3 /* ResultOverview.swift */; };
 		109F97FA2724CF0C00AB1FA3 /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97F92724CF0C00AB1FA3 /* ResultType.swift */; };
@@ -54,6 +50,11 @@
 		10BA140727201C6900348DD3 /* SalmonidType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13FF27201C6900348DD3 /* SalmonidType.swift */; };
 		10BA140827201C6900348DD3 /* SpecialType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA140027201C6900348DD3 /* SpecialType.swift */; };
 		10BA140B27201D2F00348DD3 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA140A27201D2F00348DD3 /* Extension.swift */; };
+		10C0FE62274C0C3B00870DED /* FirebaseAnalyticsSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 10C0FE61274C0C3B00870DED /* FirebaseAnalyticsSwift-Beta */; };
+		10C0FE64274C0C3B00870DED /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 10C0FE63274C0C3B00870DED /* FirebaseFirestoreSwift-Beta */; };
+		10C0FE6E274C12B900870DED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0FE6D274C12B900870DED /* User.swift */; };
+		10C0FE70274C12C500870DED /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0FE6F274C12C500870DED /* Record.swift */; };
+		10C0FE72274C132D00870DED /* FSCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0FE71274C132D00870DED /* FSCodable.swift */; };
 		10FDD4AF271EE36C00C9C178 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FDD4AE271EE36C00C9C178 /* AppManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -95,7 +96,6 @@
 		101AED5B271E3B0F009556B2 /* SalmonStatsLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonStatsLoginView.swift; sourceTree = "<group>"; };
 		101AED60271E3F2B009556B2 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		107DB66B272CF7EA00A5A6E5 /* SalmonStats */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SalmonStats; path = ../SalmonStats; sourceTree = "<group>"; };
-		107DB66C272CF7EA00A5A6E5 /* SplatNet2 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SplatNet2; path = ../SplatNet2; sourceTree = "<group>"; };
 		107DB66D272CF7ED00A5A6E5 /* SwiftyUI */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftyUI; path = ../SwiftyUI; sourceTree = "<group>"; };
 		109F97E5272490C600AB1FA3 /* LoggingThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingThread.swift; sourceTree = "<group>"; };
 		109F97E7272490CE00AB1FA3 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -121,6 +121,9 @@
 		10BA13FF27201C6900348DD3 /* SalmonidType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalmonidType.swift; sourceTree = "<group>"; };
 		10BA140027201C6900348DD3 /* SpecialType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialType.swift; sourceTree = "<group>"; };
 		10BA140A27201D2F00348DD3 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		10C0FE6D274C12B900870DED /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		10C0FE6F274C12C500870DED /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		10C0FE71274C132D00870DED /* FSCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCodable.swift; sourceTree = "<group>"; };
 		10FDD4AE271EE36C00C9C178 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,13 +132,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				107DB667272CF5DC00A5A6E5 /* FirebaseDatabase in Frameworks */,
+				10C0FE62274C0C3B00870DED /* FirebaseAnalyticsSwift-Beta in Frameworks */,
 				10BA13F027201A7B00348DD3 /* RealmSwift in Frameworks */,
-				10942851271E458F0072425E /* SplatNet2 in Frameworks */,
+				10C0FE64274C0C3B00870DED /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				1094284F271E458F0072425E /* SalmonStats in Frameworks */,
 				107DB66F272CF89A00A5A6E5 /* SwiftyUI in Frameworks */,
-				107DB665272CF5DC00A5A6E5 /* FirebaseAnalytics in Frameworks */,
-				109F97F32724A31000AB1FA3 /* SwiftUIX in Frameworks */,
 				107DB66A272CF67900A5A6E5 /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,7 +162,6 @@
 			isa = PBXGroup;
 			children = (
 				107DB66B272CF7EA00A5A6E5 /* SalmonStats */,
-				107DB66C272CF7EA00A5A6E5 /* SplatNet2 */,
 				107DB66D272CF7ED00A5A6E5 /* SwiftyUI */,
 				101AED0F271E3109009556B2 /* Salmonia3 */,
 				101AED20271E310B009556B2 /* Salmonia3Tests */,
@@ -184,6 +184,7 @@
 		101AED0F271E3109009556B2 /* Salmonia3 */ = {
 			isa = PBXGroup;
 			children = (
+				10C0FE6C274C12A900870DED /* Firestore */,
 				10BA13F127201ADD00348DD3 /* Realm */,
 				10FDD4AD271EE35D00C9C178 /* Manager */,
 				101AED4D271E34A8009556B2 /* Info.plist */,
@@ -377,6 +378,16 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		10C0FE6C274C12A900870DED /* Firestore */ = {
+			isa = PBXGroup;
+			children = (
+				10C0FE6D274C12B900870DED /* User.swift */,
+				10C0FE6F274C12C500870DED /* Record.swift */,
+				10C0FE71274C132D00870DED /* FSCodable.swift */,
+			);
+			path = Firestore;
+			sourceTree = "<group>";
+		};
 		10FDD4AD271EE35D00C9C178 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,13 +415,11 @@
 			name = Salmonia3;
 			packageProductDependencies = (
 				1094284E271E458F0072425E /* SalmonStats */,
-				10942850271E458F0072425E /* SplatNet2 */,
 				10BA13EF27201A7B00348DD3 /* RealmSwift */,
-				109F97F22724A31000AB1FA3 /* SwiftUIX */,
-				107DB664272CF5DC00A5A6E5 /* FirebaseAnalytics */,
-				107DB666272CF5DC00A5A6E5 /* FirebaseDatabase */,
 				107DB669272CF67900A5A6E5 /* GoogleMobileAds */,
 				107DB66E272CF89A00A5A6E5 /* SwiftyUI */,
+				10C0FE61274C0C3B00870DED /* FirebaseAnalyticsSwift-Beta */,
+				10C0FE63274C0C3B00870DED /* FirebaseFirestoreSwift-Beta */,
 			);
 			productName = Salmonia3;
 			productReference = 101AED0D271E3109009556B2 /* Salmonia3.app */;
@@ -482,13 +491,13 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 101AED04271E3109009556B2;
 			packageReferences = (
 				10BA13EE27201A7B00348DD3 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
-				109F97F12724A31000AB1FA3 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
-				107DB663272CF5DC00A5A6E5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				107DB668272CF67900A5A6E5 /* XCRemoteSwiftPackageReference "GoogleMobileAds" */,
+				10C0FE60274C0C3B00870DED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 101AED0E271E3109009556B2 /* Products */;
 			projectDirPath = "";
@@ -558,6 +567,7 @@
 				10BA140627201C6900348DD3 /* RecordType.swift in Sources */,
 				109F98052724EC9400AB1FA3 /* Ranbow.swift in Sources */,
 				101AED61271E3F2B009556B2 /* Icon.swift in Sources */,
+				10C0FE6E274C12B900870DED /* User.swift in Sources */,
 				101AED40271E323E009556B2 /* SplatNet2LoginView.swift in Sources */,
 				109F97EB272491E600AB1FA3 /* ResultCollectionView.swift in Sources */,
 				10BA140227201C6900348DD3 /* StageType.swift in Sources */,
@@ -565,6 +575,8 @@
 				109F97F02724A11900AB1FA3 /* GrowingButtonStyle.swift in Sources */,
 				109F98012724D66400AB1FA3 /* AnglePair.swift in Sources */,
 				109F98032724D67B00AB1FA3 /* Pie.swift in Sources */,
+				10C0FE70274C12C500870DED /* Record.swift in Sources */,
+				10C0FE72274C132D00870DED /* FSCodable.swift in Sources */,
 				10BA13F527201B1400348DD3 /* RealmCoopWave.swift in Sources */,
 				109F97E8272490CE00AB1FA3 /* LoadingView.swift in Sources */,
 			);
@@ -661,6 +673,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -716,6 +729,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -925,14 +939,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		107DB663272CF5DC00A5A6E5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 8.0.0;
-			};
-		};
 		107DB668272CF67900A5A6E5 /* XCRemoteSwiftPackageReference "GoogleMobileAds" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/quanghits/GoogleMobileAds";
@@ -941,35 +947,25 @@
 				minimumVersion = 8.0.0;
 			};
 		};
-		109F97F12724A31000AB1FA3 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
-			};
-		};
 		10BA13EE27201A7B00348DD3 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.17.0;
+				minimumVersion = 10.20.0;
+			};
+		};
+		10C0FE60274C0C3B00870DED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		107DB664272CF5DC00A5A6E5 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 107DB663272CF5DC00A5A6E5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		107DB666272CF5DC00A5A6E5 /* FirebaseDatabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 107DB663272CF5DC00A5A6E5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabase;
-		};
 		107DB669272CF67900A5A6E5 /* GoogleMobileAds */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 107DB668272CF67900A5A6E5 /* XCRemoteSwiftPackageReference "GoogleMobileAds" */;
@@ -983,19 +979,20 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = SalmonStats;
 		};
-		10942850271E458F0072425E /* SplatNet2 */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SplatNet2;
-		};
-		109F97F22724A31000AB1FA3 /* SwiftUIX */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 109F97F12724A31000AB1FA3 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
-			productName = SwiftUIX;
-		};
 		10BA13EF27201A7B00348DD3 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 10BA13EE27201A7B00348DD3 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
+		};
+		10C0FE61274C0C3B00870DED /* FirebaseAnalyticsSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10C0FE60274C0C3B00870DED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAnalyticsSwift-Beta";
+		};
+		10C0FE63274C0C3B00870DED /* FirebaseFirestoreSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10C0FE60274C0C3B00870DED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreSwift-Beta";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
