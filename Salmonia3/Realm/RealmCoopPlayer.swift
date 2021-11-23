@@ -18,25 +18,31 @@ final class RealmCoopPlayer: Object, ObjectKeyIdentifiable {
     @Persisted var helpCount: Int
     @Persisted var goldenIkuraNum: Int
     @Persisted var ikuraNum: Int
-    @Persisted var specialId: Int
+    @Persisted var specialId: Result.SpecialId
     @Persisted var bossKillCounts: List<Int>
-    @Persisted var weaponList: List<Int>
+    @Persisted var weaponList: List<WeaponType.WeaponId>
     @Persisted var specialCounts: List<Int>
     @Persisted(originProperty: "player") var result: LinkingObjects<RealmCoopResult>
 
-//    public convenience init(from result: SplatNet2.Coop.ResultPlayer) {
-//        self.init()
-//        self.name = result.name
-//        self.pid = result.pid
-//        self.deadCount = result.deadCount
-//        self.helpCount = result.helpCount
-//        self.goldenIkuraNum = result.goldenIkuraNum
-//        self.ikuraNum = result.ikuraNum
-//        self.specialId = result.specialId
-//        self.bossKillCounts.append(objectsIn: result.bossKillCounts)
-//        self.weaponList.append(objectsIn: result.weaponList)
-//        self.specialCounts.append(objectsIn: result.specialCounts)
-//    }
+    public convenience init(from result: Result.PlayerResult) {
+        self.init()
+        self.name = result.name
+        self.pid = result.pid
+        self.deadCount = result.deadCount
+        self.helpCount = result.helpCount
+        self.goldenIkuraNum = result.goldenIkuraNum
+        self.ikuraNum = result.ikuraNum
+        self.specialId = result.special.id
+        self.bossKillCounts.append(objectsIn: result.bossKillCounts.map({ $0.value.count }))
+        self.weaponList.append(objectsIn: result.weaponList.map({ $0.id }))
+        self.specialCounts.append(objectsIn: result.specialCounts)
+    }
+}
+
+extension Result.SpecialId: PersistableEnum {
+}
+
+extension WeaponType.WeaponId: PersistableEnum {
 }
 
 extension RealmCoopPlayer {

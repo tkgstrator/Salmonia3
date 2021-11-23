@@ -11,23 +11,29 @@ import SalmonStats
 import SplatNet2
 
 final class RealmCoopWave: Object, ObjectKeyIdentifiable {
-    @Persisted var eventType: EventType
-    @Persisted var waterLevel: WaterLevel
+    @Persisted var eventType: Result.EventKey
+    @Persisted var waterLevel: Result.WaterKey
     @Persisted(indexed: true) var goldenIkuraNum: Int
     @Persisted var goldenIkuraPopNum: Int
     @Persisted var quotaNum: Int
     @Persisted var ikuraNum: Int
     @Persisted(originProperty: "wave") var result: LinkingObjects<RealmCoopResult>
-//
-//    convenience init(from result: SplatNet2.Coop.ResultWave) {
-//        self.init()
-//        self.eventType = EventType(rawValue: result.eventType)!
-//        self.waterLevel = WaterLevel(rawValue: result.waterLevel)!
-//        self.goldenIkuraNum = result.goldenIkuraNum
-//        self.goldenIkuraPopNum = result.goldenIkuraPopNum
-//        self.quotaNum = result.quotaNum
-//        self.ikuraNum = result.ikuraNum
-//    }
+    
+    convenience init(from result: Result.WaveDetail) {
+        self.init()
+        self.eventType = result.eventType.key
+        self.waterLevel = result.waterLevel.key
+        self.goldenIkuraNum = result.goldenIkuraNum
+        self.goldenIkuraPopNum = result.goldenIkuraPopNum
+        self.quotaNum = result.quotaNum
+        self.ikuraNum = result.ikuraNum
+    }
+}
+
+extension Result.EventKey: PersistableEnum {
+}
+
+extension Result.WaterKey: PersistableEnum {
 }
 
 extension RealmCoopWave: Identifiable {

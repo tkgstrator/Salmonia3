@@ -41,14 +41,7 @@
 		10BA13F327201AF300348DD3 /* RealmCoopResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13F227201AF300348DD3 /* RealmCoopResult.swift */; };
 		10BA13F527201B1400348DD3 /* RealmCoopWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13F427201B1400348DD3 /* RealmCoopWave.swift */; };
 		10BA13F727201B4700348DD3 /* RealmCoopPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13F627201B4700348DD3 /* RealmCoopPlayer.swift */; };
-		10BA140127201C6900348DD3 /* GradeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13F927201C6900348DD3 /* GradeType.swift */; };
-		10BA140227201C6900348DD3 /* StageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13FA27201C6900348DD3 /* StageType.swift */; };
-		10BA140327201C6900348DD3 /* WaterLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13FB27201C6900348DD3 /* WaterLevel.swift */; };
-		10BA140427201C6900348DD3 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13FC27201C6900348DD3 /* EventType.swift */; };
-		10BA140527201C6900348DD3 /* WeaponType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13FD27201C6900348DD3 /* WeaponType.swift */; };
-		10BA140627201C6900348DD3 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13FE27201C6900348DD3 /* RecordType.swift */; };
 		10BA140727201C6900348DD3 /* SalmonidType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13FF27201C6900348DD3 /* SalmonidType.swift */; };
-		10BA140827201C6900348DD3 /* SpecialType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA140027201C6900348DD3 /* SpecialType.swift */; };
 		10BA140B27201D2F00348DD3 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA140A27201D2F00348DD3 /* Extension.swift */; };
 		10C0FE6E274C12B900870DED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0FE6D274C12B900870DED /* User.swift */; };
 		10C0FE70274C12C500870DED /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0FE6F274C12C500870DED /* Record.swift */; };
@@ -57,6 +50,7 @@
 		10C0FE77274C1D7500870DED /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 10C0FE76274C1D7500870DED /* FirebaseAuthCombine-Community */; };
 		10C0FE79274C1D7500870DED /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 10C0FE78274C1D7500870DED /* FirebaseFirestoreSwift-Beta */; };
 		10C0FE7B274C207900870DED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10C0FE7A274C207900870DED /* GoogleService-Info.plist */; };
+		10C0FE7D274C3D1C00870DED /* FirestoreLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0FE7C274C3D1C00870DED /* FirestoreLogin.swift */; };
 		10FDD4AF271EE36C00C9C178 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FDD4AE271EE36C00C9C178 /* AppManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -114,19 +108,13 @@
 		10BA13F227201AF300348DD3 /* RealmCoopResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopResult.swift; sourceTree = "<group>"; };
 		10BA13F427201B1400348DD3 /* RealmCoopWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopWave.swift; sourceTree = "<group>"; };
 		10BA13F627201B4700348DD3 /* RealmCoopPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopPlayer.swift; sourceTree = "<group>"; };
-		10BA13F927201C6900348DD3 /* GradeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeType.swift; sourceTree = "<group>"; };
-		10BA13FA27201C6900348DD3 /* StageType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StageType.swift; sourceTree = "<group>"; };
-		10BA13FB27201C6900348DD3 /* WaterLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterLevel.swift; sourceTree = "<group>"; };
-		10BA13FC27201C6900348DD3 /* EventType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
-		10BA13FD27201C6900348DD3 /* WeaponType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeaponType.swift; sourceTree = "<group>"; };
-		10BA13FE27201C6900348DD3 /* RecordType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
 		10BA13FF27201C6900348DD3 /* SalmonidType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalmonidType.swift; sourceTree = "<group>"; };
-		10BA140027201C6900348DD3 /* SpecialType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialType.swift; sourceTree = "<group>"; };
 		10BA140A27201D2F00348DD3 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		10C0FE6D274C12B900870DED /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		10C0FE6F274C12C500870DED /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		10C0FE71274C132D00870DED /* FSCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCodable.swift; sourceTree = "<group>"; };
 		10C0FE7A274C207900870DED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		10C0FE7C274C3D1C00870DED /* FirestoreLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreLogin.swift; sourceTree = "<group>"; };
 		10FDD4AE271EE36C00C9C178 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -259,6 +247,7 @@
 			children = (
 				101AED3F271E323E009556B2 /* SplatNet2LoginView.swift */,
 				101AED5B271E3B0F009556B2 /* SalmonStatsLoginView.swift */,
+				10C0FE7C274C3D1C00870DED /* FirestoreLogin.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -363,14 +352,7 @@
 		10BA13F827201C6900348DD3 /* Type */ = {
 			isa = PBXGroup;
 			children = (
-				10BA13F927201C6900348DD3 /* GradeType.swift */,
-				10BA13FA27201C6900348DD3 /* StageType.swift */,
-				10BA13FB27201C6900348DD3 /* WaterLevel.swift */,
-				10BA13FC27201C6900348DD3 /* EventType.swift */,
-				10BA13FD27201C6900348DD3 /* WeaponType.swift */,
-				10BA13FE27201C6900348DD3 /* RecordType.swift */,
 				10BA13FF27201C6900348DD3 /* SalmonidType.swift */,
-				10BA140027201C6900348DD3 /* SpecialType.swift */,
 				109F97F92724CF0C00AB1FA3 /* ResultType.swift */,
 			);
 			path = Type;
@@ -550,7 +532,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10BA140327201C6900348DD3 /* WaterLevel.swift in Sources */,
 				109F97F82724ADB600AB1FA3 /* ResultOverview.swift in Sources */,
 				109F97FA2724CF0C00AB1FA3 /* ResultType.swift in Sources */,
 				101AED3D271E3192009556B2 /* Wave.swift in Sources */,
@@ -558,10 +539,8 @@
 				10BA140727201C6900348DD3 /* SalmonidType.swift in Sources */,
 				101AED13271E3109009556B2 /* ContentView.swift in Sources */,
 				101AED5C271E3B0F009556B2 /* SalmonStatsLoginView.swift in Sources */,
-				10BA140527201C6900348DD3 /* WeaponType.swift in Sources */,
 				109F97FE2724D60F00AB1FA3 /* ChartView.swift in Sources */,
 				10BA13F727201B4700348DD3 /* RealmCoopPlayer.swift in Sources */,
-				10BA140827201C6900348DD3 /* SpecialType.swift in Sources */,
 				101AED5A271E3946009556B2 /* SettingView.swift in Sources */,
 				10BA140B27201D2F00348DD3 /* Extension.swift in Sources */,
 				101AED11271E3109009556B2 /* Salmonia3App.swift in Sources */,
@@ -569,16 +548,13 @@
 				10FDD4AF271EE36C00C9C178 /* AppManager.swift in Sources */,
 				109F97FC2724D44100AB1FA3 /* Text.swift in Sources */,
 				109F97E6272490C600AB1FA3 /* LoggingThread.swift in Sources */,
+				10C0FE7D274C3D1C00870DED /* FirestoreLogin.swift in Sources */,
 				10BA13F327201AF300348DD3 /* RealmCoopResult.swift in Sources */,
-				10BA140127201C6900348DD3 /* GradeType.swift in Sources */,
-				10BA140627201C6900348DD3 /* RecordType.swift in Sources */,
 				109F98052724EC9400AB1FA3 /* Ranbow.swift in Sources */,
 				101AED61271E3F2B009556B2 /* Icon.swift in Sources */,
 				10C0FE6E274C12B900870DED /* User.swift in Sources */,
 				101AED40271E323E009556B2 /* SplatNet2LoginView.swift in Sources */,
 				109F97EB272491E600AB1FA3 /* ResultCollectionView.swift in Sources */,
-				10BA140227201C6900348DD3 /* StageType.swift in Sources */,
-				10BA140427201C6900348DD3 /* EventType.swift in Sources */,
 				109F97F02724A11900AB1FA3 /* GrowingButtonStyle.swift in Sources */,
 				109F98012724D66400AB1FA3 /* AnglePair.swift in Sources */,
 				109F98032724D67B00AB1FA3 /* Pie.swift in Sources */,
