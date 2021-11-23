@@ -6,3 +6,11 @@
 //
 
 import Foundation
+import SplatNet2
+
+struct FireRecord: FSCodable {
+    let goldenEggs: Int
+    let powerEggs: Int
+    let eventType: Result.EventType
+    let waterLevel: Result.WaterLevel
+}
