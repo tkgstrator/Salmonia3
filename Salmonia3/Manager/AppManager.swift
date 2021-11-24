@@ -14,6 +14,7 @@ import SplatNet2
 import RealmSwift
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import FirebaseAuth
 
 final class AppManager: SalmonStats {
     override init(version: String = "1.13.2") {
@@ -25,9 +26,21 @@ final class AppManager: SalmonStats {
             config.schemaVersion = schemeVersion
             self.realm = try! Realm(configuration: config, queue: nil)
         }
-        super.init(version: "1.13.2")
+        self.listener = self.firestore.addSnapshotsInSyncListener {
+
+        }
+        super.init(version: version)
+        
+        // 通知を受け取るように設定する
+        Auth.auth().addStateDidChangeListener({ auth, user in
+            self.user = user
+        })
     }
-    
+    ///
+    @Published var listener: ListenerRegistration
+    /// Firestoreのユーザ情報
+    @Published var user: FirebaseAuth.User?
+    /// リザルト取得中状態にするためのフラグ
     @Published var isLoading: Bool = false
     /// アプリの外見の設定
     @Published var apperances: Appearances = Appearances.shared
@@ -39,6 +52,8 @@ final class AppManager: SalmonStats {
     private let encoder: Firestore.Encoder = Firestore.Encoder()
     /// Firestore用のDecoder
     private let decoder: Firestore.Decoder = Firestore.Decoder()
+    /// ログイン用のProvider
+    private let provider = OAuthProvider(providerID: "twitter.com")
     /// RealmSwiftのScheme Version
     private let schemeVersion: UInt64 = 8192
     /// RealmSwiftのインスタンス
@@ -56,11 +71,27 @@ final class AppManager: SalmonStats {
         realm.objects(type)
     }
     
-    
-//    func save(_ results: [SplatNet2.Coop.Result]) {
-//        let objects: [RealmCoopResult] = results.map({ RealmCoopResult(from: $0, pid: playerId)})
-//        self.save(objects)
-//    }
+    internal func twitterSignin() -> AnyPublisher<String, Error> {
+        Future { [self] promise in
+            provider.getCredentialWith(nil, completion: { credential, error in
+                if let error = error {
+                    promise(.failure(error))
+                }
+                
+                if let credential = credential {
+                    Auth.auth().signIn(with: credential, completion: { result, error in
+                        if let error = error {
+                            promise(.failure(error))
+                        }
+                        if let result = result, let userName = result.user.displayName {
+                            promise(.success(userName))
+                        }
+                    })
+                }
+            })
+        }
+        .eraseToAnyPublisher()
+    }
     
     internal func save<T: Object>(_ objects: [T]) {
         if realm.isInWriteTransaction {
@@ -89,11 +120,23 @@ final class AppManager: SalmonStats {
     /// Firebaseにデータを保存
     private func create<T: FSCodable>(_ object: T, merge: Bool = false) throws {
         let data = try encoder.encode(object)
-        if let primaryKey = object.id {
-            firestore.collection(String(describing: T.self)).document(primaryKey).setData(data, merge: merge)
-        } else {
-            firestore.collection(String(describing: T.self)).document().setData(data, merge: merge)
+        firestore
+            .collection("records")
+            .document(String(format: "%10d", object.startTime))
+            .collection("waves")
+            .document(object.id).setData(data, merge: merge)
+    }
+    
+    private func create<T: FSCodable>(_ objects: [T], merge: Bool = false) throws {
+        for object in objects {
+            try create(object, merge: merge)
         }
+    }
+    
+    /// Firestoreにデータをアップロード
+    internal func register(_ results: [(UploadResult.Response, Result.Response)]) {
+        let records: [FireRecord] = results.flatMap({ result in result.1.waveDetails.map({ FireRecord(from: result.1, wave: $0, salmonId: result.0.salmonId) })})
+        try? create(records)
     }
     
     /// Firebaseからデータをプライマリキーを指定して読み込み
@@ -126,6 +169,11 @@ final class AppManager: SalmonStats {
             })
         }
         .eraseToAnyPublisher()
+    }
+    
+    /// シフト情報をRealmに追加
+    func addLatestShiftSchedule() {
+        save(SplatNet2.schedule.map({ RealmCoopShift(from: $0) }))
     }
     
     class Application {

@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 import SalmonStats
 import SplatNet2
+import CodableDictionary
 
 final class RealmCoopResult: Object {
     /// プレイヤーID
@@ -76,13 +77,20 @@ final class RealmCoopResult: Object {
         self.powerEggs = result.myResult.ikuraNum + (result.otherResults?.totalIkuraNum ?? 0)
         self.failureReason = result.jobResult.failureReason
         self.isClear = result.jobResult.isClear
-        self.bossCounts.append(objectsIn: result.bossCounts.map({ $0.value.count }))
+        self.bossCounts.append(objectsIn: result.bossCounts.sortedValue())
         self.wave.append(objectsIn: result.waveDetails.map({ RealmCoopWave(from: $0) }))
         let playerResult: [Result.PlayerResult] = [result.myResult] + (result.otherResults ?? [])
+        let bossKillCounts: [Int] = playerResult.map({ $0.bossKillCounts.sortedValue() }).sum()
         self.player.append(objectsIn: playerResult.map({ RealmCoopPlayer(from: $0) }))
+        self.bossKillCounts.append(objectsIn: bossKillCounts)
     }
 }
 
+extension CodableDictionary where Key == Result.BossType, Value == Result.BossCount {
+    func sortedValue() -> [Int] {
+        self.sorted(by: { $0.key.bossId.rawValue < $1.key.bossId.rawValue }).map({ $0.value.count })
+    }
+}
 
 extension Result.StageType {
     public enum StageId: Int, Codable, CaseIterable, PersistableEnum {
@@ -91,6 +99,45 @@ extension Result.StageType {
         case shakehouse = 5002
         case shakelift = 5003
         case shakeride = 5004
+    }
+}
+
+extension Result.BossType {
+    enum BossId: Int, CaseIterable {
+        case goldie = 3
+        case steelhead = 6
+        case flyfish = 9
+        case scrapper = 12
+        case steelEel = 13
+        case stinger = 14
+        case maws = 15
+        case griller = 16
+        case drizzler = 21
+    }
+}
+
+extension Result.BossType {
+    var bossId: Result.BossType.BossId {
+        switch self {
+        case .goldie:
+            return .goldie
+        case .steelhead:
+            return .steelhead
+        case .flyfish:
+            return .flyfish
+        case .scrapper:
+            return .scrapper
+        case .steelEel:
+            return .steelEel
+        case .stinger:
+            return .stinger
+        case .maws:
+            return .maws
+        case .griller:
+            return .griller
+        case .drizzler:
+            return .drizzler
+        }
     }
 }
 
@@ -128,8 +175,26 @@ extension Array where Element == Result.PlayerResult {
         self.map({ $0.ikuraNum }).reduce(0, +)
     }
 }
+
 extension RealmCoopResult: Identifiable {
     public var id: Int { playTime }
+}
+
+extension Array where Element: Numeric  {
+    func add<T: Numeric>(_ input: Array<T>) -> Array<T> {
+        return zip(self as! [T], input).map({ $0.0 + $0.1 })
+    }
+}
+
+extension Collection where Element == [Int]{
+    func sum() -> [Int] {
+        if let first = self.first {
+            var sum: [Int] = Array(repeating: 0, count: first.count)
+            let _ = self.map({ sum = sum.add($0) })
+            return sum
+        }
+        return []
+    }
 }
 
 extension RealmCoopResult {

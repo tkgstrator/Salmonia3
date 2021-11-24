@@ -29,6 +29,9 @@ struct SettingView: View {
                             .foregroundColor(.secondary)
                     })
                     AccountView(manager: appManager)
+                    NavigationLink(destination: FireStatsSetting(), label: {
+                        Text("FireStats")
+                    })
                 })
                 Section(header: Text("Appearances"), content: {
                     Toggle(isOn: $appManager.apperances.isDarkmode, label: {
@@ -39,6 +42,15 @@ struct SettingView: View {
                     ResultStyleDialog()
                     RefreshStyleDialog()
 //                    FontStyleDialog()
+                })
+                Section(content: {
+                    Button(action: {
+                        appManager.addLatestShiftSchedule()
+                    }, label: {
+                        Text("Import shift schedule")
+                    })
+                }, header: {
+                    
                 })
                 Section(header: Text("Application"), content: {
                     HStack(content: {

@@ -18,21 +18,16 @@ struct ContentView: View {
                     Image(.home)
                 })
                 .tag(0)
-            SplatNet2LoginView()
+            ShiftCollectionView()
                 .tabItem({
                     Image(.home)
                 })
                 .tag(1)
-            SalmonStatsLoginView()
-                .tabItem({
-                    Image(.home)
-                })
-                .tag(2)
             SettingView()
                 .tabItem({
                     Image(.setting)
                 })
-                .tag(3)
+                .tag(2)
         })
             .font(systemName: appManager.apperances.fontStyle, size: 16)
             .preferredColorScheme(appManager.apperances.colorScheme)
