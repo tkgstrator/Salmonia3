@@ -15,7 +15,7 @@ import RealmSwift
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-final class AppManager: SalmonStats, ObservableObject {
+final class AppManager: SalmonStats {
     override init(version: String = "1.13.2") {
         do {
             self.realm = try Realm()
@@ -62,7 +62,7 @@ final class AppManager: SalmonStats, ObservableObject {
 //        self.save(objects)
 //    }
     
-    private func save<T: Object>(_ objects: [T]) {
+    internal func save<T: Object>(_ objects: [T]) {
         if realm.isInWriteTransaction {
             for object in objects {
                 realm.create(T.self, value: object, update: .all)
@@ -76,7 +76,7 @@ final class AppManager: SalmonStats, ObservableObject {
         }
     }
     
-    private func save<T: Object>(_ object: T) {
+    internal func save<T: Object>(_ object: T) {
         if realm.isInWriteTransaction {
             realm.create(T.self, value: object, update: .all)
         } else {

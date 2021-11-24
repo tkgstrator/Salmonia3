@@ -46,6 +46,7 @@ struct ResultCollectionView_Previews: PreviewProvider {
     }
 }
 
+/// ListやFrom内で使用したときにIndicatorを非表示にする
 struct NavigationLinker<Destination: View, Label: View>: View {
     let destination: Destination
     let label: () -> Label
