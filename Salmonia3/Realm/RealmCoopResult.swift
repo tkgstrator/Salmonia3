@@ -56,12 +56,12 @@ final class RealmCoopResult: Object {
     /// Player情報
     @Persisted var player: List<RealmCoopPlayer>
     
-    convenience init(from result: Result.Response, nsaid: String) {
+    convenience init(from result: Result.Response, nsaid: String, stats: UploadResult.Response? = nil) {
         self.init()
         self.pid = nsaid
         self.jobId = result.jobId
         self.stageId = result.schedule.stage.image.stageId
-        self.salmonId = nil
+        self.salmonId = stats?.salmonId
         self.gradePoint = result.gradePoint
         self.gradePointDelta = result.gradePointDelta
         self.failureWave = result.jobResult.failureWave

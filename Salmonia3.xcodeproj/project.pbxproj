@@ -36,13 +36,14 @@
 		109F97FE2724D60F00AB1FA3 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97FD2724D60F00AB1FA3 /* ChartView.swift */; };
 		109F98012724D66400AB1FA3 /* AnglePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F98002724D66400AB1FA3 /* AnglePair.swift */; };
 		109F98032724D67B00AB1FA3 /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F98022724D67B00AB1FA3 /* Pie.swift */; };
-		109F98052724EC9400AB1FA3 /* Ranbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F98042724EC9400AB1FA3 /* Ranbow.swift */; };
+		109F98052724EC9400AB1FA3 /* Rainbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F98042724EC9400AB1FA3 /* Rainbow.swift */; };
 		10BA13F027201A7B00348DD3 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10BA13EF27201A7B00348DD3 /* RealmSwift */; };
 		10BA13F327201AF300348DD3 /* RealmCoopResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13F227201AF300348DD3 /* RealmCoopResult.swift */; };
 		10BA13F527201B1400348DD3 /* RealmCoopWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13F427201B1400348DD3 /* RealmCoopWave.swift */; };
 		10BA13F727201B4700348DD3 /* RealmCoopPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13F627201B4700348DD3 /* RealmCoopPlayer.swift */; };
 		10BA140727201C6900348DD3 /* SalmonidType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13FF27201C6900348DD3 /* SalmonidType.swift */; };
 		10BA140B27201D2F00348DD3 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA140A27201D2F00348DD3 /* Extension.swift */; };
+		10C000DC274CE3F400870DED /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C000DB274CE3F400870DED /* Image.swift */; };
 		10C0FE6E274C12B900870DED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0FE6D274C12B900870DED /* User.swift */; };
 		10C0FE70274C12C500870DED /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0FE6F274C12C500870DED /* Record.swift */; };
 		10C0FE72274C132D00870DED /* FSCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0FE71274C132D00870DED /* FSCodable.swift */; };
@@ -104,12 +105,13 @@
 		109F97FD2724D60F00AB1FA3 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		109F98002724D66400AB1FA3 /* AnglePair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnglePair.swift; sourceTree = "<group>"; };
 		109F98022724D67B00AB1FA3 /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
-		109F98042724EC9400AB1FA3 /* Ranbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ranbow.swift; sourceTree = "<group>"; };
+		109F98042724EC9400AB1FA3 /* Rainbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rainbow.swift; sourceTree = "<group>"; };
 		10BA13F227201AF300348DD3 /* RealmCoopResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopResult.swift; sourceTree = "<group>"; };
 		10BA13F427201B1400348DD3 /* RealmCoopWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopWave.swift; sourceTree = "<group>"; };
 		10BA13F627201B4700348DD3 /* RealmCoopPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopPlayer.swift; sourceTree = "<group>"; };
 		10BA13FF27201C6900348DD3 /* SalmonidType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalmonidType.swift; sourceTree = "<group>"; };
 		10BA140A27201D2F00348DD3 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		10C000DB274CE3F400870DED /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		10C0FE6D274C12B900870DED /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		10C0FE6F274C12C500870DED /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		10C0FE71274C132D00870DED /* FSCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCodable.swift; sourceTree = "<group>"; };
@@ -237,7 +239,7 @@
 				109F97FF2724D65100AB1FA3 /* Chart */,
 				101AED3C271E3192009556B2 /* Wave.swift */,
 				109F97FB2724D44100AB1FA3 /* Text.swift */,
-				109F98042724EC9400AB1FA3 /* Ranbow.swift */,
+				109F98042724EC9400AB1FA3 /* Rainbow.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -332,6 +334,7 @@
 		109F97FF2724D65100AB1FA3 /* Chart */ = {
 			isa = PBXGroup;
 			children = (
+				10C000DB274CE3F400870DED /* Image.swift */,
 				109F97FD2724D60F00AB1FA3 /* ChartView.swift */,
 				109F98002724D66400AB1FA3 /* AnglePair.swift */,
 				109F98022724D67B00AB1FA3 /* Pie.swift */,
@@ -534,6 +537,7 @@
 			files = (
 				109F97F82724ADB600AB1FA3 /* ResultOverview.swift in Sources */,
 				109F97FA2724CF0C00AB1FA3 /* ResultType.swift in Sources */,
+				10C000DC274CE3F400870DED /* Image.swift in Sources */,
 				101AED3D271E3192009556B2 /* Wave.swift in Sources */,
 				109F97F62724AD7800AB1FA3 /* ResultView.swift in Sources */,
 				10BA140727201C6900348DD3 /* SalmonidType.swift in Sources */,
@@ -550,7 +554,7 @@
 				109F97E6272490C600AB1FA3 /* LoggingThread.swift in Sources */,
 				10C0FE7D274C3D1C00870DED /* FirestoreLogin.swift in Sources */,
 				10BA13F327201AF300348DD3 /* RealmCoopResult.swift in Sources */,
-				109F98052724EC9400AB1FA3 /* Ranbow.swift in Sources */,
+				109F98052724EC9400AB1FA3 /* Rainbow.swift in Sources */,
 				101AED61271E3F2B009556B2 /* Icon.swift in Sources */,
 				10C0FE6E274C12B900870DED /* User.swift in Sources */,
 				101AED40271E323E009556B2 /* SplatNet2LoginView.swift in Sources */,
@@ -656,8 +660,9 @@
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -712,8 +717,9 @@
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

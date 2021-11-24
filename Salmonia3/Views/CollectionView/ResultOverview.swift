@@ -42,7 +42,7 @@ struct ResultOverview: View {
                         .font(systemName: .Splatfont2, size: 13, foregroundColor: .green)
                 })
                 LazyHStack(content: {
-                    Text(result.gradeId.localized)
+                    Text(result.gradeId)
                     Text(result.gradePoint)
                     Text("↑").font(systemName: .Splatfont, size: 14, foregroundColor: .red)
                 })
@@ -61,7 +61,7 @@ struct ResultOverview: View {
                         .font(systemName: .Splatfont2, size: 13, foregroundColor: .safetyorange)
                 })
                 LazyHStack(content: {
-                    Text(result.gradeId.localized)
+                    Text(result.gradeId)
                     Text(result.gradePoint)
                     Text(result.gradePointDelta == 0 ? "→" : "↓")
                 })
