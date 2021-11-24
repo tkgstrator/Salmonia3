@@ -9,7 +9,7 @@ import Foundation
 import SplatNet2
 import CryptoKit
 
-struct FireRecord: FSCodable {
+struct FSRecordWave: FSCodable {
     let salmonId: Int
     let startTime: Int
     let ikuraNum: Int
@@ -40,9 +40,9 @@ extension Result.WaveDetail: Equatable {
     
 }
 
-extension FireRecord: Identifiable {
+extension FSRecordWave: Identifiable {
     // SalmonIdのSHA1を計算してIDとする
-    var id: String? {
+    var id: String {
         let plainText: String = String(format: "%08X%01X", salmonId, waveId ?? 0)
         return Insecure.SHA1.hash(data: Data(plainText.utf8))
             .compactMap({ String(format: "%02X", $0) }).joined()

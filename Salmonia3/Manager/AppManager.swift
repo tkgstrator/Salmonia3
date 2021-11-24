@@ -26,9 +26,7 @@ final class AppManager: SalmonStats {
             config.schemaVersion = schemeVersion
             self.realm = try! Realm(configuration: config, queue: nil)
         }
-        self.listener = self.firestore.addSnapshotsInSyncListener {
-
-        }
+        self.records = firestore.collection("records")
         super.init(version: version)
         
         // 通知を受け取るように設定する
@@ -36,10 +34,10 @@ final class AppManager: SalmonStats {
             self.user = user
         })
     }
-    ///
-    @Published var listener: ListenerRegistration
     /// Firestoreのユーザ情報
     @Published var user: FirebaseAuth.User?
+    /// FireStatsの記録一覧
+    @Published var waves: [FSRecordWave] = []
     /// リザルト取得中状態にするためのフラグ
     @Published var isLoading: Bool = false
     /// アプリの外見の設定
@@ -48,6 +46,8 @@ final class AppManager: SalmonStats {
     @Published var application: Application = Application.shared
     /// Firestore接続用インスタンス
     private let firestore: Firestore = Firestore.firestore()
+    ///
+    internal let records: CollectionReference
     /// Firestore用のEncoder
     private let encoder: Firestore.Encoder = Firestore.Encoder()
     /// Firestore用のDecoder
@@ -135,7 +135,7 @@ final class AppManager: SalmonStats {
     
     /// Firestoreにデータをアップロード
     internal func register(_ results: [(UploadResult.Response, Result.Response)]) {
-        let records: [FireRecord] = results.flatMap({ result in result.1.waveDetails.map({ FireRecord(from: result.1, wave: $0, salmonId: result.0.salmonId) })})
+        let records: [FSRecordWave] = results.flatMap({ result in result.1.waveDetails.map({ FSRecordWave(from: result.1, wave: $0, salmonId: result.0.salmonId) })})
         try? create(records)
     }
     
@@ -225,6 +225,12 @@ final class AppManager: SalmonStats {
             case pull
             case button
         }
+    }
+}
+
+extension QuerySnapshot {
+    internal func decode<T: FSCodable>(type: T.Type) -> [T] {
+        self.documents.compactMap({ try? Firestore.Decoder().decode(T.self, from: $0.data()) })
     }
 }
 
