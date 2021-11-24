@@ -39,7 +39,7 @@ struct LoadingView: View {
                 }
             }, receiveValue: { response in
                 appManager.save(response.map({ RealmCoopResult(from: $0.1, nsaid: appManager.account.nsaid, stats: $0.0) }))
-                print(response)
+                appManager.register(response)
             })
             .store(in: &task)
     }

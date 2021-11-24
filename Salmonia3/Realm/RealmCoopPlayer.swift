@@ -20,7 +20,7 @@ final class RealmCoopPlayer: Object, ObjectKeyIdentifiable {
     @Persisted var ikuraNum: Int
     @Persisted var specialId: Result.SpecialId
     @Persisted var bossKillCounts: List<Int>
-    @Persisted var weaponList: List<WeaponType.WeaponId>
+    @Persisted var weaponList: List<WeaponType>
     @Persisted var specialCounts: List<Int>
     @Persisted(originProperty: "player") var result: LinkingObjects<RealmCoopResult>
 
@@ -34,7 +34,8 @@ final class RealmCoopPlayer: Object, ObjectKeyIdentifiable {
         self.ikuraNum = result.ikuraNum
         self.specialId = result.special.id
         self.bossKillCounts.append(objectsIn: result.bossKillCounts.map({ $0.value.count }))
-        self.weaponList.append(objectsIn: result.weaponList.map({ $0.id }))
+        self.bossKillCounts.append(objectsIn: result.bossKillCounts.map({ $0.value.count }))
+        self.weaponList.append(objectsIn: result.weaponList.map({ $0.weaponId }))
         self.specialCounts.append(objectsIn: result.specialCounts)
     }
 }
@@ -42,7 +43,123 @@ final class RealmCoopPlayer: Object, ObjectKeyIdentifiable {
 extension Result.SpecialId: PersistableEnum {
 }
 
-extension WeaponType.WeaponId: PersistableEnum {
+extension Result.WeaponList {
+    var weaponId: WeaponType {
+        switch self.id {
+        case .randomGold:
+            return .randomGold
+        case .randomGreen:
+            return .randomGreen
+        case .shooterShort:
+            return .shooterShort
+        case .shooterFirst:
+            return .shooterFirst
+        case .shooterPrecision:
+            return .shooterPrecision
+        case .shooterBlaze:
+            return .shooterBlaze
+        case .shooterNormal:
+            return .shooterNormal
+        case .shooterGravity:
+            return .shooterGravity
+        case .shooterQuickMiddle:
+            return .shooterQuickMiddle
+        case .shooterExpert:
+            return .shooterExpert
+        case .shooterHeavy:
+            return .shooterHeavy
+        case .shooterLong:
+            return .shooterLong
+        case .shooterBlasterShort:
+            return .shooterBlasterShort
+        case .shooterBlasterMiddle:
+            return .shooterBlasterMiddle
+        case .shooterBlasterLong:
+            return .shooterBlasterLong
+        case .shooterBlasterLightShort:
+            return .shooterBlasterLightLong
+        case .shooterBlasterLight:
+            return .shooterBlasterLight
+        case .shooterBlasterLightLong:
+            return .shooterBlasterLightLong
+        case .shooterTripleQuick:
+            return .shooterTripleQuick
+        case .shooterTripleMiddle:
+            return .shooterTripleMiddle
+        case .shooterFlash:
+            return .shooterFlash
+        case .rollerCompact:
+            return .rollerCompact
+        case .rollerNormal:
+            return .rollerNormal
+        case .rollerHeavy:
+            return .rollerHeavy
+        case .rollerHunter:
+            return .rollerHunter
+        case .rollerBrushMini:
+            return .rollerBrushMini
+        case .rollerBrushNormal:
+            return .rollerBrushNormal
+        case .chargerQuick:
+            return .chargerQuick
+        case .chargerNormal:
+            return .chargerNormal
+        case .chargerNormalScope:
+            return .chargerNormalScope
+        case .chargerLong:
+            return .chargerLong
+        case .chargerLongScope:
+            return .chargerLongScope
+        case .chargerLight:
+            return .chargerLight
+        case .chargerKeeper:
+            return .chargerKeeper
+        case .slosherStrong:
+            return .slosherStrong
+        case .slosherDiffusion:
+            return .slosherDiffusion
+        case .slosherLauncher:
+            return .slosherLauncher
+        case .slosherBathtub:
+            return .slosherBathtub
+        case .slosherWashtub:
+            return .slosherWashtub
+        case .spinnerQuick:
+            return .spinnerQuick
+        case .spinnerStandard:
+            return .spinnerStandard
+        case .spinnerHyper:
+            return .spinnerHyper
+        case .spinnerDownpour:
+            return .spinnerDownpour
+        case .spinnerSerein:
+            return .spinnerSerein
+        case .twinsShort:
+            return .twinsShort
+        case .twinsNormal:
+            return .twinsNormal
+        case .twinsGallon:
+            return .twinsGallon
+        case .twinsDual:
+            return .twinsDual
+        case .twinsStepper:
+            return .twinsStepper
+        case .umbrellaNormal:
+            return .umbrellaNormal
+        case .umbrellaWide:
+            return .umbrellaWide
+        case .umbrellaCompact:
+            return .umbrellaWide
+        case .shooterBlasterBurst:
+            return .shooterBlasterBurst
+        case .umbrellaAutoAssault:
+            return .umbrellaAutoAssault
+        case .chargerSpark:
+            return .chargerSpark
+        case .slosherVase:
+            return .slosherVase
+        }
+    }
 }
 
 extension RealmCoopPlayer {
