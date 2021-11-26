@@ -54,7 +54,7 @@ struct FireStatsView: View {
                             HStack(content: {
                                 Text(eventType.eventName)
                                 Spacer()
-                                Text(record.goldenIkuraNumRank)
+                                Text(String(format: "%03d/%03d (%02d)", record.goldenIkuraNumRank, record.uploadedCount, record.goldenIkuraNum))
                                     .foregroundColor(.secondary)
                             })
                         }
@@ -111,6 +111,7 @@ struct FireStats {
         self.ikuraNum = ikuraNum
         self.goldenIkuraNumRank = waves.map({ $0.goldenIkuraNum }).filter({ $0 > goldenIkuraNum }).count + 1
         self.ikuraNumRank = waves.map({ $0.ikuraNum }).filter({ $0 > ikuraNum }).count + 1
+        self.uploadedCount = waves.count
     }
     
     let eventType: Result.EventKey
@@ -119,7 +120,7 @@ struct FireStats {
     let ikuraNum: Int
     let goldenIkuraNumRank: Int
     let ikuraNumRank: Int
-    
+    let uploadedCount: Int
 }
 
 struct FireStatsView_Previews: PreviewProvider {
