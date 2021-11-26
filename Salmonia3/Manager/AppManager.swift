@@ -144,13 +144,13 @@ final class AppManager: SalmonStats {
         Future { [self] promise in
             firestore.collection(String(describing: T.self)).document(primaryKey).getDocument(completion: { [self] (document, _) in
                 guard let document = document, let data = document.data() else {
-                    promise(.failure(.Data(.response, nil)))
+                    promise(.failure(SP2Error.dataDecodingFailed))
                     return
                 }
                 do {
                     promise(.success(try decoder.decode(T.self, from: data)))
                 } catch {
-                    promise(.failure(.Data(.undecodable, nil)))
+                    promise(.failure(SP2Error.dataDecodingFailed))
                 }
             })
         }

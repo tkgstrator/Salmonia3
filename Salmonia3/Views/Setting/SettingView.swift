@@ -11,6 +11,7 @@ import SplatNet2
 
 struct SettingView: View {
     @EnvironmentObject var appManager: AppManager
+    @State var isPresented: Bool = false
     
     var body: some View {
         NavigationView {
@@ -28,7 +29,21 @@ struct SettingView: View {
                         Text(appManager.account.nsaid)
                             .foregroundColor(.secondary)
                     })
+                    HStack(content: {
+                        Text("SSToken")
+                        Spacer()
+                        Text(appManager.apiToken ?? "")
+                            .lineLimit(1)
+                            .foregroundColor(.secondary)
+                    })
                     AccountView(manager: appManager)
+                    Button(action: {
+                        isPresented.toggle()
+                    }, label: {
+                        Text("Salmon Stats")
+                    })
+                        .authorizeToken(isPresented: $isPresented, manager: appManager, completion: { _ in
+                        })
                     NavigationLink(destination: FireStatsSetting(), label: {
                         Text("FireStats")
                     })
@@ -37,7 +52,7 @@ struct SettingView: View {
                     Toggle(isOn: $appManager.apperances.isDarkmode, label: {
                         Text("Using Dark Mode")
                     })
-                    NavigationLink(destination: FontStylePicker(), label: { Text("Font Style") })
+//                    NavigationLink(destination: FontStylePicker(), label: { Text("Font Style") })
                     ListStyleDialog()
                     ResultStyleDialog()
                     RefreshStyleDialog()
