@@ -22,6 +22,7 @@
 		101AED5A271E3946009556B2 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED59271E3946009556B2 /* SettingView.swift */; };
 		101AED5C271E3B0F009556B2 /* SalmonStatsLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED5B271E3B0F009556B2 /* SalmonStatsLoginView.swift */; };
 		101AED61271E3F2B009556B2 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED60271E3F2B009556B2 /* Icon.swift */; };
+		103168672750E3D10009070C /* ShiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103168662750E3D10009070C /* ShiftView.swift */; };
 		1062EE72274DDF0B0050FD0C /* FireStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1062EE71274DDF0B0050FD0C /* FireStatsView.swift */; };
 		10635092274E1F8D00529930 /* FireStatsSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10635091274E1F8D00529930 /* FireStatsSetting.swift */; };
 		10635094274E2B1F00529930 /* RealmCoopShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10635093274E2B1F00529930 /* RealmCoopShift.swift */; };
@@ -97,6 +98,8 @@
 		101AED59271E3946009556B2 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		101AED5B271E3B0F009556B2 /* SalmonStatsLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonStatsLoginView.swift; sourceTree = "<group>"; };
 		101AED60271E3F2B009556B2 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		103168662750E3D10009070C /* ShiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftView.swift; sourceTree = "<group>"; };
+		103168682750F14E0009070C /* Salmonia3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Salmonia3.entitlements; sourceTree = "<group>"; };
 		1062EE71274DDF0B0050FD0C /* FireStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStatsView.swift; sourceTree = "<group>"; };
 		10635091274E1F8D00529930 /* FireStatsSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStatsSetting.swift; sourceTree = "<group>"; };
 		10635093274E2B1F00529930 /* RealmCoopShift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopShift.swift; sourceTree = "<group>"; };
@@ -186,6 +189,7 @@
 		101AED0F271E3109009556B2 /* Salmonia3 */ = {
 			isa = PBXGroup;
 			children = (
+				103168682750F14E0009070C /* Salmonia3.entitlements */,
 				10C0FE7A274C207900870DED /* GoogleService-Info.plist */,
 				10C0FE6C274C12A900870DED /* Firestore */,
 				10BA13F127201ADD00348DD3 /* Realm */,
@@ -324,10 +328,8 @@
 		109F97E9272491D800AB1FA3 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				10C000DF2750E36900870DED /* Shift */,
 				109F97F42724A7CB00AB1FA3 /* Result */,
-				109F97EA272491E500AB1FA3 /* ResultCollectionView.swift */,
-				109F97F72724ADB600AB1FA3 /* ResultOverview.swift */,
-				10635095274E2E4D00529930 /* ShiftCollectionView.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -343,6 +345,8 @@
 		109F97F42724A7CB00AB1FA3 /* Result */ = {
 			isa = PBXGroup;
 			children = (
+				109F97F72724ADB600AB1FA3 /* ResultOverview.swift */,
+				109F97EA272491E500AB1FA3 /* ResultCollectionView.swift */,
 				109F97F52724AD7800AB1FA3 /* ResultView.swift */,
 			);
 			path = Result;
@@ -377,6 +381,15 @@
 				109F97F92724CF0C00AB1FA3 /* ResultType.swift */,
 			);
 			path = Type;
+			sourceTree = "<group>";
+		};
+		10C000DF2750E36900870DED /* Shift */ = {
+			isa = PBXGroup;
+			children = (
+				10635095274E2E4D00529930 /* ShiftCollectionView.swift */,
+				103168662750E3D10009070C /* ShiftView.swift */,
+			);
+			path = Shift;
 			sourceTree = "<group>";
 		};
 		10C0FE6C274C12A900870DED /* Firestore */ = {
@@ -558,6 +571,7 @@
 				10635092274E1F8D00529930 /* FireStatsSetting.swift in Sources */,
 				101AED5C271E3B0F009556B2 /* SalmonStatsLoginView.swift in Sources */,
 				109F97FE2724D60F00AB1FA3 /* ChartView.swift in Sources */,
+				103168672750E3D10009070C /* ShiftView.swift in Sources */,
 				10BA13F727201B4700348DD3 /* RealmCoopPlayer.swift in Sources */,
 				101AED5A271E3946009556B2 /* SettingView.swift in Sources */,
 				10BA140B27201D2F00348DD3 /* Extension.swift in Sources */,
@@ -745,13 +759,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Salmonia3/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "The camera is used by Salmonia3.";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This itentifier will be used to deliver persoalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -778,13 +794,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Salmonia3/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "The camera is used by Salmonia3.";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This itentifier will be used to deliver persoalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
