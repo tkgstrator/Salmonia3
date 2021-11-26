@@ -12,18 +12,20 @@ import RealmSwift
 struct ShiftCollectionView: View {
     @ObservedResults(RealmCoopShift.self, sortDescriptor: SortDescriptor(keyPath: "startTime", ascending: false)) var schedules
     @ObservedResults(RealmCoopResult.self) var results
+    @State var isExpanded: [Bool] = Array(repeating: false, count: 2)
     
     var body: some View {
         NavigationView(content: {
             List(content: {
                 ForEach(schedules) { schedule in
-                    if results.map({ $0.startTime }).contains(schedule.startTime) {
-                        NavigationLinker(destination: FireStatsView(startTime: schedule.startTime), label: {
-                            ShiftView().environment(\.shiftSchedule, schedule)
-                        })
-                    }
+                    NavigationLinker(destination: FireStatsView(startTime: schedule.startTime), label: {
+                        ShiftView()
+                            .environment(\.shiftSchedule, schedule)
+                    })
+                        .disabled(schedule.startTime >= Int(Date().timeIntervalSince1970))
                 }
             })
+                .navigationTitle("TITLE.SHIFTSCHEDULE")
         })
     }
 }

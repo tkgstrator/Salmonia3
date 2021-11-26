@@ -10,15 +10,41 @@ import SplatNet2
 
 struct ShiftView: View {
     @Environment(\.shiftSchedule) var shift
+    private let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.current
+        formatter.dateFormat = "MM/dd HH:mm"
+        return formatter
+    }()
     
     var body: some View {
-        LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 30, maximum: 50)), count: 4), alignment: .center, spacing: nil, pinnedViews: [], content: {
-            ForEach(shift.weaponList) { weapon in
-                Image(weapon)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            }
+        VStack(content: {
+            Group(content: {
+                HStack(alignment: .center, spacing: nil, content: {
+                    Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(shift.startTime))))
+                    Text(verbatim: "-")
+                    Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(shift.endTime))))
+                })
+                Text(shift.stageName)
+            })
+                .foregroundColor(.white)
+            LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 30, maximum: 50)), count: 4), alignment: .center, spacing: nil, pinnedViews: [], content: {
+                ForEach(shift.weaponList.indices) { index in
+                    Image(shift.weaponList[index])
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(2)
+                        .background(Circle().fill(.black.opacity(0.9)))
+                }
+            })
         })
+            .background(
+                Image(shift.stageId)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .overlay(Rectangle().fill(.black.opacity(0.5)).padding(.bottom, 70))
+                    .cornerRadius(10)
+            )
     }
 }
 
@@ -35,6 +61,10 @@ extension WeaponType: Identifiable {
 extension Image {
     init(_ weaponType: WeaponType) {
         self.init("Weapon/\(weaponType.rawValue)", bundle: .main)
+    }
+    
+    init(_ stageId: Schedule.StageId) {
+        self.init("Stage/\(stageId.rawValue)", bundle: .main)
     }
 }
 

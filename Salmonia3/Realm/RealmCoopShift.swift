@@ -27,6 +27,23 @@ final class RealmCoopShift: Object {
     }
 }
 
+extension RealmCoopShift {
+    var stageName: String {
+        switch self.stageId {
+            case .shakeup:
+                return "Spawning Ground"
+            case .shakeship:
+                return "Marroner's Bay"
+            case .shakehouse:
+                return "Lost Outpost"
+            case .shakelift:
+                return "Salmonid Smokeyard"
+            case .shakeride:
+                return "Ruins of Ark Polaris"
+        }
+    }
+}
+
 extension RealmCoopShift: Identifiable {
     var id: Int { startTime }
 }
