@@ -10,7 +10,7 @@ import RealmSwift
 import SalmonStats
 import SplatNet2
 
-final class RealmCoopWave: Object, Identifiable {
+final class RealmCoopWave: Object {
     @Persisted var eventType: Result.EventKey
     @Persisted var waterLevel: Result.WaterKey
     @Persisted(indexed: true) var goldenIkuraNum: Int
@@ -37,9 +37,10 @@ extension Result.EventKey: PersistableEnum, Identifiable {
 extension Result.WaterKey: PersistableEnum, Identifiable {
     public var id: String { rawValue }
 }
+
 //
-//extension RealmCoopWave: Identifiable {
-//    /// 識別用のID
-//    var id: Int { self.quotaNum }
-//}
+extension RealmCoopWave: Identifiable {
+    /// 識別用のID
+    var id: Int { self.quotaNum }
+}
 
