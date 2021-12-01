@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SwiftyUI
 import RealmSwift
 
 struct ShiftCollectionView: View {
@@ -27,6 +28,7 @@ struct ShiftCollectionView: View {
             })
                 .navigationTitle("TITLE.SHIFTSCHEDULE")
         })
+            .navigationViewStyle(SplitNavigationViewStyle())
     }
 }
 

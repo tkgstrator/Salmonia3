@@ -84,6 +84,7 @@ struct SettingView: View {
             }
             .navigationTitle("Setting")
         }
+            .navigationViewStyle(SplitNavigationViewStyle())
     }
 }
 

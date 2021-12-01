@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftyUI
 import RealmSwift
 import Alamofire
 
@@ -30,6 +31,7 @@ struct ResultCollectionView: View {
                 .navigationTitle("Results")
         })
             .overlay(refreshButton, alignment: .bottomTrailing)
+            .navigationViewStyle(SplitNavigationViewStyle())
     }
     
     var refreshButton: some View {
