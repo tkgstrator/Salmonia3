@@ -23,6 +23,7 @@
 		101AED5C271E3B0F009556B2 /* SalmonStatsLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED5B271E3B0F009556B2 /* SalmonStatsLoginView.swift */; };
 		101AED61271E3F2B009556B2 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED60271E3F2B009556B2 /* Icon.swift */; };
 		103168672750E3D10009070C /* ShiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103168662750E3D10009070C /* ShiftView.swift */; };
+		1033F41C2757724B006EE793 /* SalmonStatsSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1033F41B2757724B006EE793 /* SalmonStatsSetting.swift */; };
 		1062EE72274DDF0B0050FD0C /* FireStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1062EE71274DDF0B0050FD0C /* FireStatsView.swift */; };
 		10635092274E1F8D00529930 /* FireStatsSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10635091274E1F8D00529930 /* FireStatsSetting.swift */; };
 		10635094274E2B1F00529930 /* RealmCoopShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10635093274E2B1F00529930 /* RealmCoopShift.swift */; };
@@ -100,6 +101,7 @@
 		101AED60271E3F2B009556B2 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		103168662750E3D10009070C /* ShiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftView.swift; sourceTree = "<group>"; };
 		103168682750F14E0009070C /* Salmonia3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Salmonia3.entitlements; sourceTree = "<group>"; };
+		1033F41B2757724B006EE793 /* SalmonStatsSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonStatsSetting.swift; sourceTree = "<group>"; };
 		1062EE71274DDF0B0050FD0C /* FireStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStatsView.swift; sourceTree = "<group>"; };
 		10635091274E1F8D00529930 /* FireStatsSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStatsSetting.swift; sourceTree = "<group>"; };
 		10635093274E2B1F00529930 /* RealmCoopShift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopShift.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 			children = (
 				101AED59271E3946009556B2 /* SettingView.swift */,
 				10635091274E1F8D00529930 /* FireStatsSetting.swift */,
+				1033F41B2757724B006EE793 /* SalmonStatsSetting.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				101AED11271E3109009556B2 /* Salmonia3App.swift in Sources */,
 				101AED57271E367D009556B2 /* Color.swift in Sources */,
 				10FDD4AF271EE36C00C9C178 /* AppManager.swift in Sources */,
+				1033F41C2757724B006EE793 /* SalmonStatsSetting.swift in Sources */,
 				109F97FC2724D44100AB1FA3 /* Text.swift in Sources */,
 				109F97E6272490C600AB1FA3 /* LoggingThread.swift in Sources */,
 				10C0FE7D274C3D1C00870DED /* FirestoreLogin.swift in Sources */,
