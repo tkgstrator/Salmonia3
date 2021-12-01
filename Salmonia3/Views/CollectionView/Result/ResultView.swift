@@ -24,8 +24,12 @@ struct ResultView: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false, content: {
-            Image(result.stageId).resizable().frame(height: 120).aspectRatio(contentMode: .fit)
+            Image(result.stageId)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
                 .overlay(ResultOverview)
+                .frame(height: 120)
+                .clipped()
             ResultWave
         })
         
@@ -57,39 +61,40 @@ struct ResultView: View {
     
     var ResultWave: some View {
         LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 200), alignment: .top), count: result.wave.count)) {
-//            ForEach(result.wave) { wave in
-//                VStack(alignment: .center, spacing: 0, content: {
-//                    VStack(spacing: 0, content: {
-//                        Text("RESULT_WAVE_")
-//                            .foregroundColor(.black)
-//                        Text("\(wave.goldenIkuraNum)/\(wave.quotaNum)")
-//                            .font(systemName: .Splatfont2, size: 22, foregroundColor: .white)
-//                            .frame(maxWidth: .infinity)
-//                            .frame(height: 36)
-//                            .minimumScaleFactor(1.0)
-//                        Text("\(wave.ikuraNum)")
-//                            .foregroundColor(.red)
-//                            .frame(height: 26)
-//                            .minimumScaleFactor(1.0)
-//                        Text(wave.waterLevel.localizedName)
-//                            .foregroundColor(.black)
-//                            .frame(height: 26)
-//                            .minimumScaleFactor(1.0)
-//                        Text(wave.eventType.localizedName)
-//                            .foregroundColor(.black)
-//                            .frame(height: 26)
-//                            .minimumScaleFactor(1.0)
-//                    })
-//                        .background(RoundedRectangle(cornerRadius: 4).fill(Color.yellow))
-//                        .frame(minHeight: 140)
-//                    HStack(content: {
-//                        Image(.golden)
-//                            .resizable()
-//                            .frame(width: 15, height: 15)
-//                        Text("RESULT_APPEARANCES_\(wave.goldenIkuraPopNum)")
-//                            .font(systemName: .Splatfont2, size: 13)
-//                            .lineLimit(1)
-//                    })
+            ForEach(result.wave) { wave in
+                VStack(alignment: .center, spacing: 0, content: {
+                    VStack(spacing: 0, content: {
+                        Text("RESULT_WAVE_\(wave.index)")
+                            .foregroundColor(.black)
+                        Text("\(wave.goldenIkuraNum)/\(wave.quotaNum)")
+                            .font(systemName: .Splatfont2, size: 22, foregroundColor: .white)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 36)
+                            .background(Color.black.edgesIgnoringSafeArea(.all))
+                            .minimumScaleFactor(1.0)
+                        Text("\(wave.ikuraNum)")
+                            .foregroundColor(.red)
+                            .frame(height: 26)
+                            .minimumScaleFactor(1.0)
+                        Text(wave.waterLevel.id.localized)
+                            .foregroundColor(.black)
+                            .frame(height: 26)
+                            .minimumScaleFactor(1.0)
+                        Text(wave.eventType.id.localized)
+                            .foregroundColor(.black)
+                            .frame(height: 26)
+                            .minimumScaleFactor(1.0)
+                    })
+                        .background(RoundedRectangle(cornerRadius: 4).fill(Color.yellow))
+                        .frame(minHeight: 140)
+                    HStack(content: {
+                        Image(.golden)
+                            .resizable()
+                            .frame(width: 15, height: 15)
+                        Text("RESULT_APPEARANCES_\(wave.goldenIkuraPopNum)")
+                            .font(systemName: .Splatfont2, size: 13)
+                            .lineLimit(1)
+                    })
 //                    LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 4), alignment: .leading, spacing: 0, pinnedViews: []) {
 //                        ForEach(wave.specialUsage.indices) { index in
 //                            Image(specialId: wave.specialUsage[index])
@@ -97,10 +102,22 @@ struct ResultView: View {
 //                                .aspectRatio(contentMode: .fit)
 //                        }
 //                    }
-//                })
-//            }
+                })
+            }
         }
-        .font(systemName: .Splatfont2, size: 16, foregroundColor: .white)
+//        .font(systemName: .Splatfont2, size: 16, foregroundColor: .white)
+    }
+}
+
+extension RealmCoopWave {
+    var index: Int {
+        guard let result = self.result.first else {
+            return 0
+        }
+        guard let index = result.wave.firstIndex(where: { $0.quotaNum == self.quotaNum }) else {
+            return 0
+        }
+        return index + 1
     }
 }
 
