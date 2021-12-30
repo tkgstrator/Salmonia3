@@ -14,8 +14,8 @@ struct FSRecordWave: FSCodable {
     let startTime: Int
     let ikuraNum: Int
     let goldenIkuraNum: Int
-    let eventType: Result.EventKey
-    let waterLevel: Result.WaterKey
+    let eventType: EventKey
+    let waterLevel: WaterKey
     let waveId: Int?
     let members: [String]
     

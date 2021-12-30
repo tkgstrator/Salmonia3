@@ -1,5 +1,5 @@
 //
-//  AppManager.swift
+//  service.swift
 //  Salmonia3
 //
 //  Created by devonly on 2021/10/19.
@@ -16,8 +16,8 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseAuth
 
-final class AppManager: SalmonStats {
-    override init(version: String = "1.13.2") {
+final class AppManager: ObservableObject {
+    init() {
         do {
             self.realm = try Realm()
         } catch {
@@ -27,16 +27,17 @@ final class AppManager: SalmonStats {
             self.realm = try! Realm(configuration: config, queue: nil)
         }
         self.records = firestore.collection("records")
-        super.init(version: version)
+        self.connection = SalmonStats(userAgent: "Salmonia3/@tkgling")
         
         // 通知を受け取るように設定する
         Auth.auth().addStateDidChangeListener({ auth, user in
             self.user = user
         })
     }
+    @Published private(set) var connection: SalmonStats
     /// Firestoreのユーザ情報
     @Published var user: FirebaseAuth.User?
-    /// FireStatsの記録一覧
+    /// SalmonStatPlusの記録一覧
     @Published var waves: [FSRecordWave] = []
     /// リザルト取得中状態にするためのフラグ
     @Published var isLoading: Bool = false
@@ -182,20 +183,18 @@ final class AppManager: SalmonStats {
         
         /// Application Version
         let appVersion: String = "\(String(describing: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")!))(\(String(describing: Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")!)))"
-        /// X-Product Version
-        let apiVersion: String = "1.13.2"
     }
     
     class Appearances {
         private init() {}
         static let shared: Appearances = Appearances()
 
-        @AppStorage("APP_APPEARANCE_DARKMODE") var isDarkmode: Bool = false
-        @AppStorage("APP_APPEARANCE_LISTSTYLE") var listStyle: ListStyle = .plain
-        @AppStorage("APP_APPEARANCE_RESULTSTYLE") var resultStyle: ResultStyle = .line
-        @AppStorage("APP_APPEARANCE_RESULTSTYLE") var refreshStyle: RefreshStyle = .button
-        @AppStorage("APP_APPEARANCE_FONTSTYLE") var fontStyle: FontStyle = .Splatfont2
-        @AppStorage("APP_APPEARANCE_COLORSTYLE") var colorStyle: ColorStyle = .default
+        @AppStorage("APP.APPEARANCE.DARKMODE") var isDarkmode: Bool = false
+        @AppStorage("APP.APPEARANCE.LISTSTYLE") var listStyle: ListStyle = .plain
+        @AppStorage("APP.APPEARANCE.RESULTSTYLE") var resultStyle: ResultStyle = .line
+        @AppStorage("APP.APPEARANCE.RESULTSTYLE") var refreshStyle: RefreshStyle = .button
+        @AppStorage("APP.APPEARANCE.FONTSTYLE") var fontStyle: FontStyle = .Splatfont2
+        @AppStorage("APP.APPEARANCE.COLORSTYLE") var colorStyle: ColorStyle = .default
         
         var colorScheme: ColorScheme {
             isDarkmode ? .dark : .light
@@ -244,25 +243,4 @@ extension AppManager.Appearances.ListStyle: Identifiable {
 
 extension AppManager.Appearances.RefreshStyle: Identifiable {
     public var id: String { rawValue }
-}
-
-/// AppStorageで配列を保存するためのExtension
-extension Array: RawRepresentable where Element: Codable {
-    public init?(rawValue: String) {
-        guard let data = rawValue.data(using: .utf8),
-              let result = try? JSONDecoder().decode([Element].self, from: data)
-        else {
-            return nil
-        }
-        self = result
-    }
-
-    public var rawValue: String {
-        guard let data = try? JSONEncoder().encode(self),
-              let result = String(data: data, encoding: .utf8)
-        else {
-            return "[]"
-        }
-        return result
-    }
 }

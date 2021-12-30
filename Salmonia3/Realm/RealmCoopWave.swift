@@ -11,8 +11,8 @@ import SalmonStats
 import SplatNet2
 
 final class RealmCoopWave: Object {
-    @Persisted var eventType: Result.EventKey
-    @Persisted var waterLevel: Result.WaterKey
+    @Persisted var eventType: EventKey
+    @Persisted var waterLevel: WaterKey
     @Persisted(indexed: true) var goldenIkuraNum: Int
     @Persisted var goldenIkuraPopNum: Int
     @Persisted var quotaNum: Int
@@ -30,11 +30,11 @@ final class RealmCoopWave: Object {
     }
 }
 
-extension Result.EventKey: PersistableEnum, Identifiable {
+extension EventKey: PersistableEnum, Identifiable {
     public var id: String { rawValue }
 }
 
-extension Result.WaterKey: PersistableEnum, Identifiable {
+extension WaterKey: PersistableEnum, Identifiable {
     public var id: String { rawValue }
 }
 

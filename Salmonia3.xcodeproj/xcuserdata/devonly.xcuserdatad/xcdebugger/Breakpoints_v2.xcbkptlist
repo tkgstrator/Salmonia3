@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0F41452E-7299-4356-9165-DFD1224ADA20"
+            uuid = "DE1426F2-24AB-4B55-AEEF-76A7EC9A44AB"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../SalmonStats/Sources/SalmonStats/SalmonStats/SalmonStats.swift"
+            filePath = "../../Library/Developer/Xcode/DerivedData/Salmonia3-giegwixinunwqvcuqshhhedlsvyf/SourcePackages/checkouts/SplatNet2/Sources/SplatNet2/SplatNet2/Publisher.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "uploadResults(resultId:)"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "authorize(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

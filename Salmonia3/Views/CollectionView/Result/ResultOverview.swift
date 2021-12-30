@@ -25,10 +25,10 @@ struct ResultOverview: View {
         switch result.isClear {
             case true:
                 ResultClear
-                    .overlay(ResultEggs, alignment: .topTrailing)
+                    .overlay(ResultEgg(goldenIkuraNum: result.goldenEggs, ikuraNum: result.powerEggs), alignment: .topTrailing)
             case false:
                 ResultFailure
-                    .overlay(ResultEggs, alignment: .topTrailing)
+                    .overlay(ResultEgg(goldenIkuraNum: result.goldenEggs, ikuraNum: result.powerEggs), alignment: .topTrailing)
         }
     }
     
@@ -69,39 +69,6 @@ struct ResultOverview: View {
             })
         })
     }
-    
-    var ResultEggs: some View {
-        HStack(spacing: nil, content: {
-            HStack(content: {
-                Image(.golden)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 20)
-                Spacer()
-                Text("x\(result.goldenEggs)")
-                    .foregroundColor(.whitesmoke)
-            })
-                .frame(width: 60)
-                .padding(.horizontal, 8)
-                .background(Capsule().fill(Color.blackrussian.opacity(0.85)))
-            HStack(content: {
-                Image(.power)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 20)
-                Spacer()
-                Text("x\(result.powerEggs)")
-                    .foregroundColor(.whitesmoke)
-            })
-                .frame(width: 75)
-                .padding(.horizontal, 8)
-                .background(Capsule().fill(Color.blackrussian.opacity(0.85)))
-        })
-            .minimumScaleFactor(1.0)
-            .font(systemName: .Splatfont2, size: 14)
-    }
-    
-    
 }
 
 //struct ResultOverview_Previews: PreviewProvider {

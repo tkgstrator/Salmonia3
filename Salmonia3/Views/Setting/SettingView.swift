@@ -10,7 +10,7 @@ import SwiftyUI
 import SplatNet2
 
 struct SettingView: View {
-    @EnvironmentObject var appManager: AppManager
+    @EnvironmentObject var service: AppManager
     
     var body: some View {
         NavigationView {
@@ -19,29 +19,29 @@ struct SettingView: View {
                     HStack(content: {
                         Text("Nickname")
                         Spacer()
-                        Text(appManager.account.nickname)
+                        Text(service.connection.account?.nickname)
                             .foregroundColor(.secondary)
                     })
                     HStack(content: {
                         Text("PlayerId")
                         Spacer()
-                        Text(appManager.account.nsaid)
+                        Text(service.connection.account?.credential.nsaid)
                             .foregroundColor(.secondary)
                     })
-                    AccountView(manager: appManager)
+                    AccountView(manager: service.connection)
                 })
                 Section(content: {
                     NavigationLink(destination: SalmonStatsSetting(), label: {
                         Text("Salmon Stats")
                     })
-                    NavigationLink(destination: FireStatsSetting(), label: {
-                        Text("FireStats")
+                    NavigationLink(destination: SalmonStatPlusSetting(), label: {
+                        Text("SalmonStat+")
                     })
                 }, header: {
                     Text("External Services")
                 })
                 Section(header: Text("Appearances"), content: {
-                    Toggle(isOn: $appManager.apperances.isDarkmode, label: {
+                    Toggle(isOn: $service.apperances.isDarkmode, label: {
                         Text("Using Dark Mode")
                     })
 //                    NavigationLink(destination: FontStylePicker(), label: { Text("Font Style") })
@@ -52,7 +52,7 @@ struct SettingView: View {
                 })
                 Section(content: {
                     Button(action: {
-                        appManager.addLatestShiftSchedule()
+                        service.addLatestShiftSchedule()
                     }, label: {
                         Text("Import shift schedule")
                     })
@@ -63,13 +63,13 @@ struct SettingView: View {
                     HStack(content: {
                         Text("API version")
                         Spacer()
-                        Text(appManager.application.apiVersion)
+                        Text(service.connection.version)
                             .foregroundColor(.secondary)
                     })
                     HStack(content: {
                         Text("App version")
                         Spacer()
-                        Text(appManager.application.appVersion)
+                        Text(service.application.appVersion)
                             .foregroundColor(.secondary)
                     })
                 })
@@ -81,7 +81,7 @@ struct SettingView: View {
 }
 
 private struct ListStyleDialog: View {
-    @EnvironmentObject var appManager: AppManager
+    @EnvironmentObject var service: AppManager
     @State var isPresented: Bool = false
     
     var body: some View {
@@ -89,15 +89,15 @@ private struct ListStyleDialog: View {
             HStack(content: {
                 Text("List Style")
                 Spacer()
-                Text(appManager.apperances.listStyle.rawValue)
+                Text(service.apperances.listStyle.rawValue)
                     .foregroundColor(.secondary)
             })
         })
-            .confirmationDialog(Text(appManager.apperances.listStyle.rawValue), isPresented: $isPresented, actions: {
+            .confirmationDialog(Text(service.apperances.listStyle.rawValue), isPresented: $isPresented, actions: {
                 ForEach(AppManager.Appearances.ListStyle.allCases) { listStyle in
                     Button(action: {
-                        appManager.apperances.listStyle = listStyle
-                        appManager.objectWillChange.send()
+                        service.apperances.listStyle = listStyle
+                        service.objectWillChange.send()
                     }, label: { Text(listStyle.rawValue) })
                 }
             })
@@ -105,7 +105,7 @@ private struct ListStyleDialog: View {
 }
 
 private struct ResultStyleDialog: View {
-    @EnvironmentObject var appManager: AppManager
+    @EnvironmentObject var service: AppManager
     @State var isPresented: Bool = false
     
     var body: some View {
@@ -113,15 +113,15 @@ private struct ResultStyleDialog: View {
             HStack(content: {
                 Text("Result Style")
                 Spacer()
-                Text(appManager.apperances.resultStyle.rawValue)
+                Text(service.apperances.resultStyle.rawValue)
                     .foregroundColor(.secondary)
             })
         })
-            .confirmationDialog(Text(appManager.apperances.resultStyle.rawValue), isPresented: $isPresented, actions: {
+            .confirmationDialog(Text(service.apperances.resultStyle.rawValue), isPresented: $isPresented, actions: {
                 ForEach(AppManager.Appearances.ResultStyle.allCases) { resultStyle in
                     Button(action: {
-                        appManager.apperances.resultStyle = resultStyle
-                        appManager.objectWillChange.send()
+                        service.apperances.resultStyle = resultStyle
+                        service.objectWillChange.send()
                     }, label: { Text(resultStyle.rawValue) })
                 }
             })
@@ -129,7 +129,7 @@ private struct ResultStyleDialog: View {
 }
 
 private struct RefreshStyleDialog: View {
-    @EnvironmentObject var appManager: AppManager
+    @EnvironmentObject var service: AppManager
     @State var isPresented: Bool = false
     
     var body: some View {
@@ -137,15 +137,15 @@ private struct RefreshStyleDialog: View {
             HStack(content: {
                 Text("Refresh Style")
                 Spacer()
-                Text(appManager.apperances.refreshStyle.rawValue)
+                Text(service.apperances.refreshStyle.rawValue)
                     .foregroundColor(.secondary)
             })
         })
-            .confirmationDialog(Text(appManager.apperances.refreshStyle.rawValue), isPresented: $isPresented, actions: {
+            .confirmationDialog(Text(service.apperances.refreshStyle.rawValue), isPresented: $isPresented, actions: {
                 ForEach(AppManager.Appearances.RefreshStyle.allCases) { refreshStyle in
                     Button(action: {
-                        appManager.apperances.refreshStyle = refreshStyle
-                        appManager.objectWillChange.send()
+                        service.apperances.refreshStyle = refreshStyle
+                        service.objectWillChange.send()
                     }, label: { Text(refreshStyle.rawValue) })
                 }
             })
@@ -153,18 +153,18 @@ private struct RefreshStyleDialog: View {
 }
 
 private struct FontStyleDialog: View {
-    @EnvironmentObject var appManager: AppManager
+    @EnvironmentObject var service: AppManager
     @State var isPresented: Bool = false
     
     var body: some View {
         Button(action: { isPresented.toggle() }, label: {
             Text("Font Style")
         })
-            .confirmationDialog(Text(appManager.apperances.fontStyle.rawValue), isPresented: $isPresented, actions: {
+            .confirmationDialog(Text(service.apperances.fontStyle.rawValue), isPresented: $isPresented, actions: {
                 ForEach(FontStyle.allCases) { fontStyle in
                     Button(action: {
-                        appManager.apperances.fontStyle = fontStyle
-                        appManager.objectWillChange.send()
+                        service.apperances.fontStyle = fontStyle
+                        service.objectWillChange.send()
                     }, label: { Text(fontStyle.rawValue) })
                 }
             })
@@ -172,13 +172,13 @@ private struct FontStyleDialog: View {
 }
 
 private struct FontStylePicker: View {
-    @EnvironmentObject var appManager: AppManager
+    @EnvironmentObject var service: AppManager
     
     var body: some View {
         VStack(content: {
             Text("Select System Font")
             Text("システムフォントを選択してください")
-            Picker(selection: $appManager.apperances.fontStyle, content: {
+            Picker(selection: $service.apperances.fontStyle, content: {
                 ForEach(FontStyle.allCases) { font in
                     Text(font.rawValue)
                         .font(systemName: font, size: 16)

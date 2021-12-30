@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Foundation
 import RealmSwift
 import SalmonStats
 import SplatNet2
@@ -18,7 +17,7 @@ final class RealmCoopPlayer: Object, ObjectKeyIdentifiable {
     @Persisted var helpCount: Int
     @Persisted var goldenIkuraNum: Int
     @Persisted var ikuraNum: Int
-    @Persisted var specialId: Result.SpecialId
+    @Persisted var specialId: SpecialId
     @Persisted var bossKillCounts: List<Int>
     @Persisted var weaponList: List<WeaponType>
     @Persisted var specialCounts: List<Int>
@@ -34,13 +33,12 @@ final class RealmCoopPlayer: Object, ObjectKeyIdentifiable {
         self.ikuraNum = result.ikuraNum
         self.specialId = result.special.id
         self.bossKillCounts.append(objectsIn: result.bossKillCounts.map({ $0.value.count }))
-        self.bossKillCounts.append(objectsIn: result.bossKillCounts.map({ $0.value.count }))
         self.weaponList.append(objectsIn: result.weaponList.map({ $0.weaponId }))
         self.specialCounts.append(objectsIn: result.specialCounts)
     }
 }
 
-extension Result.SpecialId: PersistableEnum {
+extension SpecialId: PersistableEnum {
 }
 
 extension Result.WeaponList {

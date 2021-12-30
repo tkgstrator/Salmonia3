@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SalmonStatsSetting: View {
-    @EnvironmentObject var appManager: AppManager
+    @EnvironmentObject var service: AppManager
     @State var isPresented: Bool = false
     
     var body: some View {
@@ -17,7 +17,7 @@ struct SalmonStatsSetting: View {
                 HStack(content: {
                     Text("Credential")
                     Spacer()
-                    Text(appManager.apiToken?.prefix(16) ?? "-")
+                    Text(service.connection.apiToken?.prefix(16) ?? "-")
                         .lineLimit(1)
                         .foregroundColor(.secondary)
                 })
@@ -30,7 +30,7 @@ struct SalmonStatsSetting: View {
                 }, label: {
                     Text("Sign in")
                 })
-                    .authorizeToken(isPresented: $isPresented, manager: appManager, completion: { result in
+                    .authorizeToken(isPresented: $isPresented, manager: service.connection, completion: { result in
                     })
             }, header: {
                 Text("Service")

@@ -17,7 +17,7 @@ final class RealmCoopResult: Object {
     /// バイトID
     @Persisted var jobId: Int?
     /// ステージID
-    @Persisted var stageId: Result.StageType.StageId
+    @Persisted var stageId: StageType.StageId
     /// Salmon StatsID
     @Persisted var salmonId: Int?
     /// 評価レート
@@ -29,7 +29,7 @@ final class RealmCoopResult: Object {
     /// バイトスコア
     @Persisted var jobScore: Int?
     /// 評価
-    @Persisted var gradeId: Result.GradeId?
+    @Persisted var gradeId: GradeId?
     /// クマサンポイント
     @Persisted var kumaPoint: Int?
     /// キケン度
@@ -45,7 +45,7 @@ final class RealmCoopResult: Object {
     /// 合計赤イクラ
     @Persisted var powerEggs: Int
     /// 失敗理由
-    @Persisted var failureReason: Result.FailureReason?
+    @Persisted var failureReason: FailureReason?
     /// クリアしたかどうか
     @Persisted var isClear: Bool
     /// 出現したオオモノのカウント
@@ -57,9 +57,9 @@ final class RealmCoopResult: Object {
     /// Player情報
     @Persisted var player: List<RealmCoopPlayer>
     
-    convenience init(from result: Result.Response, nsaid: String, stats: UploadResult.Response? = nil) {
+    convenience init(from result: Result.Response, stats: UploadResult.Response? = nil) {
         self.init()
-        self.pid = nsaid
+        self.pid = result.myResult.pid
         self.jobId = result.jobId
         self.stageId = result.schedule.stage.image.stageId
         self.salmonId = stats?.salmonId
@@ -86,13 +86,13 @@ final class RealmCoopResult: Object {
     }
 }
 
-extension CodableDictionary where Key == Result.BossType, Value == Result.BossCount {
+extension CodableDictionary where Key == BossType, Value == Result.BossCount {
     func sortedValue() -> [Int] {
         self.sorted(by: { $0.key.bossId.rawValue < $1.key.bossId.rawValue }).map({ $0.value.count })
     }
 }
 
-extension Result.StageType {
+extension StageType {
     public enum StageId: Int, Codable, CaseIterable, PersistableEnum {
         case shakeup = 5000
         case shakeship = 5001
@@ -102,7 +102,7 @@ extension Result.StageType {
     }
 }
 
-extension Result.BossType {
+extension BossType {
     enum BossId: Int, CaseIterable {
         case goldie = 3
         case steelhead = 6
@@ -116,8 +116,8 @@ extension Result.BossType {
     }
 }
 
-extension Result.BossType {
-    var bossId: Result.BossType.BossId {
+extension BossType {
+    var bossId: BossType.BossId {
         switch self {
         case .goldie:
             return .goldie
@@ -141,8 +141,8 @@ extension Result.BossType {
     }
 }
 
-extension Result.StageType.Image {
-    var stageId: Result.StageType.StageId {
+extension StageType.Image {
+    var stageId: StageType.StageId {
         switch self {
             case .shakeup:
                 return .shakeup
@@ -158,10 +158,10 @@ extension Result.StageType.Image {
     }
 }
 
-extension Result.GradeId: PersistableEnum {
+extension GradeId: PersistableEnum {
 }
 
-extension Result.FailureReason: PersistableEnum{
+extension FailureReason: PersistableEnum{
 }
 
 extension Array where Element == Result.PlayerResult {
