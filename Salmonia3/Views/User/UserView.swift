@@ -26,6 +26,10 @@ extension Realm {
     func results(nsaid: String) -> RealmSwift.Results<RealmCoopResult> {
         objects(RealmCoopResult.self).filter("pid=%@", nsaid)
     }
+    
+    func players(nsaid: String) -> RealmSwift.Results<RealmCoopPlayer> {
+        objects(RealmCoopPlayer.self).filter("pid=%@", nsaid)
+    }
 }
 
 final class UserStatsModel: ObservableObject {

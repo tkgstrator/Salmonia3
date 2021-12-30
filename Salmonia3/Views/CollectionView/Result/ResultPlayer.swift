@@ -14,12 +14,19 @@ struct ResultPlayer: View {
 
     var body: some View {
         ForEach(result.player) { player in
-            HStack(alignment: .center, spacing: nil, content: {
-                VStack(alignment: .trailing, spacing: 4, content: {
-                    ResultEgg(goldenIkuraNum: player.goldenIkuraNum, ikuraNum: player.ikuraNum)
-                    ResultStatus(deadCount: player.deadCount, helpCount: player.helpCount)
+            VStack(content: {
+                HStack(alignment: .top, spacing: nil, content: {
+                    VStack(alignment: .center, spacing: 4, content: {
+                        ResultWeapon(weaponList: player.weaponList, specialWeapon: player.specialId)
+                        ResultDefeat(bossKillCount: player.bossKillCounts)
+                    })
+                    VStack(alignment: .trailing, spacing: 4, content: {
+                        ResultEgg(goldenIkuraNum: player.goldenIkuraNum, ikuraNum: player.ikuraNum)
+                        ResultStatus(deadCount: player.deadCount, helpCount: player.helpCount)
+                    })
                 })
             })
+                .padding(.horizontal)
         }
     }
 }

@@ -23,15 +23,18 @@ struct ResultView: View {
     }
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false, content: {
-            Image(result.stageId)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(height: 120)
-                .clipped()
-            ResultWave(result: result)
-            ResultPlayer(result: result)
+        GeometryReader(content: { geometry in
+            ScrollView(.vertical, showsIndicators: false, content: {
+                Image(result.stageId)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(height: 120)
+                    .clipped()
+                ResultWave(result: result)
+                ResultPlayer(result: result)
+            })
         })
+            .navigationBarTitleDisplayMode(.inline)
     }
 }
 

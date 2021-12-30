@@ -14,69 +14,42 @@ struct SettingView: View {
     
     var body: some View {
         NavigationView {
-            Form {
-                Section(header: Text("SplatNet2"), content: {
-                    HStack(content: {
-                        Text("Nickname")
-                        Spacer()
-                        Text(service.connection.account?.nickname)
-                            .foregroundColor(.secondary)
-                    })
-                    HStack(content: {
-                        Text("PlayerId")
-                        Spacer()
-                        Text(service.connection.account?.credential.nsaid)
-                            .foregroundColor(.secondary)
-                    })
+            Form(content: {
+                Section(content: {
+                    HSContent(title: "USER.NICKNAME", content: service.account?.nickname)
+                    HSContent(title: "USER.PLAYERID", content: service.account?.credential.nsaid)
+                    HSContent(title: "USER.IKSMSESSION", content: service.account?.credential.iksmSession)
                     AccountView(manager: service.connection)
+                }, header: {
+                    Text("SplatNet2")
                 })
                 Section(content: {
                     NavigationLink(destination: SalmonStatsSetting(), label: {
                         Text("Salmon Stats")
                     })
                     NavigationLink(destination: SalmonStatPlusSetting(), label: {
-                        Text("SalmonStat+")
+                        Text("Salmon Stats+")
                     })
                 }, header: {
-                    Text("External Services")
-                })
-                Section(header: Text("Appearances"), content: {
-                    Toggle(isOn: $service.apperances.isDarkmode, label: {
-                        Text("Using Dark Mode")
-                    })
-//                    NavigationLink(destination: FontStylePicker(), label: { Text("Font Style") })
-                    ListStyleDialog()
-                    ResultStyleDialog()
-                    RefreshStyleDialog()
-//                    FontStyleDialog()
+                    Text("Salmon Stats")
                 })
                 Section(content: {
-                    Button(action: {
-                        service.addLatestShiftSchedule()
-                    }, label: {
-                        Text("Import shift schedule")
+                    Toggle(isOn: $service.apperances.isDarkmode, label: {
+                        Text("SETTING.DARKMODE")
                     })
                 }, header: {
-                    
+                    Text("SETTING.APPEARANCES")
                 })
-                Section(header: Text("Application"), content: {
-                    HStack(content: {
-                        Text("API version")
-                        Spacer()
-                        Text(service.connection.version)
-                            .foregroundColor(.secondary)
-                    })
-                    HStack(content: {
-                        Text("App version")
-                        Spacer()
-                        Text(service.application.appVersion)
-                            .foregroundColor(.secondary)
-                    })
+                Section(content: {
+                    HSContent(title: "USER.APPVERSION", content: service.application.appVersion)
+                    HSContent(title: "USER.APIVERSION", content: service.connection.version)
+                }, header: {
+                    Text("SETTING.APPLICATION")
                 })
-            }
-            .navigationTitle("Setting")
+            })
+                .navigationTitle("Setting")
         }
-            .navigationViewStyle(SplitNavigationViewStyle())
+        .navigationViewStyle(SplitNavigationViewStyle())
     }
 }
 
