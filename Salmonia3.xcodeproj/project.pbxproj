@@ -22,9 +22,15 @@
 		101AED5A271E3946009556B2 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED59271E3946009556B2 /* SettingView.swift */; };
 		101AED5C271E3B0F009556B2 /* SalmonStatsLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED5B271E3B0F009556B2 /* SalmonStatsLoginView.swift */; };
 		101AED61271E3F2B009556B2 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED60271E3F2B009556B2 /* Icon.swift */; };
+		102AD300277CE95A00C1E181 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AD2FF277CE95A00C1E181 /* UserView.swift */; };
 		103168672750E3D10009070C /* ShiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103168662750E3D10009070C /* ShiftView.swift */; };
 		1033F41C2757724B006EE793 /* SalmonStatsSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1033F41B2757724B006EE793 /* SalmonStatsSetting.swift */; };
-		1062EE72274DDF0B0050FD0C /* FireStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1062EE71274DDF0B0050FD0C /* FireStatsView.swift */; };
+		1041BC07277DAB36008B27F1 /* ResultPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041BC06277DAB36008B27F1 /* ResultPlayer.swift */; };
+		1041BC09277DAFFE008B27F1 /* ResultWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041BC08277DAFFE008B27F1 /* ResultWave.swift */; };
+		1041BC0B277DB9C0008B27F1 /* ResultEgg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041BC0A277DB9C0008B27F1 /* ResultEgg.swift */; };
+		1041BC0D277DBCD5008B27F1 /* ResultStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041BC0C277DBCD5008B27F1 /* ResultStatus.swift */; };
+		1041BC0F277DC695008B27F1 /* ResultWeapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041BC0E277DC695008B27F1 /* ResultWeapon.swift */; };
+		1062EE72274DDF0B0050FD0C /* SalmonStatsPlusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1062EE71274DDF0B0050FD0C /* SalmonStatsPlusView.swift */; };
 		10635092274E1F8D00529930 /* FireStatsSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10635091274E1F8D00529930 /* FireStatsSetting.swift */; };
 		10635094274E2B1F00529930 /* RealmCoopShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10635093274E2B1F00529930 /* RealmCoopShift.swift */; };
 		10635096274E2E4D00529930 /* ShiftCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10635095274E2E4D00529930 /* ShiftCollectionView.swift */; };
@@ -49,6 +55,7 @@
 		10BA13F727201B4700348DD3 /* RealmCoopPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13F627201B4700348DD3 /* RealmCoopPlayer.swift */; };
 		10BA140727201C6900348DD3 /* SalmonidType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13FF27201C6900348DD3 /* SalmonidType.swift */; };
 		10BA140B27201D2F00348DD3 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA140A27201D2F00348DD3 /* Extension.swift */; };
+		10BDF043277C84B70001D062 /* SalmonStats in Frameworks */ = {isa = PBXBuildFile; productRef = 10BDF042277C84B70001D062 /* SalmonStats */; };
 		10C000DC274CE3F400870DED /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C000DB274CE3F400870DED /* Image.swift */; };
 		10C0FE6E274C12B900870DED /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0FE6D274C12B900870DED /* User.swift */; };
 		10C0FE70274C12C500870DED /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0FE6F274C12C500870DED /* Record.swift */; };
@@ -99,14 +106,19 @@
 		101AED59271E3946009556B2 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		101AED5B271E3B0F009556B2 /* SalmonStatsLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonStatsLoginView.swift; sourceTree = "<group>"; };
 		101AED60271E3F2B009556B2 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		102AD2FF277CE95A00C1E181 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		103168662750E3D10009070C /* ShiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftView.swift; sourceTree = "<group>"; };
 		103168682750F14E0009070C /* Salmonia3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Salmonia3.entitlements; sourceTree = "<group>"; };
 		1033F41B2757724B006EE793 /* SalmonStatsSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonStatsSetting.swift; sourceTree = "<group>"; };
-		1062EE71274DDF0B0050FD0C /* FireStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStatsView.swift; sourceTree = "<group>"; };
+		1041BC06277DAB36008B27F1 /* ResultPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPlayer.swift; sourceTree = "<group>"; };
+		1041BC08277DAFFE008B27F1 /* ResultWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWave.swift; sourceTree = "<group>"; };
+		1041BC0A277DB9C0008B27F1 /* ResultEgg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultEgg.swift; sourceTree = "<group>"; };
+		1041BC0C277DBCD5008B27F1 /* ResultStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultStatus.swift; sourceTree = "<group>"; };
+		1041BC0E277DC695008B27F1 /* ResultWeapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWeapon.swift; sourceTree = "<group>"; };
+		1062EE71274DDF0B0050FD0C /* SalmonStatsPlusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalmonStatsPlusView.swift; sourceTree = "<group>"; };
 		10635091274E1F8D00529930 /* FireStatsSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStatsSetting.swift; sourceTree = "<group>"; };
 		10635093274E2B1F00529930 /* RealmCoopShift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopShift.swift; sourceTree = "<group>"; };
 		10635095274E2E4D00529930 /* ShiftCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftCollectionView.swift; sourceTree = "<group>"; };
-		107DB66B272CF7EA00A5A6E5 /* SalmonStats */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SalmonStats; path = ../SalmonStats; sourceTree = "<group>"; };
 		109F97E5272490C600AB1FA3 /* LoggingThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingThread.swift; sourceTree = "<group>"; };
 		109F97E7272490CE00AB1FA3 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		109F97EA272491E500AB1FA3 /* ResultCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCollectionView.swift; sourceTree = "<group>"; };
@@ -142,6 +154,7 @@
 				10C0FE77274C1D7500870DED /* FirebaseAuthCombine-Community in Frameworks */,
 				10C0FE79274C1D7500870DED /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				10BA13F027201A7B00348DD3 /* RealmSwift in Frameworks */,
+				10BDF043277C84B70001D062 /* SalmonStats in Frameworks */,
 				1094284F271E458F0072425E /* SalmonStats in Frameworks */,
 				107DB66F272CF89A00A5A6E5 /* SwiftyUI in Frameworks */,
 				107DB66A272CF67900A5A6E5 /* GoogleMobileAds in Frameworks */,
@@ -169,7 +182,6 @@
 			isa = PBXGroup;
 			children = (
 				100492FA274DCDEC0095D35C /* SwiftyUI */,
-				107DB66B272CF7EA00A5A6E5 /* SalmonStats */,
 				101AED0F271E3109009556B2 /* Salmonia3 */,
 				101AED20271E310B009556B2 /* Salmonia3Tests */,
 				101AED2A271E310B009556B2 /* Salmonia3UITests */,
@@ -191,17 +203,18 @@
 		101AED0F271E3109009556B2 /* Salmonia3 */ = {
 			isa = PBXGroup;
 			children = (
+				101AED10271E3109009556B2 /* Salmonia3App.swift */,
+				101AED12271E3109009556B2 /* ContentView.swift */,
 				103168682750F14E0009070C /* Salmonia3.entitlements */,
 				10C0FE7A274C207900870DED /* GoogleService-Info.plist */,
 				10C0FE6C274C12A900870DED /* Firestore */,
 				10BA13F127201ADD00348DD3 /* Realm */,
 				10FDD4AD271EE35D00C9C178 /* Manager */,
+				102AD2FD277CE92200C1E181 /* Components */,
 				101AED4D271E34A8009556B2 /* Info.plist */,
 				101AED55271E356C009556B2 /* Enum */,
 				101AED41271E3396009556B2 /* Assets */,
 				101AED3A271E3158009556B2 /* Views */,
-				101AED10271E3109009556B2 /* Salmonia3App.swift */,
-				101AED12271E3109009556B2 /* ContentView.swift */,
 				101AED14271E310B009556B2 /* Assets.xcassets */,
 				101AED16271E310B009556B2 /* Preview Content */,
 			);
@@ -236,25 +249,13 @@
 		101AED3A271E3158009556B2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				109F97EE2724A10700AB1FA3 /* ButtonStyle */,
+				102AD2FE277CE94B00C1E181 /* User */,
 				109F97E9272491D800AB1FA3 /* CollectionView */,
 				109F97E4272490B000AB1FA3 /* Loading */,
 				101AED58271E3933009556B2 /* Setting */,
 				101AED3E271E322C009556B2 /* Login */,
-				101AED3B271E3183009556B2 /* Components */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		101AED3B271E3183009556B2 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				109F97FF2724D65100AB1FA3 /* Chart */,
-				101AED3C271E3192009556B2 /* Wave.swift */,
-				109F97FB2724D44100AB1FA3 /* Text.swift */,
-				109F98042724EC9400AB1FA3 /* Rainbow.swift */,
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 		101AED3E271E322C009556B2 /* Login */ = {
@@ -311,10 +312,30 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		102AD2FD277CE92200C1E181 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				109F97EE2724A10700AB1FA3 /* ButtonStyle */,
+				109F97FF2724D65100AB1FA3 /* Chart */,
+				101AED3C271E3192009556B2 /* Wave.swift */,
+				109F97FB2724D44100AB1FA3 /* Text.swift */,
+				109F98042724EC9400AB1FA3 /* Rainbow.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		102AD2FE277CE94B00C1E181 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				102AD2FF277CE95A00C1E181 /* UserView.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		1062EE70274DDEFB0050FD0C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1062EE71274DDF0B0050FD0C /* FireStatsView.swift */,
+				1062EE71274DDF0B0050FD0C /* SalmonStatsPlusView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -351,6 +372,11 @@
 				109F97F72724ADB600AB1FA3 /* ResultOverview.swift */,
 				109F97EA272491E500AB1FA3 /* ResultCollectionView.swift */,
 				109F97F52724AD7800AB1FA3 /* ResultView.swift */,
+				1041BC06277DAB36008B27F1 /* ResultPlayer.swift */,
+				1041BC08277DAFFE008B27F1 /* ResultWave.swift */,
+				1041BC0A277DB9C0008B27F1 /* ResultEgg.swift */,
+				1041BC0C277DBCD5008B27F1 /* ResultStatus.swift */,
+				1041BC0E277DC695008B27F1 /* ResultWeapon.swift */,
 			);
 			path = Result;
 			sourceTree = "<group>";
@@ -439,6 +465,7 @@
 				10C0FE74274C1D7500870DED /* FirebaseAnalyticsSwift-Beta */,
 				10C0FE76274C1D7500870DED /* FirebaseAuthCombine-Community */,
 				10C0FE78274C1D7500870DED /* FirebaseFirestoreSwift-Beta */,
+				10BDF042277C84B70001D062 /* SalmonStats */,
 			);
 			productName = Salmonia3;
 			productReference = 101AED0D271E3109009556B2 /* Salmonia3.app */;
@@ -517,6 +544,7 @@
 				10BA13EE27201A7B00348DD3 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				107DB668272CF67900A5A6E5 /* XCRemoteSwiftPackageReference "GoogleMobileAds" */,
 				10C0FE73274C1D7500870DED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				10BDF041277C84B60001D062 /* XCRemoteSwiftPackageReference "SalmonStats" */,
 			);
 			productRefGroup = 101AED0E271E3109009556B2 /* Products */;
 			projectDirPath = "";
@@ -566,17 +594,21 @@
 				109F97F82724ADB600AB1FA3 /* ResultOverview.swift in Sources */,
 				10635094274E2B1F00529930 /* RealmCoopShift.swift in Sources */,
 				109F97FA2724CF0C00AB1FA3 /* ResultType.swift in Sources */,
+				102AD300277CE95A00C1E181 /* UserView.swift in Sources */,
 				10C000DC274CE3F400870DED /* Image.swift in Sources */,
 				101AED3D271E3192009556B2 /* Wave.swift in Sources */,
 				109F97F62724AD7800AB1FA3 /* ResultView.swift in Sources */,
 				10BA140727201C6900348DD3 /* SalmonidType.swift in Sources */,
+				1041BC07277DAB36008B27F1 /* ResultPlayer.swift in Sources */,
 				101AED13271E3109009556B2 /* ContentView.swift in Sources */,
 				10635092274E1F8D00529930 /* FireStatsSetting.swift in Sources */,
 				101AED5C271E3B0F009556B2 /* SalmonStatsLoginView.swift in Sources */,
 				109F97FE2724D60F00AB1FA3 /* ChartView.swift in Sources */,
 				103168672750E3D10009070C /* ShiftView.swift in Sources */,
+				1041BC0D277DBCD5008B27F1 /* ResultStatus.swift in Sources */,
 				10BA13F727201B4700348DD3 /* RealmCoopPlayer.swift in Sources */,
 				101AED5A271E3946009556B2 /* SettingView.swift in Sources */,
+				1041BC0B277DB9C0008B27F1 /* ResultEgg.swift in Sources */,
 				10BA140B27201D2F00348DD3 /* Extension.swift in Sources */,
 				101AED11271E3109009556B2 /* Salmonia3App.swift in Sources */,
 				101AED57271E367D009556B2 /* Color.swift in Sources */,
@@ -585,6 +617,7 @@
 				109F97FC2724D44100AB1FA3 /* Text.swift in Sources */,
 				109F97E6272490C600AB1FA3 /* LoggingThread.swift in Sources */,
 				10C0FE7D274C3D1C00870DED /* FirestoreLogin.swift in Sources */,
+				1041BC0F277DC695008B27F1 /* ResultWeapon.swift in Sources */,
 				10BA13F327201AF300348DD3 /* RealmCoopResult.swift in Sources */,
 				109F98052724EC9400AB1FA3 /* Rainbow.swift in Sources */,
 				101AED61271E3F2B009556B2 /* Icon.swift in Sources */,
@@ -598,8 +631,9 @@
 				10C0FE70274C12C500870DED /* Record.swift in Sources */,
 				10C0FE72274C132D00870DED /* FSCodable.swift in Sources */,
 				10BA13F527201B1400348DD3 /* RealmCoopWave.swift in Sources */,
+				1041BC09277DAFFE008B27F1 /* ResultWave.swift in Sources */,
 				109F97E8272490CE00AB1FA3 /* LoadingView.swift in Sources */,
-				1062EE72274DDF0B0050FD0C /* FireStatsView.swift in Sources */,
+				1062EE72274DDF0B0050FD0C /* SalmonStatsPlusView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -971,7 +1005,7 @@
 			repositoryURL = "https://github.com/quanghits/GoogleMobileAds";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 8.0.0;
+				minimumVersion = 8.10.0;
 			};
 		};
 		10BA13EE27201A7B00348DD3 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
@@ -982,12 +1016,20 @@
 				minimumVersion = 10.20.0;
 			};
 		};
+		10BDF041277C84B60001D062 /* XCRemoteSwiftPackageReference "SalmonStats" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tkgstrator/SalmonStats";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
 		10C0FE73274C1D7500870DED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 8.0.0;
+				minimumVersion = 8.10.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1010,6 +1052,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 10BA13EE27201A7B00348DD3 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
+		};
+		10BDF042277C84B70001D062 /* SalmonStats */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10BDF041277C84B60001D062 /* XCRemoteSwiftPackageReference "SalmonStats" */;
+			productName = SalmonStats;
 		};
 		10C0FE74274C1D7500870DED /* FirebaseAnalyticsSwift-Beta */ = {
 			isa = XCSwiftPackageProductDependency;

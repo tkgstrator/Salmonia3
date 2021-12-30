@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var appManager: AppManager
+    @EnvironmentObject var service: AppManager
     @State var selection: Int = 0
     
     var body: some View {
@@ -28,13 +28,18 @@ struct ContentView: View {
                     Image(.setting)
                 })
                 .tag(2)
+            UserView()
+                .tabItem({
+                    Image(.setting)
+                })
+                .tag(3)
         })
-            .font(systemName: appManager.apperances.fontStyle, size: 16)
-            .preferredColorScheme(appManager.apperances.colorScheme)
-            .fullScreenCover(isPresented: $appManager.isLoading, onDismiss: { appManager.isLoading = false }, content: {
+            .font(systemName: service.apperances.fontStyle, size: 16)
+            .preferredColorScheme(service.apperances.colorScheme)
+            .fullScreenCover(isPresented: $service.isLoading, onDismiss: { service.isLoading = false }, content: {
                 LoadingView()
-                    .environmentObject(appManager)
-                    .font(systemName: appManager.apperances.fontStyle, size: 16)
+                    .environmentObject(service)
+                    .font(systemName: service.apperances.fontStyle, size: 16)
             })
     }
 }

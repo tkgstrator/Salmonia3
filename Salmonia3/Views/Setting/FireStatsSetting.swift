@@ -1,5 +1,5 @@
 //
-//  FireStatsSetting.swift
+//  SalmonStatPlusSetting.swift
 //  Salmonia3
 //
 //  Created by devonly on 2021/11/24.
@@ -9,8 +9,8 @@
 import SwiftUI
 import Combine
 
-struct FireStatsSetting: View {
-    @EnvironmentObject var appManager: AppManager
+struct SalmonStatPlusSetting: View {
+    @EnvironmentObject var service: AppManager
     @State var task = Set<AnyCancellable>()
     
     var body: some View {
@@ -19,13 +19,13 @@ struct FireStatsSetting: View {
                 HStack(content: {
                     Text("Username")
                     Spacer()
-                    Text(appManager.user?.displayName ?? "-")
+                    Text(service.user?.displayName ?? "-")
                         .foregroundColor(.secondary)
                 })
                 HStack(content: {
                     Text("ProviderID")
                     Spacer()
-                    Text(appManager.user?.providerID ?? "-")
+                    Text(service.user?.providerID ?? "-")
                         .foregroundColor(.secondary)
                 })
             }, header: {
@@ -33,7 +33,7 @@ struct FireStatsSetting: View {
             })
             Section(content: {
                 Button(action: {
-                    appManager.twitterSignin()
+                    service.twitterSignin()
                         .sink(receiveCompletion: { _ in
                         }, receiveValue: { _ in
                         })
@@ -45,12 +45,12 @@ struct FireStatsSetting: View {
                 Text("Service")
             })
         })
-            .navigationTitle("FireStats")
+            .navigationTitle("SalmonStats+")
     }
 }
 
-struct FireStatsSetting_Previews: PreviewProvider {
+struct SalmonStatPlusSetting_Previews: PreviewProvider {
     static var previews: some View {
-        FireStatsSetting()
+        SalmonStatPlusSetting()
     }
 }

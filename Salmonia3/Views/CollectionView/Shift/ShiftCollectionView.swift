@@ -19,13 +19,13 @@ struct ShiftCollectionView: View {
         NavigationView(content: {
             List(content: {
                 ForEach(schedules) { schedule in
-                    NavigationLinker(destination: FireStatsView(startTime: schedule.startTime), label: {
-                        ShiftView()
-                            .environment(\.shiftSchedule, schedule)
+                    NavigationLinker(destination: SalmonStatPlusView(startTime: schedule.startTime), label: {
+                        ShiftView(shift: schedule)
                     })
                         .disabled(schedule.startTime >= Int(Date().timeIntervalSince1970))
                 }
             })
+                .listStyle(.plain)
                 .navigationTitle("TITLE.SHIFTSCHEDULE")
         })
             .navigationViewStyle(SplitNavigationViewStyle())

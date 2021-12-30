@@ -9,7 +9,7 @@ import SwiftUI
 import SalmonStats
 
 struct SalmonStatsLoginView: View {
-    @EnvironmentObject var appManager: AppManager
+    @EnvironmentObject var service: AppManager
     @State var isPresented: Bool = false
     
     var body: some View {
@@ -52,7 +52,7 @@ struct SalmonStatsLoginView: View {
                 .frame(width: 240, height: 60)
                 .overlay(Text("Sign in").foregroundColor(.whitesmoke).font(.custom("Splatfont2", size: 20)))
         })
-            .authorizeToken(isPresented: $isPresented, manager: appManager, completion: { result in
+            .authorizeToken(isPresented: $isPresented, manager: service.connection, completion: { result in
                 switch result {
                     case .success(let value):
                         print(value)

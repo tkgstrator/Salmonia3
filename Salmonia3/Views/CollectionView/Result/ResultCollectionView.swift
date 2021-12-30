@@ -11,7 +11,7 @@ import RealmSwift
 import Alamofire
 
 struct ResultCollectionView: View {
-    @EnvironmentObject var appManager: AppManager
+    @EnvironmentObject var service: AppManager
     @ObservedResults(RealmCoopResult.self, sortDescriptor: SortDescriptor(keyPath: "playTime", ascending: false)) var results
     @State var isPresented: Bool = false
     
@@ -26,7 +26,7 @@ struct ResultCollectionView: View {
             })
                 .listStyle(.plain)
                 .refreshable {
-                    appManager.isLoading.toggle()
+                    service.isLoading.toggle()
                 }
                 .navigationTitle("Results")
         })
@@ -35,9 +35,9 @@ struct ResultCollectionView: View {
     }
     
     var refreshButton: some View {
-        Button(action: { appManager.isLoading.toggle() }, label: { Image(.refresh).resizable().aspectRatio(contentMode: .fit).frame(width: 35) })
+        Button(action: { service.isLoading.toggle() }, label: { Image(.refresh).resizable().aspectRatio(contentMode: .fit).frame(width: 35) })
             .buttonStyle(GrowingButtonStyle())
-//            .visible(appManager.apperances.refreshStyle == .button)
+//            .visible(service.apperances.refreshStyle == .button)
             .padding()
     }
 }

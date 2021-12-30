@@ -9,7 +9,7 @@ import SwiftUI
 import SplatNet2
 
 struct ShiftView: View {
-    @Environment(\.shiftSchedule) var shift
+    let shift: RealmCoopShift
     private let formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone.current
@@ -18,17 +18,19 @@ struct ShiftView: View {
     }()
     
     var body: some View {
-        VStack(content: {
+        VStack(alignment: .leading, spacing: 0, content: {
             Group(content: {
-                HStack(alignment: .center, spacing: nil, content: {
+                LazyHStack(alignment: .center, spacing: nil, content: {
                     Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(shift.startTime))))
                     Text(verbatim: "-")
                     Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(shift.endTime))))
                 })
+                    .padding(2)
+                    .background(Color.black.opacity(0.9))
                 Text(shift.stageName)
             })
                 .foregroundColor(.white)
-            LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 30, maximum: 50)), count: 4), alignment: .center, spacing: nil, pinnedViews: [], content: {
+            LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 25, maximum: 50)), count: 4), alignment: .trailing, spacing: nil, pinnedViews: [], content: {
                 ForEach(shift.weaponList.indices) { index in
                     Image(shift.weaponList[index])
                         .resizable()
@@ -38,21 +40,14 @@ struct ShiftView: View {
                 }
             })
         })
-            .background(
-                Image(shift.stageId)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .overlay(Rectangle().fill(.black.opacity(0.5)).padding(.bottom, 70))
-                    .cornerRadius(10)
-            )
     }
 }
 
-struct ShiftView_Previews: PreviewProvider {
-    static var previews: some View {
-        ShiftView()
-    }
-}
+//struct ShiftView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ShiftView()
+//    }
+//}
 
 extension WeaponType: Identifiable {
     public var id: Int { rawValue }
