@@ -57,13 +57,3 @@ enum SalmonidType: Int, CaseIterable {
         return SalmonidType.allCases.firstIndex(of: self)!
     }
 }
-
-extension Image {
-    init(_ symbol: SalmonidType) {
-        self.init(symbol.imageName, bundle: .main)
-    }
-    
-    init(salmonId: Int) {
-        self.init(SalmonidType(rawValue: salmonId)!)
-    }
-}

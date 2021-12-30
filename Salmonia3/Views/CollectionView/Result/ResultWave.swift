@@ -13,19 +13,29 @@ struct ResultWave: View {
     var body: some View {
         LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.wave.count), content: {
             ForEach(result.wave) { wave in
-                VStack(alignment: .center, spacing: nil, content: {
-                    Text("RESULT.WAVE.\(wave.index + 1)")
+                VStack(alignment: .center, spacing: 0, content: {
+                    Text("RESULT.WAVE.\(wave.index)")
+                        .font(systemName: .Splatfont2, size: 14)
                         .foregroundColor(.black)
+                        .lineLimit(1)
                     Text("\(wave.goldenIkuraNum)/\(wave.quotaNum)")
+                        .font(systemName: .Splatfont2, size: 16)
                         .foregroundColor(.white)
                     Text("\(wave.ikuraNum)")
-                    Text("\(wave.waterLevel)")
+                        .font(systemName: .Splatfont2, size: 12)
+                        .foregroundColor(.red)
+                    Text(wave.waterLevel.rawValue)
+                        .font(systemName: .Splatfont2, size: 12)
                         .minimumScaleFactor(1.0)
-                    Text("\(wave.eventType)")
+                    Text(wave.eventType.rawValue)
+                        .font(systemName: .Splatfont2, size: 12)
                         .minimumScaleFactor(1.0)
                 })
+                    .padding(.horizontal)
+                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.yellow))
             }
         })
+            .background(Color.white.opacity(0.3))
     }
 }
 

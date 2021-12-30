@@ -59,7 +59,7 @@ final class AppManager: ObservableObject {
     private let schemeVersion: UInt64 = 8192
     /// RealmSwiftのインスタンス
     private let realm: Realm
-
+    
     /// PrimaryKeyを指定したオブジェクトを取得
     @discardableResult
     func object<T: Object>(ofType type: T.Type, forPrimaryKey key: String?) -> T? {

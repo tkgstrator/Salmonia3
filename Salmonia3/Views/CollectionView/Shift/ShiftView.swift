@@ -53,16 +53,6 @@ extension WeaponType: Identifiable {
     public var id: Int { rawValue }
 }
 
-extension Image {
-    init(_ weaponType: WeaponType) {
-        self.init("Weapon/\(weaponType.rawValue)", bundle: .main)
-    }
-    
-    init(_ stageId: Schedule.StageId) {
-        self.init("Stage/\(stageId.rawValue)", bundle: .main)
-    }
-}
-
 class EnvironmentValue {
     struct CoopShift: EnvironmentKey {
         static var defaultValue: RealmCoopShift = RealmCoopShift()

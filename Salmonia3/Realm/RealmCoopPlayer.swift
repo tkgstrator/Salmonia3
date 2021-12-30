@@ -167,9 +167,13 @@ extension RealmCoopPlayer {
 //    }
     
     /// 自身が操作したプレイヤーかどうかのフラグ
-    var isFirstPlayer: Bool {
+    var isControlled: Bool {
         guard let firstPlayer = self.result.first?.player.first else { return false }
         return firstPlayer.pid == self.pid
+    }
+    
+    var matchingCount: Int {
+        realm?.players(nsaid: self.pid).count ?? 1
     }
 }
 
