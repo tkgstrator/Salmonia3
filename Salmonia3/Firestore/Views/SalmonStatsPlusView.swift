@@ -27,25 +27,25 @@ struct SalmonStatPlusView: View {
         List(content: {
             Section(content: {
                 HStack(content: {
-                    Text("Uploaded")
+                    Text("STATS.UPLOADED.RESULT.NUM", comment: "アップロードされたリザルトの件数")
                     Spacer()
                     Text(waves.count)
                         .foregroundColor(.secondary)
                 })
                 HStack(content: {
-                    Text("Total ikura num")
+                    Text("STATS.TOTAL.IKURA.NUM", comment: "アップロードされたリザルトの赤イクラの合計")
                     Spacer()
                     Text(waves.totalIkuraNum)
                         .foregroundColor(.secondary)
                 })
                 HStack(content: {
-                    Text("Total golden ikura num")
+                    Text("STATS.TOTAL.GOLDEN.IKURA.NUM", comment: "アップロードされたリザルトの金イクラの合計")
                     Spacer()
                     Text(waves.totalGoldenIkuraNum)
                         .foregroundColor(.secondary)
                 })
             }, header: {
-                Text("Overview")
+                Text("HEADER.OVERVIEW", comment: "概要ヘッダー")
             })
             ForEach(WaterKey.allCases) { waterLevel in
                 Section(content: {
@@ -66,7 +66,7 @@ struct SalmonStatPlusView: View {
         })
             .listStyle(.plain)
             .onAppear(perform: addSnapshotListener)
-            .navigationTitle("SalmonStat+")
+            .navigationTitle("Salmon Stat+")
     }
     
     /// 毎回呼び出すの絶対コスト重いからやりたくないマン

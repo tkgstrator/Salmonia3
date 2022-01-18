@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftyUI
 
 struct ContentView: View {
     @EnvironmentObject var service: AppManager
@@ -15,24 +16,22 @@ struct ContentView: View {
         TabView(selection: $selection, content: {
             ResultCollectionView()
                 .tabItem({
-                    Image(.home)
+                    Image(systemName: .House)
+                    Text("TAB.HOME", comment: "リザルト一覧")
                 })
                 .tag(0)
             ShiftCollectionView()
                 .tabItem({
-                    Image(.home)
+                    Image(systemName: .ListBulletRectangle)
+                    Text("TAB.SHIFT", comment: "シフト一覧")
                 })
                 .tag(1)
-            SettingView()
-                .tabItem({
-                    Image(.setting)
-                })
-                .tag(2)
             UserView()
                 .tabItem({
-                    Image(.setting)
+                    Image(systemName: .Person)
+                    Text("TAB.USER", comment: "ユーザ")
                 })
-                .tag(3)
+                .tag(2)
         })
             .font(systemName: service.apperances.fontStyle, size: 16)
             .preferredColorScheme(service.apperances.colorScheme)

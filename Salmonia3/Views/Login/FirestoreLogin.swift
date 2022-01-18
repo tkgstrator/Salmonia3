@@ -9,7 +9,7 @@ import SwiftUI
 import FirebaseAuth
 
 struct FirestoreLogin: View {
-    let provider = OAuthProvider(providerID: "twitter.com").getCredentialWith(nil, completion: { credential, error in
+    let provider: Void = OAuthProvider(providerID: "twitter.com").getCredentialWith(nil, completion: { credential, error in
         if let credential = credential {
             print(credential)
         }

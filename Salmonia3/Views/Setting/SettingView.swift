@@ -13,43 +13,40 @@ struct SettingView: View {
     @EnvironmentObject var service: AppManager
     
     var body: some View {
-        NavigationView {
-            Form(content: {
-                Section(content: {
-                    HSContent(title: "USER.NICKNAME", content: service.account?.nickname)
-                    HSContent(title: "USER.PLAYERID", content: service.account?.credential.nsaid)
-                    HSContent(title: "USER.IKSMSESSION", content: service.account?.credential.iksmSession)
-                    AccountView(manager: service.connection)
-                }, header: {
-                    Text("SplatNet2")
-                })
-                Section(content: {
-                    NavigationLink(destination: SalmonStatsSetting(), label: {
-                        Text("Salmon Stats")
-                    })
-                    NavigationLink(destination: SalmonStatPlusSetting(), label: {
-                        Text("Salmon Stats+")
-                    })
-                }, header: {
-                    Text("Salmon Stats")
-                })
-                Section(content: {
-                    Toggle(isOn: $service.apperances.isDarkmode, label: {
-                        Text("SETTING.DARKMODE")
-                    })
-                }, header: {
-                    Text("SETTING.APPEARANCES")
-                })
-                Section(content: {
-                    HSContent(title: "USER.APPVERSION", content: service.application.appVersion)
-                    HSContent(title: "USER.APIVERSION", content: service.connection.version)
-                }, header: {
-                    Text("SETTING.APPLICATION")
-                })
+        Form(content: {
+            Section(content: {
+                HSContent(title: "USER.NICKNAME", content: service.account?.nickname, comment: "ニックネーム")
+                HSContent(title: "USER.PLAYERID", content: service.account?.credential.nsaid, comment: "プレイヤーID")
+                HSContent(title: "USER.IKSMSESSION", content: service.account?.credential.iksmSession, comment: "認証トークン")
+                AccountView(manager: service.connection)
+            }, header: {
+                Text("HEADER.SPLATNET2", comment: "SplatNet2")
             })
-                .navigationTitle("Setting")
-        }
-        .navigationViewStyle(SplitNavigationViewStyle())
+            Section(content: {
+                NavigationLink(destination: SalmonStatsSetting(), label: {
+                    Text("SALMONSTATS", comment: "SalmonStats")
+                })
+                NavigationLink(destination: SalmonStatPlusSetting(), label: {
+                    Text("SALMONSTATS+", comment: "SalmonStats+")
+                })
+            }, header: {
+                Text("HEADER.SALMONSTATS+", comment: "SalmonStats+")
+            })
+            Section(content: {
+                Toggle(isOn: $service.apperances.isDarkmode, label: {
+                    Text("SETTING.DARKMODE", comment: "ダークモードを利用するかどうか")
+                })
+            }, header: {
+                Text("HEADER.SETTING.APPEARANCES", comment: "外観ヘッダー")
+            })
+            Section(content: {
+                HSContent(title: "USER.APPVERSION", content: service.application.appVersion, comment: "アプリのバージョン")
+                HSContent(title: "USER.APIVERSION", content: service.connection.version, comment: "APIのバージョン")
+            }, header: {
+                Text("HEADER.SETTING.APPLICATION", comment: "外観ヘッダー")
+            })
+        })
+            .navigationTitle("Setting")
     }
 }
 

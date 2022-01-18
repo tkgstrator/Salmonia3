@@ -1,5 +1,5 @@
 strings:
-  inputs: Salmonia3/Base.lproj/Localizable.strings
+  inputs: Salmonia3/en.lproj/Localizable.strings
   outputs:
-    - templateName: structured-swift4
-      output: Salmonia3/Generated/strings.swift
+    - templateName: structured-swift5
+      output: Salmonia3/Extension/Localized.swift

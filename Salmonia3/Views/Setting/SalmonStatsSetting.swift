@@ -15,25 +15,25 @@ struct SalmonStatsSetting: View {
         Form(content: {
             Section(content: {
                 HStack(content: {
-                    Text("Credential")
+                    Text("STATS.CREDENTIAL", comment: "APIトークン")
                     Spacer()
                     Text(service.connection.apiToken?.prefix(16) ?? "-")
                         .lineLimit(1)
                         .foregroundColor(.secondary)
                 })
             }, header: {
-                Text("Salmon Stats")
+                Text("HEADER.SALMON.STATS", comment: "SalmonStats")
             })
             Section(content: {
                 Button(action: {
                     isPresented.toggle()
                 }, label: {
-                    Text("Sign in")
+                    Text("STATS.SIGNIN", comment: "SalmonStatsと連携")
                 })
                     .authorizeToken(isPresented: $isPresented, manager: service.connection, completion: { result in
                     })
             }, header: {
-                Text("Service")
+                Text("HEADER.SERVICE", comment: "サービスヘッダー")
             })
         })
             .navigationTitle("Salmon Stats")

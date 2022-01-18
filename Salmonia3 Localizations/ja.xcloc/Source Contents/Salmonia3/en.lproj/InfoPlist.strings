@@ -1,0 +1,6 @@
+/* Bundle name */
+"CFBundleName" = "Salmonia3";
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "The camera is used by Salmonia3.";
+/* Privacy - Tracking Usage Description */
+"NSUserTrackingUsageDescription" = "This itentifier will be used to deliver persoalized ads to you.";

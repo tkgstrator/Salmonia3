@@ -14,13 +14,15 @@ struct ResultWave: View {
         LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.wave.count), content: {
             ForEach(result.wave) { wave in
                 VStack(alignment: .center, spacing: 0, content: {
-                    Text("RESULT.WAVE.\(wave.index)")
+                    Text("RESULT.WAVE.\(wave.index)", comment: "WAVE数")
                         .font(systemName: .Splatfont2, size: 14)
                         .foregroundColor(.black)
                         .lineLimit(1)
                     Text("\(wave.goldenIkuraNum)/\(wave.quotaNum)")
-                        .font(systemName: .Splatfont2, size: 16)
+                        .font(systemName: .Splatfont2, size: 20)
                         .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.black)
                     Text("\(wave.ikuraNum)")
                         .font(systemName: .Splatfont2, size: 12)
                         .foregroundColor(.red)
@@ -31,8 +33,8 @@ struct ResultWave: View {
                         .font(systemName: .Splatfont2, size: 12)
                         .minimumScaleFactor(1.0)
                 })
-                    .padding(.horizontal)
-                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.yellow))
+//                    .padding(.horizontal)
+                    .background(RoundedRectangle(cornerRadius: 4).fill(Color.yellow))
             }
         })
             .background(Color.white.opacity(0.3))

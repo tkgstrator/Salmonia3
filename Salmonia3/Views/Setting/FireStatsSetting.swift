@@ -17,19 +17,19 @@ struct SalmonStatPlusSetting: View {
         Form(content: {
             Section(content: {
                 HStack(content: {
-                    Text("Username")
+                    Text("STATS+.USERNAME", comment: "Firestoreのユーザ")
                     Spacer()
                     Text(service.user?.displayName ?? "-")
                         .foregroundColor(.secondary)
                 })
                 HStack(content: {
-                    Text("ProviderID")
+                    Text("STATS+.PROVIDER", comment: "Firestoreのプロバイダ")
                     Spacer()
                     Text(service.user?.providerID ?? "-")
                         .foregroundColor(.secondary)
                 })
             }, header: {
-                Text("User")
+                Text("HEADER.USER", comment: "ユーザヘッダー")
             })
             Section(content: {
                 Button(action: {
@@ -39,10 +39,10 @@ struct SalmonStatPlusSetting: View {
                         })
                         .store(in: &task)
                 }, label: {
-                    Text("Twitter")
+                    Text("SIGNIN.WITH.TWITTER", comment: "Twitterでサインイン")
                 })
             }, header: {
-                Text("Service")
+                Text("HEADER.SERVICE", comment: "サービスヘッダー")
             })
         })
             .navigationTitle("SalmonStats+")

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import GoogleMobileAds
 import SplatNet2
 
 @main
@@ -23,6 +24,7 @@ struct Salmonia3App: App {
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        // MARK: - REALMデータベースの表示
         print(NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
         if let manager = LogManager.shared {
             #if DEBUG
@@ -32,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             #endif
         }
         FirebaseApp.configure()
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         return true
     }
 }
