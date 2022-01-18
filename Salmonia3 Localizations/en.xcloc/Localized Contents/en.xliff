@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="Salmonia3/en.lproj/InfoPlist.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>Salmonia3</source>
+        <target>Salmonia3</target>
+        <note>Bundle name</note>
+      </trans-unit>
+      <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
+        <source>The camera is used by Salmonia3.</source>
+        <target>The camera is used by Salmonia3.</target>
+        <note>Privacy - Camera Usage Description</note>
+      </trans-unit>
+      <trans-unit id="NSUserTrackingUsageDescription" xml:space="preserve">
+        <source>This itentifier will be used to deliver persoalized ads to you.</source>
+        <target>This itentifier will be used to deliver persoalized ads to you.</target>
+        <note>Privacy - Tracking Usage Description</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Salmonia3/en.lproj/Localizable.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
+    </header>
+    <body>
+      <trans-unit id="CREDIT.DESIGN" xml:space="preserve">
+        <source>CREDIT.DESIGN</source>
+        <target>CREDIT.DESIGN</target>
+        <note>UIデザイン</note>
+      </trans-unit>
+      <trans-unit id="CREDIT.EXTERNAL.API" xml:space="preserve">
+        <source>CREDIT.EXTERNAL.API</source>
+        <target>CREDIT.EXTERNAL.API</target>
+        <note>外部API</note>
+      </trans-unit>
+      <trans-unit id="CREDIT.STARTUP.PROJECT" xml:space="preserve">
+        <source>CREDIT.STARTUP.PROJECT</source>
+        <target>CREDIT.STARTUP.PROJECT</target>
+        <note>プロジェクト</note>
+      </trans-unit>
+      <trans-unit id="Font Style" xml:space="preserve">
+        <source>Font Style</source>
+        <target>Font Style</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="HEADER.OVERVIEW" xml:space="preserve">
+        <source>HEADER.OVERVIEW</source>
+        <target>HEADER.OVERVIEW</target>
+        <note>概要ヘッダー</note>
+      </trans-unit>
+      <trans-unit id="HEADER.SALMON.STATS" xml:space="preserve">
+        <source>HEADER.SALMON.STATS</source>
+        <target>HEADER.SALMON.STATS</target>
+        <note>SalmonStats</note>
+      </trans-unit>
+      <trans-unit id="HEADER.SALMONSTATS+" xml:space="preserve">
+        <source>HEADER.SALMONSTATS+</source>
+        <target>HEADER.SALMONSTATS+</target>
+        <note>SalmonStats+</note>
+      </trans-unit>
+      <trans-unit id="HEADER.SERVICE" xml:space="preserve">
+        <source>HEADER.SERVICE</source>
+        <target>HEADER.SERVICE</target>
+        <note>サービスヘッダー</note>
+      </trans-unit>
+      <trans-unit id="HEADER.SETTING.APPEARANCES" xml:space="preserve">
+        <source>HEADER.SETTING.APPEARANCES</source>
+        <target>HEADER.SETTING.APPEARANCES</target>
+        <note>外観ヘッダー</note>
+      </trans-unit>
+      <trans-unit id="HEADER.SETTING.APPLICATION" xml:space="preserve">
+        <source>HEADER.SETTING.APPLICATION</source>
+        <target>HEADER.SETTING.APPLICATION</target>
+        <note>外観ヘッダー</note>
+      </trans-unit>
+      <trans-unit id="HEADER.USER" xml:space="preserve">
+        <source>HEADER.USER</source>
+        <target>HEADER.USER</target>
+        <note>ユーザヘッダー</note>
+      </trans-unit>
+      <trans-unit id="RESULT.BOSS.DEFEATED.%lld" xml:space="preserve">
+        <source>RESULT.BOSS.DEFEATED.%lld</source>
+        <target>RESULT.BOSS.DEFEATED.%lld</target>
+        <note>ボス討伐合計</note>
+      </trans-unit>
+      <trans-unit id="RESULT.CLEAR" xml:space="preserve">
+        <source>RESULT.CLEAR</source>
+        <target>RESULT.CLEAR</target>
+        <note>バイトクリア</note>
+      </trans-unit>
+      <trans-unit id="RESULT.DEFEATED" xml:space="preserve">
+        <source>RESULT.DEFEATED</source>
+        <target>RESULT.DEFEATED</target>
+        <note>バイト失敗</note>
+      </trans-unit>
+      <trans-unit id="RESULT.WAVE.%lld" xml:space="preserve">
+        <source>RESULT.WAVE.%lld</source>
+        <target>RESULT.WAVE.%lld</target>
+        <note>WAVE数</note>
+      </trans-unit>
+      <trans-unit id="Results" xml:space="preserve">
+        <source>Results</source>
+        <target>Results</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="SALMONSTATS" xml:space="preserve">
+        <source>SALMONSTATS</source>
+        <target>SALMONSTATS</target>
+        <note>SalmonStats</note>
+      </trans-unit>
+      <trans-unit id="SALMONSTATS+" xml:space="preserve">
+        <source>SALMONSTATS+</source>
+        <target>SALMONSTATS+</target>
+        <note>SalmonStats+</note>
+      </trans-unit>
+      <trans-unit id="SETTING.DARKMODE" xml:space="preserve">
+        <source>SETTING.DARKMODE</source>
+        <target>SETTING.DARKMODE</target>
+        <note>ダークモードを利用するかどうか</note>
+      </trans-unit>
+      <trans-unit id="SIGNIN.WITH.TWITTER" xml:space="preserve">
+        <source>SIGNIN.WITH.TWITTER</source>
+        <target>SIGNIN.WITH.TWITTER</target>
+        <note>Twitterでサインイン</note>
+      </trans-unit>
+      <trans-unit id="SPLATNET2" xml:space="preserve">
+        <source>SPLATNET2</source>
+        <target>SPLATNET2</target>
+        <note>SplatNet2</note>
+      </trans-unit>
+      <trans-unit id="STATS+.PROVIDER" xml:space="preserve">
+        <source>STATS+.PROVIDER</source>
+        <target>STATS+.PROVIDER</target>
+        <note>Firestoreのプロバイダ</note>
+      </trans-unit>
+      <trans-unit id="STATS+.USERNAME" xml:space="preserve">
+        <source>STATS+.USERNAME</source>
+        <target>STATS+.USERNAME</target>
+        <note>Firestoreのユーザ</note>
+      </trans-unit>
+      <trans-unit id="STATS.CREDENTIAL" xml:space="preserve">
+        <source>STATS.CREDENTIAL</source>
+        <target>STATS.CREDENTIAL</target>
+        <note>APIトークン</note>
+      </trans-unit>
+      <trans-unit id="STATS.SIGNIN" xml:space="preserve">
+        <source>STATS.SIGNIN</source>
+        <target>STATS.SIGNIN</target>
+        <note>SalmonStatsと連携</note>
+      </trans-unit>
+      <trans-unit id="STATS.TOTAL.GOLDEN.IKURA.NUM" xml:space="preserve">
+        <source>STATS.TOTAL.GOLDEN.IKURA.NUM</source>
+        <target>STATS.TOTAL.GOLDEN.IKURA.NUM</target>
+        <note>アップロードされたリザルトの金イクラの合計</note>
+      </trans-unit>
+      <trans-unit id="STATS.TOTAL.IKURA.NUM" xml:space="preserve">
+        <source>STATS.TOTAL.IKURA.NUM</source>
+        <target>STATS.TOTAL.IKURA.NUM</target>
+        <note>アップロードされたリザルトの赤イクラの合計</note>
+      </trans-unit>
+      <trans-unit id="STATS.UPLOADED.RESULT.NUM" xml:space="preserve">
+        <source>STATS.UPLOADED.RESULT.NUM</source>
+        <target>STATS.UPLOADED.RESULT.NUM</target>
+        <note>アップロードされたリザルトの件数</note>
+      </trans-unit>
+      <trans-unit id="Salmon Stat+" xml:space="preserve">
+        <source>Salmon Stat+</source>
+        <target>Salmon Stat+</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Salmon Stats" xml:space="preserve">
+        <source>Salmon Stats</source>
+        <target>Salmon Stats</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="SalmonStats+" xml:space="preserve">
+        <source>SalmonStats+</source>
+        <target>SalmonStats+</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Salmonia3" xml:space="preserve">
+        <source>Salmonia3</source>
+        <target>Salmonia3</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Setting" xml:space="preserve">
+        <source>Setting</source>
+        <target>Setting</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="TITLE.SHIFTSCHEDULE" xml:space="preserve">
+        <source>TITLE.SHIFTSCHEDULE</source>
+        <target>TITLE.SHIFTSCHEDULE</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="USER.APIVERSION" xml:space="preserve">
+        <source>USER.APIVERSION</source>
+        <target>USER.APIVERSION</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="USER.APPVERSION" xml:space="preserve">
+        <source>USER.APPVERSION</source>
+        <target>USER.APPVERSION</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="USER.IKSMSESSION" xml:space="preserve">
+        <source>USER.IKSMSESSION</source>
+        <target>USER.IKSMSESSION</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="USER.NICKNAME" xml:space="preserve">
+        <source>USER.NICKNAME</source>
+        <target>USER.NICKNAME</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="USER.PLAYERID" xml:space="preserve">
+        <source>USER.PLAYERID</source>
+        <target>USER.PLAYERID</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

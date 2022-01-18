@@ -6,73 +6,157 @@
 //
 
 import SwiftUI
+import SwiftyUI
 import RealmSwift
 import SplatNet2
+import SwiftyChart
 
 struct UserView: View {
     @EnvironmentObject var service: AppManager
-    @StateObject var user: UserStatsModel = UserStatsModel(nsaid: "91d160aa84e88da6")
     
     var body: some View {
-        ScrollView(content: {
-            PieChartView(user.results.map({ $0.timeLimit + $0.wipeOut }), caption: "失敗WAVE")
-            PieChartView([user.results.map({ $0.timeLimit }).reduce(0, +), user.results.map({ $0.wipeOut }).reduce(0, +)], caption: "失敗理由")
-            PieChartView([user.success, user.failure], caption: "バイト結果")
+        NavigationView(content: {
+            if let nsaid = service.account?.credential.nsaid {
+                let stats: UserStatsModel = UserStatsModel(nsaid: nsaid)
+                UserStatsView(user: stats)
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar(content: {
+                        ToolbarItem(placement: .navigationBarTrailing, content: {
+                            NavigationLink(destination: SettingView(), label: {
+                                Image(systemName: .Gearshape)
+                            })
+                        })
+                    })
+            } else {
+                ScrollView(content: {})
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar(content: {
+                        ToolbarItem(placement: .navigationBarTrailing, content: {
+                            NavigationLink(destination: SettingView(), label: {
+                                Image(systemName: .Gearshape)
+                            })
+                        })
+                    })
+            }
+        })
+    }
+}
+
+struct UserStatsView: View {
+    @State var selection: Int = 0
+    @StateObject var user: UserStatsModel
+    
+    var WaveAnalysis: some View {
+        Section(content: {
+            PieChart(data: user.result)
+        }, header: {
+            Text("HEADER.WAVE.ANALYSIS")
+        })
+    }
+    
+    var BossDefeatedAnalysis: some View {
+        Section(content: {
+            RadarChartBossLabel()
+                .scaledToFit()
+                .padding(.horizontal)
+                .background(RadarChart(data: [user.defeated.player, user.defeated.other]), alignment: .center)
+        }, header: {
+            Text("HEADER.BOSS.DEFEATED")
+        })
+    }
+    
+    var UserStatsAnalysis: some View {
+        Section(content: {
+            RadarChartUserStats()
+                .scaledToFit()
+                .padding(.horizontal)
+                .background(RadarChart(data: [user.stats.player, user.stats.other]), alignment: .center)
+        })
+    }
+    
+    var body: some View {
+        TabView(selection: $selection, content: {
+            WaveAnalysis
+                .tabItem({
+                    
+                })
+        })
+            .tabViewStyle(.page)
+    }
+}
+
+internal struct RadarChartBossLabel: View {
+    var body: some View {
+        GeometryReader(content: { geometry in
+            let midX: CGFloat = geometry.frame(in: .local).midX
+            let midY: CGFloat = geometry.frame(in: .local).midY
+            let count: CGFloat = CGFloat(BossType.BossId.allCases.count)
+            let radius: CGFloat = min(midX, midY)
+            
+            ForEach(Array(BossType.BossId.allCases.enumerated()), id: \.offset) { index, bossId in
+                Image(bossId)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 35, height: 35, alignment: .center)
+                    .background(Circle().fill(Color.originary))
+                    .position(
+                        x: midX - radius * sin(2 * .pi * CGFloat(index) / count - .pi),
+                        y: midY + radius * cos(2 * .pi * CGFloat(index) / count - .pi)
+                    )
+            }
+        })
+    }
+}
+
+internal struct RadarChartUserStats: View {
+    var body: some View {
+        GeometryReader(content: { geometry in
+            let midX: CGFloat = geometry.frame(in: .local).midX
+            let midY: CGFloat = geometry.frame(in: .local).midY
+            let count: CGFloat = CGFloat(ResultType.allCases.count)
+            let radius: CGFloat = min(midX, midY)
+            
+            ForEach(Array(ResultType.allCases.enumerated()), id: \.offset) { index, resultId in
+                Image(resultId)
+                    .resizable()
+                    .frame(width: 35, height: 35, alignment: .center)
+                    .scaledToFit()
+                    .background(Circle().fill(Color.originary))
+                    .position(
+                        x: midX - radius * sin(2 * .pi * CGFloat(index) / count - .pi),
+                        y: midY + radius * cos(2 * .pi * CGFloat(index) / count - .pi)
+                    )
+            }
         })
     }
 }
 
 extension Realm {
-    func results(nsaid: String) -> RealmSwift.Results<RealmCoopResult> {
-        objects(RealmCoopResult.self).filter("pid=%@", nsaid)
-    }
-    
-    func players(nsaid: String) -> RealmSwift.Results<RealmCoopPlayer> {
-        objects(RealmCoopPlayer.self).filter("pid=%@", nsaid)
-    }
-}
-
-final class UserStatsModel: ObservableObject {
-    /// バイト回数
-    let jobNum: Int
-    /// クリア回数
-    let success: Int
-    /// 失敗回数
-    let failure: Int
-    /// 各WAVEごとのクリア回数と失敗理由と回数
-    let results: [JobResult]
-    
-    init(nsaid: String) {
-        let realm = try! Realm()
-        let results = realm.results(nsaid: nsaid)
-        self.jobNum = results.count
-        self.results = [1, 2, 3].map({ result in
-            let results = results.filter("failureWave=%@", result)
-            return JobResult(
-                success: results.filter("isClear=%@", true).count,
-                timeLimit: results.filter("failureReason=%@", FailureReason.timeLimit.rawValue).count,
-                wipeOut: results.filter("failureReason=%@", FailureReason.wipeOut.rawValue).count
-            )
-        })
-        self.success = results.filter("isClear=%@", true).count
-        self.failure = results.filter("isClear=%@", false).count
-    }
-    
-    class JobResult {
-        let success: Int
-        let timeLimit: Int
-        let wipeOut: Int
-        
-        init(success: Int, timeLimit: Int, wipeOut: Int) {
-            self.success = success
-            self.timeLimit = timeLimit
-            self.wipeOut = wipeOut
+    /// リザルト一覧を返す
+    func results(nsaid: String, startTime: Int? = nil) -> RealmSwift.Results<RealmCoopResult> {
+        guard let startTime = startTime else {
+            return objects(RealmCoopResult.self).filter("pid=%@", nsaid)
         }
+        return objects(RealmCoopResult.self).filter("pid=%@ AND startTime=%@", nsaid, startTime)
+    }
+    
+    /// プレイヤーのリザルト一覧を返す
+    func playerResults(nsaid: String, startTime: Int? = nil) -> RealmSwift.Results<RealmCoopPlayer> {
+        guard let startTime = startTime else {
+            return objects(RealmCoopPlayer.self).filter("pid=%@", nsaid)
+        }
+        return objects(RealmCoopPlayer.self).filter("pid=%@ and any result.startTime=%@", nsaid, startTime)
     }
 }
 
-struct UserView_Previews: PreviewProvider {
-    static var previews: some View {
-        UserView()
-    }
+extension Array: Identifiable where Element == PieChartModel {
+    public var id: UUID { UUID() }
+    
+    public var totalCount: Int { Int(map({ $0.value }).reduce(0, +)) }
 }
+//
+//struct UserView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UserView()
+//    }
+//}

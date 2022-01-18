@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		101141AF2783545F0088DF4C /* SwiftyChart in Frameworks */ = {isa = PBXBuildFile; productRef = 101141AE2783545F0088DF4C /* SwiftyChart */; };
+		101141B2278477060088DF4C /* UserStatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101141B1278477060088DF4C /* UserStatsModel.swift */; };
 		101AED11271E3109009556B2 /* Salmonia3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED10271E3109009556B2 /* Salmonia3App.swift */; };
 		101AED13271E3109009556B2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED12271E3109009556B2 /* ContentView.swift */; };
 		101AED15271E310B009556B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 101AED14271E310B009556B2 /* Assets.xcassets */; };
@@ -48,15 +50,11 @@
 		109F97F82724ADB600AB1FA3 /* ResultOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97F72724ADB600AB1FA3 /* ResultOverview.swift */; };
 		109F97FA2724CF0C00AB1FA3 /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97F92724CF0C00AB1FA3 /* ResultType.swift */; };
 		109F97FC2724D44100AB1FA3 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97FB2724D44100AB1FA3 /* Text.swift */; };
-		109F97FE2724D60F00AB1FA3 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97FD2724D60F00AB1FA3 /* ChartView.swift */; };
-		109F98012724D66400AB1FA3 /* AnglePair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F98002724D66400AB1FA3 /* AnglePair.swift */; };
-		109F98032724D67B00AB1FA3 /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F98022724D67B00AB1FA3 /* Pie.swift */; };
 		109F98052724EC9400AB1FA3 /* Rainbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F98042724EC9400AB1FA3 /* Rainbow.swift */; };
 		10BA13F027201A7B00348DD3 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10BA13EF27201A7B00348DD3 /* RealmSwift */; };
 		10BA13F327201AF300348DD3 /* RealmCoopResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13F227201AF300348DD3 /* RealmCoopResult.swift */; };
 		10BA13F527201B1400348DD3 /* RealmCoopWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13F427201B1400348DD3 /* RealmCoopWave.swift */; };
 		10BA13F727201B4700348DD3 /* RealmCoopPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13F627201B4700348DD3 /* RealmCoopPlayer.swift */; };
-		10BA140727201C6900348DD3 /* SalmonidType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13FF27201C6900348DD3 /* SalmonidType.swift */; };
 		10BA140B27201D2F00348DD3 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA140A27201D2F00348DD3 /* Extension.swift */; };
 		10BDF043277C84B70001D062 /* SalmonStats in Frameworks */ = {isa = PBXBuildFile; productRef = 10BDF042277C84B70001D062 /* SalmonStats */; };
 		10C000DC274CE3F400870DED /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C000DB274CE3F400870DED /* Image.swift */; };
@@ -68,7 +66,10 @@
 		10C0FE79274C1D7500870DED /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 10C0FE78274C1D7500870DED /* FirebaseFirestoreSwift-Beta */; };
 		10C0FE7B274C207900870DED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10C0FE7A274C207900870DED /* GoogleService-Info.plist */; };
 		10C0FE7D274C3D1C00870DED /* FirestoreLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C0FE7C274C3D1C00870DED /* FirestoreLogin.swift */; };
-		10F38E83277E1D1900CD945F /* swiftgen in Frameworks */ = {isa = PBXBuildFile; productRef = 10F38E82277E1D1900CD945F /* swiftgen */; };
+		10C7C46C277ED8330015ECBB /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7C46B277ED8330015ECBB /* Localized.swift */; };
+		10C7C46E277F00260015ECBB /* AppManager+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7C46D277F00260015ECBB /* AppManager+Realm.swift */; };
+		10C7C470277F00370015ECBB /* AppManager+Firestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7C46F277F00370015ECBB /* AppManager+Firestore.swift */; };
+		10C7C472277F00CF0015ECBB /* AppManager+FirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7C471277F00CE0015ECBB /* AppManager+FirebaseAuth.swift */; };
 		10F38E87277E1E9900CD945F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10F38E89277E1E9900CD945F /* Localizable.strings */; };
 		10FDD4AF271EE36C00C9C178 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FDD4AE271EE36C00C9C178 /* AppManager.swift */; };
 /* End PBXBuildFile section */
@@ -92,6 +93,7 @@
 
 /* Begin PBXFileReference section */
 		100492FA274DCDEC0095D35C /* SwiftyUI */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftyUI; path = ../SwiftyUI; sourceTree = "<group>"; };
+		101141B1278477060088DF4C /* UserStatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatsModel.swift; sourceTree = "<group>"; };
 		101AED0D271E3109009556B2 /* Salmonia3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Salmonia3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		101AED10271E3109009556B2 /* Salmonia3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salmonia3App.swift; sourceTree = "<group>"; };
 		101AED12271E3109009556B2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -135,14 +137,10 @@
 		109F97F72724ADB600AB1FA3 /* ResultOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOverview.swift; sourceTree = "<group>"; };
 		109F97F92724CF0C00AB1FA3 /* ResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
 		109F97FB2724D44100AB1FA3 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
-		109F97FD2724D60F00AB1FA3 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
-		109F98002724D66400AB1FA3 /* AnglePair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnglePair.swift; sourceTree = "<group>"; };
-		109F98022724D67B00AB1FA3 /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
 		109F98042724EC9400AB1FA3 /* Rainbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rainbow.swift; sourceTree = "<group>"; };
 		10BA13F227201AF300348DD3 /* RealmCoopResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopResult.swift; sourceTree = "<group>"; };
 		10BA13F427201B1400348DD3 /* RealmCoopWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopWave.swift; sourceTree = "<group>"; };
 		10BA13F627201B4700348DD3 /* RealmCoopPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopPlayer.swift; sourceTree = "<group>"; };
-		10BA13FF27201C6900348DD3 /* SalmonidType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalmonidType.swift; sourceTree = "<group>"; };
 		10BA140A27201D2F00348DD3 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		10C000DB274CE3F400870DED /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		10C0FE6D274C12B900870DED /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -150,6 +148,10 @@
 		10C0FE71274C132D00870DED /* FSCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCodable.swift; sourceTree = "<group>"; };
 		10C0FE7A274C207900870DED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10C0FE7C274C3D1C00870DED /* FirestoreLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreLogin.swift; sourceTree = "<group>"; };
+		10C7C46B277ED8330015ECBB /* Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
+		10C7C46D277F00260015ECBB /* AppManager+Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppManager+Realm.swift"; sourceTree = "<group>"; };
+		10C7C46F277F00370015ECBB /* AppManager+Firestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppManager+Firestore.swift"; sourceTree = "<group>"; };
+		10C7C471277F00CE0015ECBB /* AppManager+FirebaseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppManager+FirebaseAuth.swift"; sourceTree = "<group>"; };
 		10F38E88277E1E9900CD945F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		10F38E8A277E1E9A00CD945F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		10FDD4AE271EE36C00C9C178 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
@@ -162,9 +164,9 @@
 			files = (
 				10C0FE75274C1D7500870DED /* FirebaseAnalyticsSwift-Beta in Frameworks */,
 				10C0FE77274C1D7500870DED /* FirebaseAuthCombine-Community in Frameworks */,
-				10F38E83277E1D1900CD945F /* swiftgen in Frameworks */,
 				10C0FE79274C1D7500870DED /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				10BA13F027201A7B00348DD3 /* RealmSwift in Frameworks */,
+				101141AF2783545F0088DF4C /* SwiftyChart in Frameworks */,
 				10BDF043277C84B70001D062 /* SalmonStats in Frameworks */,
 				1094284F271E458F0072425E /* SalmonStats in Frameworks */,
 				107DB66F272CF89A00A5A6E5 /* SwiftyUI in Frameworks */,
@@ -189,6 +191,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		101141B0278476E50088DF4C /* ObservableObject */ = {
+			isa = PBXGroup;
+			children = (
+				101141B1278477060088DF4C /* UserStatsModel.swift */,
+			);
+			path = ObservableObject;
+			sourceTree = "<group>";
+		};
 		101AED04271E3109009556B2 = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +224,8 @@
 		101AED0F271E3109009556B2 /* Salmonia3 */ = {
 			isa = PBXGroup;
 			children = (
+				101141B0278476E50088DF4C /* ObservableObject */,
+				10C7C46A277ED8020015ECBB /* Extension */,
 				101AED10271E3109009556B2 /* Salmonia3App.swift */,
 				101AED12271E3109009556B2 /* ContentView.swift */,
 				103168682750F14E0009070C /* Salmonia3.entitlements */,
@@ -320,7 +332,6 @@
 				101AED59271E3946009556B2 /* SettingView.swift */,
 				10635091274E1F8D00529930 /* FireStatsSetting.swift */,
 				1033F41B2757724B006EE793 /* SalmonStatsSetting.swift */,
-				102C9DE2277E0D8E004822C1 /* HSContent.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -329,9 +340,10 @@
 			isa = PBXGroup;
 			children = (
 				109F97EE2724A10700AB1FA3 /* ButtonStyle */,
-				109F97FF2724D65100AB1FA3 /* Chart */,
 				101AED3C271E3192009556B2 /* Wave.swift */,
 				109F97FB2724D44100AB1FA3 /* Text.swift */,
+				10C000DB274CE3F400870DED /* Image.swift */,
+				102C9DE2277E0D8E004822C1 /* HSContent.swift */,
 				109F98042724EC9400AB1FA3 /* Rainbow.swift */,
 			);
 			path = Components;
@@ -396,17 +408,6 @@
 			path = Result;
 			sourceTree = "<group>";
 		};
-		109F97FF2724D65100AB1FA3 /* Chart */ = {
-			isa = PBXGroup;
-			children = (
-				10C000DB274CE3F400870DED /* Image.swift */,
-				109F97FD2724D60F00AB1FA3 /* ChartView.swift */,
-				109F98002724D66400AB1FA3 /* AnglePair.swift */,
-				109F98022724D67B00AB1FA3 /* Pie.swift */,
-			);
-			path = Chart;
-			sourceTree = "<group>";
-		};
 		10BA13F127201ADD00348DD3 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
@@ -421,7 +422,6 @@
 		10BA13F827201C6900348DD3 /* Type */ = {
 			isa = PBXGroup;
 			children = (
-				10BA13FF27201C6900348DD3 /* SalmonidType.swift */,
 				109F97F92724CF0C00AB1FA3 /* ResultType.swift */,
 			);
 			path = Type;
@@ -447,11 +447,22 @@
 			path = Firestore;
 			sourceTree = "<group>";
 		};
+		10C7C46A277ED8020015ECBB /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				10C7C46B277ED8330015ECBB /* Localized.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		10FDD4AD271EE35D00C9C178 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
 				10FDD4AE271EE36C00C9C178 /* AppManager.swift */,
 				10BA140A27201D2F00348DD3 /* Extension.swift */,
+				10C7C46D277F00260015ECBB /* AppManager+Realm.swift */,
+				10C7C46F277F00370015ECBB /* AppManager+Firestore.swift */,
+				10C7C471277F00CE0015ECBB /* AppManager+FirebaseAuth.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -466,7 +477,6 @@
 				101AED09271E3109009556B2 /* Sources */,
 				101AED0A271E3109009556B2 /* Frameworks */,
 				101AED0B271E3109009556B2 /* Resources */,
-				10F38E84277E1D3500CD945F /* SwiftGen */,
 			);
 			buildRules = (
 			);
@@ -482,7 +492,7 @@
 				10C0FE76274C1D7500870DED /* FirebaseAuthCombine-Community */,
 				10C0FE78274C1D7500870DED /* FirebaseFirestoreSwift-Beta */,
 				10BDF042277C84B70001D062 /* SalmonStats */,
-				10F38E82277E1D1900CD945F /* swiftgen */,
+				101141AE2783545F0088DF4C /* SwiftyChart */,
 			);
 			productName = Salmonia3;
 			productReference = 101AED0D271E3109009556B2 /* Salmonia3.app */;
@@ -553,8 +563,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 				ja,
+				Base,
 			);
 			mainGroup = 101AED04271E3109009556B2;
 			packageReferences = (
@@ -562,7 +572,7 @@
 				107DB668272CF67900A5A6E5 /* XCRemoteSwiftPackageReference "GoogleMobileAds" */,
 				10C0FE73274C1D7500870DED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				10BDF041277C84B60001D062 /* XCRemoteSwiftPackageReference "SalmonStats" */,
-				10F38E81277E1D1900CD945F /* XCRemoteSwiftPackageReference "SwiftGen" */,
+				101141AD2783545F0088DF4C /* XCRemoteSwiftPackageReference "SwiftyChart" */,
 			);
 			productRefGroup = 101AED0E271E3109009556B2 /* Products */;
 			projectDirPath = "";
@@ -605,27 +615,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		10F38E84277E1D3500CD945F /* SwiftGen */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftGen;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftgen >/dev/null; then\n  swiftgen\nelse\n  echo \"warning: SwiftGen not installed, download it from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		101AED09271E3109009556B2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -639,12 +628,14 @@
 				10C000DC274CE3F400870DED /* Image.swift in Sources */,
 				101AED3D271E3192009556B2 /* Wave.swift in Sources */,
 				109F97F62724AD7800AB1FA3 /* ResultView.swift in Sources */,
-				10BA140727201C6900348DD3 /* SalmonidType.swift in Sources */,
+				10C7C46E277F00260015ECBB /* AppManager+Realm.swift in Sources */,
 				1041BC07277DAB36008B27F1 /* ResultPlayer.swift in Sources */,
 				101AED13271E3109009556B2 /* ContentView.swift in Sources */,
 				10635092274E1F8D00529930 /* FireStatsSetting.swift in Sources */,
 				101AED5C271E3B0F009556B2 /* SalmonStatsLoginView.swift in Sources */,
-				109F97FE2724D60F00AB1FA3 /* ChartView.swift in Sources */,
+				101141B2278477060088DF4C /* UserStatsModel.swift in Sources */,
+				10C7C472277F00CF0015ECBB /* AppManager+FirebaseAuth.swift in Sources */,
+				10C7C470277F00370015ECBB /* AppManager+Firestore.swift in Sources */,
 				103168672750E3D10009070C /* ShiftView.swift in Sources */,
 				1041BC0D277DBCD5008B27F1 /* ResultStatus.swift in Sources */,
 				10BA13F727201B4700348DD3 /* RealmCoopPlayer.swift in Sources */,
@@ -669,14 +660,13 @@
 				109F97EB272491E600AB1FA3 /* ResultCollectionView.swift in Sources */,
 				10635096274E2E4D00529930 /* ShiftCollectionView.swift in Sources */,
 				109F97F02724A11900AB1FA3 /* GrowingButtonStyle.swift in Sources */,
-				109F98012724D66400AB1FA3 /* AnglePair.swift in Sources */,
-				109F98032724D67B00AB1FA3 /* Pie.swift in Sources */,
 				10C0FE70274C12C500870DED /* Record.swift in Sources */,
 				10C0FE72274C132D00870DED /* FSCodable.swift in Sources */,
 				10BA13F527201B1400348DD3 /* RealmCoopWave.swift in Sources */,
 				1041BC09277DAFFE008B27F1 /* ResultWave.swift in Sources */,
 				109F97E8272490CE00AB1FA3 /* LoadingView.swift in Sources */,
 				1062EE72274DDF0B0050FD0C /* SalmonStatsPlusView.swift in Sources */,
+				10C7C46C277ED8330015ECBB /* Localized.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -781,7 +771,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -839,7 +829,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -876,6 +866,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0.0;
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -911,6 +902,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0.0;
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = work.tkgstrator.salmonia3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1057,6 +1049,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		101141AD2783545F0088DF4C /* XCRemoteSwiftPackageReference "SwiftyChart" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tkgstrator/SwiftyChart";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		107DB668272CF67900A5A6E5 /* XCRemoteSwiftPackageReference "GoogleMobileAds" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/quanghits/GoogleMobileAds";
@@ -1089,17 +1089,14 @@
 				minimumVersion = 8.10.0;
 			};
 		};
-		10F38E81277E1D1900CD945F /* XCRemoteSwiftPackageReference "SwiftGen" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftGen/SwiftGen";
-			requirement = {
-				branch = stable;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		101141AE2783545F0088DF4C /* SwiftyChart */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 101141AD2783545F0088DF4C /* XCRemoteSwiftPackageReference "SwiftyChart" */;
+			productName = SwiftyChart;
+		};
 		107DB669272CF67900A5A6E5 /* GoogleMobileAds */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 107DB668272CF67900A5A6E5 /* XCRemoteSwiftPackageReference "GoogleMobileAds" */;
@@ -1137,11 +1134,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 10C0FE73274C1D7500870DED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseFirestoreSwift-Beta";
-		};
-		10F38E82277E1D1900CD945F /* swiftgen */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 10F38E81277E1D1900CD945F /* XCRemoteSwiftPackageReference "SwiftGen" */;
-			productName = swiftgen;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
