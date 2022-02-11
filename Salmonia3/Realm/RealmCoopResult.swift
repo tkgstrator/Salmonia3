@@ -57,12 +57,12 @@ final class RealmCoopResult: Object {
     /// Player情報
     @Persisted var player: List<RealmCoopPlayer>
     
-    convenience init(from result: Result.Response, stats: UploadResult.Response? = nil) {
+    convenience init(from result: CoopResult.Response, stats: StatsResult.Response? = nil) {
         self.init()
         self.pid = result.myResult.pid
         self.jobId = result.jobId
         self.stageId = result.schedule.stage.image.stageId
-        self.salmonId = stats?.salmonId
+        self.salmonId = stats?.id
         self.gradePoint = result.gradePoint
         self.gradePointDelta = result.gradePointDelta
         self.failureWave = result.jobResult.failureWave
@@ -79,14 +79,14 @@ final class RealmCoopResult: Object {
         self.isClear = result.jobResult.isClear
         self.bossCounts.append(objectsIn: result.bossCounts.sortedValue())
         self.wave.append(objectsIn: result.waveDetails.map({ RealmCoopWave(from: $0) }))
-        let playerResult: [Result.PlayerResult] = [result.myResult] + (result.otherResults ?? [])
+        let playerResult: [CoopResult.PlayerResult] = [result.myResult] + (result.otherResults ?? [])
         let bossKillCounts: [Int] = playerResult.map({ $0.bossKillCounts.sortedValue() }).sum()
         self.player.append(objectsIn: playerResult.map({ RealmCoopPlayer(from: $0) }))
         self.bossKillCounts.append(objectsIn: bossKillCounts)
     }
 }
 
-extension CodableDictionary where Key == BossType, Value == Result.BossCount {
+extension CodableDictionary where Key == BossType, Value == CoopResult.BossCount {
     func sortedValue() -> [Int] {
         self.sorted(by: { $0.key.bossId.rawValue < $1.key.bossId.rawValue }).map({ $0.value.count })
     }
@@ -164,7 +164,7 @@ extension GradeId: PersistableEnum {
 extension FailureReason: PersistableEnum{
 }
 
-extension Array where Element == Result.PlayerResult {
+extension Array where Element == CoopResult.PlayerResult {
     /// 残りのメンバーの金イクラの合計
     var totalGoldenIkuraNum: Int {
         self.map({ $0.goldenIkuraNum }).reduce(0, +)

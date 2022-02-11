@@ -19,7 +19,7 @@ final class RealmCoopWave: Object {
     @Persisted var ikuraNum: Int
     @Persisted(originProperty: "wave") var result: LinkingObjects<RealmCoopResult>
     
-    convenience init(from result: Result.WaveDetail) {
+    convenience init(from result: CoopResult.WaveDetail) {
         self.init()
         self.eventType = result.eventType.key
         self.waterLevel = result.waterLevel.key

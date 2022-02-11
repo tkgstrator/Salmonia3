@@ -23,7 +23,7 @@ final class RealmCoopPlayer: Object, ObjectKeyIdentifiable {
     @Persisted var specialCounts: List<Int>
     @Persisted(originProperty: "player") var result: LinkingObjects<RealmCoopResult>
 
-    public convenience init(from result: Result.PlayerResult) {
+    public convenience init(from result: CoopResult.PlayerResult) {
         self.init()
         self.name = result.name
         self.pid = result.pid
@@ -41,7 +41,7 @@ final class RealmCoopPlayer: Object, ObjectKeyIdentifiable {
 extension SpecialId: PersistableEnum {
 }
 
-extension Result.WeaponList {
+extension CoopResult.WeaponList {
     var weaponId: WeaponType {
         switch self.id {
         case .randomGold:

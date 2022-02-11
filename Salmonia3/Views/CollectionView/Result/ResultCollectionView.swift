@@ -11,7 +11,7 @@ import RealmSwift
 import Alamofire
 
 struct ResultCollectionView: View {
-    @EnvironmentObject var service: AppManager
+    @EnvironmentObject var service: AppService
     @ObservedResults(RealmCoopResult.self, sortDescriptor: SortDescriptor(keyPath: "playTime", ascending: false)) var results
     @State var isPresented: Bool = false
     

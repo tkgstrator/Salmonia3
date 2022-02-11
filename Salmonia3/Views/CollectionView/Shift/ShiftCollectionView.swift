@@ -18,7 +18,7 @@ struct ShiftCollectionView: View {
         NavigationView(content: {
             List(content: {
                 ForEach(schedules) { schedule in
-                    NavigationLinker(destination: SalmonStatPlusView(startTime: schedule.startTime), label: {
+                    NavigationLinker(destination: EmptyView(), label: {
                         ShiftView(shift: schedule)
                     })
                         .disabled(schedule.startTime >= Int(Date().timeIntervalSince1970))
