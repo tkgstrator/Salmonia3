@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SalmonStatsSetting: View {
-    @EnvironmentObject var service: AppManager
+    @EnvironmentObject var service: AppService
     @State var isPresented: Bool = false
     
     var body: some View {
@@ -17,7 +17,7 @@ struct SalmonStatsSetting: View {
                 HStack(content: {
                     Text("STATS.CREDENTIAL", comment: "APIトークン")
                     Spacer()
-                    Text(service.connection.apiToken?.prefix(16) ?? "-")
+                    Text(service.session.apiToken?.prefix(16) ?? "-")
                         .lineLimit(1)
                         .foregroundColor(.secondary)
                 })
@@ -30,8 +30,6 @@ struct SalmonStatsSetting: View {
                 }, label: {
                     Text("STATS.SIGNIN", comment: "SalmonStatsと連携")
                 })
-                    .authorizeToken(isPresented: $isPresented, manager: service.connection, completion: { result in
-                    })
             }, header: {
                 Text("HEADER.SERVICE", comment: "サービスヘッダー")
             })

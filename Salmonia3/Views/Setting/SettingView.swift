@@ -10,24 +10,19 @@ import SwiftyUI
 import SplatNet2
 
 struct SettingView: View {
-    @EnvironmentObject var service: AppManager
+    @EnvironmentObject var service: AppService
     
     var body: some View {
         Form(content: {
             Section(content: {
-                HSContent(title: "USER.NICKNAME", content: service.account?.nickname, comment: "ニックネーム")
-                HSContent(title: "USER.PLAYERID", content: service.account?.credential.nsaid, comment: "プレイヤーID")
-                HSContent(title: "USER.IKSMSESSION", content: service.account?.credential.iksmSession, comment: "認証トークン")
-                AccountView(manager: service.connection)
+                SignInView()
+                AccountView()
             }, header: {
                 Text("HEADER.SPLATNET2", comment: "SplatNet2")
             })
             Section(content: {
                 NavigationLink(destination: SalmonStatsSetting(), label: {
                     Text("SALMONSTATS", comment: "SalmonStats")
-                })
-                NavigationLink(destination: SalmonStatPlusSetting(), label: {
-                    Text("SALMONSTATS+", comment: "SalmonStats+")
                 })
             }, header: {
                 Text("HEADER.SALMONSTATS+", comment: "SalmonStats+")
@@ -41,7 +36,7 @@ struct SettingView: View {
             })
             Section(content: {
                 HSContent(title: "USER.APPVERSION", content: service.application.appVersion, comment: "アプリのバージョン")
-                HSContent(title: "USER.APIVERSION", content: service.connection.version, comment: "APIのバージョン")
+                HSContent(title: "USER.APIVERSION", content: service.session.version, comment: "APIのバージョン")
             }, header: {
                 Text("HEADER.SETTING.APPLICATION", comment: "外観ヘッダー")
             })
@@ -51,7 +46,7 @@ struct SettingView: View {
 }
 
 private struct ListStyleDialog: View {
-    @EnvironmentObject var service: AppManager
+    @EnvironmentObject var service: AppService
     @State var isPresented: Bool = false
     
     var body: some View {
@@ -64,7 +59,7 @@ private struct ListStyleDialog: View {
             })
         })
             .confirmationDialog(Text(service.apperances.listStyle.rawValue), isPresented: $isPresented, actions: {
-                ForEach(AppManager.Appearances.ListStyle.allCases) { listStyle in
+                ForEach(AppService.Appearances.ListStyle.allCases) { listStyle in
                     Button(action: {
                         service.apperances.listStyle = listStyle
                         service.objectWillChange.send()
@@ -75,7 +70,7 @@ private struct ListStyleDialog: View {
 }
 
 private struct ResultStyleDialog: View {
-    @EnvironmentObject var service: AppManager
+    @EnvironmentObject var service: AppService
     @State var isPresented: Bool = false
     
     var body: some View {
@@ -88,7 +83,7 @@ private struct ResultStyleDialog: View {
             })
         })
             .confirmationDialog(Text(service.apperances.resultStyle.rawValue), isPresented: $isPresented, actions: {
-                ForEach(AppManager.Appearances.ResultStyle.allCases) { resultStyle in
+                ForEach(AppService.Appearances.ResultStyle.allCases) { resultStyle in
                     Button(action: {
                         service.apperances.resultStyle = resultStyle
                         service.objectWillChange.send()
@@ -99,7 +94,7 @@ private struct ResultStyleDialog: View {
 }
 
 private struct RefreshStyleDialog: View {
-    @EnvironmentObject var service: AppManager
+    @EnvironmentObject var service: AppService
     @State var isPresented: Bool = false
     
     var body: some View {
@@ -112,7 +107,7 @@ private struct RefreshStyleDialog: View {
             })
         })
             .confirmationDialog(Text(service.apperances.refreshStyle.rawValue), isPresented: $isPresented, actions: {
-                ForEach(AppManager.Appearances.RefreshStyle.allCases) { refreshStyle in
+                ForEach(AppService.Appearances.RefreshStyle.allCases) { refreshStyle in
                     Button(action: {
                         service.apperances.refreshStyle = refreshStyle
                         service.objectWillChange.send()
@@ -123,7 +118,7 @@ private struct RefreshStyleDialog: View {
 }
 
 private struct FontStyleDialog: View {
-    @EnvironmentObject var service: AppManager
+    @EnvironmentObject var service: AppService
     @State var isPresented: Bool = false
     
     var body: some View {
@@ -142,7 +137,7 @@ private struct FontStyleDialog: View {
 }
 
 private struct FontStylePicker: View {
-    @EnvironmentObject var service: AppManager
+    @EnvironmentObject var service: AppService
     
     var body: some View {
         VStack(content: {

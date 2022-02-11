@@ -7,37 +7,26 @@
 
 import SwiftUI
 import SwiftyUI
+import SwiftyChart
 import RealmSwift
 import SplatNet2
-import SwiftyChart
 
 struct UserView: View {
-    @EnvironmentObject var service: AppManager
+    @EnvironmentObject var service: AppService
     
     var body: some View {
         NavigationView(content: {
-            if let nsaid = service.account?.credential.nsaid {
-                let stats: UserStatsModel = UserStatsModel(nsaid: nsaid)
-                UserStatsView(user: stats)
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar(content: {
-                        ToolbarItem(placement: .navigationBarTrailing, content: {
-                            NavigationLink(destination: SettingView(), label: {
-                                Image(systemName: .Gearshape)
-                            })
-                        })
+            Form(content: {
+            })
+            .navigationTitle("NAVIGATION.USER")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar(content: {
+                ToolbarItem(placement: .navigationBarTrailing, content: {
+                    NavigationLink(destination: SettingView(), label: {
+                        Image(systemName: .Gearshape)
                     })
-            } else {
-                ScrollView(content: {})
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar(content: {
-                        ToolbarItem(placement: .navigationBarTrailing, content: {
-                            NavigationLink(destination: SettingView(), label: {
-                                Image(systemName: .Gearshape)
-                            })
-                        })
-                    })
-            }
+                })
+            })
         })
     }
 }

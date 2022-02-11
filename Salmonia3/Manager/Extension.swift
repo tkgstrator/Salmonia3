@@ -14,9 +14,3 @@ extension String {
         return NSLocalizedString(self, comment: "")
     }
 }
-
-extension AppManager {
-    internal var account: UserInfo? {
-        connection.account
-    }
-}

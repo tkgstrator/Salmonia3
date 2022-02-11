@@ -11,7 +11,7 @@ import SalmonStats
 import Combine
 
 struct LoadingView: View {
-    @EnvironmentObject var service: AppManager
+    @EnvironmentObject var service: AppService
     @Environment(\.dismiss) var dismiss
     @State var sp2Error: SP2Error?
     @State var task = Set<AnyCancellable>()
@@ -26,7 +26,7 @@ struct LoadingView: View {
     }
     
     func loadResultsFromSplatNet2() {
-        service.connection.uploadResults(resultId: 3580)
+        service.session.uploadResults(resultId: 3580)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
@@ -38,8 +38,6 @@ struct LoadingView: View {
                         sp2Error = error
                 }
             }, receiveValue: { response in
-                service.save(response.map({ RealmCoopResult(from: $0.1, stats: $0.0) }))
-                service.register(response)
             })
             .store(in: &task)
     }

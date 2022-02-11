@@ -7,9 +7,10 @@
 
 import SwiftUI
 import SwiftyUI
+import SplatNet2
 
 struct ContentView: View {
-    @EnvironmentObject var service: AppManager
+    @EnvironmentObject var service: AppService
     @State var selection: Int = 0
     
     var body: some View {
@@ -35,10 +36,8 @@ struct ContentView: View {
         })
             .font(systemName: service.apperances.fontStyle, size: 16)
             .preferredColorScheme(service.apperances.colorScheme)
-            .fullScreenCover(isPresented: $service.isLoading, onDismiss: { service.isLoading = false }, content: {
-                LoadingView()
-                    .environmentObject(service)
-                    .font(systemName: service.apperances.fontStyle, size: 16)
+            .fullScreenCover(isPresented: $service.isSignIn, onDismiss: {}, content: {
+                CircleProgressView()
             })
     }
 }
