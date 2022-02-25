@@ -1,0 +1,125 @@
+
+import SplatNet2
+
+extension WeaponType {
+	var isPenetrateFriend: Double {
+		switch self {
+		case .randomGold:
+			return 0
+		case .randomGreen:
+			return 0
+		case .shooterShort:
+			return 0
+		case .shooterFirst:
+			return 0
+		case .shooterPrecision:
+			return 0
+		case .shooterBlaze:
+			return 0
+		case .shooterNormal:
+			return 0
+		case .shooterGravity:
+			return 0
+		case .shooterQuickMiddle:
+			return 0
+		case .shooterExpert:
+			return 0
+		case .shooterHeavy:
+			return 0
+		case .shooterLong:
+			return 0
+		case .shooterBlasterShort:
+			return 100
+		case .shooterBlasterMiddle:
+			return 100
+		case .shooterBlasterLong:
+			return 100
+		case .shooterBlasterLightShort:
+			return 100
+		case .shooterBlasterLight:
+			return 100
+		case .shooterBlasterLightLong:
+			return 100
+		case .shooterTripleQuick:
+			return 0
+		case .shooterTripleMiddle:
+			return 0
+		case .shooterFlash:
+			return 0
+		case .rollerCompact:
+			return 0
+		case .rollerNormal:
+			return 0
+		case .rollerHeavy:
+			return 0
+		case .rollerHunter:
+			return 0
+		case .rollerBrushMini:
+			return 0
+		case .rollerBrushNormal:
+			return 0
+		case .chargerQuick:
+			return 100
+		case .chargerNormal:
+			return 100
+		case .chargerNormalScope:
+			return 100
+		case .chargerLong:
+			return 100
+		case .chargerLongScope:
+			return 100
+		case .chargerLight:
+			return 0
+		case .chargerKeeper:
+			return 100
+		case .slosherStrong:
+			return 0
+		case .slosherDiffusion:
+			return 0
+		case .slosherLauncher:
+			return 0
+		case .slosherBathtub:
+			return 0
+		case .slosherWashtub:
+			return 100
+		case .spinnerQuick:
+			return 0
+		case .spinnerStandard:
+			return 0
+		case .spinnerHyper:
+			return 0
+		case .spinnerDownpour:
+			return 0
+		case .spinnerSerein:
+			return 0
+		case .twinsShort:
+			return 0
+		case .twinsNormal:
+			return 0
+		case .twinsGallon:
+			return 0
+		case .twinsDual:
+			return 0
+		case .twinsStepper:
+			return 0
+		case .umbrellaNormal:
+			return 0
+		case .umbrellaWide:
+			return 0
+		case .umbrellaCompact:
+			return 0
+		case .shooterBlasterBurst:
+			return 100
+		case .umbrellaAutoAssault:
+			return 0
+		case .chargerSpark:
+			return 100
+		case .slosherVase:
+			return 100
+		default:
+			return 0
+		}
+	}
+
+}
+

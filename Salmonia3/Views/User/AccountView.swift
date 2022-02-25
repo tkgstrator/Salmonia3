@@ -17,9 +17,9 @@ struct AccountView: View {
             isPresented.toggle()
         }, label: {
             HStack(content: {
-                Text("USER.ACCOUNTS")
+                Text("アカウント")
                 Spacer()
-                Text(service.session.account?.nickname ?? "-")
+                Text(service.session.account?.nickname ?? "未ログイン")
                     .foregroundColor(.secondary)
             })
         })

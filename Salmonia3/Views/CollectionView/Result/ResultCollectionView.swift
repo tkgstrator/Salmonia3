@@ -25,20 +25,13 @@ struct ResultCollectionView: View {
                 }
             })
                 .listStyle(.plain)
-                .refreshable {
+                .refreshable(action: {
                     service.isLoading.toggle()
-                }
-                .navigationTitle("Results")
+                })
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle("リザルト一覧")
         })
-            .overlay(refreshButton, alignment: .bottomTrailing)
             .navigationViewStyle(SplitNavigationViewStyle())
-    }
-    
-    var refreshButton: some View {
-        Button(action: { service.isLoading.toggle() }, label: { Image(.refresh).resizable().aspectRatio(contentMode: .fit).frame(width: 35) })
-            .buttonStyle(GrowingButtonStyle())
-//            .visible(service.apperances.refreshStyle == .button)
-            .padding()
     }
 }
 

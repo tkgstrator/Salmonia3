@@ -25,11 +25,12 @@ struct ShiftCollectionView: View {
                 }
             })
                 .listStyle(.plain)
-                .navigationTitle("TITLE.SHIFTSCHEDULE")
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle("シフトスケジュール")
         })
-            .onAppear(perform: {
-                $schedules.filter = NSPredicate(format: "startTime in %@", argumentArray: [results.playedScheduleList])
-            })
+//            .onAppear(perform: {
+//                $schedules.filter = NSPredicate(format: "startTime in %@", argumentArray: [results.playedScheduleList])
+//            }
             .navigationViewStyle(SplitNavigationViewStyle())
     }
 }

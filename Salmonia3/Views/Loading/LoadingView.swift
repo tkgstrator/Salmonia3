@@ -13,38 +13,23 @@ import Combine
 struct LoadingView: View {
     @EnvironmentObject var service: AppService
     @Environment(\.dismiss) var dismiss
-    @State var sp2Error: SP2Error?
-    @State var task = Set<AnyCancellable>()
     
     var body: some View {
         LoggingThread()
+            .overlay(CircleProgressView(progress: service.progress))
             .background(BackgroundWave())
-            .onAppear(perform: loadResultsFromSplatNet2)
-            .alert(item: $sp2Error, content: { error in
-                Alert(title: Text("Error"), message: Text(error.localizedDescription), dismissButton: .default(Text("Dismiss"), action: { dismiss() }))
+            .onAppear(perform: {
+                service.loadResultsFromSplatNet2()
             })
-    }
-    
-    func loadResultsFromSplatNet2() {
-        service.session.uploadResults(resultId: 3580)
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                    case .finished:
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-                            self.dismiss()
-                        })
-                    case .failure(let error):
-                        sp2Error = error
-                }
-            }, receiveValue: { response in
+            .onDisappear(perform: {
+                service.progress = nil
             })
-            .store(in: &task)
     }
 }
 
 struct LoadingView_Previews: PreviewProvider {
     static var previews: some View {
         LoadingView()
+            .environmentObject(AppService())
     }
 }

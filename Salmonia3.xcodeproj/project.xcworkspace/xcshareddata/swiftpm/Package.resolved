@@ -177,8 +177,17 @@
         "repositoryURL": "https://github.com/tkgstrator/SplatNet2",
         "state": {
           "branch": null,
-          "revision": "7d8b92a2275c58211ec6a8ece87f2ff0727f7867",
-          "version": "1.0.5"
+          "revision": "ec748ab32022f0285c2d72d4db80951b88ef10ea",
+          "version": "1.0.14"
+        }
+      },
+      {
+        "package": "Surge",
+        "repositoryURL": "https://github.com/Jounce/Surge",
+        "state": {
+          "branch": null,
+          "revision": "6e4a47e63da8801afe6188cf039e9f04eb577721",
+          "version": "2.3.2"
         }
       },
       {

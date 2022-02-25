@@ -7,19 +7,38 @@
 
 import SwiftUI
 import SplatNet2
+import SalmonStats
 
 struct SignInView: View {
     @EnvironmentObject var service: AppService
     @State var isPresented: Bool = false
     
     var body: some View {
-        
         Button(action: {
             isPresented.toggle()
         }, label: {
-            Text("SIGNIN.SPLATNET2")
+            Text("ログインする")
         })
             .authorize(isPresented: $isPresented, session: service.session)
+    }
+}
+
+struct SignInStatsView: View {
+    @EnvironmentObject var service: AppService
+    @State var isPresented: Bool = false
+    
+    var body: some View {
+        Button(action: {
+            isPresented.toggle()
+        }, label: {
+            HStack(content: {
+                Text("連携する")
+                Spacer()
+                Text(service.session.apiToken == nil ? "未連携" : "連携済み")
+                    .foregroundColor(.secondary)
+            })
+        })
+            .authorizeToken(isPresented: $isPresented, session: service.session)
     }
 }
 
@@ -28,3 +47,5 @@ struct SignInView_Previews: PreviewProvider {
         SignInView()
     }
 }
+
+
