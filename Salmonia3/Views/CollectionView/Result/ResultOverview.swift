@@ -38,7 +38,7 @@ struct ResultOverview: View {
                 LazyHStack(spacing: nil, content: {
 //                    Text("\(result.indexOfResults)")
 //                        .font(.Splatfont2, size: 13)
-                    Text("RESULT.CLEAR", comment: "バイトクリア")
+                    Text("Clear")
                         .font(systemName: .Splatfont2, size: 13, foregroundColor: .green)
                 })
                 LazyHStack(content: {
@@ -57,7 +57,7 @@ struct ResultOverview: View {
                 LazyHStack(spacing: nil, content: {
 //                    Text("\(result.indexOfResults)")
 //                        .font(.Splatfont2, size: 13)
-                    Text("RESULT.DEFEATED", comment: "バイト失敗")
+                    Text("Failure")
                         .font(systemName: .Splatfont2, size: 13, foregroundColor: .safetyorange)
                 })
                 LazyHStack(content: {

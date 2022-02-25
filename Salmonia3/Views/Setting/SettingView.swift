@@ -14,32 +14,19 @@ struct SettingView: View {
     
     var body: some View {
         Form(content: {
+            SettingView_SplatNet2()
+            SettingView_SalmonStats()
+            SettingView_Appearance()
+            SettingView_Application()
+#if DEBUG
             Section(content: {
-                SignInView()
-                AccountView()
-            }, header: {
-                Text("HEADER.SPLATNET2", comment: "SplatNet2")
-            })
-            Section(content: {
-                NavigationLink(destination: SalmonStatsSetting(), label: {
-                    Text("SALMONSTATS", comment: "SalmonStats")
+                Button(action: {
+                    service.session.setXProductVersion(version: "1.13.1")
+                }, label: {
+                    Text("IKSM.SESSION")
                 })
-            }, header: {
-                Text("HEADER.SALMONSTATS+", comment: "SalmonStats+")
             })
-            Section(content: {
-                Toggle(isOn: $service.apperances.isDarkmode, label: {
-                    Text("SETTING.DARKMODE", comment: "ダークモードを利用するかどうか")
-                })
-            }, header: {
-                Text("HEADER.SETTING.APPEARANCES", comment: "外観ヘッダー")
-            })
-            Section(content: {
-                HSContent(title: "USER.APPVERSION", content: service.application.appVersion, comment: "アプリのバージョン")
-                HSContent(title: "USER.APIVERSION", content: service.session.version, comment: "APIのバージョン")
-            }, header: {
-                Text("HEADER.SETTING.APPLICATION", comment: "外観ヘッダー")
-            })
+#endif
         })
             .navigationTitle("Setting")
     }

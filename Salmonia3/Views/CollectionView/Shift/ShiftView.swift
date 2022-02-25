@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SplatNet2
+import Surge
 
 struct ShiftView: View {
     let shift: RealmCoopShift
@@ -20,17 +21,18 @@ struct ShiftView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0, content: {
             Group(content: {
-                LazyHStack(alignment: .center, spacing: nil, content: {
+                HStack(alignment: .center, spacing: nil, content: {
                     Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(shift.startTime))))
                     Text(verbatim: "-")
                     Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(shift.endTime))))
                 })
                     .padding(2)
-                    .background(Color.black.opacity(0.9))
-                Text(shift.stageName)
             })
-                .foregroundColor(.white)
-            LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 25, maximum: 50)), count: 4), alignment: .trailing, spacing: nil, pinnedViews: [], content: {
+//                Text(String(format: "偏差値 %2.2f", shift.deviation))
+//                    .foregroundColor(.whitesmoke)
+//                    .padding(.horizontal)
+//                    .background(Capsule().fill(Color.red))
+            LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 30, maximum: 40)), count: 4), alignment: .trailing, spacing: nil, pinnedViews: [], content: {
                 ForEach(shift.weaponList.indices) { index in
                     Image(shift.weaponList[index])
                         .resizable()
@@ -43,31 +45,28 @@ struct ShiftView: View {
     }
 }
 
-//struct ShiftView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ShiftView()
-//    }
-//}
+internal extension RealmCoopShift {
+    /// スコア
+    var score: Double {
+        let scores: [Double] = weaponList.map({ weapon -> Double in
+            (weapon.rank * 4 + weapon.firePower * 1 + weapon.flexibility * 1 + weapon.handling * 3 + weapon.stability * 1 + weapon.mobility * 1) / 11
+        })
+        return Surge.sum(scores)
+    }
+    
+    /// 偏差値
+    var deviation: Double {
+        guard let shifts = realm?.objects(RealmCoopShift.self) else {
+            return 50
+        }
+        // 平均値
+        let avg: Double = Surge.sum(shifts.map({ $0.score })) / Double(shifts.count)
+        // 標準偏差
+        let std: Double = Surge.std(shifts.map({ $0.score }))
+        return (score - avg) / std * 10 + 50
+    }
+}
 
 extension WeaponType: Identifiable {
     public var id: Int { rawValue }
-}
-
-class EnvironmentValue {
-    struct CoopShift: EnvironmentKey {
-        static var defaultValue: RealmCoopShift = RealmCoopShift()
-        
-        typealias Value = RealmCoopShift
-    }
-}
-
-extension EnvironmentValues {
-    var shiftSchedule: RealmCoopShift {
-        get {
-            self[EnvironmentValue.CoopShift.self]
-        }
-        set {
-            self[EnvironmentValue.CoopShift.self] = newValue
-        }
-    }
 }
