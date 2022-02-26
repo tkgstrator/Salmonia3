@@ -41,12 +41,12 @@ struct StatsCard: View {
                 ZStack(content: {
                     Group(content: {
                         Circle()
-                            .trim(from: 0.0, to: score / totalValue * scale)
+                            .trim(from: other / totalValue, to: 1.0 * scale)
                             .stroke(.orange, lineWidth: 6)
                             .opacity(0.8)
                             .rotationEffect(.degrees(-90))
                         Circle()
-                            .trim(from: score / totalValue, to: 1.0 * scale)
+                            .trim(from: 0.0, to: other / totalValue * scale)
                             .stroke(.blue, lineWidth: 6)
                             .rotationEffect(.degrees(-90))
                         Text(String(format: "%2.2f", score))

@@ -24,7 +24,7 @@ final class AppService: ObservableObject {
             config.schemaVersion = schemeVersion
             self.realm = try! Realm(configuration: config, queue: nil)
         }
-        self.session = SalmonStats()
+        self.session = SalmonStats(refreshable: true)
         /// スケジュールを追加
         self.session.delegate = self
         /// アカウントを設定
