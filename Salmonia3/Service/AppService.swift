@@ -60,6 +60,8 @@ final class AppService: ObservableObject {
     @Published var apperances: Appearances = Appearances.shared
     /// アプリの詳細の設定
     @Published var application: Application = Application.shared
+    /// シフト表示モード
+    @AppStorage("APP_SHIFT_DISPLAY_MODE") var shiftDisplayMode: ShiftDisplayMode = .current
     /// RealmSwiftのScheme Version
     private let schemeVersion: UInt64 = 8192
     /// RealmSwiftのインスタンス

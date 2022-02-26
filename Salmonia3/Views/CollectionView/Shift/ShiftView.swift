@@ -18,29 +18,38 @@ struct ShiftView: View {
         return formatter
     }()
     
+    var StageImage: some View {
+        Image(shift.stageId)
+            .resizable()
+            .scaledToFit()
+            .frame(height: 60)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .padding(.bottom)
+    }
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 0, content: {
+        VStack(alignment: .leading, spacing: nil, content: {
             Group(content: {
                 HStack(alignment: .center, spacing: nil, content: {
                     Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(shift.startTime))))
                     Text(verbatim: "-")
                     Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(shift.endTime))))
                 })
-                    .padding(2)
             })
-//                Text(String(format: "偏差値 %2.2f", shift.deviation))
-//                    .foregroundColor(.whitesmoke)
-//                    .padding(.horizontal)
-//                    .background(Capsule().fill(Color.red))
-            LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 30, maximum: 40)), count: 4), alignment: .trailing, spacing: nil, pinnedViews: [], content: {
+            LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 40, maximum: 50), spacing: nil, alignment: .top), count: 4), alignment: .trailing, spacing: nil, content: {
                 ForEach(shift.weaponList.indices) { index in
                     Image(shift.weaponList[index])
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .padding(2)
+                        .padding(4)
                         .background(Circle().fill(.black.opacity(0.9)))
                 }
             })
+                .overlay(StageImage, alignment: .leading)
+//                Text(String(format: "偏差値 %2.2f", shift.deviation))
+//                    .foregroundColor(.whitesmoke)
+//                    .padding(.horizontal)
+//                    .background(Capsule().fill(Color.red))
         })
     }
 }
