@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SplatNet2
 
 struct ResultWave: View {
     let result: RealmCoopResult
@@ -14,35 +15,76 @@ struct ResultWave: View {
         LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.wave.count), content: {
             ForEach(result.wave) { wave in
                 VStack(alignment: .center, spacing: 0, content: {
-                    Text("RESULT.WAVE.\(wave.index)", comment: "WAVE数")
+                    Text("WAVE \(wave.index)")
                         .font(systemName: .Splatfont2, size: 14)
                         .foregroundColor(.black)
                         .lineLimit(1)
                     Text("\(wave.goldenIkuraNum)/\(wave.quotaNum)")
-                        .font(systemName: .Splatfont2, size: 20)
+                        .font(systemName: .Splatfont2, size: 22)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .background(Color.black)
-                    Text("\(wave.ikuraNum)")
-                        .font(systemName: .Splatfont2, size: 12)
-                        .foregroundColor(.red)
-                    Text(wave.waterLevel.rawValue)
-                        .font(systemName: .Splatfont2, size: 12)
-                        .minimumScaleFactor(1.0)
-                    Text(wave.eventType.rawValue)
-                        .font(systemName: .Splatfont2, size: 12)
-                        .minimumScaleFactor(1.0)
+                    VStack(spacing: -10, content: {
+                        Text("\(wave.ikuraNum)")
+                            .font(systemName: .Splatfont2, size: 16)
+                            .foregroundColor(.red)
+                        Text(wave.waterLevel)
+                            .font(systemName: .Splatfont2, size: 14)
+                            .minimumScaleFactor(1.0)
+                            .foregroundColor(.black)
+                        Text(wave.eventType)
+                            .font(systemName: .Splatfont2, size: 14)
+                            .minimumScaleFactor(1.0)
+                            .foregroundColor(.black)
+                    })
                 })
-//                    .padding(.horizontal)
-                    .background(RoundedRectangle(cornerRadius: 4).fill(Color.yellow))
+                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.yellow))
             }
         })
-            .background(Color.white.opacity(0.3))
+            .padding(.horizontal)
     }
 }
 
-//struct ResultWave_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ResultWave()
-//    }
-//}
+fileprivate extension Text {
+    init(_ waterLevel: WaterKey) {
+        self.init(waterLevel.waterLevel)
+    }
+    
+    init(_ eventType: EventKey) {
+        self.init(eventType.eventType)
+    }
+}
+
+fileprivate extension WaterKey {
+    var waterLevel: String {
+        switch self {
+        case .high:
+            return "満潮"
+        case .low:
+            return "干潮"
+        case .normal:
+            return "通常"
+        }
+    }
+}
+
+fileprivate extension EventKey {
+    var eventType: String {
+        switch self {
+        case .waterLevels:
+            return "-"
+        case .rush:
+            return "ラッシュ"
+        case .goldieSeeking:
+            return "キンシャケ探し"
+        case .griller:
+            return "グリル発進"
+        case .fog:
+            return "霧"
+        case .theMothership:
+            return "ハコビヤ襲来"
+        case .cohockCharge:
+            return "ドスコイ大量発生"
+        }
+    }
+}

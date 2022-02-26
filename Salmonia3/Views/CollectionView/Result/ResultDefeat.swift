@@ -24,7 +24,7 @@ struct ResultDefeat: View {
         Button(action: {
             isPresented.toggle()
         }, label: {
-            Text("RESULT.BOSS.DEFEATED.\(bossKillCount.reduce(0, +))", comment: "ボス討伐合計")
+            Text("オオモノシャケをたおした数 x\(bossKillCount.reduce(0, +))")
                 .font(systemName: .Splatfont2, size: 14)
         })
             .buttonStyle(.plain)

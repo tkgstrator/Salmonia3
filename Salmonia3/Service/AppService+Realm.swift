@@ -56,4 +56,11 @@ extension AppService {
     func addLatestShiftSchedule() {
         self.save(SplatNet2.schedule.map({ RealmCoopShift(from: $0) }))
     }
+    
+    var playedShiftScheduleId: [Int] {
+        guard let nsaid = account?.credential.nsaid else {
+            return []
+        }
+        return Array(Set(realm.objects(RealmCoopResult.self).filter("pid=%@", nsaid).map({ $0.startTime })))
+    }
 }

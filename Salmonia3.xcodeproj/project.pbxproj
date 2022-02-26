@@ -31,6 +31,10 @@
 		100556F127C91AED0094582D /* FirePower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556D727C91AED0094582D /* FirePower.swift */; };
 		100556F227C91AED0094582D /* Stingers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556D827C91AED0094582D /* Stingers.swift */; };
 		100556F527C9217F0094582D /* Surge in Frameworks */ = {isa = PBXBuildFile; productRef = 100556F427C9217F0094582D /* Surge */; };
+		100556F727C948200094582D /* ShiftFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556F627C948200094582D /* ShiftFilterButton.swift */; };
+		100556F927C948E90094582D /* ShiftDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556F827C948E90094582D /* ShiftDisplayMode.swift */; };
+		100556FB27C9888D0094582D /* ShiftStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556FA27C9888D0094582D /* ShiftStatsView.swift */; };
+		100556FE27C98B3D0094582D /* StatsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556FD27C98B3D0094582D /* StatsCard.swift */; };
 		101141AF2783545F0088DF4C /* SwiftyChart in Frameworks */ = {isa = PBXBuildFile; productRef = 101141AE2783545F0088DF4C /* SwiftyChart */; };
 		101141B2278477060088DF4C /* UserStatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101141B1278477060088DF4C /* UserStatsModel.swift */; };
 		10162F8827C7B2CA00ACFD4D /* SettingView+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10162F8727C7B2CA00ACFD4D /* SettingView+Appearance.swift */; };
@@ -78,6 +82,7 @@
 		109F97FA2724CF0C00AB1FA3 /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97F92724CF0C00AB1FA3 /* ResultType.swift */; };
 		109F97FC2724D44100AB1FA3 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97FB2724D44100AB1FA3 /* Text.swift */; };
 		109F98052724EC9400AB1FA3 /* Rainbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F98042724EC9400AB1FA3 /* Rainbow.swift */; };
+		10AE389E27C99D170084D8E6 /* StatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AE389D27C99D170084D8E6 /* StatsModel.swift */; };
 		10BA13F027201A7B00348DD3 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10BA13EF27201A7B00348DD3 /* RealmSwift */; };
 		10BA13F327201AF300348DD3 /* RealmCoopResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13F227201AF300348DD3 /* RealmCoopResult.swift */; };
 		10BA13F527201B1400348DD3 /* RealmCoopWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13F427201B1400348DD3 /* RealmCoopWave.swift */; };
@@ -139,6 +144,10 @@
 		100556D527C91AED0094582D /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Range.swift; path = ../../../../../Downloads/Param/WeaponBullet/swift/Range.swift; sourceTree = "<group>"; };
 		100556D727C91AED0094582D /* FirePower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirePower.swift; path = ../../../../../Downloads/Param/WeaponBullet/swift/FirePower.swift; sourceTree = "<group>"; };
 		100556D827C91AED0094582D /* Stingers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stingers.swift; path = ../../../../../Downloads/Param/WeaponBullet/swift/Stingers.swift; sourceTree = "<group>"; };
+		100556F627C948200094582D /* ShiftFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftFilterButton.swift; sourceTree = "<group>"; };
+		100556F827C948E90094582D /* ShiftDisplayMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftDisplayMode.swift; sourceTree = "<group>"; };
+		100556FA27C9888D0094582D /* ShiftStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftStatsView.swift; sourceTree = "<group>"; };
+		100556FD27C98B3D0094582D /* StatsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCard.swift; sourceTree = "<group>"; };
 		101141B1278477060088DF4C /* UserStatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatsModel.swift; sourceTree = "<group>"; };
 		10162F8727C7B2CA00ACFD4D /* SettingView+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+Appearance.swift"; sourceTree = "<group>"; };
 		10162F8927C7B34D00ACFD4D /* SettingView_Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView_Application.swift; sourceTree = "<group>"; };
@@ -187,6 +196,7 @@
 		109F97F92724CF0C00AB1FA3 /* ResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
 		109F97FB2724D44100AB1FA3 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		109F98042724EC9400AB1FA3 /* Rainbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rainbow.swift; sourceTree = "<group>"; };
+		10AE389D27C99D170084D8E6 /* StatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsModel.swift; sourceTree = "<group>"; };
 		10BA13F227201AF300348DD3 /* RealmCoopResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopResult.swift; sourceTree = "<group>"; };
 		10BA13F427201B1400348DD3 /* RealmCoopWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopWave.swift; sourceTree = "<group>"; };
 		10BA13F627201B4700348DD3 /* RealmCoopPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopPlayer.swift; sourceTree = "<group>"; };
@@ -267,10 +277,19 @@
 			path = Parameters;
 			sourceTree = "<group>";
 		};
+		100556FC27C98B2D0094582D /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				100556FD27C98B3D0094582D /* StatsCard.swift */,
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
 		101141B0278476E50088DF4C /* ObservableObject */ = {
 			isa = PBXGroup;
 			children = (
 				101141B1278477060088DF4C /* UserStatsModel.swift */,
+				10AE389D27C99D170084D8E6 /* StatsModel.swift */,
 			);
 			path = ObservableObject;
 			sourceTree = "<group>";
@@ -396,6 +415,7 @@
 				10BA13F827201C6900348DD3 /* Type */,
 				101AED56271E367D009556B2 /* Color.swift */,
 				101AED60271E3F2B009556B2 /* Icon.swift */,
+				100556F827C948E90094582D /* ShiftDisplayMode.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -508,8 +528,11 @@
 		10C000DF2750E36900870DED /* Shift */ = {
 			isa = PBXGroup;
 			children = (
+				100556FC27C98B2D0094582D /* Stats */,
 				10635095274E2E4D00529930 /* ShiftCollectionView.swift */,
 				103168662750E3D10009070C /* ShiftView.swift */,
+				100556F627C948200094582D /* ShiftFilterButton.swift */,
+				100556FA27C9888D0094582D /* ShiftStatsView.swift */,
 			);
 			path = Shift;
 			sourceTree = "<group>";
@@ -697,6 +720,7 @@
 				109F97F82724ADB600AB1FA3 /* ResultOverview.swift in Sources */,
 				10635094274E2B1F00529930 /* RealmCoopShift.swift in Sources */,
 				100556E727C91AED0094582D /* Grillers.swift in Sources */,
+				10AE389E27C99D170084D8E6 /* StatsModel.swift in Sources */,
 				102C9DE1277E002A004822C1 /* ResultStats.swift in Sources */,
 				109F97FA2724CF0C00AB1FA3 /* ResultType.swift in Sources */,
 				100556DE27C91AED0094582D /* Smalls.swift in Sources */,
@@ -708,6 +732,7 @@
 				100556EA27C91AED0094582D /* Handling.swift in Sources */,
 				10162F9027C7BCEC00ACFD4D /* ProgressModel.swift in Sources */,
 				100556F127C91AED0094582D /* FirePower.swift in Sources */,
+				100556F927C948E90094582D /* ShiftDisplayMode.swift in Sources */,
 				109F97F62724AD7800AB1FA3 /* ResultView.swift in Sources */,
 				10C7C46E277F00260015ECBB /* AppService+Realm.swift in Sources */,
 				1041BC07277DAB36008B27F1 /* ResultPlayer.swift in Sources */,
@@ -719,6 +744,7 @@
 				100556EC27C91AED0094582D /* PowerInLosing.swift in Sources */,
 				100556DB27C91AED0094582D /* Chargeable.swift in Sources */,
 				103168672750E3D10009070C /* ShiftView.swift in Sources */,
+				100556FB27C9888D0094582D /* ShiftStatsView.swift in Sources */,
 				100556E227C91AED0094582D /* Rush.swift in Sources */,
 				100556D927C91AED0094582D /* Flexibility.swift in Sources */,
 				1041BC0D277DBCD5008B27F1 /* ResultStatus.swift in Sources */,
@@ -747,10 +773,12 @@
 				101AED61271E3F2B009556B2 /* Icon.swift in Sources */,
 				109F97EB272491E600AB1FA3 /* ResultCollectionView.swift in Sources */,
 				10162F8A27C7B34D00ACFD4D /* SettingView_Application.swift in Sources */,
+				100556FE27C98B3D0094582D /* StatsCard.swift in Sources */,
 				10635096274E2E4D00529930 /* ShiftCollectionView.swift in Sources */,
 				100556E627C91AED0094582D /* PaintabilityFloor.swift in Sources */,
 				109F97F02724A11900AB1FA3 /* GrowingButtonStyle.swift in Sources */,
 				10BA13F527201B1400348DD3 /* RealmCoopWave.swift in Sources */,
+				100556F727C948200094582D /* ShiftFilterButton.swift in Sources */,
 				1041BC09277DAFFE008B27F1 /* ResultWave.swift in Sources */,
 				109F97E8272490CE00AB1FA3 /* LoadingView.swift in Sources */,
 				10C7C46C277ED8330015ECBB /* Localized.swift in Sources */,

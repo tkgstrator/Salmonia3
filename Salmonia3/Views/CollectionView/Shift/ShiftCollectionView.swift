@@ -11,14 +11,30 @@ import SwiftyUI
 import RealmSwift
 
 struct ShiftCollectionView: View {
+    @EnvironmentObject var service: AppService
     @ObservedResults(RealmCoopShift.self, sortDescriptor: SortDescriptor(keyPath: "startTime", ascending: false)) var schedules
-    @ObservedResults(RealmCoopResult.self) var results
+    @State var isPresented: Bool = false
+    
+    var nsaid: String? {
+        service.account?.credential.nsaid
+    }
+    
+    func filterSchedules() {
+        switch service.shiftDisplayMode {
+        case .all:
+            $schedules.filter = nil
+        case .played:
+            $schedules.filter = NSPredicate("startTime", valuesIn: service.playedShiftScheduleId)
+        case .current:
+            $schedules.filter = NSPredicate("startTime", lessThan: Int(Date().timeIntervalSince1970))
+        }
+    }
     
     var body: some View {
         NavigationView(content: {
             List(content: {
                 ForEach(schedules) { schedule in
-                    NavigationLinker(destination: EmptyView(), label: {
+                    NavigationLinker(destination: ShiftStatsView(schedule: schedule, nsaid: nsaid), label: {
                         ShiftView(shift: schedule)
                     })
                         .disabled(schedule.startTime >= Int(Date().timeIntervalSince1970))
@@ -27,10 +43,25 @@ struct ShiftCollectionView: View {
                 .listStyle(.plain)
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle("シフトスケジュール")
+                .toolbar(content: {
+                    ToolbarItem(placement: .navigationBarTrailing, content: {
+                        Button(action: {
+                            isPresented.toggle()
+                        }, label: {
+                            Image(systemName: .Line3HorizontalDecreaseCircle)
+                        })
+                    })
+                })
+                .onAppear(perform: {
+                    filterSchedules()
+                })
+                .halfsheet(isPresented: $isPresented, onDismiss: {
+                    filterSchedules()
+                }, content: {
+                    ShiftFilterButton()
+                        .environmentObject(service)
+                })
         })
-//            .onAppear(perform: {
-//                $schedules.filter = NSPredicate(format: "startTime in %@", argumentArray: [results.playedScheduleList])
-//            }
             .navigationViewStyle(SplitNavigationViewStyle())
     }
 }
