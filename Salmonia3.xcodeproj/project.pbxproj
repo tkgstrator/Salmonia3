@@ -96,6 +96,7 @@
 		10C7C46E277F00260015ECBB /* AppService+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7C46D277F00260015ECBB /* AppService+Realm.swift */; };
 		10CDEA2727B6A9A9003D553F /* SalmonStats in Frameworks */ = {isa = PBXBuildFile; productRef = 10CDEA2627B6A9A9003D553F /* SalmonStats */; };
 		10CDEA2927B6A9A9003D553F /* SplatNet2 in Frameworks */ = {isa = PBXBuildFile; productRef = 10CDEA2827B6A9A9003D553F /* SplatNet2 */; };
+		10E0C8A827CA6908002F4506 /* StatsCardSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E0C8A727CA6908002F4506 /* StatsCardSmall.swift */; };
 		10E74E8027B6B8B700D0E962 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E74E7F27B6B8B700D0E962 /* SignInView.swift */; };
 		10E74E8227B6C42E00D0E962 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E74E8127B6C42E00D0E962 /* AccountView.swift */; };
 		10F38E87277E1E9900CD945F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10F38E89277E1E9900CD945F /* Localizable.strings */; };
@@ -204,6 +205,7 @@
 		10C0FE7A274C207900870DED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10C7C46B277ED8330015ECBB /* Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		10C7C46D277F00260015ECBB /* AppService+Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppService+Realm.swift"; sourceTree = "<group>"; };
+		10E0C8A727CA6908002F4506 /* StatsCardSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCardSmall.swift; sourceTree = "<group>"; };
 		10E74E7F27B6B8B700D0E962 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		10E74E8127B6C42E00D0E962 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		10F38E88277E1E9900CD945F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				100556FD27C98B3D0094582D /* StatsCard.swift */,
+				10E0C8A727CA6908002F4506 /* StatsCardSmall.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -718,6 +721,7 @@
 				100556DD27C91AED0094582D /* Penetrable.swift in Sources */,
 				107B687B27B7362000238B9D /* AppService+Network.swift in Sources */,
 				109F97F82724ADB600AB1FA3 /* ResultOverview.swift in Sources */,
+				10E0C8A827CA6908002F4506 /* StatsCardSmall.swift in Sources */,
 				10635094274E2B1F00529930 /* RealmCoopShift.swift in Sources */,
 				100556E727C91AED0094582D /* Grillers.swift in Sources */,
 				10AE389E27C99D170084D8E6 /* StatsModel.swift in Sources */,
