@@ -33,6 +33,14 @@ struct ShiftStatsView: View {
                 ForEach(stats.helpCount) { helpCount in
                     StatsCard(stats: helpCount)
                 }
+                ForEach(stats.defeatedCount) { defeatedCount in
+                    StatsCard(stats: defeatedCount)
+                }
+            })
+            LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 3), content: {
+                ForEach(stats.defeatedIdCount) { defeatedCount in
+                    StatsCardSmall(stats: defeatedCount)
+                }
             })
         })
             .padding(.horizontal)
