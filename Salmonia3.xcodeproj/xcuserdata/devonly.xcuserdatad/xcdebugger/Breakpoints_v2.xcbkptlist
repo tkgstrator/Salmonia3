@@ -328,7 +328,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "22255D1E-EA1C-4B1F-92CA-A6A5D91CF5E8"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../Library/Developer/Xcode/DerivedData/Salmonia3-giegwixinunwqvcuqshhhedlsvyf/SourcePackages/checkouts/SplatNet2/Sources/SplatNet2/Extension/SplatNet2/SplatNet2+Session.swift"
@@ -392,7 +392,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "03BD0966-FD04-45B9-BF7A-23E9BED942CA"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../Library/Developer/Xcode/DerivedData/Salmonia3-giegwixinunwqvcuqshhhedlsvyf/SourcePackages/checkouts/SplatNet2/Sources/SplatNet2/Extension/Error.swift"

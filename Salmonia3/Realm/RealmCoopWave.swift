@@ -17,7 +17,7 @@ final class RealmCoopWave: Object {
     @Persisted var goldenIkuraPopNum: Int
     @Persisted var quotaNum: Int
     @Persisted var ikuraNum: Int
-    @Persisted(originProperty: "wave") var result: LinkingObjects<RealmCoopResult>
+    @Persisted(originProperty: "wave") private var link: LinkingObjects<RealmCoopResult>
     
     convenience init(from result: CoopResult.WaveDetail) {
         self.init()
@@ -27,6 +27,12 @@ final class RealmCoopWave: Object {
         self.goldenIkuraPopNum = result.goldenIkuraPopNum
         self.quotaNum = result.quotaNum
         self.ikuraNum = result.ikuraNum
+    }
+}
+
+extension RealmCoopWave {
+    var result: RealmCoopResult {
+        self.link.first!
     }
 }
 
@@ -41,6 +47,6 @@ extension WaterKey: PersistableEnum, Identifiable {
 //
 extension RealmCoopWave: Identifiable {
     /// 識別用のID
-    var id: Int { self.quotaNum }
+    var id: Int { self.hash }
 }
 
