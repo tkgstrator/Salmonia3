@@ -45,7 +45,7 @@ struct ResultWave: View {
     }
 }
 
-fileprivate extension Text {
+extension Text {
     init(_ waterLevel: WaterKey) {
         self.init(waterLevel.waterLevel)
     }
