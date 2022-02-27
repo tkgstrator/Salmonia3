@@ -40,10 +40,7 @@ struct ResultView: View {
 
 extension RealmCoopWave {
     var index: Int {
-        guard let result = self.result.first else {
-            return 0
-        }
-        guard let index = result.wave.firstIndex(where: { $0.quotaNum == self.quotaNum }) else {
+        guard let index = self.result.wave.firstIndex(where: { $0.quotaNum == self.quotaNum }) else {
             return 0
         }
         return index + 1

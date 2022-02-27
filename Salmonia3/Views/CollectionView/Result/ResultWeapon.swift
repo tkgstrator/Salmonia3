@@ -30,7 +30,8 @@ struct ResultWeapon: View {
                 .scaledToFit()
                 .padding(2)
                 .background(Circle().fill(Color.black.opacity(0.9)))
-            ForEach(weaponList) { weapon in
+            ForEach(weaponList.indices) { index in
+                let weapon = weaponList[index]
                 Image(weapon)
                     .resizable()
                     .scaledToFit()

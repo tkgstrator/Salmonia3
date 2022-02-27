@@ -21,6 +21,15 @@ struct ShiftStatsView: View {
         ScrollView(.vertical, showsIndicators: false, content: {
             ShiftView(shift: schedule)
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 2), content: {
+                ForEach(stats.clearRatio) { clearWave in
+                    StatsCardHalf(score: clearWave.score, caption: clearWave.caption)
+                }
+                ForEach(stats.teamIkuraNum) { ikuraNum in
+                    StatsCardHalf(score: ikuraNum.score, caption: ikuraNum.caption)
+                }
+                ForEach(stats.teamGoldenIkuraNum) { goldenIkuraNum in
+                    StatsCardHalf(score: goldenIkuraNum.score, caption: goldenIkuraNum.caption)
+                }
                 ForEach(stats.ikuraNum) { ikuraNum in
                     StatsCard(stats: ikuraNum)
                 }

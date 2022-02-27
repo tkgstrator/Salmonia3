@@ -18,6 +18,45 @@ protocol StatsType: Identifiable {
 }
 
 final class StatsModel: ObservableObject {
+    class Comparison: StatsType {
+        let id: UUID = UUID()
+        let score: Float
+        let other: Float
+        let caption: String
+        
+        internal init<T: BinaryInteger>(score: T?, other: T?, caption: String) {
+            self.caption = caption
+            self.score = {
+                guard let score = score else {
+                    return .zero
+                }
+                return Float(score)
+            }()
+            self.other = {
+                guard let other = other else {
+                    return .zero
+                }
+                return Float(other)
+            }()
+        }
+        
+        internal init<T: BinaryFloatingPoint>(score: T?, other: T?, caption: String) {
+            self.caption = caption
+            self.score = {
+                guard let score = score else {
+                    return .zero
+                }
+                return Float(score)
+            }()
+            self.other = {
+                guard let other = other else {
+                    return .zero
+                }
+                return Float(other)
+            }()
+        }
+    }
+    
     class Defeated: StatsType {
         let id: UUID = UUID()
         let score: Float
@@ -92,6 +131,14 @@ final class StatsModel: ObservableObject {
     var defeatedCount: [Stats] = []
     /// 各オオモノ討伐数
     var defeatedIdCount: [Defeated] = []
+    /// チーム赤イクラ数
+    var teamIkuraNum: [Comparison] = []
+    /// チーム金イクラ数
+    var teamGoldenIkuraNum: [Comparison] = []
+    /// クリア率など
+    var clearRatio: [Comparison] = []
+    /// 支給されたブキと回数
+//    var 
     init() {}
     
     init(startTime: Int, nsaid: String?) {
@@ -101,7 +148,7 @@ final class StatsModel: ObservableObject {
             return
         }
         
-        let results = realm.objects(RealmCoopResult.self).filter("startTime=%@", startTime)
+        let results = realm.objects(RealmCoopResult.self).filter("startTime=%@ AND pid==%@", startTime, nsaid)
         let players = realm.objects(RealmCoopPlayer.self).filter("ANY result.startTime=%@ AND pid==%@", startTime, nsaid)
         let others = realm.objects(RealmCoopPlayer.self).filter("ANY result.startTime=%@ AND pid!=%@", startTime, nsaid)
         
@@ -131,6 +178,18 @@ final class StatsModel: ObservableObject {
         self.defeatedIdCount = BossType.BossId.allCases.map({ bossId -> Defeated in
             Defeated(score: players.averageDefeatedNum(bossId: bossId), other: others.averageDefeatedNum(bossId: bossId), bossType: bossId)
         })
+        self.teamIkuraNum = [
+            Comparison(score: results.averageIkuraNum(), other: nil, caption: "平均チーム赤イクラ数"),
+            Comparison(score: results.maxIkuraNum(), other: nil, caption: "最高チーム赤イクラ数")
+        ]
+        self.teamGoldenIkuraNum = [
+            Comparison(score: results.averageGoldenIkuraNum(), other: nil, caption: "平均チーム金イクラ数"),
+            Comparison(score: results.maxGoldenIkuraNum(), other: nil, caption: "最高チーム金イクラ数")
+        ]
+        self.clearRatio = [
+            Comparison(score: results.clearRatio(), other: nil, caption: "クリア率"),
+            Comparison(score: results.averageClearWave(), other: nil, caption: "平均クリアWAVE")
+        ]
     }
 }
 
@@ -155,6 +214,45 @@ fileprivate extension CaseIterable where Self: Equatable {
 fileprivate extension Array where Element: BinaryInteger {
     func average() -> Double? {
         self.isEmpty ? nil : Double(self.reduce(0, +)) / Double(self.count)
+    }
+}
+
+fileprivate extension Array where Element: BinaryFloatingPoint {
+    func average() -> Double? {
+        self.isEmpty ? nil : Double(self.reduce(0, +)) / Double(self.count)
+    }
+}
+
+fileprivate extension RealmSwift.Results where Element == RealmCoopResult {
+    func clearRatio() -> Double? {
+        if self.isEmpty { return nil }
+        return Double(self.filter("isClear==true").count) / Double(self.count) * 100
+    }
+    
+    func averageClearWave() -> Double? {
+        if self.isEmpty { return nil }
+        if let value: Double = average(ofProperty: "failureWave") {
+            return 3.00 - value
+        }
+        return 3.00
+    }
+    
+    func maxGoldenIkuraNum() -> Int? {
+        let maxValue: Int? = max(ofProperty: "goldenEggs")
+        return maxValue
+    }
+    
+    func maxIkuraNum() -> Int? {
+        let maxValue: Int? = max(ofProperty: "powerEggs")
+        return maxValue
+    }
+    
+    func averageIkuraNum() -> Double? {
+        Array(map({ $0.powerEggs })).average()
+    }
+    
+    func averageGoldenIkuraNum() -> Double? {
+        Array(map({ $0.goldenEggs })).average()
     }
 }
 
