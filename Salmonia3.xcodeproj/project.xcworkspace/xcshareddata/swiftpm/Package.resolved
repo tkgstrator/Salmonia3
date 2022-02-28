@@ -177,8 +177,8 @@
         "repositoryURL": "https://github.com/tkgstrator/SplatNet2",
         "state": {
           "branch": null,
-          "revision": "fef823792f20d27210aced1cab7ad91434e8978c",
-          "version": "1.0.16"
+          "revision": "defa7be73d464c4582bd869839f951fe4b9a846a",
+          "version": "1.0.18"
         }
       },
       {
@@ -233,6 +233,15 @@
           "branch": "master",
           "revision": "303bb95201d0bdb83761c622cfac0315fab7575a",
           "version": null
+        }
+      },
+      {
+        "package": "SwiftyStoreKit",
+        "repositoryURL": "https://github.com/bizz84/SwiftyStoreKit",
+        "state": {
+          "branch": null,
+          "revision": "9ce911639680113dac9b554d6243e406a9758ebe",
+          "version": "0.16.4"
         }
       }
     ]

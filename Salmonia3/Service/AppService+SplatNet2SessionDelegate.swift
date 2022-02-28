@@ -24,6 +24,7 @@ extension AppService: SalmonStatsSessionDelegate {
         })
     }
     
+    /// 取得中のリザルトIDを返す
     func isGettingResultId(current: Int) {
         DispatchQueue.main.async(execute: {
             withAnimation(.default) {
@@ -32,21 +33,25 @@ extension AppService: SalmonStatsSessionDelegate {
         })
     }
     
+    /// ログインが完了したときに呼ばれる
     func didFinishSplatNet2SignIn(account: UserInfo) {
         DispatchQueue.main.async(execute: {
+            // アカウント情報を上書きして、モーダルを閉じる
             self.account = account
-            self.isSignIn.toggle()
+            self.isSignIn = false
         })
     }
     
+    /// ログインが始まったときに呼ばれる
     func willRunningSplatNet2SignIn() {
         DispatchQueue.main.async(execute: {
             withAnimation(.default) {
-                self.isSignIn.toggle()
+                self.isSignIn = true
             }
         })
     }
     
+    /// エラーが発生したときに呼ばれる
     func failedWithSP2Error(error: SP2Error) {
         DispatchQueue.main.async(execute: {
             self.sp2Error = error
@@ -68,6 +73,7 @@ extension AppService: SalmonStatsSessionDelegate {
     func willReceiveRequest(request: Subscribers.Demand) {
     }
     
+    /// サインインの状況を返す
     func progressSignIn(state: SignInState) {
         DispatchQueue.main.async(execute: {
             withAnimation(.default) {
@@ -76,6 +82,7 @@ extension AppService: SalmonStatsSessionDelegate {
         })
     }
     
+    /// 取得可能なリザルトIDを返す
     func isAvailableResults(current: Int, maximum: Int) {
         DispatchQueue.main.async(execute: {
             withAnimation(.default) {

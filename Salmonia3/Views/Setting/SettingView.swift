@@ -20,13 +20,7 @@ struct SettingView: View {
             SettingView_Support()
             SettingView_Application()
 #if DEBUG
-            Section(content: {
-                Button(action: {
-                    service.session.setXProductVersion(version: "1.13.1")
-                }, label: {
-                    Text("IKSM.SESSION")
-                })
-            })
+            SettingView_Debug()
 #endif
         })
             .navigationTitle("Setting")

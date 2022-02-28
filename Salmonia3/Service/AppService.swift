@@ -13,6 +13,8 @@ import SwiftyUI
 import SplatNet2
 import RealmSwift
 import Common
+import StoreKit
+import SwiftyStoreKit
 
 final class AppService: ObservableObject {
     init() {
@@ -31,6 +33,10 @@ final class AppService: ObservableObject {
         self.account = self.session.account
         /// シフト情報を更新
         self.addLatestShiftSchedule()
+        /// プロダクト情報を取得
+        SwiftyStoreKit.retrieveProductsInfo(productIdentifiers, completion: { result in
+            self.products = result.retrievedProducts
+        })
     }
     /// アカウント情報
     @Published var account: UserInfo? = nil
@@ -61,10 +67,13 @@ final class AppService: ObservableObject {
     /// アプリの詳細の設定
     @Published var application: Application = Application.shared
     /// アプリの課金情報
-    @Published var productIdentifiers: Set<String> = [
+    private let productIdentifiers: Set<String> = [
         "work.tkgstrator.salmonia3.chip500",
         "work.tkgstrator.salmonia3.chip980"
     ]
+    /// 課金コンテンツ情報
+    @Published var products: Set<SKProduct> = Set<SKProduct>()
+    
     /// シフト表示モード
     @AppStorage("APP_SHIFT_DISPLAY_MODE") var shiftDisplayMode: ShiftDisplayMode = .current
     /// RealmSwiftのScheme Version
