@@ -11,7 +11,7 @@ import Firebase
 import AppTrackingTransparency
 import GoogleMobileAds
 import Common
-//import SwiftyStoreKit
+import SwiftyStoreKit
 
 @main
 struct Salmonia3App: App {
@@ -54,22 +54,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         // SwiftyStoreKitの初期化
-//        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
-//            for purchase in purchases {
-//                switch purchase.transaction.transactionState {
-//                    case .purchased, .restored:
-//                        if purchase.needsFinishTransaction {
-//                            // Deliver content from server, then:
-//                            SwiftyStoreKit.finishTransaction(purchase.transaction)
-//                        }
-//                        // Unlock content
-//                    case .failed, .purchasing, .deferred:
-//                        break // do nothing
-//                    @unknown default:
-//                        break // do nothing
-//                }
-//            }
-//        }
+        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
+            for purchase in purchases {
+                switch purchase.transaction.transactionState {
+                    case .purchased, .restored:
+                        if purchase.needsFinishTransaction {
+                            // Deliver content from server, then:
+                            SwiftyStoreKit.finishTransaction(purchase.transaction)
+                        }
+                        // Unlock content
+                    case .failed, .purchasing, .deferred:
+                        break // do nothing
+                    @unknown default:
+                        break // do nothing
+                }
+            }
+        }
         return true
     }
     

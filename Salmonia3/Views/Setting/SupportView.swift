@@ -10,6 +10,8 @@ import SwiftyUI
 import StoreKit
 
 struct SupportView: View {
+    @EnvironmentObject var service: AppService
+    
     var body: some View {
         Form(content: {
             Button(action: {
@@ -23,9 +25,26 @@ struct SupportView: View {
                     Text("レビューする")
                 })
             })
+            Section(content: {
+                ForEach(Array(service.products)) { product in
+                    Button(action: {
+                        
+                    }, label: {
+                        HStack(content: {
+                            Text("アプリを応援する")
+                            Spacer()
+                            Text(product.localizedPrice!)
+                        })
+                    })
+                }
+            })
         })
             .navigationTitle("アプリを応援する")
     }
+}
+
+extension SKProduct: Identifiable {
+    public var id: String { productIdentifier }
 }
 
 struct SupportView_Previews: PreviewProvider {
