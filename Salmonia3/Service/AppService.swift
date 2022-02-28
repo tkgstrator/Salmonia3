@@ -60,6 +60,11 @@ final class AppService: ObservableObject {
     @Published var apperances: Appearances = Appearances.shared
     /// アプリの詳細の設定
     @Published var application: Application = Application.shared
+    /// アプリの課金情報
+    @Published var productIdentifiers: Set<String> = [
+        "work.tkgstrator.salmonia3.chip500",
+        "work.tkgstrator.salmonia3.chip980"
+    ]
     /// シフト表示モード
     @AppStorage("APP_SHIFT_DISPLAY_MODE") var shiftDisplayMode: ShiftDisplayMode = .current
     /// RealmSwiftのScheme Version

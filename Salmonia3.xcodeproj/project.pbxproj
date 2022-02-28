@@ -75,6 +75,9 @@
 		1094284F271E458F0072425E /* SalmonStats in Frameworks */ = {isa = PBXBuildFile; productRef = 1094284E271E458F0072425E /* SalmonStats */; };
 		109B545B27CB8F8300FACC1A /* WaveCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B545A27CB8F8300FACC1A /* WaveCollectionView.swift */; };
 		109B545D27CB90DB00FACC1A /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B545C27CB90DB00FACC1A /* WaveView.swift */; };
+		109B545F27CD60E800FACC1A /* SettingView+Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B545E27CD60E800FACC1A /* SettingView+Support.swift */; };
+		109B546127CD64B000FACC1A /* SupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B546027CD64B000FACC1A /* SupportView.swift */; };
+		109B546327CD688600FACC1A /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 109B546227CD688100FACC1A /* Configuration.storekit */; };
 		109F97E6272490C600AB1FA3 /* LoggingThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97E5272490C600AB1FA3 /* LoggingThread.swift */; };
 		109F97E8272490CE00AB1FA3 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97E7272490CE00AB1FA3 /* LoadingView.swift */; };
 		109F97EB272491E600AB1FA3 /* ResultCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97EA272491E500AB1FA3 /* ResultCollectionView.swift */; };
@@ -195,6 +198,9 @@
 		107B687A27B7362000238B9D /* AppService+Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppService+Network.swift"; sourceTree = "<group>"; };
 		109B545A27CB8F8300FACC1A /* WaveCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveCollectionView.swift; sourceTree = "<group>"; };
 		109B545C27CB90DB00FACC1A /* WaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
+		109B545E27CD60E800FACC1A /* SettingView+Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+Support.swift"; sourceTree = "<group>"; };
+		109B546027CD64B000FACC1A /* SupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportView.swift; sourceTree = "<group>"; };
+		109B546227CD688100FACC1A /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		109F97E5272490C600AB1FA3 /* LoggingThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingThread.swift; sourceTree = "<group>"; };
 		109F97E7272490CE00AB1FA3 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		109F97EA272491E500AB1FA3 /* ResultCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCollectionView.swift; sourceTree = "<group>"; };
@@ -313,6 +319,7 @@
 		101AED04271E3109009556B2 = {
 			isa = PBXGroup;
 			children = (
+				109B546227CD688100FACC1A /* Configuration.storekit */,
 				100492FA274DCDEC0095D35C /* SwiftyUI */,
 				101AED0F271E3109009556B2 /* Salmonia3 */,
 				101AED20271E310B009556B2 /* Salmonia3Tests */,
@@ -441,6 +448,8 @@
 			children = (
 				105F8B3E27C7B25300DD5B13 /* Appearance */,
 				101AED59271E3946009556B2 /* SettingView.swift */,
+				109B545E27CD60E800FACC1A /* SettingView+Support.swift */,
+				109B546027CD64B000FACC1A /* SupportView.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -709,6 +718,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				109B546327CD688600FACC1A /* Configuration.storekit in Resources */,
 				101AED4B271E33EB009556B2 /* Splatfont1.ttf in Resources */,
 				10F38E87277E1E9900CD945F /* Localizable.strings in Resources */,
 				101AED4C271E33EB009556B2 /* Splatfont2.ttf in Resources */,
@@ -760,6 +770,7 @@
 				100556E827C91AED0094582D /* Fats.swift in Sources */,
 				100556EA27C91AED0094582D /* Handling.swift in Sources */,
 				10162F9027C7BCEC00ACFD4D /* ProgressModel.swift in Sources */,
+				109B545F27CD60E800FACC1A /* SettingView+Support.swift in Sources */,
 				100556F127C91AED0094582D /* FirePower.swift in Sources */,
 				100556F927C948E90094582D /* ShiftDisplayMode.swift in Sources */,
 				109F97F62724AD7800AB1FA3 /* ResultView.swift in Sources */,
@@ -771,6 +782,7 @@
 				10E74E8027B6B8B700D0E962 /* SignInView.swift in Sources */,
 				100556E327C91AED0094582D /* Steelheads.swift in Sources */,
 				100556EC27C91AED0094582D /* PowerInLosing.swift in Sources */,
+				109B546127CD64B000FACC1A /* SupportView.swift in Sources */,
 				100556DB27C91AED0094582D /* Chargeable.swift in Sources */,
 				103168672750E3D10009070C /* ShiftView.swift in Sources */,
 				100556FB27C9888D0094582D /* ShiftStatsView.swift in Sources */,
@@ -997,7 +1009,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1033,7 +1045,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;

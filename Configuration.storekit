@@ -1,0 +1,58 @@
+{
+  "identifier" : "83C0529D",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "500",
+      "familyShareable" : false,
+      "internalID" : "6C01036F",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "アプリ開発者にドクターペッパーを支援します",
+          "displayName" : "アプリを応援する",
+          "locale" : "ja"
+        }
+      ],
+      "productID" : "work.tkgstrator.salmonia3.chip500",
+      "referenceName" : "ドクターペッパーを送る",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "370AE662",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "アプリ開発者に野口英世を送ります",
+          "displayName" : "アプリを応援する",
+          "locale" : "ja"
+        }
+      ],
+      "productID" : "work.tkgstrator.salmonia3.chip980",
+      "referenceName" : "野口英世を送る",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+    "_storefront" : "JPN"
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 1
+  }
+}

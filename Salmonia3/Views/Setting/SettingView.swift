@@ -17,6 +17,7 @@ struct SettingView: View {
             SettingView_SplatNet2()
             SettingView_SalmonStats()
             SettingView_Appearance()
+            SettingView_Support()
             SettingView_Application()
 #if DEBUG
             Section(content: {
