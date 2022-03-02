@@ -16,6 +16,7 @@ struct SettingView: View {
         Form(content: {
             SettingView_SplatNet2()
             SettingView_SalmonStats()
+            SettingView_Firebase()
             SettingView_Appearance()
             SettingView_Support()
             SettingView_Application()

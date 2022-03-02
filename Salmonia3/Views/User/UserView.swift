@@ -134,7 +134,7 @@ extension Realm {
         guard let startTime = startTime else {
             return objects(RealmCoopPlayer.self).filter("pid=%@", nsaid)
         }
-        return objects(RealmCoopPlayer.self).filter("pid=%@ and any result.startTime=%@", nsaid, startTime)
+        return objects(RealmCoopPlayer.self).filter("pid=%@ and any link.startTime=%@", nsaid, startTime)
     }
 }
 

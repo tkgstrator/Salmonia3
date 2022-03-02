@@ -8,51 +8,71 @@
 import SwiftUI
 import SwiftyUI
 import SplatNet2
+import Surge
 
 struct StatsSpecial: View {
+    @State var scale: Double = .zero
+    let specialList: [SpecialId]
+    let probs: [Double]
+    let colors: [Color] = [.red, .blue, .green, .yellow]
+    
+    init(specialProbs: [StatsModel.SpecialProb]) {
+        self.specialList = specialProbs.map({ $0.specialId })
+        self.probs = specialProbs.map({ $0.prob })
+    }
+    
     var body: some View {
         HStack(content: {
-            VStack(content: {
-                ForEach(SpecialId.allCases) { specialType in
-                    HStack(content: {
-                        RoundedRectangle(cornerRadius: 4)
-                            .foregroundColor(.orange)
-                            .frame(width: 14, height: 14, alignment: .center)
+            VStack(spacing: 5, content: {
+                ForEach(SpecialId.allCases.indices) { index in
+                    let specialType: SpecialId = SpecialId.allCases[index]
+                    let prob: Double = probs[index]
+                    let color: Color = colors[index]
+                    HStack(spacing: 15, content: {
                         Image(specialType)
                             .resizable()
                             .scaledToFit()
                             .frame(width: 30, height: 30, alignment: .center)
-                        Text("25.00%")
-                            .font(systemName: .Splatfont2, size: 14)
+                            .padding(4)
+                            .background(Circle().fill(Color.black.opacity(0.9)))
+                        Text(String(format:"%2.2f%%", prob * 100))
+                            .font(systemName: .Splatfont2, size: 16, foregroundColor: color)
+                        Spacer()
                     })
+                        .frame(maxWidth: 155)
                 }
             })
             Spacer()
             GeometryReader(content: { geometry in
-                let width: CGFloat = geometry.frame(in: .local).width
-                ZStack(content: {
+                ForEach(probs.indices) { index in
+                    let currentValue: Double = sum(probs.prefix(index))
+                    let totalValue: Double = sum(probs.prefix(index + 1))
                     Circle()
-                        .frame(width: width, alignment: .center)
-                    Circle()
-                        .fill(Color.white)
-                        .frame(width: width - 50, alignment: .center)
-                })
+                        .trim(from: currentValue, to: totalValue * scale)
+                        .stroke(colors[index], lineWidth: 10)
+                }
             })
-                .scaledToFit()
-                .padding()
+                .aspectRatio(1.0, contentMode: .fit)
+                .frame(maxHeight: 130)
+                .rotationEffect(.degrees(-90))
         })
             .padding()
             .aspectRatio(16/9, contentMode: .fit)
             .background(RoundedRectangle(cornerRadius: 10).fill(Color.whitesmoke))
-            .padding()
+            .onAppear(perform: {
+                withAnimation(.linear(duration: 1.5)) {
+                    self.scale = 1.0
+                }
+            })
     }
 }
 
-struct StatsSpecial_Previews: PreviewProvider {
-    static var previews: some View {
-        StatsSpecial()
-    }
-}
+//struct StatsSpecial_Previews: PreviewProvider {
+//    static var previews: some View {
+//        StatsSpecial()
+//            .preferredColorScheme(.dark)
+//    }
+//}
 
 extension SpecialId: Identifiable {
     public var id: String { rawValue }

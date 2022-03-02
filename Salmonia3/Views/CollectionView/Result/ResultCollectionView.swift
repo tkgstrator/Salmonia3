@@ -31,7 +31,7 @@ struct ResultCollectionView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle("リザルト一覧")
         })
-            .navigationViewStyle(SplitNavigationViewStyle())
+            .navigationViewStyle(.split)
     }
 }
 

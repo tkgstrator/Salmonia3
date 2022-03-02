@@ -9,6 +9,7 @@
 import SwiftUI
 import SwiftyUI
 import RealmSwift
+import SplatNet2
 
 struct ShiftCollectionView: View {
     @EnvironmentObject var service: AppService
@@ -19,14 +20,14 @@ struct ShiftCollectionView: View {
         service.account?.credential.nsaid
     }
     
-    func filterSchedules() {
-        switch service.shiftDisplayMode {
+    func update(mode: ShiftDisplayMode) {
+        switch mode {
         case .all:
             $schedules.filter = nil
-        case .played:
-            $schedules.filter = NSPredicate("startTime", valuesIn: service.playedShiftScheduleId)
         case .current:
             $schedules.filter = NSPredicate("startTime", lessThan: Int(Date().timeIntervalSince1970))
+        case .played:
+            $schedules.filter = NSPredicate("startTime", valuesIn: service.playedShiftScheduleId)
         }
     }
     
@@ -52,17 +53,17 @@ struct ShiftCollectionView: View {
                         })
                     })
                 })
-                .onAppear(perform: {
-                    filterSchedules()
-                })
                 .halfsheet(isPresented: $isPresented, onDismiss: {
-                    filterSchedules()
-                }, content: {
+                    update(mode: service.shiftDisplayMode)
+                },content: {
                     ShiftFilterButton()
                         .environmentObject(service)
                 })
+                .onAppear(perform: {
+                    update(mode: service.shiftDisplayMode)
+                })
         })
-            .navigationViewStyle(SplitNavigationViewStyle())
+            .navigationViewStyle(.split)
     }
 }
 

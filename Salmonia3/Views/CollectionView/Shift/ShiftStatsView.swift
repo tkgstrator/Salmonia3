@@ -9,12 +9,12 @@ import SwiftUI
 import SplatNet2
 
 struct ShiftStatsView: View {
-    @StateObject var stats: StatsModel
+    @StateObject var stats: UserShiftStats
     let schedule: RealmCoopShift
     
     init(schedule: RealmCoopShift, nsaid: String?) {
         self.schedule = schedule
-        self._stats = StateObject(wrappedValue: StatsModel(startTime: schedule.startTime, nsaid: nsaid))
+        self._stats = StateObject(wrappedValue: UserShiftStats(startTime: schedule.startTime, nsaid: nsaid))
     }
     
     var body: some View {
@@ -24,6 +24,12 @@ struct ShiftStatsView: View {
                 ForEach(stats.clearRatio) { clearWave in
                     StatsCardHalf(score: clearWave.score, caption: clearWave.caption)
                 }
+            })
+            LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 1), content: {
+                StatsWeapon(weaponProbs: stats.weaponProbs)
+                StatsSpecial(specialProbs: stats.specialProbs)
+            })
+            LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 2), content: {
                 ForEach(stats.teamIkuraNum) { ikuraNum in
                     StatsCardHalf(score: ikuraNum.score, caption: ikuraNum.caption)
                 }

@@ -14,7 +14,6 @@ enum EXColor: String, CaseIterable {
     }
     
     case citrus         = "#87C90A"
-    case blackrussian   = "#0A1128"
     case dodgerblue     = "#1DA1FF"
     case sapphire       = "#001F54"
     case maire          = "#2A270B"
@@ -29,6 +28,7 @@ enum EXColor: String, CaseIterable {
     case dimgray        = "#707070"
     case navyblue       = "#006EF9"
     case darkblue       = "#005CCF"
+    case blackrussian   = "#0A1128"
     case whitesmoke     = "#E5E5E5"
 
     public var colorCode: String {

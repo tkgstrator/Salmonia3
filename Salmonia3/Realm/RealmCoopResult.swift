@@ -198,15 +198,10 @@ extension Collection where Element == [Int]{
 }
 
 extension RealmCoopResult {
-//    var indexOfResults: Int {
-//        return (RealmManager.shared.results(startTime: startTime).sorted(byKeyPath: "playTime", ascending: true).index(of: self) ?? -1) + 1
-//    }
-//    
-//    var players: [RealmPlayer] {
-//        Array(RealmManager.shared.findPlayers(pid: self.player.map({ $0.pid }).sorted()))
-//    }
-//    
-//    var weaponList: [Int] {
-//        Array(RealmManager.shared.shift(startTime: self.startTime).weaponList)
-//    }
+    var schedule: RealmCoopShift? {
+        guard let realm = try? Realm() else {
+            return nil
+        }
+        return realm.objects(RealmCoopShift.self).first(where: { $0.startTime == startTime })
+    }
 }

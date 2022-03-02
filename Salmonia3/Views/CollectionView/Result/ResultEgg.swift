@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftyUI
 
 struct ResultEgg: View {
     let goldenIkuraNum: Int
@@ -21,7 +20,7 @@ struct ResultEgg: View {
                     .frame(width: 20)
                 Spacer()
                 Text("x\(goldenIkuraNum)")
-                    .foregroundColor(.whitesmoke)
+                    .foregroundColor(.white)
             })
                 .frame(width: 60)
                 .padding(.horizontal, 8)
@@ -33,7 +32,7 @@ struct ResultEgg: View {
                     .frame(width: 20)
                 Spacer()
                 Text("x\(ikuraNum)")
-                    .foregroundColor(.whitesmoke)
+                    .foregroundColor(.white)
             })
                 .frame(width: 75)
                 .padding(.horizontal, 8)

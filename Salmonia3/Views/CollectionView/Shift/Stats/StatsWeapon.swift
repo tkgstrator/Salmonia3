@@ -2,62 +2,75 @@
 //  StatsWeapon.swift
 //  Salmonia3
 //
-//  Created by devonly on 2022/02/27.
+//  Created by devonly on 2022/03/01.
 //
 
 import SwiftUI
 import SwiftyUI
 import SplatNet2
+import Surge
 
 struct StatsWeapon: View {
-    let weaponType: WeaponType
-    let count: Int
-    let prob: Double
+    @State var scale: Double = .zero
+    let weaponList: [WeaponType]
+    let probs: [Double]
     
-    init(weaponType: WeaponType, count: Int, prob: Double) {
-        self.weaponType = weaponType
-        self.count = count
-        self.prob = prob
+    init(weaponProbs: [StatsModel.WeaponProb]) {
+        self.weaponList = weaponProbs.map({ $0.weaponType })
+        self.probs = weaponProbs.map({ $0.prob })
     }
     
-    var textColor: Color {
-        count == 0 ? .secondary : .primary
-    }
+    let colors: [Color] = [.red, .blue, .green, .yellow]
     
     var body: some View {
-        GeometryReader(content: { geometry in
-            VStack(alignment: .leading, spacing: 0, content: {
-                Image(weaponType)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 35, height: 35, alignment: .center)
-                    .padding(4)
-                VStack(alignment: .leading, spacing: -10, content: {
-                    Text(String(format: "回数 %d", count))
-                    Text(String(format: "確率 %.2f%%", prob * 100))
-                })
+        HStack(content: {
+            VStack(spacing: 5, content: {
+                ForEach(weaponList.indices) { index in
+                    let weaponType: WeaponType = weaponList[index]
+                    let prob: Double = probs[index]
+                    let color: Color = colors[index]
+                    HStack(spacing: 15, content: {
+                        Image(weaponType)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30, height: 30, alignment: .center)
+                            .padding(4)
+                            .background(Circle().fill(Color.black.opacity(0.9)))
+                        Text(String(format:"%2.2f%%", prob * 100))
+                            .font(systemName: .Splatfont2, size: 16, foregroundColor: color)
+                        Spacer()
+                    })
+                        .frame(maxWidth: 155)
+                }
             })
-                .padding(4)
-                .font(systemName: .Splatfont2, size: 12, foregroundColor: textColor)
+            Spacer()
+            GeometryReader(content: { geometry in
+                ForEach(probs.indices) { index in
+                    let currentValue: Double = sum(probs.prefix(index))
+                    let totalValue: Double = sum(probs.prefix(index + 1))
+                    Circle()
+                        .trim(from: currentValue, to: totalValue * scale)
+                        .stroke(colors[index], lineWidth: 10)
+                }
+            })
+                .aspectRatio(1.0, contentMode: .fit)
+                .frame(maxHeight: 130)
+                .rotationEffect(.degrees(-90))
         })
-            .scaledToFit()
+            .padding()
+            .aspectRatio(16/9, contentMode: .fit)
             .background(RoundedRectangle(cornerRadius: 10).fill(Color.whitesmoke))
-            .grayscale(count == 0 ? 1.0 : 0.0)
+            .onAppear(perform: {
+                withAnimation(.linear(duration: 1.5)) {
+                    self.scale = 1.0
+                }
+            })
     }
 }
 
 struct StatsWeapon_Previews: PreviewProvider {
     static var previews: some View {
-        ScrollView(content: {
-            LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: nil, alignment: .center), count: 4), content: {
-                ForEach(WeaponType.allCases) { weaponType in
-                    StatsWeapon(weaponType: weaponType, count: Int.random(in: 0 ... 5), prob: Double.random(in: 0 ... 1))
-                }
-            })
-                .padding(.horizontal)
-        })
-            .previewDevice("iPhone 8")
+        StatsWeapon(weaponProbs: [])
             .preferredColorScheme(.dark)
-            
     }
 }
