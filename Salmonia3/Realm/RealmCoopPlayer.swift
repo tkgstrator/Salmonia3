@@ -21,8 +21,8 @@ final class RealmCoopPlayer: Object, ObjectKeyIdentifiable {
     @Persisted var bossKillCounts: List<Int>
     @Persisted var weaponList: List<WeaponType>
     @Persisted var specialCounts: List<Int>
-    @Persisted(originProperty: "player") var result: LinkingObjects<RealmCoopResult>
-
+    @Persisted(originProperty: "player") var link: LinkingObjects<RealmCoopResult>
+    
     public convenience init(from result: CoopResult.PlayerResult) {
         self.init()
         self.name = result.name
@@ -37,6 +37,13 @@ final class RealmCoopPlayer: Object, ObjectKeyIdentifiable {
         self.specialCounts.append(objectsIn: result.specialCounts)
     }
 }
+
+extension RealmCoopPlayer {
+    var result: RealmCoopResult {
+        link.first!
+    }
+}
+
 
 extension SpecialId: PersistableEnum {
 }
@@ -147,7 +154,7 @@ extension CoopResult.WeaponList {
         case .umbrellaWide:
             return .umbrellaWide
         case .umbrellaCompact:
-            return .umbrellaWide
+            return .umbrellaCompact
         case .shooterBlasterBurst:
             return .shooterBlasterBurst
         case .umbrellaAutoAssault:
@@ -162,13 +169,13 @@ extension CoopResult.WeaponList {
 
 extension RealmCoopPlayer {
     /// Nintendo Switch Onlineの画像
-//    var thumbnailURL: URL {
-//        RealmManager.shared.thumbnailURL(playerId: self.pid)
-//    }
+    //    var thumbnailURL: URL {
+    //        RealmManager.shared.thumbnailURL(playerId: self.pid)
+    //    }
     
     /// 自身が操作したプレイヤーかどうかのフラグ
     var isControlled: Bool {
-        guard let firstPlayer = self.result.first?.player.first else { return false }
+        guard let firstPlayer = self.result.player.first else { return false }
         return firstPlayer.pid == self.pid
     }
     

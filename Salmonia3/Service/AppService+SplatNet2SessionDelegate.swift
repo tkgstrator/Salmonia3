@@ -17,6 +17,10 @@ import SalmonStats
 extension AppService: SalmonStatsSessionDelegate {
     /// リザルト読み込みが終わったときに呼ばれる
     func didFinishLoadResultsFromSplatNet2(results: [(id: Int, status: UploadStatus, result: CoopResult.Response)]) {
+        /// Firestoreに書き込み
+        if let user = user {
+            register(results: results.map({ $0.result }))
+        }
         /// リザルトを書き込み
         self.save(results: results)
         DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {

@@ -34,7 +34,7 @@ struct StatsCardSmall: View {
         self.salmonId = stats.bossType
     }
     
-    init(stats: StatsModel.Stats, salmonId: BossType.BossId) {
+    init(stats: StatsModel.Overview, salmonId: BossType.BossId) {
         self.score = Double(stats.score)
         self.other = Double(stats.other)
         self.salmonId = salmonId

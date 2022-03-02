@@ -15,6 +15,9 @@ import RealmSwift
 import Common
 import StoreKit
 import SwiftyStoreKit
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+import FirebaseAuth
 
 final class AppService: ObservableObject {
     init() {
@@ -33,13 +36,18 @@ final class AppService: ObservableObject {
         self.account = self.session.account
         /// シフト情報を更新
         self.addLatestShiftSchedule()
+        /// FirebaseAuth
+        Auth.auth().addStateDidChangeListener({ (auth, user) in
+            self.user = user
+        })
+        
         /// プロダクト情報を取得
         SwiftyStoreKit.retrieveProductsInfo(productIdentifiers, completion: { result in
             self.products = result.retrievedProducts
         })
     }
     /// アカウント情報
-    @Published var account: UserInfo? = nil
+    @Published var account: Common.UserInfo? = nil
     /// サインイン中であることを表示
     @Published var isSignIn: Bool = false
     /// サインイン中の状態
@@ -73,9 +81,15 @@ final class AppService: ObservableObject {
     ]
     /// 課金コンテンツ情報
     @Published var products: Set<SKProduct> = Set<SKProduct>()
-    
     /// シフト表示モード
     @AppStorage("APP_SHIFT_DISPLAY_MODE") var shiftDisplayMode: ShiftDisplayMode = .current
+    /// Firestore
+    internal let firestore: Firestore = Firestore.firestore()
+    internal let encoder: Firestore.Encoder = Firestore.Encoder()
+    internal let decoder: Firestore.Decoder = Firestore.Decoder()
+    internal let provider: OAuthProvider = OAuthProvider(providerID: "twitter.com")
+    @Published var user: FirebaseAuth.User?
+    
     /// RealmSwiftのScheme Version
     private let schemeVersion: UInt64 = 8192
     /// RealmSwiftのインスタンス

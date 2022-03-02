@@ -12,7 +12,7 @@ struct ResultWave: View {
     let result: RealmCoopResult
     
     var body: some View {
-        LazyVGrid(columns: Array(repeating: .init(.flexible()), count: result.wave.count), content: {
+        LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 120), alignment: .top), count: result.wave.count), content: {
             ForEach(result.wave) { wave in
                 VStack(alignment: .center, spacing: 0, content: {
                     Text("WAVE \(wave.index)")

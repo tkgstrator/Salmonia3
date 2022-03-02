@@ -81,6 +81,7 @@
 		109B546627CD6A0200FACC1A /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 109B546527CD6A0200FACC1A /* SwiftyStoreKit */; };
 		109B546827CD6C2300FACC1A /* AppService+StoreKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B546727CD6C2300FACC1A /* AppService+StoreKit.swift */; };
 		109B546A27CD705200FACC1A /* SettingView+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B546927CD705100FACC1A /* SettingView+Debug.swift */; };
+		109B546C27CDC04400FACC1A /* StatsWeapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B546B27CDC04400FACC1A /* StatsWeapon.swift */; };
 		109F97E6272490C600AB1FA3 /* LoggingThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97E5272490C600AB1FA3 /* LoggingThread.swift */; };
 		109F97E8272490CE00AB1FA3 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97E7272490CE00AB1FA3 /* LoadingView.swift */; };
 		109F97EB272491E600AB1FA3 /* ResultCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97EA272491E500AB1FA3 /* ResultCollectionView.swift */; };
@@ -91,9 +92,9 @@
 		109F97FC2724D44100AB1FA3 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97FB2724D44100AB1FA3 /* Text.swift */; };
 		109F98052724EC9400AB1FA3 /* Rainbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F98042724EC9400AB1FA3 /* Rainbow.swift */; };
 		10AAE04627CA764200E8E3D4 /* StatsCardHalf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AAE04527CA764200E8E3D4 /* StatsCardHalf.swift */; };
-		10AAE04827CAB6A200E8E3D4 /* StatsWeapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AAE04727CAB6A200E8E3D4 /* StatsWeapon.swift */; };
+		10AAE04827CAB6A200E8E3D4 /* StatsWeaponList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AAE04727CAB6A200E8E3D4 /* StatsWeaponList.swift */; };
 		10AAE04A27CAC35600E8E3D4 /* StatsSpecial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AAE04927CAC35600E8E3D4 /* StatsSpecial.swift */; };
-		10AE389E27C99D170084D8E6 /* StatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AE389D27C99D170084D8E6 /* StatsModel.swift */; };
+		10AE389E27C99D170084D8E6 /* UserShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AE389D27C99D170084D8E6 /* UserShiftStats.swift */; };
 		10BA13F027201A7B00348DD3 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10BA13EF27201A7B00348DD3 /* RealmSwift */; };
 		10BA13F327201AF300348DD3 /* RealmCoopResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13F227201AF300348DD3 /* RealmCoopResult.swift */; };
 		10BA13F527201B1400348DD3 /* RealmCoopWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13F427201B1400348DD3 /* RealmCoopWave.swift */; };
@@ -105,6 +106,17 @@
 		10C0FE7B274C207900870DED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10C0FE7A274C207900870DED /* GoogleService-Info.plist */; };
 		10C7C46C277ED8330015ECBB /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7C46B277ED8330015ECBB /* Localized.swift */; };
 		10C7C46E277F00260015ECBB /* AppService+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7C46D277F00260015ECBB /* AppService+Realm.swift */; };
+		10C7D68E27CF6CDA002C1F37 /* Firecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D68D27CF6CDA002C1F37 /* Firecode.swift */; };
+		10C7D69027CF6D1D002C1F37 /* FSCoopWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D68F27CF6D1D002C1F37 /* FSCoopWave.swift */; };
+		10C7D69227CF6EDE002C1F37 /* AppService+Firestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D69127CF6EDE002C1F37 /* AppService+Firestore.swift */; };
+		10C7D69427CF8DCD002C1F37 /* SettingView+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D69327CF8DCD002C1F37 /* SettingView+Firebase.swift */; };
+		10C7D69727CF92E1002C1F37 /* StatsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D69627CF92E1002C1F37 /* StatsType.swift */; };
+		10C7D69927CF92FC002C1F37 /* Comparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D69827CF92FC002C1F37 /* Comparison.swift */; };
+		10C7D69B27CF93E0002C1F37 /* Defeated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D69A27CF93E0002C1F37 /* Defeated.swift */; };
+		10C7D69D27CF9400002C1F37 /* Overview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D69C27CF93FF002C1F37 /* Overview.swift */; };
+		10C7D69F27CF941D002C1F37 /* WeaponProb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D69E27CF941D002C1F37 /* WeaponProb.swift */; };
+		10C7D6A127CF9431002C1F37 /* SpecialProb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D6A027CF9431002C1F37 /* SpecialProb.swift */; };
+		10C7D6A327CF96C0002C1F37 /* UserShiftStats+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D6A227CF96C0002C1F37 /* UserShiftStats+Firebase.swift */; };
 		10CDEA2727B6A9A9003D553F /* SalmonStats in Frameworks */ = {isa = PBXBuildFile; productRef = 10CDEA2627B6A9A9003D553F /* SalmonStats */; };
 		10CDEA2927B6A9A9003D553F /* SplatNet2 in Frameworks */ = {isa = PBXBuildFile; productRef = 10CDEA2827B6A9A9003D553F /* SplatNet2 */; };
 		10E0C8A827CA6908002F4506 /* StatsCardSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E0C8A727CA6908002F4506 /* StatsCardSmall.swift */; };
@@ -206,6 +218,7 @@
 		109B546227CD688100FACC1A /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		109B546727CD6C2300FACC1A /* AppService+StoreKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppService+StoreKit.swift"; sourceTree = "<group>"; };
 		109B546927CD705100FACC1A /* SettingView+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+Debug.swift"; sourceTree = "<group>"; };
+		109B546B27CDC04400FACC1A /* StatsWeapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsWeapon.swift; sourceTree = "<group>"; };
 		109F97E5272490C600AB1FA3 /* LoggingThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingThread.swift; sourceTree = "<group>"; };
 		109F97E7272490CE00AB1FA3 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		109F97EA272491E500AB1FA3 /* ResultCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCollectionView.swift; sourceTree = "<group>"; };
@@ -216,9 +229,9 @@
 		109F97FB2724D44100AB1FA3 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		109F98042724EC9400AB1FA3 /* Rainbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rainbow.swift; sourceTree = "<group>"; };
 		10AAE04527CA764200E8E3D4 /* StatsCardHalf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCardHalf.swift; sourceTree = "<group>"; };
-		10AAE04727CAB6A200E8E3D4 /* StatsWeapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsWeapon.swift; sourceTree = "<group>"; };
+		10AAE04727CAB6A200E8E3D4 /* StatsWeaponList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsWeaponList.swift; sourceTree = "<group>"; };
 		10AAE04927CAC35600E8E3D4 /* StatsSpecial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsSpecial.swift; sourceTree = "<group>"; };
-		10AE389D27C99D170084D8E6 /* StatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsModel.swift; sourceTree = "<group>"; };
+		10AE389D27C99D170084D8E6 /* UserShiftStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserShiftStats.swift; sourceTree = "<group>"; };
 		10BA13F227201AF300348DD3 /* RealmCoopResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopResult.swift; sourceTree = "<group>"; };
 		10BA13F427201B1400348DD3 /* RealmCoopWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopWave.swift; sourceTree = "<group>"; };
 		10BA13F627201B4700348DD3 /* RealmCoopPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopPlayer.swift; sourceTree = "<group>"; };
@@ -226,6 +239,17 @@
 		10C0FE7A274C207900870DED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10C7C46B277ED8330015ECBB /* Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		10C7C46D277F00260015ECBB /* AppService+Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppService+Realm.swift"; sourceTree = "<group>"; };
+		10C7D68D27CF6CDA002C1F37 /* Firecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firecode.swift; sourceTree = "<group>"; };
+		10C7D68F27CF6D1D002C1F37 /* FSCoopWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCoopWave.swift; sourceTree = "<group>"; };
+		10C7D69127CF6EDE002C1F37 /* AppService+Firestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppService+Firestore.swift"; sourceTree = "<group>"; };
+		10C7D69327CF8DCD002C1F37 /* SettingView+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+Firebase.swift"; sourceTree = "<group>"; };
+		10C7D69627CF92E1002C1F37 /* StatsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsType.swift; sourceTree = "<group>"; };
+		10C7D69827CF92FC002C1F37 /* Comparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comparison.swift; sourceTree = "<group>"; };
+		10C7D69A27CF93E0002C1F37 /* Defeated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defeated.swift; sourceTree = "<group>"; };
+		10C7D69C27CF93FF002C1F37 /* Overview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overview.swift; sourceTree = "<group>"; };
+		10C7D69E27CF941D002C1F37 /* WeaponProb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponProb.swift; sourceTree = "<group>"; };
+		10C7D6A027CF9431002C1F37 /* SpecialProb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialProb.swift; sourceTree = "<group>"; };
+		10C7D6A227CF96C0002C1F37 /* UserShiftStats+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserShiftStats+Firebase.swift"; sourceTree = "<group>"; };
 		10E0C8A727CA6908002F4506 /* StatsCardSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCardSmall.swift; sourceTree = "<group>"; };
 		10E74E7F27B6B8B700D0E962 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		10E74E8127B6C42E00D0E962 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
@@ -307,8 +331,9 @@
 				100556FD27C98B3D0094582D /* StatsCard.swift */,
 				10E0C8A727CA6908002F4506 /* StatsCardSmall.swift */,
 				10AAE04527CA764200E8E3D4 /* StatsCardHalf.swift */,
-				10AAE04727CAB6A200E8E3D4 /* StatsWeapon.swift */,
+				10AAE04727CAB6A200E8E3D4 /* StatsWeaponList.swift */,
 				10AAE04927CAC35600E8E3D4 /* StatsSpecial.swift */,
+				109B546B27CDC04400FACC1A /* StatsWeapon.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -316,8 +341,10 @@
 		101141B0278476E50088DF4C /* ObservableObject */ = {
 			isa = PBXGroup;
 			children = (
+				10C7D69527CF92D1002C1F37 /* Models */,
 				101141B1278477060088DF4C /* UserStatsModel.swift */,
-				10AE389D27C99D170084D8E6 /* StatsModel.swift */,
+				10AE389D27C99D170084D8E6 /* UserShiftStats.swift */,
+				10C7D6A227CF96C0002C1F37 /* UserShiftStats+Firebase.swift */,
 			);
 			path = ObservableObject;
 			sourceTree = "<group>";
@@ -348,6 +375,7 @@
 		101AED0F271E3109009556B2 /* Salmonia3 */ = {
 			isa = PBXGroup;
 			children = (
+				10C7D68C27CF6CAF002C1F37 /* Firestore */,
 				101141B0278476E50088DF4C /* ObservableObject */,
 				10C7C46A277ED8020015ECBB /* Extension */,
 				101AED10271E3109009556B2 /* Salmonia3App.swift */,
@@ -455,8 +483,9 @@
 				105F8B3E27C7B25300DD5B13 /* Appearance */,
 				101AED59271E3946009556B2 /* SettingView.swift */,
 				109B545E27CD60E800FACC1A /* SettingView+Support.swift */,
-				109B546027CD64B000FACC1A /* SupportView.swift */,
 				109B546927CD705100FACC1A /* SettingView+Debug.swift */,
+				109B546027CD64B000FACC1A /* SupportView.swift */,
+				10C7D69327CF8DCD002C1F37 /* SettingView+Firebase.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -587,15 +616,38 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		10C7D68C27CF6CAF002C1F37 /* Firestore */ = {
+			isa = PBXGroup;
+			children = (
+				10C7D68D27CF6CDA002C1F37 /* Firecode.swift */,
+				10C7D68F27CF6D1D002C1F37 /* FSCoopWave.swift */,
+			);
+			path = Firestore;
+			sourceTree = "<group>";
+		};
+		10C7D69527CF92D1002C1F37 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				10C7D69627CF92E1002C1F37 /* StatsType.swift */,
+				10C7D69827CF92FC002C1F37 /* Comparison.swift */,
+				10C7D69A27CF93E0002C1F37 /* Defeated.swift */,
+				10C7D69C27CF93FF002C1F37 /* Overview.swift */,
+				10C7D69E27CF941D002C1F37 /* WeaponProb.swift */,
+				10C7D6A027CF9431002C1F37 /* SpecialProb.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		10FDD4AD271EE35D00C9C178 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				10162F8F27C7BCEC00ACFD4D /* ProgressModel.swift */,
 				10FDD4AE271EE36C00C9C178 /* AppService.swift */,
 				10C7C46D277F00260015ECBB /* AppService+Realm.swift */,
 				107B687627B6CE9D00238B9D /* AppService+SplatNet2SessionDelegate.swift */,
 				107B687A27B7362000238B9D /* AppService+Network.swift */,
-				10162F8F27C7BCEC00ACFD4D /* ProgressModel.swift */,
 				109B546727CD6C2300FACC1A /* AppService+StoreKit.swift */,
+				10C7D69127CF6EDE002C1F37 /* AppService+Firestore.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -759,22 +811,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10C7D69227CF6EDE002C1F37 /* AppService+Firestore.swift in Sources */,
 				100556F227C91AED0094582D /* Stingers.swift in Sources */,
+				109B546C27CDC04400FACC1A /* StatsWeapon.swift in Sources */,
 				10162F8E27C7B4A200ACFD4D /* SettingView+SalmonStats.swift in Sources */,
+				10C7D69D27CF9400002C1F37 /* Overview.swift in Sources */,
 				100556DD27C91AED0094582D /* Penetrable.swift in Sources */,
 				107B687B27B7362000238B9D /* AppService+Network.swift in Sources */,
 				109F97F82724ADB600AB1FA3 /* ResultOverview.swift in Sources */,
+				10C7D69027CF6D1D002C1F37 /* FSCoopWave.swift in Sources */,
 				10E0C8A827CA6908002F4506 /* StatsCardSmall.swift in Sources */,
 				10635094274E2B1F00529930 /* RealmCoopShift.swift in Sources */,
 				100556E727C91AED0094582D /* Grillers.swift in Sources */,
-				10AE389E27C99D170084D8E6 /* StatsModel.swift in Sources */,
+				10AE389E27C99D170084D8E6 /* UserShiftStats.swift in Sources */,
 				102C9DE1277E002A004822C1 /* ResultStats.swift in Sources */,
 				109F97FA2724CF0C00AB1FA3 /* ResultType.swift in Sources */,
 				100556DE27C91AED0094582D /* Smalls.swift in Sources */,
+				10C7D69F27CF941D002C1F37 /* WeaponProb.swift in Sources */,
 				102AD300277CE95A00C1E181 /* UserView.swift in Sources */,
-				10AAE04827CAB6A200E8E3D4 /* StatsWeapon.swift in Sources */,
+				10C7D69927CF92FC002C1F37 /* Comparison.swift in Sources */,
+				10AAE04827CAB6A200E8E3D4 /* StatsWeaponList.swift in Sources */,
 				109B545B27CB8F8300FACC1A /* WaveCollectionView.swift in Sources */,
 				100556ED27C91AED0094582D /* Mobility.swift in Sources */,
+				10C7D6A327CF96C0002C1F37 /* UserShiftStats+Firebase.swift in Sources */,
 				10C000DC274CE3F400870DED /* Image.swift in Sources */,
 				101AED3D271E3192009556B2 /* Wave.swift in Sources */,
 				100556E827C91AED0094582D /* Fats.swift in Sources */,
@@ -795,6 +854,7 @@
 				109B546127CD64B000FACC1A /* SupportView.swift in Sources */,
 				100556DB27C91AED0094582D /* Chargeable.swift in Sources */,
 				103168672750E3D10009070C /* ShiftView.swift in Sources */,
+				10C7D6A127CF9431002C1F37 /* SpecialProb.swift in Sources */,
 				100556FB27C9888D0094582D /* ShiftStatsView.swift in Sources */,
 				109B546A27CD705200FACC1A /* SettingView+Debug.swift in Sources */,
 				100556E227C91AED0094582D /* Rush.swift in Sources */,
@@ -807,6 +867,7 @@
 				100556E427C91AED0094582D /* Drizzlers.swift in Sources */,
 				100556EE27C91AED0094582D /* Stability.swift in Sources */,
 				10162F8C27C7B3EC00ACFD4D /* SettingView_SplatNet2.swift in Sources */,
+				10C7D69B27CF93E0002C1F37 /* Defeated.swift in Sources */,
 				10E74E8227B6C42E00D0E962 /* AccountView.swift in Sources */,
 				100556DA27C91AED0094582D /* Goldieseeking.swift in Sources */,
 				102C9DDF277DFA49004822C1 /* ResultDefeat.swift in Sources */,
@@ -820,6 +881,7 @@
 				102C9DE3277E0D8E004822C1 /* HSContent.swift in Sources */,
 				109F97E6272490C600AB1FA3 /* LoggingThread.swift in Sources */,
 				107B687727B6CE9D00238B9D /* AppService+SplatNet2SessionDelegate.swift in Sources */,
+				10C7D69727CF92E1002C1F37 /* StatsType.swift in Sources */,
 				1041BC0F277DC695008B27F1 /* ResultWeapon.swift in Sources */,
 				10BA13F327201AF300348DD3 /* RealmCoopResult.swift in Sources */,
 				109F98052724EC9400AB1FA3 /* Rainbow.swift in Sources */,
@@ -830,9 +892,11 @@
 				100556FE27C98B3D0094582D /* StatsCard.swift in Sources */,
 				10635096274E2E4D00529930 /* ShiftCollectionView.swift in Sources */,
 				100556E627C91AED0094582D /* PaintabilityFloor.swift in Sources */,
+				10C7D69427CF8DCD002C1F37 /* SettingView+Firebase.swift in Sources */,
 				10AAE04627CA764200E8E3D4 /* StatsCardHalf.swift in Sources */,
 				109F97F02724A11900AB1FA3 /* GrowingButtonStyle.swift in Sources */,
 				10BA13F527201B1400348DD3 /* RealmCoopWave.swift in Sources */,
+				10C7D68E27CF6CDA002C1F37 /* Firecode.swift in Sources */,
 				100556F727C948200094582D /* ShiftFilterButton.swift in Sources */,
 				1041BC09277DAFFE008B27F1 /* ResultWave.swift in Sources */,
 				109F97E8272490CE00AB1FA3 /* LoadingView.swift in Sources */,
@@ -1021,7 +1085,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1057,7 +1121,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;

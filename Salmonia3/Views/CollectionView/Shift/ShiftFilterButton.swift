@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct ShiftFilterButton: View {
     @EnvironmentObject var service: AppService

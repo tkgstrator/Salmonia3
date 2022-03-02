@@ -23,7 +23,7 @@ struct StatsCard: View {
         score > other ? .orange : .blue
     }
     
-    init(stats: StatsModel.Stats) {
+    init(stats: StatsModel.Overview) {
         self.score = Double(stats.score)
         self.other = Double(stats.other)
         self.caption = stats.caption

@@ -25,7 +25,7 @@ struct ResultDefeat: View {
             isPresented.toggle()
         }, label: {
             Text("オオモノシャケをたおした数 x\(bossKillCount.reduce(0, +))")
-                .font(systemName: .Splatfont2, size: 14)
+                .font(systemName: .Splatfont2, size: 14, foregroundColor: .yellow)
         })
             .buttonStyle(.plain)
     }

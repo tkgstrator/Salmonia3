@@ -28,14 +28,14 @@ struct ResultWeapon: View {
             Image(specialWeapon)
                 .resizable()
                 .scaledToFit()
-                .padding(2)
+                .padding(4)
                 .background(Circle().fill(Color.black.opacity(0.9)))
             ForEach(weaponList.indices) { index in
                 let weapon = weaponList[index]
                 Image(weapon)
                     .resizable()
                     .scaledToFit()
-                    .padding(2)
+                    .padding(4)
                     .background(Circle().fill(Color.black.opacity(0.9)))
             }
         })
