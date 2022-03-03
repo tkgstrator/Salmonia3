@@ -17,7 +17,9 @@ extension UserShiftStats {
     func waves(startTime: Int) {
         objects(FSCoopWave.self, startTime: startTime)
             .sink(receiveCompletion: { completion in
-            }, receiveValue: { response in
+            }, receiveValue: { [self] response in
+                let waves: [RealmStatsWave] = response.map({ RealmStatsWave(result: $0) })
+                save(waves, startTime: startTime)
             })
             .store(in: &task)
     }
@@ -27,23 +29,8 @@ extension UserShiftStats {
         objects(FSCoopTotal.self, startTime: startTime)
             .sink(receiveCompletion: { completion in
             }, receiveValue: { [self] response in
-                let lastPlayedTime: Int = response.max(by: { $0.playTime < $1.playTime })?.playTime ?? startTime
                 let total: [RealmStatsTotal] = response.map({ RealmStatsTotal(result: $0) })
-                
-                print(lastPlayedTime, total.count)
-                // 最終取得時間を更新
-                if let schedule = realm.objects(RealmCoopShift.self).first(where: { $0.startTime == startTime }) {
-                    save(total, startTime: startTime)
-                }
-                
-                let noNightEvent: [Int] = response.filter({ $0.eventType.allSatisfy({ $0 == .waterLevels })}).map({ $0.goldenEggs }).sorted(by: >)
-                let nightEvent: [Int] = response.map({ $0.goldenEggs }).sorted(by: >)
-                guard let rank: Int = nightEvent.firstIndex(of: Int(self.teamGoldenIkuraNum[1].score)) else {
-                    return
-                }
-                self.teamGoldenIkuraNum[1].total = response.count
-                self.teamGoldenIkuraNum[1].rank = rank + 1
-                self.objectWillChange.send()
+                save(total, startTime: startTime)
             })
             .store(in: &task)
     }
@@ -54,19 +41,18 @@ extension UserShiftStats {
         // 最後にアップデートした時間を取得
         let lastPlayedTime: Int = {
             guard let results = realm.objects(RealmCoopShift.self).first(where: { $0.startTime == startTime }),
-                  let lastPlayedTime = results.total.max(by: { $0.playTime < $1.playTime })?.playTime
+                  let lastPlayedTime = results.waves.max(by: { $0.playTime < $1.playTime })?.playTime
             else {
                 return 0
             }
             return lastPlayedTime
         }()
-        print("Get \(lastPlayedTime)")
         return Future { [self] promise in
             firestore
                 .collection("schedules")
                 .document("\(startTime)")
                 .collection(type.path)
-                .whereField("playTime", isGreaterThan: lastPlayedTime)
+                .whereField("playTime", isGreaterThanOrEqualTo: lastPlayedTime)
                 .getDocuments(completion: { (snapshot, _) in
                     guard let snapshot = snapshot
                     else {
@@ -82,18 +68,44 @@ extension UserShiftStats {
     
     /// RealmObjects書き込み
     internal func save(_ objects: [RealmStatsTotal], startTime: Int) {
-        guard let schedule = realm.objects(RealmCoopShift.self).first(where: { $0.startTime == startTime }) else {
-            return
-        }
         if realm.isInWriteTransaction {
+            realm.add(objects, update: .modified)
             for object in objects {
-                realm.create(RealmStatsTotal.self, value: object, update: .modified)
+                if let schedule = realm.objects(RealmCoopShift.self).first(where: { $0.startTime == startTime }),
+                   !schedule.total.contains(object) {
+                    schedule.total.append(objectsIn: [object])
+                }
             }
-            schedule.total.append(objectsIn: objects)
         } else {
             realm.beginWrite()
+            realm.add(objects, update: .modified)
             for object in objects {
-                realm.create(RealmStatsTotal.self, value: object, update: .modified)
+                if let schedule = realm.objects(RealmCoopShift.self).first(where: { $0.startTime == startTime }),
+                   !schedule.total.contains(object) {
+                    schedule.total.append(objectsIn: [object])
+                }
+            }
+            try? realm.commitWrite()
+        }
+    }
+    
+    internal func save(_ objects: [RealmStatsWave], startTime: Int) {
+        if realm.isInWriteTransaction {
+            realm.add(objects, update: .modified)
+            for object in objects {
+                if let schedule = realm.objects(RealmCoopShift.self).first(where: { $0.startTime == startTime }),
+                   !schedule.waves.contains(object) {
+                    schedule.waves.append(objectsIn: [object])
+                }
+            }
+        } else {
+            realm.beginWrite()
+            realm.add(objects, update: .modified)
+            for object in objects {
+                if let schedule = realm.objects(RealmCoopShift.self).first(where: { $0.startTime == startTime }),
+                   !schedule.waves.contains(object) {
+                    schedule.waves.append(objectsIn: [object])
+                }
             }
             try? realm.commitWrite()
         }

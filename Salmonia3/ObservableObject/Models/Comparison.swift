@@ -12,8 +12,6 @@ extension StatsModel {
         let id: UUID = UUID()
         let score: Float
         let other: Float
-        var rank: Int?
-        var total: Int?
         let caption: String
         
         internal init<T: BinaryInteger>(score: T?, other: T?, caption: String) {

@@ -115,6 +115,7 @@ final class UserShiftStats: ObservableObject {
         self.specialProbs = players.suppliedSpecialProb()
         
         total(startTime: startTime)
+        waves(startTime: startTime)
     }
 }
 
