@@ -19,30 +19,55 @@ extension AppService {
     
     /// 指定したオブジェクトを全て取得
     @discardableResult
-    func objecst<T: Object>(ofType type: T.Type) -> RealmSwift.Results<T> {
+    func objects<T: Object>(ofType type: T.Type) -> RealmSwift.Results<T> {
         realm.objects(type)
     }
     
+    /// シフトに対して書き込みをする
     internal func save<T: Object>(_ objects: [T]) {
         if realm.isInWriteTransaction {
-            for object in objects {
-                realm.create(T.self, value: object, update: .all)
+            realm.add(objects, update: .modified)
+        } else {
+            realm.beginWrite()
+            realm.add(objects, update: .modified)
+            try? realm.commitWrite()
+        }
+    }
+    
+    /// シフトに対して書き込みをする
+    internal func save(_ results: [RealmCoopResult]) {
+        let schedules = objects(ofType: RealmCoopShift.self)
+        
+        if realm.isInWriteTransaction {
+            realm.add(results, update: .modified)
+            for result in results {
+                if let schedule = schedules.first(where: { $0.startTime == result.startTime }),
+                   !schedule.results.contains(result)
+                {
+                    schedule.results.append(objectsIn: [result])
+                }
             }
         } else {
             realm.beginWrite()
-            for object in objects {
-                realm.create(T.self, value: object, update: .all)
+            realm.add(results, update: .modified)
+            for result in results {
+                if let schedule = schedules.first(where: { $0.startTime == result.startTime }),
+                   !schedule.results.contains(result)
+                {
+                    schedule.results.append(objectsIn: [result])
+                }
             }
             try? realm.commitWrite()
         }
     }
     
-    internal func save<T: Object>(_ object: T) {
+    /// シフトに対して書き込みをする
+    private func save<T: Object>(_ object: T) {
         if realm.isInWriteTransaction {
-            realm.create(T.self, value: object, update: .all)
+            realm.create(T.self, value: object, update: .modified)
         } else {
             try? realm.write {
-                realm.create(T.self, value: object, update: .all)
+                realm.create(T.self, value: object, update: .modified)
             }
         }
     }
@@ -54,7 +79,9 @@ extension AppService {
     
     /// シフト情報をRealmに追加
     func addLatestShiftSchedule() {
-        self.save(SplatNet2.schedule.map({ RealmCoopShift(from: $0) }))
+        if realm.objects(RealmCoopShift.self).isEmpty {
+            self.save(SplatNet2.schedule.map({ RealmCoopShift(from: $0) }))
+        }
     }
     
     var playedShiftScheduleId: [Int] {

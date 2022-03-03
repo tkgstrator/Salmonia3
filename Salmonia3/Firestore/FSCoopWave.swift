@@ -68,7 +68,7 @@ struct FSCoopTotal: Firecode {
         self.waterLevel = result.waveDetails.map({ $0.waterLevel.key})
         self.eventType = result.waveDetails.map({ $0.eventType.key })
         let offset: Int = (playTime - startTime) / 100
-        let encodedString: String = String(format: "%d%d%@%d", powerEggs, goldenEggs, members.joined(), offset)
+        let encodedString: String = String(format: "%d%d%@%d", powerEggs, goldenEggs, members.sorted().joined(), offset)
         self.id = SHA256.hash(data: encodedString.data(using: .utf8)!).compactMap({ String(format: "%02X", $0)}).joined()
     }
     
@@ -81,7 +81,7 @@ struct FSCoopTotal: Firecode {
         self.waterLevel = result.wave.map({ $0.waterLevel })
         self.eventType = result.wave.map({ $0.eventType })
         let offset: Int = (playTime - startTime) / 100
-        let encodedString: String = String(format: "%d%d%@%d", powerEggs, goldenEggs, members.joined(), offset)
+        let encodedString: String = String(format: "%d%d%@%d", powerEggs, goldenEggs, members.sorted().joined(), offset)
         self.id = SHA256.hash(data: encodedString.data(using: .utf8)!).compactMap({ String(format: "%02X", $0)}).joined()
     }
 }
@@ -101,6 +101,10 @@ extension FSCoopWave {
             .collection("waves")
             .document(self.id)
     }
+    
+    static var path: String {
+        "waves"
+    }
 }
 
 extension FSCoopTotal {
@@ -111,5 +115,9 @@ extension FSCoopTotal {
             .document("\(self.startTime)")
             .collection("total")
             .document(self.id)
+    }
+    
+    static var path: String {
+        "total"
     }
 }

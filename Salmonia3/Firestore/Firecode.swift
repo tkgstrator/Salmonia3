@@ -12,6 +12,7 @@ import FirebaseFirestoreSwift
 protocol Firecode: Codable, Identifiable {
     associatedtype DecodedType: Codable
     var id: String { get }
+    static var path: String { get }
     var reference: DocumentReference { get }
 }
 

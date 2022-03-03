@@ -56,6 +56,8 @@ final class RealmCoopResult: Object {
     @Persisted var wave: List<RealmCoopWave>
     /// Player情報
     @Persisted var player: List<RealmCoopPlayer>
+    /// バックリンク
+    @Persisted(originProperty: "results") private var link: LinkingObjects<RealmCoopShift>
     
     convenience init(from result: CoopResult.Response, id: Int) {
         self.init()

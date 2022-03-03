@@ -34,7 +34,7 @@ struct ShiftStatsView: View {
                     StatsCardHalf(score: ikuraNum.score, caption: ikuraNum.caption)
                 }
                 ForEach(stats.teamGoldenIkuraNum) { goldenIkuraNum in
-                    StatsCardHalf(score: goldenIkuraNum.score, caption: goldenIkuraNum.caption)
+                    StatsCardHalf(score: goldenIkuraNum.score, caption: goldenIkuraNum.caption, rank: goldenIkuraNum.rank, total: goldenIkuraNum.total)
                 }
                 ForEach(stats.ikuraNum) { ikuraNum in
                     StatsCard(stats: ikuraNum)
