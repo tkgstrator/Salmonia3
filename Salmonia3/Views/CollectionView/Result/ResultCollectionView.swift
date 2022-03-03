@@ -12,16 +12,16 @@ import Alamofire
 
 struct ResultCollectionView: View {
     @EnvironmentObject var service: AppService
-    @ObservedResults(RealmCoopResult.self, sortDescriptor: SortDescriptor(keyPath: "playTime", ascending: false)) var results
+    @ObservedResults(RealmCoopShift.self, sortDescriptor: SortDescriptor(keyPath: "startTime", ascending: false)) var schedules
     @State var isPresented: Bool = false
     
     var body: some View {
         NavigationView(content: {
             List(content: {
-                ForEach(results) { result in
-                    NavigationLinker(destination: ResultView(result), label: {
-                        ResultOverview(result)
-                    })
+                ForEach(schedules) { schedule in
+                    if !schedule.results.isEmpty {
+                        ResultShiftView(schedule: schedule)
+                    }
                 }
             })
                 .listStyle(.plain)
