@@ -13,7 +13,7 @@ struct ResultStatus: View {
     
     var body: some View {
         HStack(spacing: nil, content: {
-            HStack(content: {
+            HStack(spacing: 0, content: {
                 Image(.help)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -25,7 +25,7 @@ struct ResultStatus: View {
                 .frame(width: 60)
                 .padding(.horizontal, 8)
                 .background(Capsule().fill(Color.blackrussian.opacity(0.85)))
-            HStack(content: {
+            HStack(spacing: 0, content: {
                 Image(.rescue)
                     .resizable()
                     .aspectRatio(contentMode: .fit)

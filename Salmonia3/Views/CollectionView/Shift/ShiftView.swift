@@ -22,36 +22,42 @@ struct ShiftView: View {
         Image(shift.stageId)
             .resizable()
             .scaledToFit()
-            .frame(height: 60)
+            .frame(height: 50)
             .clipShape(RoundedRectangle(cornerRadius: 10))
-            .padding(.bottom)
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: nil, content: {
-            Group(content: {
-                HStack(alignment: .center, spacing: nil, content: {
-                    Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(shift.startTime))))
-                    Text(verbatim: "-")
-                    Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(shift.endTime))))
+        LazyVStack(alignment: .leading, spacing: 0, content: {
+            HStack(alignment: .center, spacing: nil, content: {
+                Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(shift.startTime))))
+                Text(verbatim: "-")
+                Text(formatter.string(from: Date(timeIntervalSince1970: TimeInterval(shift.endTime))))
+            })
+                .font(systemName: .Splatfont2, size: 14)
+            HStack(alignment: .bottom, spacing: 0, content: {
+                Image(shift.stageId)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 50)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                Spacer()
+                HStack(content: {
+                    ForEach(shift.weaponList.indices) { index in
+                        Image(shift.weaponList[index])
+                            .resizable()
+                            .padding(4)
+                            .scaledToFit()
+                            .background(Circle().fill(.black.opacity(0.9)))
+                            .frame(maxWidth: 45)
+                    }
                 })
             })
-            LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 40, maximum: 50), spacing: nil, alignment: .top), count: 4), alignment: .trailing, spacing: nil, content: {
-                ForEach(shift.weaponList.indices) { index in
-                    Image(shift.weaponList[index])
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .padding(4)
-                        .background(Circle().fill(.black.opacity(0.9)))
-                }
-            })
-                .overlay(StageImage, alignment: .leading)
-//                Text(String(format: "偏差値 %2.2f", shift.deviation))
-//                    .foregroundColor(.whitesmoke)
-//                    .padding(.horizontal)
-//                    .background(Capsule().fill(Color.red))
         })
     }
+}
+
+extension WeaponType: Identifiable {
+    public var id: Int { rawValue }
 }
 
 internal extension RealmCoopShift {
@@ -74,8 +80,4 @@ internal extension RealmCoopShift {
         let std: Double = Surge.std(shifts.map({ $0.score }))
         return (score - avg) / std * 10 + 50
     }
-}
-
-extension WeaponType: Identifiable {
-    public var id: Int { rawValue }
 }
