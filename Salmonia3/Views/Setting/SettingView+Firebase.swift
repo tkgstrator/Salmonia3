@@ -15,15 +15,21 @@ struct SettingView_Firebase: View {
             Button(action: {
                 service.twitterSignIn()
             }, label: {
-                Text("Firebase登録")
+                Text("登録")
+            })
+            Button(action: {
+                service.twitterSignOut()
+            }, label: {
+                Text("ログアウト")
             })
             Button(action: {
                 service.register()
             }, label: {
-                Text("New Salmon Statsへ同期")
+                Text("同期")
             })
+                .disabled(service.uploaded || service.user == nil)
         }, header: {
-            Text("Firebase")
+            Text("New Salmon Stats")
         }, footer: {
             Text("この機能は体験版です")
         })

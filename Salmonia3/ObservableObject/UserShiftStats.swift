@@ -11,11 +11,15 @@ import Surge
 import SplatNet2
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import Combine
 
 final class UserShiftStats: ObservableObject {
     internal let firestore: Firestore = Firestore.firestore()
     internal let encoder: Firestore.Encoder = Firestore.Encoder()
     internal let decoder: Firestore.Decoder = Firestore.Decoder()
+    internal var task: Set<AnyCancellable> = Set<AnyCancellable>()
+    private let schemeVersion: UInt64 = 8192
+    internal let realm: Realm
     
     typealias Overview = StatsModel.Overview
     typealias Defeated = StatsModel.Defeated
@@ -45,13 +49,15 @@ final class UserShiftStats: ObservableObject {
     var weaponProbs: [WeaponProb] = []
     /// スペシャルの支給率
     var specialProbs: [SpecialProb] = []
-    init() {}
     
     init(startTime: Int, nsaid: String?) {
-        guard let realm = try? Realm(),
-              let nsaid = nsaid
-        else {
-            return
+        do {
+            self.realm = try Realm()
+        } catch {
+            var config = Realm.Configuration.defaultConfiguration
+            config.deleteRealmIfMigrationNeeded = true
+            config.schemaVersion = schemeVersion
+            self.realm = try! Realm(configuration: config, queue: nil)
         }
         
         let results = realm.objects(RealmCoopResult.self).filter("startTime=%@ AND pid==%@", startTime, nsaid)
@@ -108,7 +114,7 @@ final class UserShiftStats: ObservableObject {
         self.weaponProbs = players.suppliedWeaponProbs(weaponList: weaponList)
         self.specialProbs = players.suppliedSpecialProb()
         
-        self.object(startTime: startTime)
+        total(startTime: startTime)
     }
 }
 

@@ -32,6 +32,14 @@ extension AppService {
         })
     }
     
+    func twitterSignOut() {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            DDLogError(error)
+        }
+    }
+    
     internal func register() {
         let waves: [FSCoopWave] = realm.objects(RealmCoopWave.self).map({ FSCoopWave(result: $0) })
         for wave in waves.chunked(by: 500) {
@@ -41,6 +49,7 @@ extension AppService {
         for total in totals.chunked(by: 500) {
             create(total)
         }
+        uploaded.toggle()
     }
     
     internal func register(results: [CoopResult.Response]) {

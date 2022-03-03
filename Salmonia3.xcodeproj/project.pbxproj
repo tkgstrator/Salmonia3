@@ -72,6 +72,7 @@
 		107B687B27B7362000238B9D /* AppService+Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107B687A27B7362000238B9D /* AppService+Network.swift */; };
 		107DB66A272CF67900A5A6E5 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 107DB669272CF67900A5A6E5 /* GoogleMobileAds */; };
 		107DB66F272CF89A00A5A6E5 /* SwiftyUI in Frameworks */ = {isa = PBXBuildFile; productRef = 107DB66E272CF89A00A5A6E5 /* SwiftyUI */; };
+		1082F77927D04D9E00044581 /* RealmCoopStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1082F77827D04D9E00044581 /* RealmCoopStats.swift */; };
 		1094284F271E458F0072425E /* SalmonStats in Frameworks */ = {isa = PBXBuildFile; productRef = 1094284E271E458F0072425E /* SalmonStats */; };
 		109B545B27CB8F8300FACC1A /* WaveCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B545A27CB8F8300FACC1A /* WaveCollectionView.swift */; };
 		109B545D27CB90DB00FACC1A /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B545C27CB90DB00FACC1A /* WaveView.swift */; };
@@ -211,6 +212,7 @@
 		107B687627B6CE9D00238B9D /* AppService+SplatNet2SessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppService+SplatNet2SessionDelegate.swift"; sourceTree = "<group>"; };
 		107B687827B6FAD900238B9D /* CircleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		107B687A27B7362000238B9D /* AppService+Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppService+Network.swift"; sourceTree = "<group>"; };
+		1082F77827D04D9E00044581 /* RealmCoopStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopStats.swift; sourceTree = "<group>"; };
 		109B545A27CB8F8300FACC1A /* WaveCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveCollectionView.swift; sourceTree = "<group>"; };
 		109B545C27CB90DB00FACC1A /* WaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
 		109B545E27CD60E800FACC1A /* SettingView+Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+Support.swift"; sourceTree = "<group>"; };
@@ -584,6 +586,7 @@
 				10BA13F427201B1400348DD3 /* RealmCoopWave.swift */,
 				10BA13F627201B4700348DD3 /* RealmCoopPlayer.swift */,
 				10635093274E2B1F00529930 /* RealmCoopShift.swift */,
+				1082F77827D04D9E00044581 /* RealmCoopStats.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -811,6 +814,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1082F77927D04D9E00044581 /* RealmCoopStats.swift in Sources */,
 				10C7D69227CF6EDE002C1F37 /* AppService+Firestore.swift in Sources */,
 				100556F227C91AED0094582D /* Stingers.swift in Sources */,
 				109B546C27CDC04400FACC1A /* StatsWeapon.swift in Sources */,
@@ -1085,7 +1089,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1121,7 +1125,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
