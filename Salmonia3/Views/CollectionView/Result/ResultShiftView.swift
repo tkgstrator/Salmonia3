@@ -12,15 +12,24 @@ struct ResultShiftView: View {
     @State var isPresented: Bool = false
     
     var body: some View {
-        DisclosureGroup(isExpanded: $isPresented, content: {
+        Section(content: {
             ForEach(schedule.results.sorted(byKeyPath: "playTime", ascending: false)) { result in
                 NavigationLinker(destination: ResultView(result), label: {
                     ResultOverview(result)
                 })
             }
-        }, label: {
+        }, header: {
             ShiftView(shift: schedule)
         })
+//        DisclosureGroup(isExpanded: $isPresented, content: {
+//            ForEach(schedule.results.sorted(byKeyPath: "playTime", ascending: false)) { result in
+//                NavigationLinker(destination: ResultView(result), label: {
+//                    ResultOverview(result)
+//                })
+//            }
+//        }, label: {
+//            ShiftView(shift: schedule)
+//        })
     }
 }
 
