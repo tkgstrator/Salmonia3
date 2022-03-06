@@ -11,8 +11,56 @@ import FirebaseFirestoreSwift
 import CocoaLumberjackSwift
 import Combine
 import RealmSwift
+import SplatNet2
+import Surge
+
+struct RankingStats {
+    /// 値
+    let value: Double?
+    /// 平均
+    let means: Double
+    /// 分散
+    let vars: Double
+    /// 標準偏差
+    let stds: Double
+    /// 順位
+    let rank: Int?
+    /// リザルト件数
+    let count: Int
+    /// 確率
+    let sigma: Double
+    
+    init(values: [Double], value: Double?) {
+        self.value = value
+        self.means = mean(values)
+        self.vars = variance(values)
+        self.stds = std(values)
+        self.rank = {
+            if let value = value {
+                return values.filter({ $0 >= value }).count
+            }
+            return nil
+        }()
+        self.count = values.count
+        self.sigma = .zero
+    }
+}
 
 extension UserShiftStats {
+    func getWaveRanking(nsaid: String, eventType: EventKey, waterLevel: WaterKey, startTime: Int) -> RankingStats {
+        let results: RealmSwift.Results<RealmStatsWave> = realm
+            .objects(RealmStatsWave.self)
+            .filter("eventType=%@ AND waterLevel=%@ AND ANY link.startTime=%@", eventType, waterLevel, startTime)
+        /// 自分の最高値
+        let value: Double? = results.filter("members CONTAINS %@", nsaid).map({ Double($0.goldenEggs) }).max()
+        /// 全体
+        let values: [Double] = realm
+            .objects(RealmStatsWave.self)
+            .filter("eventType=%@ AND waterLevel=%@ AND startTime=%@", eventType, waterLevel, startTime)
+            .map({ Double($0.goldenEggs) }).sorted(by: { $0 > $1 })
+        return RankingStats(values: values, value: value)
+    }
+    
     /// WAVE記録読み込み
     func waves(startTime: Int) {
         objects(FSCoopWave.self, startTime: startTime)

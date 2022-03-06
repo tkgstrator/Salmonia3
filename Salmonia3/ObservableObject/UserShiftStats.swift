@@ -19,6 +19,7 @@ final class UserShiftStats: ObservableObject {
     internal let decoder: Firestore.Decoder = Firestore.Decoder()
     internal var task: Set<AnyCancellable> = Set<AnyCancellable>()
     private let schemeVersion: UInt64 = 8192
+    internal let nsaid: String?
     internal let realm: Realm
     
     typealias Overview = StatsModel.Overview
@@ -49,15 +50,19 @@ final class UserShiftStats: ObservableObject {
     var weaponProbs: [WeaponProb] = []
     /// スペシャルの支給率
     var specialProbs: [SpecialProb] = []
+    /// ランキング
+    var goldenEggsWaveRank: [RankingStats] = []
     
     init(startTime: Int, nsaid: String?) {
         do {
             self.realm = try Realm()
+            self.nsaid = nsaid
         } catch {
             var config = Realm.Configuration.defaultConfiguration
             config.deleteRealmIfMigrationNeeded = true
             config.schemaVersion = schemeVersion
             self.realm = try! Realm(configuration: config, queue: nil)
+            self.nsaid = nsaid
         }
         
         let results = realm.objects(RealmCoopResult.self).filter("startTime=%@ AND pid==%@", startTime, nsaid)

@@ -18,7 +18,7 @@ struct BackgroundWave: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .top, content: {
-                Color.whitesmoke.edgesIgnoringSafeArea(.all)
+                Color.white.edgesIgnoringSafeArea(.all)
                 Wave(startAngle: Angle(degrees: 0), offset: offset / 2)
                     .fill(color.opacity(0.2))
                     .frame(width: geometry.frame(in: .local).width, height: geometry.frame(in: .local).height * 4 / 5 + 10)

@@ -78,8 +78,8 @@
         "repositoryURL": "https://github.com/quanghits/GoogleMobileAds",
         "state": {
           "branch": null,
-          "revision": "ef2f9a6dcd27c43aa49e66b561e9dd678b0d5618",
-          "version": "8.13.0"
+          "revision": "2a90e1e3c8f2c43aab66286d546254f1eecb1d5d",
+          "version": "9.0.1"
         }
       },
       {
@@ -88,7 +88,7 @@
         "state": {
           "branch": null,
           "revision": "f322d91b6b0497b727b228a5fa5b9394e7886d3a",
-          "version": "1.2.0"
+          "version": "2.0.0"
         }
       },
       {
@@ -159,8 +159,8 @@
         "repositoryURL": "https://github.com/realm/realm-cocoa",
         "state": {
           "branch": null,
-          "revision": "9dff9f2862240d521ad6ad599541269177ddb993",
-          "version": "10.22.0"
+          "revision": "7feb5799dc10316aaf9dd9f9152abe18fa983d51",
+          "version": "10.23.0"
         }
       },
       {
@@ -170,6 +170,15 @@
           "branch": null,
           "revision": "6b81f1a7a2d421f9e0b9e7f04e76bcf736a54409",
           "version": "11.9.0"
+        }
+      },
+      {
+        "package": "SigmaSwiftStatistics",
+        "repositoryURL": "https://github.com/evgenyneu/SigmaSwiftStatistics",
+        "state": {
+          "branch": null,
+          "revision": "d36db09f97a1739edc8c63897220c7ecbb5de684",
+          "version": "9.0.2"
         }
       },
       {
@@ -204,8 +213,8 @@
         "repositoryURL": "https://github.com/apple/swift-protobuf.git",
         "state": {
           "branch": null,
-          "revision": "7e2c5f3cbbeea68e004915e3a8961e20bd11d824",
-          "version": "1.18.0"
+          "revision": "e1499bc69b9040b29184f7f2996f7bab467c1639",
+          "version": "1.19.0"
         }
       },
       {
