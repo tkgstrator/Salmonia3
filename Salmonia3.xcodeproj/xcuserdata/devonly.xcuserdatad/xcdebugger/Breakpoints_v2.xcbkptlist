@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7388DFF3-2B0D-4BF6-8EA1-C5757D759275"
+            uuid = "92FE2060-0759-493A-A393-F9C2813FC5B2"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Salmonia3/ObservableObject/RankShiftStats.swift"
+            filePath = "Salmonia3/Views/CollectionView/Shift/Stats/StatsWeapon.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "init(startTime:nsaid:)"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "init(weaponProbs:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

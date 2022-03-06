@@ -24,7 +24,7 @@ struct RankingCollection: View {
                 }
             })
         })
-            .padding()
+            .padding(.horizontal)
             .listStyle(.plain)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("金イクラ納品数")
