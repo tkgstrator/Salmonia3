@@ -71,17 +71,23 @@ struct StatsWeapon: View {
             })
             Spacer()
             GeometryReader(content: { geometry in
-                ForEach(probs.indices) { index in
-                    let currentValue: Double = sum(probs.prefix(index))
-                    let totalValue: Double = sum(probs.prefix(index + 1))
-                    Circle()
-                        .trim(from: currentValue, to: totalValue * scale)
-                        .stroke(colors[index], lineWidth: 10)
-                }
+                ZStack(alignment: .center, content: {
+                    ForEach(probs.indices) { index in
+                        let currentValue: Double = sum(probs.prefix(index))
+                        let totalValue: Double = sum(probs.prefix(index + 1))
+                        Circle()
+                            .trim(from: currentValue, to: totalValue * scale)
+                            .stroke(colors[index], lineWidth: 10)
+                            .rotationEffect(.degrees(-90))
+                    }
+                    if (shiftType == .allRandom) || (shiftType == .oneRandom) {
+                        Text("詳細データ閲覧")
+                            .font(systemName: .Splatfont2, size: 16)
+                    }
+                })
             })
                 .aspectRatio(1.0, contentMode: .fit)
                 .frame(maxHeight: 130)
-                .rotationEffect(.degrees(-90))
         })
             .padding()
             .aspectRatio(16/9, contentMode: .fit)
@@ -95,8 +101,21 @@ struct StatsWeapon: View {
 }
 
 struct StatsWeapon_Previews: PreviewProvider {
+//    static var weaponProbs: [StatsModel.WeaponProb] = [
+//        StatsModel.WeaponProb(weaponType: .shooterBlasterBurst, prob: 0.25),
+//        StatsModel.WeaponProb(weaponType: .umbrellaAutoAssault, prob: 0.25),
+//        StatsModel.WeaponProb(weaponType: .chargerSpark, prob: 0.25),
+//        StatsModel.WeaponProb(weaponType: .slosherVase, prob: 0.25)
+//    ]
+    
+    static var weaponProbs: [StatsModel.WeaponProb] = [
+        StatsModel.WeaponProb(weaponType: .randomGreen, prob: 0.25),
+        StatsModel.WeaponProb(weaponType: .randomGreen, prob: 0.25),
+        StatsModel.WeaponProb(weaponType: .randomGreen, prob: 0.25),
+        StatsModel.WeaponProb(weaponType: .randomGreen, prob: 0.25)
+    ]
     static var previews: some View {
-        StatsWeapon(weaponProbs: [])
+        StatsWeapon(weaponProbs: weaponProbs)
             .preferredColorScheme(.dark)
     }
 }

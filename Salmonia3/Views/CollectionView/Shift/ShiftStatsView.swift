@@ -39,6 +39,7 @@ struct ShiftStatsView: View {
                     NavigationLink(destination: RankingCollection(startTime: schedule.startTime, nsaid: stats.nsaid), label: {
                         StatsCardHalf(score: goldenIkuraNum.score, caption: goldenIkuraNum.caption)
                     })
+                        .disabled(schedule.rareWeapon == nil)
                 }
                 ForEach(stats.ikuraNum) { ikuraNum in
                     StatsCard(stats: ikuraNum)

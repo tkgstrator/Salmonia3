@@ -53,16 +53,14 @@ struct ShiftCollectionView: View {
                         })
                     })
                 })
-                .halfsheet(isPresented: $isPresented, onDismiss: {
-                    update(mode: service.shiftDisplayMode)
-                },content: {
-                    ShiftFilterButton()
-                        .environmentObject(service)
-                })
-                .onAppear(perform: {
-                    update(mode: service.shiftDisplayMode)
-                })
+            //                .onAppear(perform: {
+            //                    update(mode: service.shiftDisplayMode)
+            //                })
         })
+            .halfsheet(isPresented: $isPresented, content: {
+                ShiftFilterButton()
+                    .environmentObject(service)
+            })
             .navigationViewStyle(.split)
     }
 }
