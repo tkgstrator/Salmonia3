@@ -49,15 +49,41 @@ struct FSCoopWave: Firecode {
     }
 }
 
+/// 総合記録
 struct FSCoopTotal: Firecode {
-    let goldenEggs: Int
-    let powerEggs: Int
-    let members: [String]
-    let playTime: Int
-    let startTime: Int
-    let waterLevel: [WaterKey]
-    let eventType: [EventKey]
+    /// 識別用ID
     let id: String
+    /// チーム総合金イクラ
+    let goldenEggs: Int
+    /// チーム総赤イクラ
+    let powerEggs: Int
+    /// メンバーのnsaid
+    let members: [String]
+    /// プレイ時間
+    let playTime: Int
+    /// シフト
+    let startTime: Int
+    /// 潮位
+    let waterLevel: [WaterKey]
+    /// イベント
+    let eventType: [EventKey]
+    // 追加
+    /// オオモノ討伐数
+//    let bossKillCounts: [Int]
+    /// オオモノ出現数
+//    let bossCounts: [Int]
+    /// 失敗したWAVE
+//    let failureWave: Int?
+    /// 失敗原因
+//    let failureReason: FailureReason?
+    /// プレイヤーリザルト
+//    let playerResults: [PlayerResult]
+    
+//    struct PlayerResult: Codable {
+//        let goldenEggs: Int
+//        let powerEggs: Int
+//        let bossKillCounts: [Int]
+//    }
     
     init(result: CoopResult.Response) {
         self.goldenEggs = result.waveDetails.map({ $0.goldenIkuraNum }).reduce(0, +)

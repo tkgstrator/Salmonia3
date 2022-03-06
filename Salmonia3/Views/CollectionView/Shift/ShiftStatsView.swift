@@ -34,7 +34,9 @@ struct ShiftStatsView: View {
                     StatsCardHalf(score: ikuraNum.score, caption: ikuraNum.caption)
                 }
                 ForEach(stats.teamGoldenIkuraNum) { goldenIkuraNum in
-                    StatsCardHalf(score: goldenIkuraNum.score, caption: goldenIkuraNum.caption)
+                    NavigationLink(destination: RankingCollection(startTime: schedule.startTime, nsaid: stats.nsaid), label: {
+                        StatsCardHalf(score: goldenIkuraNum.score, caption: goldenIkuraNum.caption)
+                    })
                 }
                 ForEach(stats.ikuraNum) { ikuraNum in
                     StatsCard(stats: ikuraNum)

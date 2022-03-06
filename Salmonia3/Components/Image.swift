@@ -34,4 +34,9 @@ extension Image {
     init(_ specialId: SpecialId) {
         self.init("Special/\(specialId.rawValue)", bundle: .main)
     }
+    
+    /// ランク画像
+    init(_ rankId: RankId) {
+        self.init("Rank/\(rankId.rawValue)", bundle: .main)
+    }
 }

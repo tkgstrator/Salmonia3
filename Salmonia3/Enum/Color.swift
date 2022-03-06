@@ -58,7 +58,7 @@ extension Color {
     static let dimgray          = Color(.dimgray)
     static let darkblue         = Color(.darkblue)
     static let navyblue         = Color(.navyblue)
-//    static let whitesmoke       = Color(.whitesmoke)
+    static let whitesmoke       = Color(.whitesmoke)
     static let citrus           = Color(.citrus)
 }
 

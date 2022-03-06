@@ -82,7 +82,6 @@ final class UserStatsModel: ObservableObject {
                 color: .blue
             )
         )
-        print(self.stats)
     }
 }
 
