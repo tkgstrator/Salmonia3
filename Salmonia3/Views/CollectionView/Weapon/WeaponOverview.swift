@@ -29,7 +29,7 @@ struct WeaponOverview: View {
                     HStack(content: {
                         Text("ブキコンプリート")
                         Spacer()
-                        Text("未達成")
+                        Text(suppliedWeaponCount == 51 ? "達成" : "未達成")
                     })
                 })
                 Spacer(minLength: 40)
