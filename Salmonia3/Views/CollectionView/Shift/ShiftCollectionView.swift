@@ -53,11 +53,11 @@ struct ShiftCollectionView: View {
                         })
                     })
                 })
-            //                .onAppear(perform: {
-            //                    update(mode: service.shiftDisplayMode)
-            //                })
+                .onAppear(perform: {
+                    update(mode: service.shiftDisplayMode)
+                })
         })
-            .halfsheet(isPresented: $isPresented, content: {
+            .halfsheet(isPresented: $isPresented, onDismiss: { update(mode: service.shiftDisplayMode) }, content: {
                 ShiftFilterButton()
                     .environmentObject(service)
             })
