@@ -57,6 +57,10 @@
 		101AED57271E367D009556B2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED56271E367D009556B2 /* Color.swift */; };
 		101AED5A271E3946009556B2 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED59271E3946009556B2 /* SettingView.swift */; };
 		101AED61271E3F2B009556B2 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED60271E3F2B009556B2 /* Icon.swift */; };
+		1027057C27D48B5600326B32 /* WeaponCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1027057B27D48B5600326B32 /* WeaponCollectionView.swift */; };
+		1027057E27D48E4200326B32 /* WeaponShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1027057D27D48E4200326B32 /* WeaponShiftStats.swift */; };
+		1027058027D4A34E00326B32 /* StatsWeaponDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1027057F27D4A34E00326B32 /* StatsWeaponDetail.swift */; };
+		1027058327D4ABF700326B32 /* WeaponOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1027058227D4ABF700326B32 /* WeaponOverview.swift */; };
 		102AD300277CE95A00C1E181 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AD2FF277CE95A00C1E181 /* UserView.swift */; };
 		102C9DDF277DFA49004822C1 /* ResultDefeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102C9DDE277DFA49004822C1 /* ResultDefeat.swift */; };
 		102C9DE1277E002A004822C1 /* ResultStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102C9DE0277E002A004822C1 /* ResultStats.swift */; };
@@ -102,7 +106,6 @@
 		109F97FC2724D44100AB1FA3 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97FB2724D44100AB1FA3 /* Text.swift */; };
 		109F98052724EC9400AB1FA3 /* Rainbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F98042724EC9400AB1FA3 /* Rainbow.swift */; };
 		10AAE04627CA764200E8E3D4 /* StatsCardHalf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AAE04527CA764200E8E3D4 /* StatsCardHalf.swift */; };
-		10AAE04827CAB6A200E8E3D4 /* StatsWeaponList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AAE04727CAB6A200E8E3D4 /* StatsWeaponList.swift */; };
 		10AAE04A27CAC35600E8E3D4 /* StatsSpecial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AAE04927CAC35600E8E3D4 /* StatsSpecial.swift */; };
 		10AE389E27C99D170084D8E6 /* UserShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AE389D27C99D170084D8E6 /* UserShiftStats.swift */; };
 		10BA13F027201A7B00348DD3 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10BA13EF27201A7B00348DD3 /* RealmSwift */; };
@@ -206,6 +209,10 @@
 		101AED56271E367D009556B2 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		101AED59271E3946009556B2 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		101AED60271E3F2B009556B2 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		1027057B27D48B5600326B32 /* WeaponCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponCollectionView.swift; sourceTree = "<group>"; };
+		1027057D27D48E4200326B32 /* WeaponShiftStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponShiftStats.swift; sourceTree = "<group>"; };
+		1027057F27D4A34E00326B32 /* StatsWeaponDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StatsWeaponDetail.swift; path = ../../StatsWeaponDetail.swift; sourceTree = "<group>"; };
+		1027058227D4ABF700326B32 /* WeaponOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponOverview.swift; sourceTree = "<group>"; };
 		102AD2FF277CE95A00C1E181 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		102C9DDE277DFA49004822C1 /* ResultDefeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDefeat.swift; sourceTree = "<group>"; };
 		102C9DE0277E002A004822C1 /* ResultStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultStats.swift; sourceTree = "<group>"; };
@@ -247,7 +254,6 @@
 		109F97FB2724D44100AB1FA3 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		109F98042724EC9400AB1FA3 /* Rainbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rainbow.swift; sourceTree = "<group>"; };
 		10AAE04527CA764200E8E3D4 /* StatsCardHalf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCardHalf.swift; sourceTree = "<group>"; };
-		10AAE04727CAB6A200E8E3D4 /* StatsWeaponList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsWeaponList.swift; sourceTree = "<group>"; };
 		10AAE04927CAC35600E8E3D4 /* StatsSpecial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsSpecial.swift; sourceTree = "<group>"; };
 		10AE389D27C99D170084D8E6 /* UserShiftStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserShiftStats.swift; sourceTree = "<group>"; };
 		10BA13F227201AF300348DD3 /* RealmCoopResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopResult.swift; sourceTree = "<group>"; };
@@ -349,9 +355,9 @@
 				100556FD27C98B3D0094582D /* StatsCard.swift */,
 				10E0C8A727CA6908002F4506 /* StatsCardSmall.swift */,
 				10AAE04527CA764200E8E3D4 /* StatsCardHalf.swift */,
-				10AAE04727CAB6A200E8E3D4 /* StatsWeaponList.swift */,
 				10AAE04927CAC35600E8E3D4 /* StatsSpecial.swift */,
 				109B546B27CDC04400FACC1A /* StatsWeapon.swift */,
+				1027057F27D4A34E00326B32 /* StatsWeaponDetail.swift */,
 				10196D4127D2120B009CD55E /* StatsWave.swift */,
 			);
 			path = Stats;
@@ -365,6 +371,7 @@
 				10AE389D27C99D170084D8E6 /* UserShiftStats.swift */,
 				10C7D6A227CF96C0002C1F37 /* UserShiftStats+Firebase.swift */,
 				109A255027D44EC700674AA5 /* RankShiftStats.swift */,
+				1027057D27D48E4200326B32 /* WeaponShiftStats.swift */,
 			);
 			path = ObservableObject;
 			sourceTree = "<group>";
@@ -511,6 +518,15 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		1027058127D4ABDA00326B32 /* Weapon */ = {
+			isa = PBXGroup;
+			children = (
+				1027057B27D48B5600326B32 /* WeaponCollectionView.swift */,
+				1027058227D4ABF700326B32 /* WeaponOverview.swift */,
+			);
+			path = Weapon;
+			sourceTree = "<group>";
+		};
 		102AD2FD277CE92200C1E181 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -576,6 +592,7 @@
 		109F97E9272491D800AB1FA3 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				1027058127D4ABDA00326B32 /* Weapon */,
 				104BCEC127D117B500507A50 /* Ranking */,
 				109B545927CB8F7300FACC1A /* Wave */,
 				10C000DF2750E36900870DED /* Shift */,
@@ -869,7 +886,6 @@
 				1082F77B27D072A000044581 /* ResultShiftView.swift in Sources */,
 				102AD300277CE95A00C1E181 /* UserView.swift in Sources */,
 				10C7D69927CF92FC002C1F37 /* Comparison.swift in Sources */,
-				10AAE04827CAB6A200E8E3D4 /* StatsWeaponList.swift in Sources */,
 				109B545B27CB8F8300FACC1A /* WaveCollectionView.swift in Sources */,
 				100556ED27C91AED0094582D /* Mobility.swift in Sources */,
 				10C7D6A327CF96C0002C1F37 /* UserShiftStats+Firebase.swift in Sources */,
@@ -888,6 +904,7 @@
 				109A255127D44EC700674AA5 /* RankShiftStats.swift in Sources */,
 				10162F8827C7B2CA00ACFD4D /* SettingView+Appearance.swift in Sources */,
 				101AED13271E3109009556B2 /* ContentView.swift in Sources */,
+				1027057E27D48E4200326B32 /* WeaponShiftStats.swift in Sources */,
 				101141B2278477060088DF4C /* UserStatsModel.swift in Sources */,
 				10E74E8027B6B8B700D0E962 /* SignInView.swift in Sources */,
 				100556E327C91AED0094582D /* Steelheads.swift in Sources */,
@@ -897,6 +914,7 @@
 				103168672750E3D10009070C /* ShiftView.swift in Sources */,
 				10C7D6A127CF9431002C1F37 /* SpecialProb.swift in Sources */,
 				100556FB27C9888D0094582D /* ShiftStatsView.swift in Sources */,
+				1027057C27D48B5600326B32 /* WeaponCollectionView.swift in Sources */,
 				109B546A27CD705200FACC1A /* SettingView+Debug.swift in Sources */,
 				100556E227C91AED0094582D /* Rush.swift in Sources */,
 				100556D927C91AED0094582D /* Flexibility.swift in Sources */,
@@ -919,12 +937,14 @@
 				101AED57271E367D009556B2 /* Color.swift in Sources */,
 				10FDD4AF271EE36C00C9C178 /* AppService.swift in Sources */,
 				109F97FC2724D44100AB1FA3 /* Text.swift in Sources */,
+				1027058027D4A34E00326B32 /* StatsWeaponDetail.swift in Sources */,
 				102C9DE3277E0D8E004822C1 /* HSContent.swift in Sources */,
 				109F97E6272490C600AB1FA3 /* LoggingThread.swift in Sources */,
 				107B687727B6CE9D00238B9D /* AppService+SplatNet2SessionDelegate.swift in Sources */,
 				104BCEC327D117C400507A50 /* RankingCollection.swift in Sources */,
 				10C7D69727CF92E1002C1F37 /* StatsType.swift in Sources */,
 				1041BC0F277DC695008B27F1 /* ResultWeapon.swift in Sources */,
+				1027058327D4ABF700326B32 /* WeaponOverview.swift in Sources */,
 				10BA13F327201AF300348DD3 /* RealmCoopResult.swift in Sources */,
 				109F98052724EC9400AB1FA3 /* Rainbow.swift in Sources */,
 				101AED61271E3F2B009556B2 /* Icon.swift in Sources */,

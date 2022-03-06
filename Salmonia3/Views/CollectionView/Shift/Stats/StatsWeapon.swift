@@ -14,10 +14,30 @@ struct StatsWeapon: View {
     @State var scale: Double = .zero
     let weaponList: [WeaponType]
     let probs: [Double]
+    let shiftType: ShiftType
+    
+    enum ShiftType: CaseIterable {
+        case normal
+        case oneRandom
+        case allRandom
+        case goldRandom
+    }
     
     init(weaponProbs: [StatsModel.WeaponProb]) {
         self.weaponList = weaponProbs.map({ $0.weaponType })
         self.probs = weaponProbs.map({ $0.prob })
+        self.shiftType = {
+            if weaponProbs.allSatisfy({ $0.weaponType == .randomGreen }) {
+                return .allRandom
+            }
+            if weaponProbs.allSatisfy({ $0.weaponType == .randomGold }) {
+                return .goldRandom
+            }
+            if weaponProbs.contains(where: { $0.weaponType == .randomGreen }) {
+                return .oneRandom
+            }
+            return .normal
+        }()
     }
     
     let colors: [Color] = [.red, .blue, .green, .yellow]
@@ -36,8 +56,14 @@ struct StatsWeapon: View {
                             .frame(width: 30, height: 30, alignment: .center)
                             .padding(4)
                             .background(Circle().fill(Color.black.opacity(0.9)))
-                        Text(String(format:"%2.2f%%", prob * 100))
-                            .font(systemName: .Splatfont2, size: 16, foregroundColor: color)
+                        switch shiftType {
+                        case .normal, .goldRandom:
+                            Text(String(format:"%2.2f%%", prob * 100))
+                                .font(systemName: .Splatfont2, size: 16, foregroundColor: color)
+                        case .oneRandom, .allRandom:
+                            Text("??.??%")
+                                .font(systemName: .Splatfont2, size: 16, foregroundColor: color)
+                        }
                         Spacer()
                     })
                         .frame(maxWidth: 155)

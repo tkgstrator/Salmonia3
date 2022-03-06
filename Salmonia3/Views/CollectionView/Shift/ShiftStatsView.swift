@@ -26,7 +26,9 @@ struct ShiftStatsView: View {
                 }
             })
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 1), content: {
-                StatsWeapon(weaponProbs: stats.weaponProbs)
+                NavigationLink(destination: WeaponCollectionView(shift: schedule, nsaid: stats.nsaid), label: {
+                    StatsWeapon(weaponProbs: stats.weaponProbs)
+                })
                 StatsSpecial(specialProbs: stats.specialProbs)
             })
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 2), content: {
