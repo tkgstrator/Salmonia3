@@ -19,7 +19,7 @@ struct WeaponOverview: View {
                     HStack(content: {
                         Text("推定所要バイト数")
                         Spacer()
-                        Text("94回")
+                        Text("\(stats.estimateCompleteJobCount)回")
                     })
                     HStack(content: {
                         Text("バイト数")

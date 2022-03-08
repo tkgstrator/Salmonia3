@@ -88,13 +88,11 @@ final class AppService: ObservableObject {
     internal let encoder: Firestore.Encoder = Firestore.Encoder()
     internal let decoder: Firestore.Decoder = Firestore.Decoder()
     internal let provider: OAuthProvider = OAuthProvider(providerID: "twitter.com")
-    @Published var user: FirebaseAuth.User? {
-        willSet {
-            if let newValue = newValue {
-                self.uploaded = false
-            }
-        }
-    }
+    /// Firebaseユーザ
+    @Published var user: FirebaseAuth.User?
+    /// Firestore連携フラグ
+    @AppStorage("APP.FIRESTORE.ISSIGNIN") var isConnected: Bool = false
+    /// SalmonStats連携フラグ
     @AppStorage("APP.SALMONSTATS.UPDATED") var uploaded: Bool = false
     
     /// RealmSwiftのScheme Version
