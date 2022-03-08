@@ -206,10 +206,12 @@ fileprivate extension RealmSwift.Results where Element == RealmCoopPlayer {
     }
     
     func suppliedSpecialProb() -> [StatsModel.SpecialProb] {
-        let suppliedSpecialList: [SpecialId] = flatMap({ $0.specialId })
+        let suppliedSpecialList: [SpecialId] = compactMap({ $0.specialId })
         let appearances: [(SpecialId, Int)] = SpecialId.allCases.map({ suppliedSpecial in (suppliedSpecial, suppliedSpecialList.filter({ $0 == suppliedSpecial }).count) })
         let totalCount: Int = appearances.map({ $0.1 }).reduce(0, +)
-        return appearances.map({ StatsModel.SpecialProb(specialId: $0.0, prob: Double($0.1) / Double(totalCount)) }).sorted(by: { $0.prob > $1.prob })
+        let value = appearances.map({ StatsModel.SpecialProb(specialId: $0.0, prob: Double($0.1) / Double(totalCount)) }).sorted(by: { $0.prob > $1.prob })
+        print(value)
+        return value
     }
     
     /// 指定されたオオモノの討伐数の配列

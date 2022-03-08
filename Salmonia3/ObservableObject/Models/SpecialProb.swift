@@ -9,7 +9,7 @@ import Foundation
 import SplatNet2
 
 extension StatsModel {
-    class SpecialProb {
+    struct SpecialProb {
         internal init(specialId: SpecialId, prob: Double) {
             self.specialId = specialId
             self.prob = prob
