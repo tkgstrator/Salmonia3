@@ -56,10 +56,6 @@ struct ShiftView: View {
     }
 }
 
-extension WeaponType: Identifiable {
-    public var id: Int { rawValue }
-}
-
 internal extension RealmCoopShift {
     /// スコア
     var score: Double {

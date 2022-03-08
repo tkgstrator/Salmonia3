@@ -13,9 +13,9 @@ extension StatsModel {
         let id: UUID = UUID()
         let score: Float
         let other: Float
-        let bossType: BossType.BossId
+        let bossType: BossId
         
-        internal init<T: BinaryFloatingPoint>(score: T?, other: T?, bossType: BossType.BossId) {
+        internal init<T: BinaryFloatingPoint>(score: T?, other: T?, bossType: BossId) {
             self.bossType = bossType
             self.score = {
                 guard let score = score else {

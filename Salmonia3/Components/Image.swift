@@ -11,7 +11,7 @@ import SplatNet2
 
 extension Image {
     /// オオモノ画像
-    init(_ symbol: BossType.BossId) {
+    init(_ symbol: BossId) {
         self.init("SalmonId/\(symbol.rawValue)", bundle: .main)
     }
     
@@ -21,12 +21,7 @@ extension Image {
     }
     
     /// ステージ画像
-    init(_ stageId: Schedule.StageId) {
-        self.init("Stage/\(stageId.rawValue)", bundle: .main)
-    }
-    
-    /// ステージ画像
-    init(_ stageId: StageType.StageId) {
+    init(_ stageId: StageId) {
         self.init("Stage/\(stageId.rawValue)", bundle: .main)
     }
     

@@ -36,13 +36,9 @@ extension RealmCoopWave {
     }
 }
 
-extension EventKey: PersistableEnum, Identifiable {
-    public var id: String { rawValue }
-}
+extension EventKey: PersistableEnum {}
 
-extension WaterKey: PersistableEnum, Identifiable {
-    public var id: String { rawValue }
-}
+extension WaterKey: PersistableEnum {}
 
 //
 extension RealmCoopWave: Identifiable {

@@ -74,10 +74,6 @@ struct StatsSpecial: View {
 //    }
 //}
 
-extension SpecialId: Identifiable {
-    public var id: String { rawValue }
-}
-
 //extension Text {
 //    init(_ specialType: SpecialId) {
 //        let text: String = {

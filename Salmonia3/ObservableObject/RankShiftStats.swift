@@ -36,8 +36,8 @@ final class RankShiftStats: ObservableObject {
         for eventType in EventKey.allCases {
             for waterLevel in WaterKey.allCases {
                 let results = realm.objects(RealmStatsWave.self).filter("eventType=%@ AND waterLevel=%@ AND ANY link.startTime=%@", eventType, waterLevel, startTime)
-                let goldenEgg = results.filter({ $0.members.contains(nsaid) }).map({ $0.goldenEggs }).max()
-                let goldenEggs = results.map({ $0.goldenEggs }).sorted(by: { $1 < $0 })
+                let goldenEgg = results.filter({ $0.members.contains(nsaid) }).map({ $0.goldenIkuraNum }).max()
+                let goldenEggs = results.map({ $0.goldenIkuraNum }).sorted(by: { $1 < $0 })
                 let rank: Int? = {
                     guard let goldenEgg = goldenEgg else {
                         return nil

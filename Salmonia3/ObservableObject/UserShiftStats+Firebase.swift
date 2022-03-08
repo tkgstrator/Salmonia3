@@ -48,16 +48,18 @@ struct RankingStats {
 
 extension UserShiftStats {
     func getWaveRanking(nsaid: String, eventType: EventKey, waterLevel: WaterKey, startTime: Int) -> RankingStats {
+        /// 指定されたユーザ名と潮位とイベントとシフトのリザルトを全件取得
         let results: RealmSwift.Results<RealmStatsWave> = realm
             .objects(RealmStatsWave.self)
             .filter("eventType=%@ AND waterLevel=%@ AND ANY link.startTime=%@", eventType, waterLevel, startTime)
-        /// 自分の最高値
-        let value: Double? = results.filter("members CONTAINS %@", nsaid).map({ Double($0.goldenEggs) }).max()
+        /// アップロードされていないとリザルトはないことになるので注意
+        /// メンバーに自分が含まれているリザルトの最高値を取得
+        let value: Double? = results.filter("members CONTAINS %@", nsaid).map({ Double($0.goldenIkuraNum) }).max()
         /// 全体
         let values: [Double] = realm
             .objects(RealmStatsWave.self)
             .filter("eventType=%@ AND waterLevel=%@ AND startTime=%@", eventType, waterLevel, startTime)
-            .map({ Double($0.goldenEggs) }).sorted(by: { $0 > $1 })
+            .map({ Double($0.goldenIkuraNum) }).sorted(by: { $0 > $1 })
         return RankingStats(values: values, value: value)
     }
     

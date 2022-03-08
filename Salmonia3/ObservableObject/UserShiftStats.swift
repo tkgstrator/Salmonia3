@@ -101,7 +101,7 @@ final class UserShiftStats: ObservableObject {
             Overview(score: players.averageDefeatedNum(), other: others.averageDefeatedNum(), caption: "平均オオモノ討伐数"),
             Overview(score: players.maxDefeatedNum(), other: others.maxDefeatedNum(), caption: "最高オオモノ討伐数"),
         ]
-        self.defeatedIdCount = BossType.BossId.allCases.map({ bossId -> Defeated in
+        self.defeatedIdCount = BossId.allCases.map({ bossId -> Defeated in
             Defeated(score: players.averageDefeatedNum(bossId: bossId), other: others.averageDefeatedNum(bossId: bossId), bossType: bossId)
         })
         self.teamIkuraNum = [
@@ -141,8 +141,8 @@ fileprivate extension RealmCoopPlayer {
     }
     
     /// 指定されたオオモノの討伐数
-    func bossKillCounts(bossId: BossType.BossId) -> Int {
-        self.bossKillCounts[bossId.index]
+    func bossKillCounts(bossId: BossId) -> Int {
+        self.bossKillCounts[bossId.rawValue]
     }
 }
 
@@ -213,15 +213,15 @@ fileprivate extension RealmSwift.Results where Element == RealmCoopPlayer {
     }
     
     /// 指定されたオオモノの討伐数の配列
-    func bossKillCounts(bossId: BossType.BossId) -> [Int] {
+    func bossKillCounts(bossId: BossId) -> [Int] {
         map({ $0.bossKillCounts(bossId: bossId )})
     }
     
-    func averageDefeatedNum(bossId: BossType.BossId) -> Double? {
+    func averageDefeatedNum(bossId: BossId) -> Double? {
         bossKillCounts(bossId: bossId).isEmpty ? nil : bossKillCounts(bossId: bossId).average()
     }
     
-    func maxDefeatedNum(bossId: BossType.BossId) -> Int? {
+    func maxDefeatedNum(bossId: BossId) -> Int? {
         bossKillCounts(bossId: bossId).max()
     }
     

@@ -13,11 +13,11 @@ struct WaveView: View {
     let wave: RealmCoopWave
     
     var StageImage: some View {
-        let stageId: Schedule.StageId = {
+        let stageId: StageId = {
             if let stageId = wave.stageId {
                 return stageId
             }
-            return Schedule.StageId.shakeup
+            return StageId.shakeup
         }()
         return Image(stageId)
             .resizable()
@@ -63,7 +63,7 @@ fileprivate extension RealmCoopWave {
         return realm.objects(RealmCoopShift.self).first(where: { $0.startTime == result.startTime })?.weaponList
     }
     
-    var stageId: Schedule.StageId? {
+    var stageId: StageId? {
         guard let realm = try? Realm() else {
             return nil
         }
