@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WeaponOverview: View {
     @StateObject var stats: WeaponShiftStats
-    @State private var scale: CGFloat = .zero
+//    @State private var scale: CGFloat = .zero
     
     var body: some View {
         GeometryReader(content: { geometry in
@@ -37,10 +37,10 @@ struct WeaponOverview: View {
                     Circle()
                         .fill(Color.white)
                     Circle()
-                        .stroke(style: StrokeStyle(lineWidth: 24, lineCap: .round))
+                        .stroke(style: StrokeStyle(lineWidth: 16, lineCap: .round))
                         .foregroundColor(.gray)
                     Circle()
-                        .trim(from: 0.0, to: CGFloat(suppliedWeaponCount) / CGFloat(51) * scale)
+                        .trim(from: 0.0, to: CGFloat(suppliedWeaponCount) / CGFloat(51))
                         .stroke(style: StrokeStyle(lineWidth: 24))
                         .rotationEffect(.degrees(-90))
                         .foregroundColor(.citrus)
@@ -55,11 +55,11 @@ struct WeaponOverview: View {
         })
             .aspectRatio(20/9, contentMode: .fit)
             .background(RoundedRectangle(cornerRadius: 10).fill(Color.whitesmoke))
-            .onAppear(perform: {
-                withAnimation(.easeInOut(duration: 1.5)) {
-                    self.scale = 1.0
-                }
-            })
+//            .onAppear(perform: {
+//                withAnimation(.easeInOut(duration: 1.5)) {
+//                    self.scale = 1.0
+//                }
+//            })
     }
 }
 
