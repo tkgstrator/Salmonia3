@@ -78,8 +78,8 @@
         "repositoryURL": "https://github.com/quanghits/GoogleMobileAds",
         "state": {
           "branch": null,
-          "revision": "2a90e1e3c8f2c43aab66286d546254f1eecb1d5d",
-          "version": "9.0.1"
+          "revision": "3464efa9ef50a26a4c8ee5e66aeedc8ce79048d4",
+          "version": "9.1.0"
         }
       },
       {
@@ -159,8 +159,8 @@
         "repositoryURL": "https://github.com/realm/realm-cocoa",
         "state": {
           "branch": null,
-          "revision": "7feb5799dc10316aaf9dd9f9152abe18fa983d51",
-          "version": "10.23.0"
+          "revision": "2380340c876da7a2d17b0b59e21e339120d09bb3",
+          "version": "10.24.0"
         }
       },
       {
@@ -168,8 +168,8 @@
         "repositoryURL": "https://github.com/realm/realm-core",
         "state": {
           "branch": null,
-          "revision": "6b81f1a7a2d421f9e0b9e7f04e76bcf736a54409",
-          "version": "11.9.0"
+          "revision": "e9eec444d13ebebc062202407e79b9833428a24e",
+          "version": "11.11.0"
         }
       },
       {
@@ -186,8 +186,8 @@
         "repositoryURL": "https://github.com/tkgstrator/SplatNet2",
         "state": {
           "branch": null,
-          "revision": "defa7be73d464c4582bd869839f951fe4b9a846a",
-          "version": "1.0.18"
+          "revision": "94ee79c44ac5b337b7e70b5617aa46d5e5a15ca4",
+          "version": "1.0.21"
         }
       },
       {

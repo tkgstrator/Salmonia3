@@ -10,15 +10,11 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 protocol Firecode: Codable, Identifiable {
-    associatedtype DecodedType: Codable
-    var id: String { get }
-    static var path: String { get }
     var reference: DocumentReference { get }
+    static var path: String { get }
 }
 
 extension Firecode {
-    typealias DecodedType = Self
-    
     func encoded() throws -> [String: Any] {
         try Firestore.Encoder().encode(self)
     }

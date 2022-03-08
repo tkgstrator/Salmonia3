@@ -11,7 +11,7 @@ import RealmSwift
 import SplatNet2
 
 final class RealmCoopShift: Object {
-    @Persisted var stageId: Schedule.StageId
+    @Persisted var stageId: StageId
     @Persisted(primaryKey: true) var startTime: Int
     @Persisted var endTime: Int
     @Persisted var weaponList: List<WeaponType>
@@ -66,8 +66,6 @@ extension RealmCoopShift: Identifiable {
     var id: Int { startTime }
 }
 
-extension WeaponType: PersistableEnum {
-}
+extension WeaponType: PersistableEnum {}
 
-extension Schedule.StageId: PersistableEnum {
-}
+extension StageId: PersistableEnum {}

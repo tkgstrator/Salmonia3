@@ -14,7 +14,7 @@ struct StatsCardSmall: View {
     @State private var scale: CGFloat = .zero
     let score: Double
     let other: Double
-    let salmonId: BossType.BossId
+    let salmonId: BossId
     
     private var bossType: Image {
         Image(salmonId)
@@ -34,7 +34,7 @@ struct StatsCardSmall: View {
         self.salmonId = stats.bossType
     }
     
-    init(stats: StatsModel.Overview, salmonId: BossType.BossId) {
+    init(stats: StatsModel.Overview, salmonId: BossId) {
         self.score = Double(stats.score)
         self.other = Double(stats.other)
         self.salmonId = salmonId

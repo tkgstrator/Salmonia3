@@ -17,7 +17,7 @@ final class RealmCoopResult: Object {
     /// バイトID
     @Persisted var jobId: Int?
     /// ステージID
-    @Persisted var stageId: StageType.StageId
+    @Persisted var stageId: StageId
     /// Salmon StatsID
     @Persisted var salmonId: Int?
     /// 評価レート
@@ -63,7 +63,7 @@ final class RealmCoopResult: Object {
         self.init()
         self.pid = result.myResult.pid
         self.jobId = result.jobId
-        self.stageId = result.schedule.stage.image.stageId
+        self.stageId = result.schedule.stageId
         self.salmonId = id
         self.gradePoint = result.gradePoint
         self.gradePointDelta = result.gradePointDelta
@@ -97,83 +97,97 @@ extension CoopResult.Response {
     }
 }
 
-extension CodableDictionary where Key == BossType, Value == CoopResult.BossCount {
+extension CodableDictionary where Key == BossId, Value == CoopResult.BossCount {
     func sortedValue() -> [Int] {
-        self.sorted(by: { $0.key.bossId.rawValue < $1.key.bossId.rawValue }).map({ $0.value.count })
+        self.sorted(by: { $0.key.rawValue < $1.key.rawValue }).map({ $0.value.count })
     }
 }
 
-extension StageType {
-    public enum StageId: Int, Codable, CaseIterable, PersistableEnum {
-        case shakeup = 5000
-        case shakeship = 5001
-        case shakehouse = 5002
-        case shakelift = 5003
-        case shakeride = 5004
-    }
-}
-
-extension BossType {
-    enum BossId: Int, CaseIterable {
-        case goldie = 3
-        case steelhead = 6
-        case flyfish = 9
-        case scrapper = 12
-        case steelEel = 13
-        case stinger = 14
-        case maws = 15
-        case griller = 16
-        case drizzler = 21
-    }
-}
-
-extension BossType {
-    var bossId: BossType.BossId {
-        switch self {
-        case .goldie:
-            return .goldie
-        case .steelhead:
-            return .steelhead
-        case .flyfish:
-            return .flyfish
-        case .scrapper:
-            return .scrapper
-        case .steelEel:
-            return .steelEel
-        case .stinger:
-            return .stinger
-        case .maws:
-            return .maws
-        case .griller:
-            return .griller
-        case .drizzler:
-            return .drizzler
+extension CoopResult.Schedule {
+    var stageId: StageId {
+        switch self.stage.image {
+        case .shakeup:
+            return .shakeup
+        case .shakeship:
+            return .shakeship
+        case .shakehouse:
+            return .shakehouse
+        case .shakelift:
+            return .shakelift
+        case .shakeride:
+            return .shakeride
         }
     }
 }
+//extension StageType {
+//    public enum StageId: Int, Codable, CaseIterable, PersistableEnum {
+//        case shakeup = 5000
+//        case shakeship = 5001
+//        case shakehouse = 5002
+//        case shakelift = 5003
+//        case shakeride = 5004
+//    }
+//}
 
-extension StageType.Image {
-    var stageId: StageType.StageId {
-        switch self {
-            case .shakeup:
-                return .shakeup
-            case .shakeship:
-                return .shakeship
-            case .shakehouse:
-                return .shakehouse
-            case .shakelift:
-                return .shakelift
-            case .shakeride:
-                return .shakeride
-        }
-    }
-}
+//extension BossType {
+//    enum BossId: Int, CaseIterable {
+//        case goldie = 3
+//        case steelhead = 6
+//        case flyfish = 9
+//        case scrapper = 12
+//        case steelEel = 13
+//        case stinger = 14
+//        case maws = 15
+//        case griller = 16
+//        case drizzler = 21
+//    }
+//}
+//
+//extension BossType {
+//    var bossId: BossType.BossId {
+//        switch self {
+//        case .goldie:
+//            return .goldie
+//        case .steelhead:
+//            return .steelhead
+//        case .flyfish:
+//            return .flyfish
+//        case .scrapper:
+//            return .scrapper
+//        case .steelEel:
+//            return .steelEel
+//        case .stinger:
+//            return .stinger
+//        case .maws:
+//            return .maws
+//        case .griller:
+//            return .griller
+//        case .drizzler:
+//            return .drizzler
+//        }
+//    }
+//}
 
-extension GradeId: PersistableEnum {
-}
+//extension StageKey {
+//    var stageId: StageId {
+//        switch self {
+//            case .shakeup:
+//                return .shakeup
+//            case .shakeship:
+//                return .shakeship
+//            case .shakehouse:
+//                return .shakehouse
+//            case .shakelift:
+//                return .shakelift
+//            case .shakeride:
+//                return .shakeride
+//        }
+//    }
+//}
 
-extension FailureReason: PersistableEnum{
-}
+extension GradeId: PersistableEnum {}
+
+extension FailureReason: PersistableEnum{}
 
 extension Array where Element == CoopResult.PlayerResult {
     /// 残りのメンバーの金イクラの合計

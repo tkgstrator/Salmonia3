@@ -32,7 +32,7 @@ final class RealmCoopPlayer: Object, ObjectKeyIdentifiable {
         self.goldenIkuraNum = result.goldenIkuraNum
         self.ikuraNum = result.ikuraNum
         self.specialId = result.special.id
-        self.bossKillCounts.append(objectsIn: result.bossKillCounts.sorted(by: { $0.key.bossId.rawValue < $1.key.bossId.rawValue }).map({ $0.value.count }))
+        self.bossKillCounts.append(objectsIn: result.bossKillCounts.sortedValue())
         self.weaponList.append(objectsIn: result.weaponList.map({ $0.weaponId }))
         self.specialCounts.append(objectsIn: result.specialCounts)
     }
@@ -82,7 +82,7 @@ extension CoopResult.WeaponList {
         case .shooterBlasterLong:
             return .shooterBlasterLong
         case .shooterBlasterLightShort:
-            return .shooterBlasterLightLong
+            return .shooterBlasterLightShort
         case .shooterBlasterLight:
             return .shooterBlasterLight
         case .shooterBlasterLightLong:

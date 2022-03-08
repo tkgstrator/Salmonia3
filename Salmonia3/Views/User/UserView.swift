@@ -79,10 +79,10 @@ internal struct RadarChartBossLabel: View {
         GeometryReader(content: { geometry in
             let midX: CGFloat = geometry.frame(in: .local).midX
             let midY: CGFloat = geometry.frame(in: .local).midY
-            let count: CGFloat = CGFloat(BossType.BossId.allCases.count)
+            let count: CGFloat = CGFloat(BossId.allCases.count)
             let radius: CGFloat = min(midX, midY)
             
-            ForEach(Array(BossType.BossId.allCases.enumerated()), id: \.offset) { index, bossId in
+            ForEach(Array(BossId.allCases.enumerated()), id: \.offset) { index, bossId in
                 Image(bossId)
                     .resizable()
                     .scaledToFit()

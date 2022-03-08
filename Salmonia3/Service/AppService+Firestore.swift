@@ -53,8 +53,18 @@ extension AppService {
     }
     
     internal func register(results: [CoopResult.Response]) {
-        let waves: [FSCoopWave] = results.flatMap({ result in result.waveDetails.map({ wave in FSCoopWave(result: wave, members: result.members, playTime: result.playTime, startTime: result.startTime) })})
+        let waves: [FSCoopWave] = results.flatMap({ result -> [FSCoopWave] in
+            result.waveDetails.map({ wave -> FSCoopWave in
+                let index: Int = result.waveDetails.firstIndex(where: { $0 == wave }) ?? 0
+                let members: [String] = result.members
+                let startTime: Int = result.startTime
+                let playTime: Int = result.playTime
+                return FSCoopWave(result: wave, members: members, playTime: playTime, startTime: startTime, index: index)
+            })
+        })
         let totals: [FSCoopTotal] = results.map({ FSCoopTotal(result: $0) })
+        let results: [FSCoopResult] = results.map({ FSCoopResult(result: $0) })
+        create(results)
         create(waves)
         create(totals)
     }
@@ -90,5 +100,16 @@ extension AppService {
                 let data = snapshot.documents.compactMap({ try? self.decoder.decode(FSCoopWave.self, from: $0.data()) })
                 DDLogInfo(data)
             })
+    }
+}
+
+extension CoopResult.WaveDetail: Equatable {
+    public static func == (lhs: CoopResult.WaveDetail, rhs: CoopResult.WaveDetail) -> Bool {
+        lhs.ikuraNum == rhs.ikuraNum &&
+        lhs.goldenIkuraNum == rhs.goldenIkuraNum &&
+        lhs.goldenIkuraPopNum == rhs.goldenIkuraPopNum &&
+        lhs.quotaNum == rhs.quotaNum &&
+        lhs.eventType.key == rhs.eventType.key &&
+        lhs.waterLevel.key == rhs.waterLevel.key
     }
 }
