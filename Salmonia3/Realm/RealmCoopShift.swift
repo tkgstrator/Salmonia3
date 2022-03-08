@@ -45,7 +45,22 @@ extension RealmCoopShift {
                 return "Ruins of Ark Polaris"
         }
     }
+    
+    var shiftType: ShiftType {
+        if weaponList.allSatisfy({ $0 == .randomGreen }) {
+            return .allRandom
+        }
+        if weaponList.allSatisfy({ $0 == .randomGold }) {
+            return .goldRandom
+        }
+        
+        if weaponList.contains(.randomGreen) {
+            return .oneRandom
+        }
+        return .normal
+    }
 }
+
 
 extension RealmCoopShift: Identifiable {
     var id: Int { startTime }

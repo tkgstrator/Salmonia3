@@ -61,6 +61,7 @@
 		1027057E27D48E4200326B32 /* WeaponShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1027057D27D48E4200326B32 /* WeaponShiftStats.swift */; };
 		1027058027D4A34E00326B32 /* StatsWeaponDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1027057F27D4A34E00326B32 /* StatsWeaponDetail.swift */; };
 		1027058327D4ABF700326B32 /* WeaponOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1027058227D4ABF700326B32 /* WeaponOverview.swift */; };
+		1027058527D6248700326B32 /* ShiftType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1027058427D6248700326B32 /* ShiftType.swift */; };
 		102AD300277CE95A00C1E181 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AD2FF277CE95A00C1E181 /* UserView.swift */; };
 		102C9DDF277DFA49004822C1 /* ResultDefeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102C9DDE277DFA49004822C1 /* ResultDefeat.swift */; };
 		102C9DE1277E002A004822C1 /* ResultStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102C9DE0277E002A004822C1 /* ResultStats.swift */; };
@@ -213,6 +214,7 @@
 		1027057D27D48E4200326B32 /* WeaponShiftStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponShiftStats.swift; sourceTree = "<group>"; };
 		1027057F27D4A34E00326B32 /* StatsWeaponDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StatsWeaponDetail.swift; path = ../../StatsWeaponDetail.swift; sourceTree = "<group>"; };
 		1027058227D4ABF700326B32 /* WeaponOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponOverview.swift; sourceTree = "<group>"; };
+		1027058427D6248700326B32 /* ShiftType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftType.swift; sourceTree = "<group>"; };
 		102AD2FF277CE95A00C1E181 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		102C9DDE277DFA49004822C1 /* ResultDefeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDefeat.swift; sourceTree = "<group>"; };
 		102C9DE0277E002A004822C1 /* ResultStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultStats.swift; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 				101AED60271E3F2B009556B2 /* Icon.swift */,
 				100556F827C948E90094582D /* ShiftDisplayMode.swift */,
 				106B7F8E27D3231800E6B528 /* RankId.swift */,
+				1027058427D6248700326B32 /* ShiftType.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -513,7 +516,6 @@
 				109B545E27CD60E800FACC1A /* SettingView+Support.swift */,
 				109B546927CD705100FACC1A /* SettingView+Debug.swift */,
 				109B546027CD64B000FACC1A /* SupportView.swift */,
-				10C7D69327CF8DCD002C1F37 /* SettingView+Firebase.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -567,6 +569,7 @@
 				10162F8927C7B34D00ACFD4D /* SettingView_Application.swift */,
 				10162F8B27C7B3EC00ACFD4D /* SettingView_SplatNet2.swift */,
 				10162F8D27C7B4A100ACFD4D /* SettingView+SalmonStats.swift */,
+				10C7D69327CF8DCD002C1F37 /* SettingView+Firebase.swift */,
 			);
 			path = Appearance;
 			sourceTree = "<group>";
@@ -888,6 +891,7 @@
 				10C7D69927CF92FC002C1F37 /* Comparison.swift in Sources */,
 				109B545B27CB8F8300FACC1A /* WaveCollectionView.swift in Sources */,
 				100556ED27C91AED0094582D /* Mobility.swift in Sources */,
+				1027058527D6248700326B32 /* ShiftType.swift in Sources */,
 				10C7D6A327CF96C0002C1F37 /* UserShiftStats+Firebase.swift in Sources */,
 				10C000DC274CE3F400870DED /* Image.swift in Sources */,
 				101AED3D271E3192009556B2 /* Wave.swift in Sources */,
@@ -1149,7 +1153,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1185,7 +1189,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;

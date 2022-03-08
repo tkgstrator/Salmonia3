@@ -13,77 +13,86 @@ import FirebaseFirestoreSwift
 
 /// WAVE記録
 struct FSCoopWave: Firecode {
-    let goldenEggs: Int
-    let powerEggs: Int
+    /// 金イクラ数
+    let goldenIkuraNum: Int
+    /// 赤イクラ数
+    let ikuraNum: Int
+    /// 金イクラドロップ数
+    let goldenIkuraPopNum: Int
+    /// プレイヤー一覧
     let members: [String]
+    /// 遊んだ時間
     let playTime: Int
+    /// シフトID
     let startTime: Int
+    /// 潮位
     let waterLevel: WaterKey
+    /// イベント
     let eventType: EventKey
+    /// 第何WAVEか
+    let waveNum: Int
+    /// 固有ID
     let id: String
     
-    init(result: CoopResult.WaveDetail, members: [String], playTime: Int, startTime: Int) {
-        self.goldenEggs = result.goldenIkuraNum
-        self.powerEggs = result.ikuraNum
-        self.members = members
+    init(result: CoopResult.WaveDetail, members: [String], playTime: Int, startTime: Int, index: Int) {
+        self.goldenIkuraNum = result.goldenIkuraNum
+        self.ikuraNum = result.ikuraNum
+        self.goldenIkuraPopNum = result.goldenIkuraPopNum
+        self.members = members.sorted(by: <)
         self.playTime = playTime
         self.startTime = startTime
         self.waterLevel = result.waterLevel.key
         self.eventType = result.eventType.key
+        self.waveNum = index
         let offset: Int = (playTime - startTime) / 100
-        let encodedString: String = String(format: "%d%d%@%d", powerEggs, goldenEggs, members.joined(), offset)
+        let encodedString: String = String(format: "@%d", members.joined(), offset)
         self.id = SHA256.hash(data: encodedString.data(using: .utf8)!).compactMap({ String(format: "%02X", $0)}).joined()
     }
     
     init(result: RealmCoopWave) {
-        self.goldenEggs = result.goldenIkuraNum
-        self.powerEggs = result.ikuraNum
-        self.members = result.result.player.map({ $0.pid })
+        self.goldenIkuraNum = result.goldenIkuraNum
+        self.ikuraNum = result.ikuraNum
+        self.goldenIkuraPopNum = result.goldenIkuraPopNum
+        self.members = result.result.player.map({ $0.pid }).sorted(by: <)
         self.playTime = result.result.playTime
         self.startTime = result.result.startTime
         self.waterLevel = result.waterLevel
         self.eventType = result.eventType
+        self.waveNum = result.result.wave.firstIndex(of: result) ?? 0
         let offset: Int = (playTime - startTime) / 100
-        let encodedString: String = String(format: "%d%d%@%d", powerEggs, goldenEggs, members.joined(), offset)
+        let encodedString: String = String(format: "@%d", members.joined(), offset)
         self.id = SHA256.hash(data: encodedString.data(using: .utf8)!).compactMap({ String(format: "%02X", $0)}).joined()
     }
 }
 
 /// 総合記録
 struct FSCoopTotal: Firecode {
-    /// 識別用ID
+    /// 固有ID
     let id: String
     /// チーム総合金イクラ
     let goldenEggs: Int
     /// チーム総赤イクラ
     let powerEggs: Int
-    /// メンバーのnsaid
+    /// プレイヤー一覧
     let members: [String]
     /// プレイ時間
     let playTime: Int
-    /// シフト
+    /// シフトID
     let startTime: Int
     /// 潮位
     let waterLevel: [WaterKey]
     /// イベント
     let eventType: [EventKey]
-    // 追加
     /// オオモノ討伐数
-//    let bossKillCounts: [Int]
+    let bossKillCounts: [Int]
     /// オオモノ出現数
-//    let bossCounts: [Int]
+    let bossCounts: [Int]
     /// 失敗したWAVE
-//    let failureWave: Int?
+    let failureWave: Int?
     /// 失敗原因
-//    let failureReason: FailureReason?
-    /// プレイヤーリザルト
-//    let playerResults: [PlayerResult]
-    
-//    struct PlayerResult: Codable {
-//        let goldenEggs: Int
-//        let powerEggs: Int
-//        let bossKillCounts: [Int]
-//    }
+    let failureReason: FailureReason?
+    /// クリアしたかどうか
+    let isClear: Bool
     
     init(result: CoopResult.Response) {
         self.goldenEggs = result.waveDetails.map({ $0.goldenIkuraNum }).reduce(0, +)
@@ -93,8 +102,13 @@ struct FSCoopTotal: Firecode {
         self.playTime = result.playTime
         self.waterLevel = result.waveDetails.map({ $0.waterLevel.key})
         self.eventType = result.waveDetails.map({ $0.eventType.key })
+        self.bossCounts = result.bossCounts.sortedValue()
+        self.failureWave = result.jobResult.failureWave
+        self.failureReason = result.jobResult.failureReason
+        self.bossKillCounts = result.playerResults.map({ $0.bossKillCounts.sortedValue() }).sum()
+        self.isClear = result.jobResult.isClear
         let offset: Int = (playTime - startTime) / 100
-        let encodedString: String = String(format: "%d%d%@%d", powerEggs, goldenEggs, members.sorted().joined(), offset)
+        let encodedString: String = String(format: "@%d", members.joined(), offset)
         self.id = SHA256.hash(data: encodedString.data(using: .utf8)!).compactMap({ String(format: "%02X", $0)}).joined()
     }
     
@@ -106,8 +120,13 @@ struct FSCoopTotal: Firecode {
         self.playTime = result.playTime
         self.waterLevel = result.wave.map({ $0.waterLevel })
         self.eventType = result.wave.map({ $0.eventType })
+        self.bossCounts = Array(result.bossCounts)
+        self.failureWave = result.failureWave
+        self.failureReason = result.failureReason
+        self.isClear = result.isClear
+        self.bossKillCounts = Array(result.bossKillCounts)
         let offset: Int = (playTime - startTime) / 100
-        let encodedString: String = String(format: "%d%d%@%d", powerEggs, goldenEggs, members.sorted().joined(), offset)
+        let encodedString: String = String(format: "@%d", members.joined(), offset)
         self.id = SHA256.hash(data: encodedString.data(using: .utf8)!).compactMap({ String(format: "%02X", $0)}).joined()
     }
 }
