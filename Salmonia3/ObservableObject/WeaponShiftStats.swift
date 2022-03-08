@@ -14,11 +14,11 @@ final class WeaponShiftStats: ObservableObject {
     internal let nsaid: String?
     internal let schemeVersion: UInt64 = 8192
     
-    @Published internal var suppliedWeaponList: [WeaponStats] = []
-    @Published internal var unSuppliedWeaponList: [WeaponStats] = []
-    @Published internal var jobCount: Int = 0
-    @Published internal var completedJobCount: Int? = nil
-    @Published internal var estimateCompleteJobCount: Int = 0
+    internal var suppliedWeaponList: [WeaponStats] = []
+    internal var unSuppliedWeaponList: [WeaponStats] = []
+    internal var jobCount: Int = 0
+    internal var completedJobCount: Int? = nil
+    internal var estimateCompleteJobCount: Int = 0
     
     init(schedule: RealmCoopShift, nsaid: String?) {
         do {

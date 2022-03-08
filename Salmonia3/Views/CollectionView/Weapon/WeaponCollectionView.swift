@@ -9,19 +9,20 @@ import SwiftUI
 import SplatNet2
 
 struct WeaponCollectionView: View {
-    let shift: RealmCoopShift
     @StateObject var stats: WeaponShiftStats
     
     init(shift: RealmCoopShift, nsaid: String?) {
-        self.shift = shift
         self._stats = StateObject(wrappedValue: WeaponShiftStats(schedule: shift, nsaid: nsaid))
     }
-    
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false, content: {
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 1), content: {
-                WeaponOverview(stats: stats)
+                Section(content: {
+                    WeaponOverview(stats: stats)
+                }, header: {
+                    Text("概要")
+                })
             })
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 4), content: {
                 Section(content: {

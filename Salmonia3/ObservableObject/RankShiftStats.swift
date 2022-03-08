@@ -14,7 +14,7 @@ final class RankShiftStats: ObservableObject {
     internal let nsaid: String?
     internal let schemeVersion: UInt64 = 8192
     
-    @Published internal var goldenEggs: [RankEgg] = []
+    internal var goldenEggs: [RankEgg] = []
     
     init(startTime: Int, nsaid: String?) {
         do {

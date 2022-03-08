@@ -14,15 +14,15 @@ import SwiftUI
 
 final class UserStatsModel: ObservableObject {
     /// バイト回数
-    @Published var jobNum: Int = 0
+    internal var jobNum: Int = 0
     /// 全体のリザルト
-    @Published var result: [PieChartModel] = []
+    internal var result: [PieChartModel] = []
     /// WAVE毎のリザルト
-    @Published var waves: [[PieChartModel]] = []
+    internal var waves: [[PieChartModel]] = []
     /// オオモノ討伐
-    @Published var defeated: RadarChartStats
+    internal var defeated: RadarChartStats
     /// 統計
-    @Published var stats: RadarChartStats
+    internal var stats: RadarChartStats
     
     init(nsaid: String, startTime: Int? = nil) {
         let realm = try! Realm()
