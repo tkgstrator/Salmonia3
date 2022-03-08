@@ -142,7 +142,7 @@ fileprivate extension RealmCoopPlayer {
     
     /// 指定されたオオモノの討伐数
     func bossKillCounts(bossId: BossId) -> Int {
-        self.bossKillCounts[bossId.rawValue]
+        self.bossKillCounts[bossId.index]
     }
 }
 
