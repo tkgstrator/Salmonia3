@@ -24,8 +24,8 @@ struct StatsSpecial: View {
     var body: some View {
         HStack(content: {
             VStack(spacing: 5, content: {
-                ForEach(SpecialId.allCases.indices) { index in
-                    let specialType: SpecialId = SpecialId.allCases[index]
+                ForEach(specialList.indices) { index in
+                    let specialType: SpecialId = specialList[index]
                     let prob: Double = probs[index]
                     let color: Color = colors[index]
                     HStack(spacing: 15, content: {
