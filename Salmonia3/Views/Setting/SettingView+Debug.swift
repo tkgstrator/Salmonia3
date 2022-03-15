@@ -23,6 +23,15 @@ struct SettingView_Debug: View {
             }, label: {
                 Text("Set Previous X-Product Version")
             })
+            Button(action: {
+                service.registerTestData()
+            }, label: {
+                Text("Upload Test Data")
+            })
+            Button(action: {
+            }, label: {
+                Text("Update With Increment")
+            })
         })
     }
 }

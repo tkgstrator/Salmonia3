@@ -88,15 +88,6 @@ final class RealmCoopResult: Object {
     }
 }
 
-extension CoopResult.Response {
-    var playerResults: [CoopResult.PlayerResult] {
-        if let otherResults = otherResults {
-            return [myResult] + otherResults
-        }
-        return [myResult]
-    }
-}
-
 extension CodableDictionary where Key == BossId, Value == CoopResult.BossCount {
     func sortedValue() -> [Int] {
         self.sorted(by: { $0.key.rawValue < $1.key.rawValue }).map({ $0.value.count })

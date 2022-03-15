@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/firebase/firebase-ios-sdk.git",
         "state": {
           "branch": null,
-          "revision": "78f7087fd5d48eb7c36e299f330b6dddccd647b2",
-          "version": "8.12.1"
+          "revision": "d4c4e8c7b8898ea771e90beab71112ea279d73a5",
+          "version": "8.13.0"
         }
       },
       {
@@ -186,8 +186,8 @@
         "repositoryURL": "https://github.com/tkgstrator/SplatNet2",
         "state": {
           "branch": null,
-          "revision": "94ee79c44ac5b337b7e70b5617aa46d5e5a15ca4",
-          "version": "1.0.21"
+          "revision": "1ca62e74f0dbcc36e8d3c5017153a5f2f57a8cac",
+          "version": "1.0.23"
         }
       },
       {

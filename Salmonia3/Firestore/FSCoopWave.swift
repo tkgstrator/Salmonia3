@@ -243,7 +243,7 @@ extension FSCoopWave {
             .firestore()
             .collection("schedules")
             .document("\(self.startTime)")
-            .collection("waves")
+            .collection(Self.path)
             .document(self.id)
     }
     
@@ -264,7 +264,7 @@ extension FSCoopTotal {
             .firestore()
             .collection("schedules")
             .document("\(self.startTime)")
-            .collection("total")
+            .collection(Self.path)
             .document(self.id)
     }
     

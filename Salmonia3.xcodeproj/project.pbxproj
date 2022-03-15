@@ -7,29 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		100556D927C91AED0094582D /* Flexibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556BF27C91AEC0094582D /* Flexibility.swift */; };
-		100556DA27C91AED0094582D /* Goldieseeking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556C027C91AEC0094582D /* Goldieseeking.swift */; };
-		100556DB27C91AED0094582D /* Chargeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556C127C91AEC0094582D /* Chargeable.swift */; };
-		100556DC27C91AED0094582D /* PowerInWinning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556C227C91AEC0094582D /* PowerInWinning.swift */; };
-		100556DD27C91AED0094582D /* Penetrable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556C327C91AEC0094582D /* Penetrable.swift */; };
-		100556DE27C91AED0094582D /* Smalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556C427C91AEC0094582D /* Smalls.swift */; };
-		100556DF27C91AED0094582D /* Mothership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556C527C91AEC0094582D /* Mothership.swift */; };
-		100556E227C91AED0094582D /* Rush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556C827C91AEC0094582D /* Rush.swift */; };
-		100556E327C91AED0094582D /* Steelheads.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556C927C91AED0094582D /* Steelheads.swift */; };
-		100556E427C91AED0094582D /* Drizzlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556CA27C91AED0094582D /* Drizzlers.swift */; };
-		100556E527C91AED0094582D /* Scrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556CB27C91AED0094582D /* Scrappers.swift */; };
-		100556E627C91AED0094582D /* PaintabilityFloor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556CC27C91AED0094582D /* PaintabilityFloor.swift */; };
-		100556E727C91AED0094582D /* Grillers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556CD27C91AED0094582D /* Grillers.swift */; };
-		100556E827C91AED0094582D /* Fats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556CE27C91AED0094582D /* Fats.swift */; };
-		100556E927C91AED0094582D /* PaintabilityWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556CF27C91AED0094582D /* PaintabilityWall.swift */; };
-		100556EA27C91AED0094582D /* Handling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556D027C91AED0094582D /* Handling.swift */; };
-		100556EB27C91AED0094582D /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556D127C91AED0094582D /* Rank.swift */; };
-		100556EC27C91AED0094582D /* PowerInLosing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556D227C91AED0094582D /* PowerInLosing.swift */; };
-		100556ED27C91AED0094582D /* Mobility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556D327C91AED0094582D /* Mobility.swift */; };
-		100556EE27C91AED0094582D /* Stability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556D427C91AED0094582D /* Stability.swift */; };
-		100556EF27C91AED0094582D /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556D527C91AED0094582D /* Range.swift */; };
-		100556F127C91AED0094582D /* FirePower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556D727C91AED0094582D /* FirePower.swift */; };
-		100556F227C91AED0094582D /* Stingers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556D827C91AED0094582D /* Stingers.swift */; };
 		100556F527C9217F0094582D /* Surge in Frameworks */ = {isa = PBXBuildFile; productRef = 100556F427C9217F0094582D /* Surge */; };
 		100556F727C948200094582D /* ShiftFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556F627C948200094582D /* ShiftFilterButton.swift */; };
 		100556F927C948E90094582D /* ShiftDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556F827C948E90094582D /* ShiftDisplayMode.swift */; };
@@ -67,6 +44,7 @@
 		102C9DE1277E002A004822C1 /* ResultStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102C9DE0277E002A004822C1 /* ResultStats.swift */; };
 		102C9DE3277E0D8E004822C1 /* HSContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102C9DE2277E0D8E004822C1 /* HSContent.swift */; };
 		103168672750E3D10009070C /* ShiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103168662750E3D10009070C /* ShiftView.swift */; };
+		1033700627DF62600090C6E8 /* SalmonStats+New.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1033700527DF62600090C6E8 /* SalmonStats+New.swift */; };
 		1041BC07277DAB36008B27F1 /* ResultPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041BC06277DAB36008B27F1 /* ResultPlayer.swift */; };
 		1041BC09277DAFFE008B27F1 /* ResultWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041BC08277DAFFE008B27F1 /* ResultWave.swift */; };
 		1041BC0B277DB9C0008B27F1 /* ResultEgg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041BC0A277DB9C0008B27F1 /* ResultEgg.swift */; };
@@ -86,6 +64,7 @@
 		107DB66F272CF89A00A5A6E5 /* SwiftyUI in Frameworks */ = {isa = PBXBuildFile; productRef = 107DB66E272CF89A00A5A6E5 /* SwiftyUI */; };
 		1082F77927D04D9E00044581 /* RealmCoopStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1082F77827D04D9E00044581 /* RealmCoopStats.swift */; };
 		1082F77B27D072A000044581 /* ResultShiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1082F77A27D072A000044581 /* ResultShiftView.swift */; };
+		108FB2E327D8CFFE0066DECB /* FSCoopRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108FB2E227D8CFFE0066DECB /* FSCoopRecord.swift */; };
 		1094284F271E458F0072425E /* SalmonStats in Frameworks */ = {isa = PBXBuildFile; productRef = 1094284E271E458F0072425E /* SalmonStats */; };
 		109A255127D44EC700674AA5 /* RankShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109A255027D44EC700674AA5 /* RankShiftStats.swift */; };
 		109B545B27CB8F8300FACC1A /* WaveCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B545A27CB8F8300FACC1A /* WaveCollectionView.swift */; };
@@ -221,6 +200,7 @@
 		102C9DE2277E0D8E004822C1 /* HSContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSContent.swift; sourceTree = "<group>"; };
 		103168662750E3D10009070C /* ShiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftView.swift; sourceTree = "<group>"; };
 		103168682750F14E0009070C /* Salmonia3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Salmonia3.entitlements; sourceTree = "<group>"; };
+		1033700527DF62600090C6E8 /* SalmonStats+New.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SalmonStats+New.swift"; sourceTree = "<group>"; };
 		1041BC06277DAB36008B27F1 /* ResultPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPlayer.swift; sourceTree = "<group>"; };
 		1041BC08277DAFFE008B27F1 /* ResultWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWave.swift; sourceTree = "<group>"; };
 		1041BC0A277DB9C0008B27F1 /* ResultEgg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultEgg.swift; sourceTree = "<group>"; };
@@ -237,6 +217,7 @@
 		107B687A27B7362000238B9D /* AppService+Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppService+Network.swift"; sourceTree = "<group>"; };
 		1082F77827D04D9E00044581 /* RealmCoopStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopStats.swift; sourceTree = "<group>"; };
 		1082F77A27D072A000044581 /* ResultShiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultShiftView.swift; sourceTree = "<group>"; };
+		108FB2E227D8CFFE0066DECB /* FSCoopRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCoopRecord.swift; sourceTree = "<group>"; };
 		109A255027D44EC700674AA5 /* RankShiftStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankShiftStats.swift; sourceTree = "<group>"; };
 		109B545A27CB8F8300FACC1A /* WaveCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveCollectionView.swift; sourceTree = "<group>"; };
 		109B545C27CB90DB00FACC1A /* WaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
@@ -666,6 +647,7 @@
 			isa = PBXGroup;
 			children = (
 				10C7C46B277ED8330015ECBB /* Localized.swift */,
+				1033700527DF62600090C6E8 /* SalmonStats+New.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -675,6 +657,7 @@
 			children = (
 				10C7D68D27CF6CDA002C1F37 /* Firecode.swift */,
 				10C7D68F27CF6D1D002C1F37 /* FSCoopWave.swift */,
+				108FB2E227D8CFFE0066DECB /* FSCoopRecord.swift */,
 			);
 			path = Firestore;
 			sourceTree = "<group>";
@@ -869,38 +852,30 @@
 			files = (
 				1082F77927D04D9E00044581 /* RealmCoopStats.swift in Sources */,
 				10C7D69227CF6EDE002C1F37 /* AppService+Firestore.swift in Sources */,
-				100556F227C91AED0094582D /* Stingers.swift in Sources */,
 				109B546C27CDC04400FACC1A /* StatsWeapon.swift in Sources */,
 				10162F8E27C7B4A200ACFD4D /* SettingView+SalmonStats.swift in Sources */,
 				10C7D69D27CF9400002C1F37 /* Overview.swift in Sources */,
-				100556DD27C91AED0094582D /* Penetrable.swift in Sources */,
 				107B687B27B7362000238B9D /* AppService+Network.swift in Sources */,
 				109F97F82724ADB600AB1FA3 /* ResultOverview.swift in Sources */,
 				10C7D69027CF6D1D002C1F37 /* FSCoopWave.swift in Sources */,
 				104BCEC527D117DC00507A50 /* RankingView.swift in Sources */,
 				10E0C8A827CA6908002F4506 /* StatsCardSmall.swift in Sources */,
 				10635094274E2B1F00529930 /* RealmCoopShift.swift in Sources */,
-				100556E727C91AED0094582D /* Grillers.swift in Sources */,
 				10AE389E27C99D170084D8E6 /* UserShiftStats.swift in Sources */,
 				102C9DE1277E002A004822C1 /* ResultStats.swift in Sources */,
 				109F97FA2724CF0C00AB1FA3 /* ResultType.swift in Sources */,
-				100556DE27C91AED0094582D /* Smalls.swift in Sources */,
 				10C7D69F27CF941D002C1F37 /* WeaponProb.swift in Sources */,
 				1082F77B27D072A000044581 /* ResultShiftView.swift in Sources */,
 				102AD300277CE95A00C1E181 /* UserView.swift in Sources */,
 				10C7D69927CF92FC002C1F37 /* Comparison.swift in Sources */,
 				109B545B27CB8F8300FACC1A /* WaveCollectionView.swift in Sources */,
-				100556ED27C91AED0094582D /* Mobility.swift in Sources */,
 				1027058527D6248700326B32 /* ShiftType.swift in Sources */,
 				10C7D6A327CF96C0002C1F37 /* UserShiftStats+Firebase.swift in Sources */,
 				10C000DC274CE3F400870DED /* Image.swift in Sources */,
 				101AED3D271E3192009556B2 /* Wave.swift in Sources */,
-				100556E827C91AED0094582D /* Fats.swift in Sources */,
-				100556EA27C91AED0094582D /* Handling.swift in Sources */,
 				10162F9027C7BCEC00ACFD4D /* ProgressModel.swift in Sources */,
 				109B545F27CD60E800FACC1A /* SettingView+Support.swift in Sources */,
 				10196D4427D30BAA009CD55E /* Triangle.swift in Sources */,
-				100556F127C91AED0094582D /* FirePower.swift in Sources */,
 				100556F927C948E90094582D /* ShiftDisplayMode.swift in Sources */,
 				109F97F62724AD7800AB1FA3 /* ResultView.swift in Sources */,
 				10C7C46E277F00260015ECBB /* AppService+Realm.swift in Sources */,
@@ -911,33 +886,23 @@
 				1027057E27D48E4200326B32 /* WeaponShiftStats.swift in Sources */,
 				101141B2278477060088DF4C /* UserStatsModel.swift in Sources */,
 				10E74E8027B6B8B700D0E962 /* SignInView.swift in Sources */,
-				100556E327C91AED0094582D /* Steelheads.swift in Sources */,
-				100556EC27C91AED0094582D /* PowerInLosing.swift in Sources */,
 				109B546127CD64B000FACC1A /* SupportView.swift in Sources */,
-				100556DB27C91AED0094582D /* Chargeable.swift in Sources */,
 				103168672750E3D10009070C /* ShiftView.swift in Sources */,
 				10C7D6A127CF9431002C1F37 /* SpecialProb.swift in Sources */,
 				100556FB27C9888D0094582D /* ShiftStatsView.swift in Sources */,
 				1027057C27D48B5600326B32 /* WeaponCollectionView.swift in Sources */,
 				109B546A27CD705200FACC1A /* SettingView+Debug.swift in Sources */,
-				100556E227C91AED0094582D /* Rush.swift in Sources */,
-				100556D927C91AED0094582D /* Flexibility.swift in Sources */,
 				1041BC0D277DBCD5008B27F1 /* ResultStatus.swift in Sources */,
 				10BA13F727201B4700348DD3 /* RealmCoopPlayer.swift in Sources */,
-				100556EF27C91AED0094582D /* Range.swift in Sources */,
 				101AED5A271E3946009556B2 /* SettingView.swift in Sources */,
 				10AAE04A27CAC35600E8E3D4 /* StatsSpecial.swift in Sources */,
-				100556E427C91AED0094582D /* Drizzlers.swift in Sources */,
-				100556EE27C91AED0094582D /* Stability.swift in Sources */,
+				108FB2E327D8CFFE0066DECB /* FSCoopRecord.swift in Sources */,
 				10162F8C27C7B3EC00ACFD4D /* SettingView_SplatNet2.swift in Sources */,
 				10C7D69B27CF93E0002C1F37 /* Defeated.swift in Sources */,
 				10E74E8227B6C42E00D0E962 /* AccountView.swift in Sources */,
-				100556DA27C91AED0094582D /* Goldieseeking.swift in Sources */,
 				102C9DDF277DFA49004822C1 /* ResultDefeat.swift in Sources */,
 				1041BC0B277DB9C0008B27F1 /* ResultEgg.swift in Sources */,
-				100556E927C91AED0094582D /* PaintabilityWall.swift in Sources */,
 				101AED11271E3109009556B2 /* Salmonia3App.swift in Sources */,
-				100556DF27C91AED0094582D /* Mothership.swift in Sources */,
 				101AED57271E367D009556B2 /* Color.swift in Sources */,
 				10FDD4AF271EE36C00C9C178 /* AppService.swift in Sources */,
 				109F97FC2724D44100AB1FA3 /* Text.swift in Sources */,
@@ -957,7 +922,6 @@
 				10162F8A27C7B34D00ACFD4D /* SettingView_Application.swift in Sources */,
 				100556FE27C98B3D0094582D /* StatsCard.swift in Sources */,
 				10635096274E2E4D00529930 /* ShiftCollectionView.swift in Sources */,
-				100556E627C91AED0094582D /* PaintabilityFloor.swift in Sources */,
 				10C7D69427CF8DCD002C1F37 /* SettingView+Firebase.swift in Sources */,
 				10AAE04627CA764200E8E3D4 /* StatsCardHalf.swift in Sources */,
 				109F97F02724A11900AB1FA3 /* GrowingButtonStyle.swift in Sources */,
@@ -970,10 +934,8 @@
 				10C7C46C277ED8330015ECBB /* Localized.swift in Sources */,
 				107B687927B6FAD900238B9D /* CircleProgressView.swift in Sources */,
 				10196D4227D2120B009CD55E /* StatsWave.swift in Sources */,
-				100556DC27C91AED0094582D /* PowerInWinning.swift in Sources */,
 				106B7F8F27D3231900E6B528 /* RankId.swift in Sources */,
-				100556EB27C91AED0094582D /* Rank.swift in Sources */,
-				100556E527C91AED0094582D /* Scrappers.swift in Sources */,
+				1033700627DF62600090C6E8 /* SalmonStats+New.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1153,7 +1115,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1189,7 +1151,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
