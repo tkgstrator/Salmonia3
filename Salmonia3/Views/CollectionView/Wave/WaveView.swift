@@ -22,13 +22,13 @@ struct WaveView: View {
         return Image(stageId)
             .resizable()
             .scaledToFit()
-            .frame(height: 60)
+            .frame(height: 50)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .padding(.bottom)
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: nil, content: {
+        VStack(alignment: .leading, spacing: 0, content: {
             HStack(content: {
                 Group(content: {
                     HStack(alignment: .center, spacing: nil, content: {

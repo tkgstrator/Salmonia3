@@ -69,15 +69,26 @@ extension AppService {
         create(totals)
     }
     
+    internal func registerTestData() {
+        let data: FSCoopRecord = FSCoopRecord()
+        create([data])
+    }
+    
+    internal func incrementValue() {
+        let data: FSCoopRecord = FSCoopRecord()
+    }
+    
     private func create<T: Firecode>(_ objects: [T], merge: Bool = false) {
-        let batch = firestore.batch()
-        objects.compactMap({ batch.setData(try! $0.encoded(), forDocument: $0.reference, merge: true)})
-        batch.commit(completion: { error in
-            if let error = error {
-                DDLogError(error)
-                return
-            }
-            DDLogInfo("Success")
+        DispatchQueue(label: "Firebase").sync(execute: {
+            let batch = firestore.batch()
+            objects.compactMap({ batch.setData(try! $0.encoded(), forDocument: $0.reference, merge: true)})
+            batch.commit(completion: { error in
+                if let error = error {
+                    DDLogError(error)
+                    return
+                }
+                DDLogInfo("Success")
+            })
         })
     }
     
@@ -100,16 +111,5 @@ extension AppService {
                 let data = snapshot.documents.compactMap({ try? self.decoder.decode(FSCoopWave.self, from: $0.data()) })
                 DDLogInfo(data)
             })
-    }
-}
-
-extension CoopResult.WaveDetail: Equatable {
-    public static func == (lhs: CoopResult.WaveDetail, rhs: CoopResult.WaveDetail) -> Bool {
-        lhs.ikuraNum == rhs.ikuraNum &&
-        lhs.goldenIkuraNum == rhs.goldenIkuraNum &&
-        lhs.goldenIkuraPopNum == rhs.goldenIkuraPopNum &&
-        lhs.quotaNum == rhs.quotaNum &&
-        lhs.eventType.key == rhs.eventType.key &&
-        lhs.waterLevel.key == rhs.waterLevel.key
     }
 }
