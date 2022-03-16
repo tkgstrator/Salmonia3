@@ -40,14 +40,14 @@ struct ContentView: View {
                 })
                 .tag(3)
         })
-            .font(systemName: service.apperances.fontStyle, size: 16)
-            .preferredColorScheme(service.apperances.colorScheme)
-            .fullScreenCover(isPresented: $service.isSignIn, onDismiss: {}, content: {
-                CircleProgressView(state: service.signInState)
-            })
-            .fullScreenCover(isPresented: $service.isLoading, onDismiss: { service.isLoading = false }, content: {
-                LoadingView()
-            })
+        .font(systemName: service.apperances.fontStyle, size: 16)
+        .preferredColorScheme(service.apperances.colorScheme)
+        .fullScreenCover(isPresented: $service.isSignIn, onDismiss: {}, content: {
+            CircleProgressView(state: service.signInState)
+        })
+        .fullScreenCover(isPresented: $service.isLoading, onDismiss: { service.isLoading = false }, content: {
+            LoadingView()
+        })
     }
 }
 
