@@ -72,7 +72,7 @@ extension AppService {
         }
     }
     
-    internal func save(results: [(id: Int, status: UploadStatus, result: CoopResult.Response)]) {
+    internal func save(results: [SalmonResult]) {
         let objects: [RealmCoopResult] = results.map({ RealmCoopResult(from: $0.result, id: $0.id) })
         self.save(objects)
     }

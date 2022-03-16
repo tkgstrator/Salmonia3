@@ -16,13 +16,13 @@ import SalmonStats
 
 extension AppService: SalmonStatsSessionDelegate {
     /// リザルト読み込みが終わったときに呼ばれる
-    func didFinishLoadResultsFromSplatNet2(results: [(id: Int, status: UploadStatus, result: CoopResult.Response)]) {
-        /// Firestoreに書き込み
-        if let user = user {
-            register(results: results.map({ $0.result }))
-        }
-        /// リザルトを書き込み
+    func didFinishLoadResultsFromSplatNet2(results: [SalmonResult]) {
+        // ローカルデータ書き込み
         self.save(results: results)
+        // データを変換
+        let results: [CoopResult.Response] = results.map({ $0.result })
+        // New! Salmon Statsに書き込み
+        session.uploadWaveResults(results: results)
         DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
             self.isLoading.toggle()
         })

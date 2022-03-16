@@ -55,7 +55,7 @@ extension AppService {
     internal func register(results: [CoopResult.Response]) {
         let waves: [FSCoopWave] = results.flatMap({ result -> [FSCoopWave] in
             result.waveDetails.map({ wave -> FSCoopWave in
-                let index: Int = result.waveDetails.firstIndex(where: { $0 == wave }) ?? 0
+                let index: Int = result.waveDetails.firstIndex(of: wave) ?? 0
                 let members: [String] = result.members
                 let startTime: Int = result.startTime
                 let playTime: Int = result.playTime

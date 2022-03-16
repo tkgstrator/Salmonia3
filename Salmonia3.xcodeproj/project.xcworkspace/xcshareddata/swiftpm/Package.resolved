@@ -159,8 +159,8 @@
         "repositoryURL": "https://github.com/realm/realm-cocoa",
         "state": {
           "branch": null,
-          "revision": "2380340c876da7a2d17b0b59e21e339120d09bb3",
-          "version": "10.24.0"
+          "revision": "11ef7d31e3f3668c7434c5fd129a85ca52740b24",
+          "version": "10.24.1"
         }
       },
       {
@@ -186,8 +186,8 @@
         "repositoryURL": "https://github.com/tkgstrator/SplatNet2",
         "state": {
           "branch": null,
-          "revision": "1ca62e74f0dbcc36e8d3c5017153a5f2f57a8cac",
-          "version": "1.0.23"
+          "revision": "fee8cd11925d2a1136493a399bb58c6dd851bc8a",
+          "version": "1.0.26"
         }
       },
       {
