@@ -21,6 +21,8 @@
 		10162F9027C7BCEC00ACFD4D /* ProgressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10162F8F27C7BCEC00ACFD4D /* ProgressModel.swift */; };
 		10196D4227D2120B009CD55E /* StatsWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10196D4127D2120B009CD55E /* StatsWave.swift */; };
 		10196D4427D30BAA009CD55E /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10196D4327D30BA9009CD55E /* Triangle.swift */; };
+		101AEB8127E1CF54004F42F9 /* SwiftyUI in Frameworks */ = {isa = PBXBuildFile; productRef = 101AEB8027E1CF54004F42F9 /* SwiftyUI */; };
+		101AEB8427E1D133004F42F9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 101AEB8327E1D133004F42F9 /* GoogleService-Info.plist */; };
 		101AED11271E3109009556B2 /* Salmonia3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED10271E3109009556B2 /* Salmonia3App.swift */; };
 		101AED13271E3109009556B2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED12271E3109009556B2 /* ContentView.swift */; };
 		101AED15271E310B009556B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 101AED14271E310B009556B2 /* Assets.xcassets */; };
@@ -53,7 +55,6 @@
 		104BCEC027D115F200507A50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 104BCEBF27D115F200507A50 /* GoogleService-Info.plist */; };
 		104BCEC327D117C400507A50 /* RankingCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BCEC227D117C400507A50 /* RankingCollection.swift */; };
 		104BCEC527D117DC00507A50 /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BCEC427D117DC00507A50 /* RankingView.swift */; };
-		104BCEC827D1285000507A50 /* SigmaSwiftStatistics in Frameworks */ = {isa = PBXBuildFile; productRef = 104BCEC727D1285000507A50 /* SigmaSwiftStatistics */; };
 		10635094274E2B1F00529930 /* RealmCoopShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10635093274E2B1F00529930 /* RealmCoopShift.swift */; };
 		10635096274E2E4D00529930 /* ShiftCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10635095274E2E4D00529930 /* ShiftCollectionView.swift */; };
 		106B7F8F27D3231900E6B528 /* RankId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106B7F8E27D3231800E6B528 /* RankId.swift */; };
@@ -61,7 +62,6 @@
 		107B687927B6FAD900238B9D /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107B687827B6FAD900238B9D /* CircleProgressView.swift */; };
 		107B687B27B7362000238B9D /* AppService+Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107B687A27B7362000238B9D /* AppService+Network.swift */; };
 		107DB66A272CF67900A5A6E5 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 107DB669272CF67900A5A6E5 /* GoogleMobileAds */; };
-		107DB66F272CF89A00A5A6E5 /* SwiftyUI in Frameworks */ = {isa = PBXBuildFile; productRef = 107DB66E272CF89A00A5A6E5 /* SwiftyUI */; };
 		1082F77927D04D9E00044581 /* RealmCoopStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1082F77827D04D9E00044581 /* RealmCoopStats.swift */; };
 		1082F77B27D072A000044581 /* ResultShiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1082F77A27D072A000044581 /* ResultShiftView.swift */; };
 		108FB2E327D8CFFE0066DECB /* FSCoopRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108FB2E227D8CFFE0066DECB /* FSCoopRecord.swift */; };
@@ -136,7 +136,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		100492FA274DCDEC0095D35C /* SwiftyUI */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftyUI; path = ../SwiftyUI; sourceTree = "<group>"; };
 		100556BF27C91AEC0094582D /* Flexibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Flexibility.swift; path = ../../../../../Downloads/Param/WeaponBullet/swift/Flexibility.swift; sourceTree = "<group>"; };
 		100556C027C91AEC0094582D /* Goldieseeking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Goldieseeking.swift; path = ../../../../../Downloads/Param/WeaponBullet/swift/Goldieseeking.swift; sourceTree = "<group>"; };
 		100556C127C91AEC0094582D /* Chargeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Chargeable.swift; path = ../../../../../Downloads/Param/WeaponBullet/swift/Chargeable.swift; sourceTree = "<group>"; };
@@ -172,6 +171,8 @@
 		10162F8F27C7BCEC00ACFD4D /* ProgressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressModel.swift; sourceTree = "<group>"; };
 		10196D4127D2120B009CD55E /* StatsWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsWave.swift; sourceTree = "<group>"; };
 		10196D4327D30BA9009CD55E /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
+		101AEB7F27E1CF3B004F42F9 /* SwiftyUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftyUI; path = ../SwiftyUI; sourceTree = "<group>"; };
+		101AEB8327E1D133004F42F9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		101AED0D271E3109009556B2 /* Salmonia3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Salmonia3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		101AED10271E3109009556B2 /* Salmonia3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salmonia3App.swift; sourceTree = "<group>"; };
 		101AED12271E3109009556B2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -185,7 +186,7 @@
 		101AED3C271E3192009556B2 /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
 		101AED48271E33EB009556B2 /* Splatfont1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Splatfont1.ttf; sourceTree = "<group>"; };
 		101AED49271E33EB009556B2 /* Splatfont2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Splatfont2.ttf; sourceTree = "<group>"; };
-		101AED4D271E34A8009556B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		101AED4D271E34A8009556B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		101AED56271E367D009556B2 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		101AED59271E3946009556B2 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		101AED60271E3F2B009556B2 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
@@ -269,16 +270,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				101AEB8127E1CF54004F42F9 /* SwiftyUI in Frameworks */,
 				100556F527C9217F0094582D /* Surge in Frameworks */,
 				10C0FE75274C1D7500870DED /* FirebaseAnalyticsSwift-Beta in Frameworks */,
 				10C0FE77274C1D7500870DED /* FirebaseAuthCombine-Community in Frameworks */,
-				104BCEC827D1285000507A50 /* SigmaSwiftStatistics in Frameworks */,
 				10CDEA2927B6A9A9003D553F /* SplatNet2 in Frameworks */,
 				10C0FE79274C1D7500870DED /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				10BA13F027201A7B00348DD3 /* RealmSwift in Frameworks */,
 				101141AF2783545F0088DF4C /* SwiftyChart in Frameworks */,
 				1094284F271E458F0072425E /* SalmonStats in Frameworks */,
-				107DB66F272CF89A00A5A6E5 /* SwiftyUI in Frameworks */,
 				109B546627CD6A0200FACC1A /* SwiftyStoreKit in Frameworks */,
 				107DB66A272CF67900A5A6E5 /* GoogleMobileAds in Frameworks */,
 				10CDEA2727B6A9A9003D553F /* SalmonStats in Frameworks */,
@@ -359,11 +359,31 @@
 			path = ObservableObject;
 			sourceTree = "<group>";
 		};
+		101AEB7E27E1CF3B004F42F9 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				101AEB7F27E1CF3B004F42F9 /* SwiftyUI */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		101AEB8227E1CFCB004F42F9 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				101AEB8327E1D133004F42F9 /* GoogleService-Info.plist */,
+				103168682750F14E0009070C /* Salmonia3.entitlements */,
+				101AED4D271E34A8009556B2 /* Info.plist */,
+				104BCEBF27D115F200507A50 /* GoogleService-Info.plist */,
+				10F38E89277E1E9900CD945F /* Localizable.strings */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		101AED04271E3109009556B2 = {
 			isa = PBXGroup;
 			children = (
+				101AEB7E27E1CF3B004F42F9 /* Packages */,
 				109B546227CD688100FACC1A /* Configuration.storekit */,
-				100492FA274DCDEC0095D35C /* SwiftyUI */,
 				101AED0F271E3109009556B2 /* Salmonia3 */,
 				101AED20271E310B009556B2 /* Salmonia3Tests */,
 				101AED2A271E310B009556B2 /* Salmonia3UITests */,
@@ -385,21 +405,18 @@
 		101AED0F271E3109009556B2 /* Salmonia3 */ = {
 			isa = PBXGroup;
 			children = (
-				103168682750F14E0009070C /* Salmonia3.entitlements */,
-				104BCEBF27D115F200507A50 /* GoogleService-Info.plist */,
-				10F38E89277E1E9900CD945F /* Localizable.strings */,
 				101AED10271E3109009556B2 /* Salmonia3App.swift */,
 				101AED12271E3109009556B2 /* ContentView.swift */,
-				101AED4D271E34A8009556B2 /* Info.plist */,
+				101AEB8227E1CFCB004F42F9 /* Main */,
+				102AD2FD277CE92200C1E181 /* Components */,
+				101AED3A271E3158009556B2 /* Views */,
 				10C7D68C27CF6CAF002C1F37 /* Firestore */,
 				101141B0278476E50088DF4C /* ObservableObject */,
 				10C7C46A277ED8020015ECBB /* Extension */,
-				10BA13F127201ADD00348DD3 /* Realm */,
 				10FDD4AD271EE35D00C9C178 /* Service */,
-				102AD2FD277CE92200C1E181 /* Components */,
 				101AED55271E356C009556B2 /* Enum */,
 				101AED41271E3396009556B2 /* Assets */,
-				101AED3A271E3158009556B2 /* Views */,
+				10BA13F127201ADD00348DD3 /* Realm */,
 				101AED14271E310B009556B2 /* Assets.xcassets */,
 				101AED16271E310B009556B2 /* Preview Content */,
 			);
@@ -709,7 +726,6 @@
 				1094284E271E458F0072425E /* SalmonStats */,
 				10BA13EF27201A7B00348DD3 /* RealmSwift */,
 				107DB669272CF67900A5A6E5 /* GoogleMobileAds */,
-				107DB66E272CF89A00A5A6E5 /* SwiftyUI */,
 				10C0FE74274C1D7500870DED /* FirebaseAnalyticsSwift-Beta */,
 				10C0FE76274C1D7500870DED /* FirebaseAuthCombine-Community */,
 				10C0FE78274C1D7500870DED /* FirebaseFirestoreSwift-Beta */,
@@ -718,7 +734,7 @@
 				10CDEA2827B6A9A9003D553F /* SplatNet2 */,
 				100556F427C9217F0094582D /* Surge */,
 				109B546527CD6A0200FACC1A /* SwiftyStoreKit */,
-				104BCEC727D1285000507A50 /* SigmaSwiftStatistics */,
+				101AEB8027E1CF54004F42F9 /* SwiftyUI */,
 			);
 			productName = Salmonia3;
 			productReference = 101AED0D271E3109009556B2 /* Salmonia3.app */;
@@ -801,7 +817,6 @@
 				10CDEA2527B6A9A9003D553F /* XCRemoteSwiftPackageReference "SplatNet2" */,
 				100556F327C9217F0094582D /* XCRemoteSwiftPackageReference "Surge" */,
 				109B546427CD6A0100FACC1A /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
-				104BCEC627D1285000507A50 /* XCRemoteSwiftPackageReference "SigmaSwiftStatistics" */,
 			);
 			productRefGroup = 101AED0E271E3109009556B2 /* Products */;
 			projectDirPath = "";
@@ -820,6 +835,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				109B546327CD688600FACC1A /* Configuration.storekit in Resources */,
+				101AEB8427E1D133004F42F9 /* GoogleService-Info.plist in Resources */,
 				101AED4B271E33EB009556B2 /* Splatfont1.ttf in Resources */,
 				10F38E87277E1E9900CD945F /* Localizable.strings in Resources */,
 				101AED4C271E33EB009556B2 /* Splatfont2.ttf in Resources */,
@@ -1334,14 +1350,6 @@
 				kind = branch;
 			};
 		};
-		104BCEC627D1285000507A50 /* XCRemoteSwiftPackageReference "SigmaSwiftStatistics" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/evgenyneu/SigmaSwiftStatistics";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
 		107DB668272CF67900A5A6E5 /* XCRemoteSwiftPackageReference "GoogleMobileAds" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/quanghits/GoogleMobileAds";
@@ -1395,19 +1403,14 @@
 			package = 101141AD2783545F0088DF4C /* XCRemoteSwiftPackageReference "SwiftyChart" */;
 			productName = SwiftyChart;
 		};
-		104BCEC727D1285000507A50 /* SigmaSwiftStatistics */ = {
+		101AEB8027E1CF54004F42F9 /* SwiftyUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 104BCEC627D1285000507A50 /* XCRemoteSwiftPackageReference "SigmaSwiftStatistics" */;
-			productName = SigmaSwiftStatistics;
+			productName = SwiftyUI;
 		};
 		107DB669272CF67900A5A6E5 /* GoogleMobileAds */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 107DB668272CF67900A5A6E5 /* XCRemoteSwiftPackageReference "GoogleMobileAds" */;
 			productName = GoogleMobileAds;
-		};
-		107DB66E272CF89A00A5A6E5 /* SwiftyUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SwiftyUI;
 		};
 		1094284E271E458F0072425E /* SalmonStats */ = {
 			isa = XCSwiftPackageProductDependency;

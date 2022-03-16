@@ -173,15 +173,6 @@
         }
       },
       {
-        "package": "SigmaSwiftStatistics",
-        "repositoryURL": "https://github.com/evgenyneu/SigmaSwiftStatistics",
-        "state": {
-          "branch": null,
-          "revision": "d36db09f97a1739edc8c63897220c7ecbb5de684",
-          "version": "9.0.2"
-        }
-      },
-      {
         "package": "SplatNet2",
         "repositoryURL": "https://github.com/tkgstrator/SplatNet2",
         "state": {
