@@ -58,22 +58,22 @@ struct ShiftView: View {
 
 internal extension RealmCoopShift {
     /// スコア
-    var score: Double {
-        let scores: [Double] = weaponList.map({ weapon -> Double in
-            (weapon.rank * 4 + weapon.firePower * 1 + weapon.flexibility * 1 + weapon.handling * 3 + weapon.stability * 1 + weapon.mobility * 1) / 11
-        })
-        return Surge.sum(scores)
-    }
+//    var score: Double {
+//        let scores: [Double] = weaponList.map({ weapon -> Double in
+//            (weapon.rank * 4 + weapon.firePower * 1 + weapon.flexibility * 1 + weapon.handling * 3 + weapon.stability * 1 + weapon.mobility * 1) / 11
+//        })
+//        return Surge.sum(scores)
+//    }
     
     /// 偏差値
-    var deviation: Double {
-        guard let shifts = realm?.objects(RealmCoopShift.self) else {
-            return 50
-        }
-        // 平均値
-        let avg: Double = Surge.sum(shifts.map({ $0.score })) / Double(shifts.count)
-        // 標準偏差
-        let std: Double = Surge.std(shifts.map({ $0.score }))
-        return (score - avg) / std * 10 + 50
-    }
+//    var deviation: Double {
+//        guard let shifts = realm?.objects(RealmCoopShift.self) else {
+//            return 50
+//        }
+//        // 平均値
+//        let avg: Double = Surge.sum(shifts.map({ $0.score })) / Double(shifts.count)
+//        // 標準偏差
+//        let std: Double = Surge.std(shifts.map({ $0.score }))
+//        return (score - avg) / std * 10 + 50
+//    }
 }
