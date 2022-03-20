@@ -8,30 +8,52 @@
 import Foundation
 import RealmSwift
 import SplatNet2
+import SalmonStats
+import CocoaLumberjackSwift
+import Combine
 
 final class RankShiftStats: ObservableObject {
     internal let realm: Realm
     internal let nsaid: String?
     internal let schemeVersion: UInt64 = 8192
+//    internal let session: SalmonStats
     
     internal var goldenEggs: [RankEgg] = []
+    internal var task: Set<AnyCancellable> = Set<AnyCancellable>()
     
     init(startTime: Int, nsaid: String?) {
         do {
             self.realm = try Realm()
             self.nsaid = nsaid
+//            self.session = SalmonStats()
         } catch {
             var config = Realm.Configuration.defaultConfiguration
             config.deleteRealmIfMigrationNeeded = true
             config.schemaVersion = schemeVersion
             self.realm = try! Realm(configuration: config, queue: nil)
             self.nsaid = nsaid
+//            self.session = SalmonStats()
         }
         
         // nsaidがオプショナルなら何もしない
         guard let nsaid = nsaid else {
             return
         }
+        
+//        session.getWaveResults(startTime: startTime)
+//            .sink(receiveCompletion: { completion in
+//                switch completion {
+//                case .finished:
+//                    break
+//                case .failure(let error):
+//                    DDLogError(error)
+//                }
+//            }, receiveValue: { response in
+//                let results = response.results
+//                print(results)
+//            })
+//            .store(in: &task)
+        
         
 //        for eventType in EventKey.allCases {
 //            for waterLevel in WaterKey.allCases {
