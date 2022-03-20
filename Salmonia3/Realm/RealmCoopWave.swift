@@ -19,6 +19,16 @@ final class RealmCoopWave: Object {
     @Persisted var ikuraNum: Int
     @Persisted(originProperty: "wave") private var link: LinkingObjects<RealmCoopResult>
     
+    convenience init(from result: FSCoopWave) {
+        self.init()
+        self.eventType = EventKey(id: result.eventType)
+        self.waterLevel = WaterKey(id: result.waterLevel)
+        self.goldenIkuraNum = result.goldenIkuraNum
+        self.goldenIkuraPopNum = result.goldenIkuraPopNum
+        self.quotaNum = result.quotaNum
+        self.ikuraNum = result.ikuraNum
+    }
+    
     convenience init(from result: CoopResult.WaveDetail) {
         self.init()
         self.eventType = result.eventType.key
@@ -38,8 +48,41 @@ extension RealmCoopWave {
 
 extension EventKey: PersistableEnum {}
 
+extension EventKey {
+    public init(id: EventId) {
+        switch id {
+        case .waterLevels:
+            self = .waterLevels
+        case .rush:
+            self = .rush
+        case .goldieSeeking:
+            self = .goldieSeeking
+        case .griller:
+            self = .griller
+        case .fog:
+            self = .fog
+        case .theMothership:
+            self = .theMothership
+        case .cohockCharge:
+            self = .cohockCharge
+        }
+    }
+}
+
 extension WaterKey: PersistableEnum {}
 
+extension WaterKey {
+    public init(id: WaterId) {
+        switch id {
+        case .low:
+            self = .low
+        case .normal:
+            self = .normal
+        case .high:
+            self = .high
+        }
+    }
+}
 //
 extension RealmCoopWave: Identifiable {
     /// 識別用のID

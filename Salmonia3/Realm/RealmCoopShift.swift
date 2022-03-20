@@ -16,8 +16,6 @@ final class RealmCoopShift: Object {
     @Persisted var endTime: Int
     @Persisted var weaponList: List<WeaponType>
     @Persisted var rareWeapon: WeaponType?
-    @Persisted var waves: List<RealmStatsWave>
-    @Persisted var total: List<RealmStatsTotal>
     @Persisted var results: List<RealmCoopResult>
     
     convenience init(from schedule: Schedule.Response) {

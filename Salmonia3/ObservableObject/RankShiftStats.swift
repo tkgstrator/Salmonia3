@@ -33,35 +33,35 @@ final class RankShiftStats: ObservableObject {
             return
         }
         
-        for eventType in EventKey.allCases {
-            for waterLevel in WaterKey.allCases {
-                let results = realm.objects(RealmStatsWave.self).filter("eventType=%@ AND waterLevel=%@ AND ANY link.startTime=%@", eventType, waterLevel, startTime)
-                let goldenEgg = results.filter({ $0.members.contains(nsaid) }).map({ $0.goldenIkuraNum }).max()
-                let goldenEggs = results.map({ $0.goldenIkuraNum }).sorted(by: { $1 < $0 })
-                let rank: Int? = {
-                    guard let goldenEgg = goldenEgg else {
-                        return nil
-                    }
-                    if let firstIndex = goldenEggs.firstIndex(of: goldenEgg) {
-                        return firstIndex + 1
-                    }
-                    return nil
-                }()
-                let count: Int? = {
-                    switch (waterLevel, eventType) {
-                    case (WaterKey.high, EventKey.cohockCharge),
-                        (WaterKey.normal, EventKey.cohockCharge),
-                        (WaterKey.low, EventKey.rush),
-                        (WaterKey.low, EventKey.goldieSeeking),
-                        (WaterKey.low, EventKey.griller):
-                        return nil
-                    default:
-                        return results.count
-                    }
-                }()
-                self.goldenEggs.append(RankEgg(goldenEggs: goldenEgg, rank: rank, total: count, eventType: eventType, waterLevel: waterLevel))
-            }
-        }
+//        for eventType in EventKey.allCases {
+//            for waterLevel in WaterKey.allCases {
+//                let results = realm.objects(RealmStatsWave.self).filter("eventType=%@ AND waterLevel=%@ AND ANY link.startTime=%@", eventType, waterLevel, startTime)
+//                let goldenEgg = results.filter({ $0.members.contains(nsaid) }).map({ $0.goldenIkuraNum }).max()
+//                let goldenEggs = results.map({ $0.goldenIkuraNum }).sorted(by: { $1 < $0 })
+//                let rank: Int? = {
+//                    guard let goldenEgg = goldenEgg else {
+//                        return nil
+//                    }
+//                    if let firstIndex = goldenEggs.firstIndex(of: goldenEgg) {
+//                        return firstIndex + 1
+//                    }
+//                    return nil
+//                }()
+//                let count: Int? = {
+//                    switch (waterLevel, eventType) {
+//                    case (WaterKey.high, EventKey.cohockCharge),
+//                        (WaterKey.normal, EventKey.cohockCharge),
+//                        (WaterKey.low, EventKey.rush),
+//                        (WaterKey.low, EventKey.goldieSeeking),
+//                        (WaterKey.low, EventKey.griller):
+//                        return nil
+//                    default:
+//                        return results.count
+//                    }
+//                }()
+//                self.goldenEggs.append(RankEgg(goldenEggs: goldenEgg, rank: rank, total: count, eventType: eventType, waterLevel: waterLevel))
+//            }
+//        }
     }
 }
 

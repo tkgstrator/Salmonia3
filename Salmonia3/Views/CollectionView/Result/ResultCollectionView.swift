@@ -24,14 +24,14 @@ struct ResultCollectionView: View {
                     }
                 }
             })
-                .listStyle(.plain)
-                .refreshable(action: {
-                    service.isLoading.toggle()
-                })
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationTitle("リザルト一覧")
+            .listStyle(.plain)
+            .refreshable(action: {
+                service.isLoading.toggle()
+            })
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("リザルト一覧")
         })
-            .navigationViewStyle(.split)
+        .navigationViewStyle(.split)
     }
 }
 
@@ -56,7 +56,7 @@ struct NavigationLinker<Destination: View, Label: View>: View {
             NavigationLink(destination: destination, label: {
                 EmptyView()
             })
-                .opacity(0.0)
+            .opacity(0.0)
             label()
         })
     }

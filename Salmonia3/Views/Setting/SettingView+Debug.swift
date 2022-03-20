@@ -24,9 +24,18 @@ struct SettingView_Debug: View {
                 Text("Set Previous X-Product Version")
             })
             Button(action: {
-                service.registerTestData()
             }, label: {
                 Text("Upload Test Data")
+            })
+            Button(action: {
+                service.deleteAllResultsFromDatabase()
+            }, label: {
+                Text("Delete All Results")
+            })
+            Button(action: {
+                service.getResultsFromFirestore()
+            }, label: {
+                Text("Get Results From Firestore")
             })
             Button(action: {
             }, label: {

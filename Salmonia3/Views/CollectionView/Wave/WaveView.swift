@@ -12,21 +12,6 @@ import SplatNet2
 struct WaveView: View {
     let wave: RealmCoopWave
     
-    var StageImage: some View {
-        let stageId: StageId = {
-            if let stageId = wave.stageId {
-                return stageId
-            }
-            return StageId.shakeup
-        }()
-        return Image(stageId)
-            .resizable()
-            .scaledToFit()
-            .frame(height: 50)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            .padding(.bottom)
-    }
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 0, content: {
             HStack(content: {
@@ -39,18 +24,28 @@ struct WaveView: View {
                 Spacer()
                 ResultEgg(goldenIkuraNum: wave.goldenIkuraNum, ikuraNum: wave.ikuraNum)
             })
-            LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 40, maximum: 50), spacing: nil, alignment: .top), count: 4), alignment: .trailing, spacing: nil, content: {
-                if let weaponList = wave.weaponList {
-                    ForEach(weaponList.indices) { index in
-                        Image(weaponList[index])
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .padding(4)
-                            .background(Circle().fill(.black.opacity(0.9)))
-                    }
+            HStack(alignment: .bottom, spacing: 0, content: {
+                if let stageId = wave.stageId {
+                    Image(stageId)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 50)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
+                Spacer()
+                HStack(content: {
+                    if let weaponList = wave.weaponList {
+                        ForEach(weaponList.indices) { index in
+                            Image(weaponList[index])
+                                .resizable()
+                                .padding(4)
+                                .scaledToFit()
+                                .background(Circle().fill(.black.opacity(0.9)))
+                                .frame(maxWidth: 45)
+                        }
+                    }
+                })
             })
-                .overlay(StageImage, alignment: .leading)
         })
     }
 }

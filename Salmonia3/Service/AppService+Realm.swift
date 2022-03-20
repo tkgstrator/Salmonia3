@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 import SplatNet2
 import SalmonStats
+import CocoaLumberjackSwift
 
 extension AppService {
     /// PrimaryKeyを指定したオブジェクトを取得
@@ -72,6 +73,13 @@ extension AppService {
         }
     }
     
+    /// Firestoreから取得したリザルトを保存
+    internal func save(results: [FSCoopResult]) {
+        let objects: [RealmCoopResult] = results.map({ RealmCoopResult(result: $0) })
+        self.save(objects)
+    }
+    
+    /// SplatNet2から取得したリザルトを保存
     internal func save(results: [SalmonResult]) {
         let objects: [RealmCoopResult] = results.map({ RealmCoopResult(from: $0.result, id: $0.id) })
         self.save(objects)
@@ -80,14 +88,39 @@ extension AppService {
     /// シフト情報をRealmに追加
     func addLatestShiftSchedule() {
         if realm.objects(RealmCoopShift.self).isEmpty {
+            DDLogInfo(SplatNet2.schedule.count)
             self.save(SplatNet2.schedule.map({ RealmCoopShift(from: $0) }))
         }
     }
     
-    var playedShiftScheduleId: [Int] {
-        guard let nsaid = account?.credential.nsaid else {
-            return []
+    func getVisibleSchedules() -> [RealmCoopShift] {
+        /// 現在時刻を取得
+        let currentTime: Int = Int(Date().timeIntervalSince1970)
+        
+        /// 開催中のシフト+開催時間が今よりもあとのものを取得
+        let schedules: RealmSwift.Results<RealmCoopShift> = {
+            let schedules: RealmSwift.Results<RealmCoopShift> = realm.objects(RealmCoopShift.self).sorted(byKeyPath: "startTime", ascending: false)
+
+            switch shiftDisplayMode {
+            case .all:
+                return schedules
+            case .current:
+                return schedules.filter("(startTime<=%@ AND endTime>=%@) OR startTime<=%@", currentTime, currentTime, currentTime)
+            case .played:
+                return schedules.filter("(startTime<=%@ AND endTime>=%@) OR startTime<=%@", currentTime, currentTime, currentTime)
+            }
+        }()
+        
+        return Array(schedules)
+    }
+    
+    func deleteAllResultsFromDatabase() {
+        if realm.isInWriteTransaction {
+            realm.deleteAll()
+        } else {
+            try? realm.write({
+                realm.deleteAll()
+            })
         }
-        return Array(Set(realm.objects(RealmCoopResult.self).filter("pid=%@", nsaid).map({ $0.startTime })))
     }
 }
