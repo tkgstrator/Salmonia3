@@ -12,56 +12,62 @@ import RealmSwift
 import SplatNet2
 
 struct ShiftCollectionView: View {
+    @SceneStorage("sceneLoad") private var sceneLoad = false
+    @AppStorage("appLoad") private var appLoad = false
     @EnvironmentObject var service: AppService
-    @ObservedResults(RealmCoopShift.self, sortDescriptor: SortDescriptor(keyPath: "startTime", ascending: false)) var schedules
     @State var isPresented: Bool = false
     
     var nsaid: String? {
         service.account?.credential.nsaid
     }
     
-    func update(mode: ShiftDisplayMode) {
-        switch mode {
-        case .all:
-            $schedules.filter = nil
-        case .current:
-            $schedules.filter = NSPredicate("startTime", lessThan: Int(Date().timeIntervalSince1970))
-        case .played:
-            $schedules.filter = NSPredicate("startTime", valuesIn: service.playedShiftScheduleId)
-        }
-    }
-    
     var body: some View {
         NavigationView(content: {
-            List(content: {
-                ForEach(schedules) { schedule in
-                    NavigationLinker(destination: ShiftStatsView(schedule: schedule, nsaid: nsaid), label: {
-                        ShiftView(shift: schedule)
-                    })
-                        .disabled(schedule.startTime >= Int(Date().timeIntervalSince1970))
-                }
-            })
-                .listStyle(.plain)
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationTitle("シフトスケジュール")
-                .toolbar(content: {
-                    ToolbarItem(placement: .navigationBarTrailing, content: {
-                        Button(action: {
-                            isPresented.toggle()
-                        }, label: {
-                            Image(systemName: .Line3HorizontalDecreaseCircle)
+            ScrollViewReader(content: { scrollProxy in
+                List(content: {
+                    ForEach(service.schedules) { schedule in
+                        NavigationLinker(destination: ShiftStatsView(schedule: schedule, nsaid: nsaid), label: {
+                            ShiftView(shift: schedule)
                         })
-                    })
+                        .id(schedule.startTime)
+                        .disabled(schedule.startTime >= Int(Date().timeIntervalSince1970))
+                    }
+                })
+                .onFirstAppear(perform: {
+                    print("FIRST APPEAR", sceneLoad, appLoad)
+                })
+                .onDidLoad(perform: {
+                    print("DID LOAD", sceneLoad, appLoad)
+                })
+                .onWillAppear(perform: {
+                    print("WILL APPEAR", sceneLoad, appLoad)
                 })
                 .onAppear(perform: {
-                    update(mode: service.shiftDisplayMode)
+                    print("APPEAR", sceneLoad, appLoad)
                 })
-        })
-            .halfsheet(isPresented: $isPresented, onDismiss: { update(mode: service.shiftDisplayMode) }, content: {
+            })
+            .listStyle(.plain)
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("シフトスケジュール")
+            .toolbar(content: {
+                ToolbarItem(placement: .navigationBarTrailing, content: {
+                    Button(action: {
+                        isPresented.toggle()
+                    }, label: {
+                        Image(systemName: .Line3HorizontalDecreaseCircle)
+                    })
+                })
+            })
+            .halfsheet(isPresented: $isPresented, onDismiss: {
+                withAnimation(.easeInOut(duration: 3.0)) {
+                    service.schedules = service.getVisibleSchedules()
+                }
+            }, content: {
                 ShiftFilterButton()
                     .environmentObject(service)
             })
-            .navigationViewStyle(.split)
+        })
+        .navigationViewStyle(.split)
     }
 }
 

@@ -118,9 +118,6 @@ final class UserShiftStats: ObservableObject {
         ]
         self.weaponProbs = players.suppliedWeaponProbs(weaponList: weaponList)
         self.specialProbs = players.suppliedSpecialProb()
-        
-        total(startTime: startTime)
-        waves(startTime: startTime)
     }
 }
 

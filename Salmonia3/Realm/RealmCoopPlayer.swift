@@ -23,6 +23,20 @@ final class RealmCoopPlayer: Object, ObjectKeyIdentifiable {
     @Persisted var specialCounts: List<Int>
     @Persisted(originProperty: "player") var link: LinkingObjects<RealmCoopResult>
     
+    public convenience init(from result: FSCoopPlayer) {
+        self.init()
+        self.name = result.name
+        self.pid = result.pid
+        self.deadCount = result.deadCount
+        self.helpCount = result.helpCount
+        self.goldenIkuraNum = result.goldenIkuraNum
+        self.ikuraNum = result.ikuraNum
+        self.specialId = SpecialId(rawValue: result.special)!
+        self.bossKillCounts.append(objectsIn: result.bossKillCounts)
+        self.weaponList.append(objectsIn: result.weaponList.compactMap({ WeaponType(rawValue: $0) }))
+        self.specialCounts.append(objectsIn: result.specialCounts)
+    }
+    
     public convenience init(from result: CoopResult.PlayerResult) {
         self.init()
         self.name = result.name

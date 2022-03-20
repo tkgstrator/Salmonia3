@@ -9,9 +9,10 @@ import SwiftUI
 import Surge
 
 struct RankingView: View {
-    let result: RealmStatsTotal
+//    let result: RealmStatsTotal
     
     var body: some View {
-        ResultEgg(goldenIkuraNum: result.goldenEggs, ikuraNum: result.powerEggs)
+        EmptyView()
+//        ResultEgg(goldenIkuraNum: result.goldenEggs, ikuraNum: result.powerEggs)
     }
 }

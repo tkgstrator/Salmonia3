@@ -25,9 +25,38 @@ extension Text {
     init(_ value: Int) {
         self.init("\(value)")
     }
+    
+    init(_ value: StageId) {
+        self.init(value.key.stageName)
+    }
+    
+    init(_ value: EventId) {
+        self.init(value.key.rawValue)
+    }
 }
 
-extension Optional where Wrapped == GradeId {
+fileprivate extension EventId {
+    var key: EventKey {
+        switch self {
+        case .waterLevels:
+            return .waterLevels
+        case .rush:
+            return .rush
+        case .goldieSeeking:
+            return .goldieSeeking
+        case .griller:
+            return .griller
+        case .fog:
+            return .fog
+        case .theMothership:
+            return .theMothership
+        case .cohockCharge:
+            return .cohockCharge
+        }
+    }
+}
+
+fileprivate extension Optional where Wrapped == GradeId {
     var gradeName: String {
         switch self {
             case .profreshional:
@@ -44,6 +73,40 @@ extension Optional where Wrapped == GradeId {
                 return "Intern"
             case .none:
                 return "Intern"
+        }
+    }
+}
+
+fileprivate extension StageKey {
+    var stageName: String {
+        switch self {
+        case .shakeup:
+            return "Spawning Grounds"
+        case .shakeship:
+            return "Marooner's Bay"
+        case .shakehouse:
+            return "Lost Outpost"
+        case .shakelift:
+            return "Salmonid Smokeyard"
+        case .shakeride:
+            return "Ruins of Ark Polaris"
+        }
+    }
+}
+
+fileprivate extension StageId {
+    var key: StageKey {
+        switch self {
+        case .shakeup:
+            return .shakeup
+        case .shakeship:
+            return .shakeship
+        case .shakehouse:
+            return .shakehouse
+        case .shakelift:
+            return .shakelift
+        case .shakeride:
+            return .shakeride
         }
     }
 }

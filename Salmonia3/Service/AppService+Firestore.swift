@@ -12,6 +12,7 @@ import Combine
 import CocoaLumberjackSwift
 import FirebaseAuth
 import SplatNet2
+import SalmonStats
 
 extension AppService {
     func twitterSignIn() {
@@ -26,7 +27,6 @@ extension AppService {
                         DDLogError(error)
                         return
                     }
-                    DDLogInfo(result)
                 })
             }
         })
@@ -40,76 +40,127 @@ extension AppService {
         }
     }
     
-    internal func register() {
-        let waves: [FSCoopWave] = realm.objects(RealmCoopWave.self).map({ FSCoopWave(result: $0) })
-        for wave in waves.chunked(by: 500) {
-            create(wave)
-        }
-        let totals: [FSCoopTotal] = realm.objects(RealmCoopResult.self).map({ FSCoopTotal(result: $0) })
-        for total in totals.chunked(by: 500) {
-            create(total)
-        }
-        uploaded.toggle()
-    }
-    
-    internal func register(results: [CoopResult.Response]) {
-        let waves: [FSCoopWave] = results.flatMap({ result -> [FSCoopWave] in
-            result.waveDetails.map({ wave -> FSCoopWave in
-                let index: Int = result.waveDetails.firstIndex(of: wave) ?? 0
-                let members: [String] = result.members
-                let startTime: Int = result.startTime
-                let playTime: Int = result.playTime
-                return FSCoopWave(result: wave, members: members, playTime: playTime, startTime: startTime, index: index)
-            })
-        })
-        let totals: [FSCoopTotal] = results.map({ FSCoopTotal(result: $0) })
+    /// リザルトをアップロードする
+    func uploadResultsToFirestore(results: [SalmonResult]) {
         let results: [FSCoopResult] = results.map({ FSCoopResult(result: $0) })
-        create(results)
-        create(waves)
-        create(totals)
+        self.create(results)
     }
     
-    internal func registerTestData() {
-        let data: FSCoopRecord = FSCoopRecord()
-        create([data])
-    }
-    
-    internal func incrementValue() {
-        let data: FSCoopRecord = FSCoopRecord()
-    }
-    
+    /// Firestoreにデータアップロード
     private func create<T: Firecode>(_ objects: [T], merge: Bool = false) {
-        DispatchQueue(label: "Firebase").sync(execute: {
-            let batch = firestore.batch()
-            objects.compactMap({ batch.setData(try! $0.encoded(), forDocument: $0.reference, merge: true)})
-            batch.commit(completion: { error in
-                if let error = error {
-                    DDLogError(error)
-                    return
-                }
-                DDLogInfo("Success")
-            })
+        let batch = firestore.batch()
+        for object in objects {
+            batch.setData(try! object.encoded(), forDocument: object.reference, merge: true)
+        }
+        batch.commit(completion: { error in
+            if let error = error {
+                DDLogError(error)
+                return
+            }
+            DDLogInfo("Success")
         })
     }
     
-    private func encode(_ object: FSCoopWave) throws -> [String: Any] {
-        try encoder.encode(object)
+    func getResultsFromFirestore() {
+        getResults()
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    DDLogError(error)
+                }
+            }, receiveValue: { results in
+                print(results.count)
+                self.save(results: results)
+            })
+            .store(in: &task)
     }
     
-    /// データ読み込み
-    func object(startTime: Int) {
-        firestore
-            .collection("schedules")
-            .document("\(startTime)")
-            .collection("waves")
-            .getDocuments(completion: { (snapshot, _) in
-                guard let snapshot = snapshot
-                else {
-                    DDLogError("Firebase: No results")
-                    return
-                }
-                let data = snapshot.documents.compactMap({ try? self.decoder.decode(FSCoopWave.self, from: $0.data()) })
-                DDLogInfo(data)
+    private func convert(_ documents: [QueryDocumentSnapshot]) -> AnyPublisher<[FSCoopResult], Error> {
+        documents
+            .publisher
+            .tryMap({ document throws -> FSCoopResult in
+                print(document.convertedData())
+                return try self.decoder.decode(FSCoopResult.self, from: document.convertedData())
             })
+            .collect()
+            .eraseToAnyPublisher()
+    }
+    
+    private func getResults() -> AnyPublisher<[FSCoopResult], Error> {
+        snapshot()
+            .flatMap(maxPublishers: .max(1), { $0.chunked(by: 200).publisher })
+            .flatMap(maxPublishers: .max(1), { self.convert($0) })
+            .eraseToAnyPublisher()
+    }
+    
+    /// スナップショットを返す
+    private func snapshot() -> AnyPublisher<[QueryDocumentSnapshot], Error> {
+        guard let nsaid: String = account?.credential.nsaid else {
+            return Fail(outputType: [QueryDocumentSnapshot].self, failure: SP2Error.noNewResults)
+                .eraseToAnyPublisher()
+        }
+        return Future { [self] promise in
+            firestore
+                .collection("users")
+                .document(nsaid)
+                .collection("results")
+//                .whereField("start_time", isGreaterThanOrEqualTo: 1646481600)
+                .getDocuments(completion: { (querySnapShot, error) in
+                    if let error = error {
+                        DDLogError(error)
+                    } else {
+                        guard let documents = querySnapShot?.documents else {
+                            DDLogError("Firebase: No results")
+                            promise(.failure(SP2Error.noNewResults))
+                            return
+                        }
+                        DDLogInfo("Document size: \(documents.count)")
+                        promise(.success(documents))
+                    }
+                })
+        }
+        .eraseToAnyPublisher()
+    }
+}
+
+extension Dictionary where Key == String, Value == Any {
+    fileprivate func keysToCamelCase() -> [String: Any] {
+        var dict: [String: Any] = [:]
+        
+        for key in self.keys {
+            dict[key.convertToCamelCase()] = {
+                if let value = self[key] as? Dictionary {
+                    return value.keysToCamelCase()
+                }
+                
+                if let value = self[key] as? [Dictionary] {
+                    return value.map({ $0.keysToCamelCase() })
+                }
+                return self[key]
+            }()
+        }
+        return dict
+    }
+}
+
+extension DocumentSnapshot {
+    func convertedData() -> [String: Any] {
+        guard let data = self.data() else {
+            return [:]
+        }
+        return data.keysToCamelCase()
+    }
+}
+
+extension String {
+    private func capitalize() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+    
+    fileprivate func convertToCamelCase() -> String {
+        let camelString: String = split(separator: "_").map({ $0.capitalized }).joined()
+        return camelString.prefix(1).lowercased() + camelString.dropFirst()
     }
 }

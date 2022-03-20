@@ -20,7 +20,6 @@ struct SettingView_Firebase: View {
                 })
             } else {
                 Button(action: {
-                    service.register()
                 }, label: {
                     Text("リザルトを同期")
                 })

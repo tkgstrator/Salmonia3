@@ -10,15 +10,21 @@ import SalmonStats
 import Common
 import CocoaLumberjackSwift
 import RealmSwift
+import SplatNet2
 
 extension AppService {
     var latestResultId: Int? {
         realm.objects(RealmCoopResult.self).latestResultId(account: account)
     }
 
+    /// リザルトをイカリング2からダウンロードしてSalmon Statsにアップロードする
     func loadResultsFromSplatNet2() {
-        DDLogInfo("Getting result from \(latestResultId)")
         session.uploadResults(resultId: latestResultId)
+    }
+    
+    /// New!! Salmon Statsにリザルトをアップロード
+    func uploadWaveResultsToNewSalmonStats(results: [CoopResult.Response]) {
+        session.uploadWaveResults(results: results)
     }
 }
 

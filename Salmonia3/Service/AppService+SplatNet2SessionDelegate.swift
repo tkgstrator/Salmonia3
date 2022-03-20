@@ -17,8 +17,10 @@ import SalmonStats
 extension AppService: SalmonStatsSessionDelegate {
     /// リザルト読み込みが終わったときに呼ばれる
     func didFinishLoadResultsFromSplatNet2(results: [SalmonResult]) {
-        // ローカルデータ書き込み
+        // Realmデータベースに書き込み
         self.save(results: results)
+        // Firestoreにリザルトを保存
+        uploadResultsToFirestore(results: results)
         // データを変換
         let results: [CoopResult.Response] = results.map({ $0.result })
         // New! Salmon Statsに書き込み

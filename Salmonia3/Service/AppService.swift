@@ -30,7 +30,7 @@ final class AppService: ObservableObject {
             self.realm = try! Realm(configuration: config, queue: nil)
         }
         self.session = SalmonStats(refreshable: true)
-        /// スケジュールを追加
+        /// デリゲートを設定
         self.session.delegate = self
         /// アカウントを設定
         self.account = self.session.account
@@ -40,7 +40,8 @@ final class AppService: ObservableObject {
         Auth.auth().addStateDidChangeListener({ (auth, user) in
             self.user = user
         })
-        
+        /// スケジュール情報を追加
+        self.schedules = self.getVisibleSchedules()
         /// プロダクト情報を取得
         SwiftyStoreKit.retrieveProductsInfo(productIdentifiers, completion: { result in
             self.products = result.retrievedProducts
@@ -94,12 +95,14 @@ final class AppService: ObservableObject {
     @AppStorage("APP.FIRESTORE.ISSIGNIN") var isConnected: Bool = false
     /// SalmonStats連携フラグ
     @AppStorage("APP.SALMONSTATS.UPDATED") var uploaded: Bool = false
-    
+    /// 表示するシフト一覧
+    @Published var schedules: [RealmCoopShift] = []
     /// RealmSwiftのScheme Version
     private let schemeVersion: UInt64 = 8192
     /// RealmSwiftのインスタンス
     internal let realm: Realm
-    
+    /// スケジューラ
+    internal var task: Set<AnyCancellable> = Set<AnyCancellable>()
     class Application {
         private init() {}
         static let shared: Application = Application()
