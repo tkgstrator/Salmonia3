@@ -11,39 +11,42 @@ import SwiftyUI
 import RealmSwift
 import SplatNet2
 
+final class ShiftService: ObservableObject {
+    @Published var shiftDisplayMode: ShiftDisplayMode = .current
+    @Published var nsaid: String?
+    @ObservedResults(
+        RealmCoopShift.self,
+        filter: NSPredicate("startTime", lessThan: Int(Date().timeIntervalSince1970)),
+        sortDescriptor: SortDescriptor(keyPath: "startTime", ascending: false)
+    )
+    var schedules
+    
+    init(nsaid: String?) {
+        self.nsaid = nsaid
+    }
+}
+
 struct ShiftCollectionView: View {
-    @SceneStorage("sceneLoad") private var sceneLoad = false
-    @AppStorage("appLoad") private var appLoad = false
-    @EnvironmentObject var service: AppService
+    @StateObject var service: ShiftService
     @State var isPresented: Bool = false
     
-    var nsaid: String? {
-        service.account?.credential.nsaid
+    init(nsaid: String?) {
+        self._service = StateObject(wrappedValue: ShiftService(nsaid: nsaid))
     }
     
     var body: some View {
         NavigationView(content: {
             ScrollViewReader(content: { scrollProxy in
                 List(content: {
-                    ForEach(service.schedules) { schedule in
-                        NavigationLinker(destination: ShiftStatsView(schedule: schedule, nsaid: nsaid), label: {
-                            ShiftView(shift: schedule)
-                        })
-                        .id(schedule.startTime)
-                        .disabled(schedule.startTime >= Int(Date().timeIntervalSince1970))
+                    if let nsaid = service.nsaid {
+                        ForEach(service.schedules) { schedule in
+                            NavigationLinker(destination: ShiftStatsView(schedule: schedule, nsaid: nsaid), label: {
+                                ShiftView(shift: schedule)
+                            })
+                            .id(schedule.startTime)
+                            .disabled(schedule.startTime >= Int(Date().timeIntervalSince1970))
+                        }
                     }
-                })
-                .onFirstAppear(perform: {
-                    print("FIRST APPEAR", sceneLoad, appLoad)
-                })
-                .onDidLoad(perform: {
-                    print("DID LOAD", sceneLoad, appLoad)
-                })
-                .onWillAppear(perform: {
-                    print("WILL APPEAR", sceneLoad, appLoad)
-                })
-                .onAppear(perform: {
-                    print("APPEAR", sceneLoad, appLoad)
                 })
             })
             .listStyle(.plain)
@@ -59,8 +62,18 @@ struct ShiftCollectionView: View {
                 })
             })
             .halfsheet(isPresented: $isPresented, onDismiss: {
-                withAnimation(.easeInOut(duration: 3.0)) {
-                    service.schedules = service.getVisibleSchedules()
+                withAnimation(.easeInOut(duration: 1.0)) {
+                    switch service.shiftDisplayMode {
+                    case .current:
+                        service.$schedules.filter = NSPredicate("startTime", lessThan: Int(Date().timeIntervalSince1970))
+                        service.objectWillChange.send()
+                    case .all:
+                        service.$schedules.filter = nil
+                        service.objectWillChange.send()
+                    case .played:
+                        service.$schedules.filter = NSPredicate("startTime", lessThan: Int(Date().timeIntervalSince1970))
+                        service.objectWillChange.send()
+                    }
                 }
             }, content: {
                 ShiftFilterButton()
@@ -78,8 +91,8 @@ private extension RealmSwift.Results where Element == RealmCoopResult {
     }
 }
 
-struct ShiftCollectionView_Previews: PreviewProvider {
-    static var previews: some View {
-        ShiftCollectionView()
-    }
-}
+//struct ShiftCollectionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ShiftCollectionView()
+//    }
+//}

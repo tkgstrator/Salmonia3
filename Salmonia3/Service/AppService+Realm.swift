@@ -88,7 +88,6 @@ extension AppService {
     /// シフト情報をRealmに追加
     func addLatestShiftSchedule() {
         if realm.objects(RealmCoopShift.self).isEmpty {
-            DDLogInfo(SplatNet2.schedule.count)
             self.save(SplatNet2.schedule.map({ RealmCoopShift(from: $0) }))
         }
     }

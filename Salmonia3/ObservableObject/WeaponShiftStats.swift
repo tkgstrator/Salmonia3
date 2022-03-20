@@ -74,6 +74,6 @@ internal struct WeaponStats: Identifiable {
     init(data: (weaponType: WeaponType, count: Int), total: Int) {
         self.weaponType = data.weaponType
         self.suppliedCount = data.count
-        self.suppliedProb = Double(data.count) / Double(total)
+        self.suppliedProb = total != .zero ? Double(data.count) / Double(total) : .zero
     }
 }

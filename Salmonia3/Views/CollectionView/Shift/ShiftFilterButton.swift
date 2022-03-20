@@ -9,7 +9,7 @@ import SwiftUI
 import RealmSwift
 
 struct ShiftFilterButton: View {
-    @EnvironmentObject var service: AppService
+    @EnvironmentObject var service: ShiftService
     
     var body: some View {
         Picker(selection: $service.shiftDisplayMode, content: {

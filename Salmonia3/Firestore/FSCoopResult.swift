@@ -45,7 +45,7 @@ public struct FSCoopResult: Firecode {
         self.jobScore = result.jobScore
         self.kumaPoint = result.kumaPoint
         self.myResult = FSCoopPlayer(player: result.myResult)
-        self.otherResults = result.otherResults.compactMap({ FSCoopPlayer(player: $0) })
+        self.otherResults = (result.otherResults ?? []).compactMap({ FSCoopPlayer(player: $0) })
         self.playTime = result.playTime
         self.salmonId = id
         self.startTime = result.startTime

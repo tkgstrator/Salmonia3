@@ -40,7 +40,7 @@ extension AppService {
         }
     }
     
-    /// リザルトをアップロードする
+    /// Firestoreにリザルトをアップロードする
     func uploadResultsToFirestore(results: [SalmonResult]) {
         let results: [FSCoopResult] = results.map({ FSCoopResult(result: $0) })
         self.create(results)
@@ -71,23 +71,23 @@ extension AppService {
                     DDLogError(error)
                 }
             }, receiveValue: { results in
-                print(results.count)
                 self.save(results: results)
             })
             .store(in: &task)
     }
     
+    /// [QueryDocumentSnapshot] -> [FSCoopResult]
     private func convert(_ documents: [QueryDocumentSnapshot]) -> AnyPublisher<[FSCoopResult], Error> {
         documents
             .publisher
             .tryMap({ document throws -> FSCoopResult in
-                print(document.convertedData())
                 return try self.decoder.decode(FSCoopResult.self, from: document.convertedData())
             })
             .collect()
             .eraseToAnyPublisher()
     }
     
+    /// Get [FSCoopResult]
     private func getResults() -> AnyPublisher<[FSCoopResult], Error> {
         snapshot()
             .flatMap(maxPublishers: .max(1), { $0.chunked(by: 200).publisher })
@@ -95,7 +95,7 @@ extension AppService {
             .eraseToAnyPublisher()
     }
     
-    /// スナップショットを返す
+    /// -> [QueryDocumenSnapshot]
     private func snapshot() -> AnyPublisher<[QueryDocumentSnapshot], Error> {
         guard let nsaid: String = account?.credential.nsaid else {
             return Fail(outputType: [QueryDocumentSnapshot].self, failure: SP2Error.noNewResults)
@@ -106,7 +106,7 @@ extension AppService {
                 .collection("users")
                 .document(nsaid)
                 .collection("results")
-//                .whereField("start_time", isGreaterThanOrEqualTo: 1646481600)
+                .whereField("start_time", isGreaterThanOrEqualTo: 1646481600)
                 .getDocuments(completion: { (querySnapShot, error) in
                     if let error = error {
                         DDLogError(error)

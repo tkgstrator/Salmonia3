@@ -27,7 +27,7 @@ struct ContentView: View {
                     Text("WAVE一覧")
                 })
                 .tag(1)
-            ShiftCollectionView()
+            ShiftCollectionView(nsaid: service.account?.credential.nsaid)
                 .tabItem({
                     Image(systemName: .ListBulletRectangle)
                     Text("シフト一覧")

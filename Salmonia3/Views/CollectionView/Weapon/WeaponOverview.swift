@@ -9,8 +9,7 @@ import SwiftUI
 
 struct WeaponOverview: View {
     @StateObject var stats: WeaponShiftStats
-//    @State private var scale: CGFloat = .zero
-    
+
     var body: some View {
         GeometryReader(content: { geometry in
             let suppliedWeaponCount: Int = stats.suppliedWeaponList.count
@@ -37,11 +36,11 @@ struct WeaponOverview: View {
                     Circle()
                         .fill(Color.white)
                     Circle()
-                        .stroke(style: StrokeStyle(lineWidth: 16, lineCap: .round))
+                        .stroke(style: StrokeStyle(lineWidth: 12, lineCap: .round))
                         .foregroundColor(.gray)
                     Circle()
                         .trim(from: 0.0, to: CGFloat(suppliedWeaponCount) / CGFloat(51))
-                        .stroke(style: StrokeStyle(lineWidth: 24))
+                        .stroke(style: StrokeStyle(lineWidth: 12))
                         .rotationEffect(.degrees(-90))
                         .foregroundColor(.citrus)
                     Text("\(suppliedWeaponCount)/51")

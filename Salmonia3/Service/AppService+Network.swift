@@ -25,6 +25,17 @@ extension AppService {
     /// New!! Salmon Statsにリザルトをアップロード
     func uploadWaveResultsToNewSalmonStats(results: [CoopResult.Response]) {
         session.uploadWaveResults(results: results)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    DDLogInfo("Success")
+                case .failure(let error):
+                    DDLogError(error)
+                }
+            }, receiveValue: { response in
+                DDLogInfo("Uploaded \(response.results.count)")
+            })
+            .store(in: &task)
     }
 }
 

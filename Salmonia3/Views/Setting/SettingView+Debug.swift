@@ -38,8 +38,9 @@ struct SettingView_Debug: View {
                 Text("Get Results From Firestore")
             })
             Button(action: {
+                service.getResultsFromFirestore()
             }, label: {
-                Text("Update With Increment")
+                Text("Get Wave Results")
             })
         })
     }

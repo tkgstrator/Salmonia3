@@ -100,13 +100,13 @@ final class RealmCoopResult: Object {
         self.dangerRate = result.dangerRate
         self.playTime = result.playTime
         self.startTime = result.startTime
-        self.goldenEggs = result.myResult.goldenIkuraNum + result.otherResults.totalGoldenIkuraNum
-        self.powerEggs = result.myResult.ikuraNum + result.otherResults.totalIkuraNum
+        let playerResult: [CoopResult.PlayerResult] = [result.myResult] + (result.otherResults ?? [])
+        self.goldenEggs = playerResult.totalGoldenIkuraNum
+        self.powerEggs = playerResult.totalIkuraNum
         self.failureReason = result.jobResult.failureReason
         self.isClear = result.jobResult.isClear
         self.bossCounts.append(objectsIn: result.bossCounts.sortedValue())
         self.wave.append(objectsIn: result.waveDetails.map({ RealmCoopWave(from: $0) }))
-        let playerResult: [CoopResult.PlayerResult] = [result.myResult] + result.otherResults
         let bossKillCounts: [Int] = playerResult.map({ $0.bossKillCounts.sortedValue() }).sum()
         self.player.append(objectsIn: playerResult.map({ RealmCoopPlayer(from: $0) }))
         self.bossKillCounts.append(objectsIn: bossKillCounts)
