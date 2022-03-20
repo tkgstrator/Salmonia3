@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>app-1-980597841225-ios-79723b057dd7fdc57f8e98</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>app-1-980597841225-ios-79723b057dd7fdc57f8e98</string>
+			</array>
+		</dict>
+	</array>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-7107468397673752~2469588733</string>
+	<key>GADIsAdManagerApp</key>
+	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Splatfont1.ttf</string>
+		<string>Splatfont2.ttf</string>
+	</array>
+</dict>
+</plist>

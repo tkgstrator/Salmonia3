@@ -24,7 +24,7 @@ extension AppService: SalmonStatsSessionDelegate {
         // データを変換
         let results: [CoopResult.Response] = results.map({ $0.result })
         // New! Salmon Statsに書き込み
-        session.uploadWaveResults(results: results)
+        uploadWaveResultsToNewSalmonStats(results: results)
         DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
             self.isLoading.toggle()
         })
