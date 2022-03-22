@@ -8,7 +8,7 @@
 import SwiftUI
 import SplatNet2
 
-struct ResultWave: View {
+struct ResultWaveView: View {
     let result: RealmCoopResult
     
     var body: some View {

@@ -42,7 +42,7 @@ struct ShiftView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                 Spacer()
                 HStack(content: {
-                    ForEach(shift.weaponList.indices) { index in
+                    ForEach(shift.weaponList.indices, id: \.self) { index in
                         Image(shift.weaponList[index])
                             .resizable()
                             .padding(4)

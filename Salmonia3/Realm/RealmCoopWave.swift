@@ -67,6 +67,25 @@ extension EventKey {
             self = .cohockCharge
         }
     }
+    
+    public var id: EventId {
+        switch self {
+        case .waterLevels:
+            return .waterLevels
+        case .rush:
+            return .rush
+        case .goldieSeeking:
+            return .goldieSeeking
+        case .griller:
+            return .griller
+        case .fog:
+            return .fog
+        case .theMothership:
+            return .theMothership
+        case .cohockCharge:
+            return .cohockCharge
+        }
+    }
 }
 
 extension WaterKey: PersistableEnum {}
@@ -82,7 +101,19 @@ extension WaterKey {
             self = .high
         }
     }
+    
+    public var id: WaterId {
+        switch self {
+        case .low:
+            return .low
+        case .normal:
+            return .normal
+        case .high:
+            return .high
+        }
+    }
 }
+
 //
 extension RealmCoopWave: Identifiable {
     /// 識別用のID

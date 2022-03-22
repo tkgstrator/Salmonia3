@@ -344,7 +344,6 @@
 				10AAE04927CAC35600E8E3D4 /* StatsSpecial.swift */,
 				109B546B27CDC04400FACC1A /* StatsWeapon.swift */,
 				1027057F27D4A34E00326B32 /* StatsWeaponDetail.swift */,
-				10196D4127D2120B009CD55E /* StatsWave.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -551,6 +550,7 @@
 			children = (
 				104BCEC227D117C400507A50 /* RankingCollection.swift */,
 				104BCEC427D117DC00507A50 /* RankingView.swift */,
+				10196D4127D2120B009CD55E /* StatsWave.swift */,
 			);
 			path = Ranking;
 			sourceTree = "<group>";
@@ -1125,7 +1125,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1160,7 +1160,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
