@@ -16,74 +16,72 @@ final class RankShiftStats: ObservableObject {
     internal let realm: Realm
     internal let nsaid: String?
     internal let schemeVersion: UInt64 = 8192
-//    internal let session: SalmonStats
+    internal let session: SalmonStats
     
-    internal var goldenEggs: [RankEgg] = []
+    // 仮データ
+    @Published internal var records: [RankEgg] = []
+
     internal var task: Set<AnyCancellable> = Set<AnyCancellable>()
     
     init(startTime: Int, nsaid: String?) {
         do {
             self.realm = try Realm()
             self.nsaid = nsaid
-//            self.session = SalmonStats()
+            self.session = SalmonStats()
         } catch {
             var config = Realm.Configuration.defaultConfiguration
             config.deleteRealmIfMigrationNeeded = true
             config.schemaVersion = schemeVersion
             self.realm = try! Realm(configuration: config, queue: nil)
             self.nsaid = nsaid
-//            self.session = SalmonStats()
+            self.session = SalmonStats()
         }
         
         // nsaidがオプショナルなら何もしない
         guard let nsaid = nsaid else {
             return
         }
-        
-//        session.getWaveResults(startTime: startTime)
-//            .sink(receiveCompletion: { completion in
-//                switch completion {
-//                case .finished:
-//                    break
-//                case .failure(let error):
-//                    DDLogError(error)
-//                }
-//            }, receiveValue: { response in
-//                let results = response.results
-//                print(results)
-//            })
-//            .store(in: &task)
-        
-        
-//        for eventType in EventKey.allCases {
-//            for waterLevel in WaterKey.allCases {
-//                let results = realm.objects(RealmStatsWave.self).filter("eventType=%@ AND waterLevel=%@ AND ANY link.startTime=%@", eventType, waterLevel, startTime)
-//                let goldenEgg = results.filter({ $0.members.contains(nsaid) }).map({ $0.goldenIkuraNum }).max()
-//                let goldenEggs = results.map({ $0.goldenIkuraNum }).sorted(by: { $1 < $0 })
-//                let rank: Int? = {
-//                    guard let goldenEgg = goldenEgg else {
-//                        return nil
-//                    }
-//                    if let firstIndex = goldenEggs.firstIndex(of: goldenEgg) {
-//                        return firstIndex + 1
-//                    }
-//                    return nil
-//                }()
-//                let count: Int? = {
-//                    switch (waterLevel, eventType) {
-//                    case (WaterKey.high, EventKey.cohockCharge),
-//                        (WaterKey.normal, EventKey.cohockCharge),
-//                        (WaterKey.low, EventKey.rush),
-//                        (WaterKey.low, EventKey.goldieSeeking),
-//                        (WaterKey.low, EventKey.griller):
-//                        return nil
-//                    default:
-//                        return results.count
-//                    }
-//                }()
-//                self.goldenEggs.append(RankEgg(goldenEggs: goldenEgg, rank: rank, total: count, eventType: eventType, waterLevel: waterLevel))
-//            }
-//        }
+
+        // 順位を取得するのに必要なリザルト一覧
+        let results: RealmSwift.Results<RealmCoopWave> = realm.objects(RealmCoopWave.self).filter("ANY link.startTime=%@", startTime)
+        session.getWaveResults(startTime: startTime)
+            .flatMap(maxPublishers: .max(1), { self.getWaveResultsRank(results: results, response: $0.results) })
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    DDLogInfo("Success")
+                case .failure(let error):
+                    DDLogError(error)
+                }
+            }, receiveValue: { results in
+                self.records = results
+            })
+            .store(in: &task)
+    }
+    
+    func getWaveResultsRank(results: RealmSwift.Results<RealmCoopWave>, response: [ResultWave.CoopResultWave]) -> AnyPublisher<[RankEgg], SP2Error> {
+        Deferred {
+            Future { promise in
+                var waveResults: [RankEgg] = []
+                for eventType in EventKey.allCases {
+                    for waterLevel in WaterKey.allCases {
+                        let goldenIkuraNum: Int? = results.filter("eventType=%@ AND waterLevel=%@", eventType, waterLevel).max(ofProperty: "goldenIkuraNum")
+                        if let results = response.first(where: { $0.waterLevel == waterLevel.id && $0.eventType == eventType.id })?.distribution {
+                            let count: Int = results.map({ $0.count }).reduce(0, +)
+                            let rank: Int? = {
+                                if let goldenIkuraNum = goldenIkuraNum {
+                                    return results.filter({ $0.goldenIkuraNum > goldenIkuraNum }).map({ $0.count }).reduce(1, +)
+                                }
+                                return nil
+                            }()
+                            waveResults.append(RankEgg(goldenEggs: goldenIkuraNum, rank: rank, total: count, eventType: eventType, waterLevel: waterLevel))
+                        }
+                    }
+                }
+                promise(.success(waveResults))
+            }
+        }
+        .eraseToAnyPublisher()
     }
 }
 
@@ -94,6 +92,23 @@ internal struct RankEgg: Identifiable {
     let total: Int?
     let eventType: EventKey
     let waterLevel: WaterKey
+    var isValid: Bool {
+        switch (eventType, waterLevel) {
+        case (.rush, .low):
+            return false
+        case (.goldieSeeking, .low):
+            return false
+        case (.griller, .low):
+            return false
+        case (.cohockCharge, .normal):
+            return false
+        case (.cohockCharge, .high):
+            return false
+        default:
+            return true
+        }
+    }
+    
     var id: String {
         eventType.rawValue + waterLevel.rawValue
     }

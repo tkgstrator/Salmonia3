@@ -11,10 +11,12 @@ import SplatNet2
 struct ShiftStatsView: View {
     @EnvironmentObject var service: AppService
     @StateObject var stats: UserShiftStats
+    @StateObject var rank: RankShiftStats
     let schedule: RealmCoopShift
-    
+
     init(schedule: RealmCoopShift, nsaid: String?) {
         self.schedule = schedule
+        self._rank = StateObject(wrappedValue: RankShiftStats(startTime: schedule.startTime, nsaid: nsaid))
         self._stats = StateObject(wrappedValue: UserShiftStats(startTime: schedule.startTime, nsaid: nsaid))
     }
     
@@ -44,7 +46,7 @@ struct ShiftStatsView: View {
                 ForEach(stats.teamGoldenIkuraNum) { goldenIkuraNum in
                     switch service.user {
                     case .some(_):
-                        NavigationLink(destination: RankingCollection(startTime: schedule.startTime, nsaid: stats.nsaid), label: {
+                        NavigationLink(destination: RankingCollection(rank: rank), label: {
                             StatsCardHalf(score: goldenIkuraNum.score, caption: goldenIkuraNum.caption)
                         })
                     case .none:

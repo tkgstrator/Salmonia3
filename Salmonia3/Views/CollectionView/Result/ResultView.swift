@@ -30,7 +30,7 @@ struct ResultView: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(height: 120)
                     .clipped()
-                ResultWave(result: result)
+                ResultWaveView(result: result)
                 ResultPlayer(result: result)
             })
         })

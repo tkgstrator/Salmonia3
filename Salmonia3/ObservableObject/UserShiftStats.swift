@@ -65,6 +65,10 @@ final class UserShiftStats: ObservableObject {
             self.nsaid = nsaid
         }
         
+        guard let nsaid = nsaid else {
+            return
+        }
+        
         let results = realm.objects(RealmCoopResult.self).filter("startTime=%@ AND pid==%@", startTime, nsaid)
         let players = realm.objects(RealmCoopPlayer.self).filter("ANY link.startTime=%@ AND pid==%@", startTime, nsaid)
         let others = realm.objects(RealmCoopPlayer.self).filter("ANY link.startTime=%@ AND pid!=%@", startTime, nsaid)
@@ -80,38 +84,47 @@ final class UserShiftStats: ObservableObject {
             }
             return []
         }()
-        // 赤イクラ平均と金イクラ平均
+        // 赤イクラ
         self.ikuraNum = [
             Overview(score: players.average(of: "ikuraNum"), other: others.average(of: "ikuraNum"), caption: "平均赤イクラ数"),
             Overview(score: players.maxIkuraNum(), other: others.maxIkuraNum(), caption: "最高赤イクラ数"),
         ]
+        // 金イクラ
         self.goldenIkuraNum = [
             Overview(score: players.average(of: "goldenIkuraNum"), other: others.average(of: "goldenIkuraNum"), caption: "平均金イクラ数"),
             Overview(score: players.maxGoldenIkuraNum(), other: others.maxGoldenIkuraNum(), caption: "最高金イクラ数"),
         ]
+        // 被救助数
         self.deadCount = [
             Overview(score: players.average(of: "deadCount"), other: others.average(of: "deadCount"), caption: "平均被救助数"),
             Overview(score: players.maxDeadNum(), other: others.maxDeadNum(), caption: "最高被救助数"),
         ]
+        // 救助数平均
         self.helpCount = [
             Overview(score: players.average(of: "helpCount"), other: others.average(of: "helpCount"), caption: "平均救助数"),
             Overview(score: players.maxHelpNum(), other: others.maxHelpNum(), caption: "最高救助数"),
         ]
+        // 討伐数
         self.defeatedCount = [
             Overview(score: players.averageDefeatedNum(), other: others.averageDefeatedNum(), caption: "平均オオモノ討伐数"),
             Overview(score: players.maxDefeatedNum(), other: others.maxDefeatedNum(), caption: "最高オオモノ討伐数"),
         ]
+        // 各オオモノ討伐数
         self.defeatedIdCount = BossId.allCases.map({ bossId -> Defeated in
             Defeated(score: players.averageDefeatedNum(bossId: bossId), other: others.averageDefeatedNum(bossId: bossId), bossType: bossId)
         })
+        // チーム赤イクラ
         self.teamIkuraNum = [
             Comparison(score: results.averageIkuraNum(), other: nil, caption: "平均チーム赤イクラ数"),
             Comparison(score: results.maxIkuraNum(), other: nil, caption: "最高チーム赤イクラ数")
         ]
+        // チーム金イクラ
         self.teamGoldenIkuraNum = [
             Comparison(score: results.averageGoldenIkuraNum(), other: nil, caption: "平均チーム金イクラ数"),
             Comparison(score: results.maxGoldenIkuraNum(), other: nil, caption: "最高チーム金イクラ数")
         ]
+        
+        // クリア率
         self.clearRatio = [
             Comparison(score: results.clearRatio(), other: nil, caption: "クリア率"),
             Comparison(score: results.averageClearWave(), other: nil, caption: "平均クリアWAVE")
@@ -169,10 +182,7 @@ fileprivate extension RealmSwift.Results where Element == RealmCoopResult {
     
     func averageClearWave() -> Double? {
         if self.isEmpty { return nil }
-        if let value: Double = average(ofProperty: "failureWave") {
-            return 3.00 - value
-        }
-        return 3.00
+        return 3.00 - sum(ofProperty: "failureWave") / Double(count)
     }
     
     func maxGoldenIkuraNum() -> Int? {
@@ -199,15 +209,14 @@ fileprivate extension RealmSwift.Results where Element == RealmCoopPlayer {
         let suppliedWeaponList: [WeaponType] = flatMap({ $0.weaponList })
         let appearances: [(WeaponType, Int)] = weaponList.map({ suppliedWeapon in (suppliedWeapon, suppliedWeaponList.filter({ $0 == suppliedWeapon }).count) })
         let totalCount: Int = appearances.map({ $0.1 }).reduce(0, +)
-        return Array(appearances.map({ StatsModel.WeaponProb(weaponType: $0.0, prob: Double($0.1) / Double(totalCount)) }).sorted(by: { $0.prob > $1.prob }).prefix(4))
+        return Array(appearances.map({ StatsModel.WeaponProb(weaponType: $0.0, prob: totalCount == .zero ? .zero : Double($0.1) / Double(totalCount)) }).sorted(by: { $0.prob > $1.prob }).prefix(4))
     }
     
     func suppliedSpecialProb() -> [StatsModel.SpecialProb] {
         let suppliedSpecialList: [SpecialId] = compactMap({ $0.specialId })
         let appearances: [(SpecialId, Int)] = SpecialId.allCases.map({ suppliedSpecial in (suppliedSpecial, suppliedSpecialList.filter({ $0 == suppliedSpecial }).count) })
         let totalCount: Int = appearances.map({ $0.1 }).reduce(0, +)
-        let value = appearances.map({ StatsModel.SpecialProb(specialId: $0.0, prob: Double($0.1) / Double(totalCount)) }).sorted(by: { $0.prob > $1.prob })
-        print(value)
+        let value = appearances.map({ StatsModel.SpecialProb(specialId: $0.0, prob: totalCount == .zero ? .zero : Double($0.1) / Double(totalCount)) }).sorted(by: { $0.prob > $1.prob })
         return value
     }
     

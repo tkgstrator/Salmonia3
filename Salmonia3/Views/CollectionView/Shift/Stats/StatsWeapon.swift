@@ -45,7 +45,7 @@ struct StatsWeapon: View {
     var body: some View {
         HStack(content: {
             VStack(spacing: 5, content: {
-                ForEach(weaponList.indices) { index in
+                ForEach(weaponList.indices, id: \.self) { index in
                     let weaponType: WeaponType = weaponList[index]
                     let prob: Double = probs[index]
                     let color: Color = colors[index]
@@ -82,7 +82,8 @@ struct StatsWeapon: View {
                     }
                     if (shiftType == .allRandom) || (shiftType == .oneRandom) {
                         Text("詳細データ閲覧")
-                            .font(systemName: .Splatfont2, size: 16)
+                            .underline()
+                            .font(systemName: .Splatfont2, size: 16, foregroundColor: .primary)
                     }
                 })
             })
