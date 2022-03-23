@@ -13,6 +13,8 @@
 		100556FE27C98B3D0094582D /* StatsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556FD27C98B3D0094582D /* StatsCard.swift */; };
 		1006C12327EA2409007479CC /* ResultUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006C12227EA2409007479CC /* ResultUser.swift */; };
 		1006C12527EB284A007479CC /* GoogleMobileAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006C12427EB284A007479CC /* GoogleMobileAds.swift */; };
+		1006C12727EB298D007479CC /* LoadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006C12627EB298C007479CC /* LoadingService.swift */; };
+		1006C12927EB3108007479CC /* ShareTechMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1006C12827EB2F9D007479CC /* ShareTechMono-Regular.ttf */; };
 		100E93D627E2143A00901682 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 101AEB8727E20EDA004F42F9 /* GoogleService-Info.plist */; };
 		101141B2278477060088DF4C /* UserStatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101141B1278477060088DF4C /* UserStatsModel.swift */; };
 		10162F8827C7B2CA00ACFD4D /* SettingView+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10162F8727C7B2CA00ACFD4D /* SettingView+Appearance.swift */; };
@@ -168,6 +170,8 @@
 		100556FD27C98B3D0094582D /* StatsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCard.swift; sourceTree = "<group>"; };
 		1006C12227EA2409007479CC /* ResultUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultUser.swift; sourceTree = "<group>"; };
 		1006C12427EB284A007479CC /* GoogleMobileAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMobileAds.swift; sourceTree = "<group>"; };
+		1006C12627EB298C007479CC /* LoadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingService.swift; sourceTree = "<group>"; };
+		1006C12827EB2F9D007479CC /* ShareTechMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ShareTechMono-Regular.ttf"; sourceTree = "<group>"; };
 		101141B1278477060088DF4C /* UserStatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatsModel.swift; sourceTree = "<group>"; };
 		10162F8727C7B2CA00ACFD4D /* SettingView+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+Appearance.swift"; sourceTree = "<group>"; };
 		10162F8927C7B34D00ACFD4D /* SettingView_Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView_Application.swift; sourceTree = "<group>"; };
@@ -479,6 +483,7 @@
 			children = (
 				101AED48271E33EB009556B2 /* Splatfont1.ttf */,
 				101AED49271E33EB009556B2 /* Splatfont2.ttf */,
+				1006C12827EB2F9D007479CC /* ShareTechMono-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -586,6 +591,7 @@
 			children = (
 				109F97E5272490C600AB1FA3 /* LoggingThread.swift */,
 				109F97E7272490CE00AB1FA3 /* LoadingView.swift */,
+				1006C12627EB298C007479CC /* LoadingService.swift */,
 			);
 			path = Loading;
 			sourceTree = "<group>";
@@ -835,6 +841,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1006C12927EB3108007479CC /* ShareTechMono-Regular.ttf in Resources */,
 				100E93D627E2143A00901682 /* GoogleService-Info.plist in Resources */,
 				109B546327CD688600FACC1A /* Configuration.storekit in Resources */,
 				101AED4B271E33EB009556B2 /* Splatfont1.ttf in Resources */,
@@ -869,6 +876,7 @@
 				10C7D69227CF6EDE002C1F37 /* AppService+Firestore.swift in Sources */,
 				109B546C27CDC04400FACC1A /* StatsWeapon.swift in Sources */,
 				10162F8E27C7B4A200ACFD4D /* SettingView+SalmonStats.swift in Sources */,
+				1006C12727EB298D007479CC /* LoadingService.swift in Sources */,
 				10C7D69D27CF9400002C1F37 /* Overview.swift in Sources */,
 				107B687B27B7362000238B9D /* AppService+Network.swift in Sources */,
 				109F97F82724ADB600AB1FA3 /* ResultOverview.swift in Sources */,
