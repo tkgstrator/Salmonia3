@@ -98,6 +98,5 @@ extension AppService: SalmonStatsSessionDelegate {
     }
     
     func failedWithUnavailableVersion(version: String) {
-    
     }
 }

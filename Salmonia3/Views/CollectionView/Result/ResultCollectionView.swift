@@ -26,10 +26,13 @@ struct ResultCollectionView: View {
             })
             .listStyle(.plain)
             .refreshable(action: {
-                service.isLoading.toggle()
+                isPresented.toggle()
             })
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("リザルト一覧")
+            .fullScreenCover(isPresented: $isPresented, content: {
+                LoadingView()
+            })
         })
         .navigationViewStyle(.split)
     }

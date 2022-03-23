@@ -61,12 +61,13 @@ private struct Wave: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         
-        path.move(to: CGPoint(x: rect.maxX, y: rect.maxY - waveHeight))
-        path.addLine(to: CGPoint(x: rect.maxX, y: 0))
-        path.addLine(to: CGPoint(x: 0, y: 0))
-        path.addLine(to: CGPoint(x: 0, y: rect.maxY - waveHeight))
+        let offsetValue: CGFloat = 40.0
+        path.move(to: CGPoint(x: rect.maxX + offsetValue, y: rect.maxY - waveHeight))
+        path.addLine(to: CGPoint(x: rect.maxX + offsetValue, y: 0))
+        path.addLine(to: CGPoint(x: 0 - offsetValue, y: 0))
+        path.addLine(to: CGPoint(x: 0 - offsetValue, y: rect.maxY - waveHeight))
         
-        for angle in stride(from: 0.0, to: 360.0, by: 0.5) {
+        for angle in stride(from: 0.0, to: 480.0, by: 5) {
             let theta: Double = Angle(degrees: startAngle.degrees + angle + offset.degrees).radians
             let x = CGFloat(angle / 360.0) * (rect.width)
             let y = rect.maxY + CGFloat(sin(theta)) * waveHeight / 2 - waveHeight / 2

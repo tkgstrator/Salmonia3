@@ -49,9 +49,6 @@ struct ContentView: View {
         .fullScreenCover(isPresented: $service.isSignIn, onDismiss: {}, content: {
             CircleProgressView(state: service.signInState)
         })
-        .fullScreenCover(isPresented: $service.isLoading, onDismiss: { service.isLoading = false }, content: {
-            LoadingView()
-        })
     }
 }
 
