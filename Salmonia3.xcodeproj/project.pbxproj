@@ -11,6 +11,8 @@
 		100556F927C948E90094582D /* ShiftDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556F827C948E90094582D /* ShiftDisplayMode.swift */; };
 		100556FB27C9888D0094582D /* ShiftStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556FA27C9888D0094582D /* ShiftStatsView.swift */; };
 		100556FE27C98B3D0094582D /* StatsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100556FD27C98B3D0094582D /* StatsCard.swift */; };
+		1006C12327EA2409007479CC /* ResultUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006C12227EA2409007479CC /* ResultUser.swift */; };
+		1006C12527EB284A007479CC /* GoogleMobileAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006C12427EB284A007479CC /* GoogleMobileAds.swift */; };
 		100E93D627E2143A00901682 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 101AEB8727E20EDA004F42F9 /* GoogleService-Info.plist */; };
 		101141B2278477060088DF4C /* UserStatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101141B1278477060088DF4C /* UserStatsModel.swift */; };
 		10162F8827C7B2CA00ACFD4D /* SettingView+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10162F8727C7B2CA00ACFD4D /* SettingView+Appearance.swift */; };
@@ -164,6 +166,8 @@
 		100556F827C948E90094582D /* ShiftDisplayMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftDisplayMode.swift; sourceTree = "<group>"; };
 		100556FA27C9888D0094582D /* ShiftStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftStatsView.swift; sourceTree = "<group>"; };
 		100556FD27C98B3D0094582D /* StatsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCard.swift; sourceTree = "<group>"; };
+		1006C12227EA2409007479CC /* ResultUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultUser.swift; sourceTree = "<group>"; };
+		1006C12427EB284A007479CC /* GoogleMobileAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMobileAds.swift; sourceTree = "<group>"; };
 		101141B1278477060088DF4C /* UserStatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatsModel.swift; sourceTree = "<group>"; };
 		10162F8727C7B2CA00ACFD4D /* SettingView+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+Appearance.swift"; sourceTree = "<group>"; };
 		10162F8927C7B34D00ACFD4D /* SettingView_Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView_Application.swift; sourceTree = "<group>"; };
@@ -449,6 +453,7 @@
 				109F97E4272490B000AB1FA3 /* Loading */,
 				101AED58271E3933009556B2 /* Setting */,
 				101AED3E271E322C009556B2 /* Login */,
+				1006C12427EB284A007479CC /* GoogleMobileAds.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -619,6 +624,7 @@
 				1041BC0E277DC695008B27F1 /* ResultWeapon.swift */,
 				102C9DDE277DFA49004822C1 /* ResultDefeat.swift */,
 				102C9DE0277E002A004822C1 /* ResultStats.swift */,
+				1006C12227EA2409007479CC /* ResultUser.swift */,
 			);
 			path = Result;
 			sourceTree = "<group>";
@@ -905,6 +911,7 @@
 				105E868827E4B42D0015A4F2 /* FSCoopPlayer.swift in Sources */,
 				101AED5A271E3946009556B2 /* SettingView.swift in Sources */,
 				10AAE04A27CAC35600E8E3D4 /* StatsSpecial.swift in Sources */,
+				1006C12527EB284A007479CC /* GoogleMobileAds.swift in Sources */,
 				10162F8C27C7B3EC00ACFD4D /* SettingView_SplatNet2.swift in Sources */,
 				10C7D69B27CF93E0002C1F37 /* Defeated.swift in Sources */,
 				105E868A27E4B4920015A4F2 /* FSCoopWave.swift in Sources */,
@@ -931,6 +938,7 @@
 				109B545D27CB90DB00FACC1A /* WaveView.swift in Sources */,
 				10162F8A27C7B34D00ACFD4D /* SettingView_Application.swift in Sources */,
 				100556FE27C98B3D0094582D /* StatsCard.swift in Sources */,
+				1006C12327EA2409007479CC /* ResultUser.swift in Sources */,
 				10635096274E2E4D00529930 /* ShiftCollectionView.swift in Sources */,
 				10C7D69427CF8DCD002C1F37 /* SettingView+Firebase.swift in Sources */,
 				10AAE04627CA764200E8E3D4 /* StatsCardHalf.swift in Sources */,
@@ -1125,7 +1133,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1160,7 +1168,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;

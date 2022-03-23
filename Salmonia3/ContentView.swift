@@ -16,24 +16,28 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $selection, content: {
             ResultCollectionView()
+                .withAdmobBanner()
                 .tabItem({
                     Image(systemName: .House)
                     Text("リザルト一覧")
                 })
                 .tag(0)
             WaveCollectionView()
+                .withAdmobBanner()
                 .tabItem({
                     Image(systemName: .ListBulletRectangle)
                     Text("WAVE一覧")
                 })
                 .tag(1)
             ShiftCollectionView(nsaid: service.account?.credential.nsaid)
+                .withAdmobBanner()
                 .tabItem({
                     Image(systemName: .ListBulletRectangle)
                     Text("シフト一覧")
                 })
                 .tag(2)
             UserView()
+                .withAdmobBanner()
                 .tabItem({
                     Image(systemName: .Person)
                     Text("ユーザ")
