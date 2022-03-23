@@ -23,21 +23,36 @@ struct ResultOverview: View {
     
     var body: some View {
         switch result.isClear {
-            case true:
+        case true:
+            HStack(content: {
                 ResultClear
-                    .overlay(ResultEgg(goldenIkuraNum: result.goldenEggs, ikuraNum: result.powerEggs), alignment: .topTrailing)
-            case false:
+                Spacer()
+                Status
+            })
+        case false:
+            HStack(content: {
                 ResultFailure
-                    .overlay(ResultEgg(goldenIkuraNum: result.goldenEggs, ikuraNum: result.powerEggs), alignment: .topTrailing)
+                Spacer()
+                Status
+            })
         }
+    }
+    
+    var Status: some View {
+        VStack(alignment: .trailing, spacing: 4, content: {
+            ResultEgg(goldenIkuraNum: result.goldenEggs, ikuraNum: result.powerEggs)
+            if let player = result.player.first {
+                ResultUser(result: player)
+            }
+        })
     }
     
     var ResultClear: some View {
         HStack(alignment: .top, content: {
             LazyVStack(alignment: .leading, spacing: 0, content: {
                 LazyHStack(spacing: nil, content: {
-//                    Text("\(result.indexOfResults)")
-//                        .font(.Splatfont2, size: 13)
+                    //                    Text("\(result.indexOfResults)")
+                    //                        .font(.Splatfont2, size: 13)
                     Text("Clear")
                         .font(systemName: .Splatfont2, size: 13, foregroundColor: .green)
                 })
@@ -46,7 +61,7 @@ struct ResultOverview: View {
                     Text(result.gradePoint)
                     Text("↑").font(systemName: .Splatfont, size: 14, foregroundColor: .red)
                 })
-                    .font(systemName: .Splatfont, size: 14)
+                .font(systemName: .Splatfont, size: 14)
             })
         })
     }
@@ -55,8 +70,8 @@ struct ResultOverview: View {
         HStack(alignment: .top, content: {
             LazyVStack(alignment: .leading, spacing: 0, content: {
                 LazyHStack(spacing: nil, content: {
-//                    Text("\(result.indexOfResults)")
-//                        .font(.Splatfont2, size: 13)
+                    //                    Text("\(result.indexOfResults)")
+                    //                        .font(.Splatfont2, size: 13)
                     Text("Failure")
                         .font(systemName: .Splatfont2, size: 13, foregroundColor: .safetyorange)
                 })
@@ -65,7 +80,7 @@ struct ResultOverview: View {
                     Text(result.gradePoint)
                     Text(result.gradePointDelta == 0 ? "→" : "↓")
                 })
-                    .font(systemName: .Splatfont, size: 14)
+                .font(systemName: .Splatfont, size: 14)
             })
         })
     }
