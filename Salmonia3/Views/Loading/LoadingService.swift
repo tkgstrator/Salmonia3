@@ -51,7 +51,7 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
         }()
         
         if let resultId = resultId {
-            self.session.uploadResults(resultId: resultId)
+            self.session.uploadResults(resultId: resultId - 4)
         } else {
             NotificationCenter.default.post(name: .didFinishedLoadResults, object: nil)
         }

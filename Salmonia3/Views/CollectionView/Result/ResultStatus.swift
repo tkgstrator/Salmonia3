@@ -14,31 +14,30 @@ struct ResultStatus: View {
     var body: some View {
         HStack(spacing: nil, content: {
             HStack(spacing: 0, content: {
-                Image(.help)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 35)
-                Spacer()
-                Text("x\(deadCount)")
-                    .foregroundColor(.white)
-            })
-                .frame(width: 60)
-                .padding(.horizontal, 8)
-                .background(Capsule().fill(Color.blackrussian.opacity(0.85)))
-            HStack(spacing: 0, content: {
                 Image(.rescue)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 35)
+                    .frame(width: 33.4)
                 Spacer()
                 Text("x\(helpCount)")
                     .foregroundColor(.white)
             })
-                .frame(width: 75)
+                .frame(width: 66)
+                .padding(.horizontal, 8)
+                .background(Capsule().fill(Color.blackrussian.opacity(0.85)))
+            HStack(spacing: 0, content: {
+                Image(.help)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 33.4)
+                Spacer()
+                Text("x\(deadCount)")
+                    .foregroundColor(.white)
+            })
+                .frame(width: 66)
                 .padding(.horizontal, 8)
                 .background(Capsule().fill(Color.blackrussian.opacity(0.85)))
         })
-            .minimumScaleFactor(1.0)
             .font(systemName: .Splatfont2, size: 14)
     }
 }
@@ -46,5 +45,13 @@ struct ResultStatus: View {
 struct ResultStatus_Previews: PreviewProvider {
     static var previews: some View {
         ResultStatus(deadCount: 3, helpCount: 3)
+            .previewLayout(.fixed(width: 400, height: 120))
+    }
+}
+
+struct Result_Previews: PreviewProvider {
+    static var previews: some View {
+        ResultPlayer(result: RealmCoopResult(dummy: true))
+            .previewLayout(.fixed(width: 400, height: 120))
     }
 }

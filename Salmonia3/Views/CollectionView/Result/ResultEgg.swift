@@ -17,34 +17,35 @@ struct ResultEgg: View {
                 Image(.golden)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 20)
+                    .frame(width: 18)
                 Spacer()
-                Text("x\(goldenIkuraNum)")
+                Text(String(format: "x%2d", goldenIkuraNum))
                     .foregroundColor(.white)
             })
-                .frame(width: 60)
+                .frame(width: 66)
                 .padding(.horizontal, 8)
                 .background(Capsule().fill(Color.blackrussian.opacity(0.85)))
             HStack(spacing: 0, content: {
                 Image(.power)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 20)
+                    .frame(width: 18)
                 Spacer()
-                Text("x\(ikuraNum)")
+                Text(String(format: "x%4d", ikuraNum))
                     .foregroundColor(.white)
             })
-                .frame(width: 75)
+                .frame(width: 66)
                 .padding(.horizontal, 8)
                 .background(Capsule().fill(Color.blackrussian.opacity(0.85)))
         })
             .minimumScaleFactor(1.0)
-            .font(systemName: .Splatfont2, size: 14)
+            .font(systemName: .Splatfont2, size: 13)
     }
 }
 
 struct ResultEgg_Previews: PreviewProvider {
     static var previews: some View {
-        ResultEgg(goldenIkuraNum: 100, ikuraNum: 1000)
+        ResultEgg(goldenIkuraNum: 100, ikuraNum: 9999)
+            .previewLayout(.fixed(width: 400, height: 120))
     }
 }

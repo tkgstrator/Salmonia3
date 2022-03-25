@@ -26,6 +26,7 @@ struct ResultDefeat: View {
         }, label: {
             Text("オオモノシャケをたおした数 x\(bossKillCount.reduce(0, +))")
                 .font(systemName: .Splatfont2, size: 14, foregroundColor: .yellow)
+                .shadow(color: .black, radius: 0, x: 1.2, y: 0.5)
         })
             .buttonStyle(.plain)
     }

@@ -15,6 +15,7 @@
 		1006C12527EB284A007479CC /* GoogleMobileAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006C12427EB284A007479CC /* GoogleMobileAds.swift */; };
 		1006C12727EB298D007479CC /* LoadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006C12627EB298C007479CC /* LoadingService.swift */; };
 		1006C12927EB3108007479CC /* ShareTechMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1006C12827EB2F9D007479CC /* ShareTechMono-Regular.ttf */; };
+		1006C12B27EC88E0007479CC /* Salmon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006C12A27EC88E0007479CC /* Salmon.swift */; };
 		100E93D627E2143A00901682 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 101AEB8727E20EDA004F42F9 /* GoogleService-Info.plist */; };
 		101141B2278477060088DF4C /* UserStatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101141B1278477060088DF4C /* UserStatsModel.swift */; };
 		10162F8827C7B2CA00ACFD4D /* SettingView+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10162F8727C7B2CA00ACFD4D /* SettingView+Appearance.swift */; };
@@ -172,6 +173,7 @@
 		1006C12427EB284A007479CC /* GoogleMobileAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMobileAds.swift; sourceTree = "<group>"; };
 		1006C12627EB298C007479CC /* LoadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingService.swift; sourceTree = "<group>"; };
 		1006C12827EB2F9D007479CC /* ShareTechMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ShareTechMono-Regular.ttf"; sourceTree = "<group>"; };
+		1006C12A27EC88E0007479CC /* Salmon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salmon.swift; sourceTree = "<group>"; };
 		101141B1278477060088DF4C /* UserStatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatsModel.swift; sourceTree = "<group>"; };
 		10162F8727C7B2CA00ACFD4D /* SettingView+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+Appearance.swift"; sourceTree = "<group>"; };
 		10162F8927C7B34D00ACFD4D /* SettingView_Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView_Application.swift; sourceTree = "<group>"; };
@@ -541,6 +543,7 @@
 				102C9DE2277E0D8E004822C1 /* HSContent.swift */,
 				109F98042724EC9400AB1FA3 /* Rainbow.swift */,
 				10196D4327D30BA9009CD55E /* Triangle.swift */,
+				1006C12A27EC88E0007479CC /* Salmon.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -890,6 +893,7 @@
 				1082F77B27D072A000044581 /* ResultShiftView.swift in Sources */,
 				102AD300277CE95A00C1E181 /* UserView.swift in Sources */,
 				10C7D69927CF92FC002C1F37 /* Comparison.swift in Sources */,
+				1006C12B27EC88E0007479CC /* Salmon.swift in Sources */,
 				109B545B27CB8F8300FACC1A /* WaveCollectionView.swift in Sources */,
 				1027058527D6248700326B32 /* ShiftType.swift in Sources */,
 				10C7D6A327CF96C0002C1F37 /* UserShiftStats+Firebase.swift in Sources */,
@@ -1141,19 +1145,19 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Salmonia3/Info.plist;
-				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This itentifier will be used to deliver persoalized ads to you.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = NSUserTrackingUsageDescription;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1176,19 +1180,19 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Salmonia3/Info.plist;
-				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This itentifier will be used to deliver persoalized ads to you.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = NSUserTrackingUsageDescription;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
