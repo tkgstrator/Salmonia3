@@ -93,6 +93,14 @@ private struct ResultWave: View {
                     .font(systemName: .Splatfont2, size: 12, foregroundColor: .white)
                     .shadow(color: .black, radius: 0, x: 1, y: 1)
             })
+            HStack(spacing: 4, content: {
+                Image(.power)
+                    .resizable()
+                    .frame(width: 15, height: 15, alignment: .center)
+                Text(String(format: "獲得数x%d", wave.ikuraNum))
+                    .font(systemName: .Splatfont2, size: 12, foregroundColor: .white)
+                    .shadow(color: .black, radius: 0, x: 1, y: 1)
+            })
             LazyVGrid(columns: Array(repeating: .init(.fixed(22), spacing: 3), count: 5), spacing: 3, content: {
                 ForEach(wave.specialUsage.indices, id: \.self) { index in
                     let specialId = wave.specialUsage[index]
