@@ -16,6 +16,7 @@
 		1006C12727EB298D007479CC /* LoadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006C12627EB298C007479CC /* LoadingService.swift */; };
 		1006C12927EB3108007479CC /* ShareTechMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1006C12827EB2F9D007479CC /* ShareTechMono-Regular.ttf */; };
 		1006C12B27EC88E0007479CC /* Salmon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006C12A27EC88E0007479CC /* Salmon.swift */; };
+		1006C12D27ED80A6007479CC /* Wavecard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006C12C27ED80A6007479CC /* Wavecard.swift */; };
 		100E93D627E2143A00901682 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 101AEB8727E20EDA004F42F9 /* GoogleService-Info.plist */; };
 		101141B2278477060088DF4C /* UserStatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101141B1278477060088DF4C /* UserStatsModel.swift */; };
 		10162F8827C7B2CA00ACFD4D /* SettingView+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10162F8727C7B2CA00ACFD4D /* SettingView+Appearance.swift */; };
@@ -67,6 +68,8 @@
 		1041BC0F277DC695008B27F1 /* ResultWeapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041BC0E277DC695008B27F1 /* ResultWeapon.swift */; };
 		104BCEC327D117C400507A50 /* RankingCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BCEC227D117C400507A50 /* RankingCollection.swift */; };
 		104BCEC527D117DC00507A50 /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BCEC427D117DC00507A50 /* RankingView.swift */; };
+		1056E2FA27EDCA4400ECE160 /* Water.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1056E2F927EDCA4400ECE160 /* Water.swift */; };
+		1056E2FC27EDF4C200ECE160 /* SplatInk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1056E2FB27EDF4C200ECE160 /* SplatInk.swift */; };
 		105E868627E4B3BB0015A4F2 /* FSCoopResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105E868527E4B3BB0015A4F2 /* FSCoopResult.swift */; };
 		105E868827E4B42D0015A4F2 /* FSCoopPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105E868727E4B42D0015A4F2 /* FSCoopPlayer.swift */; };
 		105E868A27E4B4920015A4F2 /* FSCoopWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105E868927E4B4920015A4F2 /* FSCoopWave.swift */; };
@@ -174,6 +177,7 @@
 		1006C12627EB298C007479CC /* LoadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingService.swift; sourceTree = "<group>"; };
 		1006C12827EB2F9D007479CC /* ShareTechMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ShareTechMono-Regular.ttf"; sourceTree = "<group>"; };
 		1006C12A27EC88E0007479CC /* Salmon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salmon.swift; sourceTree = "<group>"; };
+		1006C12C27ED80A6007479CC /* Wavecard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wavecard.swift; sourceTree = "<group>"; };
 		101141B1278477060088DF4C /* UserStatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatsModel.swift; sourceTree = "<group>"; };
 		10162F8727C7B2CA00ACFD4D /* SettingView+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+Appearance.swift"; sourceTree = "<group>"; };
 		10162F8927C7B34D00ACFD4D /* SettingView_Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView_Application.swift; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 		1041BC0E277DC695008B27F1 /* ResultWeapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWeapon.swift; sourceTree = "<group>"; };
 		104BCEC227D117C400507A50 /* RankingCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCollection.swift; sourceTree = "<group>"; };
 		104BCEC427D117DC00507A50 /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
+		1056E2F927EDCA4400ECE160 /* Water.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Water.swift; sourceTree = "<group>"; };
+		1056E2FB27EDF4C200ECE160 /* SplatInk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplatInk.swift; sourceTree = "<group>"; };
 		105E868527E4B3BB0015A4F2 /* FSCoopResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCoopResult.swift; sourceTree = "<group>"; };
 		105E868727E4B42D0015A4F2 /* FSCoopPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCoopPlayer.swift; sourceTree = "<group>"; };
 		105E868927E4B4920015A4F2 /* FSCoopWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCoopWave.swift; sourceTree = "<group>"; };
@@ -544,6 +550,9 @@
 				109F98042724EC9400AB1FA3 /* Rainbow.swift */,
 				10196D4327D30BA9009CD55E /* Triangle.swift */,
 				1006C12A27EC88E0007479CC /* Salmon.swift */,
+				1006C12C27ED80A6007479CC /* Wavecard.swift */,
+				1056E2F927EDCA4400ECE160 /* Water.swift */,
+				1056E2FB27EDF4C200ECE160 /* SplatInk.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -949,12 +958,14 @@
 				109F97EB272491E600AB1FA3 /* ResultCollectionView.swift in Sources */,
 				109B545D27CB90DB00FACC1A /* WaveView.swift in Sources */,
 				10162F8A27C7B34D00ACFD4D /* SettingView_Application.swift in Sources */,
+				1056E2FA27EDCA4400ECE160 /* Water.swift in Sources */,
 				100556FE27C98B3D0094582D /* StatsCard.swift in Sources */,
 				1006C12327EA2409007479CC /* ResultUser.swift in Sources */,
 				10635096274E2E4D00529930 /* ShiftCollectionView.swift in Sources */,
 				10C7D69427CF8DCD002C1F37 /* SettingView+Firebase.swift in Sources */,
 				10AAE04627CA764200E8E3D4 /* StatsCardHalf.swift in Sources */,
 				109F97F02724A11900AB1FA3 /* GrowingButtonStyle.swift in Sources */,
+				1006C12D27ED80A6007479CC /* Wavecard.swift in Sources */,
 				10BA13F527201B1400348DD3 /* RealmCoopWave.swift in Sources */,
 				10C7D68E27CF6CDA002C1F37 /* Firecode.swift in Sources */,
 				100556F727C948200094582D /* ShiftFilterButton.swift in Sources */,
@@ -963,6 +974,7 @@
 				109B546827CD6C2300FACC1A /* AppService+StoreKit.swift in Sources */,
 				10C7C46C277ED8330015ECBB /* Localized.swift in Sources */,
 				107B687927B6FAD900238B9D /* CircleProgressView.swift in Sources */,
+				1056E2FC27EDF4C200ECE160 /* SplatInk.swift in Sources */,
 				10196D4227D2120B009CD55E /* StatsWave.swift in Sources */,
 				106B7F8F27D3231900E6B528 /* RankId.swift in Sources */,
 				1033700627DF62600090C6E8 /* SalmonStats+New.swift in Sources */,
@@ -1145,7 +1157,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1180,7 +1192,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;

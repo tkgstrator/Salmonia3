@@ -31,7 +31,7 @@ struct ResultView: View {
                     .frame(height: 120)
                     .clipped()
                 ResultWaveView(result: result)
-                ResultPlayer(result: result)
+                ResultPlayers(result: result)
             })
         })
             .navigationBarTitleDisplayMode(.inline)

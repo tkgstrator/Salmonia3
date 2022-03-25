@@ -21,14 +21,18 @@ struct ResultDefeat: View {
     }
     
     var body: some View {
-        Button(action: {
-            isPresented.toggle()
-        }, label: {
-            Text("オオモノシャケをたおした数 x\(bossKillCount.reduce(0, +))")
-                .font(systemName: .Splatfont2, size: 14, foregroundColor: .yellow)
-                .shadow(color: .black, radius: 0, x: 1.2, y: 0.5)
+        GeometryReader(content: { geometry in
+            Button(action: {
+                isPresented.toggle()
+            }, label: {
+                Text("オオモノシャケをたおした数 x\(bossKillCount.reduce(0, +))")
+                    .font(systemName: .Splatfont2, size: 11, foregroundColor: .yellow)
+                    .shadow(color: .black, radius: 0, x: 1, y: 1)
+            })
+                .buttonStyle(.plain)
+                .position(geometry.center)
         })
-            .buttonStyle(.plain)
+        .aspectRatio(172/12.5, contentMode: .fit)
     }
 }
 
