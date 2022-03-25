@@ -14,7 +14,7 @@ struct WaveView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0, content: {
-            HStack(content: {
+            HStack(alignment: .top, content: {
                 Group(content: {
                     HStack(alignment: .center, spacing: nil, content: {
                         Text(wave.waterLevel)
@@ -23,6 +23,7 @@ struct WaveView: View {
                 })
                 Spacer()
                 ResultEgg(goldenIkuraNum: wave.goldenIkuraNum, ikuraNum: wave.ikuraNum)
+                    .frame(width: 160, height: 24, alignment: .center)
             })
             HStack(alignment: .bottom, spacing: 0, content: {
                 if let stageId = wave.stageId {
@@ -35,7 +36,7 @@ struct WaveView: View {
                 Spacer()
                 HStack(content: {
                     if let weaponList = wave.weaponList {
-                        ForEach(weaponList.indices) { index in
+                        ForEach(weaponList.indices, id: \.self) { index in
                             Image(weaponList[index])
                                 .resizable()
                                 .padding(4)

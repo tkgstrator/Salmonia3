@@ -23,8 +23,8 @@ struct ResultUser: View {
         Image(result.specialId)
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(width: 20)
-            .padding(4)
+            .frame(width: 24)
+//            .padding(4)
             .background(Circle().fill(Color.blackrussian.opacity(0.85)))
     }
 }
