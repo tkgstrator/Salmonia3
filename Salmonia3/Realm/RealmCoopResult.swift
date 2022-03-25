@@ -55,6 +55,30 @@ final class RealmCoopResult: Object {
     /// バックリンク
     @Persisted(originProperty: "results") private var link: LinkingObjects<RealmCoopShift>
     
+    convenience init(dummy: Bool = false) {
+        self.init()
+        self.pid = "0000000000000000"
+        self.jobId = 0
+        self.salmonId = 0
+        self.gradePoint = 999
+        self.gradePointDelta = 0
+        self.failureWave = nil
+        self.jobScore = 999
+        self.gradeId = .profreshional
+        self.kumaPoint = 999
+        self.dangerRate = 200.0
+        self.playTime = 0
+        self.startTime = 0
+        self.goldenEggs = 999
+        self.powerEggs = 9999
+        self.failureReason = nil
+        self.isClear = true
+        self.bossCounts.append(objectsIn: [])
+        self.wave.append(objectsIn: [])
+        self.player.append(objectsIn: [RealmCoopPlayer(dummy: true)])
+        self.bossKillCounts.append(objectsIn: Array(repeating: 99, count: 9))
+    }
+    
     convenience init(result: FSCoopResult) {
         self.init()
         self.pid = result.myResult.pid

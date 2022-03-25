@@ -24,20 +24,20 @@ struct ResultWeapon: View {
     }
     
     var body: some View {
-        LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 20, maximum: 35)), count: 4), alignment: .leading, spacing: 0, content: {
-            Image(specialWeapon)
-                .resizable()
-                .scaledToFit()
-                .padding(4)
-                .background(Circle().fill(Color.black.opacity(0.9)))
-            ForEach(weaponList.indices) { index in
+        LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 20, maximum: 28), spacing: 2), count: weaponList.count + 1), alignment: .center, spacing: 0, content: {
+            ForEach(weaponList.indices, id: \.self) { index in
                 let weapon = weaponList[index]
                 Image(weapon)
                     .resizable()
                     .scaledToFit()
-                    .padding(4)
+                    .padding(2)
                     .background(Circle().fill(Color.black.opacity(0.9)))
             }
+            Image(specialWeapon)
+                .resizable()
+                .scaledToFit()
+                .padding(2)
+                .background(Circle().fill(Color.black.opacity(0.9)))
         })
     }
 }
@@ -46,5 +46,6 @@ struct ResultWeapon_Previews: PreviewProvider {
     static var weaponList: [WeaponType] = [.chargerLong, .chargerLight, .chargerKeeper]
     static var previews: some View {
         ResultWeapon(weaponList: weaponList, specialWeapon: .inkjet)
+            .previewLayout(.fixed(width: 400, height: 120))
     }
 }

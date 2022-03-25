@@ -31,6 +31,8 @@ struct LoadingView: View {
                 if let sp2Error = response.object as? SP2Error {
                     self.sp2Error = sp2Error
                     isPresented.toggle()
+                } else {
+                    dismiss()
                 }
             })
             .alert(isPresented: $isPresented, error: sp2Error, actions: { error in
