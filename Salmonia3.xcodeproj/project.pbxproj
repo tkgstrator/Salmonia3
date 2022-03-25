@@ -120,6 +120,7 @@
 		10C7D69F27CF941D002C1F37 /* WeaponProb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D69E27CF941D002C1F37 /* WeaponProb.swift */; };
 		10C7D6A127CF9431002C1F37 /* SpecialProb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D6A027CF9431002C1F37 /* SpecialProb.swift */; };
 		10C7D6A327CF96C0002C1F37 /* UserShiftStats+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D6A227CF96C0002C1F37 /* UserShiftStats+Firebase.swift */; };
+		10D406A027EE2F460074C099 /* ResultHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D4069F27EE2F460074C099 /* ResultHeader.swift */; };
 		10E0C8A827CA6908002F4506 /* StatsCardSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E0C8A727CA6908002F4506 /* StatsCardSmall.swift */; };
 		10E74E8027B6B8B700D0E962 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E74E7F27B6B8B700D0E962 /* SignInView.swift */; };
 		10E74E8227B6C42E00D0E962 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E74E8127B6C42E00D0E962 /* AccountView.swift */; };
@@ -274,6 +275,7 @@
 		10C7D69E27CF941D002C1F37 /* WeaponProb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponProb.swift; sourceTree = "<group>"; };
 		10C7D6A027CF9431002C1F37 /* SpecialProb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialProb.swift; sourceTree = "<group>"; };
 		10C7D6A227CF96C0002C1F37 /* UserShiftStats+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserShiftStats+Firebase.swift"; sourceTree = "<group>"; };
+		10D4069F27EE2F460074C099 /* ResultHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultHeader.swift; sourceTree = "<group>"; };
 		10E0C8A727CA6908002F4506 /* StatsCardSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCardSmall.swift; sourceTree = "<group>"; };
 		10E74E7F27B6B8B700D0E962 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		10E74E8127B6C42E00D0E962 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
@@ -643,6 +645,7 @@
 				102C9DDE277DFA49004822C1 /* ResultDefeat.swift */,
 				102C9DE0277E002A004822C1 /* ResultStats.swift */,
 				1006C12227EA2409007479CC /* ResultUser.swift */,
+				10D4069F27EE2F460074C099 /* ResultHeader.swift */,
 			);
 			path = Result;
 			sourceTree = "<group>";
@@ -960,6 +963,7 @@
 				10162F8A27C7B34D00ACFD4D /* SettingView_Application.swift in Sources */,
 				1056E2FA27EDCA4400ECE160 /* Water.swift in Sources */,
 				100556FE27C98B3D0094582D /* StatsCard.swift in Sources */,
+				10D406A027EE2F460074C099 /* ResultHeader.swift in Sources */,
 				1006C12327EA2409007479CC /* ResultUser.swift in Sources */,
 				10635096274E2E4D00529930 /* ShiftCollectionView.swift in Sources */,
 				10C7D69427CF8DCD002C1F37 /* SettingView+Firebase.swift in Sources */,
@@ -1157,7 +1161,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1192,7 +1196,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
