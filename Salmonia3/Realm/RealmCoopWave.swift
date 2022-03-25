@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 import SalmonStats
 import SplatNet2
+import simd
 
 final class RealmCoopWave: Object {
     @Persisted var eventType: EventKey
@@ -18,6 +19,16 @@ final class RealmCoopWave: Object {
     @Persisted var quotaNum: Int
     @Persisted var ikuraNum: Int
     @Persisted(originProperty: "wave") private var link: LinkingObjects<RealmCoopResult>
+    
+    convenience init(dummy: Bool = true) {
+        self.init()
+        self.eventType = .goldieSeeking
+        self.waterLevel = .high
+        self.goldenIkuraNum = 999
+        self.goldenIkuraPopNum = 999
+        self.quotaNum = 25
+        self.ikuraNum = Int.random(in: 0...9999)
+    }
     
     convenience init(from result: FSCoopWave) {
         self.init()
@@ -43,6 +54,24 @@ final class RealmCoopWave: Object {
 extension RealmCoopWave {
     var result: RealmCoopResult {
         self.link.first!
+    }
+    
+    var specialUsage: [SpecialId] {
+        result.specialUsage[index - 1]
+    }
+}
+
+extension RealmCoopResult {
+    var specialUsage: [[SpecialId]] {
+        let usages: [(SpecialId, [Int])] = Array(zip(player.map({ $0.specialId }), player.map({ Array($0.specialCounts) })))
+        var specialUsage: [[SpecialId]] = Array(repeating: [], count: wave.count)
+
+        for usage in usages {
+            for (index, count) in usage.1.enumerated() {
+                specialUsage[index].append(contentsOf: Array(repeating: usage.0, count: count))
+            }
+        }
+        return specialUsage.map({ $0.sorted(by: { $0.rawValue < $1.rawValue })})
     }
 }
 

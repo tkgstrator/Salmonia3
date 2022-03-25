@@ -74,7 +74,7 @@ final class RealmCoopResult: Object {
         self.failureReason = nil
         self.isClear = true
         self.bossCounts.append(objectsIn: [])
-        self.wave.append(objectsIn: [])
+        self.wave.append(objectsIn: [RealmCoopWave(dummy: true)])
         self.player.append(objectsIn: [RealmCoopPlayer(dummy: true)])
         self.bossKillCounts.append(objectsIn: Array(repeating: 99, count: 9))
     }

@@ -26,10 +26,7 @@ struct Salmon: Shape {
         path.addCurve(to: CGPoint(x: rect.minX + 0.48497 * rect.width, y: rect.minY + 0.21419 * rect.height), control1: CGPoint(x: rect.minX + 0.57362 * rect.width, y: rect.minY + 0.37382 * rect.height), control2: CGPoint(x: rect.minX + 0.54050 * rect.width, y: rect.minY + 0.32654 * rect.height))
         path.addCurve(to: CGPoint(x: rect.minX + 0.30118 * rect.width, y: rect.minY + 0.00291 * rect.height), control1: CGPoint(x: rect.minX + 0.41753 * rect.width, y: rect.minY + 0.07777 * rect.height), control2: CGPoint(x: rect.minX + 0.36421 * rect.width, y: rect.minY + 0.01647 * rect.height))
         path.addCurve(to: CGPoint(x: rect.minX + 0.26395 * rect.width, y: rect.minY + 0.00305 * rect.height), control1: CGPoint(x: rect.minX + 0.28307 * rect.width, y: rect.minY + -0.00099 * rect.height), control2: CGPoint(x: rect.minX + 0.28290 * rect.width, y: rect.minY + -0.00099 * rect.height))
-//        path.close()
-//        path.usesEvenOddFillRule = true
-//        fillColor.setFill()
-//        path.fill()
+        path.closeSubpath()
         return path
     }
 }

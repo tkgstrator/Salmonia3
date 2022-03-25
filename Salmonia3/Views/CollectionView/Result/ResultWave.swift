@@ -6,42 +6,115 @@
 //
 
 import SwiftUI
+import SwiftyUI
 import SplatNet2
 
 struct ResultWaveView: View {
     let result: RealmCoopResult
     
     var body: some View {
-        LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 120), alignment: .top), count: result.wave.count), content: {
+        LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 100, maximum: 120), alignment: .top), count: 3), content: {
             ForEach(result.wave) { wave in
-                VStack(alignment: .center, spacing: 0, content: {
-                    Text("WAVE \(wave.index)")
-                        .font(systemName: .Splatfont2, size: 14)
-                        .foregroundColor(.black)
-                        .lineLimit(1)
-                    Text("\(wave.goldenIkuraNum)/\(wave.quotaNum)")
-                        .font(systemName: .Splatfont2, size: 22)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.black)
-                    VStack(spacing: -10, content: {
-                        Text("\(wave.ikuraNum)")
-                            .font(systemName: .Splatfont2, size: 16)
-                            .foregroundColor(.red)
-                        Text(wave.waterLevel)
-                            .font(systemName: .Splatfont2, size: 14)
-                            .minimumScaleFactor(1.0)
-                            .foregroundColor(.black)
-                        Text(wave.eventType)
-                            .font(systemName: .Splatfont2, size: 14)
-                            .minimumScaleFactor(1.0)
-                            .foregroundColor(.black)
-                    })
-                })
-                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.yellow))
+                ResultWave(wave: wave)
             }
         })
-            .padding(.horizontal)
+    }
+}
+
+private struct ResultWaveWater: View {
+    let waterLevel: WaterKey
+    let foregroundColor = Color(hex: "E5F100")
+    
+    var body: some View {
+        ZStack(alignment: .bottom, content: {
+            Wavecard()
+                .fill(foregroundColor)
+                .clipShape(RoundedRectangle(cornerRadius: 3))
+            Water()
+                .fill(.black.opacity(0.2))
+                .offset(x: 0, y: 152 - waterLevel.height)
+                .clipShape(RoundedRectangle(cornerRadius: 3))
+        })
+    }
+}
+
+fileprivate extension WaterKey {
+    var height: CGFloat {
+        switch self {
+        case .low:
+            return 20
+        case .normal:
+            return 40
+        case .high:
+            return 70
+        }
+    }
+}
+
+private struct ResultWave: View {
+    let wave: RealmCoopWave
+    let backgroundColor = Color(hex: "2A270B")
+    let clearColor = Color(hex: "39E464")
+    let failureColor = Color(hex: "FF7500")
+    
+    var body: some View {
+        VStack(spacing: 0, content: {
+            GeometryReader(content: { geometry in
+                VStack(alignment: .center, spacing: 0, content: {
+                    Text("Wave 1")
+                    //                Text("Wave \(wave.index)")
+                        .font(systemName: .Splatfont2, size: 17, foregroundColor: .black)
+                        .frame(height: 25, alignment: .center)
+                    ZStack(content: {
+                        Rectangle().fill(backgroundColor)
+                        Text(String(format: "%2d/%2d", wave.goldenIkuraNum, wave.quotaNum))
+                            .font(systemName: .Splatfont2, size: 25, foregroundColor: .white)
+                            .frame(height: 36.5, alignment: .center)
+                    })
+                    .padding(.top, 2)
+                    .frame(height: 36.5, alignment: .center)
+                    Text(wave.waterLevel)
+                        .font(systemName: .Splatfont2, size: 14, foregroundColor: .black)
+                        .padding(.top, 8)
+                    Text(wave.eventType)
+                        .font(systemName: .Splatfont2, size: 14, foregroundColor: .black)
+                })
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 16)
+                SplatInk()
+                    .fill(Color.black)
+                    .overlay(Text("✓").font(systemName: .Splatfont2, size: 14, foregroundColor: clearColor).padding(.top, 4))
+                    .frame(width: 43, height: 46, alignment: .center)
+                    .position(x: geometry.width - 6, y: 0)
+            })
+            .aspectRatio(124/152, contentMode: .fit)
+            .background(ResultWaveWater(waterLevel: wave.waterLevel))
+            HStack(spacing: 4, content: {
+                Image(.golden)
+                    .resizable()
+                    .frame(width: 15, height: 15, alignment: .center)
+                Text(String(format: "出現数x%d", wave.goldenIkuraPopNum))
+                    .font(systemName: .Splatfont2, size: 12, foregroundColor: .white)
+                    .shadow(color: .black, radius: 0, x: 1, y: 1)
+            })
+            LazyVGrid(columns: Array(repeating: .init(.fixed(22), spacing: 3), count: 5), spacing: 3, content: {
+                ForEach(wave.specialUsage.indices, id: \.self) { index in
+                    let specialId = wave.specialUsage[index]
+                    Image(specialId)
+                        .resizable()
+                        .frame(width: 22, height: 22, alignment: .center)
+                        .background(Circle().fill(.black))
+                }
+            })
+        })
+        .rotationEffect(.degrees(-2))
+    }
+}
+
+struct ResultWave_Previews: PreviewProvider {
+    static var previews: some View {
+        ResultWaveView(result: RealmCoopResult(dummy: true))
+            .previewLayout(.fixed(width: 400, height: 200))
     }
 }
 
