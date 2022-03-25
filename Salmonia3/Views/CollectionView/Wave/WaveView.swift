@@ -14,38 +14,35 @@ struct WaveView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0, content: {
-            HStack(alignment: .top, content: {
-                Group(content: {
-                    HStack(alignment: .center, spacing: nil, content: {
-                        Text(wave.waterLevel)
-                        Text(wave.eventType)
-                    })
+            HStack(alignment: .top, spacing: nil, content: {
+                HStack(alignment: .center, spacing: nil, content: {
+                    Text(wave.waterLevel)
+                    Text(wave.eventType)
                 })
                 Spacer()
                 ResultEgg(goldenIkuraNum: wave.goldenIkuraNum, ikuraNum: wave.ikuraNum)
-                    .frame(width: 160, height: 24, alignment: .center)
+                    .frame(width: 160, height: 24, alignment: .bottom)
+                    .offset(x: 0, y: 6)
             })
-            HStack(alignment: .bottom, spacing: 0, content: {
+            HStack(alignment: .lastTextBaseline, spacing: nil, content: {
                 if let stageId = wave.stageId {
                     Image(stageId)
                         .resizable()
                         .scaledToFit()
-                        .frame(height: 50)
+                        .frame(height: 44)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
                 Spacer()
-                HStack(content: {
-                    if let weaponList = wave.weaponList {
-                        ForEach(weaponList.indices, id: \.self) { index in
-                            Image(weaponList[index])
-                                .resizable()
-                                .padding(4)
-                                .scaledToFit()
-                                .background(Circle().fill(.black.opacity(0.9)))
-                                .frame(maxWidth: 45)
-                        }
+                if let weaponList = wave.weaponList {
+                    ForEach(weaponList.indices, id: \.self) { index in
+                        Image(weaponList[index])
+                            .resizable()
+                            .padding(4)
+                            .scaledToFit()
+                            .background(Circle().fill(.black.opacity(0.9)))
+                            .frame(maxWidth: 45)
                     }
-                })
+                }
             })
         })
     }

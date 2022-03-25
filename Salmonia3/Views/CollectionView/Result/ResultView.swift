@@ -25,11 +25,7 @@ struct ResultView: View {
     var body: some View {
         GeometryReader(content: { geometry in
             ScrollView(.vertical, showsIndicators: false, content: {
-                Image(result.stageId)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(height: 120)
-                    .clipped()
+                ResultHeader(result: result)
                 ResultWaveView(result: result)
                 ResultPlayers(result: result)
             })
