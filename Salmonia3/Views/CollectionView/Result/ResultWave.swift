@@ -38,31 +38,31 @@ private struct ResultWaveWater: View {
     }
 }
 
-fileprivate extension WaterKey {
-    var height: CGFloat {
-        switch self {
-        case .low:
-            return 20
-        case .normal:
-            return 40
-        case .high:
-            return 70
-        }
+private struct WaveClearChecker: View {
+    let isClear: Bool
+    let clearColor = Color(hex: "39E464")
+    let failureColor = Color(hex: "FF7500")
+
+    var body: some View {
+        GeometryReader(content: { geometry in
+            SplatInk()
+                .fill(Color.black)
+                .overlay(Text(isClear ? "GJ!" : "NG").font(systemName: .Splatfont2, size: 14, foregroundColor: isClear ? clearColor : failureColor).padding(.top, 4))
+                .frame(width: 43, height: 46, alignment: .center)
+                .position(x: geometry.width - 6, y: 0)
+        })
     }
 }
 
 private struct ResultWave: View {
     let wave: RealmCoopWave
     let backgroundColor = Color(hex: "2A270B")
-    let clearColor = Color(hex: "39E464")
-    let failureColor = Color(hex: "FF7500")
-    
+
     var body: some View {
         VStack(spacing: 0, content: {
             GeometryReader(content: { geometry in
                 VStack(alignment: .center, spacing: 0, content: {
-                    Text("Wave 1")
-                    //                Text("Wave \(wave.index)")
+                    Text("Wave \(wave.index)")
                         .font(systemName: .Splatfont2, size: 17, foregroundColor: .black)
                         .frame(height: 25, alignment: .center)
                     ZStack(content: {
@@ -81,11 +81,7 @@ private struct ResultWave: View {
                 })
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
-                SplatInk()
-                    .fill(Color.black)
-                    .overlay(Text("✓").font(systemName: .Splatfont2, size: 14, foregroundColor: clearColor).padding(.top, 4))
-                    .frame(width: 43, height: 46, alignment: .center)
-                    .position(x: geometry.width - 6, y: 0)
+                WaveClearChecker(isClear: wave.isClear)
             })
             .aspectRatio(124/152, contentMode: .fit)
             .background(ResultWaveWater(waterLevel: wave.waterLevel))
@@ -158,6 +154,19 @@ fileprivate extension EventKey {
             return "ハコビヤ襲来"
         case .cohockCharge:
             return "ドスコイ大量発生"
+        }
+    }
+}
+
+fileprivate extension WaterKey {
+    var height: CGFloat {
+        switch self {
+        case .low:
+            return 20
+        case .normal:
+            return 40
+        case .high:
+            return 70
         }
     }
 }

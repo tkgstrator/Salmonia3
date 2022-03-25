@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftyUI
 import RealmSwift
 
 struct ResultDefeat: View {
@@ -21,12 +22,13 @@ struct ResultDefeat: View {
     }
     
     var body: some View {
+        let foregroundColor = Color(hex: "E5F100")
         GeometryReader(content: { geometry in
             Button(action: {
                 isPresented.toggle()
             }, label: {
                 Text("オオモノシャケをたおした数 x\(bossKillCount.reduce(0, +))")
-                    .font(systemName: .Splatfont2, size: 11, foregroundColor: .yellow)
+                    .font(systemName: .Splatfont2, size: 11, foregroundColor: foregroundColor)
                     .shadow(color: .black, radius: 0, x: 1, y: 1)
             })
                 .buttonStyle(.plain)

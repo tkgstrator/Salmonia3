@@ -59,6 +59,13 @@ extension RealmCoopWave {
     var specialUsage: [SpecialId] {
         result.specialUsage[index - 1]
     }
+    
+    var isClear: Bool {
+        guard let failureWave = result.failureWave else {
+            return true
+        }
+        return failureWave != self.index
+    }
 }
 
 extension RealmCoopResult {
