@@ -13,37 +13,36 @@ struct ResultStatus: View {
     
     var body: some View {
         GeometryReader(content: { geometry in
-            let scale: CGFloat = geometry.width / 200
-            HStack(spacing: nil, content: {
-                HStack(spacing: 0, content: {
+            let scale: CGFloat = geometry.width / 160
+            HStack(spacing: 3, content: {
+                HStack(spacing: -10, content: {
                     Image(.rescue)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 33.4 * scale)
                     Spacer()
-                    Text("x\(helpCount)")
+                    Text(String(format: "x%2d", helpCount))
                         .foregroundColor(.white)
                 })
-                    .frame(width: 66 * scale)
-                    .padding(.horizontal, 8 * scale)
-                    .background(Capsule().fill(Color.blackrussian.opacity(0.85)))
-                HStack(spacing: 0, content: {
+                .padding(.horizontal, 6 * scale)
+                .background(Capsule().fill(Color.blackrussian.opacity(0.85)))
+                .frame(width: 78.5 * scale, height: 23.5 * scale)
+                HStack(spacing: -10, content: {
                     Image(.help)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 33.4 * scale)
                     Spacer()
-                    Text("x\(deadCount)")
+                    Text(String(format: "x%2d", deadCount))
                         .foregroundColor(.white)
                 })
-                    .frame(width: 66 * scale)
-                    .padding(.horizontal, 8 * scale)
-                    .background(Capsule().fill(Color.blackrussian.opacity(0.85)))
+                .padding(.horizontal, 6 * scale)
+                .background(Capsule().fill(Color.blackrussian.opacity(0.85)))
+                .frame(width: 78.5 * scale, height: 23.5 * scale)
             })
             .font(systemName: .Splatfont2, size: 13 * scale)
-            .position(geometry.center)
         })
-        .aspectRatio(160/24, contentMode: .fit)
+        .aspectRatio(160/23.5, contentMode: .fit)
     }
 }
 
