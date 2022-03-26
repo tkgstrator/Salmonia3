@@ -144,7 +144,7 @@ fileprivate extension RealmCoopResult {
     }
 }
 
-fileprivate extension RealmCoopPlayer {
+extension RealmCoopPlayer {
     /// オオモノ討伐数の合計
     func bossKillCountsSum() -> Int {
         self.bossKillCounts.sum()

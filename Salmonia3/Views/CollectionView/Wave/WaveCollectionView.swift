@@ -11,17 +11,32 @@ import SplatNet2
 import SwiftyUI
 
 struct WaveCollectionView: View {
-    @ObservedResults(RealmCoopWave.self, sortDescriptor: SortDescriptor(keyPath: "goldenIkuraNum", ascending: false)) var waves
-
-    @State private var stageId: StageId?
-    @State private var eventType: EventId?
-    @State private var waterLevel: WaterId?
+    @ObservedResults(
+        RealmCoopWave.self,
+        filter: nil,
+        sortDescriptor: SortDescriptor(keyPath: "goldenIkuraNum", ascending: false)
+    )
+    var waves
+    @State var eventType: EventId? = nil
+    @State var waterLevel: WaterId? = nil
     
+    func filter(eventType: EventId?, waterLevel: WaterId?) {
+        switch (eventType, waterLevel) {
+        case (.none, .none):
+            $waves.filter = nil
+        case (.none, .some(let waterLevel)):
+            $waves.filter = NSPredicate("waterLevel", equal: waterLevel.key)
+        case (.some(let eventType), .none):
+            $waves.filter = NSPredicate("eventType", equal: eventType.key)
+        case (.some(let eventType), .some(let waterLevel)):
+            $waves.filter = NSCompoundPredicate(andPredicateWithSubpredicates: [NSPredicate("waterLevel", equal: waterLevel.key), NSPredicate("eventType", equal: eventType.key)])
+        }
+    }
     
     var body: some View {
         NavigationView(content: {
             List(content: {
-                ForEach(waves) { wave in
+                ForEach(waves.prefix(500)) { wave in
                     NavigationLinker(destination: ResultView(wave.result), label: {
                         WaveView(wave: wave)
                     })
@@ -31,12 +46,18 @@ struct WaveCollectionView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle("WAVE一覧")
                 .toolbar(content: {
-                    ToolbarItem(placement: .navigationBarLeading, content: {
-                        StageIdFilterView()
+                    ToolbarItem(placement: .navigationBarTrailing, content: {
+                        StageIdFilterView(selection: $waterLevel)
                     })
                     ToolbarItem(placement: .navigationBarTrailing, content: {
-                        EventTypeFilterView()
+                        EventTypeFilterView(selection: $eventType)
                     })
+                })
+                .onChange(of: eventType, perform: { eventType in
+                    filter(eventType: eventType, waterLevel: waterLevel)
+                })
+                .onChange(of: waterLevel, perform: { waterLevel in
+                    filter(eventType: eventType, waterLevel: waterLevel)
                 })
         })
         
@@ -44,19 +65,22 @@ struct WaveCollectionView: View {
     
     struct EventTypeFilterView: View {
         @State private var isPresented: Bool = false
-        @State private var selection: WaterId? = .none
-        
+        @Binding var selection: EventId?
+
         var body: some View {
             Button(action: {
                 isPresented.toggle()
             }, label: {
                 Image(systemName: .CloudRain)
             })
-            .halfsheet(isPresented: $isPresented, content: {
+            .halfsheet(isPresented: $isPresented, onDismiss: {
+            }, content: {
                 Picker(selection: $selection, content: {
                     Text("None")
+                        .tag(Optional<EventId>.none)
                     ForEach(EventId.allCases) { eventType in
                         Text(eventType)
+                            .tag(eventType as? EventId)
                     }
                 }, label: {})
                 .pickerStyle(.wheel)
@@ -66,7 +90,7 @@ struct WaveCollectionView: View {
     
     struct StageIdFilterView: View {
         @State private var isPresented: Bool = false
-        @State private var selection: StageId? = .none
+        @Binding var selection: WaterId?
         
         var body: some View {
             Button(action: {
@@ -77,8 +101,10 @@ struct WaveCollectionView: View {
             .halfsheet(isPresented: $isPresented, content: {
                 Picker(selection: $selection, content: {
                     Text("None")
-                    ForEach(StageId.allCases) { stageId in
-                        Text(stageId)
+                        .tag(Optional<WaterId>.none)
+                    ForEach(WaterId.allCases) { waterLevel in
+                        Text(waterLevel)
+                            .tag(waterLevel as? WaterId)
                     }
                 }, label: {})
                 .pickerStyle(.wheel)
@@ -87,8 +113,8 @@ struct WaveCollectionView: View {
     }
 }
 
-struct WaveCollectionView_Previews: PreviewProvider {
-    static var previews: some View {
-        WaveCollectionView()
-    }
-}
+//struct WaveCollectionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        WaveCollectionView()
+//    }
+//}
