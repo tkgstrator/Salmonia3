@@ -19,10 +19,10 @@ struct WaveView: View {
                     Text(wave.waterLevel)
                     Text(wave.eventType)
                 })
+                .font(systemName: .Splatfont2, size: 14)
                 Spacer()
                 ResultEgg(goldenIkuraNum: wave.goldenIkuraNum, ikuraNum: wave.ikuraNum)
                     .frame(width: 160, height: 24, alignment: .bottom)
-                    .offset(x: 0, y: 6)
             })
             HStack(alignment: .lastTextBaseline, spacing: nil, content: {
                 if let stageId = wave.stageId {
@@ -40,7 +40,7 @@ struct WaveView: View {
                             .padding(4)
                             .scaledToFit()
                             .background(Circle().fill(.black.opacity(0.9)))
-                            .frame(maxWidth: 45)
+                            .frame(maxWidth: 40)
                     }
                 }
             })
@@ -50,17 +50,11 @@ struct WaveView: View {
 
 fileprivate extension RealmCoopWave {
     var weaponList: RealmSwift.List<WeaponType>? {
-        guard let realm = try? Realm() else {
-            return nil
-        }
-        return realm.objects(RealmCoopShift.self).first(where: { $0.startTime == result.startTime })?.weaponList
+        return result.schedule?.weaponList
     }
     
     var stageId: StageId? {
-        guard let realm = try? Realm() else {
-            return nil
-        }
-        return realm.objects(RealmCoopShift.self).first(where: { $0.startTime == result.startTime })?.stageId
+        return result.stageId
     }
 }
 

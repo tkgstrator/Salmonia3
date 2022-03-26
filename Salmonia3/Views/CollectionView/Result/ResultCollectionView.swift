@@ -11,7 +11,6 @@ import RealmSwift
 import Alamofire
 
 struct ResultCollectionView: View {
-    @EnvironmentObject var service: AppService
     @ObservedResults(RealmCoopShift.self, sortDescriptor: SortDescriptor(keyPath: "startTime", ascending: false)) var schedules
     @State var isPresented: Bool = false
     
@@ -24,6 +23,7 @@ struct ResultCollectionView: View {
                     }
                 }
             })
+            .withAdmobBanner()
             .listStyle(.plain)
             .refreshable(action: {
                 isPresented.toggle()

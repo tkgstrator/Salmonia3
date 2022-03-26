@@ -11,15 +11,16 @@ import SplatNet2
 import SwiftyUI
 
 struct WaveCollectionView: View {
+//    @StateObject var service: WaveService = WaveService()
     @ObservedResults(
         RealmCoopWave.self,
         filter: nil,
         sortDescriptor: SortDescriptor(keyPath: "goldenIkuraNum", ascending: false)
     )
     var waves
-    @State var eventType: EventId? = nil
-    @State var waterLevel: WaterId? = nil
-    
+    @State private var waterLevel: WaterId? = .none
+    @State private var eventType: EventId? = .none
+
     func filter(eventType: EventId?, waterLevel: WaterId?) {
         switch (eventType, waterLevel) {
         case (.none, .none):
@@ -35,12 +36,14 @@ struct WaveCollectionView: View {
     
     var body: some View {
         NavigationView(content: {
-            List(content: {
-                ForEach(waves.prefix(500)) { wave in
-                    NavigationLinker(destination: ResultView(wave.result), label: {
-                        WaveView(wave: wave)
-                    })
-                }
+            ScrollViewReader(content: { proxy in
+                List(content: {
+                    ForEach(waves) { wave in
+                        NavigationLinker(destination: ResultView(wave), label: {
+                            WaveView(wave: wave)
+                        })
+                    }
+                })
             })
                 .listStyle(.plain)
                 .navigationBarTitleDisplayMode(.inline)
@@ -53,6 +56,7 @@ struct WaveCollectionView: View {
                         EventTypeFilterView(selection: $eventType)
                     })
                 })
+                .withAdmobBanner()
                 .onChange(of: eventType, perform: { eventType in
                     filter(eventType: eventType, waterLevel: waterLevel)
                 })
@@ -60,56 +64,56 @@ struct WaveCollectionView: View {
                     filter(eventType: eventType, waterLevel: waterLevel)
                 })
         })
-        
+        .navigationViewStyle(.split)
     }
-    
-    struct EventTypeFilterView: View {
-        @State private var isPresented: Bool = false
-        @Binding var selection: EventId?
+}
 
-        var body: some View {
-            Button(action: {
-                isPresented.toggle()
-            }, label: {
-                Image(systemName: .CloudRain)
-            })
-            .halfsheet(isPresented: $isPresented, onDismiss: {
-            }, content: {
-                Picker(selection: $selection, content: {
-                    Text("None")
-                        .tag(Optional<EventId>.none)
-                    ForEach(EventId.allCases) { eventType in
-                        Text(eventType)
-                            .tag(eventType as? EventId)
-                    }
-                }, label: {})
-                .pickerStyle(.wheel)
-            })
-        }
+struct EventTypeFilterView: View {
+    @State private var isPresented: Bool = false
+    @Binding var selection: EventId?
+
+    var body: some View {
+        Button(action: {
+            isPresented.toggle()
+        }, label: {
+            Image(systemName: .CloudRain)
+        })
+        .halfsheet(isPresented: $isPresented, onDismiss: {
+        }, content: {
+            Picker(selection: $selection, content: {
+                Text("None")
+                    .tag(Optional<EventId>.none)
+                ForEach(EventId.allCases) { eventType in
+                    Text(eventType)
+                        .tag(eventType as? EventId)
+                }
+            }, label: {})
+            .pickerStyle(.wheel)
+        })
     }
+}
+
+struct StageIdFilterView: View {
+    @State private var isPresented: Bool = false
+    @Binding var selection: WaterId?
     
-    struct StageIdFilterView: View {
-        @State private var isPresented: Bool = false
-        @Binding var selection: WaterId?
-        
-        var body: some View {
-            Button(action: {
-                isPresented.toggle()
-            }, label: {
-                Image(systemName: .Line3HorizontalDecreaseCircle)
-            })
-            .halfsheet(isPresented: $isPresented, content: {
-                Picker(selection: $selection, content: {
-                    Text("None")
-                        .tag(Optional<WaterId>.none)
-                    ForEach(WaterId.allCases) { waterLevel in
-                        Text(waterLevel)
-                            .tag(waterLevel as? WaterId)
-                    }
-                }, label: {})
-                .pickerStyle(.wheel)
-            })
-        }
+    var body: some View {
+        Button(action: {
+            isPresented.toggle()
+        }, label: {
+            Image(systemName: .Line3HorizontalDecreaseCircle)
+        })
+        .halfsheet(isPresented: $isPresented, content: {
+            Picker(selection: $selection, content: {
+                Text("None")
+                    .tag(Optional<WaterId>.none)
+                ForEach(WaterId.allCases) { waterLevel in
+                    Text(waterLevel)
+                        .tag(waterLevel as? WaterId)
+                }
+            }, label: {})
+            .pickerStyle(.wheel)
+        })
     }
 }
 

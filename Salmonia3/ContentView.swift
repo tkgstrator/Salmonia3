@@ -10,45 +10,40 @@ import SwiftyUI
 import SplatNet2
 
 struct ContentView: View {
-    @EnvironmentObject var service: AppService
-    @State var selection: Int = 0
+//    @EnvironmentObject var service: AppService
+    @State var selection: Int = 3
     
     var body: some View {
         TabView(selection: $selection, content: {
             ResultCollectionView()
-                .withAdmobBanner()
                 .tabItem({
                     Image(systemName: .House)
                     Text("リザルト一覧")
                 })
                 .tag(0)
             WaveCollectionView()
-                .withAdmobBanner()
                 .tabItem({
                     Image(systemName: .ListBulletRectangle)
                     Text("WAVE一覧")
                 })
                 .tag(1)
-            ShiftCollectionView(nsaid: service.account?.credential.nsaid)
-                .withAdmobBanner()
+            ShiftCollectionView()
                 .tabItem({
                     Image(systemName: .ListBulletRectangle)
                     Text("シフト一覧")
                 })
                 .tag(2)
             UserView()
-                .withAdmobBanner()
                 .tabItem({
                     Image(systemName: .Person)
                     Text("ユーザ")
                 })
                 .tag(3)
         })
-        .font(systemName: service.apperances.fontStyle, size: 16)
-        .preferredColorScheme(service.apperances.colorScheme)
-        .fullScreenCover(isPresented: $service.isSignIn, onDismiss: {}, content: {
-            CircleProgressView(state: service.signInState)
-        })
+//        .preferredColorScheme(service.apperances.colorScheme)
+//        .fullScreenCover(isPresented: $service.isSignIn, onDismiss: {}, content: {
+//            CircleProgressView(state: service.signInState)
+//        })
     }
 }
 

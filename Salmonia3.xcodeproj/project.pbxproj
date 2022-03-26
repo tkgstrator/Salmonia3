@@ -23,7 +23,6 @@
 		10162F8A27C7B34D00ACFD4D /* SettingView_Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10162F8927C7B34D00ACFD4D /* SettingView_Application.swift */; };
 		10162F8C27C7B3EC00ACFD4D /* SettingView_SplatNet2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10162F8B27C7B3EC00ACFD4D /* SettingView_SplatNet2.swift */; };
 		10162F8E27C7B4A200ACFD4D /* SettingView+SalmonStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10162F8D27C7B4A100ACFD4D /* SettingView+SalmonStats.swift */; };
-		10162F9027C7BCEC00ACFD4D /* ProgressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10162F8F27C7BCEC00ACFD4D /* ProgressModel.swift */; };
 		10196D4227D2120B009CD55E /* StatsWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10196D4127D2120B009CD55E /* StatsWave.swift */; };
 		10196D4427D30BAA009CD55E /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10196D4327D30BA9009CD55E /* Triangle.swift */; };
 		101AED11271E3109009556B2 /* Salmonia3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED10271E3109009556B2 /* Salmonia3App.swift */; };
@@ -78,8 +77,6 @@
 		10635094274E2B1F00529930 /* RealmCoopShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10635093274E2B1F00529930 /* RealmCoopShift.swift */; };
 		10635096274E2E4D00529930 /* ShiftCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10635095274E2E4D00529930 /* ShiftCollectionView.swift */; };
 		106B7F8F27D3231900E6B528 /* RankId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106B7F8E27D3231800E6B528 /* RankId.swift */; };
-		107B687727B6CE9D00238B9D /* AppService+SplatNet2SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107B687627B6CE9D00238B9D /* AppService+SplatNet2SessionDelegate.swift */; };
-		107B687927B6FAD900238B9D /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107B687827B6FAD900238B9D /* CircleProgressView.swift */; };
 		107B687B27B7362000238B9D /* AppService+Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107B687A27B7362000238B9D /* AppService+Network.swift */; };
 		10805B2A27E7CB92001A8B68 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10805B2927E7CB92001A8B68 /* RealmSwift */; };
 		10805B2E27E7CBE7001A8B68 /* SwiftyUI in Frameworks */ = {isa = PBXBuildFile; productRef = 10805B2D27E7CBE7001A8B68 /* SwiftyUI */; };
@@ -186,7 +183,6 @@
 		10162F8927C7B34D00ACFD4D /* SettingView_Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView_Application.swift; sourceTree = "<group>"; };
 		10162F8B27C7B3EC00ACFD4D /* SettingView_SplatNet2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView_SplatNet2.swift; sourceTree = "<group>"; };
 		10162F8D27C7B4A100ACFD4D /* SettingView+SalmonStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+SalmonStats.swift"; sourceTree = "<group>"; };
-		10162F8F27C7BCEC00ACFD4D /* ProgressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressModel.swift; sourceTree = "<group>"; };
 		10196D4127D2120B009CD55E /* StatsWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsWave.swift; sourceTree = "<group>"; };
 		10196D4327D30BA9009CD55E /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		101AEB8527E20E5B004F42F9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -236,8 +232,6 @@
 		10635093274E2B1F00529930 /* RealmCoopShift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopShift.swift; sourceTree = "<group>"; };
 		10635095274E2E4D00529930 /* ShiftCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftCollectionView.swift; sourceTree = "<group>"; };
 		106B7F8E27D3231800E6B528 /* RankId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankId.swift; sourceTree = "<group>"; };
-		107B687627B6CE9D00238B9D /* AppService+SplatNet2SessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppService+SplatNet2SessionDelegate.swift"; sourceTree = "<group>"; };
-		107B687827B6FAD900238B9D /* CircleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		107B687A27B7362000238B9D /* AppService+Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppService+Network.swift"; sourceTree = "<group>"; };
 		10805B2C27E7CBDD001A8B68 /* SwiftyUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftyUI; path = ../SwiftyUI; sourceTree = "<group>"; };
 		1082F77A27D072A000044581 /* ResultShiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultShiftView.swift; sourceTree = "<group>"; };
@@ -470,18 +464,9 @@
 				109F97E9272491D800AB1FA3 /* CollectionView */,
 				109F97E4272490B000AB1FA3 /* Loading */,
 				101AED58271E3933009556B2 /* Setting */,
-				101AED3E271E322C009556B2 /* Login */,
 				1006C12427EB284A007479CC /* GoogleMobileAds.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		101AED3E271E322C009556B2 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				107B687827B6FAD900238B9D /* CircleProgressView.swift */,
-			);
-			path = Login;
 			sourceTree = "<group>";
 		};
 		101AED41271E3396009556B2 /* Assets */ = {
@@ -723,10 +708,8 @@
 		10FDD4AD271EE35D00C9C178 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				10162F8F27C7BCEC00ACFD4D /* ProgressModel.swift */,
 				10FDD4AE271EE36C00C9C178 /* AppService.swift */,
 				10C7C46D277F00260015ECBB /* AppService+Realm.swift */,
-				107B687627B6CE9D00238B9D /* AppService+SplatNet2SessionDelegate.swift */,
 				107B687A27B7362000238B9D /* AppService+Network.swift */,
 				109B546727CD6C2300FACC1A /* AppService+StoreKit.swift */,
 				10C7D69127CF6EDE002C1F37 /* AppService+Firestore.swift */,
@@ -919,7 +902,6 @@
 				10C7D6A327CF96C0002C1F37 /* UserShiftStats+Firebase.swift in Sources */,
 				10C000DC274CE3F400870DED /* Image.swift in Sources */,
 				101AED3D271E3192009556B2 /* Wave.swift in Sources */,
-				10162F9027C7BCEC00ACFD4D /* ProgressModel.swift in Sources */,
 				109B545F27CD60E800FACC1A /* SettingView+Support.swift in Sources */,
 				10196D4427D30BAA009CD55E /* Triangle.swift in Sources */,
 				100556F927C948E90094582D /* ShiftDisplayMode.swift in Sources */,
@@ -957,7 +939,6 @@
 				1027058027D4A34E00326B32 /* StatsWeaponDetail.swift in Sources */,
 				102C9DE3277E0D8E004822C1 /* HSContent.swift in Sources */,
 				109F97E6272490C600AB1FA3 /* LoggingThread.swift in Sources */,
-				107B687727B6CE9D00238B9D /* AppService+SplatNet2SessionDelegate.swift in Sources */,
 				104BCEC327D117C400507A50 /* RankingCollection.swift in Sources */,
 				10C7D69727CF92E1002C1F37 /* StatsType.swift in Sources */,
 				1041BC0F277DC695008B27F1 /* ResultWeapon.swift in Sources */,
@@ -985,7 +966,6 @@
 				109F97E8272490CE00AB1FA3 /* LoadingView.swift in Sources */,
 				109B546827CD6C2300FACC1A /* AppService+StoreKit.swift in Sources */,
 				10C7C46C277ED8330015ECBB /* Localized.swift in Sources */,
-				107B687927B6FAD900238B9D /* CircleProgressView.swift in Sources */,
 				1056E2FC27EDF4C200ECE160 /* SplatInk.swift in Sources */,
 				10196D4227D2120B009CD55E /* StatsWave.swift in Sources */,
 				106B7F8F27D3231900E6B528 /* RankId.swift in Sources */,

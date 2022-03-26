@@ -17,6 +17,7 @@ struct ResultPlayerKills: View {
         ForEach(result.player) { player in
             let bossCounts: [Int] = Array(result.bossCounts)
             ResultPlayerKill(player: player, bossCounts: bossCounts)
+                .frame(maxWidth: 356)
         }
         .padding(.horizontal)
     }

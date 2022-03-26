@@ -10,6 +10,7 @@ import SwiftUI
 import SwiftyUI
 import RealmSwift
 import SplatNet2
+import SalmonStats
 
 final class ShiftService: ObservableObject {
     @Published var shiftDisplayMode: ShiftDisplayMode = .current
@@ -21,19 +22,16 @@ final class ShiftService: ObservableObject {
     )
     var schedules
     
-    init(nsaid: String?) {
-        self.nsaid = nsaid
+    init() {
+        let session: SalmonStats = SalmonStats()
+        self.nsaid = session.account?.credential.nsaid
     }
 }
 
 struct ShiftCollectionView: View {
-    @StateObject var service: ShiftService
+    @StateObject var service: ShiftService = ShiftService()
     @State var isPresented: Bool = false
-    
-    init(nsaid: String?) {
-        self._service = StateObject(wrappedValue: ShiftService(nsaid: nsaid))
-    }
-    
+
     var body: some View {
         NavigationView(content: {
             ScrollViewReader(content: { scrollProxy in
@@ -52,6 +50,7 @@ struct ShiftCollectionView: View {
             .listStyle(.plain)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("シフトスケジュール")
+            .withAdmobBanner()
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarTrailing, content: {
                     Button(action: {

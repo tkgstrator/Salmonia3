@@ -11,15 +11,19 @@ import SwiftyUI
 struct ResultView: View {
     let result: RealmCoopResult
     
-    fileprivate var formatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.timeZone = TimeZone.current
-        formatter.dateFormat = "yyyy MM/dd HH:mm"
-        return formatter
-    }()
+//    fileprivate var formatter: DateFormatter = {
+//        let formatter = DateFormatter()
+//        formatter.timeZone = TimeZone.current
+//        formatter.dateFormat = "yyyy MM/dd HH:mm"
+//        return formatter
+//    }()
     
     init(_ result: RealmCoopResult) {
         self.result = result
+    }
+    
+    init(_ wave: RealmCoopWave) {
+        self.result = wave.result
     }
     
     var body: some View {
