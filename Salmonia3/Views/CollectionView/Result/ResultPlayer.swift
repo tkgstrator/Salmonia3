@@ -15,8 +15,9 @@ struct ResultPlayers: View {
     var body: some View {
         ForEach(result.player) { player in
             ResultPlayer(player: player)
-                .padding(.horizontal)
+                .frame(maxWidth: 356)
         }
+        .padding(.horizontal)
     }
 }
 

@@ -24,7 +24,7 @@ struct SettingView: View {
             SettingView_Debug()
 #endif
         })
-            .navigationTitle("Setting")
+        .navigationTitle("Setting")
     }
 }
 
@@ -41,14 +41,14 @@ private struct ListStyleDialog: View {
                     .foregroundColor(.secondary)
             })
         })
-            .confirmationDialog(Text(service.apperances.listStyle.rawValue), isPresented: $isPresented, actions: {
-                ForEach(AppService.Appearances.ListStyle.allCases) { listStyle in
-                    Button(action: {
-                        service.apperances.listStyle = listStyle
-                        service.objectWillChange.send()
-                    }, label: { Text(listStyle.rawValue) })
-                }
-            })
+        .confirmationDialog(Text(service.apperances.listStyle.rawValue), isPresented: $isPresented, actions: {
+            ForEach(AppService.Appearances.ListStyle.allCases) { listStyle in
+                Button(action: {
+                    service.apperances.listStyle = listStyle
+                    service.objectWillChange.send()
+                }, label: { Text(listStyle.rawValue) })
+            }
+        })
     }
 }
 
@@ -65,14 +65,14 @@ private struct ResultStyleDialog: View {
                     .foregroundColor(.secondary)
             })
         })
-            .confirmationDialog(Text(service.apperances.resultStyle.rawValue), isPresented: $isPresented, actions: {
-                ForEach(AppService.Appearances.ResultStyle.allCases) { resultStyle in
-                    Button(action: {
-                        service.apperances.resultStyle = resultStyle
-                        service.objectWillChange.send()
-                    }, label: { Text(resultStyle.rawValue) })
-                }
-            })
+        .confirmationDialog(Text(service.apperances.resultStyle.rawValue), isPresented: $isPresented, actions: {
+            ForEach(AppService.Appearances.ResultStyle.allCases) { resultStyle in
+                Button(action: {
+                    service.apperances.resultStyle = resultStyle
+                    service.objectWillChange.send()
+                }, label: { Text(resultStyle.rawValue) })
+            }
+        })
     }
 }
 
@@ -89,14 +89,14 @@ private struct RefreshStyleDialog: View {
                     .foregroundColor(.secondary)
             })
         })
-            .confirmationDialog(Text(service.apperances.refreshStyle.rawValue), isPresented: $isPresented, actions: {
-                ForEach(AppService.Appearances.RefreshStyle.allCases) { refreshStyle in
-                    Button(action: {
-                        service.apperances.refreshStyle = refreshStyle
-                        service.objectWillChange.send()
-                    }, label: { Text(refreshStyle.rawValue) })
-                }
-            })
+        .confirmationDialog(Text(service.apperances.refreshStyle.rawValue), isPresented: $isPresented, actions: {
+            ForEach(AppService.Appearances.RefreshStyle.allCases) { refreshStyle in
+                Button(action: {
+                    service.apperances.refreshStyle = refreshStyle
+                    service.objectWillChange.send()
+                }, label: { Text(refreshStyle.rawValue) })
+            }
+        })
     }
 }
 
@@ -108,14 +108,14 @@ private struct FontStyleDialog: View {
         Button(action: { isPresented.toggle() }, label: {
             Text("Font Style")
         })
-            .confirmationDialog(Text(service.apperances.fontStyle.rawValue), isPresented: $isPresented, actions: {
-                ForEach(FontStyle.allCases) { fontStyle in
-                    Button(action: {
-                        service.apperances.fontStyle = fontStyle
-                        service.objectWillChange.send()
-                    }, label: { Text(fontStyle.rawValue) })
-                }
-            })
+        .confirmationDialog(Text(service.apperances.fontStyle.rawValue), isPresented: $isPresented, actions: {
+            ForEach(FontStyle.allCases) { fontStyle in
+                Button(action: {
+                    service.apperances.fontStyle = fontStyle
+                    service.objectWillChange.send()
+                }, label: { Text(fontStyle.rawValue) })
+            }
+        })
     }
 }
 
@@ -133,9 +133,9 @@ private struct FontStylePicker: View {
                         .tag(font)
                 }
             }, label: { Text("Font Style") })
-                .pickerStyle(.inline)
+            .pickerStyle(.inline)
         })
-            .navigationTitle("Font Style")
+        .navigationTitle("Font Style")
     }
 }
 

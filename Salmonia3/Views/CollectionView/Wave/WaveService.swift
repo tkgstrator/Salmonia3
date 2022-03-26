@@ -10,23 +10,11 @@ import Foundation
 import RealmSwift
 import SplatNet2
 import Common
+import SalmonStats
 
 final class WaveService: ObservableObject {
-    @Published var eventType: EventId? = .none {
-        willSet {
-            print(newValue)
-            if let eventType = newValue {
-                $waves.filter = NSPredicate("eventType", equal: eventType.key)
-            }
-        }
-    }
-    @Published var waterLevel: WaterId? = .none {
-        willSet {
-            if let waterLevel = newValue {
-                $waves.filter = NSPredicate("waterLevel", equal: waterLevel)
-            }
-        }
-    }
+    @Published var eventType: EventId? = .none
+    @Published var waterLevel: WaterId? = .none
     @Published var nsaid: String?
     @ObservedResults(
         RealmCoopWave.self,
@@ -35,7 +23,8 @@ final class WaveService: ObservableObject {
     )
     var waves
     
-    init(account: UserInfo?) {
-        self.nsaid = account?.credential.nsaid
+    init() {
+        let session: SalmonStats = SalmonStats()
+        self.nsaid = session.account?.credential.nsaid
     }
 }

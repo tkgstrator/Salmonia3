@@ -12,8 +12,6 @@ import RealmSwift
 import SplatNet2
 
 struct UserView: View {
-    @EnvironmentObject var service: AppService
-    
     var body: some View {
         NavigationView(content: {
             Form(content: {
@@ -28,6 +26,7 @@ struct UserView: View {
                 })
             })
         })
+        .navigationViewStyle(.split)
     }
 }
 

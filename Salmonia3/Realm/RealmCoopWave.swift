@@ -152,7 +152,8 @@ extension WaterKey {
 
 //
 extension RealmCoopWave: Identifiable {
-    /// 識別用のID
-    var id: Int { self.hash }
+    var id: Int {
+        self.hash
+    }
 }
 

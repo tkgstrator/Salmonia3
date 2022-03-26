@@ -7,65 +7,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D3C3F864-AE1B-4D2A-A724-0B7949143E87"
+            uuid = "9CDAB5D2-4234-4F89-9CD7-8C65D49ADFAF"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Salmonia3/Views/CollectionView/Wave/WaveService.swift"
+            filePath = "Salmonia3/Salmonia3App.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "WaveService"
-            landmarkType = "3">
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "sceneDidBecomeActive(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "92318340-D0B5-4D0E-8121-53CB4DD74042"
+            uuid = "86CE0C04-F67F-473F-84B2-D267E6B16388"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Salmonia3/Views/CollectionView/Wave/WaveService.swift"
+            filePath = "Salmonia3/Salmonia3App.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "WaveService"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "92318340-D0B5-4D0E-8121-53CB4DD74042 - 331fc90a10d5c879"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Salmonia3.WaveService.eventType.willset : Swift.Optional&lt;SplatNet2.EventId&gt;"
-                  moduleName = "Salmonia3"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/devonly/Developer/Salmonia3/Salmonia3/Views/CollectionView/Wave/WaveService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
-                  offsetFromSymbolStart = "240">
-               </Location>
-               <Location
-                  uuid = "92318340-D0B5-4D0E-8121-53CB4DD74042 - 331fc90a10d5c879"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Salmonia3.WaveService.eventType.willset : Swift.Optional&lt;SplatNet2.EventId&gt;"
-                  moduleName = "Salmonia3"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/devonly/Developer/Salmonia3/Salmonia3/Views/CollectionView/Wave/WaveService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "18"
-                  endingLineNumber = "18"
-                  offsetFromSymbolStart = "292">
-               </Location>
-            </Locations>
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "sceneDidBecomeActive(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

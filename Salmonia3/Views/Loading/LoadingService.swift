@@ -42,16 +42,18 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
         }
         self.session = SalmonStats()
         self.session.delegate = self
-        
+    }
+    
+    func downloadResultsFromSplatNet2() {
         let resultId: Int? = {
             if let nsaid: String = session.account?.credential.nsaid {
-                return realm.objects(RealmCoopResult.self).filter("pid=%@", nsaid).max(ofProperty: "jobId")
+                return realm.objects(RealmCoopResult.self).filter("pid=%@", nsaid).max(ofProperty: "jobId") ?? 0
             }
             return nil
         }()
         
         if let resultId = resultId {
-            self.session.uploadResults(resultId: resultId - 4)
+            self.session.uploadResults(resultId: resultId)
         } else {
             NotificationCenter.default.post(name: .didFinishedLoadResults, object: nil)
         }

@@ -30,8 +30,6 @@ final class AppService: ObservableObject {
             self.realm = try! Realm(configuration: config, queue: nil)
         }
         self.session = SalmonStats(refreshable: true)
-        /// デリゲートを設定
-        self.session.delegate = self
         /// アカウントを設定
         self.account = self.session.account
         /// シフト情報を更新
@@ -57,8 +55,6 @@ final class AppService: ObservableObject {
     @Published var session: SalmonStats
     /// リザルト取得中状態にするためのフラグ
     @Published var isLoading: Bool = false
-    /// ダウンロードの進捗
-    @Published var progress: ProgressModel?
     /// 受け取ったエラーの内容
     @Published var sp2Error: SP2Error? {
         willSet {
