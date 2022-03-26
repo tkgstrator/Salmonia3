@@ -28,6 +28,8 @@ struct ResultView: View {
                 ResultHeader(result: result)
                 ResultWaveView(result: result)
                 ResultPlayers(result: result)
+                    .padding(.bottom, 10)
+                ResultPlayerKills(result: result)
             })
         })
             .navigationBarTitleDisplayMode(.inline)

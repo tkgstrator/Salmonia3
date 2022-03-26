@@ -33,9 +33,13 @@ extension Text {
     init(_ value: EventId) {
         self.init(value.key.rawValue)
     }
+
+    init(_ value: WaterId) {
+        self.init(value.key.rawValue)
+    }
 }
 
-fileprivate extension EventId {
+extension EventId {
     var key: EventKey {
         switch self {
         case .waterLevels:
@@ -52,6 +56,19 @@ fileprivate extension EventId {
             return .theMothership
         case .cohockCharge:
             return .cohockCharge
+        }
+    }
+}
+
+extension WaterId {
+    var key: WaterKey {
+        switch self {
+        case .low:
+            return .low
+        case .normal:
+            return .normal
+        case .high:
+            return .high
         }
     }
 }
@@ -94,7 +111,7 @@ fileprivate extension StageKey {
     }
 }
 
-fileprivate extension StageId {
+extension StageId {
     var key: StageKey {
         switch self {
         case .shakeup:

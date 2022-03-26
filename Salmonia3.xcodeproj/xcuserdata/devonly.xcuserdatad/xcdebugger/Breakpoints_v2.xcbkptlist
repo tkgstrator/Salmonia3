@@ -7,49 +7,65 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D56F307D-CECD-4403-8D57-321A895D797F"
+            uuid = "D3C3F864-AE1B-4D2A-A724-0B7949143E87"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../SplatNet2/Sources/SalmonStats/SalmonStats.swift"
+            filePath = "Salmonia3/Views/CollectionView/Wave/WaveService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "getWaveResults(startTime:)"
-            landmarkType = "7">
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "WaveService"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8D89DE8D-E1A2-4F91-AFA8-EB5B91BE90D8"
-            shouldBeEnabled = "Yes"
+            uuid = "92318340-D0B5-4D0E-8121-53CB4DD74042"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Salmonia3/Views/Loading/LoadingView.swift"
+            filePath = "Salmonia3/Views/CollectionView/Wave/WaveService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "64515137-A82D-4B87-8669-E29D2AAE694B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Salmonia3/Views/Loading/LoadingView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "WaveService"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "92318340-D0B5-4D0E-8121-53CB4DD74042 - 331fc90a10d5c879"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Salmonia3.WaveService.eventType.willset : Swift.Optional&lt;SplatNet2.EventId&gt;"
+                  moduleName = "Salmonia3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/devonly/Developer/Salmonia3/Salmonia3/Views/CollectionView/Wave/WaveService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "240">
+               </Location>
+               <Location
+                  uuid = "92318340-D0B5-4D0E-8121-53CB4DD74042 - 331fc90a10d5c879"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Salmonia3.WaveService.eventType.willset : Swift.Optional&lt;SplatNet2.EventId&gt;"
+                  moduleName = "Salmonia3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/devonly/Developer/Salmonia3/Salmonia3/Views/CollectionView/Wave/WaveService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "292">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

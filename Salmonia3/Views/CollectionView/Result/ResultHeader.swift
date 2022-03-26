@@ -25,7 +25,6 @@ struct ResultHeader: View {
             }()
             ResultEgg(goldenIkuraNum: result.goldenEggs, ikuraNum: result.powerEggs)
                 .frame(width: 160 * scale, height: 23.5 * scale, alignment: .center)
-                .position(x: geometry.width - 80, y: 14)
             Text(dangerRateText)
                 .font(systemName: .Splatfont, size: 20, foregroundColor: foregroundColor)
                 .shadow(color: .black, radius: 0, x: 1, y: 1)

@@ -10,10 +10,15 @@ import SplatNet2
 import SalmonStats
 import Combine
 import SwiftyUI
+import CocoaLumberjackSwift
 
 struct LoadingView: View {
     @StateObject var service: LoadingService = LoadingService()
-    @State private var sp2Error: SP2Error?
+    @State private var sp2Error: SP2Error? {
+        willSet {
+            self.isPresented = newValue != nil
+        }
+    }
     @State private var isPresented: Bool = false
     @Environment(\.dismiss) var dismiss
 
@@ -28,9 +33,9 @@ struct LoadingView: View {
                 dismiss()
             })
             .onReceive(NotificationCenter.default.publisher(for: .didFinishedLoadResultsWithError), perform: { response in
+                DDLogInfo(response)
                 if let sp2Error = response.object as? SP2Error {
                     self.sp2Error = sp2Error
-                    isPresented.toggle()
                 } else {
                     dismiss()
                 }
