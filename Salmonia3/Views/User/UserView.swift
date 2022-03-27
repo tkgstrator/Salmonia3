@@ -17,6 +17,7 @@ struct UserView: View {
     var body: some View {
         NavigationView(content: {
             ScrollView(content: {
+                Dashboard.WaveClearRatio(result: stats.result)
 //                Dashboard_Defeated(stats: stats.defeated)
             })
             .navigationTitle("ダッシュボード")
@@ -28,6 +29,7 @@ struct UserView: View {
                     })
                 })
             })
+            .font(systemName: .Splatfont2, size: 16)
         })
         .navigationViewStyle(.split)
     }
@@ -93,8 +95,6 @@ internal struct RadarChartBossLabel: View {
                     )
             }
         })
-        .scaledToFit()
-        .frame(maxWidth: 200)
     }
 }
 
