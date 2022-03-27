@@ -58,7 +58,7 @@ struct StatsWeapon: View {
                             .background(Circle().fill(Color.black.opacity(0.9)))
                         switch shiftType {
                         case .normal, .goldRandom:
-                            Text(String(format:"%2.2f%%", prob * 100))
+                            Text(String(format:"%05.2f%%", prob * 100))
                                 .font(systemName: .Splatfont2, size: 16, foregroundColor: color)
                         case .oneRandom, .allRandom:
                             Text("??.??%")
