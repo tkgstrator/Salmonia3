@@ -10,7 +10,7 @@ import SwiftyUI
 import SplatNet2
 
 struct ContentView: View {
-//    @EnvironmentObject var service: AppService
+    @EnvironmentObject var service: AppService
     @State var selection: Int = 3
     
     var body: some View {
@@ -40,10 +40,7 @@ struct ContentView: View {
                 })
                 .tag(3)
         })
-//        .preferredColorScheme(service.apperances.colorScheme)
-//        .fullScreenCover(isPresented: $service.isSignIn, onDismiss: {}, content: {
-//            CircleProgressView(state: service.signInState)
-//        })
+        .preferredColorScheme(service.apperances.colorScheme)
     }
 }
 

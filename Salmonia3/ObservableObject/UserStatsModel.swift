@@ -35,16 +35,16 @@ final class UserStatsService: ObservableObject {
         
         self.jobNum = results.count
         self.result = [
-            PieChartModel(value: Float(results.filter("isClear=%@", true).count), color: .blue, title: "JOB.RESULT.SUCCESS"),
-            PieChartModel(value: Float(results.filter("failureReason=%@", FailureReason.timeLimit.rawValue).count), color: .red, title: "JOB.RESULT.TIMELIMIT"),
-            PieChartModel(value: Float(results.filter("failureReason=%@", FailureReason.wipeOut.rawValue).count), color: .green, title: "JOB.RESULT.WIPEOUT"),
+            PieChartModel(value: Float(results.filter("isClear=%@", true).count), color: .blue, title: "クリア"),
+            PieChartModel(value: Float(results.filter("failureReason=%@", FailureReason.timeLimit.rawValue).count), color: .red, title: "時間切れ"),
+            PieChartModel(value: Float(results.filter("failureReason=%@", FailureReason.wipeOut.rawValue).count), color: .green, title: "ゼンメツ!"),
         ]
         self.waves = [1, 2, 3].map({ result in
             // 各WAVEで失敗したリザルトを取得
             let results = results.filter("failureWave=%@", result)
             return [
-                PieChartModel(value: Float(results.filter("failureReason=%@", FailureReason.timeLimit.rawValue).count), color: .red, title: "JOB.RESULT.TIMELIMIT"),
-                PieChartModel(value: Float(results.filter("failureReason=%@", FailureReason.wipeOut.rawValue).count), color: .green, title: "JOB.RESULT.WIPEOUT"),
+                PieChartModel(value: Float(results.filter("failureReason=%@", FailureReason.timeLimit.rawValue).count), color: .red, title: "時間切れ"),
+                PieChartModel(value: Float(results.filter("failureReason=%@", FailureReason.wipeOut.rawValue).count), color: .green, title: "ゼンメツ!"),
             ]
         })
         

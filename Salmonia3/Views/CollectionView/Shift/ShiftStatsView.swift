@@ -48,7 +48,9 @@ struct ShiftStatsView: View {
                     case .some(_):
                         NavigationLink(destination: RankingCollection(rank: rank), label: {
                             StatsCardHalf(score: goldenIkuraNum.score, caption: goldenIkuraNum.caption)
+                                .overlay(Text("タップで詳細を表示").underline().padding(.bottom, 4).font(systemName: .Splatfont2, size: 14), alignment: .bottom)
                         })
+                        .buttonStyle(.plain)
                     case .none:
                         StatsCardHalf(score: goldenIkuraNum.score, caption: goldenIkuraNum.caption)
                     }
