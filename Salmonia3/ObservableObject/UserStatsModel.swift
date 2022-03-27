@@ -12,7 +12,7 @@ import SplatNet2
 import SalmonStats
 import SwiftUI
 
-final class UserStatsModel: ObservableObject {
+final class UserStatsService: ObservableObject {
     /// バイト回数
     internal var jobNum: Int = 0
     /// 全体のリザルト
@@ -20,14 +20,18 @@ final class UserStatsModel: ObservableObject {
     /// WAVE毎のリザルト
     internal var waves: [[PieChartModel]] = []
     /// オオモノ討伐
-    internal var defeated: RadarChartStats
+    internal var defeated: RadarChartStats?
     /// 統計
-    internal var stats: RadarChartStats
+    internal var stats: RadarChartStats?
     
-    init(nsaid: String, startTime: Int? = nil) {
+    init() {
+        let session: SalmonStats = SalmonStats()
+        guard let nsaid = session.account?.credential.nsaid else {
+            return
+        }
         let realm = try! Realm()
-        let results = realm.results(nsaid: nsaid, startTime: startTime)
-        let playerResults = realm.playerResults(nsaid: nsaid, startTime: startTime)
+                let results = realm.results(nsaid: nsaid)
+        let playerResults = realm.playerResults(nsaid: nsaid)
         
         self.jobNum = results.count
         self.result = [

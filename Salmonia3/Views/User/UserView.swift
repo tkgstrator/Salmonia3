@@ -12,11 +12,14 @@ import RealmSwift
 import SplatNet2
 
 struct UserView: View {
+    @StateObject var stats: UserStatsService = UserStatsService()
+    
     var body: some View {
         NavigationView(content: {
-            Form(content: {
+            ScrollView(content: {
+//                Dashboard_Defeated(stats: stats.defeated)
             })
-            .navigationTitle("NAVIGATION.USER")
+            .navigationTitle("ダッシュボード")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarTrailing, content: {
@@ -30,49 +33,46 @@ struct UserView: View {
     }
 }
 
-struct UserStatsView: View {
-    @State var selection: Int = 0
-    @StateObject var user: UserStatsModel
-    
-    var WaveAnalysis: some View {
-        Section(content: {
-            PieChart(data: user.result)
-        }, header: {
-            Text("HEADER.WAVE.ANALYSIS")
-        })
-    }
-    
-    var BossDefeatedAnalysis: some View {
-        Section(content: {
-            RadarChartBossLabel()
-                .scaledToFit()
-                .padding(.horizontal)
-                .background(RadarChart(data: [user.defeated.player, user.defeated.other]), alignment: .center)
-        }, header: {
-            Text("HEADER.BOSS.DEFEATED")
-        })
-    }
-    
-    var UserStatsAnalysis: some View {
-        Section(content: {
-            RadarChartUserStats()
-                .scaledToFit()
-                .padding(.horizontal)
-                .background(RadarChart(data: [user.stats.player, user.stats.other]), alignment: .center)
-        })
-    }
-    
-    var body: some View {
-        TabView(selection: $selection, content: {
-            WaveAnalysis
-                .tabItem({
-                    
-                })
-        })
-            .tabViewStyle(.page)
-    }
-}
+//struct UserStatsView: View {
+//    @State var selection: Int = 0
+//    @StateObject var user: UserStatsModel
+//
+//    var WaveAnalysis: some View {
+//        PieChart(data: user.result)
+//    }
+//
+//    var BossDefeatedAnalysis: some View {
+//        Section(content: {
+//            RadarChartBossLabel()
+//                .scaledToFit()
+//                .padding(.horizontal)
+//                .background(RadarChart(data: [user.defeated.player, user.defeated.other]), alignment: .center)
+//        }, header: {
+//            Text("HEADER.BOSS.DEFEATED")
+//        })
+//    }
+//
+//    var UserStatsAnalysis: some View {
+//        Section(content: {
+//            RadarChartUserStats()
+//                .scaledToFit()
+//                .padding(.horizontal)
+//                .background(RadarChart(data: [user.stats.player, user.stats.other]), alignment: .center)
+//        })
+//    }
+//
+//    var body: some View {
+//        TabView(selection: $selection, content: {
+//            WaveAnalysis
+//                .tabItem({
+//
+//                })
+//        })
+//            .tabViewStyle(.page)
+//    }
+//}
 
+/// オオモノ討伐率グラフのラベル
 internal struct RadarChartBossLabel: View {
     var body: some View {
         GeometryReader(content: { geometry in
@@ -85,7 +85,7 @@ internal struct RadarChartBossLabel: View {
                 Image(bossId)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 35, height: 35, alignment: .center)
+                    .frame(width: 24, height: 24, alignment: .center)
                     .background(Circle().fill(Color.originary))
                     .position(
                         x: midX - radius * sin(2 * .pi * CGFloat(index) / count - .pi),
@@ -93,9 +93,12 @@ internal struct RadarChartBossLabel: View {
                     )
             }
         })
+        .scaledToFit()
+        .frame(maxWidth: 200)
     }
 }
 
+/// レーダーチャートを表示
 internal struct RadarChartUserStats: View {
     var body: some View {
         GeometryReader(content: { geometry in
@@ -107,7 +110,7 @@ internal struct RadarChartUserStats: View {
             ForEach(Array(ResultType.allCases.enumerated()), id: \.offset) { index, resultId in
                 Image(resultId)
                     .resizable()
-                    .frame(width: 35, height: 35, alignment: .center)
+                    .frame(width: 30, height: 30, alignment: .center)
                     .scaledToFit()
                     .background(Circle().fill(Color.originary))
                     .position(
@@ -116,6 +119,8 @@ internal struct RadarChartUserStats: View {
                     )
             }
         })
+        .scaledToFit()
+        .frame(maxWidth: 200)
     }
 }
 
@@ -142,9 +147,3 @@ extension Array: Identifiable where Element == PieChartModel {
     
     public var totalCount: Int { Int(map({ $0.value }).reduce(0, +)) }
 }
-//
-//struct UserView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        UserView()
-//    }
-//}
