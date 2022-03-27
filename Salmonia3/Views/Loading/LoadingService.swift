@@ -18,6 +18,8 @@ import RealmSwift
 import CocoaLumberjackSwift
 
 extension Notification.Name {
+    static let didFinishedLogin = Notification.Name("didFinishedLogin")
+    static let didFinishedLoginWithError = Notification.Name("didFinishedLogin")
     static let didFinishedLoadResults = Notification.Name("didFinishedLoadResults")
     static let didFinishedLoadResultsWithError = Notification.Name("didFinishedLoadResultsWithError")
 }

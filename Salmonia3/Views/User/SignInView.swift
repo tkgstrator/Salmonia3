@@ -10,7 +10,7 @@ import SplatNet2
 import SalmonStats
 
 struct SignInView: View {
-    @EnvironmentObject var service: AppService
+    @StateObject var service: LoginService = LoginService()
     @State var isPresented: Bool = false
     
     var body: some View {
@@ -20,6 +20,9 @@ struct SignInView: View {
             Text("ログインする")
         })
             .authorize(isPresented: $isPresented, session: service.session)
+            .fullScreenCover(isPresented: $service.isPresented, content: {
+                LoginView(service: service)
+            })
     }
 }
 

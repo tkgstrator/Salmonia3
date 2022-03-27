@@ -25,6 +25,7 @@ struct SettingView: View {
 #endif
         })
         .navigationTitle("Setting")
+        .font(systemName: .Splatfont2, size: 16)
     }
 }
 

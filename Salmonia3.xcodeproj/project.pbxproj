@@ -62,6 +62,10 @@
 		1033700627DF62600090C6E8 /* SalmonStats+New.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1033700527DF62600090C6E8 /* SalmonStats+New.swift */; };
 		103F841927EE37820076BDA2 /* ResultPlayerKill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F841827EE37820076BDA2 /* ResultPlayerKill.swift */; };
 		103F841B27EEEC750076BDA2 /* WaveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F841A27EEEC750076BDA2 /* WaveService.swift */; };
+		103F841E27EFAA7F0076BDA2 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F841D27EFAA7F0076BDA2 /* LoginService.swift */; };
+		103F842027EFAB0A0076BDA2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F841F27EFAB0A0076BDA2 /* LoginView.swift */; };
+		103F842227EFAB470076BDA2 /* ProgressCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F842127EFAB470076BDA2 /* ProgressCircleView.swift */; };
+		103F842527F049020076BDA2 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F842427F049020076BDA2 /* Dashboard.swift */; };
 		1041BC07277DAB36008B27F1 /* ResultPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041BC06277DAB36008B27F1 /* ResultPlayer.swift */; };
 		1041BC09277DAFFE008B27F1 /* ResultWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041BC08277DAFFE008B27F1 /* ResultWave.swift */; };
 		1041BC0B277DB9C0008B27F1 /* ResultEgg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041BC0A277DB9C0008B27F1 /* ResultEgg.swift */; };
@@ -217,6 +221,10 @@
 		1033700527DF62600090C6E8 /* SalmonStats+New.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SalmonStats+New.swift"; sourceTree = "<group>"; };
 		103F841827EE37820076BDA2 /* ResultPlayerKill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPlayerKill.swift; sourceTree = "<group>"; };
 		103F841A27EEEC750076BDA2 /* WaveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveService.swift; sourceTree = "<group>"; };
+		103F841D27EFAA7F0076BDA2 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		103F841F27EFAB0A0076BDA2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		103F842127EFAB470076BDA2 /* ProgressCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircleView.swift; sourceTree = "<group>"; };
+		103F842427F049020076BDA2 /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
 		1041BC06277DAB36008B27F1 /* ResultPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPlayer.swift; sourceTree = "<group>"; };
 		1041BC08277DAFFE008B27F1 /* ResultWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWave.swift; sourceTree = "<group>"; };
 		1041BC0A277DB9C0008B27F1 /* ResultEgg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultEgg.swift; sourceTree = "<group>"; };
@@ -551,11 +559,32 @@
 		102AD2FE277CE94B00C1E181 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				103F842327F048F00076BDA2 /* Dashboard */,
 				102AD2FF277CE95A00C1E181 /* UserView.swift */,
 				10E74E7F27B6B8B700D0E962 /* SignInView.swift */,
 				10E74E8127B6C42E00D0E962 /* AccountView.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		103F841C27EFAA6F0076BDA2 /* AppService */ = {
+			isa = PBXGroup;
+			children = (
+				10FDD4AE271EE36C00C9C178 /* AppService.swift */,
+				10C7C46D277F00260015ECBB /* AppService+Realm.swift */,
+				107B687A27B7362000238B9D /* AppService+Network.swift */,
+				109B546727CD6C2300FACC1A /* AppService+StoreKit.swift */,
+				10C7D69127CF6EDE002C1F37 /* AppService+Firestore.swift */,
+			);
+			path = AppService;
+			sourceTree = "<group>";
+		};
+		103F842327F048F00076BDA2 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				103F842427F049020076BDA2 /* Dashboard.swift */,
+			);
+			path = Dashboard;
 			sourceTree = "<group>";
 		};
 		104BCEC127D117B500507A50 /* Ranking */ = {
@@ -593,9 +622,11 @@
 		109F97E4272490B000AB1FA3 /* Loading */ = {
 			isa = PBXGroup;
 			children = (
-				109F97E5272490C600AB1FA3 /* LoggingThread.swift */,
+				103F841F27EFAB0A0076BDA2 /* LoginView.swift */,
 				109F97E7272490CE00AB1FA3 /* LoadingView.swift */,
+				109F97E5272490C600AB1FA3 /* LoggingThread.swift */,
 				1006C12627EB298C007479CC /* LoadingService.swift */,
+				103F842127EFAB470076BDA2 /* ProgressCircleView.swift */,
 			);
 			path = Loading;
 			sourceTree = "<group>";
@@ -708,11 +739,8 @@
 		10FDD4AD271EE35D00C9C178 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				10FDD4AE271EE36C00C9C178 /* AppService.swift */,
-				10C7C46D277F00260015ECBB /* AppService+Realm.swift */,
-				107B687A27B7362000238B9D /* AppService+Network.swift */,
-				109B546727CD6C2300FACC1A /* AppService+StoreKit.swift */,
-				10C7D69127CF6EDE002C1F37 /* AppService+Firestore.swift */,
+				103F841C27EFAA6F0076BDA2 /* AppService */,
+				103F841D27EFAA7F0076BDA2 /* LoginService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -950,8 +978,10 @@
 				109F97EB272491E600AB1FA3 /* ResultCollectionView.swift in Sources */,
 				109B545D27CB90DB00FACC1A /* WaveView.swift in Sources */,
 				10162F8A27C7B34D00ACFD4D /* SettingView_Application.swift in Sources */,
+				103F842027EFAB0A0076BDA2 /* LoginView.swift in Sources */,
 				1056E2FA27EDCA4400ECE160 /* Water.swift in Sources */,
 				100556FE27C98B3D0094582D /* StatsCard.swift in Sources */,
+				103F842527F049020076BDA2 /* Dashboard.swift in Sources */,
 				10D406A027EE2F460074C099 /* ResultHeader.swift in Sources */,
 				1006C12327EA2409007479CC /* ResultUser.swift in Sources */,
 				10635096274E2E4D00529930 /* ShiftCollectionView.swift in Sources */,
@@ -961,6 +991,7 @@
 				1006C12D27ED80A6007479CC /* Wavecard.swift in Sources */,
 				10BA13F527201B1400348DD3 /* RealmCoopWave.swift in Sources */,
 				10C7D68E27CF6CDA002C1F37 /* Firecode.swift in Sources */,
+				103F842227EFAB470076BDA2 /* ProgressCircleView.swift in Sources */,
 				100556F727C948200094582D /* ShiftFilterButton.swift in Sources */,
 				1041BC09277DAFFE008B27F1 /* ResultWave.swift in Sources */,
 				109F97E8272490CE00AB1FA3 /* LoadingView.swift in Sources */,
@@ -968,6 +999,7 @@
 				10C7C46C277ED8330015ECBB /* Localized.swift in Sources */,
 				1056E2FC27EDF4C200ECE160 /* SplatInk.swift in Sources */,
 				10196D4227D2120B009CD55E /* StatsWave.swift in Sources */,
+				103F841E27EFAA7F0076BDA2 /* LoginService.swift in Sources */,
 				106B7F8F27D3231900E6B528 /* RankId.swift in Sources */,
 				1033700627DF62600090C6E8 /* SalmonStats+New.swift in Sources */,
 			);
@@ -1149,7 +1181,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1184,7 +1216,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
