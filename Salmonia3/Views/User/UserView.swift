@@ -17,11 +17,20 @@ struct UserView: View {
     var body: some View {
         NavigationView(content: {
             ScrollView(content: {
+                LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 600)), count: 1), content: {
+                    SignIn.User()
+                })
+                LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 200)), count: 3), content: {
+                    SignIn.SplatNet2()
+                    SignIn.SalmonStats()
+                    SignIn.NewSalmonStats()
+                })
                 Dashboard.WaveClearRatio(result: stats.result)
-//                Dashboard_Defeated(stats: stats.defeated)
+                Dashboard.BossDefeatedRatio(defeated: stats.defeated)
             })
             .navigationTitle("ダッシュボード")
             .navigationBarTitleDisplayMode(.inline)
+            .environmentObject(LoadingService())
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarTrailing, content: {
                     NavigationLink(destination: SettingView(), label: {
@@ -110,7 +119,7 @@ internal struct RadarChartUserStats: View {
             ForEach(Array(ResultType.allCases.enumerated()), id: \.offset) { index, resultId in
                 Image(resultId)
                     .resizable()
-                    .frame(width: 30, height: 30, alignment: .center)
+                    .frame(width: 24, height: 24, alignment: .center)
                     .scaledToFit()
                     .background(Circle().fill(Color.originary))
                     .position(
@@ -120,7 +129,6 @@ internal struct RadarChartUserStats: View {
             }
         })
         .scaledToFit()
-        .frame(maxWidth: 200)
     }
 }
 

@@ -8,10 +8,23 @@
 import SwiftUI
 
 struct SettingView_SplatNet2: View {
+    @EnvironmentObject var service: AppService
+    
     var body: some View {
         Section(content: {
             SignInView()
             AccountView()
+            HStack(content: {
+                Text("フレンドコード")
+                Spacer()
+                Text(service.account?.friendCode ?? "未取得")
+                    .foregroundColor(.secondary)
+            })
+            Button(action: {
+//                service.getFriendActivityList()
+            }, label: {
+                Text("アクティビティ")
+            })
         }, header: {
             Text("イカリング2")
         }, footer: {

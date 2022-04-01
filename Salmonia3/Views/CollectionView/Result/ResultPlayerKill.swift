@@ -31,12 +31,7 @@ private struct ResultPlayerKill: View {
     var body: some View {
         GeometryReader(content: { geometry in
             let scale: CGFloat = geometry.width / 360
-            ZStack(content: {
-                Wavecard()
-                    .fill(foregroundColor)
-                    .scaledToFill()
-                    .frame(width: geometry.width, height: 160 * scale, alignment: .top)
-                    .clipShape(RoundedRectangle(cornerRadius: 6))
+            ZStack(alignment: .center, content: {
                 VStack(alignment: .center, content: {
                     Text(player.name ?? "-")
                         .font(systemName: .Splatfont2, size: 16 * scale, foregroundColor: .white)
@@ -60,8 +55,10 @@ private struct ResultPlayerKill: View {
                     })
                 })
             })
+            .position(geometry.center)
         })
-        .aspectRatio(360/160, contentMode: .fit)
+        .aspectRatio(300/130, contentMode: .fit)
+        .backgroundCard(foregroundColor, aspectRatio: 130/300)
     }
 }
 

@@ -12,6 +12,7 @@ import AppTrackingTransparency
 import GoogleMobileAds
 import Common
 import SwiftyStoreKit
+import CocoaLumberjackSwift
 
 @main
 struct Salmonia3App: App {
@@ -55,9 +56,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // SwiftyStoreKitの初期化
         SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
+            DDLogInfo(purchases.count)
             for purchase in purchases {
                 switch purchase.transaction.transactionState {
                     case .purchased, .restored:
+                        DDLogInfo(purchase)
                         if purchase.needsFinishTransaction {
                             // Deliver content from server, then:
                             SwiftyStoreKit.finishTransaction(purchase.transaction)
@@ -74,7 +77,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
-        
     }
     
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

@@ -29,7 +29,7 @@ struct StatsWeaponDetail: View {
                     HStack(content: {
                         Text("支給率")
                         Spacer()
-                        Text(String(format: "%2.2f%%", weaponData.suppliedProb * 100))
+                        Text(String(format: "%5.2f%%", weaponData.suppliedProb * 100))
                     })
                 })
                     .padding(.horizontal, 4)

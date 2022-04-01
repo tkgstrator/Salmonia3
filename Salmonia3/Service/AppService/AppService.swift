@@ -13,92 +13,20 @@ import SwiftyUI
 import SplatNet2
 import RealmSwift
 import Common
-import StoreKit
-import SwiftyStoreKit
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseAuth
 
 final class AppService: ObservableObject {
-    init() {
-        do {
-            self.realm = try Realm()
-        } catch {
-            var config = Realm.Configuration.defaultConfiguration
-            config.deleteRealmIfMigrationNeeded = true
-            config.schemaVersion = schemeVersion
-            self.realm = try! Realm(configuration: config, queue: nil)
-        }
-        self.session = SalmonStats(refreshable: true)
-        /// アカウントを設定
-        self.account = self.session.account
-        /// シフト情報を更新
-        self.addLatestShiftSchedule()
-        /// FirebaseAuth
-        Auth.auth().addStateDidChangeListener({ (auth, user) in
-            self.user = user
-        })
-        /// スケジュール情報を追加
-        self.schedules = self.getVisibleSchedules()
-        /// プロダクト情報を取得
-        SwiftyStoreKit.retrieveProductsInfo(productIdentifiers, completion: { result in
-            self.products = result.retrievedProducts
-        })
-    }
-    /// アカウント情報
-    @Published var account: Common.UserInfo? = nil
-    /// サインイン中であることを表示
-    @Published var isSignIn: Bool = false
-    /// サインイン中の状態
-    @Published var signInState: SignInState? = .none
-    /// セッション
-    @Published var session: SalmonStats
-    /// リザルト取得中状態にするためのフラグ
-    @Published var isLoading: Bool = false
-    /// 受け取ったエラーの内容
-    @Published var sp2Error: SP2Error? {
-        willSet {
-            if let _ = newValue {
-                isErrorPresented = true
-            } else {
-                isErrorPresented = false
-            }
-        }
-    }
-    /// 受け取ったエラーを表示しているかどうかのフラグ
-    @Published var isErrorPresented: Bool = false
+    init() {}
+    
     /// アプリの外見の設定
     @Published var apperances: Appearances = Appearances.shared
     /// アプリの詳細の設定
     @Published var application: Application = Application.shared
-    /// アプリの課金情報
-    private let productIdentifiers: Set<String> = [
-        "work.tkgstrator.salmonia3.chip500",
-        "work.tkgstrator.salmonia3.chip980"
-    ]
-    /// 課金コンテンツ情報
-    @Published var products: Set<SKProduct> = Set<SKProduct>()
     /// シフト表示モード
     @AppStorage("APP_SHIFT_DISPLAY_MODE") var shiftDisplayMode: ShiftDisplayMode = .current
-    /// Firestore
-    internal let firestore: Firestore = Firestore.firestore()
-    internal let encoder: Firestore.Encoder = Firestore.Encoder()
-    internal let decoder: Firestore.Decoder = Firestore.Decoder()
-    internal let provider: OAuthProvider = OAuthProvider(providerID: "twitter.com")
-    /// Firebaseユーザ
-    @Published var user: FirebaseAuth.User?
-    /// Firestore連携フラグ
-    @AppStorage("APP.FIRESTORE.ISSIGNIN") var isConnected: Bool = false
-    /// SalmonStats連携フラグ
-    @AppStorage("APP.SALMONSTATS.UPDATED") var uploaded: Bool = false
-    /// 表示するシフト一覧
-    @Published var schedules: [RealmCoopShift] = []
-    /// RealmSwiftのScheme Version
-    private let schemeVersion: UInt64 = 8192
-    /// RealmSwiftのインスタンス
-    internal let realm: Realm
-    /// スケジューラ
-    internal var task: Set<AnyCancellable> = Set<AnyCancellable>()
+    
     class Application {
         private init() {}
         static let shared: Application = Application()

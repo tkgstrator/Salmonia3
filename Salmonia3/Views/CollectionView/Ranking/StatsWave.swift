@@ -80,7 +80,7 @@ struct RankedCirclebar: View {
             }
         }()
         
-        return RoundedRectangle(cornerRadius: 10)
+        return RoundedRectangle(cornerRadius: 6)
             .fill(Color.whitesmoke)
             .overlay(
                 description
@@ -107,10 +107,10 @@ struct RankedCirclebar: View {
                     .rotationEffect(.degrees(isMoving ? 180 - degree : 0))
                     .animation(Animation.easeInOut(duration: 3), value: isMoving)
                 Text(String(format: "%@", rankedValue.stringText))
-                    .font(systemName: .Splatfont2, size: 26)
+                    .font(systemName: .Splatfont2, size: 24)
                     .offset(y: -10)
                 Text(String(format: "%@人中%@位", total.stringText, rank.stringText))
-                    .font(systemName: .Splatfont2, size: 14)
+                    .font(systemName: .Splatfont2, size: 13)
                     .offset(y: 20)
                     .foregroundColor(.secondary)
             })

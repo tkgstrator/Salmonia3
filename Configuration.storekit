@@ -43,16 +43,83 @@
       "productID" : "work.tkgstrator.salmonia3.chip980",
       "referenceName" : "野口英世を送る",
       "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "500",
+      "familyShareable" : false,
+      "internalID" : "CECCF527",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "work.tkgstrator.disableads",
+      "referenceName" : "DisableAds",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "500",
+      "familyShareable" : false,
+      "internalID" : "D2DB6EE7",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "work.tkgstrator.multiaccounts",
+      "referenceName" : "MultiAccounts",
+      "type" : "NonConsumable"
     }
   ],
   "settings" : {
-    "_storefront" : "JPN"
+    "_askToBuyEnabled" : true,
+    "_compatibilityTimeRate" : 6,
+    "_locale" : "ja",
+    "_storefront" : "JPN",
+    "_timeRate" : 15
   },
   "subscriptionGroups" : [
+    {
+      "id" : "7382521F",
+      "localizations" : [
 
+      ],
+      "name" : "work.tkgstrator",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "100",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "F6FFA7BF",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "",
+              "displayName" : "",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "work.tkgstrator.upgradeapi",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "API Update",
+          "subscriptionGroupID" : "7382521F",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
   ],
   "version" : {
     "major" : 1,
-    "minor" : 1
+    "minor" : 2
   }
 }

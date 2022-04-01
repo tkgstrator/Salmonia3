@@ -92,7 +92,7 @@ struct StatsCard: View {
                     self.scale = 1.0
                 }
             })
-            .background(RoundedRectangle(cornerRadius: 10).fill(Color.whitesmoke).overlay(Text(caption).font(systemName: .Splatfont2, size: 14).padding(8), alignment: .topLeading))
+            .background(RoundedRectangle(cornerRadius: 6).fill(Color.whitesmoke).overlay(Text(caption).font(systemName: .Splatfont2, size: 14).padding(8), alignment: .topLeading))
     }
 }
 

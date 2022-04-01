@@ -11,8 +11,24 @@ import Common
 import CocoaLumberjackSwift
 import RealmSwift
 import SplatNet2
+import Combine
 
 extension AppService {
+    func getFriendActivityList() {
+        session.getFriendActivityList()
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    DDLogError(error)
+                }
+            }, receiveValue: { response in
+                DDLogInfo(response)
+            })
+            .store(in: &task)
+    }
+    
     var latestResultId: Int? {
         realm.objects(RealmCoopResult.self).latestResultId(account: account)
     }

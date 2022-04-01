@@ -28,7 +28,7 @@ struct StatsCardHalf: View {
     }
     
     var Background: some View {
-        RoundedRectangle(cornerRadius: 10)
+        RoundedRectangle(cornerRadius: 6)
             .fill(Color.whitesmoke)
             .overlay(Text(caption)
                         .font(systemName: .Splatfont2, size: 14)
