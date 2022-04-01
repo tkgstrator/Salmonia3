@@ -14,12 +14,12 @@ struct SettingView: View {
     
     var body: some View {
         Form(content: {
-            SettingView_SplatNet2()
-            SettingView_SalmonStats()
-            SettingView_Firebase()
             SettingView_Appearance()
             SettingView_Support()
             SettingView_Application()
+            NavigationLink(destination: SettingView_StoreKit(), label: {
+                Text("StoreKit")
+            })
 #if DEBUG
             SettingView_Debug()
 #endif

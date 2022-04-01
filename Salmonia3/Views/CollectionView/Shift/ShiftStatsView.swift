@@ -44,16 +44,11 @@ struct ShiftStatsView: View {
                     StatsCardHalf(score: ikuraNum.score, caption: ikuraNum.caption)
                 }
                 ForEach(stats.teamGoldenIkuraNum) { goldenIkuraNum in
-                    switch service.user {
-                    case .some(_):
-                        NavigationLink(destination: RankingCollection(rank: rank), label: {
-                            StatsCardHalf(score: goldenIkuraNum.score, caption: goldenIkuraNum.caption)
-                                .overlay(Text("タップで詳細を表示").underline().padding(.bottom, 4).font(systemName: .Splatfont2, size: 14), alignment: .bottom)
-                        })
-                        .buttonStyle(.plain)
-                    case .none:
+                    NavigationLink(destination: RankingCollection(rank: rank), label: {
                         StatsCardHalf(score: goldenIkuraNum.score, caption: goldenIkuraNum.caption)
-                    }
+                            .overlay(Text("タップで詳細を表示").underline().padding(.bottom, 4).font(systemName: .Splatfont2, size: 14), alignment: .bottom)
+                    })
+                    .buttonStyle(.plain)
                 }
                 ForEach(stats.ikuraNum) { ikuraNum in
                     StatsCard(stats: ikuraNum)

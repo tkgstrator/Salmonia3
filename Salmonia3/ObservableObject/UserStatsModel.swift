@@ -37,14 +37,14 @@ final class UserStatsService: ObservableObject {
         self.result = [
             PieChartModel(value: Float(results.filter("isClear=%@", true).count), color: .blue, title: "クリア"),
             PieChartModel(value: Float(results.filter("failureReason=%@", FailureReason.timeLimit.rawValue).count), color: .red, title: "時間切れ"),
-            PieChartModel(value: Float(results.filter("failureReason=%@", FailureReason.wipeOut.rawValue).count), color: .green, title: "ゼンメツ!"),
+            PieChartModel(value: Float(results.filter("failureReason=%@", FailureReason.wipeOut.rawValue).count), color: .orange, title: "ゼンメツ!"),
         ]
         self.waves = [1, 2, 3].map({ result in
             // 各WAVEで失敗したリザルトを取得
             let results = results.filter("failureWave=%@", result)
             return [
                 PieChartModel(value: Float(results.filter("failureReason=%@", FailureReason.timeLimit.rawValue).count), color: .red, title: "時間切れ"),
-                PieChartModel(value: Float(results.filter("failureReason=%@", FailureReason.wipeOut.rawValue).count), color: .green, title: "ゼンメツ!"),
+                PieChartModel(value: Float(results.filter("failureReason=%@", FailureReason.wipeOut.rawValue).count), color: .orange, title: "ゼンメツ!"),
             ]
         })
         
@@ -53,14 +53,14 @@ final class UserStatsService: ObservableObject {
         let totalBossCounts: [Float] = flat(of: results.map({ $0.bossCounts.map({ Float($0) }) }))
         self.defeated = RadarChartStats(
             player: RadarChartSet(
-                data: avg(of: div(sub(totalBossKillCounts, playerTotalBossKillCounts), div: 3), div: totalBossCounts),
-                caption: "",
-                color: .yellow
+                data: avg(of: playerTotalBossKillCounts, div: totalBossCounts),
+                caption: "あなた",
+                color: .blue
             ),
             other: RadarChartSet(
-                data: avg(of: playerTotalBossKillCounts, div: totalBossCounts),
-                caption: "",
-                color: .blue
+                data: avg(of: div(sub(totalBossKillCounts, playerTotalBossKillCounts), div: 3), div: totalBossCounts),
+                caption: "なかま",
+                color: .yellow
             )
         )
 

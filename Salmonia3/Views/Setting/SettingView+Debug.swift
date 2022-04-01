@@ -14,12 +14,12 @@ struct SettingView_Debug: View {
     var body: some View {
         Section(content: {
             Button(action: {
-                service.session.account?.credential.iksmSession.removeAll()
+//                service.session.account?.credential.iksmSession.removeAll()
             }, label: {
                 Text("Delete IksmSession")
             })
             Button(action: {
-                service.session.setXProductVersion(version: "1.13.1")
+//                service.session.setXProductVersion(version: "1.13.1")
             }, label: {
                 Text("Set Previous X-Product Version")
             })
@@ -28,17 +28,17 @@ struct SettingView_Debug: View {
                 Text("Upload Test Data")
             })
             Button(action: {
-                service.deleteAllResultsFromDatabase()
+//                service.deleteAllResultsFromDatabase()
             }, label: {
                 Text("Delete All Results")
             })
             Button(action: {
-                service.getResultsFromFirestore()
+//                service.getResultsFromFirestore()
             }, label: {
                 Text("Get Results From Firestore")
             })
             Button(action: {
-                service.getResultsFromFirestore()
+//                service.getResultsFromFirestore()
             }, label: {
                 Text("Get Wave Results")
             })

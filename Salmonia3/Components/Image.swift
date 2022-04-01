@@ -34,4 +34,23 @@ extension Image {
     init(_ rankId: RankId) {
         self.init("Rank/\(rankId.rawValue)", bundle: .main)
     }
+    
+    init(_ asset: SignInType) {
+        self.init(asset.imageName, bundle: .main)
+    }
+}
+
+enum SignInType: String, CaseIterable {
+    enum Package {
+        public static let namespace = "SplatNet2" // Namespaceを指定
+        public static let version = "1.0.0"
+    }
+    
+    case splatnet2      = "SplatNet2"
+    case salmonstats    = "SalmonStats"
+    case newsalmonstats = "NewSalmonStats"
+    
+    public var imageName: String {
+        "\(Package.namespace)/\(rawValue)"
+    }
 }

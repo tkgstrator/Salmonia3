@@ -108,7 +108,7 @@ struct StatsCardSmall: View {
                 }
             })
             .overlay(Caption, alignment: .bottom)
-            .background(RoundedRectangle(cornerRadius: 10).fill(Color.whitesmoke).overlay(bossType.resizable().frame(width: 30, height: 30, alignment: .center).padding(4), alignment: .topLeading))
+            .background(RoundedRectangle(cornerRadius: 6).fill(Color.whitesmoke).overlay(bossType.resizable().frame(width: 30, height: 30, alignment: .center).padding(4), alignment: .topLeading))
     }
 }
 

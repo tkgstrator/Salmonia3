@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct SettingView_Firebase: View {
-    @EnvironmentObject var service: AppService
+    @StateObject var service: LoadingService = LoadingService()
     
     var body: some View {
         Section(content: {
             if service.user == nil {
                 Button(action: {
-                    service.twitterSignIn()
+                    service.signInWithTwitterAccount()
                 }, label: {
                     Text("連携する")
                 })

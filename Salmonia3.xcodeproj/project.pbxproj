@@ -21,8 +21,6 @@
 		101141B2278477060088DF4C /* UserStatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101141B1278477060088DF4C /* UserStatsModel.swift */; };
 		10162F8827C7B2CA00ACFD4D /* SettingView+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10162F8727C7B2CA00ACFD4D /* SettingView+Appearance.swift */; };
 		10162F8A27C7B34D00ACFD4D /* SettingView_Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10162F8927C7B34D00ACFD4D /* SettingView_Application.swift */; };
-		10162F8C27C7B3EC00ACFD4D /* SettingView_SplatNet2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10162F8B27C7B3EC00ACFD4D /* SettingView_SplatNet2.swift */; };
-		10162F8E27C7B4A200ACFD4D /* SettingView+SalmonStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10162F8D27C7B4A100ACFD4D /* SettingView+SalmonStats.swift */; };
 		10196D4227D2120B009CD55E /* StatsWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10196D4127D2120B009CD55E /* StatsWave.swift */; };
 		10196D4427D30BAA009CD55E /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10196D4327D30BA9009CD55E /* Triangle.swift */; };
 		101AED11271E3109009556B2 /* Salmonia3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED10271E3109009556B2 /* Salmonia3App.swift */; };
@@ -65,7 +63,7 @@
 		103F841E27EFAA7F0076BDA2 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F841D27EFAA7F0076BDA2 /* LoginService.swift */; };
 		103F842027EFAB0A0076BDA2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F841F27EFAB0A0076BDA2 /* LoginView.swift */; };
 		103F842227EFAB470076BDA2 /* ProgressCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F842127EFAB470076BDA2 /* ProgressCircleView.swift */; };
-		103F842527F049020076BDA2 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F842427F049020076BDA2 /* Dashboard.swift */; };
+		103F842527F049020076BDA2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F842427F049020076BDA2 /* User.swift */; };
 		1041BC07277DAB36008B27F1 /* ResultPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041BC06277DAB36008B27F1 /* ResultPlayer.swift */; };
 		1041BC09277DAFFE008B27F1 /* ResultWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041BC08277DAFFE008B27F1 /* ResultWave.swift */; };
 		1041BC0B277DB9C0008B27F1 /* ResultEgg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041BC0A277DB9C0008B27F1 /* ResultEgg.swift */; };
@@ -73,6 +71,7 @@
 		1041BC0F277DC695008B27F1 /* ResultWeapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041BC0E277DC695008B27F1 /* ResultWeapon.swift */; };
 		104BCEC327D117C400507A50 /* RankingCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BCEC227D117C400507A50 /* RankingCollection.swift */; };
 		104BCEC527D117DC00507A50 /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104BCEC427D117DC00507A50 /* RankingView.swift */; };
+		105614FE27F336EE008355FC /* StoreKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105614FD27F336EE008355FC /* StoreKitService.swift */; };
 		1056E2FA27EDCA4400ECE160 /* Water.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1056E2F927EDCA4400ECE160 /* Water.swift */; };
 		1056E2FC27EDF4C200ECE160 /* SplatInk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1056E2FB27EDF4C200ECE160 /* SplatInk.swift */; };
 		105E868627E4B3BB0015A4F2 /* FSCoopResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105E868527E4B3BB0015A4F2 /* FSCoopResult.swift */; };
@@ -81,18 +80,19 @@
 		10635094274E2B1F00529930 /* RealmCoopShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10635093274E2B1F00529930 /* RealmCoopShift.swift */; };
 		10635096274E2E4D00529930 /* ShiftCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10635095274E2E4D00529930 /* ShiftCollectionView.swift */; };
 		106B7F8F27D3231900E6B528 /* RankId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106B7F8E27D3231800E6B528 /* RankId.swift */; };
-		107B687B27B7362000238B9D /* AppService+Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107B687A27B7362000238B9D /* AppService+Network.swift */; };
+		106E322C27F701D600778CAA /* ReceiptError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106E322B27F701D600778CAA /* ReceiptError.swift */; };
 		10805B2A27E7CB92001A8B68 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10805B2927E7CB92001A8B68 /* RealmSwift */; };
 		10805B2E27E7CBE7001A8B68 /* SwiftyUI in Frameworks */ = {isa = PBXBuildFile; productRef = 10805B2D27E7CBE7001A8B68 /* SwiftyUI */; };
-		10805B3027E7CD77001A8B68 /* SwiftyChart in Frameworks */ = {isa = PBXBuildFile; productRef = 10805B2F27E7CD77001A8B68 /* SwiftyChart */; };
 		1082F77B27D072A000044581 /* ResultShiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1082F77A27D072A000044581 /* ResultShiftView.swift */; };
+		1097978F27F5A97400EF771B /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097978E27F5A97400EF771B /* SignIn.swift */; };
+		1097979127F5AB2E00EF771B /* Hanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097979027F5AB2E00EF771B /* Hanger.swift */; };
 		109A255127D44EC700674AA5 /* RankShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109A255027D44EC700674AA5 /* RankShiftStats.swift */; };
+		109A837127F286D50043ECD0 /* SettingView+StoreKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109A837027F286D50043ECD0 /* SettingView+StoreKit.swift */; };
 		109B545B27CB8F8300FACC1A /* WaveCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B545A27CB8F8300FACC1A /* WaveCollectionView.swift */; };
 		109B545D27CB90DB00FACC1A /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B545C27CB90DB00FACC1A /* WaveView.swift */; };
 		109B545F27CD60E800FACC1A /* SettingView+Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B545E27CD60E800FACC1A /* SettingView+Support.swift */; };
 		109B546127CD64B000FACC1A /* SupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B546027CD64B000FACC1A /* SupportView.swift */; };
 		109B546327CD688600FACC1A /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 109B546227CD688100FACC1A /* Configuration.storekit */; };
-		109B546827CD6C2300FACC1A /* AppService+StoreKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B546727CD6C2300FACC1A /* AppService+StoreKit.swift */; };
 		109B546A27CD705200FACC1A /* SettingView+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B546927CD705100FACC1A /* SettingView+Debug.swift */; };
 		109B546C27CDC04400FACC1A /* StatsWeapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B546B27CDC04400FACC1A /* StatsWeapon.swift */; };
 		109F97E6272490C600AB1FA3 /* LoggingThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97E5272490C600AB1FA3 /* LoggingThread.swift */; };
@@ -106,16 +106,14 @@
 		109F98052724EC9400AB1FA3 /* Rainbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F98042724EC9400AB1FA3 /* Rainbow.swift */; };
 		10AAE04627CA764200E8E3D4 /* StatsCardHalf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AAE04527CA764200E8E3D4 /* StatsCardHalf.swift */; };
 		10AAE04A27CAC35600E8E3D4 /* StatsSpecial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AAE04927CAC35600E8E3D4 /* StatsSpecial.swift */; };
+		10ADFBD627F06E86000ABFF7 /* SwiftyChart in Frameworks */ = {isa = PBXBuildFile; productRef = 10ADFBD527F06E86000ABFF7 /* SwiftyChart */; };
 		10AE389E27C99D170084D8E6 /* UserShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AE389D27C99D170084D8E6 /* UserShiftStats.swift */; };
 		10BA13F327201AF300348DD3 /* RealmCoopResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13F227201AF300348DD3 /* RealmCoopResult.swift */; };
 		10BA13F527201B1400348DD3 /* RealmCoopWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13F427201B1400348DD3 /* RealmCoopWave.swift */; };
 		10BA13F727201B4700348DD3 /* RealmCoopPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA13F627201B4700348DD3 /* RealmCoopPlayer.swift */; };
 		10C000DC274CE3F400870DED /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C000DB274CE3F400870DED /* Image.swift */; };
 		10C7C46C277ED8330015ECBB /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7C46B277ED8330015ECBB /* Localized.swift */; };
-		10C7C46E277F00260015ECBB /* AppService+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7C46D277F00260015ECBB /* AppService+Realm.swift */; };
 		10C7D68E27CF6CDA002C1F37 /* Firecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D68D27CF6CDA002C1F37 /* Firecode.swift */; };
-		10C7D69227CF6EDE002C1F37 /* AppService+Firestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D69127CF6EDE002C1F37 /* AppService+Firestore.swift */; };
-		10C7D69427CF8DCD002C1F37 /* SettingView+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D69327CF8DCD002C1F37 /* SettingView+Firebase.swift */; };
 		10C7D69727CF92E1002C1F37 /* StatsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D69627CF92E1002C1F37 /* StatsType.swift */; };
 		10C7D69927CF92FC002C1F37 /* Comparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D69827CF92FC002C1F37 /* Comparison.swift */; };
 		10C7D69B27CF93E0002C1F37 /* Defeated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D69A27CF93E0002C1F37 /* Defeated.swift */; };
@@ -123,10 +121,11 @@
 		10C7D69F27CF941D002C1F37 /* WeaponProb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D69E27CF941D002C1F37 /* WeaponProb.swift */; };
 		10C7D6A127CF9431002C1F37 /* SpecialProb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D6A027CF9431002C1F37 /* SpecialProb.swift */; };
 		10C7D6A327CF96C0002C1F37 /* UserShiftStats+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7D6A227CF96C0002C1F37 /* UserShiftStats+Firebase.swift */; };
+		10CC66F327F5A65400971E37 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CC66F227F5A65400971E37 /* Dashboard.swift */; };
 		10D406A027EE2F460074C099 /* ResultHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D4069F27EE2F460074C099 /* ResultHeader.swift */; };
 		10E0C8A827CA6908002F4506 /* StatsCardSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E0C8A727CA6908002F4506 /* StatsCardSmall.swift */; };
-		10E74E8027B6B8B700D0E962 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E74E7F27B6B8B700D0E962 /* SignInView.swift */; };
 		10E74E8227B6C42E00D0E962 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E74E8127B6C42E00D0E962 /* AccountView.swift */; };
+		10EB626B27F5BF1700CC638F /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 10EB626A27F5BF1700CC638F /* SDWebImageSwiftUI */; };
 		10F38E87277E1E9900CD945F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10F38E89277E1E9900CD945F /* InfoPlist.strings */; };
 		10FDD4AF271EE36C00C9C178 /* AppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FDD4AE271EE36C00C9C178 /* AppService.swift */; };
 /* End PBXBuildFile section */
@@ -185,8 +184,6 @@
 		101141B1278477060088DF4C /* UserStatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatsModel.swift; sourceTree = "<group>"; };
 		10162F8727C7B2CA00ACFD4D /* SettingView+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+Appearance.swift"; sourceTree = "<group>"; };
 		10162F8927C7B34D00ACFD4D /* SettingView_Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView_Application.swift; sourceTree = "<group>"; };
-		10162F8B27C7B3EC00ACFD4D /* SettingView_SplatNet2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView_SplatNet2.swift; sourceTree = "<group>"; };
-		10162F8D27C7B4A100ACFD4D /* SettingView+SalmonStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+SalmonStats.swift"; sourceTree = "<group>"; };
 		10196D4127D2120B009CD55E /* StatsWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsWave.swift; sourceTree = "<group>"; };
 		10196D4327D30BA9009CD55E /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		101AEB8527E20E5B004F42F9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -207,6 +204,7 @@
 		101AED56271E367D009556B2 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		101AED59271E3946009556B2 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		101AED60271E3F2B009556B2 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		1023535427F06E1B00101B68 /* SwiftyChart */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftyChart; path = ../SwiftyChart; sourceTree = "<group>"; };
 		1027057B27D48B5600326B32 /* WeaponCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponCollectionView.swift; sourceTree = "<group>"; };
 		1027057D27D48E4200326B32 /* WeaponShiftStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponShiftStats.swift; sourceTree = "<group>"; };
 		1027057F27D4A34E00326B32 /* StatsWeaponDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StatsWeaponDetail.swift; path = ../../StatsWeaponDetail.swift; sourceTree = "<group>"; };
@@ -224,7 +222,7 @@
 		103F841D27EFAA7F0076BDA2 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		103F841F27EFAB0A0076BDA2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		103F842127EFAB470076BDA2 /* ProgressCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircleView.swift; sourceTree = "<group>"; };
-		103F842427F049020076BDA2 /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
+		103F842427F049020076BDA2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1041BC06277DAB36008B27F1 /* ResultPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPlayer.swift; sourceTree = "<group>"; };
 		1041BC08277DAFFE008B27F1 /* ResultWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWave.swift; sourceTree = "<group>"; };
 		1041BC0A277DB9C0008B27F1 /* ResultEgg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultEgg.swift; sourceTree = "<group>"; };
@@ -232,6 +230,7 @@
 		1041BC0E277DC695008B27F1 /* ResultWeapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWeapon.swift; sourceTree = "<group>"; };
 		104BCEC227D117C400507A50 /* RankingCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCollection.swift; sourceTree = "<group>"; };
 		104BCEC427D117DC00507A50 /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
+		105614FD27F336EE008355FC /* StoreKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitService.swift; sourceTree = "<group>"; };
 		1056E2F927EDCA4400ECE160 /* Water.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Water.swift; sourceTree = "<group>"; };
 		1056E2FB27EDF4C200ECE160 /* SplatInk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplatInk.swift; sourceTree = "<group>"; };
 		105E868527E4B3BB0015A4F2 /* FSCoopResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSCoopResult.swift; sourceTree = "<group>"; };
@@ -240,17 +239,19 @@
 		10635093274E2B1F00529930 /* RealmCoopShift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopShift.swift; sourceTree = "<group>"; };
 		10635095274E2E4D00529930 /* ShiftCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftCollectionView.swift; sourceTree = "<group>"; };
 		106B7F8E27D3231800E6B528 /* RankId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankId.swift; sourceTree = "<group>"; };
-		107B687A27B7362000238B9D /* AppService+Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppService+Network.swift"; sourceTree = "<group>"; };
+		106E322B27F701D600778CAA /* ReceiptError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptError.swift; sourceTree = "<group>"; };
 		10805B2C27E7CBDD001A8B68 /* SwiftyUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftyUI; path = ../SwiftyUI; sourceTree = "<group>"; };
 		1082F77A27D072A000044581 /* ResultShiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultShiftView.swift; sourceTree = "<group>"; };
 		1084DA1F27E7B0700082397A /* SplatNet2 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SplatNet2; path = ../SplatNet2; sourceTree = "<group>"; };
+		1097978E27F5A97400EF771B /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
+		1097979027F5AB2E00EF771B /* Hanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hanger.swift; sourceTree = "<group>"; };
 		109A255027D44EC700674AA5 /* RankShiftStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankShiftStats.swift; sourceTree = "<group>"; };
+		109A837027F286D50043ECD0 /* SettingView+StoreKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+StoreKit.swift"; sourceTree = "<group>"; };
 		109B545A27CB8F8300FACC1A /* WaveCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveCollectionView.swift; sourceTree = "<group>"; };
 		109B545C27CB90DB00FACC1A /* WaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
 		109B545E27CD60E800FACC1A /* SettingView+Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+Support.swift"; sourceTree = "<group>"; };
 		109B546027CD64B000FACC1A /* SupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportView.swift; sourceTree = "<group>"; };
 		109B546227CD688100FACC1A /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
-		109B546727CD6C2300FACC1A /* AppService+StoreKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppService+StoreKit.swift"; sourceTree = "<group>"; };
 		109B546927CD705100FACC1A /* SettingView+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+Debug.swift"; sourceTree = "<group>"; };
 		109B546B27CDC04400FACC1A /* StatsWeapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsWeapon.swift; sourceTree = "<group>"; };
 		109F97E5272490C600AB1FA3 /* LoggingThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingThread.swift; sourceTree = "<group>"; };
@@ -270,10 +271,7 @@
 		10BA13F627201B4700348DD3 /* RealmCoopPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoopPlayer.swift; sourceTree = "<group>"; };
 		10C000DB274CE3F400870DED /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		10C7C46B277ED8330015ECBB /* Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
-		10C7C46D277F00260015ECBB /* AppService+Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppService+Realm.swift"; sourceTree = "<group>"; };
 		10C7D68D27CF6CDA002C1F37 /* Firecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firecode.swift; sourceTree = "<group>"; };
-		10C7D69127CF6EDE002C1F37 /* AppService+Firestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppService+Firestore.swift"; sourceTree = "<group>"; };
-		10C7D69327CF8DCD002C1F37 /* SettingView+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+Firebase.swift"; sourceTree = "<group>"; };
 		10C7D69627CF92E1002C1F37 /* StatsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsType.swift; sourceTree = "<group>"; };
 		10C7D69827CF92FC002C1F37 /* Comparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comparison.swift; sourceTree = "<group>"; };
 		10C7D69A27CF93E0002C1F37 /* Defeated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defeated.swift; sourceTree = "<group>"; };
@@ -281,9 +279,9 @@
 		10C7D69E27CF941D002C1F37 /* WeaponProb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponProb.swift; sourceTree = "<group>"; };
 		10C7D6A027CF9431002C1F37 /* SpecialProb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialProb.swift; sourceTree = "<group>"; };
 		10C7D6A227CF96C0002C1F37 /* UserShiftStats+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserShiftStats+Firebase.swift"; sourceTree = "<group>"; };
+		10CC66F227F5A65400971E37 /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
 		10D4069F27EE2F460074C099 /* ResultHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultHeader.swift; sourceTree = "<group>"; };
 		10E0C8A727CA6908002F4506 /* StatsCardSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCardSmall.swift; sourceTree = "<group>"; };
-		10E74E7F27B6B8B700D0E962 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		10E74E8127B6C42E00D0E962 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		10F38E88277E1E9900CD945F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		10F38E8A277E1E9A00CD945F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -295,6 +293,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10EB626B27F5BF1700CC638F /* SDWebImageSwiftUI in Frameworks */,
 				1032849427E7C6DF008964EB /* GoogleMobileAds in Frameworks */,
 				1032849727E7C6FD008964EB /* StoreKit.framework in Frameworks */,
 				1032849D27E7C7C1008964EB /* FirebaseAnalytics in Frameworks */,
@@ -306,7 +305,7 @@
 				1032849F27E7C7C1008964EB /* FirebaseAuth in Frameworks */,
 				103284A527E7C7C1008964EB /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				1032849027E7C6D7008964EB /* SalmonStats in Frameworks */,
-				10805B3027E7CD77001A8B68 /* SwiftyChart in Frameworks */,
+				10ADFBD627F06E86000ABFF7 /* SwiftyChart in Frameworks */,
 				10805B2E27E7CBE7001A8B68 /* SwiftyUI in Frameworks */,
 				103284A127E7C7C1008964EB /* FirebaseAuthCombine-Community in Frameworks */,
 			);
@@ -388,6 +387,7 @@
 		101AEB7E27E1CF3B004F42F9 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				1023535427F06E1B00101B68 /* SwiftyChart */,
 				1084DA1F27E7B0700082397A /* SplatNet2 */,
 				10805B2C27E7CBDD001A8B68 /* SwiftyUI */,
 			);
@@ -468,6 +468,7 @@
 		101AED3A271E3158009556B2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				10CC66F127F5A64700971E37 /* Dashboard */,
 				102AD2FE277CE94B00C1E181 /* User */,
 				109F97E9272491D800AB1FA3 /* CollectionView */,
 				109F97E4272490B000AB1FA3 /* Loading */,
@@ -524,6 +525,7 @@
 				101AED59271E3946009556B2 /* SettingView.swift */,
 				109B545E27CD60E800FACC1A /* SettingView+Support.swift */,
 				109B546927CD705100FACC1A /* SettingView+Debug.swift */,
+				109A837027F286D50043ECD0 /* SettingView+StoreKit.swift */,
 				109B546027CD64B000FACC1A /* SupportView.swift */,
 			);
 			path = Setting;
@@ -552,6 +554,7 @@
 				1006C12C27ED80A6007479CC /* Wavecard.swift */,
 				1056E2F927EDCA4400ECE160 /* Water.swift */,
 				1056E2FB27EDF4C200ECE160 /* SplatInk.swift */,
+				1097979027F5AB2E00EF771B /* Hanger.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -561,7 +564,6 @@
 			children = (
 				103F842327F048F00076BDA2 /* Dashboard */,
 				102AD2FF277CE95A00C1E181 /* UserView.swift */,
-				10E74E7F27B6B8B700D0E962 /* SignInView.swift */,
 				10E74E8127B6C42E00D0E962 /* AccountView.swift */,
 			);
 			path = User;
@@ -571,10 +573,6 @@
 			isa = PBXGroup;
 			children = (
 				10FDD4AE271EE36C00C9C178 /* AppService.swift */,
-				10C7C46D277F00260015ECBB /* AppService+Realm.swift */,
-				107B687A27B7362000238B9D /* AppService+Network.swift */,
-				109B546727CD6C2300FACC1A /* AppService+StoreKit.swift */,
-				10C7D69127CF6EDE002C1F37 /* AppService+Firestore.swift */,
 			);
 			path = AppService;
 			sourceTree = "<group>";
@@ -582,7 +580,7 @@
 		103F842327F048F00076BDA2 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				103F842427F049020076BDA2 /* Dashboard.swift */,
+				103F842427F049020076BDA2 /* User.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -597,14 +595,19 @@
 			path = Ranking;
 			sourceTree = "<group>";
 		};
+		105614FC27F336DA008355FC /* StoreKitService */ = {
+			isa = PBXGroup;
+			children = (
+				105614FD27F336EE008355FC /* StoreKitService.swift */,
+			);
+			path = StoreKitService;
+			sourceTree = "<group>";
+		};
 		105F8B3E27C7B25300DD5B13 /* Appearance */ = {
 			isa = PBXGroup;
 			children = (
 				10162F8727C7B2CA00ACFD4D /* SettingView+Appearance.swift */,
 				10162F8927C7B34D00ACFD4D /* SettingView_Application.swift */,
-				10162F8B27C7B3EC00ACFD4D /* SettingView_SplatNet2.swift */,
-				10162F8D27C7B4A100ACFD4D /* SettingView+SalmonStats.swift */,
-				10C7D69327CF8DCD002C1F37 /* SettingView+Firebase.swift */,
 			);
 			path = Appearance;
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 			children = (
 				10C7C46B277ED8330015ECBB /* Localized.swift */,
 				1033700527DF62600090C6E8 /* SalmonStats+New.swift */,
+				106E322B27F701D600778CAA /* ReceiptError.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -736,9 +740,27 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		10CC66F127F5A64700971E37 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				10CC66F427F5A90D00971E37 /* Button */,
+				10CC66F227F5A65400971E37 /* Dashboard.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		10CC66F427F5A90D00971E37 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				1097978E27F5A97400EF771B /* SignIn.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
 		10FDD4AD271EE35D00C9C178 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				105614FC27F336DA008355FC /* StoreKitService */,
 				103F841C27EFAA6F0076BDA2 /* AppService */,
 				103F841D27EFAA7F0076BDA2 /* LoginService.swift */,
 			);
@@ -774,7 +796,8 @@
 				103284AA27E7C89C008964EB /* Surge */,
 				10805B2927E7CB92001A8B68 /* RealmSwift */,
 				10805B2D27E7CBE7001A8B68 /* SwiftyUI */,
-				10805B2F27E7CD77001A8B68 /* SwiftyChart */,
+				10ADFBD527F06E86000ABFF7 /* SwiftyChart */,
+				10EB626A27F5BF1700CC638F /* SDWebImageSwiftUI */,
 			);
 			productName = Salmonia3;
 			productReference = 101AED0D271E3109009556B2 /* Salmonia3.app */;
@@ -851,11 +874,11 @@
 			mainGroup = 101AED04271E3109009556B2;
 			packageReferences = (
 				107DB668272CF67900A5A6E5 /* XCRemoteSwiftPackageReference "GoogleMobileAds" */,
-				101141AD2783545F0088DF4C /* XCRemoteSwiftPackageReference "SwiftyChart" */,
 				1032849827E7C78F008964EB /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
 				1032849B27E7C7C1008964EB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				103284A927E7C89C008964EB /* XCRemoteSwiftPackageReference "Surge" */,
 				10805B2827E7CB03001A8B68 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				10EB626927F5BF1600CC638F /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 101AED0E271E3109009556B2 /* Products */;
 			projectDirPath = "";
@@ -905,12 +928,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10C7D69227CF6EDE002C1F37 /* AppService+Firestore.swift in Sources */,
 				109B546C27CDC04400FACC1A /* StatsWeapon.swift in Sources */,
-				10162F8E27C7B4A200ACFD4D /* SettingView+SalmonStats.swift in Sources */,
 				1006C12727EB298D007479CC /* LoadingService.swift in Sources */,
 				10C7D69D27CF9400002C1F37 /* Overview.swift in Sources */,
-				107B687B27B7362000238B9D /* AppService+Network.swift in Sources */,
 				109F97F82724ADB600AB1FA3 /* ResultOverview.swift in Sources */,
 				104BCEC527D117DC00507A50 /* RankingView.swift in Sources */,
 				10E0C8A827CA6908002F4506 /* StatsCardSmall.swift in Sources */,
@@ -919,10 +939,12 @@
 				102C9DE1277E002A004822C1 /* ResultStats.swift in Sources */,
 				109F97FA2724CF0C00AB1FA3 /* ResultType.swift in Sources */,
 				10C7D69F27CF941D002C1F37 /* WeaponProb.swift in Sources */,
+				109A837127F286D50043ECD0 /* SettingView+StoreKit.swift in Sources */,
 				1082F77B27D072A000044581 /* ResultShiftView.swift in Sources */,
 				102AD300277CE95A00C1E181 /* UserView.swift in Sources */,
 				103F841B27EEEC750076BDA2 /* WaveService.swift in Sources */,
 				10C7D69927CF92FC002C1F37 /* Comparison.swift in Sources */,
+				1097978F27F5A97400EF771B /* SignIn.swift in Sources */,
 				1006C12B27EC88E0007479CC /* Salmon.swift in Sources */,
 				109B545B27CB8F8300FACC1A /* WaveCollectionView.swift in Sources */,
 				103F841927EE37820076BDA2 /* ResultPlayerKill.swift in Sources */,
@@ -934,18 +956,19 @@
 				10196D4427D30BAA009CD55E /* Triangle.swift in Sources */,
 				100556F927C948E90094582D /* ShiftDisplayMode.swift in Sources */,
 				109F97F62724AD7800AB1FA3 /* ResultView.swift in Sources */,
-				10C7C46E277F00260015ECBB /* AppService+Realm.swift in Sources */,
 				1041BC07277DAB36008B27F1 /* ResultPlayer.swift in Sources */,
 				109A255127D44EC700674AA5 /* RankShiftStats.swift in Sources */,
 				10162F8827C7B2CA00ACFD4D /* SettingView+Appearance.swift in Sources */,
 				101AED13271E3109009556B2 /* ContentView.swift in Sources */,
 				1027057E27D48E4200326B32 /* WeaponShiftStats.swift in Sources */,
 				101141B2278477060088DF4C /* UserStatsModel.swift in Sources */,
-				10E74E8027B6B8B700D0E962 /* SignInView.swift in Sources */,
 				109B546127CD64B000FACC1A /* SupportView.swift in Sources */,
+				1097979127F5AB2E00EF771B /* Hanger.swift in Sources */,
 				103168672750E3D10009070C /* ShiftView.swift in Sources */,
+				106E322C27F701D600778CAA /* ReceiptError.swift in Sources */,
 				10C7D6A127CF9431002C1F37 /* SpecialProb.swift in Sources */,
 				100556FB27C9888D0094582D /* ShiftStatsView.swift in Sources */,
+				10CC66F327F5A65400971E37 /* Dashboard.swift in Sources */,
 				1027057C27D48B5600326B32 /* WeaponCollectionView.swift in Sources */,
 				109B546A27CD705200FACC1A /* SettingView+Debug.swift in Sources */,
 				1041BC0D277DBCD5008B27F1 /* ResultStatus.swift in Sources */,
@@ -953,8 +976,8 @@
 				105E868827E4B42D0015A4F2 /* FSCoopPlayer.swift in Sources */,
 				101AED5A271E3946009556B2 /* SettingView.swift in Sources */,
 				10AAE04A27CAC35600E8E3D4 /* StatsSpecial.swift in Sources */,
+				105614FE27F336EE008355FC /* StoreKitService.swift in Sources */,
 				1006C12527EB284A007479CC /* GoogleMobileAds.swift in Sources */,
-				10162F8C27C7B3EC00ACFD4D /* SettingView_SplatNet2.swift in Sources */,
 				10C7D69B27CF93E0002C1F37 /* Defeated.swift in Sources */,
 				105E868A27E4B4920015A4F2 /* FSCoopWave.swift in Sources */,
 				10E74E8227B6C42E00D0E962 /* AccountView.swift in Sources */,
@@ -981,11 +1004,10 @@
 				103F842027EFAB0A0076BDA2 /* LoginView.swift in Sources */,
 				1056E2FA27EDCA4400ECE160 /* Water.swift in Sources */,
 				100556FE27C98B3D0094582D /* StatsCard.swift in Sources */,
-				103F842527F049020076BDA2 /* Dashboard.swift in Sources */,
+				103F842527F049020076BDA2 /* User.swift in Sources */,
 				10D406A027EE2F460074C099 /* ResultHeader.swift in Sources */,
 				1006C12327EA2409007479CC /* ResultUser.swift in Sources */,
 				10635096274E2E4D00529930 /* ShiftCollectionView.swift in Sources */,
-				10C7D69427CF8DCD002C1F37 /* SettingView+Firebase.swift in Sources */,
 				10AAE04627CA764200E8E3D4 /* StatsCardHalf.swift in Sources */,
 				109F97F02724A11900AB1FA3 /* GrowingButtonStyle.swift in Sources */,
 				1006C12D27ED80A6007479CC /* Wavecard.swift in Sources */,
@@ -995,7 +1017,6 @@
 				100556F727C948200094582D /* ShiftFilterButton.swift in Sources */,
 				1041BC09277DAFFE008B27F1 /* ResultWave.swift in Sources */,
 				109F97E8272490CE00AB1FA3 /* LoadingView.swift in Sources */,
-				109B546827CD6C2300FACC1A /* AppService+StoreKit.swift in Sources */,
 				10C7C46C277ED8330015ECBB /* Localized.swift in Sources */,
 				1056E2FC27EDF4C200ECE160 /* SplatInk.swift in Sources */,
 				10196D4227D2120B009CD55E /* StatsWave.swift in Sources */,
@@ -1181,7 +1202,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1216,7 +1237,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1382,14 +1403,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		101141AD2783545F0088DF4C /* XCRemoteSwiftPackageReference "SwiftyChart" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tkgstrator/SwiftyChart";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		1032849827E7C78F008964EB /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bizz84/SwiftyStoreKit";
@@ -1428,6 +1441,14 @@
 			requirement = {
 				kind = exactVersion;
 				version = 10.24.2;
+			};
+		};
+		10EB626927F5BF1600CC638F /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1490,10 +1511,14 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftyUI;
 		};
-		10805B2F27E7CD77001A8B68 /* SwiftyChart */ = {
+		10ADFBD527F06E86000ABFF7 /* SwiftyChart */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 101141AD2783545F0088DF4C /* XCRemoteSwiftPackageReference "SwiftyChart" */;
 			productName = SwiftyChart;
+		};
+		10EB626A27F5BF1700CC638F /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10EB626927F5BF1600CC638F /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

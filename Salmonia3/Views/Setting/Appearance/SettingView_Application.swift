@@ -12,18 +12,18 @@ struct SettingView_Application: View {
     
     var body: some View {
         Section(content: {
-            HStack(content: {
-                Text("バージョン")
-                Spacer()
-                Text(service.application.appVersion)
-                    .foregroundColor(.secondary)
-            })
-            HStack(content: {
-                Text("イカリング")
-                Spacer()
-                Text(service.session.version)
-                    .foregroundColor(.secondary)
-            })
+//            HStack(content: {
+//                Text("バージョン")
+//                Spacer()
+//                Text(service.application.appVersion)
+//                    .foregroundColor(.secondary)
+//            })
+//            HStack(content: {
+//                Text("イカリング")
+//                Spacer()
+//                Text(service.session.version)
+//                    .foregroundColor(.secondary)
+//            })
         }, header: {
             Text("アプリ")
         }, footer: {

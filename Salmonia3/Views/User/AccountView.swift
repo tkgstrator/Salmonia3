@@ -9,19 +9,16 @@ import SwiftUI
 import SwiftyUI
 
 struct AccountView: View {
-    @EnvironmentObject var service: AppService
+    @StateObject var service: LoadingService = LoadingService()
     @State var isPresented: Bool = false
     
     var body: some View {
         Button(action: {
             isPresented.toggle()
         }, label: {
-            HStack(content: {
-                Text("アカウント")
-                Spacer()
-                Text(service.session.account?.nickname ?? "未ログイン")
-                    .foregroundColor(.secondary)
-            })
+            Image(systemName: .ArrowTriangle2Circlepath)
+                .font(Font.system(size: 20, weight: .bold))
+                .foregroundColor(.primary)
         })
             .halfsheet(
                 isPresented: $isPresented,
@@ -36,7 +33,7 @@ struct AccountView: View {
                 prefersGrabberVisible: true,
                 onDismiss: {},
                 content: {
-                    Picker(selection: $service.session.account, content: {
+                    Picker(selection: $service.account, content: {
                         ForEach(service.session.accounts) { account in
                             Text(account.nickname)
                                 .tag(Optional(account))

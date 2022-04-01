@@ -58,7 +58,7 @@ struct StatsSpecial: View {
         })
             .padding()
             .aspectRatio(16/9, contentMode: .fit)
-            .background(RoundedRectangle(cornerRadius: 10).fill(Color.whitesmoke))
+            .background(RoundedRectangle(cornerRadius: 6).fill(Color.whitesmoke))
             .onAppear(perform: {
                 withAnimation(.linear(duration: 1.5)) {
                     self.scale = 1.0

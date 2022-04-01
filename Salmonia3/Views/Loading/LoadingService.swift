@@ -16,6 +16,7 @@ import FirebaseFirestoreSwift
 import FirebaseFirestore
 import RealmSwift
 import CocoaLumberjackSwift
+import FirebaseAuth
 
 extension Notification.Name {
     static let didFinishedLogin = Notification.Name("didFinishedLogin")
@@ -25,13 +26,18 @@ extension Notification.Name {
 }
 
 final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
-    private let session: SalmonStats
+    internal let session: SalmonStats
     private let realm: Realm
     private let schemeVersion: UInt64 = 8192
+    internal let firestore: Firestore = Firestore.firestore()
+    internal let encoder: Firestore.Encoder = Firestore.Encoder()
+    internal let decoder: Firestore.Decoder = Firestore.Decoder()
+    internal let provider: OAuthProvider = OAuthProvider(providerID: "twitter.com")
 
     @Published var current: Int = 0
     @Published var maximum: Int = 0
     @Published var cancellable: Set<AnyCancellable> = Set<AnyCancellable>()
+    @Published var account: Common.UserInfo?
     
     init() {
         do {
@@ -43,9 +49,12 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
             self.realm = try! Realm(configuration: config, queue: nil)
         }
         self.session = SalmonStats()
+        self.account = self.session.account
         self.session.delegate = self
+        
     }
     
+    /// SplatNet2からリザルトダウンロード
     func downloadResultsFromSplatNet2() {
         let resultId: Int? = {
             if let nsaid: String = session.account?.credential.nsaid {
@@ -61,6 +70,7 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
         }
     }
     
+    /// Firestoreにデータ保存
     private func uploadToFirestore<T: Firecode>(_ objects: [T], merge: Bool = false) -> AnyPublisher<Void, Error> {
         Deferred {
             Future { promise in
@@ -83,11 +93,13 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
         .eraseToAnyPublisher()
     }
     
+    /// Firestoreにデータ保存
     func uploadResultsToFirestore(results: [SalmonResult]) -> AnyPublisher<Void, Error> {
         let results: [FSCoopResult] = results.map({ FSCoopResult(result: $0) })
         return uploadToFirestore(results)
     }
     
+    /// WAVE記録をアップロード
     func uploadWaveResultsToNewSalmonStats(results: [SalmonResult]) -> AnyPublisher<Void, Error> {
         let results: [CoopResult.Response] = results.map({ $0.result })
         return session.uploadWaveResults(results: results)
@@ -96,6 +108,7 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
             .eraseToAnyPublisher()
     }
     
+    /// リザルトをRealmに書き込み
     func save(results: [SalmonResult]) -> AnyPublisher<Void, Error> {
         let results: [RealmCoopResult] = results.map({ RealmCoopResult(from: $0.result, id: $0.id) })
         return save(results)
@@ -137,6 +150,24 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
         .eraseToAnyPublisher()
     }
     
+    internal func signInWithTwitterAccount() {
+        provider.getCredentialWith(nil, completion: { credential, error in
+            if let error = error {
+                DDLogError(error)
+                return
+            }
+            if let credential = credential {
+                Auth.auth().signIn(with: credential, completion: { result, error in
+                    if let error = error {
+                        DDLogError(error)
+                        return
+                    }
+                })
+            }
+        })
+    }
+    
+    /// リザルト取得後に通知を送るだけ
     func didFinishLoadResultsFromSplatNet2(results: [SalmonResult]) {
         save(results: results)
             .merge(with: uploadResultsToFirestore(results: results), uploadWaveResultsToNewSalmonStats(results: results))
@@ -185,7 +216,7 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
     func willRunningSplatNet2SignIn() {
     }
 
-    func didFinishSplatNet2SignIn(account: UserInfo) {
+    func didFinishSplatNet2SignIn(account: Common.UserInfo) {
     }
 
     func failedWithUnavailableVersion(version: String) {

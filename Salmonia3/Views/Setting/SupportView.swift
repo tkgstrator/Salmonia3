@@ -8,6 +8,8 @@
 import SwiftUI
 import SwiftyUI
 import StoreKit
+import SwiftyStoreKit
+import CocoaLumberjackSwift
 
 struct SupportView: View {
     @EnvironmentObject var service: AppService
@@ -24,19 +26,6 @@ struct SupportView: View {
                     Spacer()
                     Text("レビューする")
                 })
-            })
-            Section(content: {
-                ForEach(Array(service.products)) { product in
-                    Button(action: {
-                        
-                    }, label: {
-                        HStack(content: {
-                            Text("アプリを応援する")
-                            Spacer()
-                            Text(product.localizedPrice!)
-                        })
-                    })
-                }
             })
         })
             .navigationTitle("アプリを応援する")
