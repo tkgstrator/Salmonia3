@@ -3,6 +3,7 @@
 //  Salmonia3
 //
 //  Created by devonly on 2021/12/30.
+//  Copyright © 2022 Magi Corporation. All rights reserved.
 //
 
 import SwiftUI
@@ -28,6 +29,7 @@ struct UserView: View {
                 Dashboard.WaveClearRatio(result: stats.result)
                 Dashboard.BossDefeatedRatio(defeated: stats.defeated)
             })
+            .padding(.horizontal)
             .navigationTitle("ダッシュボード")
             .navigationBarTitleDisplayMode(.inline)
             .environmentObject(LoadingService())

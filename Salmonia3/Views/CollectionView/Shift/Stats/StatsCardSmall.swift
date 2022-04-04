@@ -3,6 +3,7 @@
 //  Salmonia3
 //
 //  Created by devonly on 2022/02/26.
+//  Copyright © 2022 Magi Corporation. All rights reserved.
 //
 
 import SwiftUI
@@ -116,7 +117,7 @@ struct StatsCardSmall_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView(content: {
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 3), content: {
-                ForEach(Range(0...2)) { _ in
+                ForEach(Range(0...2), id: \.self) { _ in
                     StatsCardSmall(score: 17, other: 11.9)
                 }
             })

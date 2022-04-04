@@ -3,6 +3,7 @@
 //  Salmonia3
 //
 //  Created by devonly on 2021/10/19.
+//  Copyright © 2022 Magi Corporation. All rights reserved.
 //
 
 import SwiftUI
@@ -13,9 +14,22 @@ import GoogleMobileAds
 import Common
 import SwiftyStoreKit
 import CocoaLumberjackSwift
+import RealmSwift
+
+private let schemeVersion: UInt64 = 8192
+internal let realm: Realm = {
+    do {
+        return try Realm()
+    } catch {
+        var config = Realm.Configuration.defaultConfiguration
+        config.deleteRealmIfMigrationNeeded = true
+        config.schemaVersion = schemeVersion
+        return try! Realm(configuration: config, queue: nil)
+    }
+}()
 
 @main
-struct Salmonia3App: App {
+struct Salmonia3App: SwiftUI.App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
@@ -51,6 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             manager.logLevel = .info
             #endif
         }
+        
         FirebaseApp.configure()
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         

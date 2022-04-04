@@ -3,6 +3,7 @@
 //  Salmonia3
 //
 //  Created by devonly on 2022/03/01.
+//  Copyright © 2022 Magi Corporation. All rights reserved.
 //
 
 import SwiftUI
@@ -72,7 +73,7 @@ struct StatsWeapon: View {
             Spacer()
             GeometryReader(content: { geometry in
                 ZStack(alignment: .center, content: {
-                    ForEach(probs.indices) { index in
+                    ForEach(probs.indices, id: \.self) { index in
                         let currentValue: Double = sum(probs.prefix(index))
                         let totalValue: Double = sum(probs.prefix(index + 1))
                         Circle()

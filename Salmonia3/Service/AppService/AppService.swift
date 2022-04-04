@@ -1,31 +1,44 @@
 //
-//  service.swift
+//  AppService.swift
 //  Salmonia3
 //
 //  Created by devonly on 2021/10/19.
+//  Copyright © 2022 Magi Corporation. All rights reserved.
 //
 
 import Foundation
 import SalmonStats
-import Combine
 import SwiftUI
 import SwiftyUI
 import SplatNet2
-import RealmSwift
 import Common
-import FirebaseFirestore
-import FirebaseFirestoreSwift
-import FirebaseAuth
+import RealmSwift
 
 final class AppService: ObservableObject {
-    init() {}
+    init() {
+        let session = SalmonStats()
+        self.version = session.version
+        self.save(objects: SplatNet2.schedule.map({ RealmCoopShift(from: $0) }))
+    }
     
     /// アプリの外見の設定
     @Published var apperances: Appearances = Appearances.shared
     /// アプリの詳細の設定
     @Published var application: Application = Application.shared
+    /// セッション
+    @Published var version: String
     /// シフト表示モード
     @AppStorage("APP_SHIFT_DISPLAY_MODE") var shiftDisplayMode: ShiftDisplayMode = .current
+    
+    func save<T: Object>(objects: [T]) {
+        if realm.isInWriteTransaction {
+            realm.add(objects, update: .all)
+        } else {
+            realm.beginWrite()
+            realm.add(objects, update: .all)
+            try? realm.commitWrite()
+        }
+    }
     
     class Application {
         private init() {}

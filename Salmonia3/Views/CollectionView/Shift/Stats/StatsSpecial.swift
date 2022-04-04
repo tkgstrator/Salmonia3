@@ -3,6 +3,7 @@
 //  Salmonia3
 //
 //  Created by devonly on 2022/02/27.
+//  Copyright © 2022 Magi Corporation. All rights reserved.
 //
 
 import SwiftUI
@@ -24,7 +25,7 @@ struct StatsSpecial: View {
     var body: some View {
         HStack(content: {
             VStack(spacing: 5, content: {
-                ForEach(specialList.indices) { index in
+                ForEach(specialList.indices, id: \.self) { index in
                     let specialType: SpecialId = specialList[index]
                     let prob: Double = probs[index]
                     let color: Color = colors[index]
@@ -44,7 +45,7 @@ struct StatsSpecial: View {
             })
             Spacer()
             GeometryReader(content: { geometry in
-                ForEach(probs.indices) { index in
+                ForEach(probs.indices, id: \.self) { index in
                     let currentValue: Double = sum(probs.prefix(index))
                     let totalValue: Double = sum(probs.prefix(index + 1))
                     Circle()

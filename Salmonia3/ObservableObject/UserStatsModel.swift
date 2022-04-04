@@ -3,6 +3,7 @@
 //  Salmonia3
 //
 //  Created by devonly on 2022/01/04.
+//  Copyright © 2022 Magi Corporation. All rights reserved.
 //
 
 import Foundation
@@ -26,9 +27,10 @@ final class UserStatsService: ObservableObject {
     
     init() {
         let session: SalmonStats = SalmonStats()
-        guard let nsaid = session.account?.credential.nsaid else {
+        if session.accounts.isEmpty {
             return
         }
+        let nsaid: String = session.account.credential.nsaid
         let realm = try! Realm()
                 let results = realm.results(nsaid: nsaid)
         let playerResults = realm.playerResults(nsaid: nsaid)

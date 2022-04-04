@@ -3,7 +3,7 @@
 //  Salmonia3
 //
 //  Created by devonly on 2021/11/24.
-//  
+//  Copyright © 2022 Magi Corporation. All rights reserved.
 //
 
 import SwiftUI
@@ -14,7 +14,7 @@ import SalmonStats
 
 final class ShiftService: ObservableObject {
     @Published var shiftDisplayMode: ShiftDisplayMode = .current
-    @Published var nsaid: String?
+    @Published var nsaid: String
     @ObservedResults(
         RealmCoopShift.self,
         filter: NSPredicate("startTime", lessThan: Int(Date().timeIntervalSince1970)),
@@ -24,7 +24,7 @@ final class ShiftService: ObservableObject {
     
     init() {
         let session: SalmonStats = SalmonStats()
-        self.nsaid = session.account?.credential.nsaid
+        self.nsaid = session.account.credential.nsaid
     }
 }
 

@@ -3,6 +3,7 @@
 //  Salmonia3
 //
 //  Created by devonly on 2022/02/26.
+//  Copyright © 2022 Magi Corporation. All rights reserved.
 //
 
 import Foundation
@@ -18,10 +19,8 @@ final class UserShiftStats: ObservableObject {
     internal let encoder: Firestore.Encoder = Firestore.Encoder()
     internal let decoder: Firestore.Decoder = Firestore.Decoder()
     internal var task: Set<AnyCancellable> = Set<AnyCancellable>()
-    private let schemeVersion: UInt64 = 8192
     internal let nsaid: String?
-    internal let realm: Realm
-    
+
     typealias Overview = StatsModel.Overview
     typealias Defeated = StatsModel.Defeated
     typealias Comparison = StatsModel.Comparison
@@ -54,17 +53,8 @@ final class UserShiftStats: ObservableObject {
     var goldenEggsWaveRank: [RankingStats] = []
     
     init(startTime: Int, nsaid: String?) {
-        do {
-            self.realm = try Realm()
-            self.nsaid = nsaid
-        } catch {
-            var config = Realm.Configuration.defaultConfiguration
-            config.deleteRealmIfMigrationNeeded = true
-            config.schemaVersion = schemeVersion
-            self.realm = try! Realm(configuration: config, queue: nil)
-            self.nsaid = nsaid
-        }
-        
+        self.nsaid = nsaid
+
         guard let nsaid = nsaid else {
             return
         }

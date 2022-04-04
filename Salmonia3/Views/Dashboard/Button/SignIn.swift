@@ -3,7 +3,7 @@
 //  Salmonia3
 //
 //  Created by devonly on 2022/03/31.
-//  
+//  Copyright © 2022 Magi Corporation. All rights reserved.
 //
 
 import SwiftUI
@@ -41,104 +41,40 @@ extension SignIn {
         @State private var isPresented: Bool = false
 
         var body: some View {
-            let account: UserInfo? = {
-                if let account = service.session.account {
-                    return account
+            let account: UserInfo = {
+                if service.session.accounts.isEmpty {
+                    var user = UserInfo(nsaid: "0000000000000000", membership: false, friendCode: "XXXX-XXXX-XXXX", sessionToken: "", splatoonToken: "", iksmSession: "", thumbnailURL: URL(unsafeString: "https://cdn-image-e0d67c509fb203858ebcb2fe3f88c2aa.baas.nintendo.com/1/07938e82b382e840"), nickname: "未ログイン")
+                    user.resultCoop = CoopInfo(jobNum: 99999, goldenIkuraTotal: 999999999, ikuraTotal: 999999999, kumaPoint: 999999999, kumaPointTotal: 999999999)
+                    return user
                 }
-                let user = UserInfo(nsaid: "0000000000000000", membership: false, friendCode: "XXXX-XXXX-XXXX", sessionToken: "", splatoonToken: "", iksmSession: "", thumbnailURL: URL(unsafeString: "https://cdn-image-e0d67c509fb203858ebcb2fe3f88c2aa.baas.nintendo.com/1/07938e82b382e840"), nickname: "水上はちみ")
-                user.coop = CoopInfo(jobNum: 99999, goldenIkuraTotal: 999999999, ikuraTotal: 999999999, kumaPoint: 999999999, kumaPointTotal: 999999999)
-                return nil
+                return service.session.account
             }()
-            switch account {
-            case .some(let account):
-                SignIn.UserView(account: account)
-            case .none:
-                Button(action: {
-                    isPresented.toggle()
-                }, label: {
-                    SignIn.UserLoginView()
-                })
-                .buttonStyle(.plain)
-                .grayscale(1.0)
-                .authorize(isPresented: $isPresented, session: service.session)
-            }
-        }
-    }
-    
-    struct UserLoginView: View {
-        @EnvironmentObject var service: LoadingService
-
-        var body: some View {
-            GeometryReader(content: { geometry in
-                let scale: CGFloat = geometry.width / 375
-                VStack(alignment: .leading, spacing: nil, content: {
-                    HStack(spacing: nil, content: {
-                        Image(.splatnet2)
-                            .resizable()
-                            .scaledToFit()
-                            .clipShape(Circle())
-                            .frame(width: 80 * scale, height: 80 * scale, alignment: .center)
-                        Text("タップでログイン")
-                            .underline()
-                            .font(systemName: .Splatfont2, size: 18 * scale)
-                            .padding()
-                        Spacer()
-                        VStack(alignment: .leading, spacing: 0, content: {
-                            HStack(content: {
-                                Image(.power)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 22 * scale, height: 22 * scale, alignment: .center)
-                                Text("-")
-                            })
-                            HStack(content: {
-                                Image(.golden)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 22 * scale, height: 22 * scale, alignment: .center)
-                                Text("-")
-                            })
-                        })
-                        .font(systemName: .Splatfont2, size: 16 * scale)
-                    })
-                    VStack(alignment: .leading, spacing: -10 * scale, content: {
-                        Text("フレンドコード")
-                        HStack(spacing: 14, content: {
-                            Text("SW-XXXX-XXXX-XXXX")
-                                .font(systemName: .Splatfont2, size: 14 * scale)
-                            Button(action: {
-                            }, label: {
-                                Image(systemName: .RectangleOnRectangleAngled)
-                                    .font(.system(size: 14 * scale, weight: .semibold, design: .monospaced))
-                            })
-                        })
-                        .foregroundColor(.secondary)
-                    })
-                    .font(systemName: .Splatfont2, size: 16 * scale)
-                })
-            })
-            .padding()
-            .aspectRatio(300/120, contentMode: .fit)
-            .backgroundCard(Color.whitesmoke, aspectRatio: 120/300)
+            SignIn.UserView(account: account)
         }
     }
     
     private struct UserView: View {
         @EnvironmentObject var service: LoadingService
+        @State private var isPresented: Bool = false
         let account: UserInfo
 
         var body: some View {
             GeometryReader(content: { geometry in
                 let scale: CGFloat = geometry.width / 375
-                VStack(alignment: .leading, spacing: nil, content: {
+                VStack(alignment: .leading, spacing: 0 * scale, content: {
                     HStack(spacing: nil, content: {
-                        WebImage(url: account.thumbnailURL)
-                            .resizable()
-                            .scaledToFit()
-                            .clipShape(Circle())
-                            .frame(width: 80 * scale, height: 80 * scale, alignment: .center)
+                        Button(action: {
+                            isPresented.toggle()
+                        }, label: {
+                            WebImage(url: account.thumbnailURL)
+                                .resizable()
+                                .scaledToFit()
+                                .clipShape(Circle())
+                                .frame(width: 75 * scale, height: 75 * scale, alignment: .center)
+                        })
+                        .disabled(account.credential.nsaid == "0000000000000000")
                         Text(account.nickname)
-                            .font(systemName: .Splatfont2, size: 18 * scale)
+                            .font(systemName: .Splatfont2, size: 24 * scale)
                             .padding()
                         Spacer()
                         VStack(alignment: .leading, spacing: 0, content: {
@@ -147,39 +83,60 @@ extension SignIn {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 22 * scale, height: 22 * scale, alignment: .center)
-                                Text(account.coop?.goldenIkuraTotal)
+                                Text(account.resultCoop.ikuraTotal)
                             })
                             HStack(content: {
                                 Image(.golden)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 22 * scale, height: 22 * scale, alignment: .center)
-                                Text(account.coop?.goldenIkuraTotal)
+                                Text(account.resultCoop.goldenIkuraTotal)
                             })
                         })
                         .font(systemName: .Splatfont2, size: 16 * scale)
                     })
-                    VStack(alignment: .leading, spacing: -10 * scale, content: {
-                        Text("フレンドコード")
-                        HStack(spacing: 14, content: {
-                            Text(String(format: "SW-%@", account.friendCode))
-                                .font(systemName: .Splatfont2, size: 14 * scale)
-                            Button(action: {
-                                UIPasteboard.general.string = account.friendCode
-                            }, label: {
-                                Image(systemName: .RectangleOnRectangleAngled)
-                                    .font(.system(size: 14 * scale, weight: .semibold, design: .monospaced))
+                    .frame(maxHeight: .infinity)
+                    HStack(alignment: .center, spacing: nil, content: {
+                        VStack(alignment: .leading, spacing: -10 * scale, content: {
+                            Text("フレンドコード")
+                            HStack(spacing: 14, content: {
+                                Text(String(format: "SW-%@", account.friendCode))
+                                    .font(systemName: .Splatfont2, size: 14 * scale)
+                                Button(action: {
+                                    UIPasteboard.general.string = account.friendCode
+                                }, label: {
+                                    Image(systemName: .RectangleOnRectangleAngled)
+                                        .font(.system(size: 14 * scale, weight: .semibold, design: .monospaced))
+                                })
                             })
+                            .foregroundColor(.secondary)
                         })
-                        .foregroundColor(.secondary)
+                        Spacer()
+                        Text("画像タップで切り替え")
+                            .underline()
                     })
                     .font(systemName: .Splatfont2, size: 16 * scale)
                 })
             })
             .padding()
-            .overlay(AccountView().padding().environmentObject(service), alignment: .bottomTrailing)
             .aspectRatio(300/120, contentMode: .fit)
             .backgroundCard(Color.whitesmoke, aspectRatio: 120/300)
+            .halfsheet(
+                isPresented: $isPresented,
+                transitionStyle: .coverVertical,
+                presentationStyle: .automatic,
+                isModalInPresentation: false,
+                detentIdentifier: .medium,
+                prefersScrollingExpandsWhenScrolledToEdge: true,
+                prefersEdgeAttachedInCompactHeight: true,
+                detents: .medium,
+                widthFollowsPreferredContentSizeWhenEdgeAttached: true,
+                prefersGrabberVisible: true,
+                onDismiss: {},
+                content: {
+                    AccountPickerView()
+                        .environmentObject(service)
+                })
         }
     }
     
@@ -192,15 +149,19 @@ extension SignIn {
                 Button(action: {
                     isPresented.toggle()
                 }, label: {
-                    Image(.splatnet2)
-                        .resizable()
-                        .scaledToFit()
-                        .position(geometry.center)
+                    Text("イカリング2")
+                        .underline()
+//                    Image(.splatnet2)
+//                        .resizable()
+//                        .scaledToFit()
+//                        .position(geometry.center)
                 })
-                Text("タップでログイン")
-                    .underline()
-                    .font(systemName: .Splatfont2, size: 16)
+                .position(geometry.center)
+//                Text("タップでログイン")
+//                    .underline()
             })
+            .overlay(Text("ログイン/追加"), alignment: .bottom)
+            .font(systemName: .Splatfont2, size: 14)
             .padding()
             .backgroundView()
             .scaledToFit()
@@ -213,19 +174,23 @@ extension SignIn {
         @State private var isPresented: Bool = false
 
         var body: some View {
+            let color: Color = service.isSalmonStatsSignedIn ? .blue : .clear
             GeometryReader(content: { geometry in
                 Button(action: {
                     isPresented.toggle()
                 }, label: {
-                    Image(.splatnet2)
-                        .resizable()
-                        .scaledToFit()
-                        .position(geometry.center)
+                    Text("Salmon Stats")
+                        .underline()
+//                    Image(.splatnet2)
+//                        .resizable()
+//                        .scaledToFit()
+//                        .position(geometry.center)
                 })
-                Text("タップでログイン")
-                    .underline()
-                    .font(systemName: .Splatfont2, size: 16)
+                .position(geometry.center)
             })
+            .overlay(Text("連携"), alignment: .bottom)
+            .overlay(Image(systemName: .CheckmarkSealFill).foregroundColor(color), alignment: .topTrailing)
+            .font(systemName: .Splatfont2, size: 14)
             .padding()
             .backgroundView()
             .scaledToFit()
@@ -237,19 +202,23 @@ extension SignIn {
         @EnvironmentObject var service: LoadingService
 
         var body: some View {
+            let color: Color = service.isSalmonStatsSignedIn ? .blue : .clear
             GeometryReader(content: { geometry in
                 Button(action: {
                     service.signInWithTwitterAccount()
                 }, label: {
-                    Image(.splatnet2)
-                        .resizable()
-                        .scaledToFit()
-                        .position(geometry.center)
+                    Text("Firestore")
+                        .underline()
+//                    Image(.splatnet2)
+//                        .resizable()
+//                        .scaledToFit()
+//                        .position(geometry.center)
                 })
-                Text("タップでログイン")
-                    .underline()
-                    .font(systemName: .Splatfont2, size: 16)
+                .position(geometry.center)
             })
+            .overlay(Text("連携"), alignment: .bottom)
+            .font(systemName: .Splatfont2, size: 14)
+            .overlay(Image(systemName: .CheckmarkSealFill).foregroundColor(color), alignment: .topTrailing)
             .padding()
             .backgroundView()
             .scaledToFit()
@@ -259,10 +228,14 @@ extension SignIn {
 
 struct SignIn_Previews: PreviewProvider {
     static var previews: some View {
-//        SignIn.User()
-//            .environmentObject(AppService())
-//            .preferredColorScheme(.dark)
-//            .previewLayout(.fixed(width: 375, height: 150))
+        SignIn.User()
+            .environmentObject(LoadingService())
+            .preferredColorScheme(.dark)
+            .previewLayout(.fixed(width: 300, height: 120))
+        SignIn.User()
+            .environmentObject(LoadingService())
+            .preferredColorScheme(.dark)
+            .previewLayout(.fixed(width: 375, height: 150))
         SignIn.User()
             .environmentObject(LoadingService())
             .preferredColorScheme(.dark)
