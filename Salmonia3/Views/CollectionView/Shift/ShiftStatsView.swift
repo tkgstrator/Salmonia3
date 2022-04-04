@@ -3,13 +3,13 @@
 //  Salmonia3
 //
 //  Created by devonly on 2022/02/26.
+//  Copyright © 2022 Magi Corporation. All rights reserved.
 //
 
 import SwiftUI
 import SplatNet2
 
 struct ShiftStatsView: View {
-    @EnvironmentObject var service: AppService
     @StateObject var stats: UserShiftStats
     @StateObject var rank: RankShiftStats
     let schedule: RealmCoopShift

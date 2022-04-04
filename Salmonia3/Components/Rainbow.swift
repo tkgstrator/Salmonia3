@@ -3,6 +3,7 @@
 //  Salmonia3
 //
 //  Created by devonly on 2021/10/24.
+//  Copyright © 2022 Magi Corporation. All rights reserved.
 //
 
 import Foundation

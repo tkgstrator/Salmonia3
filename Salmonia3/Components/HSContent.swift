@@ -3,6 +3,7 @@
 //  Salmonia3
 //
 //  Created by devonly on 2021/12/31.
+//  Copyright © 2022 Magi Corporation. All rights reserved.
 //
 
 import SwiftUI

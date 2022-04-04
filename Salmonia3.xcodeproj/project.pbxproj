@@ -36,6 +36,7 @@
 		101AED57271E367D009556B2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED56271E367D009556B2 /* Color.swift */; };
 		101AED5A271E3946009556B2 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED59271E3946009556B2 /* SettingView.swift */; };
 		101AED61271E3F2B009556B2 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101AED60271E3F2B009556B2 /* Icon.swift */; };
+		101DC81D27FA9D140041964D /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101DC81C27FA9D140041964D /* File.swift */; };
 		1027057C27D48B5600326B32 /* WeaponCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1027057B27D48B5600326B32 /* WeaponCollectionView.swift */; };
 		1027057E27D48E4200326B32 /* WeaponShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1027057D27D48E4200326B32 /* WeaponShiftStats.swift */; };
 		1027058027D4A34E00326B32 /* StatsWeaponDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1027057F27D4A34E00326B32 /* StatsWeaponDetail.swift */; };
@@ -204,6 +205,7 @@
 		101AED56271E367D009556B2 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		101AED59271E3946009556B2 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		101AED60271E3F2B009556B2 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		101DC81C27FA9D140041964D /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		1023535427F06E1B00101B68 /* SwiftyChart */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftyChart; path = ../SwiftyChart; sourceTree = "<group>"; };
 		1027057B27D48B5600326B32 /* WeaponCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponCollectionView.swift; sourceTree = "<group>"; };
 		1027057D27D48E4200326B32 /* WeaponShiftStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponShiftStats.swift; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 				10BA13F127201ADD00348DD3 /* Realm */,
 				101AED14271E310B009556B2 /* Assets.xcassets */,
 				101AED16271E310B009556B2 /* Preview Content */,
+				101DC81C27FA9D140041964D /* File.swift */,
 			);
 			path = Salmonia3;
 			sourceTree = "<group>";
@@ -628,7 +631,6 @@
 				103F841F27EFAB0A0076BDA2 /* LoginView.swift */,
 				109F97E7272490CE00AB1FA3 /* LoadingView.swift */,
 				109F97E5272490C600AB1FA3 /* LoggingThread.swift */,
-				1006C12627EB298C007479CC /* LoadingService.swift */,
 				103F842127EFAB470076BDA2 /* ProgressCircleView.swift */,
 			);
 			path = Loading;
@@ -760,6 +762,7 @@
 		10FDD4AD271EE35D00C9C178 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				1006C12627EB298C007479CC /* LoadingService.swift */,
 				105614FC27F336DA008355FC /* StoreKitService */,
 				103F841C27EFAA6F0076BDA2 /* AppService */,
 				103F841D27EFAA7F0076BDA2 /* LoginService.swift */,
@@ -848,6 +851,7 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1310;
+				ORGANIZATIONNAME = "Magi Corporation";
 				TargetAttributes = {
 					101AED0C271E3109009556B2 = {
 						CreatedOnToolsVersion = 13.0;
@@ -965,6 +969,7 @@
 				109B546127CD64B000FACC1A /* SupportView.swift in Sources */,
 				1097979127F5AB2E00EF771B /* Hanger.swift in Sources */,
 				103168672750E3D10009070C /* ShiftView.swift in Sources */,
+				101DC81D27FA9D140041964D /* File.swift in Sources */,
 				106E322C27F701D600778CAA /* ReceiptError.swift in Sources */,
 				10C7D6A127CF9431002C1F37 /* SpecialProb.swift in Sources */,
 				100556FB27C9888D0094582D /* ShiftStatsView.swift in Sources */,
@@ -1202,7 +1207,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 33;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1237,7 +1242,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 33;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;

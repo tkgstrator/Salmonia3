@@ -3,6 +3,7 @@
 //  Salmonia3
 //
 //  Created by devonly on 2022/03/06.
+//  Copyright © 2022 Magi Corporation. All rights reserved.
 //
 
 import Foundation
@@ -10,10 +11,8 @@ import RealmSwift
 import SplatNet2
 
 final class WeaponShiftStats: ObservableObject {
-    internal let realm: Realm
     internal let nsaid: String?
-    internal let schemeVersion: UInt64 = 8192
-    
+
     internal var suppliedWeaponList: [WeaponStats] = []
     internal var unSuppliedWeaponList: [WeaponStats] = []
     internal var jobCount: Int = 0
@@ -21,17 +20,8 @@ final class WeaponShiftStats: ObservableObject {
     internal var estimateCompleteJobCount: Int = 0
     
     init(schedule: RealmCoopShift, nsaid: String?) {
-        do {
-            self.realm = try Realm()
-            self.nsaid = nsaid
-        } catch {
-            var config = Realm.Configuration.defaultConfiguration
-            config.deleteRealmIfMigrationNeeded = true
-            config.schemaVersion = schemeVersion
-            self.realm = try! Realm(configuration: config, queue: nil)
-            self.nsaid = nsaid
-        }
-        
+        self.nsaid = nsaid
+
         // nsaidがオプショナルなら何もしない
         guard let nsaid = nsaid else {
             return

@@ -3,6 +3,7 @@
 //  Salmonia3
 //
 //  Created by devonly on 2022/03/06.
+//  Copyright © 2022 Magi Corporation. All rights reserved.
 //
 
 import Foundation
@@ -13,9 +14,7 @@ import CocoaLumberjackSwift
 import Combine
 
 final class RankShiftStats: ObservableObject {
-    internal let realm: Realm
     internal let nsaid: String?
-    internal let schemeVersion: UInt64 = 8192
     internal let session: SalmonStats
     
     // 仮データ
@@ -24,19 +23,9 @@ final class RankShiftStats: ObservableObject {
     internal var task: Set<AnyCancellable> = Set<AnyCancellable>()
     
     init(startTime: Int, nsaid: String?) {
-        do {
-            self.realm = try Realm()
-            self.nsaid = nsaid
-            self.session = SalmonStats()
-        } catch {
-            var config = Realm.Configuration.defaultConfiguration
-            config.deleteRealmIfMigrationNeeded = true
-            config.schemaVersion = schemeVersion
-            self.realm = try! Realm(configuration: config, queue: nil)
-            self.nsaid = nsaid
-            self.session = SalmonStats()
-        }
-        
+        self.nsaid = nsaid
+        self.session = SalmonStats()
+
         // nsaidがオプショナルなら何もしない
         guard let nsaid = nsaid else {
             return

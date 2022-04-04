@@ -3,7 +3,7 @@
 //  Salmonia3
 //
 //  Created by devonly on 2022/03/29.
-//  
+//  Copyright © 2022 Magi Corporation. All rights reserved.
 //
 
 import SwiftUI
@@ -64,18 +64,18 @@ struct SettingView_StoreKit: View {
         })
         .navigationTitle("StoreKit")
         .navigationBarTitleDisplayMode(.inline)
-        .alert(isPresented: $isPresented, error: skError, actions: { error in
-            Button("OK", action: {
-            })
-        }, message: { error in
-            Text(error.failureReason ?? "Unknown error.")
-        })
-        .alert(isPresented: $isPresented, error: receiptError, actions: { error in
-            Button("OK", action: {
-            })
-        }, message: { error in
-            Text(error.failureReason ?? "Unknown error.")
-        })
+//        .alert(isPresented: $isPresented, error: skError, actions: { error in
+//            Button("OK", action: {
+//            })
+//        }, message: { error in
+//            Text(error.failureReason ?? "Unknown error.")
+//        })
+//        .alert(isPresented: $isPresented, error: receiptError, actions: { error in
+//            Button("OK", action: {
+//            })
+//        }, message: { error in
+//            Text(error.failureReason ?? "Unknown error.")
+//        })
     }
     
     func getReceiptFromLocal() {

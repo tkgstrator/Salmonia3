@@ -3,7 +3,7 @@
 //  Salmonia3
 //
 //  Created by devonly on 2022/03/26.
-//  
+//  Copyright © 2022 Magi Corporation. All rights reserved.
 //
 
 import Foundation
@@ -15,7 +15,7 @@ import SalmonStats
 final class WaveService: ObservableObject {
     @Published var eventType: EventId? = .none
     @Published var waterLevel: WaterId? = .none
-    @Published var nsaid: String?
+    @Published var nsaid: String
     @ObservedResults(
         RealmCoopWave.self,
         filter: nil,
@@ -25,6 +25,6 @@ final class WaveService: ObservableObject {
     
     init() {
         let session: SalmonStats = SalmonStats()
-        self.nsaid = session.account?.credential.nsaid
+        self.nsaid = session.account.credential.nsaid
     }
 }

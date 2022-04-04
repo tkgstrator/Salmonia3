@@ -3,6 +3,7 @@
 //  Salmonia3
 //
 //  Created by devonly on 2022/03/06.
+//  Copyright © 2022 Magi Corporation. All rights reserved.
 //
 
 import SwiftUI
@@ -22,6 +23,7 @@ struct WeaponCollectionView: View {
                     WeaponOverview(stats: stats)
                 }, header: {
                     Text("概要")
+                        .font(systemName: .Splatfont2, size: 14)
                 })
             })
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 4), content: {
@@ -31,6 +33,7 @@ struct WeaponCollectionView: View {
                     }
                 }, header: {
                     Text("支給済みブキ")
+                        .font(systemName: .Splatfont2, size: 14)
                 })
                 Section(content: {
                     ForEach(stats.unSuppliedWeaponList) { weapon in
@@ -38,6 +41,7 @@ struct WeaponCollectionView: View {
                     }
                 }, header: {
                     Text("未支給ブキ")
+                        .font(systemName: .Splatfont2, size: 14)
                 })
             })
         })
