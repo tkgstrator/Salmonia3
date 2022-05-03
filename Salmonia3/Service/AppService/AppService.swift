@@ -18,7 +18,9 @@ final class AppService: ObservableObject {
     init() {
         let session = SalmonStats()
         self.version = session.version
-        self.save(objects: SplatNet2.schedule.map({ RealmCoopShift(from: $0) }))
+        if realm.objects(RealmCoopShift.self).isEmpty {
+            self.save(objects: SplatNet2.schedule.map({ RealmCoopShift(from: $0) }))
+        }
     }
     
     /// アプリの外見の設定
