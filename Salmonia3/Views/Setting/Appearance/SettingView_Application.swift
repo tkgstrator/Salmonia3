@@ -13,6 +13,9 @@ struct SettingView_Application: View {
     
     var body: some View {
         Section(content: {
+            Toggle(isOn: service.$requiredAPIToken, label: {
+                Text("Salmon Statsへのアップロードを必須にする")
+            })
             HStack(content: {
                 Text("バージョン")
                 Spacer()

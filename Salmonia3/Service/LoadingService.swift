@@ -17,6 +17,7 @@ import FirebaseFirestore
 import RealmSwift
 import CocoaLumberjackSwift
 import FirebaseAuth
+import SwiftUI
 
 extension Notification.Name {
     static let didFinishedLogin = Notification.Name("didFinishedLogin")
@@ -26,7 +27,7 @@ extension Notification.Name {
 }
 
 final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
-    internal var session: SalmonStats
+    internal var session: SalmonStats!
     internal let firestore: Firestore = Firestore.firestore()
     internal let encoder: Firestore.Encoder = Firestore.Encoder()
     internal let decoder: Firestore.Decoder = Firestore.Decoder()
@@ -35,18 +36,24 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
     @Published var current: Int = 0
     @Published var maximum: Int = 0
     @Published var cancellable: Set<AnyCancellable> = Set<AnyCancellable>()
-    @Published var account: Common.UserInfo {
+    @Published var account: Common.UserInfo = Common.UserInfo() {
         willSet {
-            print(newValue.nickname, account.nickname)
             objectWillChange.send()
         }
     }
     @Published var isSalmonStatsSignedIn: Bool = false
     @Published var isFirestoreSignIn: Bool = false
     @Published var user: FirebaseAuth.User?
+    /// 自動でAPIをアップデートする
+    @AppStorage("APP_REFRESHABLE_TOKEN") var refreshable: Bool = true
+    /// 自動でAPIをアップデートする
+    @AppStorage("APP_REQUIRED_API_TOKEN") var requiredAPIToken: Bool = false
+    /// シフト表示モード
+    @AppStorage("APP_SHIFT_DISPLAY_MODE") var shiftDisplayMode: ShiftDisplayMode = .current
 
     init() {
-        self.session = SalmonStats()
+        /// データ読込時に一瞬だけ立ち上がるので常に最新のデータが反映されている
+        self.session = SalmonStats(refreshable: refreshable, requiredAPIToken: requiredAPIToken)
         self.account = self.session.account
         self.session.delegate = self
         self.isSalmonStatsSignedIn = true

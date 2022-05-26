@@ -13,10 +13,11 @@ import SwiftyUI
 import SplatNet2
 import Common
 import RealmSwift
+import CocoaLumberjackSwift
 
 final class AppService: ObservableObject {
     init() {
-        let session = SalmonStats()
+        let session = SalmonStats(refreshable: refreshable, requiredAPIToken: requiredAPIToken)
         self.version = session.version
         if realm.objects(RealmCoopShift.self).isEmpty {
             self.save(objects: SplatNet2.schedule.map({ RealmCoopShift(from: $0) }))
@@ -28,7 +29,11 @@ final class AppService: ObservableObject {
     /// アプリの詳細の設定
     @Published var application: Application = Application.shared
     /// セッション
-    @Published var version: String
+    @Published var version: String = "0.0.0"
+    /// リザルト取得にAPITokenを必須にする
+    @AppStorage("APP_REQUIRED_API_TOKEN") var requiredAPIToken: Bool = false
+    /// 自動でAPIをアップデートする
+    @AppStorage("APP_REFRESHABLE_TOKEN") var refreshable: Bool = false
     /// シフト表示モード
     @AppStorage("APP_SHIFT_DISPLAY_MODE") var shiftDisplayMode: ShiftDisplayMode = .current
     
