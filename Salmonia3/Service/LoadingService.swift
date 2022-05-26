@@ -49,14 +49,13 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
         self.session = SalmonStats()
         self.account = self.session.account
         self.session.delegate = self
-        self.isSalmonStatsSignedIn = session.apiToken != nil
+        self.isSalmonStatsSignedIn = true
+//        self.isSalmonStatsSignedIn = session.apiToken != nil
         
         Auth.auth().addStateDidChangeListener({ (auth, user) in
             self.user = user
             self.isFirestoreSignIn = true
         })
-        print(session.accounts.map({ $0.credential.nsaid }))
-        print(session.accounts.map({ $0.nickname }))
     }
     
     /// SplatNet2からリザルトダウンロード
@@ -70,7 +69,8 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
         }()
         
         if let resultId = resultId {
-            self.session.uploadResults(resultId: resultId)
+            self.session.downloadResults(resultId: resultId)
+//            self.session.uploadResults(resultId: resultId)
         } else {
             NotificationCenter.default.post(name: .didFinishedLoadResults, object: nil)
         }
@@ -176,7 +176,8 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
     /// リザルト取得後に通知を送るだけ
     func didFinishLoadResultsFromSplatNet2(results: [SalmonResult]) {
         save(results: results)
-            .merge(with: uploadResultsToFirestore(results: results), uploadWaveResultsToNewSalmonStats(results: results))
+            .merge(with: uploadResultsToFirestore(results: results))
+//            .merge(with: uploadResultsToFirestore(results: results), uploadWaveResultsToNewSalmonStats(results: results))
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
