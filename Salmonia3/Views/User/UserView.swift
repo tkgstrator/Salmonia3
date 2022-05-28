@@ -23,7 +23,6 @@ struct UserView: View {
                 })
                 LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 200)), count: 3), content: {
                     SignIn.SplatNet2()
-                    SignIn.SalmonStats()
                     SignIn.NewSalmonStats()
                 })
                 Dashboard.WaveClearRatio(result: stats.result)

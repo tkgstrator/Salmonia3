@@ -17,7 +17,7 @@ import CocoaLumberjackSwift
 
 final class AppService: ObservableObject {
     init() {
-        let session = SalmonStats(refreshable: refreshable, requiredAPIToken: requiredAPIToken)
+        let session = SalmonStats(refreshable: refreshable)
         self.version = session.version
         if realm.objects(RealmCoopShift.self).isEmpty {
             self.save(objects: SplatNet2.schedule.map({ RealmCoopShift(from: $0) }))

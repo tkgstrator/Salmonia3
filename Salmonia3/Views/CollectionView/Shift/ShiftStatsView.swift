@@ -11,12 +11,12 @@ import SplatNet2
 
 struct ShiftStatsView: View {
     @StateObject var stats: UserShiftStats
-    @StateObject var rank: RankShiftStats
+//    @StateObject var rank: RankShiftStats
     let schedule: RealmCoopShift
 
     init(schedule: RealmCoopShift, nsaid: String?) {
         self.schedule = schedule
-        self._rank = StateObject(wrappedValue: RankShiftStats(startTime: schedule.startTime, nsaid: nsaid))
+//        self._rank = StateObject(wrappedValue: RankShiftStats(startTime: schedule.startTime, nsaid: nsaid))
         self._stats = StateObject(wrappedValue: UserShiftStats(startTime: schedule.startTime, nsaid: nsaid))
     }
     
@@ -44,10 +44,10 @@ struct ShiftStatsView: View {
                     StatsCardHalf(score: ikuraNum.score, caption: ikuraNum.caption)
                 }
                 ForEach(stats.teamGoldenIkuraNum) { goldenIkuraNum in
-                    NavigationLink(destination: RankingCollection(rank: rank), label: {
+//                    NavigationLink(destination: RankingCollection(rank: rank), label: {
                         StatsCardHalf(score: goldenIkuraNum.score, caption: goldenIkuraNum.caption)
                             .overlay(Text("タップで詳細を表示").underline().padding(.bottom, 4).font(systemName: .Splatfont2, size: 14), alignment: .bottom)
-                    })
+//                    })
                     .buttonStyle(.plain)
                 }
                 ForEach(stats.ikuraNum) { ikuraNum in

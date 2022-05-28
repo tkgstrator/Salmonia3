@@ -36,29 +36,26 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
     @Published var current: Int = 0
     @Published var maximum: Int = 0
     @Published var cancellable: Set<AnyCancellable> = Set<AnyCancellable>()
+    // なんだこれ
     @Published var account: Common.UserInfo = Common.UserInfo() {
         willSet {
             objectWillChange.send()
         }
     }
-    @Published var isSalmonStatsSignedIn: Bool = false
     @Published var isFirestoreSignIn: Bool = false
     @Published var user: FirebaseAuth.User?
     /// 自動でAPIをアップデートする
     @AppStorage("APP_REFRESHABLE_TOKEN") var refreshable: Bool = true
-    /// 自動でAPIをアップデートする
-    @AppStorage("APP_REQUIRED_API_TOKEN") var requiredAPIToken: Bool = false
     /// シフト表示モード
     @AppStorage("APP_SHIFT_DISPLAY_MODE") var shiftDisplayMode: ShiftDisplayMode = .current
 
     init() {
-        /// データ読込時に一瞬だけ立ち上がるので常に最新のデータが反映されている
-        self.session = SalmonStats(refreshable: refreshable, requiredAPIToken: requiredAPIToken)
+        // データ読込時に一瞬だけ立ち上がるので常に最新のデータが反映されている
+        self.session = SalmonStats(refreshable: refreshable)
+        // セッションに登録されているアカウントを使う
         self.account = self.session.account
         self.session.delegate = self
-        self.isSalmonStatsSignedIn = true
-//        self.isSalmonStatsSignedIn = session.apiToken != nil
-        
+
         Auth.auth().addStateDidChangeListener({ (auth, user) in
             self.user = user
             self.isFirestoreSignIn = true
@@ -68,6 +65,8 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
     /// SplatNet2からリザルトダウンロード
     func downloadResultsFromSplatNet2() {
         let resultId: Int? = {
+            DDLogInfo(session.accounts)
+            DDLogInfo(session.accounts.isEmpty)
             if !session.accounts.isEmpty {
                 let nsaid: String = session.account.credential.nsaid
                 return realm.objects(RealmCoopResult.self).filter("pid=%@", nsaid).max(ofProperty: "jobId") ?? 0
@@ -76,8 +75,7 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
         }()
         
         if let resultId = resultId {
-            self.session.downloadResults(resultId: resultId)
-//            self.session.uploadResults(resultId: resultId)
+            self.session.uploadResults(resultId: resultId)
         } else {
             NotificationCenter.default.post(name: .didFinishedLoadResults, object: nil)
         }
@@ -111,26 +109,18 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
         let results: [FSCoopResult] = results.map({ FSCoopResult(result: $0) })
         return uploadToFirestore(results)
     }
-    
-    /// WAVE記録をアップロード
-    func uploadWaveResultsToNewSalmonStats(results: [SalmonResult]) -> AnyPublisher<Void, Error> {
-        let results: [CoopResult.Response] = results.map({ $0.result })
-        return session.uploadWaveResults(results: results)
-            .map({ _ in })
-            .mapError({ return $0 as Error })
-            .eraseToAnyPublisher()
-    }
-    
+
     /// リザルトをRealmに書き込み
     func save(results: [SalmonResult]) -> AnyPublisher<Void, Error> {
-        let results: [RealmCoopResult] = results.map({ RealmCoopResult(from: $0.result, id: $0.id) })
+        let results: [RealmCoopResult] = results.map({ RealmCoopResult(from: $0.result, id: $0.salmonId) })
         return save(results)
     }
     
     /// シフトに対してリザルト書き込みをする
+    /// ゴミコードなので等価なコードに修正予定
     internal func save(_ results: [RealmCoopResult]) -> AnyPublisher<Void, Error> {
         Deferred {
-            Future { [self] promise in
+            Future { promise in
                 let schedules = realm.objects(RealmCoopShift.self)
                 if realm.isInWriteTransaction {
                     realm.add(results, update: .modified)
@@ -162,7 +152,8 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
         }
         .eraseToAnyPublisher()
     }
-    
+
+    /// FirebaseAuth
     internal func signInWithTwitterAccount() {
         provider.getCredentialWith(nil, completion: { credential, error in
             if let error = error {

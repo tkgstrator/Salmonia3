@@ -34,7 +34,7 @@ public struct FSCoopResult: Firecode {
 
     public init(result response: SalmonResult) {
         let result: CoopResult.Response = response.result
-        let id: Int? = response.id
+        let id: Int? = response.salmonId
         self.bossCounts = result.bossCounts.sortedValue()
         self.dangerRate = NSDecimalNumber(value: result.dangerRate).decimalValue
         self.grade = result.grade?.id.rawValue
@@ -142,15 +142,15 @@ extension DateFormatter {
     }
 }
 
-extension CoopResult.JobResult {
-    init(result: StatsResult.Response) {
-        self.init(
-            failureWave: result.clearWaves == 3 ? nil : result.clearWaves,
-            isClear: result.clearWaves == 3,
-            failureReason: FailureReason(rawValue: result.failReasonId)
-        )
-    }
-}
+//extension CoopResult.JobResult {
+//    init(result: StatsResult.Response) {
+//        self.init(
+//            failureWave: result.clearWaves == 3 ? nil : result.clearWaves,
+//            isClear: result.clearWaves == 3,
+//            failureReason: FailureReason(rawValue: result.failReasonId)
+//        )
+//    }
+//}
 
 extension FailureReason {
     init?(rawValue: Int?) {

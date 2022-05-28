@@ -70,11 +70,11 @@ extension SignIn {
                                 .resizable()
                                 .scaledToFit()
                                 .clipShape(Circle())
-                                .frame(width: 75 * scale, height: 75 * scale, alignment: .center)
+                                .frame(width: 65 * scale, height: 65 * scale, alignment: .center)
                         })
                         .disabled(account.credential.nsaid == "0000000000000000")
                         Text(account.nickname)
-                            .font(systemName: .Splatfont2, size: 24 * scale)
+                            .font(systemName: .Splatfont2, size: 20 * scale)
                             .padding()
                         Spacer()
                         VStack(alignment: .leading, spacing: 0, content: {
@@ -169,40 +169,11 @@ extension SignIn {
         }
     }
 
-    struct SalmonStats: View {
-        @EnvironmentObject var service: LoadingService
-        @State private var isPresented: Bool = false
-
-        var body: some View {
-            let color: Color = service.isSalmonStatsSignedIn ? .blue : .clear
-            GeometryReader(content: { geometry in
-                Button(action: {
-                    isPresented.toggle()
-                }, label: {
-                    Text("Salmon Stats")
-                        .underline()
-//                    Image(.splatnet2)
-//                        .resizable()
-//                        .scaledToFit()
-//                        .position(geometry.center)
-                })
-                .position(geometry.center)
-            })
-            .overlay(Text("連携"), alignment: .bottom)
-            .overlay(Image(systemName: .CheckmarkSealFill).foregroundColor(color), alignment: .topTrailing)
-            .font(systemName: .Splatfont2, size: 14)
-            .padding()
-            .backgroundView()
-            .scaledToFit()
-            .authorizeToken(isPresented: $isPresented, session: service.session)
-        }
-    }
-
     struct NewSalmonStats: View {
         @EnvironmentObject var service: LoadingService
 
         var body: some View {
-            let color: Color = service.isSalmonStatsSignedIn ? .blue : .clear
+            let color: Color = service.isFirestoreSignIn ? .blue : .clear
             GeometryReader(content: { geometry in
                 Button(action: {
                     service.signInWithTwitterAccount()
@@ -243,9 +214,6 @@ struct SignIn_Previews: PreviewProvider {
         SignIn.SplatNet2()
             .environmentObject(LoadingService())
             .preferredColorScheme(.dark)
-            .previewLayout(.fixed(width: 300, height: 300))
-        SignIn.SalmonStats()
-            .environmentObject(LoadingService())
             .previewLayout(.fixed(width: 300, height: 300))
         SignIn.NewSalmonStats()
             .environmentObject(LoadingService())
