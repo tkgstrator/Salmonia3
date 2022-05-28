@@ -86,7 +86,6 @@
 		1082F77B27D072A000044581 /* ResultShiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1082F77A27D072A000044581 /* ResultShiftView.swift */; };
 		1097978F27F5A97400EF771B /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097978E27F5A97400EF771B /* SignIn.swift */; };
 		1097979127F5AB2E00EF771B /* Hanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097979027F5AB2E00EF771B /* Hanger.swift */; };
-		109A255127D44EC700674AA5 /* RankShiftStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109A255027D44EC700674AA5 /* RankShiftStats.swift */; };
 		109A837127F286D50043ECD0 /* SettingView+StoreKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109A837027F286D50043ECD0 /* SettingView+StoreKit.swift */; };
 		109B545B27CB8F8300FACC1A /* WaveCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B545A27CB8F8300FACC1A /* WaveCollectionView.swift */; };
 		109B545D27CB90DB00FACC1A /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109B545C27CB90DB00FACC1A /* WaveView.swift */; };
@@ -245,7 +244,6 @@
 		1084DA1F27E7B0700082397A /* SplatNet2 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SplatNet2; path = ../SplatNet2; sourceTree = "<group>"; };
 		1097978E27F5A97400EF771B /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		1097979027F5AB2E00EF771B /* Hanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hanger.swift; sourceTree = "<group>"; };
-		109A255027D44EC700674AA5 /* RankShiftStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankShiftStats.swift; sourceTree = "<group>"; };
 		109A837027F286D50043ECD0 /* SettingView+StoreKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+StoreKit.swift"; sourceTree = "<group>"; };
 		109B545A27CB8F8300FACC1A /* WaveCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveCollectionView.swift; sourceTree = "<group>"; };
 		109B545C27CB90DB00FACC1A /* WaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
@@ -378,7 +376,6 @@
 				101141B1278477060088DF4C /* UserStatsModel.swift */,
 				10AE389D27C99D170084D8E6 /* UserShiftStats.swift */,
 				10C7D6A227CF96C0002C1F37 /* UserShiftStats+Firebase.swift */,
-				109A255027D44EC700674AA5 /* RankShiftStats.swift */,
 				1027057D27D48E4200326B32 /* WeaponShiftStats.swift */,
 			);
 			path = ObservableObject;
@@ -958,7 +955,6 @@
 				100556F927C948E90094582D /* ShiftDisplayMode.swift in Sources */,
 				109F97F62724AD7800AB1FA3 /* ResultView.swift in Sources */,
 				1041BC07277DAB36008B27F1 /* ResultPlayer.swift in Sources */,
-				109A255127D44EC700674AA5 /* RankShiftStats.swift in Sources */,
 				10162F8827C7B2CA00ACFD4D /* SettingView+Appearance.swift in Sources */,
 				101AED13271E3109009556B2 /* ContentView.swift in Sources */,
 				1027057E27D48E4200326B32 /* WeaponShiftStats.swift in Sources */,
@@ -1203,7 +1199,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 39;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1238,7 +1234,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 39;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;

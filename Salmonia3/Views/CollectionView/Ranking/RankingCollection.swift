@@ -9,15 +9,15 @@
 import SwiftUI
 
 struct RankingCollection: View {
-    @StateObject var rank: RankShiftStats
+//    @StateObject var rank: RankShiftStats
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false, content: {
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 3), content: {
-                ForEach(rank.records) { record in
-                    StatsWave(rankEgg: record)
-                        .hidden(!record.isValid)
-                }
+//                ForEach(rank.records) { record in
+//                    StatsWave(rankEgg: record)
+//                        .hidden(!record.isValid)
+//                }
             })
         })
             .padding(.horizontal)
