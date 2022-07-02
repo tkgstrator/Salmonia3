@@ -17,13 +17,16 @@ import CocoaLumberjackSwift
 
 final class AppService: ObservableObject {
     init() {
+        let refreshable: Bool = storekit.isEnabledAPIUpdate
+        print(refreshable)
         let session = SalmonStats(refreshable: refreshable)
         self.version = session.version
         if realm.objects(RealmCoopShift.self).isEmpty {
             self.save(objects: SplatNet2.schedule.map({ RealmCoopShift(from: $0) }))
         }
     }
-    
+    /// アプリの外見の設定
+    @Published var storekit: StoreKitService = StoreKitService()
     /// アプリの外見の設定
     @Published var apperances: Appearances = Appearances.shared
     /// アプリの詳細の設定

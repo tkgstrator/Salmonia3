@@ -24,6 +24,7 @@ struct SettingView_Support: View {
 
 struct SettingView_Support_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView_Support()
+        SettingView()
+            .environmentObject(AppService())
     }
 }
