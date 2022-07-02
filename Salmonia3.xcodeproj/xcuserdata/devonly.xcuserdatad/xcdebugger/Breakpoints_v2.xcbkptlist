@@ -30,8 +30,8 @@
             filePath = "Salmonia3/Service/StoreKitService/StoreKitService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "verifyAutoRenewableProducts(forceRefresh:)"
             landmarkType = "7">
          </BreakpointContent>

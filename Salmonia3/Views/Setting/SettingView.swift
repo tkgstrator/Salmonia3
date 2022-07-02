@@ -18,6 +18,9 @@ struct SettingView: View {
             SettingView_Appearance()
             SettingView_Support()
             SettingView_Application()
+            NavigationLink(destination: SettingView_Product().environmentObject(service.storekit), label: {
+                Text("追加機能")
+            })
             NavigationLink(destination: SettingView_StoreKit(), label: {
                 Text("StoreKit")
             })
@@ -26,6 +29,7 @@ struct SettingView: View {
 #endif
         })
         .navigationTitle("Setting")
+
         .font(systemName: .Splatfont2, size: 16)
     }
 }
