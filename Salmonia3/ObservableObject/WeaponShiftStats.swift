@@ -38,7 +38,12 @@ final class WeaponShiftStats: ObservableObject {
         self.suppliedWeaponList = suppliedWeaponsCount.filter({ $0.count != 0 }).map({ WeaponStats(data: $0, total: total)})
         self.unSuppliedWeaponList = suppliedWeaponsCount.filter({ $0.count == 0 }).map({ WeaponStats(data: $0, total: total)})
         
-        let estimateRemaindWaveCount: Double = Range(suppliedWeaponList.count ... 49).map({ Double(50) / Double(50 - $0) }).reduce(0, +)
+        let estimateRemaindWaveCount: Double = {
+            if (suppliedWeaponsCount.count == 51) {
+                return 0
+            }
+            return Range(suppliedWeaponList.count ... 50).map({ Double(51) / Double(51 - $0) }).reduce(0, +)
+        }()
         let estimateProbability: Double = Double(schedule.weaponList.filter({ $0 == .randomGreen }).count) * 0.8 * 3 * 0.25
         if !estimateProbability.isZero {
             self.estimateCompleteJobCount = jobCount + Int(estimateRemaindWaveCount / estimateProbability)

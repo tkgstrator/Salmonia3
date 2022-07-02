@@ -103,6 +103,9 @@
 		109F97FA2724CF0C00AB1FA3 /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97F92724CF0C00AB1FA3 /* ResultType.swift */; };
 		109F97FC2724D44100AB1FA3 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F97FB2724D44100AB1FA3 /* Text.swift */; };
 		109F98052724EC9400AB1FA3 /* Rainbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F98042724EC9400AB1FA3 /* Rainbow.swift */; };
+		10A1FFE6286EFE7900550A23 /* SettingView+Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A1FFE5286EFE7900550A23 /* SettingView+Product.swift */; };
+		10A1FFE8286FC48500550A23 /* Squid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A1FFE7286FC48500550A23 /* Squid.swift */; };
+		10A1FFEA286FC6B500550A23 /* ProductIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A1FFE9286FC6B500550A23 /* ProductIdentifier.swift */; };
 		10AAE04627CA764200E8E3D4 /* StatsCardHalf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AAE04527CA764200E8E3D4 /* StatsCardHalf.swift */; };
 		10AAE04A27CAC35600E8E3D4 /* StatsSpecial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AAE04927CAC35600E8E3D4 /* StatsSpecial.swift */; };
 		10ADFBD627F06E86000ABFF7 /* SwiftyChart in Frameworks */ = {isa = PBXBuildFile; productRef = 10ADFBD527F06E86000ABFF7 /* SwiftyChart */; };
@@ -261,6 +264,9 @@
 		109F97F92724CF0C00AB1FA3 /* ResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
 		109F97FB2724D44100AB1FA3 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		109F98042724EC9400AB1FA3 /* Rainbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rainbow.swift; sourceTree = "<group>"; };
+		10A1FFE5286EFE7900550A23 /* SettingView+Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingView+Product.swift"; sourceTree = "<group>"; };
+		10A1FFE7286FC48500550A23 /* Squid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squid.swift; sourceTree = "<group>"; };
+		10A1FFE9286FC6B500550A23 /* ProductIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIdentifier.swift; sourceTree = "<group>"; };
 		10AAE04527CA764200E8E3D4 /* StatsCardHalf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCardHalf.swift; sourceTree = "<group>"; };
 		10AAE04927CAC35600E8E3D4 /* StatsSpecial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsSpecial.swift; sourceTree = "<group>"; };
 		10AE389D27C99D170084D8E6 /* UserShiftStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserShiftStats.swift; sourceTree = "<group>"; };
@@ -524,6 +530,7 @@
 				109B546927CD705100FACC1A /* SettingView+Debug.swift */,
 				109A837027F286D50043ECD0 /* SettingView+StoreKit.swift */,
 				109B546027CD64B000FACC1A /* SupportView.swift */,
+				10A1FFE5286EFE7900550A23 /* SettingView+Product.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -540,6 +547,7 @@
 		102AD2FD277CE92200C1E181 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				10A1FFE4286EFBCB00550A23 /* SVG */,
 				109F97EE2724A10700AB1FA3 /* ButtonStyle */,
 				101AED3C271E3192009556B2 /* Wave.swift */,
 				109F97FB2724D44100AB1FA3 /* Text.swift */,
@@ -547,11 +555,6 @@
 				102C9DE2277E0D8E004822C1 /* HSContent.swift */,
 				109F98042724EC9400AB1FA3 /* Rainbow.swift */,
 				10196D4327D30BA9009CD55E /* Triangle.swift */,
-				1006C12A27EC88E0007479CC /* Salmon.swift */,
-				1006C12C27ED80A6007479CC /* Wavecard.swift */,
-				1056E2F927EDCA4400ECE160 /* Water.swift */,
-				1056E2FB27EDF4C200ECE160 /* SplatInk.swift */,
-				1097979027F5AB2E00EF771B /* Hanger.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 			isa = PBXGroup;
 			children = (
 				105614FD27F336EE008355FC /* StoreKitService.swift */,
+				10A1FFE9286FC6B500550A23 /* ProductIdentifier.swift */,
 			);
 			path = StoreKitService;
 			sourceTree = "<group>";
@@ -669,6 +673,19 @@
 				103F841827EE37820076BDA2 /* ResultPlayerKill.swift */,
 			);
 			path = Result;
+			sourceTree = "<group>";
+		};
+		10A1FFE4286EFBCB00550A23 /* SVG */ = {
+			isa = PBXGroup;
+			children = (
+				1006C12A27EC88E0007479CC /* Salmon.swift */,
+				1006C12C27ED80A6007479CC /* Wavecard.swift */,
+				1056E2F927EDCA4400ECE160 /* Water.swift */,
+				1056E2FB27EDF4C200ECE160 /* SplatInk.swift */,
+				1097979027F5AB2E00EF771B /* Hanger.swift */,
+				10A1FFE7286FC48500550A23 /* Squid.swift */,
+			);
+			path = SVG;
 			sourceTree = "<group>";
 		};
 		10BA13F127201ADD00348DD3 /* Realm */ = {
@@ -930,6 +947,7 @@
 				1006C12727EB298D007479CC /* LoadingService.swift in Sources */,
 				10C7D69D27CF9400002C1F37 /* Overview.swift in Sources */,
 				109F97F82724ADB600AB1FA3 /* ResultOverview.swift in Sources */,
+				10A1FFEA286FC6B500550A23 /* ProductIdentifier.swift in Sources */,
 				104BCEC527D117DC00507A50 /* RankingView.swift in Sources */,
 				10E0C8A827CA6908002F4506 /* StatsCardSmall.swift in Sources */,
 				10635094274E2B1F00529930 /* RealmCoopShift.swift in Sources */,
@@ -979,6 +997,7 @@
 				105E868A27E4B4920015A4F2 /* FSCoopWave.swift in Sources */,
 				10E74E8227B6C42E00D0E962 /* AccountView.swift in Sources */,
 				102C9DDF277DFA49004822C1 /* ResultDefeat.swift in Sources */,
+				10A1FFE6286EFE7900550A23 /* SettingView+Product.swift in Sources */,
 				1041BC0B277DB9C0008B27F1 /* ResultEgg.swift in Sources */,
 				101AED11271E3109009556B2 /* Salmonia3App.swift in Sources */,
 				101AED57271E367D009556B2 /* Color.swift in Sources */,
@@ -1001,6 +1020,7 @@
 				103F842027EFAB0A0076BDA2 /* LoginView.swift in Sources */,
 				1056E2FA27EDCA4400ECE160 /* Water.swift in Sources */,
 				100556FE27C98B3D0094582D /* StatsCard.swift in Sources */,
+				10A1FFE8286FC48500550A23 /* Squid.swift in Sources */,
 				103F842527F049020076BDA2 /* User.swift in Sources */,
 				10D406A027EE2F460074C099 /* ResultHeader.swift in Sources */,
 				1006C12327EA2409007479CC /* ResultUser.swift in Sources */,
@@ -1199,7 +1219,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1234,7 +1254,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;

@@ -13,9 +13,6 @@ struct SettingView_Application: View {
     
     var body: some View {
         Section(content: {
-            Toggle(isOn: service.$requiredAPIToken, label: {
-                Text("Salmon Statsへのアップロードを必須にする")
-            })
             HStack(content: {
                 Text("バージョン")
                 Spacer()
@@ -33,11 +30,5 @@ struct SettingView_Application: View {
         }, footer: {
             Text("アプリのバージョンなど")
         })
-    }
-}
-
-struct SettingView_Application_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingView_Application()
     }
 }

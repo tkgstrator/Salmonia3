@@ -23,9 +23,3 @@ struct SettingView_Appearance: View {
         })
     }
 }
-
-struct SettingView_Appearance_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingView_Appearance()
-    }
-}
