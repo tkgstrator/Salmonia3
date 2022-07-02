@@ -19,11 +19,14 @@ final class StoreKitService: ObservableObject {
     @AppStorage(ProductIdentifier.AutoRenewable.apiupdate.rawValue) var isEnabledAPIUpdate: Bool = false
     // 広告非表示
     @AppStorage(ProductIdentifier.NonConsumable.disableads.rawValue) var isDisabledAds: Bool = true
+    // 課金アイテム
+    @Published var retrieveProducts: [SKProduct] = []
 
     init() {
         // レシートを検証してそれぞれの機能が有効かどうかをチェックする
         DDLogInfo("レシートの検証を行います")
         verifyAutoRenewableReceipt(forceRefresh: true)
+        retrieveProductsInfo()
     }
     
     internal let validator = AppleReceiptValidator(service: .production, sharedSecret: "f9af1771ac2d44e6b595fd900c8b5826")
@@ -39,6 +42,17 @@ final class StoreKitService: ObservableObject {
                 DDLogError("Purchase Error: \(error.localizedDescription)")
             }
         })
+    }
+
+    internal func retrieveProductsInfo() {
+        let productIds: Set<String> = Set(ProductIdentifier.allCases)
+        SwiftyStoreKit.retrieveProductsInfo(productIds, completion: ({ results in
+            if let error = results.error {
+                DDLogError(error.localizedDescription)
+            }
+            self.retrieveProducts = Array(results.retrievedProducts)
+//            let invalidProducts: Set<String> = results.invalidProductIDs
+        }))
     }
 
     /// 自動購読の期限チェック

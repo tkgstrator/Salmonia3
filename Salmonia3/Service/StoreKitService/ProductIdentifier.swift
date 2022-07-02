@@ -7,13 +7,15 @@
 //
 
 import Foundation
+import SwiftUI
+import SwiftyUI
 
 enum ProductIdentifier {
     enum Consumable: String, CaseIterable, Identifiable {
         var id: String { rawValue }
 
         case chip500 = "work.tkgstrator.salmonia3.chip500"
-        case cnip980 = "work.tkgstrator.salmonia3.chip980"
+        case chip980 = "work.tkgstrator.salmonia3.chip980"
     }
 
     enum NonConsumable: String, CaseIterable, Identifiable {
@@ -31,5 +33,38 @@ enum ProductIdentifier {
 
     enum Renewable: String, CaseIterable {
         case unknown
+    }
+
+    static var allCases: [String] {
+        let allCases: [String] = ProductIdentifier.Consumable.allCases.map({$0.rawValue})
+        + ProductIdentifier.NonConsumable.allCases.map({$0.rawValue})
+        + ProductIdentifier.AutoRenewable.allCases.map({$0.rawValue})
+        return allCases
+    }
+}
+
+extension Image {
+    init(productId: String) {
+        if let product = ProductIdentifier.NonConsumable(rawValue: productId) {
+            switch product {
+            case .disableads:
+                self.init(systemName: .ShieldSlash)
+                return
+            case .multiaccount:
+                self.init(systemName: .ClockArrowCirclepath)
+                return
+            }
+        }
+        if let product = ProductIdentifier.Consumable(rawValue: productId) {
+            switch product {
+            case .chip500:
+                self.init(systemName: .BitcoinsignCircle)
+                return
+            case .chip980:
+                self.init(systemName: .BitcoinsignCircle)
+                return
+            }
+        }
+        self.init(systemName: .BitcoinsignCircle)
     }
 }

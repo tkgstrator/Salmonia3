@@ -7,22 +7,26 @@
 //
 
 import SwiftUI
+import SwiftyUI
 
 struct SettingView_Product: View {
+    @State private var selection: Int? = 0
+    private let productIds: [String] = ProductIdentifier.allCases
+
     var body: some View {
         ScrollView(.vertical, showsIndicators: false, content: {
-            Section(content: {
-                LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: nil, alignment: .center), count: 2), content: {
-                    ForEach(ProductIdentifier.NonConsumable.allCases) { productId in
-                        Text(productId.rawValue)
-                    }
-                    ForEach(ProductIdentifier.AutoRenewable.allCases) { productId in
-                        Text(productId.rawValue)
-                    }
-                })
-            }, header: {
-                Text("追加機能")
-            })
+            ForEach(productIds, id: \.self) { productIdentifier in
+                Text(productIdentifier)
+                    .backgroundCard()
+            }
+        })
+    }
+}
+
+struct ProductView: View {
+    var body: some View {
+        HStack(alignment: .center, spacing: nil, content: {
+            Image(systemName: .BitcoinsignCircle)
         })
     }
 }
@@ -35,6 +39,14 @@ extension Image {
 
 struct SettingView_Product_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView_Product()
+        ProductView()
+            .preferredColorScheme(.dark)
+            .previewLayout(.fixed(width: 300, height: 120))
+        ProductView()
+            .preferredColorScheme(.dark)
+            .previewLayout(.fixed(width: 375, height: 150))
+        ProductView()
+            .preferredColorScheme(.dark)
+            .previewLayout(.fixed(width: 600, height: 240))
     }
 }
