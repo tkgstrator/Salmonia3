@@ -27,6 +27,11 @@ struct ProductView: View {
     var body: some View {
         HStack(alignment: .center, spacing: nil, content: {
             Image(systemName: .BitcoinsignCircle)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 60, height: 60, alignment: .center)
+            Text("広告を非表示にします")
+                .font(systemName: .Splatfont2, size: 16)
         })
     }
 }

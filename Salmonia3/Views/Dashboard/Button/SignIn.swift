@@ -43,8 +43,23 @@ extension SignIn {
         var body: some View {
             let account: UserInfo = {
                 if service.session.accounts.isEmpty {
-                    var user = UserInfo(nsaid: "0000000000000000", membership: false, friendCode: "XXXX-XXXX-XXXX", sessionToken: "", splatoonToken: "", iksmSession: "", thumbnailURL: URL(unsafeString: "https://cdn-image-e0d67c509fb203858ebcb2fe3f88c2aa.baas.nintendo.com/1/07938e82b382e840"), nickname: "未ログイン")
-                    user.resultCoop = CoopInfo(jobNum: 99999, goldenIkuraTotal: 999999999, ikuraTotal: 999999999, kumaPoint: 999999999, kumaPointTotal: 999999999)
+                    var user = UserInfo(
+                        nsaid: "0000000000000000",
+                        membership: false,
+                        friendCode: "XXXX-XXXX-XXXX",
+                        sessionToken: "",
+                        splatoonToken: "",
+                        iksmSession: "",
+                        thumbnailURL: URL(unsafeString: "https://cdn-image-e0d67c509fb203858ebcb2fe3f88c2aa.baas.nintendo.com/1/07938e82b382e840"),
+                        nickname: "みなかみはちみ"
+                    )
+                    user.resultCoop = CoopInfo(
+                        jobNum: 99999,
+                        goldenIkuraTotal: 999999999,
+                        ikuraTotal: 999999999,
+                        kumaPoint: 999999999,
+                        kumaPointTotal: 999999999
+                    )
                     return user
                 }
                 return service.session.account
@@ -74,48 +89,49 @@ extension SignIn {
                         })
                         .disabled(account.credential.nsaid == "0000000000000000")
                         Text(account.nickname)
-                            .font(systemName: .Splatfont2, size: 20 * scale)
+                            .font(systemName: .Splatfont2, size: 24 * scale)
                             .padding()
                         Spacer()
-                        VStack(alignment: .leading, spacing: 0, content: {
-                            HStack(content: {
-                                Image(.power)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 22 * scale, height: 22 * scale, alignment: .center)
-                                Text(account.resultCoop.ikuraTotal)
-                            })
-                            HStack(content: {
-                                Image(.golden)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 22 * scale, height: 22 * scale, alignment: .center)
-                                Text(account.resultCoop.goldenIkuraTotal)
-                            })
-                        })
-                        .font(systemName: .Splatfont2, size: 16 * scale)
                     })
                     .frame(maxHeight: .infinity)
-                    HStack(alignment: .center, spacing: nil, content: {
-                        VStack(alignment: .leading, spacing: -10 * scale, content: {
-                            Text("フレンドコード")
-                            HStack(spacing: 14, content: {
-                                Text(String(format: "SW-%@", account.friendCode))
-                                    .font(systemName: .Splatfont2, size: 14 * scale)
-                                Button(action: {
-                                    UIPasteboard.general.string = account.friendCode
-                                }, label: {
-                                    Image(systemName: .RectangleOnRectangleAngled)
-                                        .font(.system(size: 14 * scale, weight: .semibold, design: .monospaced))
-                                })
-                            })
-                            .foregroundColor(.secondary)
+                    HStack(spacing: nil, content: {
+                        HStack(content: {
+                            Image(.power)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 22 * scale, height: 22 * scale, alignment: .center)
+                            Text(account.resultCoop.ikuraTotal)
                         })
                         Spacer()
-                        Text("画像タップで切り替え")
-                            .underline()
+                        HStack(content: {
+                            Image(.golden)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 22 * scale, height: 22 * scale, alignment: .center)
+                            Text(account.resultCoop.goldenIkuraTotal)
+                        })
                     })
                     .font(systemName: .Splatfont2, size: 16 * scale)
+//                    HStack(alignment: .center, spacing: nil, content: {
+//                        VStack(alignment: .leading, spacing: -10 * scale, content: {
+//                            Text("フレンドコード")
+//                            HStack(spacing: 14, content: {
+//                                Text(String(format: "SW-%@", account.friendCode))
+//                                    .font(systemName: .Splatfont2, size: 14 * scale)
+//                                Button(action: {
+//                                    UIPasteboard.general.string = account.friendCode
+//                                }, label: {
+//                                    Image(systemName: .RectangleOnRectangleAngled)
+//                                        .font(.system(size: 14 * scale, weight: .semibold, design: .monospaced))
+//                                })
+//                            })
+//                            .foregroundColor(.secondary)
+//                        })
+//                        Spacer()
+//                        Text("画像タップで切り替え")
+//                            .underline()
+//                    })
+//                    .font(systemName: .Splatfont2, size: 16 * scale)
                 })
             })
             .padding()
@@ -146,24 +162,18 @@ extension SignIn {
         
         var body: some View {
             GeometryReader(content: { geometry in
+                let scale: CGFloat = geometry.width / 120
                 Button(action: {
                     isPresented.toggle()
                 }, label: {
                     Text("イカリング2")
                         .underline()
-//                    Image(.splatnet2)
-//                        .resizable()
-//                        .scaledToFit()
-//                        .position(geometry.center)
                 })
                 .position(geometry.center)
-//                Text("タップでログイン")
-//                    .underline()
+                .overlay(Image(systemName: .PlusCircle).foregroundColor(.blue).padding(scale * 10), alignment: .topTrailing)
+                .backgroundView()
+                .font(systemName: .Splatfont2, size: 16 * scale)
             })
-            .overlay(Text("ログイン/追加"), alignment: .bottom)
-            .font(systemName: .Splatfont2, size: 14)
-            .padding()
-            .backgroundView()
             .scaledToFit()
             .authorize(isPresented: $isPresented, session: service.session)
         }
@@ -175,23 +185,18 @@ extension SignIn {
         var body: some View {
             let color: Color = service.isFirestoreSignIn ? .blue : .clear
             GeometryReader(content: { geometry in
+                let scale: CGFloat = geometry.width / 120
                 Button(action: {
                     service.signInWithTwitterAccount()
                 }, label: {
-                    Text("Firestore")
+                    Text("Salmon Stats")
                         .underline()
-//                    Image(.splatnet2)
-//                        .resizable()
-//                        .scaledToFit()
-//                        .position(geometry.center)
                 })
                 .position(geometry.center)
+                .overlay(Image(systemName: .CheckmarkSealFill).foregroundColor(color).padding(scale * 10), alignment: .topTrailing)
+                .backgroundView()
+                .font(systemName: .Splatfont2, size: 16 * scale)
             })
-            .overlay(Text("連携"), alignment: .bottom)
-            .font(systemName: .Splatfont2, size: 14)
-            .overlay(Image(systemName: .CheckmarkSealFill).foregroundColor(color), alignment: .topTrailing)
-            .padding()
-            .backgroundView()
             .scaledToFit()
         }
     }
@@ -214,9 +219,14 @@ struct SignIn_Previews: PreviewProvider {
         SignIn.SplatNet2()
             .environmentObject(LoadingService())
             .preferredColorScheme(.dark)
-            .previewLayout(.fixed(width: 300, height: 300))
+            .previewLayout(.fixed(width: 120, height: 120))
+        SignIn.SplatNet2()
+            .environmentObject(LoadingService())
+            .preferredColorScheme(.dark)
+            .previewLayout(.fixed(width: 90, height: 90))
         SignIn.NewSalmonStats()
             .environmentObject(LoadingService())
-            .previewLayout(.fixed(width: 300, height: 300))
+            .preferredColorScheme(.dark)
+            .previewLayout(.fixed(width: 120, height: 120))
     }
 }
