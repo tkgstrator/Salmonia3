@@ -12,7 +12,9 @@ import SplatNet2
 
 struct SettingView: View {
     @EnvironmentObject var service: AppService
-    
+    /// リザルト強制取得モード
+    @AppStorage("APP_FORCE_FETCH_RESULTS") var forceFetchResults: Bool = true
+
     var body: some View {
         Form(content: {
             SettingView_Appearance()
@@ -20,6 +22,9 @@ struct SettingView: View {
             SettingView_Application()
             NavigationLink(destination: SettingView_Product().environmentObject(service.storekit), label: {
                 Text("追加機能")
+            })
+            Toggle(isOn: $forceFetchResults, label: {
+                Text("強制リザルト全件アップロード")
             })
             NavigationLink(destination: SettingView_StoreKit(), label: {
                 Text("StoreKit")

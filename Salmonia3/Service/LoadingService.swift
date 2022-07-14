@@ -48,6 +48,8 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
     @AppStorage("APP_REFRESHABLE_TOKEN") var refreshable: Bool = true
     /// シフト表示モード
     @AppStorage("APP_SHIFT_DISPLAY_MODE") var shiftDisplayMode: ShiftDisplayMode = .current
+    /// リザルト強制取得モード
+    @AppStorage("APP_FORCE_FETCH_RESULTS") var forceFetchResults: Bool = true
 
     init() {
         // データ読込時に一瞬だけ立ち上がるので常に最新のデータが反映されている
@@ -64,16 +66,22 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
     
     /// SplatNet2からリザルトダウンロード
     func downloadResultsFromSplatNet2() {
+        // 最新のバイトIDを取得
         let resultId: Int? = {
             DDLogInfo(session.accounts)
             DDLogInfo(session.accounts.isEmpty)
+            // アカウントが設定されていれば、DBに保存されている最も新しいバイトIDの値を取得する
+            // バイトが一件もなければ0を取得する
             if !session.accounts.isEmpty {
                 let nsaid: String = session.account.credential.nsaid
-                return realm.objects(RealmCoopResult.self).filter("pid=%@", nsaid).max(ofProperty: "jobId") ?? 0
+                // 強制取得モード判定
+                return forceFetchResults ? 0 : realm.objects(RealmCoopResult.self).filter("pid=%@", nsaid).max(ofProperty: "jobId") ?? 0
             }
+            // アカウントがなければnilを返す
             return nil
         }()
-        
+
+        // バイトIDが取得できればそのバイトIDからのデータを取得する
         if let resultId = resultId {
             self.session.uploadResults(resultId: resultId)
         } else {
