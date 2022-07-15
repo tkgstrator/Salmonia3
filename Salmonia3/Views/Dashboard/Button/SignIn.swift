@@ -133,6 +133,16 @@ extension SignIn {
 //                    })
 //                    .font(systemName: .Splatfont2, size: 16 * scale)
                 })
+                .overlay(
+                    Button(action: {
+                        isPresented.toggle()
+                    }, label: {
+                        Image(systemName: .PersonCropRectangleStack)
+                            .resizable()
+                            .foregroundColor(.secondary)
+                            .frame(width: 24 * scale, height: 24 * scale, alignment: .center)
+                    }),
+                    alignment: .topTrailing)
             })
             .padding()
             .aspectRatio(300/120, contentMode: .fit)

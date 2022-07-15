@@ -7,32 +7,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4F883513-9A85-4556-8327-E4C7E7244FD0"
-            shouldBeEnabled = "No"
+            uuid = "32EF580C-E4ED-4A0C-81F3-432262A57343"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Salmonia3/Service/AppService/AppService.swift"
+            filePath = "Salmonia3/Service/LoadingService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "init()"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
+            landmarkName = "signInWithTwitterAccount()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8AC5B686-4C12-4982-A337-31C8E09BB590"
+            uuid = "89D14EB8-B882-4CA0-98DB-9CC6D5D846F9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Salmonia3/Service/StoreKitService/StoreKitService.swift"
+            filePath = "Salmonia3/Service/LoadingService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "verifyAutoRenewableProducts(forceRefresh:)"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "signInWithTwitterAccount()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7217CECF-E6D8-4DE7-8B6A-84847C89285E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../SplatNet2/Sources/SplatNet2/SplatNet2.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "publish(_:isNeedOAuth:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B5CA599C-21DE-42D9-A4E5-ADB8DA97FB6A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../SplatNet2/Sources/SplatNet2/SplatNet2.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "publish(_:isNeedOAuth:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
