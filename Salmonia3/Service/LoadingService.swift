@@ -170,6 +170,29 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
             }
             if let credential = credential {
                 Auth.auth().signIn(with: credential, completion: { result, error in
+                    if let user: FirebaseAuth.User = result?.user, let credential = result?.credential, let providerData = user.providerData.first {
+                        // 数値が入った方のID
+                        let uid: String = providerData.uid
+                        let displayName: String? = providerData.displayName
+                        let screenName: String? = nil
+                        let photoURL: String? = providerData.photoURL?.absoluteString
+
+                        // Salmon Statsにアカウント登録
+                        self.session.update(uid: uid, displayName: displayName, screenName: screenName, photoURL: photoURL)
+                            .receive(on: DispatchQueue.main)
+                            .sink(receiveCompletion: { completion in
+                                switch completion {
+                                case .finished:
+                                    DDLogInfo("Update Twitter ID: Success")
+                                case .failure(let error):
+                                    DDLogInfo("Update Twitter ID: Failure")
+                                    DDLogError(error)
+                                }
+                            }, receiveValue: { response in
+                                DDLogInfo(response)
+                            })
+                            .store(in: &self.cancellable)
+                   }
                     if let error = error {
                         DDLogError(error)
                         return
