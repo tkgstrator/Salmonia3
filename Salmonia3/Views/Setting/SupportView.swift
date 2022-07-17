@@ -33,10 +33,6 @@ struct SupportView: View {
     }
 }
 
-extension SKProduct: Identifiable {
-    public var id: String { productIdentifier }
-}
-
 struct SupportView_Previews: PreviewProvider {
     static var previews: some View {
         SupportView()

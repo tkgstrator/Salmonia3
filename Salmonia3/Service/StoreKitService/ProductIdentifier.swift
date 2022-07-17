@@ -9,6 +9,7 @@
 import Foundation
 import SwiftUI
 import SwiftyUI
+import StoreKit
 
 enum ProductIdentifier {
     enum Consumable: String, CaseIterable, Identifiable {
@@ -45,23 +46,30 @@ enum ProductIdentifier {
 
 extension Image {
     init(productId: String) {
+        if let product = ProductIdentifier.AutoRenewable(rawValue: productId) {
+            switch product {
+            case .apiupdate:
+                self.init(StickersType.squid)
+                return
+            }
+        }
         if let product = ProductIdentifier.NonConsumable(rawValue: productId) {
             switch product {
             case .disableads:
-                self.init(systemName: .ShieldSlash)
+                self.init(StickersType.splatted)
                 return
             case .multiaccount:
-                self.init(systemName: .ClockArrowCirclepath)
+                self.init(StickersType.party)
                 return
             }
         }
         if let product = ProductIdentifier.Consumable(rawValue: productId) {
             switch product {
             case .chip500:
-                self.init(systemName: .BitcoinsignCircle)
+                self.init(StickersType.flow)
                 return
             case .chip980:
-                self.init(systemName: .BitcoinsignCircle)
+                self.init(StickersType.flow)
                 return
             }
         }

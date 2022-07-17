@@ -50,7 +50,6 @@ struct ShiftCollectionView: View {
             .listStyle(.plain)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("シフトスケジュール")
-            .withAdmobBanner()
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarTrailing, content: {
                     Button(action: {

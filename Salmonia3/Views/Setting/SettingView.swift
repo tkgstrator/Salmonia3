@@ -20,9 +20,6 @@ struct SettingView: View {
             SettingView_Appearance()
             SettingView_Support()
             SettingView_Application()
-            NavigationLink(destination: SettingView_Product().environmentObject(service.storekit), label: {
-                Text("追加機能")
-            })
             Toggle(isOn: $forceFetchResults, label: {
                 Text("強制リザルト全件アップロード")
             })
