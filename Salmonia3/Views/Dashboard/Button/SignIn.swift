@@ -13,6 +13,7 @@ import SplatNet2
 import SDWebImageSwiftUI
 import BetterSafariView
 import Common
+import StoreKit
 
 enum SignIn {}
 
@@ -37,31 +38,93 @@ extension View {
 
 
 extension SignIn {
+    struct NavIcon<Content: View>: View {
+        let action: () -> Void
+        let label: () -> Content
+        let loaclizedText: Text
+        let scale: CGFloat
+
+        init(localizedText: Text, scale: CGFloat? = nil, action: @escaping () -> Void, label: @escaping () -> Content) {
+            self.loaclizedText = localizedText
+            self.action = action
+            self.label = label
+            self.scale = scale ?? 1.0
+        }
+
+        var body: some View {
+            GeometryReader(content: { geometry in
+                VStack(content: {
+                    let scale: CGFloat = geometry.width / 120
+                    Button(action: {
+                        action()
+                    }, label: {
+                        label()
+                            .clipShape(Circle())
+                            .background(Circle())
+                            .scaledToFit()
+                    })
+                    .font(systemName: .Splatfont2, size: 20 * scale)
+                    .overlay(Circle().strokeBorder(lineWidth: 4, antialiased: true))
+                    loaclizedText
+                        .foregroundColor(.primary)
+                        .font(systemName: .Splatfont2, size: 16 * scale)
+                        .frame(height: 20 * scale)
+                })
+                .scaledToFit()
+                .position(geometry.center)
+            })
+            .scaledToFit()
+        }
+    }
+
+    struct WriteReview: View {
+        var body: some View {
+            SignIn.NavIcon(
+                localizedText: Text("レビューを書く"),
+                action: {
+                    if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                        SKStoreReviewController.requestReview(in: scene)
+                    }
+                }, label: {
+                    Image(systemName: .PencilAndOutline)
+                        .resizable()
+                        .padding()
+                        .foregroundColor(.white)
+                })
+        }
+    }
+
+    struct LightSwitch: View {
+        @EnvironmentObject var service: AppService
+
+        var body: some View {
+            SignIn.NavIcon(
+                localizedText: Text("外観切り替え"),
+                action: {
+                    $service.apperances.isDarkmode.wrappedValue.toggle()
+                }, label: {
+                    Image(systemName: .Switch2)
+                        .resizable()
+                        .padding()
+                        .foregroundColor(.white)
+                })
+        }
+    }
+
     struct Option: View {
         @State private var isPresented: Bool = false
 
         var body: some View {
-            GeometryReader(content: { geometry in
-                let scale: CGFloat = geometry.width / 120
-                Button(action: {
+            SignIn.NavIcon(
+                localizedText: Text("設定"),
+                action: {
                     isPresented.toggle()
                 }, label: {
-                    ZStack(alignment: .bottom, content: {
-                        Image(StickersType.judd)
-                            .resizable()
-                            .clipShape(Circle())
-                        Text("設定")
-                            .foregroundColor(.primary)
-                            .shadow(color: .blue, radius: 1, x: 1, y: 1)
-                    })
-                    .background(Circle())
+                    Image(StickersType.judd)
+                        .resizable()
+                        .padding(10)
                 })
-                .font(systemName: .Splatfont2, size: 20 * scale)
-            })
             .overlay(NavigationLink(destination: SettingView(), isActive: $isPresented, label: { EmptyView() }))
-            .overlay(Circle().strokeBorder(lineWidth: 4, antialiased: true))
-            .scaledToFit()
-            .frame(maxWidth: 100)
         }
     }
 
@@ -69,27 +132,16 @@ extension SignIn {
         @State private var isPresented: Bool = false
 
         var body: some View {
-            GeometryReader(content: { geometry in
-                let scale: CGFloat = geometry.width / 120
-                Button(action: {
+            SignIn.NavIcon(
+                localizedText: Text("機能の追加"),
+                action: {
                     isPresented.toggle()
                 }, label: {
-                    ZStack(alignment: .bottom, content: {
-                        Image(StickersType.snail)
-                            .resizable()
-                            .clipShape(Circle())
-                        Text("機能を追加")
-                            .foregroundColor(.primary)
-                            .shadow(color: .blue, radius: 1, x: 1, y: 1)
-                    })
-                    .background(Circle())
+                    Image(StickersType.snail)
+                        .resizable()
+                        .padding(0)
                 })
-                .font(systemName: .Splatfont2, size: 20 * scale)
-            })
             .overlay(NavigationLink(destination: ProductView().environmentObject(StoreKitService()), isActive: $isPresented, label: { EmptyView() }))
-            .overlay(Circle().strokeBorder(lineWidth: 4, antialiased: true))
-            .scaledToFit()
-            .frame(maxWidth: 100)
         }
     }
 
@@ -121,24 +173,15 @@ extension SignIn {
                 }
                 return service.session.account
             }()
-            GeometryReader(content: { geometry in
-                let scale: CGFloat = geometry.width / 120
-                Button(action: {
+            SignIn.NavIcon(
+                localizedText: Text(account.nickname),
+                action: {
                     isPresented.toggle()
                 }, label: {
-                    ZStack(alignment: .bottom, content: {
-                        WebImage(url: account.thumbnailURL)
-                            .resizable()
-                            .clipShape(Circle())
-                        Text(account.nickname)
-                            .foregroundColor(.primary)
-                            .shadow(color: .blue, radius: 1, x: 1, y: 1)
-                    })
-                    .background(Circle())
+                    WebImage(url: account.thumbnailURL)
+                        .resizable()
+                        .foregroundColor(.white)
                 })
-                .font(systemName: .Splatfont2, size: 20 * scale)
-            })
-            .scaledToFit()
             .halfsheet(
                 isPresented: $isPresented,
                 transitionStyle: .coverVertical,
@@ -155,8 +198,6 @@ extension SignIn {
                     AccountPickerView()
                         .environmentObject(service)
                 })
-            .overlay(Circle().strokeBorder(lineWidth: 4, antialiased: true))
-            .frame(maxWidth: 100)
         }
     }
     
@@ -165,54 +206,32 @@ extension SignIn {
         @State private var isPresented: Bool = false
         
         var body: some View {
-            GeometryReader(content: { geometry in
-                let scale: CGFloat = geometry.width / 120
-                Button(action: {
+            SignIn.NavIcon(
+                localizedText: Text("アカウント追加"),
+                action: {
                     isPresented.toggle()
                 }, label: {
-                    ZStack(alignment: .bottom, content: {
-                        Image(StickersType.inkling)
-                            .resizable()
-                            .clipShape(Circle())
-                        Text("アカウント追加")
-                            .foregroundColor(.primary)
-                            .shadow(color: .blue, radius: 1, x: 1, y: 1)
-                    })
-                    .background(Circle())
+                    Image(StickersType.inkling)
+                        .resizable()
+                        .padding(4)
                 })
-                .font(systemName: .Splatfont2, size: 20 * scale)
-            })
-            .scaledToFit()
-            .overlay(Circle().strokeBorder(lineWidth: 4, antialiased: true))
             .authorize(isPresented: $isPresented, session: service.session)
-            .frame(maxWidth: 100)
         }
     }
 
-    struct NewSalmonStats: View {
+    struct Twitter: View {
         @EnvironmentObject var service: LoadingService
 
         var body: some View {
-            GeometryReader(content: { geometry in
-                let scale: CGFloat = geometry.width / 120
-                Button(action: {
+            SignIn.NavIcon(
+                localizedText: Text("Twitter連携"),
+                action: {
                     service.signInWithTwitterAccount()
                 }, label: {
-                    ZStack(alignment: .bottom, content: {
-                        Image(StickersType.stats)
-                            .resizable()
-                            .clipShape(Circle())
-                        Text("Statsと連携")
-                            .foregroundColor(.primary)
-                            .shadow(color: .blue, radius: 1, x: 1, y: 1)
-                    })
-                    .background(Circle())
+                    Image(StickersType.twitter)
+                        .resizable()
+                        .padding(4)
                 })
-                .font(systemName: .Splatfont2, size: 20 * scale)
-            })
-            .scaledToFit()
-            .overlay(Circle().strokeBorder(lineWidth: 4, antialiased: true))
-            .frame(maxWidth: 100)
         }
     }
 
@@ -220,24 +239,14 @@ extension SignIn {
         @State private var isPresented: Bool = false
 
         var body: some View {
-            GeometryReader(content: { geometry in
-                let scale: CGFloat = geometry.width / 120
-                Button(action: {
+            SignIn.NavIcon(
+                localizedText: Text("Salmon Stats"),
+                action: {
                     isPresented.toggle()
                 }, label: {
-                    ZStack(alignment: .bottom, content: {
-                        Image(StickersType.stats)
-                            .resizable()
-                            .clipShape(Circle())
-                        Text("Salmon Stats")
-                            .foregroundColor(.primary)
-                            .shadow(color: .blue, radius: 1, x: 1, y: 1)
-                    })
-                    .background(Circle())
+                    Image(StickersType.stats)
+                        .resizable()
                 })
-                .font(systemName: .Splatfont2, size: 20 * scale)
-            })
-            .scaledToFit()
             .safariView(isPresented: $isPresented) {
                 SafariView(
                     url: URL(string: "https://salmonstats.splatnet2.com/results")!,
@@ -250,15 +259,20 @@ extension SignIn {
                 .preferredControlAccentColor(.accentColor)
                 .dismissButtonStyle(.done)
             }
-            .overlay(Circle().strokeBorder(lineWidth: 4, antialiased: true))
-            .frame(maxWidth: 100)
         }
     }
 }
 
 struct SignIn_Previews: PreviewProvider {
     static var previews: some View {
-        SignIn.NewSalmonStats()
+        SignIn.User()
+            .environmentObject(LoadingService())
+            .preferredColorScheme(.dark)
+            .previewLayout(.fixed(width: 120, height: 120))
+        SignIn.WriteReview()
+            .preferredColorScheme(.dark)
+            .previewLayout(.fixed(width: 120, height: 120))
+        SignIn.Twitter()
             .environmentObject(LoadingService())
             .preferredColorScheme(.dark)
             .previewLayout(.fixed(width: 120, height: 120))
@@ -269,6 +283,10 @@ struct SignIn_Previews: PreviewProvider {
             .preferredColorScheme(.dark)
             .previewLayout(.fixed(width: 120, height: 120))
         SignIn.SalmonStats()
+            .preferredColorScheme(.dark)
+            .previewLayout(.fixed(width: 120, height: 120))
+        SignIn.LightSwitch()
+            .environmentObject(AppService())
             .preferredColorScheme(.dark)
             .previewLayout(.fixed(width: 120, height: 120))
         SignIn.SplatNet2()

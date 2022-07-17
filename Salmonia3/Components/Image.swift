@@ -58,6 +58,7 @@ enum StickersType: String, CaseIterable {
     case squid      = "Squid"
     case flow       = "Flow"
     case lijudd     = "LiJudd"
+    case twitter    = "Twitter"
 
     public var imageName: String {
         "\(Package.namespace)/\(rawValue)"

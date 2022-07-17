@@ -54,7 +54,7 @@ final class StoreKitService: ObservableObject {
     }
 
     // 購入済みの項目の復元
-    internal func restorePurchasedProducts() -> AnyPublisher<Bool, Error> {
+    internal func restorePurchasedProducts() -> AnyPublisher<Bool, Never> {
         // 全ての非消費型コンテンツの無効化
         deactivateNonConsumableContents()
         return Future { promise in

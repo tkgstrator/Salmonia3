@@ -18,7 +18,7 @@ import CocoaLumberjackSwift
 final class AppService: ObservableObject {
     init() {
         let refreshable: Bool = storekit.isEnabledAPIUpdate
-        print(refreshable)
+        DDLogInfo("Current Mode: Auto Refreshable => \(refreshable)")
         let session = SalmonStats(refreshable: refreshable)
         self.version = session.version
         if realm.objects(RealmCoopShift.self).isEmpty {
@@ -33,8 +33,6 @@ final class AppService: ObservableObject {
     @Published var application: Application = Application.shared
     /// セッション
     @Published var version: String = "0.0.0"
-    /// リザルト取得にAPITokenを必須にする
-    @AppStorage("APP_REQUIRED_API_TOKEN") var requiredAPIToken: Bool = false
     /// 自動でAPIをアップデートする
     @AppStorage("APP_REFRESHABLE_TOKEN") var refreshable: Bool = false
     /// シフト表示モード

@@ -9,13 +9,14 @@
 import SwiftUI
 import SwiftyUI
 import StoreKit
+import Combine
 
 struct ProductView: View {
     @EnvironmentObject var service: StoreKitService
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false, content: {
-            LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: nil, alignment: .top), count: 2), spacing: 24, content: {
+            LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: nil, alignment: .top), count: 2), spacing: nil, content: {
                 ForEach(service.retrieveProducts) { product in
                     ProductItem(product: product)
                 }
@@ -32,28 +33,46 @@ struct ProductView: View {
 extension ProductView {
     struct RestoreItem: View {
         @EnvironmentObject var service: StoreKitService
+        @State private var isPresented: Bool = false
+        @State private var cancellable: AnyCancellable?
 
         var body: some View {
-            VStack(content: {
-                ZStack(alignment: .bottom, content: {
+            GeometryReader(content: { geometry in
+                VStack(content: {
+                    let scale: CGFloat = geometry.width / 180
                     Button(action: {
-                        service.restorePurchasedProducts()
+                        cancellable = service.restorePurchasedProducts()
+                            .sink(receiveValue: { result in
+                                isPresented = result
+                            })
                     }, label: {
                         Image(StickersType.lijudd)
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 100, height: 100)
                             .clipShape(Circle())
                             .background(Circle())
-                            .overlay(Circle().strokeBorder(.white, lineWidth: 4, antialiased: true))
+                            .frame(width: 100, height: 100)
                     })
-                    Text("Restore")
+                    .font(systemName: .Splatfont2, size: 16 * scale)
+                    .overlay(Circle().strokeBorder(lineWidth: 4, antialiased: true))
+                    Text("復元")
                         .foregroundColor(.primary)
-                        .shadow(color: .blue, radius: 1, x: 1, y: 1)
-                        .lineLimit(1)
-                        .font(systemName: .Splatfont2, size: 20)
+                        .font(systemName: .Splatfont2, size: 16 * scale)
+                        .frame(height: 16 * scale)
+                    Text("コンテンツを再有効化")
+                        .foregroundColor(.primary)
+                        .font(systemName: .Splatfont2, size: 14 * scale)
+                        .frame(height: 14 * scale)
                 })
+                .position(geometry.center)
             })
+            .scaledToFit()
+            .alert("復元", isPresented: $isPresented){
+                Button("了解", role: nil) {
+                }
+            } message: {
+                Text("購入済みのコンテンツを復元しました")
+            }
         }
     }
 
@@ -65,29 +84,33 @@ extension ProductView {
         let product: SKProduct
 
         var body: some View {
-            VStack(content: {
-                ZStack(alignment: .bottom, content: {
+            GeometryReader(content: { geometry in
+                VStack(content: {
+                    let scale: CGFloat = geometry.width / 180
                     Button(action: {
                         service.purchaseProduct(identifier: product.productIdentifier)
                     }, label: {
                         Image(productId: product.productIdentifier)
                             .resizable()
-                            .frame(width: 100, height: 100)
-                            .scaledToFit()
                             .clipShape(Circle())
                             .background(Circle())
-                            .overlay(Circle().strokeBorder(.white, lineWidth: 4, antialiased: true))
+                            .frame(width: 100, height: 100)
+                            .scaledToFit()
                     })
-                    .disabled(isEnabled)
+                    .font(systemName: .Splatfont2, size: 16 * scale)
+                    .overlay(Circle().strokeBorder(lineWidth: 4, antialiased: true))
                     Text(product.localizedTitle)
                         .foregroundColor(.primary)
-                        .shadow(color: .blue, radius: 1, x: 1, y: 1)
-                        .lineLimit(1)
-                        .font(systemName: .Splatfont2, size: 20)
+                        .font(systemName: .Splatfont2, size: 16 * scale)
+                        .frame(height: 16 * scale)
+                    Text(isEnabled ? "購入済み" : (product.localizedPrice ?? "-"))
+                        .foregroundColor(.primary)
+                        .font(systemName: .Splatfont2, size: 14 * scale)
+                        .frame(height: 14 * scale)
                 })
-                Text(isEnabled ? "購入済み" : product.localizedPrice ?? "-")
-                    .frame(height: 14)
+                .position(geometry.center)
             })
+            .scaledToFit()
         }
     }
 }
