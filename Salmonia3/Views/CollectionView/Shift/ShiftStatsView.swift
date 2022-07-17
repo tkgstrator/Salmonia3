@@ -51,19 +51,19 @@ struct ShiftStatsView: View {
                     .buttonStyle(.plain)
                 }
                 ForEach(stats.ikuraNum) { ikuraNum in
-                    StatsCard(stats: ikuraNum)
+                    StatsCard(stats: ikuraNum, .ikuraNum)
                 }
                 ForEach(stats.goldenIkuraNum) { goldenIkuraNum in
-                    StatsCard(stats: goldenIkuraNum)
+                    StatsCard(stats: goldenIkuraNum, .goldenIkuraNum)
                 }
                 ForEach(stats.deadCount) { deadCount in
-                    StatsCard(stats: deadCount)
+                    StatsCard(stats: deadCount, .help)
                 }
                 ForEach(stats.helpCount) { helpCount in
-                    StatsCard(stats: helpCount)
+                    StatsCard(stats: helpCount, .rescue)
                 }
                 ForEach(stats.defeatedCount) { defeatedCount in
-                    StatsCard(stats: defeatedCount)
+                    StatsCard(stats: defeatedCount, .bossDefeated)
                 }
             })
             LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 3), content: {

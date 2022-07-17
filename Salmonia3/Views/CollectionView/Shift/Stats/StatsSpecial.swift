@@ -15,11 +15,13 @@ struct StatsSpecial: View {
     @State var scale: Double = .zero
     let specialList: [SpecialId]
     let probs: [Double]
+    let counts: [Int]
     let colors: [Color] = [.red, .blue, .green, .yellow]
     
     init(specialProbs: [StatsModel.SpecialProb]) {
         self.specialList = specialProbs.map({ $0.specialId })
         self.probs = specialProbs.map({ $0.prob })
+        self.counts = specialProbs.map({ $0.count })
     }
     
     var body: some View {
@@ -28,6 +30,7 @@ struct StatsSpecial: View {
                 ForEach(specialList.indices, id: \.self) { index in
                     let specialType: SpecialId = specialList[index]
                     let prob: Double = probs[index]
+                    let count: Int = counts[index]
                     let color: Color = colors[index]
                     HStack(spacing: 15, content: {
                         Image(specialType)
@@ -36,11 +39,14 @@ struct StatsSpecial: View {
                             .frame(width: 30, height: 30, alignment: .center)
                             .padding(4)
                             .background(Circle().fill(Color.black.opacity(0.9)))
-                        Text(String(format:"%05.2f%%", prob * 100))
-                            .font(systemName: .Splatfont2, size: 16, foregroundColor: color)
-                        Spacer()
+                        HStack(content: {
+                            Text(String(format:"%05.2f%%", prob * 100))
+                            Spacer()
+                            Text(String(format:"(%d)", count))
+                        })
+                        .frame(maxWidth: 100)
+                        .font(systemName: .Splatfont2, size: 16, foregroundColor: color)
                     })
-                        .frame(maxWidth: 155)
                 }
             })
             Spacer()
@@ -67,33 +73,3 @@ struct StatsSpecial: View {
             })
     }
 }
-
-//struct StatsSpecial_Previews: PreviewProvider {
-//    static var previews: some View {
-//        StatsSpecial()
-//            .preferredColorScheme(.dark)
-//    }
-//}
-
-//extension Text {
-//    init(_ specialType: SpecialId) {
-//        let text: String = {
-//            switch specialType {
-//            case .splatBombLauncher:
-//                return "キューバンボムピッチャー"
-//            case .stingRay:
-//                return ""
-//            case .inkjet:
-//                <#code#>
-//            case .splashdown:
-//                <#code#>
-//            }
-//        }
-//    }
-//}
-
-//extension Image {
-//    init(_ specialType: SpecialId) {
-//        self.init("Special/\(specialType.rawValue)", bundle: .main)
-//    }
-//}

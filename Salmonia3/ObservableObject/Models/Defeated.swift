@@ -10,7 +10,7 @@ import Foundation
 import SplatNet2
 
 extension StatsModel {
-    class Defeated: StatsType {
+    class Defeated: StatsScoreType {
         let id: UUID = UUID()
         let score: Float
         let other: Float

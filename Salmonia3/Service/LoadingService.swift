@@ -268,6 +268,6 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
 
 
 
-extension Common.UserInfo: Equatable {
-    
-}
+//extension Common.UserInfo: Equatable {
+//
+//}

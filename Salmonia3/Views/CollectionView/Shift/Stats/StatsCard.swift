@@ -9,12 +9,22 @@
 import SwiftUI
 import SwiftyUI
 import Surge
+import SplatNet2
+
+enum StatsType: CaseIterable {
+    case goldenIkuraNum
+    case ikuraNum
+    case bossDefeated
+    case help
+    case rescue
+}
 
 struct StatsCard: View {
     @State private var scale: CGFloat = .zero
     let score: Double
     let other: Double
     let caption: String
+    let captionImage: Image
     
     var totalValue: Double {
         score + other
@@ -24,15 +34,43 @@ struct StatsCard: View {
         score > other ? .orange : .blue
     }
     
-    init(stats: StatsModel.Overview) {
+    init(stats: StatsModel.Overview, _ type: StatsType = .goldenIkuraNum) {
         self.score = Double(stats.score)
         self.other = Double(stats.other)
+        self.captionImage = {
+            switch type {
+            case .goldenIkuraNum:
+                return Image(ResultType.golden)
+            case .ikuraNum:
+                return Image(ResultType.power)
+            case .help:
+                return Image(ResultType.help)
+            case .rescue:
+                return Image(ResultType.rescue)
+            case .bossDefeated:
+                return Image(BossId.goldie)
+            }
+        }()
         self.caption = stats.caption
     }
     
-    init<T: BinaryFloatingPoint>(score: T, other: T, caption: String) {
+    init<T: BinaryFloatingPoint>(score: T, other: T, caption: String, _ type: StatsType = .goldenIkuraNum) {
         self.score = Double(score)
         self.other = Double(other)
+        self.captionImage = {
+            switch type {
+            case .goldenIkuraNum:
+                return Image(ResultType.golden)
+            case .ikuraNum:
+                return Image(ResultType.power)
+            case .help:
+                return Image(ResultType.help)
+            case .rescue:
+                return Image(ResultType.rescue)
+            case .bossDefeated:
+                return Image(BossId.goldie)
+            }
+        }()
         self.caption = caption
     }
     
@@ -52,48 +90,44 @@ struct StatsCard: View {
             })
         })
     }
-    
+
     var body: some View {
         GeometryReader(content: { geometry in
-            ZStack(content: {
-                Group(content: {
-                    Circle()
-                        .trim(from: other / totalValue, to: 1.0 * scale)
-                        .stroke(.orange, lineWidth: 6)
-                        .opacity(0.8)
-                        .rotationEffect(.degrees(-90))
-                    Circle()
-                        .trim(from: 0.0, to: other / totalValue * scale)
-                        .stroke(.blue, lineWidth: 6)
-                        .rotationEffect(.degrees(-90))
+            let scale: CGFloat = geometry.width / 160
+            let width: CGFloat = geometry.width
+            VStack(spacing: 4 * scale, content: {
+                HStack(spacing: 3 * scale, content: {
+                    Text(caption)
+                    Spacer()
+                    captionImage
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 20 * scale)
+                })
+                .font(systemName: .Splatfont2, size: 16 * scale)
+                HStack(alignment: .center, spacing: 0, content: {
+                    Rectangle().fill(.orange).frame(width: width * (1 - other / totalValue), height: 12 * scale)
+                    Rectangle().fill(.blue).frame(width: width * (other / totalValue), height: 12 * scale)
+                })
+                ZStack(alignment: .center, content: {
                     Text(String(format: "%2.2f", score))
-                        .font(systemName: .Splatfont2, size: 20)
-                        .minimumScaleFactor(0.5)
+                        .font(systemName: .Splatfont2, size: 18 * scale)
                         .padding(.horizontal)
                     HStack(spacing: 2, content: {
-                        Image(systemName: score > other ? .ArrowtriangleUpFill : .ArrowtriangleDownFill)
-                            .imageScale(.small)
-                        Text(String(format: "%2.2f", abs(score - other)))
-                            .font(systemName: .Splatfont2, size: 14)
-                            .minimumScaleFactor(0.5)
+                        Spacer()
+                        Text(score >= other ? "+" : "-")
+                        Text(String(format: "%2.2f%%", score / other))
                     })
-                        .foregroundColor(textColor)
-                        .offset(y: 20)
+                    .foregroundColor(textColor)
+                    .font(systemName: .Splatfont2, size: 13 * scale)
                 })
-                    .scaledToFit()
-                    .padding()
+                .frame(height: 18 * scale)
             })
         })
-            .scaledToFit()
-            .padding(.top, 20)
-            .padding(.bottom, 20)
-            .overlay(Caption, alignment: .bottom)
-            .onAppear(perform: {
-                withAnimation(.linear(duration: 1.5)) {
-                    self.scale = 1.0
-                }
-            })
-            .background(RoundedRectangle(cornerRadius: 6).fill(Color.whitesmoke).overlay(Text(caption).font(systemName: .Splatfont2, size: 14).padding(8), alignment: .topLeading))
+        .padding(.bottom, 8)
+        .padding(.horizontal, 8)
+        .aspectRatio(16/7, contentMode: .fit)
+        .background(RoundedRectangle(cornerRadius: 6).fill(Color.whitesmoke))
     }
 }
 

@@ -15,6 +15,7 @@ struct StatsWeapon: View {
     @State var scale: Double = .zero
     let weaponList: [WeaponType]
     let probs: [Double]
+    let counts: [Int]
     let shiftType: ShiftType
     
     enum ShiftType: CaseIterable {
@@ -27,6 +28,7 @@ struct StatsWeapon: View {
     init(weaponProbs: [StatsModel.WeaponProb]) {
         self.weaponList = weaponProbs.map({ $0.weaponType })
         self.probs = weaponProbs.map({ $0.prob })
+        self.counts = weaponProbs.map({ $0.count })
         self.shiftType = {
             if weaponProbs.allSatisfy({ $0.weaponType == .randomGreen }) {
                 return .allRandom
@@ -49,6 +51,7 @@ struct StatsWeapon: View {
                 ForEach(weaponList.indices, id: \.self) { index in
                     let weaponType: WeaponType = weaponList[index]
                     let prob: Double = probs[index]
+                    let count: Int = counts[index]
                     let color: Color = colors[index]
                     HStack(spacing: 15, content: {
                         Image(weaponType)
@@ -59,15 +62,21 @@ struct StatsWeapon: View {
                             .background(Circle().fill(Color.black.opacity(0.9)))
                         switch shiftType {
                         case .normal, .goldRandom:
-                            Text(String(format:"%05.2f%%", prob * 100))
-                                .font(systemName: .Splatfont2, size: 16, foregroundColor: color)
+                            HStack(content: {
+                                Text(String(format:"%05.2f%%", prob * 100))
+                                Spacer()
+                                Text(String(format:"(%d)", count))
+                            })
+                            .frame(maxWidth: 100)
+                            .font(systemName: .Splatfont2, size: 16, foregroundColor: color)
                         case .oneRandom, .allRandom:
-                            Text("??.??%")
-                                .font(systemName: .Splatfont2, size: 16, foregroundColor: color)
+                            HStack(content: {
+                                Text("??.??%")
+                                Spacer()
+                            })
+                            .font(systemName: .Splatfont2, size: 16, foregroundColor: color)
                         }
-                        Spacer()
                     })
-                        .frame(maxWidth: 155)
                 }
             })
             Spacer()
@@ -103,19 +112,19 @@ struct StatsWeapon: View {
 }
 
 struct StatsWeapon_Previews: PreviewProvider {
-//    static var weaponProbs: [StatsModel.WeaponProb] = [
-//        StatsModel.WeaponProb(weaponType: .shooterBlasterBurst, prob: 0.25),
-//        StatsModel.WeaponProb(weaponType: .umbrellaAutoAssault, prob: 0.25),
-//        StatsModel.WeaponProb(weaponType: .chargerSpark, prob: 0.25),
-//        StatsModel.WeaponProb(weaponType: .slosherVase, prob: 0.25)
-//    ]
-    
     static var weaponProbs: [StatsModel.WeaponProb] = [
-        StatsModel.WeaponProb(weaponType: .randomGreen, prob: 0.25),
-        StatsModel.WeaponProb(weaponType: .randomGreen, prob: 0.25),
-        StatsModel.WeaponProb(weaponType: .randomGreen, prob: 0.25),
-        StatsModel.WeaponProb(weaponType: .randomGreen, prob: 0.25)
+        StatsModel.WeaponProb(weaponType: .shooterBlasterBurst, prob: 0.25, count: 10),
+        StatsModel.WeaponProb(weaponType: .umbrellaAutoAssault, prob: 0.25, count: 10),
+        StatsModel.WeaponProb(weaponType: .chargerSpark, prob: 0.25, count: 10),
+        StatsModel.WeaponProb(weaponType: .slosherVase, prob: 0.25, count: 10)
     ]
+    
+//    static var weaponProbs: [StatsModel.WeaponProb] = [
+//        StatsModel.WeaponProb(weaponType: .randomGreen, prob: 0.25),
+//        StatsModel.WeaponProb(weaponType: .randomGreen, prob: 0.25),
+//        StatsModel.WeaponProb(weaponType: .randomGreen, prob: 0.25),
+//        StatsModel.WeaponProb(weaponType: .randomGreen, prob: 0.25)
+//    ]
     static var previews: some View {
         StatsWeapon(weaponProbs: weaponProbs)
             .preferredColorScheme(.dark)

@@ -9,7 +9,7 @@
 import Foundation
 
 extension StatsModel {
-    class Comparison: StatsType {
+    class Comparison: StatsScoreType {
         let id: UUID = UUID()
         let score: Float
         let other: Float
