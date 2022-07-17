@@ -35,9 +35,32 @@ extension Image {
     init(_ rankId: RankId) {
         self.init("Rank/\(rankId.rawValue)", bundle: .main)
     }
-    
-    init(_ asset: SignInType) {
-        self.init(asset.imageName, bundle: .main)
+
+    /// Stickers
+    init(_ sticker: StickersType) {
+        self.init(sticker.imageName, bundle: .main)
+    }
+}
+
+enum StickersType: String, CaseIterable {
+    enum Package {
+        public static let namespace = "Stickers" // Namespaceを指定
+        public static let version = "1.0.0"
+    }
+
+    case judd       = "Judd"
+    case jelonzo    = "Jelonzo"
+    case inkling    = "Inkling"
+    case party      = "Party"
+    case snail      = "Snail"
+    case stats      = "Stats"
+    case splatted   = "Splatted"
+    case squid      = "Squid"
+    case flow       = "Flow"
+    case lijudd     = "LiJudd"
+
+    public var imageName: String {
+        "\(Package.namespace)/\(rawValue)"
     }
 }
 

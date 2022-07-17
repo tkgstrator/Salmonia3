@@ -13,76 +13,28 @@ import RealmSwift
 import SplatNet2
 
 struct UserView: View {
-    @StateObject var stats: UserStatsService = UserStatsService()
+//    @StateObject var stats: UserStatsService = UserStatsService()
     
     var body: some View {
         NavigationView(content: {
             ScrollView(content: {
-                LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 600)), count: 1), content: {
+                LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: 100, maximum: 200)), count: 3), spacing: 24, content: {
                     SignIn.User()
-                })
-                LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 200)), count: 3), content: {
                     SignIn.SplatNet2()
                     SignIn.NewSalmonStats()
+                    SignIn.SalmonStats()
+                    SignIn.Product()
+                    SignIn.Option()
                 })
-                Dashboard.WaveClearRatio(result: stats.result)
-                Dashboard.BossDefeatedRatio(defeated: stats.defeated)
             })
-            .padding(.horizontal)
             .navigationTitle("ダッシュボード")
             .navigationBarTitleDisplayMode(.inline)
             .environmentObject(LoadingService())
-            .toolbar(content: {
-                ToolbarItem(placement: .navigationBarTrailing, content: {
-                    NavigationLink(destination: SettingView(), label: {
-                        Image(systemName: .Gearshape)
-                    })
-                })
-            })
             .font(systemName: .Splatfont2, size: 16)
         })
         .navigationViewStyle(.split)
     }
 }
-
-//struct UserStatsView: View {
-//    @State var selection: Int = 0
-//    @StateObject var user: UserStatsModel
-//
-//    var WaveAnalysis: some View {
-//        PieChart(data: user.result)
-//    }
-//
-//    var BossDefeatedAnalysis: some View {
-//        Section(content: {
-//            RadarChartBossLabel()
-//                .scaledToFit()
-//                .padding(.horizontal)
-//                .background(RadarChart(data: [user.defeated.player, user.defeated.other]), alignment: .center)
-//        }, header: {
-//            Text("HEADER.BOSS.DEFEATED")
-//        })
-//    }
-//
-//    var UserStatsAnalysis: some View {
-//        Section(content: {
-//            RadarChartUserStats()
-//                .scaledToFit()
-//                .padding(.horizontal)
-//                .background(RadarChart(data: [user.stats.player, user.stats.other]), alignment: .center)
-//        })
-//    }
-//
-//    var body: some View {
-//        TabView(selection: $selection, content: {
-//            WaveAnalysis
-//                .tabItem({
-//
-//                })
-//        })
-//            .tabViewStyle(.page)
-//    }
-//}
 
 /// オオモノ討伐率グラフのラベル
 internal struct RadarChartBossLabel: View {
@@ -155,4 +107,13 @@ extension Array: Identifiable where Element == PieChartModel {
     public var id: UUID { UUID() }
     
     public var totalCount: Int { Int(map({ $0.value }).reduce(0, +)) }
+}
+
+
+struct User_Previews: PreviewProvider {
+    static var previews: some View {
+        UserView()
+            .environmentObject(LoadingService())
+            .preferredColorScheme(.dark)
+    }
 }

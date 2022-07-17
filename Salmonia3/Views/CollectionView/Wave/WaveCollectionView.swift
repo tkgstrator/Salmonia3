@@ -57,7 +57,6 @@ struct WaveCollectionView: View {
                         EventTypeFilterView(selection: $eventType)
                     })
                 })
-                .withAdmobBanner()
                 .onChange(of: eventType, perform: { eventType in
                     filter(eventType: eventType, waterLevel: waterLevel)
                 })

@@ -24,7 +24,6 @@ struct ResultCollectionView: View {
                     }
                 }
             })
-            .withAdmobBanner()
             .listStyle(.plain)
             .refreshable(action: {
                 isPresented.toggle()

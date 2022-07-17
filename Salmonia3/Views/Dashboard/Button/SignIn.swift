@@ -11,6 +11,7 @@ import SwiftyUI
 import SalmonStats
 import SplatNet2
 import SDWebImageSwiftUI
+import BetterSafariView
 import Common
 
 enum SignIn {}
@@ -36,6 +37,62 @@ extension View {
 
 
 extension SignIn {
+    struct Option: View {
+        @State private var isPresented: Bool = false
+
+        var body: some View {
+            GeometryReader(content: { geometry in
+                let scale: CGFloat = geometry.width / 120
+                Button(action: {
+                    isPresented.toggle()
+                }, label: {
+                    ZStack(alignment: .bottom, content: {
+                        Image(StickersType.judd)
+                            .resizable()
+                            .clipShape(Circle())
+                        Text("設定")
+                            .foregroundColor(.primary)
+                            .shadow(color: .blue, radius: 1, x: 1, y: 1)
+                    })
+                    .background(Circle())
+                })
+                .font(systemName: .Splatfont2, size: 20 * scale)
+            })
+            .overlay(NavigationLink(destination: SettingView(), isActive: $isPresented, label: { EmptyView() }))
+            .overlay(Circle().strokeBorder(lineWidth: 4, antialiased: true))
+            .scaledToFit()
+            .frame(maxWidth: 100)
+        }
+    }
+
+    struct Product: View {
+        @State private var isPresented: Bool = false
+
+        var body: some View {
+            GeometryReader(content: { geometry in
+                let scale: CGFloat = geometry.width / 120
+                Button(action: {
+                    isPresented.toggle()
+                }, label: {
+                    ZStack(alignment: .bottom, content: {
+                        Image(StickersType.snail)
+                            .resizable()
+                            .clipShape(Circle())
+                        Text("機能を追加")
+                            .foregroundColor(.primary)
+                            .shadow(color: .blue, radius: 1, x: 1, y: 1)
+                    })
+                    .background(Circle())
+                })
+                .font(systemName: .Splatfont2, size: 20 * scale)
+            })
+            .overlay(NavigationLink(destination: ProductView().environmentObject(StoreKitService()), isActive: $isPresented, label: { EmptyView() }))
+            .overlay(Circle().strokeBorder(lineWidth: 4, antialiased: true))
+            .scaledToFit()
+            .frame(maxWidth: 100)
+        }
+    }
+
     struct User: View {
         @EnvironmentObject var service: LoadingService
         @State private var isPresented: Bool = false
@@ -64,89 +121,24 @@ extension SignIn {
                 }
                 return service.session.account
             }()
-            SignIn.UserView(account: account)
-        }
-    }
-    
-    private struct UserView: View {
-        @EnvironmentObject var service: LoadingService
-        @State private var isPresented: Bool = false
-        let account: UserInfo
-
-        var body: some View {
             GeometryReader(content: { geometry in
-                let scale: CGFloat = geometry.width / 375
-                VStack(alignment: .leading, spacing: 0 * scale, content: {
-                    HStack(spacing: nil, content: {
-                        Button(action: {
-                            isPresented.toggle()
-                        }, label: {
-                            WebImage(url: account.thumbnailURL)
-                                .resizable()
-                                .scaledToFit()
-                                .clipShape(Circle())
-                                .frame(width: 65 * scale, height: 65 * scale, alignment: .center)
-                        })
-                        .disabled(account.credential.nsaid == "0000000000000000")
-                        Text(account.nickname)
-                            .font(systemName: .Splatfont2, size: 24 * scale)
-                            .padding()
-                        Spacer()
-                    })
-                    .frame(maxHeight: .infinity)
-                    HStack(spacing: nil, content: {
-                        HStack(content: {
-                            Image(.power)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 22 * scale, height: 22 * scale, alignment: .center)
-                            Text(account.resultCoop.ikuraTotal)
-                        })
-                        Spacer()
-                        HStack(content: {
-                            Image(.golden)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 22 * scale, height: 22 * scale, alignment: .center)
-                            Text(account.resultCoop.goldenIkuraTotal)
-                        })
-                    })
-                    .font(systemName: .Splatfont2, size: 16 * scale)
-//                    HStack(alignment: .center, spacing: nil, content: {
-//                        VStack(alignment: .leading, spacing: -10 * scale, content: {
-//                            Text("フレンドコード")
-//                            HStack(spacing: 14, content: {
-//                                Text(String(format: "SW-%@", account.friendCode))
-//                                    .font(systemName: .Splatfont2, size: 14 * scale)
-//                                Button(action: {
-//                                    UIPasteboard.general.string = account.friendCode
-//                                }, label: {
-//                                    Image(systemName: .RectangleOnRectangleAngled)
-//                                        .font(.system(size: 14 * scale, weight: .semibold, design: .monospaced))
-//                                })
-//                            })
-//                            .foregroundColor(.secondary)
-//                        })
-//                        Spacer()
-//                        Text("画像タップで切り替え")
-//                            .underline()
-//                    })
-//                    .font(systemName: .Splatfont2, size: 16 * scale)
-                })
-                .overlay(
-                    Button(action: {
-                        isPresented.toggle()
-                    }, label: {
-                        Image(systemName: .PersonCropRectangleStack)
+                let scale: CGFloat = geometry.width / 120
+                Button(action: {
+                    isPresented.toggle()
+                }, label: {
+                    ZStack(alignment: .bottom, content: {
+                        WebImage(url: account.thumbnailURL)
                             .resizable()
-                            .foregroundColor(.secondary)
-                            .frame(width: 24 * scale, height: 24 * scale, alignment: .center)
-                    }),
-                    alignment: .topTrailing)
+                            .clipShape(Circle())
+                        Text(account.nickname)
+                            .foregroundColor(.primary)
+                            .shadow(color: .blue, radius: 1, x: 1, y: 1)
+                    })
+                    .background(Circle())
+                })
+                .font(systemName: .Splatfont2, size: 20 * scale)
             })
-            .padding()
-            .aspectRatio(300/120, contentMode: .fit)
-            .backgroundCard(Color.whitesmoke, aspectRatio: 120/300)
+            .scaledToFit()
             .halfsheet(
                 isPresented: $isPresented,
                 transitionStyle: .coverVertical,
@@ -163,6 +155,8 @@ extension SignIn {
                     AccountPickerView()
                         .environmentObject(service)
                 })
+            .overlay(Circle().strokeBorder(lineWidth: 4, antialiased: true))
+            .frame(maxWidth: 100)
         }
     }
     
@@ -176,16 +170,22 @@ extension SignIn {
                 Button(action: {
                     isPresented.toggle()
                 }, label: {
-                    Text("イカリング2")
-                        .underline()
+                    ZStack(alignment: .bottom, content: {
+                        Image(StickersType.inkling)
+                            .resizable()
+                            .clipShape(Circle())
+                        Text("アカウント追加")
+                            .foregroundColor(.primary)
+                            .shadow(color: .blue, radius: 1, x: 1, y: 1)
+                    })
+                    .background(Circle())
                 })
-                .position(geometry.center)
-                .overlay(Image(systemName: .PlusCircle).foregroundColor(.blue).padding(scale * 10), alignment: .topTrailing)
-                .backgroundView()
-                .font(systemName: .Splatfont2, size: 16 * scale)
+                .font(systemName: .Splatfont2, size: 20 * scale)
             })
             .scaledToFit()
+            .overlay(Circle().strokeBorder(lineWidth: 4, antialiased: true))
             .authorize(isPresented: $isPresented, session: service.session)
+            .frame(maxWidth: 100)
         }
     }
 
@@ -193,48 +193,85 @@ extension SignIn {
         @EnvironmentObject var service: LoadingService
 
         var body: some View {
-            let color: Color = service.isFirestoreSignIn ? .blue : .clear
             GeometryReader(content: { geometry in
                 let scale: CGFloat = geometry.width / 120
                 Button(action: {
                     service.signInWithTwitterAccount()
                 }, label: {
-                    Text("Salmon Stats")
-                        .underline()
+                    ZStack(alignment: .bottom, content: {
+                        Image(StickersType.stats)
+                            .resizable()
+                            .clipShape(Circle())
+                        Text("Statsと連携")
+                            .foregroundColor(.primary)
+                            .shadow(color: .blue, radius: 1, x: 1, y: 1)
+                    })
+                    .background(Circle())
                 })
-                .position(geometry.center)
-                .overlay(Image(systemName: .CheckmarkSealFill).foregroundColor(color).padding(scale * 10), alignment: .topTrailing)
-                .backgroundView()
-                .font(systemName: .Splatfont2, size: 16 * scale)
+                .font(systemName: .Splatfont2, size: 20 * scale)
             })
             .scaledToFit()
+            .overlay(Circle().strokeBorder(lineWidth: 4, antialiased: true))
+            .frame(maxWidth: 100)
+        }
+    }
+
+    struct SalmonStats: View {
+        @State private var isPresented: Bool = false
+
+        var body: some View {
+            GeometryReader(content: { geometry in
+                let scale: CGFloat = geometry.width / 120
+                Button(action: {
+                    isPresented.toggle()
+                }, label: {
+                    ZStack(alignment: .bottom, content: {
+                        Image(StickersType.stats)
+                            .resizable()
+                            .clipShape(Circle())
+                        Text("Salmon Stats")
+                            .foregroundColor(.primary)
+                            .shadow(color: .blue, radius: 1, x: 1, y: 1)
+                    })
+                    .background(Circle())
+                })
+                .font(systemName: .Splatfont2, size: 20 * scale)
+            })
+            .scaledToFit()
+            .safariView(isPresented: $isPresented) {
+                SafariView(
+                    url: URL(string: "https://salmonstats.splatnet2.com/results")!,
+                    configuration: SafariView.Configuration(
+                        entersReaderIfAvailable: false,
+                        barCollapsingEnabled: true
+                    )
+                )
+                .preferredBarAccentColor(.clear)
+                .preferredControlAccentColor(.accentColor)
+                .dismissButtonStyle(.done)
+            }
+            .overlay(Circle().strokeBorder(lineWidth: 4, antialiased: true))
+            .frame(maxWidth: 100)
         }
     }
 }
 
 struct SignIn_Previews: PreviewProvider {
     static var previews: some View {
-        SignIn.User()
-            .environmentObject(LoadingService())
-            .preferredColorScheme(.dark)
-            .previewLayout(.fixed(width: 300, height: 120))
-        SignIn.User()
-            .environmentObject(LoadingService())
-            .preferredColorScheme(.dark)
-            .previewLayout(.fixed(width: 375, height: 150))
-        SignIn.User()
-            .environmentObject(LoadingService())
-            .preferredColorScheme(.dark)
-            .previewLayout(.fixed(width: 600, height: 240))
-        SignIn.SplatNet2()
+        SignIn.NewSalmonStats()
             .environmentObject(LoadingService())
             .preferredColorScheme(.dark)
             .previewLayout(.fixed(width: 120, height: 120))
-        SignIn.SplatNet2()
-            .environmentObject(LoadingService())
+        SignIn.Product()
             .preferredColorScheme(.dark)
-            .previewLayout(.fixed(width: 90, height: 90))
-        SignIn.NewSalmonStats()
+            .previewLayout(.fixed(width: 120, height: 120))
+        SignIn.Option()
+            .preferredColorScheme(.dark)
+            .previewLayout(.fixed(width: 120, height: 120))
+        SignIn.SalmonStats()
+            .preferredColorScheme(.dark)
+            .previewLayout(.fixed(width: 120, height: 120))
+        SignIn.SplatNet2()
             .environmentObject(LoadingService())
             .preferredColorScheme(.dark)
             .previewLayout(.fixed(width: 120, height: 120))

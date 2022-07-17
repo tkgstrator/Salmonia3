@@ -45,9 +45,11 @@ struct GoogleMobileAdsView: View {
 
 extension View {
     func withAdmobBanner() -> some View {
-        VStack(spacing: 0, content: {
+        return VStack(spacing: 0, content: {
             self
-            GoogleMobileAdsView()
+//            if !isDisableAds {
+//                GoogleMobileAdsView()
+//            }
         })
     }
 }

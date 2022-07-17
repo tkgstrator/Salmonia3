@@ -11,6 +11,7 @@ import SwiftyStoreKit
 import CocoaLumberjackSwift
 import StoreKit
 import SwiftUI
+import Combine
 
 final class StoreKitService: ObservableObject {
     // 複数アカウント
@@ -36,12 +37,42 @@ final class StoreKitService: ObservableObject {
             switch result {
             case .success(let purchase):
                 DDLogInfo("Purchase success: \(purchase.productId)")
+                UserDefaults.standard.set(true, forKey: purchase.productId)
             case .deferred(let purchase):
                 DDLogInfo("Purchase Deferred: \(purchase.productId)")
             case .error(let error):
                 DDLogError("Purchase Error: \(error.localizedDescription)")
             }
         })
+    }
+
+    // 全ての非消費型コンテンツの無効化
+    internal func deactivateNonConsumableContents() {
+        for productIdentifier in ProductIdentifier.NonConsumable.allCases {
+            UserDefaults.standard.set(false, forKey: productIdentifier.rawValue)
+        }
+    }
+
+    // 購入済みの項目の復元
+    internal func restorePurchasedProducts() -> AnyPublisher<Bool, Error> {
+        // 全ての非消費型コンテンツの無効化
+        deactivateNonConsumableContents()
+        return Future { promise in
+            SwiftyStoreKit.restorePurchases(atomically: true, completion: { results in
+                // 一度全ての非消費型コンテンツを無効化
+                for product in results.restoredPurchases {
+                    let productIdentifier: String = product.productId
+                    // 非消費型であればすべて復元
+                    if let product = ProductIdentifier.NonConsumable(rawValue: productIdentifier) {
+                        // 復元成功
+                        UserDefaults.standard.set(true, forKey: productIdentifier)
+                        DDLogInfo(product)
+                    }
+                    promise(.success(true))
+                }
+            })
+        }
+        .eraseToAnyPublisher()
     }
 
     internal func retrieveProductsInfo() {
