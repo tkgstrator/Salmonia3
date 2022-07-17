@@ -199,14 +199,14 @@ fileprivate extension RealmSwift.Results where Element == RealmCoopPlayer {
         let suppliedWeaponList: [WeaponType] = flatMap({ $0.weaponList })
         let appearances: [(WeaponType, Int)] = weaponList.map({ suppliedWeapon in (suppliedWeapon, suppliedWeaponList.filter({ $0 == suppliedWeapon }).count) })
         let totalCount: Int = appearances.map({ $0.1 }).reduce(0, +)
-        return Array(appearances.map({ StatsModel.WeaponProb(weaponType: $0.0, prob: totalCount == .zero ? .zero : Double($0.1) / Double(totalCount)) }).sorted(by: { $0.prob > $1.prob }).prefix(4))
+        return Array(appearances.map({ StatsModel.WeaponProb(weaponType: $0.0, prob: totalCount == .zero ? .zero : Double($0.1) / Double(totalCount), count: $0.1) }).sorted(by: { $0.prob > $1.prob }).prefix(4))
     }
     
     func suppliedSpecialProb() -> [StatsModel.SpecialProb] {
         let suppliedSpecialList: [SpecialId] = compactMap({ $0.specialId })
         let appearances: [(SpecialId, Int)] = SpecialId.allCases.map({ suppliedSpecial in (suppliedSpecial, suppliedSpecialList.filter({ $0 == suppliedSpecial }).count) })
         let totalCount: Int = appearances.map({ $0.1 }).reduce(0, +)
-        let value = appearances.map({ StatsModel.SpecialProb(specialId: $0.0, prob: totalCount == .zero ? .zero : Double($0.1) / Double(totalCount)) }).sorted(by: { $0.prob > $1.prob })
+        let value = appearances.map({ StatsModel.SpecialProb(specialId: $0.0, prob: totalCount == .zero ? .zero : Double($0.1) / Double(totalCount), count: $0.1) }).sorted(by: { $0.prob > $1.prob })
         return value
     }
     

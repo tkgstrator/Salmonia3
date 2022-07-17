@@ -11,12 +11,14 @@ import SplatNet2
 
 extension StatsModel {
     class WeaponProb {
-        internal init(weaponType: WeaponType, prob: Double) {
+        internal init(weaponType: WeaponType, prob: Double, count: Int = 0) {
             self.weaponType = weaponType
             self.prob = prob
+            self.count = count
         }
         
         let weaponType: WeaponType
         let prob: Double
+        let count: Int
     }
 }

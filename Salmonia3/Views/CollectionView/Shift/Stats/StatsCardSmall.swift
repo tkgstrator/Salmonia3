@@ -17,10 +17,10 @@ struct StatsCardSmall: View {
     let other: Double
     let salmonId: BossId
     
-    private var bossType: Image {
+    private var BossImage: Image {
         Image(salmonId)
     }
-    
+
     var totalValue: Double {
         score + other
     }
@@ -71,45 +71,33 @@ struct StatsCardSmall: View {
     
     var body: some View {
         GeometryReader(content: { geometry in
-            ZStack(content: {
-                Group(content: {
-                    Circle()
-                        .trim(from: other / totalValue, to: 1.0 * scale)
-                        .stroke(.orange, lineWidth: 6)
-                        .opacity(0.8)
-                        .rotationEffect(.degrees(-90))
-                    Circle()
-                        .trim(from: 0.0, to: other / totalValue * scale)
-                        .stroke(.blue, lineWidth: 6)
-                        .rotationEffect(.degrees(-90))
-                    Text(String(format: "%2.2f", score))
-                        .font(systemName: .Splatfont2, size: 16)
-                        .minimumScaleFactor(0.5)
-                        .padding(.horizontal)
-                    HStack(spacing: 2, content: {
-                        Image(systemName: score > other ? .ArrowtriangleUpFill : .ArrowtriangleDownFill)
-                            .imageScale(.small)
-                        Text(String(format: "%2.2f", abs(score - other)))
-                            .font(systemName: .Splatfont2, size: 12)
-                            .minimumScaleFactor(0.5)
-                    })
-                        .foregroundColor(textColor)
-                        .offset(y: 20)
+            let scale: CGFloat = geometry.width / 120
+            let width: CGFloat = geometry.width
+            VStack(spacing: 4, content: {
+                HStack(content: {
+                    BossImage
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40 * scale, height: 40 * scale)
+                    Spacer()
                 })
-                    .scaledToFit()
-                    .padding()
+                .font(systemName: .Splatfont2, size: 14 * scale)
+                HStack(alignment: .center, spacing: 0, content: {
+                    Rectangle().fill(.orange).frame(width: width * (1 - other / totalValue), height: 12 * scale)
+                    Rectangle().fill(.blue).frame(width: width * (other / totalValue), height: 12 * scale)
+                })
+                ZStack(alignment: .bottomTrailing, content: {
+                    Text(String(format: "%2.2f%%", score / totalValue * 100))
+                        .font(systemName: .Splatfont2, size: 18 * scale)
+                        .padding(.horizontal)
+                })
+                .frame(height: 18 * scale)
             })
         })
-            .scaledToFit()
-            .padding(.top, 20)
-            .padding(.bottom, 20)
-            .onAppear(perform: {
-                withAnimation(.linear(duration: 1.5)) {
-                    self.scale = 1.0
-                }
-            })
-            .overlay(Caption, alignment: .bottom)
-            .background(RoundedRectangle(cornerRadius: 6).fill(Color.whitesmoke).overlay(bossType.resizable().frame(width: 30, height: 30, alignment: .center).padding(4), alignment: .topLeading))
+        .padding(.bottom)
+        .padding(.horizontal, 8)
+        .aspectRatio(16/11, contentMode: .fit)
+        .background(RoundedRectangle(cornerRadius: 6).fill(Color.whitesmoke))
     }
 }
 

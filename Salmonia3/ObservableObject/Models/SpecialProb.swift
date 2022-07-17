@@ -11,13 +11,15 @@ import SplatNet2
 
 extension StatsModel {
     struct SpecialProb {
-        internal init(specialId: SpecialId, prob: Double) {
+        internal init(specialId: SpecialId, prob: Double, count: Int) {
             self.specialId = specialId
             self.prob = prob
+            self.count = count
         }
         
         let specialId: SpecialId
         let prob: Double
+        let count: Int
     }
     
 }
