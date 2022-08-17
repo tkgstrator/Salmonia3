@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/firebase/abseil-cpp-SwiftPM.git",
         "state": {
           "branch": null,
-          "revision": "d302de612e3d57c6f4afaf087da18fba8eac72a7",
-          "version": "0.20220203.1"
+          "revision": "583de9bd60f66b40e78d08599cc92036c2e7e4e1",
+          "version": "0.20220203.2"
         }
       },
       {
@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
         "state": {
           "branch": null,
-          "revision": "354dda32d89fc8cd4f5c46487f64957d355f53d8",
-          "version": "5.6.1"
+          "revision": "8dd85aee02e39dd280c75eef88ffdb86eed4b07b",
+          "version": "5.6.2"
         }
       },
       {
@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/firebase/boringssl-SwiftPM.git",
         "state": {
           "branch": null,
-          "revision": "79db6516894a932d0ddaff3b05b9da1e4f6c4069",
-          "version": "0.9.0"
+          "revision": "dd3eda2b05a3f459fc3073695ad1b28659066eab",
+          "version": "0.9.1"
         }
       },
       {
@@ -48,11 +48,11 @@
       },
       {
         "package": "Firebase",
-        "repositoryURL": "https://github.com/firebase/firebase-ios-sdk",
+        "repositoryURL": "https://github.com/firebase/firebase-ios-sdk.git",
         "state": {
           "branch": null,
-          "revision": "e8828e8efc813817b3c2cbfde8e965f7a7a26641",
-          "version": "9.2.0"
+          "revision": "cbaa7ce7063d5ab22414962ec63366ccbba26034",
+          "version": "9.4.1"
         }
       },
       {
@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/google/GoogleAppMeasurement.git",
         "state": {
           "branch": null,
-          "revision": "192cce3e0486aecfdb61102a9c694c78dc89dc48",
-          "version": "9.1.0"
+          "revision": "f54f60d0164d887e1174fa51ab2efe48a8e9d178",
+          "version": "9.3.0"
         }
       },
       {
@@ -69,8 +69,8 @@
         "repositoryURL": "https://github.com/google/GoogleDataTransport.git",
         "state": {
           "branch": null,
-          "revision": "b905c49326b72211531ed9d7baa02d724828a8dc",
-          "version": "9.1.4"
+          "revision": "5056b15c5acbb90cd214fe4d6138bdf5a740e5a8",
+          "version": "9.2.0"
         }
       },
       {
@@ -78,8 +78,8 @@
         "repositoryURL": "https://github.com/quanghits/GoogleMobileAds",
         "state": {
           "branch": null,
-          "revision": "7da5c90dcdfd7f6105fc2e6740343636700f43b7",
-          "version": "9.6.0"
+          "revision": "271e6d6bc1d7756a88fe82df558145a264a34331",
+          "version": "9.8.0"
         }
       },
       {
@@ -105,8 +105,8 @@
         "repositoryURL": "https://github.com/grpc/grpc-ios.git",
         "state": {
           "branch": null,
-          "revision": "2af4f6e9c2b18beae228f50b1198c641be859d2b",
-          "version": "1.44.2-grpc"
+          "revision": "8440b914756e0d26d4f4d054a1c1581daedfc5b6",
+          "version": "1.44.3-grpc"
         }
       },
       {
@@ -159,8 +159,8 @@
         "repositoryURL": "https://github.com/realm/realm-core",
         "state": {
           "branch": null,
-          "revision": "55a48c287b5e3a8ca129c257ec7e3b92bcb2a05f",
-          "version": "12.3.0"
+          "revision": "2b8def17bb8e0cddbcc754db6b6466b8487feebf",
+          "version": "12.5.0"
         }
       },
       {
@@ -168,8 +168,8 @@
         "repositoryURL": "https://github.com/realm/realm-swift.git",
         "state": {
           "branch": null,
-          "revision": "fd279e0a94b46c5bd65b17e36817a4365c7a5482",
-          "version": "10.28.2"
+          "revision": "a107f5660b0b6067700923af7f107b6af73c546b",
+          "version": "10.28.5"
         }
       },
       {
@@ -177,8 +177,8 @@
         "repositoryURL": "https://github.com/SDWebImage/SDWebImage.git",
         "state": {
           "branch": null,
-          "revision": "c4b8660bb3ef543fe4bdcaac0db956b32dc5583f",
-          "version": "5.13.0"
+          "revision": "3e48cb68d8e668d146dc59c73fb98cb628616236",
+          "version": "5.13.2"
         }
       },
       {
@@ -191,6 +191,15 @@
         }
       },
       {
+        "package": "SourceKitten",
+        "repositoryURL": "https://github.com/jpsim/SourceKitten.git",
+        "state": {
+          "branch": null,
+          "revision": "817dfa6f2e09b0476f3a6c9dbc035991f02f0241",
+          "version": "0.32.0"
+        }
+      },
+      {
         "package": "Surge",
         "repositoryURL": "https://github.com/Jounce/Surge",
         "state": {
@@ -200,12 +209,21 @@
         }
       },
       {
+        "package": "swift-argument-parser",
+        "repositoryURL": "https://github.com/apple/swift-argument-parser.git",
+        "state": {
+          "branch": null,
+          "revision": "e394bf350e38cb100b6bc4172834770ede1b7232",
+          "version": "1.0.3"
+        }
+      },
+      {
         "package": "swift-log",
         "repositoryURL": "https://github.com/apple/swift-log.git",
         "state": {
           "branch": null,
-          "revision": "5d66f7ba25daf4f94100e7022febf3c75e37a6c7",
-          "version": "1.4.2"
+          "revision": "6fe203dc33195667ce1759bf0182975e4653ba1c",
+          "version": "1.4.4"
         }
       },
       {
@@ -213,8 +231,17 @@
         "repositoryURL": "https://github.com/apple/swift-protobuf.git",
         "state": {
           "branch": null,
-          "revision": "e1499bc69b9040b29184f7f2996f7bab467c1639",
-          "version": "1.19.0"
+          "revision": "fa0fcd43f272a260e7f734f23e6dc55e16fcae0a",
+          "version": "1.19.1"
+        }
+      },
+      {
+        "package": "SwiftSyntax",
+        "repositoryURL": "https://github.com/apple/swift-syntax.git",
+        "state": {
+          "branch": null,
+          "revision": "0b6c22b97f8e9320bca62e82cdbee601cf37ad3f",
+          "version": "0.50600.1"
         }
       },
       {
@@ -224,6 +251,15 @@
           "branch": null,
           "revision": "0f09cec3062dfacc4e91f22753126c3ecbc28252",
           "version": "1.0.1"
+        }
+      },
+      {
+        "package": "SwiftLint",
+        "repositoryURL": "https://github.com/realm/SwiftLint.git",
+        "state": {
+          "branch": null,
+          "revision": "22fb9eb9e55b8f5ad9b48fe6f15ea7daabaafae3",
+          "version": "0.48.0"
         }
       },
       {
@@ -242,6 +278,33 @@
           "branch": null,
           "revision": "9ce911639680113dac9b554d6243e406a9758ebe",
           "version": "0.16.4"
+        }
+      },
+      {
+        "package": "SwiftyTextTable",
+        "repositoryURL": "https://github.com/scottrhoyt/SwiftyTextTable.git",
+        "state": {
+          "branch": null,
+          "revision": "c6df6cf533d120716bff38f8ff9885e1ce2a4ac3",
+          "version": "0.9.0"
+        }
+      },
+      {
+        "package": "SWXMLHash",
+        "repositoryURL": "https://github.com/drmohundro/SWXMLHash.git",
+        "state": {
+          "branch": null,
+          "revision": "6469881a3f30417c5bb02404ea4b69207f297592",
+          "version": "6.0.0"
+        }
+      },
+      {
+        "package": "Yams",
+        "repositoryURL": "https://github.com/jpsim/Yams.git",
+        "state": {
+          "branch": null,
+          "revision": "9ff1cc9327586db4e0c8f46f064b6a82ec1566fa",
+          "version": "4.0.6"
         }
       }
     ]

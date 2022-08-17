@@ -1425,7 +1425,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = exactVersion;
-				version = 9.2.0;
+				version = 9.4.1;
 			};
 		};
 		103284A927E7C89C008964EB /* XCRemoteSwiftPackageReference "Surge" */ = {
@@ -1441,7 +1441,7 @@
 			repositoryURL = "https://github.com/quanghits/GoogleMobileAds";
 			requirement = {
 				kind = exactVersion;
-				version = 9.6.0;
+				version = 9.8.0;
 			};
 		};
 		10805B2827E7CB03001A8B68 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
@@ -1449,7 +1449,7 @@
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
 				kind = exactVersion;
-				version = 10.28.2;
+				version = 10.28.5;
 			};
 		};
 		10EB626927F5BF1600CC638F /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
