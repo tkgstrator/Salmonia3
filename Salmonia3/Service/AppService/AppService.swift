@@ -25,7 +25,9 @@ final class AppService: ObservableObject {
             self.save(objects: SplatNet2.schedule.map({ RealmCoopShift(from: $0) }))
         }
     }
-    /// アプリの外見の設定
+//    /// アプリの外見の設定
+//    @Published var storekit: StoreKitService = StoreKitService.service
+    /// StoreKitの設定
     @Published var storekit: StoreKitService = StoreKitService()
     /// アプリの外見の設定
     @Published var apperances: Appearances = Appearances.shared
@@ -34,7 +36,7 @@ final class AppService: ObservableObject {
     /// セッション
     @Published var version: String = "0.0.0"
     /// 自動でAPIをアップデートする
-    @AppStorage("APP_REFRESHABLE_TOKEN") var refreshable: Bool = false
+//    @AppStorage("APP_REFRESHABLE_TOKEN") var refreshable: Bool = false
     /// シフト表示モード
     @AppStorage("APP_SHIFT_DISPLAY_MODE") var shiftDisplayMode: ShiftDisplayMode = .current
     

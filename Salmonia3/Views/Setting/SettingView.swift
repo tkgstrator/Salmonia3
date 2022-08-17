@@ -17,18 +17,10 @@ struct SettingView: View {
 
     var body: some View {
         Form(content: {
-            SettingView_Appearance()
-            SettingView_Support()
             SettingView_Application()
             Toggle(isOn: $forceFetchResults, label: {
                 Text("強制リザルト全件アップロード")
             })
-            NavigationLink(destination: SettingView_StoreKit(), label: {
-                Text("StoreKit")
-            })
-#if DEBUG
-            SettingView_Debug()
-#endif
         })
         .navigationTitle("Setting")
 

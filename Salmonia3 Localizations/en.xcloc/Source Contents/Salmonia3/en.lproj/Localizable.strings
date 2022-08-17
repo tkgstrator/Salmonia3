@@ -1,7 +1,291 @@
-/* 
-  Localizable.strings
-  Salmonia3
+/* No comment provided by engineer. */
+"-" = "-";
 
-  Created by devonly on 2021/12/31.
-  
-*/
+/* No comment provided by engineer. */
+"??.??%" = "??.??%";
+
+/* No comment provided by engineer. */
+"%lld" = "%lld";
+
+/* No comment provided by engineer. */
+"%lld/51" = "%lld/51";
+
+/* No comment provided by engineer. */
+"%lld回" = "%lld回";
+
+/* No comment provided by engineer. */
+"→" = "→";
+
+/* No comment provided by engineer. */
+"↑" = "↑";
+
+/* No comment provided by engineer. */
+"↓" = "↓";
+
+/* No comment provided by engineer. */
+"+" = "+";
+
+/* No comment provided by engineer. */
+"barley_ural" = "barley_ural";
+
+/* No comment provided by engineer. */
+"Clear" = "Clear";
+
+/* No comment provided by engineer. */
+"Delete All Results" = "Delete All Results";
+
+/* No comment provided by engineer. */
+"Delete IksmSession" = "Delete IksmSession";
+
+/* No comment provided by engineer. */
+"eli fessler" = "eli fessler";
+
+/* No comment provided by engineer. */
+"Failure" = "Failure";
+
+/* No comment provided by engineer. */
+"Font Style" = "Font Style";
+
+/* No comment provided by engineer. */
+"Get Receipt" = "Get Receipt";
+
+/* No comment provided by engineer. */
+"Get Recipt From Apple" = "Get Recipt From Apple";
+
+/* No comment provided by engineer. */
+"Get Recipt From Local" = "Get Recipt From Local";
+
+/* No comment provided by engineer. */
+"Get Results From Firestore" = "Get Results From Firestore";
+
+/* No comment provided by engineer. */
+"Get Wave Results" = "Get Wave Results";
+
+/* No comment provided by engineer. */
+"GJ!" = "GJ!";
+
+/* No comment provided by engineer. */
+"List Style" = "List Style";
+
+/* No comment provided by engineer. */
+"NexusMine" = "NexusMine";
+
+/* No comment provided by engineer. */
+"NG" = "NG";
+
+/* No comment provided by engineer. */
+"None" = "None";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Project" = "Project";
+
+/* No comment provided by engineer. */
+"Purchase" = "Purchase";
+
+/* No comment provided by engineer. */
+"Purchase And Verify Apple" = "Purchase And Verify Apple";
+
+/* No comment provided by engineer. */
+"Purchase And Verify Local" = "Purchase And Verify Local";
+
+/* No comment provided by engineer. */
+"Refresh Style" = "Refresh Style";
+
+/* No comment provided by engineer. */
+"Result Style" = "Result Style";
+
+/* No comment provided by engineer. */
+"RESULT.MATCHING.NUM.%lld" = "RESULT.MATCHING.NUM.%lld";
+
+/* No comment provided by engineer. */
+"Salmon Stats" = "Salmon Stats";
+
+/* No comment provided by engineer. */
+"Select System Font" = "Select System Font";
+
+/* No comment provided by engineer. */
+"Set Previous X-Product Version" = "Set Previous X-Product Version";
+
+/* No comment provided by engineer. */
+"Setting" = "Setting";
+
+/* No comment provided by engineer. */
+"Special Thanks" = "Special Thanks";
+
+/* No comment provided by engineer. */
+"StoreKit" = "StoreKit";
+
+/* No comment provided by engineer. */
+"tkgling" = "tkgling";
+
+/* No comment provided by engineer. */
+"Twitter連携" = "Twitter連携";
+
+/* No comment provided by engineer. */
+"Upload Test Data" = "Upload Test Data";
+
+/* No comment provided by engineer. */
+"Verify" = "Verify";
+
+/* No comment provided by engineer. */
+"Verify Receipt Data From Apple" = "Verify Receipt Data From Apple";
+
+/* No comment provided by engineer. */
+"Verify Receipt Data From Local" = "Verify Receipt Data From Local";
+
+/* No comment provided by engineer. */
+"Wave %lld" = "Wave %lld";
+
+/* No comment provided by engineer. */
+"WAVE一覧" = "WAVE一覧";
+
+/* No comment provided by engineer. */
+"アカウント追加" = "アカウント追加";
+
+/* No comment provided by engineer. */
+"あなた" = "あなた";
+
+/* No comment provided by engineer. */
+"アプリ" = "アプリ";
+
+/* No comment provided by engineer. */
+"アプリのバージョンなど" = "アプリのバージョンなど";
+
+/* No comment provided by engineer. */
+"アプリの外観を変更します" = "アプリの外観を変更します";
+
+/* No comment provided by engineer. */
+"アプリを応援する" = "アプリを応援する";
+
+/* No comment provided by engineer. */
+"アプリを応援すると開発者のやる気が増えます" = "アプリを応援すると開発者のやる気が増えます";
+
+/* No comment provided by engineer. */
+"イカリング" = "イカリング";
+
+/* No comment provided by engineer. */
+"オオモノシャケをたおした数 x%lld" = "オオモノシャケをたおした数 x%lld";
+
+/* No comment provided by engineer. */
+"コンテンツを再有効化" = "コンテンツを再有効化";
+
+/* No comment provided by engineer. */
+"コンテンツを無効化" = "コンテンツを無効化";
+
+/* No comment provided by engineer. */
+"サポート" = "サポート";
+
+/* No comment provided by engineer. */
+"システムフォントを選択してください" = "システムフォントを選択してください";
+
+/* No comment provided by engineer. */
+"シフトスケジュール" = "シフトスケジュール";
+
+/* No comment provided by engineer. */
+"シフト一覧" = "シフト一覧";
+
+/* No comment provided by engineer. */
+"シフト統計" = "シフト統計";
+
+/* No comment provided by engineer. */
+"ダークモードを使う" = "ダークモードを使う";
+
+/* No comment provided by engineer. */
+"ダッシュボード" = "ダッシュボード";
+
+/* No comment provided by engineer. */
+"タップで詳細を表示" = "タップで詳細を表示";
+
+/* No comment provided by engineer. */
+"バージョン" = "バージョン";
+
+/* No comment provided by engineer. */
+"バイト数" = "バイト数";
+
+/* No comment provided by engineer. */
+"ブキコンプリート" = "ブキコンプリート";
+
+/* No comment provided by engineer. */
+"みかた" = "みかた";
+
+/* No comment provided by engineer. */
+"ユーザ" = "ユーザ";
+
+/* No comment provided by engineer. */
+"ランダムブキ一覧" = "ランダムブキ一覧";
+
+/* No comment provided by engineer. */
+"リザルト一覧" = "リザルト一覧";
+
+/* No comment provided by engineer. */
+"レビューする" = "レビューする";
+
+/* No comment provided by engineer. */
+"レビューを書く" = "レビューを書く";
+
+/* No comment provided by engineer. */
+"了解" = "了解";
+
+/* No comment provided by engineer. */
+"外観" = "外観";
+
+/* No comment provided by engineer. */
+"外観切り替え" = "外観切り替え";
+
+/* No comment provided by engineer. */
+"強制リザルト全件アップロード" = "強制リザルト全件アップロード";
+
+/* No comment provided by engineer. */
+"復元" = "復元";
+
+/* No comment provided by engineer. */
+"推定所要バイト数" = "推定所要バイト数";
+
+/* No comment provided by engineer. */
+"支給回数" = "支給回数";
+
+/* No comment provided by engineer. */
+"支給済みブキ" = "支給済みブキ";
+
+/* No comment provided by engineer. */
+"支給率" = "支給率";
+
+/* No comment provided by engineer. */
+"未支給ブキ" = "未支給ブキ";
+
+/* No comment provided by engineer. */
+"未達成" = "未達成";
+
+/* No comment provided by engineer. */
+"概要" = "概要";
+
+/* No comment provided by engineer. */
+"機能の追加" = "機能の追加";
+
+/* No comment provided by engineer. */
+"無効化" = "無効化";
+
+/* No comment provided by engineer. */
+"設定" = "設定";
+
+/* No comment provided by engineer. */
+"詳細データ閲覧" = "詳細データ閲覧";
+
+/* No comment provided by engineer. */
+"購入履歴を初期化しました" = "購入履歴を初期化しました";
+
+/* No comment provided by engineer. */
+"購入済みのコンテンツを復元しました" = "購入済みのコンテンツを復元しました";
+
+/* No comment provided by engineer. */
+"追加機能" = "追加機能";
+
+/* No comment provided by engineer. */
+"達成" = "達成";
+
+/* No comment provided by engineer. */
+"金イクラ納品数" = "金イクラ納品数";
+

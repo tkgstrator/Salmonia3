@@ -129,6 +129,7 @@ extension SignIn {
     }
 
     struct Product: View {
+        @EnvironmentObject var service: AppService
         @State private var isPresented: Bool = false
 
         var body: some View {
@@ -141,13 +142,14 @@ extension SignIn {
                         .resizable()
                         .padding(0)
                 })
-            .overlay(NavigationLink(destination: ProductView().environmentObject(StoreKitService()), isActive: $isPresented, label: { EmptyView() }))
+            .overlay(NavigationLink(destination: ProductView().environmentObject(service.storekit), isActive: $isPresented, label: { EmptyView() }))
         }
     }
 
     struct User: View {
         @EnvironmentObject var service: LoadingService
         @State private var isPresented: Bool = false
+        @AppStorage("work.tkgstrator.multiaccounts") var isMultiEnabled: Bool = false
 
         var body: some View {
             let account: UserInfo = {
@@ -176,7 +178,9 @@ extension SignIn {
             SignIn.NavIcon(
                 localizedText: Text(account.nickname),
                 action: {
-                    isPresented.toggle()
+                    if isMultiEnabled {
+                        isPresented.toggle()
+                    }
                 }, label: {
                     WebImage(url: account.thumbnailURL)
                         .resizable()

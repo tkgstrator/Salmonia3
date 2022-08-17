@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
-  <file original="Salmonia3/en.lproj/InfoPlist.strings" source-language="en" target-language="en" datatype="plaintext">
+  <file original="en.lproj/InfoPlist.strings" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -10,166 +10,164 @@
         <target>Salmonia3</target>
         <note>Bundle name</note>
       </trans-unit>
-      <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
-        <source>The camera is used by Salmonia3.</source>
-        <target>The camera is used by Salmonia3.</target>
-        <note>Privacy - Camera Usage Description</note>
-      </trans-unit>
       <trans-unit id="NSUserTrackingUsageDescription" xml:space="preserve">
-        <source>This itentifier will be used to deliver persoalized ads to you.</source>
-        <target>This itentifier will be used to deliver persoalized ads to you.</target>
-        <note>Privacy - Tracking Usage Description</note>
+        <source>Your data will be used to deliver personalized ads to you</source>
+        <target>Your data will be used to deliver personalized ads to you</target>
+        <note>Localizable.strings
+  Salmonia3
+
+  Created by devonly on 2021/12/31.</note>
       </trans-unit>
     </body>
   </file>
   <file original="Salmonia3/en.lproj/Localizable.strings" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
     </header>
     <body>
-      <trans-unit id="CREDIT.DESIGN" xml:space="preserve">
-        <source>CREDIT.DESIGN</source>
-        <target>CREDIT.DESIGN</target>
-        <note>UIデザイン</note>
+      <trans-unit id="%lld" xml:space="preserve">
+        <source>%lld</source>
+        <target>%lld</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="CREDIT.EXTERNAL.API" xml:space="preserve">
-        <source>CREDIT.EXTERNAL.API</source>
-        <target>CREDIT.EXTERNAL.API</target>
-        <note>外部API</note>
+      <trans-unit id="%lld/51" xml:space="preserve">
+        <source>%lld/51</source>
+        <target>%lld/51</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="CREDIT.STARTUP.PROJECT" xml:space="preserve">
-        <source>CREDIT.STARTUP.PROJECT</source>
-        <target>CREDIT.STARTUP.PROJECT</target>
-        <note>プロジェクト</note>
+      <trans-unit id="%lld回" xml:space="preserve">
+        <source>%lld回</source>
+        <target>%lld回</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="+" xml:space="preserve">
+        <source>+</source>
+        <target>+</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="-" xml:space="preserve">
+        <source>-</source>
+        <target>-</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="??.??%" xml:space="preserve">
+        <source>??.??%</source>
+        <target>??.??%</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Clear" xml:space="preserve">
+        <source>Clear</source>
+        <target>Clear</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Delete All Results" xml:space="preserve">
+        <source>Delete All Results</source>
+        <target>Delete All Results</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Delete IksmSession" xml:space="preserve">
+        <source>Delete IksmSession</source>
+        <target>Delete IksmSession</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Failure" xml:space="preserve">
+        <source>Failure</source>
+        <target>Failure</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Font Style" xml:space="preserve">
         <source>Font Style</source>
         <target>Font Style</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="HEADER.OVERVIEW" xml:space="preserve">
-        <source>HEADER.OVERVIEW</source>
-        <target>HEADER.OVERVIEW</target>
-        <note>概要ヘッダー</note>
-      </trans-unit>
-      <trans-unit id="HEADER.SALMON.STATS" xml:space="preserve">
-        <source>HEADER.SALMON.STATS</source>
-        <target>HEADER.SALMON.STATS</target>
-        <note>SalmonStats</note>
-      </trans-unit>
-      <trans-unit id="HEADER.SALMONSTATS+" xml:space="preserve">
-        <source>HEADER.SALMONSTATS+</source>
-        <target>HEADER.SALMONSTATS+</target>
-        <note>SalmonStats+</note>
-      </trans-unit>
-      <trans-unit id="HEADER.SERVICE" xml:space="preserve">
-        <source>HEADER.SERVICE</source>
-        <target>HEADER.SERVICE</target>
-        <note>サービスヘッダー</note>
-      </trans-unit>
-      <trans-unit id="HEADER.SETTING.APPEARANCES" xml:space="preserve">
-        <source>HEADER.SETTING.APPEARANCES</source>
-        <target>HEADER.SETTING.APPEARANCES</target>
-        <note>外観ヘッダー</note>
-      </trans-unit>
-      <trans-unit id="HEADER.SETTING.APPLICATION" xml:space="preserve">
-        <source>HEADER.SETTING.APPLICATION</source>
-        <target>HEADER.SETTING.APPLICATION</target>
-        <note>外観ヘッダー</note>
-      </trans-unit>
-      <trans-unit id="HEADER.USER" xml:space="preserve">
-        <source>HEADER.USER</source>
-        <target>HEADER.USER</target>
-        <note>ユーザヘッダー</note>
-      </trans-unit>
-      <trans-unit id="RESULT.BOSS.DEFEATED.%lld" xml:space="preserve">
-        <source>RESULT.BOSS.DEFEATED.%lld</source>
-        <target>RESULT.BOSS.DEFEATED.%lld</target>
-        <note>ボス討伐合計</note>
-      </trans-unit>
-      <trans-unit id="RESULT.CLEAR" xml:space="preserve">
-        <source>RESULT.CLEAR</source>
-        <target>RESULT.CLEAR</target>
-        <note>バイトクリア</note>
-      </trans-unit>
-      <trans-unit id="RESULT.DEFEATED" xml:space="preserve">
-        <source>RESULT.DEFEATED</source>
-        <target>RESULT.DEFEATED</target>
-        <note>バイト失敗</note>
-      </trans-unit>
-      <trans-unit id="RESULT.WAVE.%lld" xml:space="preserve">
-        <source>RESULT.WAVE.%lld</source>
-        <target>RESULT.WAVE.%lld</target>
-        <note>WAVE数</note>
-      </trans-unit>
-      <trans-unit id="Results" xml:space="preserve">
-        <source>Results</source>
-        <target>Results</target>
+      <trans-unit id="GJ!" xml:space="preserve">
+        <source>GJ!</source>
+        <target>GJ!</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="SALMONSTATS" xml:space="preserve">
-        <source>SALMONSTATS</source>
-        <target>SALMONSTATS</target>
-        <note>SalmonStats</note>
+      <trans-unit id="Get Receipt" xml:space="preserve">
+        <source>Get Receipt</source>
+        <target>Get Receipt</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="SALMONSTATS+" xml:space="preserve">
-        <source>SALMONSTATS+</source>
-        <target>SALMONSTATS+</target>
-        <note>SalmonStats+</note>
+      <trans-unit id="Get Recipt From Apple" xml:space="preserve">
+        <source>Get Recipt From Apple</source>
+        <target>Get Recipt From Apple</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="SETTING.DARKMODE" xml:space="preserve">
-        <source>SETTING.DARKMODE</source>
-        <target>SETTING.DARKMODE</target>
-        <note>ダークモードを利用するかどうか</note>
+      <trans-unit id="Get Recipt From Local" xml:space="preserve">
+        <source>Get Recipt From Local</source>
+        <target>Get Recipt From Local</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="SIGNIN.WITH.TWITTER" xml:space="preserve">
-        <source>SIGNIN.WITH.TWITTER</source>
-        <target>SIGNIN.WITH.TWITTER</target>
-        <note>Twitterでサインイン</note>
+      <trans-unit id="Get Results From Firestore" xml:space="preserve">
+        <source>Get Results From Firestore</source>
+        <target>Get Results From Firestore</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="SPLATNET2" xml:space="preserve">
-        <source>SPLATNET2</source>
-        <target>SPLATNET2</target>
-        <note>SplatNet2</note>
+      <trans-unit id="Get Wave Results" xml:space="preserve">
+        <source>Get Wave Results</source>
+        <target>Get Wave Results</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="STATS+.PROVIDER" xml:space="preserve">
-        <source>STATS+.PROVIDER</source>
-        <target>STATS+.PROVIDER</target>
-        <note>Firestoreのプロバイダ</note>
+      <trans-unit id="List Style" xml:space="preserve">
+        <source>List Style</source>
+        <target>List Style</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="STATS+.USERNAME" xml:space="preserve">
-        <source>STATS+.USERNAME</source>
-        <target>STATS+.USERNAME</target>
-        <note>Firestoreのユーザ</note>
+      <trans-unit id="NG" xml:space="preserve">
+        <source>NG</source>
+        <target>NG</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="STATS.CREDENTIAL" xml:space="preserve">
-        <source>STATS.CREDENTIAL</source>
-        <target>STATS.CREDENTIAL</target>
-        <note>APIトークン</note>
+      <trans-unit id="NexusMine" xml:space="preserve">
+        <source>NexusMine</source>
+        <target>NexusMine</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="STATS.SIGNIN" xml:space="preserve">
-        <source>STATS.SIGNIN</source>
-        <target>STATS.SIGNIN</target>
-        <note>SalmonStatsと連携</note>
+      <trans-unit id="None" xml:space="preserve">
+        <source>None</source>
+        <target>None</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="STATS.TOTAL.GOLDEN.IKURA.NUM" xml:space="preserve">
-        <source>STATS.TOTAL.GOLDEN.IKURA.NUM</source>
-        <target>STATS.TOTAL.GOLDEN.IKURA.NUM</target>
-        <note>アップロードされたリザルトの金イクラの合計</note>
+      <trans-unit id="OK" xml:space="preserve">
+        <source>OK</source>
+        <target>OK</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="STATS.TOTAL.IKURA.NUM" xml:space="preserve">
-        <source>STATS.TOTAL.IKURA.NUM</source>
-        <target>STATS.TOTAL.IKURA.NUM</target>
-        <note>アップロードされたリザルトの赤イクラの合計</note>
+      <trans-unit id="Project" xml:space="preserve">
+        <source>Project</source>
+        <target>Project</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="STATS.UPLOADED.RESULT.NUM" xml:space="preserve">
-        <source>STATS.UPLOADED.RESULT.NUM</source>
-        <target>STATS.UPLOADED.RESULT.NUM</target>
-        <note>アップロードされたリザルトの件数</note>
+      <trans-unit id="Purchase" xml:space="preserve">
+        <source>Purchase</source>
+        <target>Purchase</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Salmon Stat+" xml:space="preserve">
-        <source>Salmon Stat+</source>
-        <target>Salmon Stat+</target>
+      <trans-unit id="Purchase And Verify Apple" xml:space="preserve">
+        <source>Purchase And Verify Apple</source>
+        <target>Purchase And Verify Apple</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Purchase And Verify Local" xml:space="preserve">
+        <source>Purchase And Verify Local</source>
+        <target>Purchase And Verify Local</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="RESULT.MATCHING.NUM.%lld" xml:space="preserve">
+        <source>RESULT.MATCHING.NUM.%lld</source>
+        <target>RESULT.MATCHING.NUM.%lld</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Refresh Style" xml:space="preserve">
+        <source>Refresh Style</source>
+        <target>Refresh Style</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Result Style" xml:space="preserve">
+        <source>Result Style</source>
+        <target>Result Style</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Salmon Stats" xml:space="preserve">
@@ -177,14 +175,14 @@
         <target>Salmon Stats</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="SalmonStats+" xml:space="preserve">
-        <source>SalmonStats+</source>
-        <target>SalmonStats+</target>
+      <trans-unit id="Select System Font" xml:space="preserve">
+        <source>Select System Font</source>
+        <target>Select System Font</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Salmonia3" xml:space="preserve">
-        <source>Salmonia3</source>
-        <target>Salmonia3</target>
+      <trans-unit id="Set Previous X-Product Version" xml:space="preserve">
+        <source>Set Previous X-Product Version</source>
+        <target>Set Previous X-Product Version</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Setting" xml:space="preserve">
@@ -192,34 +190,324 @@
         <target>Setting</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="TITLE.SHIFTSCHEDULE" xml:space="preserve">
-        <source>TITLE.SHIFTSCHEDULE</source>
-        <target>TITLE.SHIFTSCHEDULE</target>
+      <trans-unit id="Special Thanks" xml:space="preserve">
+        <source>Special Thanks</source>
+        <target>Special Thanks</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="USER.APIVERSION" xml:space="preserve">
-        <source>USER.APIVERSION</source>
-        <target>USER.APIVERSION</target>
+      <trans-unit id="StoreKit" xml:space="preserve">
+        <source>StoreKit</source>
+        <target>StoreKit</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="USER.APPVERSION" xml:space="preserve">
-        <source>USER.APPVERSION</source>
-        <target>USER.APPVERSION</target>
+      <trans-unit id="Twitter連携" xml:space="preserve">
+        <source>Twitter連携</source>
+        <target>Link Twitter</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="USER.IKSMSESSION" xml:space="preserve">
-        <source>USER.IKSMSESSION</source>
-        <target>USER.IKSMSESSION</target>
+      <trans-unit id="Upload Test Data" xml:space="preserve">
+        <source>Upload Test Data</source>
+        <target>Upload Test Data</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="USER.NICKNAME" xml:space="preserve">
-        <source>USER.NICKNAME</source>
-        <target>USER.NICKNAME</target>
+      <trans-unit id="Verify" xml:space="preserve">
+        <source>Verify</source>
+        <target>Verify</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="USER.PLAYERID" xml:space="preserve">
-        <source>USER.PLAYERID</source>
-        <target>USER.PLAYERID</target>
+      <trans-unit id="Verify Receipt Data From Apple" xml:space="preserve">
+        <source>Verify Receipt Data From Apple</source>
+        <target>Verify Receipt Data From Apple</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Verify Receipt Data From Local" xml:space="preserve">
+        <source>Verify Receipt Data From Local</source>
+        <target>Verify Receipt Data From Local</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="WAVE一覧" xml:space="preserve">
+        <source>WAVE一覧</source>
+        <target>Waves</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Wave %lld" xml:space="preserve">
+        <source>Wave %lld</source>
+        <target>Wave %lld</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="barley_ural" xml:space="preserve">
+        <source>barley_ural</source>
+        <target>barley_ural</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="eli fessler" xml:space="preserve">
+        <source>eli fessler</source>
+        <target>eli fessler</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="tkgling" xml:space="preserve">
+        <source>tkgling</source>
+        <target>tkgling</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="↑" xml:space="preserve">
+        <source>↑</source>
+        <target>↑</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="→" xml:space="preserve">
+        <source>→</source>
+        <target>→</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="↓" xml:space="preserve">
+        <source>↓</source>
+        <target>↓</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="あなた" xml:space="preserve">
+        <source>あなた</source>
+        <target>You</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="みかた" xml:space="preserve">
+        <source>みかた</source>
+        <target>Crew</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="アカウント追加" xml:space="preserve">
+        <source>アカウント追加</source>
+        <target>Link SplatNet2</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="アプリ" xml:space="preserve">
+        <source>アプリ</source>
+        <target>Application</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="アプリのバージョンなど" xml:space="preserve">
+        <source>アプリのバージョンなど</source>
+        <target>Version</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="アプリの外観を変更します" xml:space="preserve">
+        <source>アプリの外観を変更します</source>
+        <target>Appearances</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="アプリを応援する" xml:space="preserve">
+        <source>アプリを応援する</source>
+        <target>Support</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="アプリを応援すると開発者のやる気が増えます" xml:space="preserve">
+        <source>アプリを応援すると開発者のやる気が増えます</source>
+        <target>Support developers</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="イカリング" xml:space="preserve">
+        <source>イカリング</source>
+        <target>SplatNet2</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="オオモノシャケをたおした数 x%lld" xml:space="preserve">
+        <source>オオモノシャケをたおした数 x%lld</source>
+        <target>Boss salmonids defeated x%lld</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="コンテンツを再有効化" xml:space="preserve">
+        <source>コンテンツを再有効化</source>
+        <target>Restore contents</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="コンテンツを無効化" xml:space="preserve">
+        <source>コンテンツを無効化</source>
+        <target>Deactivate contents</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="サポート" xml:space="preserve">
+        <source>サポート</source>
+        <target>Support</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="システムフォントを選択してください" xml:space="preserve">
+        <source>システムフォントを選択してください</source>
+        <target>Set system fonts</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="シフトスケジュール" xml:space="preserve">
+        <source>シフトスケジュール</source>
+        <target>Schedules</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="シフト一覧" xml:space="preserve">
+        <source>シフト一覧</source>
+        <target>Shifts</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="シフト統計" xml:space="preserve">
+        <source>シフト統計</source>
+        <target>Shift Stats</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="ダッシュボード" xml:space="preserve">
+        <source>ダッシュボード</source>
+        <target>Dashboard</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="ダークモードを使う" xml:space="preserve">
+        <source>ダークモードを使う</source>
+        <target>Using Dark mode</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="タップで詳細を表示" xml:space="preserve">
+        <source>タップで詳細を表示</source>
+        <target>Details</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="バイト数" xml:space="preserve">
+        <source>バイト数</source>
+        <target>Shifts worked</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="バージョン" xml:space="preserve">
+        <source>バージョン</source>
+        <target>Version</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="ブキコンプリート" xml:space="preserve">
+        <source>ブキコンプリート</source>
+        <target>Complete</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="ユーザ" xml:space="preserve">
+        <source>ユーザ</source>
+        <target>User</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="ランダムブキ一覧" xml:space="preserve">
+        <source>ランダムブキ一覧</source>
+        <target>Random Weapons</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="リザルト一覧" xml:space="preserve">
+        <source>リザルト一覧</source>
+        <target>Results</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="レビューする" xml:space="preserve">
+        <source>レビューする</source>
+        <target>Review</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="レビューを書く" xml:space="preserve">
+        <source>レビューを書く</source>
+        <target>Write a review</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="了解" xml:space="preserve">
+        <source>了解</source>
+        <target>Confirm</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="外観" xml:space="preserve">
+        <source>外観</source>
+        <target>Appearances</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="外観切り替え" xml:space="preserve">
+        <source>外観切り替え</source>
+        <target>Appearances</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="強制リザルト全件アップロード" xml:space="preserve">
+        <source>強制リザルト全件アップロード</source>
+        <target>Force upload</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="復元" xml:space="preserve">
+        <source>復元</source>
+        <target>Restore</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="推定所要バイト数" xml:space="preserve">
+        <source>推定所要バイト数</source>
+        <target>Estimate shifts worked</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="支給回数" xml:space="preserve">
+        <source>支給回数</source>
+        <target>Supplied counts</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="支給済みブキ" xml:space="preserve">
+        <source>支給済みブキ</source>
+        <target>Supplied weapons</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="支給率" xml:space="preserve">
+        <source>支給率</source>
+        <target>Supplied ratio</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="未支給ブキ" xml:space="preserve">
+        <source>未支給ブキ</source>
+        <target>Unsupplied weapons</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="未達成" xml:space="preserve">
+        <source>未達成</source>
+        <target>Not completed</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="概要" xml:space="preserve">
+        <source>概要</source>
+        <target>Overview</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="機能の追加" xml:space="preserve">
+        <source>機能の追加</source>
+        <target>Features</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="無効化" xml:space="preserve">
+        <source>無効化</source>
+        <target>Disabled</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="設定" xml:space="preserve">
+        <source>設定</source>
+        <target>Setting</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="詳細データ閲覧" xml:space="preserve">
+        <source>詳細データ閲覧</source>
+        <target>Detail</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="購入履歴を初期化しました" xml:space="preserve">
+        <source>購入履歴を初期化しました</source>
+        <target>Reset purchases</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="購入済みのコンテンツを復元しました" xml:space="preserve">
+        <source>購入済みのコンテンツを復元しました</source>
+        <target>Restore purchases</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="追加機能" xml:space="preserve">
+        <source>追加機能</source>
+        <target>Features</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="達成" xml:space="preserve">
+        <source>達成</source>
+        <target>Complete</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="金イクラ納品数" xml:space="preserve">
+        <source>金イクラ納品数</source>
+        <target>Golden Eggs</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
     </body>

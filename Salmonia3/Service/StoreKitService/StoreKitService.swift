@@ -14,6 +14,7 @@ import SwiftUI
 import Combine
 
 final class StoreKitService: ObservableObject {
+//    public static let service: StoreKitService = StoreKitService()
     // 複数アカウント
     @AppStorage(ProductIdentifier.NonConsumable.multiaccount.rawValue) var isEnabledMultiAccounts: Bool = false
     // 自動アップデート機能
@@ -26,8 +27,10 @@ final class StoreKitService: ObservableObject {
     init() {
         // レシートを検証してそれぞれの機能が有効かどうかをチェックする
         DDLogInfo("レシートの検証を行います")
-        verifyAutoRenewableReceipt(forceRefresh: true)
-        retrieveProductsInfo()
+        if SwiftyStoreKit.canMakePayments {
+            verifyAutoRenewableReceipt(forceRefresh: true)
+            retrieveProductsInfo()
+        }
     }
     
     internal let validator = AppleReceiptValidator(service: .production, sharedSecret: "f9af1771ac2d44e6b595fd900c8b5826")
@@ -53,6 +56,7 @@ final class StoreKitService: ObservableObject {
         }
     }
 
+
     // 購入済みの項目の復元
     internal func restorePurchasedProducts() -> AnyPublisher<Bool, Never> {
         // 全ての非消費型コンテンツの無効化
@@ -75,14 +79,15 @@ final class StoreKitService: ObservableObject {
         .eraseToAnyPublisher()
     }
 
+    // プロダクトIDから情報を取得
     internal func retrieveProductsInfo() {
         let productIds: Set<String> = Set(ProductIdentifier.allCases)
+        DDLogInfo("ProductIds \(productIds)")
         SwiftyStoreKit.retrieveProductsInfo(productIds, completion: ({ results in
             if let error = results.error {
-                DDLogError(error.localizedDescription)
+                DDLogError("Invalid Product: \(productIds) \(error.localizedDescription)")
             }
-            self.retrieveProducts = Array(results.retrievedProducts)
-//            let invalidProducts: Set<String> = results.invalidProductIDs
+            self.retrieveProducts = Array(results.retrievedProducts).sorted(by: { $0.productIdentifier < $1.productIdentifier} )
         }))
     }
 

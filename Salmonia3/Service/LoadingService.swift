@@ -45,7 +45,7 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
     @Published var isFirestoreSignIn: Bool = false
     @Published var user: FirebaseAuth.User?
     /// 自動でAPIをアップデートする
-    @AppStorage("APP_REFRESHABLE_TOKEN") var refreshable: Bool = true
+    @AppStorage("work.tkgstrator.upgradeapi") var refreshable: Bool = false
     /// シフト表示モード
     @AppStorage("APP_SHIFT_DISPLAY_MODE") var shiftDisplayMode: ShiftDisplayMode = .current
     /// リザルト強制取得モード
@@ -53,7 +53,7 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
 
     init() {
         // データ読込時に一瞬だけ立ち上がるので常に最新のデータが反映されている
-        self.session = SalmonStats(refreshable: refreshable)
+        self.session = SalmonStats(refreshable: true)
         // セッションに登録されているアカウントを使う
         self.account = self.session.account
         self.session.delegate = self

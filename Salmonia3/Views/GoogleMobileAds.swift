@@ -20,11 +20,11 @@ internal struct UIGoogleMobileAdsView: UIViewControllerRepresentable {
 
         let view = GADBannerView(adSize: GADAdSizeBanner)
         let viewController = UIViewController()
-        #if DEBUG
+#if DEBUG
         view.adUnitID = "ca-app-pub-7107468397673752/3033508550"
-        #else
+#else
         view.adUnitID = "ca-app-pub-7107468397673752/9251240303"
-        #endif
+#endif
         view.rootViewController = viewController
         viewController.view.addSubview(view)
         viewController.view.frame = CGRect(origin: .zero, size: GADAdSizeBanner.size)
@@ -44,12 +44,10 @@ struct GoogleMobileAdsView: View {
 }
 
 extension View {
-    func withAdmobBanner() -> some View {
+    func withAdmobBanner(isAdDisabled: Bool) -> some View {
         return VStack(spacing: 0, content: {
             self
-//            if !isDisableAds {
-//                GoogleMobileAdsView()
-//            }
+            isAdDisabled ? AnyView(EmptyView()) : AnyView(GoogleMobileAdsView())
         })
     }
 }

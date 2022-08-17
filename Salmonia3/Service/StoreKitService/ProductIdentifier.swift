@@ -22,14 +22,15 @@ enum ProductIdentifier {
     enum NonConsumable: String, CaseIterable, Identifiable {
         var id: String { rawValue }
 
-        case multiaccount = "work.tkgstrator.multiaccounts"
-        case disableads = "work.tkgstrator.disableads"
+        case multiaccount   = "work.tkgstrator.multiaccounts"
+        case disableads     = "work.tkgstrator.disableads"
     }
 
     enum AutoRenewable: String, CaseIterable, Identifiable {
         var id: String { rawValue }
 
         case apiupdate = "work.tkgstrator.upgradeapi"
+        case premium   = "work.tkgstrator.premium"
     }
 
     enum Renewable: String, CaseIterable {
@@ -49,6 +50,9 @@ extension Image {
         if let product = ProductIdentifier.AutoRenewable(rawValue: productId) {
             switch product {
             case .apiupdate:
+                self.init(StickersType.squid)
+                return
+            case .premium:
                 self.init(StickersType.squid)
                 return
             }

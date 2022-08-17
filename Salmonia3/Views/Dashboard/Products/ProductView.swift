@@ -16,11 +16,14 @@ struct ProductView: View {
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false, content: {
-            LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: nil, alignment: .top), count: 2), spacing: nil, content: {
+            LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: nil, alignment: .top), count: 2), spacing: 0, content: {
                 ForEach(service.retrieveProducts) { product in
                     ProductItem(product: product)
                 }
                 RestoreItem()
+                #if DEBUG
+                DerestoreItem()
+                #endif
             })
         })
         .navigationTitle("追加機能")
@@ -31,6 +34,49 @@ struct ProductView: View {
 }
 
 extension ProductView {
+
+    struct DerestoreItem: View {
+        @EnvironmentObject var service: StoreKitService
+        @State private var isPresented: Bool = false
+        @State private var cancellable: AnyCancellable?
+
+        var body: some View {
+            GeometryReader(content: { geometry in
+                VStack(content: {
+                    let scale: CGFloat = geometry.width / 180
+                    Button(action: {
+                        service.deactivateNonConsumableContents()
+                    }, label: {
+                        Image(StickersType.lijudd)
+                            .resizable()
+                            .scaledToFill()
+                            .clipShape(Circle())
+                            .background(Circle())
+                            .frame(width: 100, height: 100)
+                    })
+                    .font(systemName: .Splatfont2, size: 16 * scale)
+                    .overlay(Circle().strokeBorder(lineWidth: 4, antialiased: true))
+                    Text("無効化")
+                        .foregroundColor(.primary)
+                        .font(systemName: .Splatfont2, size: 16 * scale)
+                        .frame(height: 16 * scale)
+                    Text("コンテンツを無効化")
+                        .foregroundColor(.primary)
+                        .font(systemName: .Splatfont2, size: 14 * scale)
+                        .frame(height: 14 * scale)
+                })
+                .position(geometry.center)
+            })
+            .scaledToFit()
+            .alert("復元", isPresented: $isPresented){
+                Button("了解", role: nil) {
+                }
+            } message: {
+                Text("購入履歴を初期化しました")
+            }
+        }
+    }
+
     struct RestoreItem: View {
         @EnvironmentObject var service: StoreKitService
         @State private var isPresented: Bool = false
@@ -97,6 +143,7 @@ extension ProductView {
                             .frame(width: 100, height: 100)
                             .scaledToFit()
                     })
+                    .disabled(isEnabled)
                     .font(systemName: .Splatfont2, size: 16 * scale)
                     .overlay(Circle().strokeBorder(lineWidth: 4, antialiased: true))
                     Text(product.localizedTitle)
