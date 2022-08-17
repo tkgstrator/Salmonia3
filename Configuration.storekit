@@ -50,9 +50,14 @@
       "internalID" : "CECCF527",
       "localizations" : [
         {
-          "description" : "",
-          "displayName" : "",
+          "description" : "Disable advertisement",
+          "displayName" : "Disable Ads",
           "locale" : "en_US"
+        },
+        {
+          "description" : "広告を無効化します",
+          "displayName" : "広告非表示",
+          "locale" : "ja"
         }
       ],
       "productID" : "work.tkgstrator.disableads",
@@ -65,9 +70,14 @@
       "internalID" : "D2DB6EE7",
       "localizations" : [
         {
-          "description" : "",
-          "displayName" : "",
+          "description" : "To Enable change accounts",
+          "displayName" : "Multiple Accounts",
           "locale" : "en_US"
+        },
+        {
+          "description" : "複数アカウント切り替えをできるようにします",
+          "displayName" : "複数アカウント",
+          "locale" : "ja"
         }
       ],
       "productID" : "work.tkgstrator.multiaccounts",
@@ -76,7 +86,7 @@
     }
   ],
   "settings" : {
-    "_askToBuyEnabled" : true,
+    "_askToBuyEnabled" : false,
     "_compatibilityTimeRate" : 6,
     "_locale" : "ja",
     "_storefront" : "JPN",
@@ -104,14 +114,58 @@
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "",
-              "displayName" : "",
+              "description" : "Apply Nintendo API changes",
+              "displayName" : "API Update",
               "locale" : "en_US"
+            },
+            {
+              "description" : "自動でAPIをアップデートします",
+              "displayName" : "APIアップデート",
+              "locale" : "ja"
             }
           ],
           "productID" : "work.tkgstrator.upgradeapi",
           "recurringSubscriptionPeriod" : "P1M",
           "referenceName" : "API Update",
+          "subscriptionGroupID" : "7382521F",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    },
+    {
+      "id" : "1E1B90FA",
+      "localizations" : [
+
+      ],
+      "name" : "work.tkgstrator",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "500",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "B965D128",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Support Salmon Stats developping",
+              "displayName" : "Premium",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "Salmon Statsを応援します",
+              "displayName" : "プレミアムプラン",
+              "locale" : "ja"
+            }
+          ],
+          "productID" : "work.tkgstrator.premium",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Premium",
           "subscriptionGroupID" : "7382521F",
           "type" : "RecurringSubscription"
         }

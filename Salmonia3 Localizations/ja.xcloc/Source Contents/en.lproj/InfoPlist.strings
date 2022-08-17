@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  Salmonia3
+
+  Created by devonly on 2021/12/31.
+  
+*/
+
+NSUserTrackingUsageDescription = "Your data will be used to deliver personalized ads to you";

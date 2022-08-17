@@ -13,28 +13,33 @@ import SplatNet2
 struct ContentView: View {
     @EnvironmentObject var service: AppService
     @State var selection: Int = 3
-    
+    @AppStorage("work.tkgstrator.disableads") var isAdsDisalbed: Bool = false
+
     var body: some View {
         TabView(selection: $selection, content: {
             ResultCollectionView()
+                .withAdmobBanner(isAdDisabled: isAdsDisalbed)
                 .tabItem({
                     Image(systemName: .House)
                     Text("リザルト一覧")
                 })
                 .tag(0)
             WaveCollectionView()
+                .withAdmobBanner(isAdDisabled: isAdsDisalbed)
                 .tabItem({
                     Image(systemName: .ListBulletRectangle)
                     Text("WAVE一覧")
                 })
                 .tag(1)
             ShiftCollectionView()
+                .withAdmobBanner(isAdDisabled: isAdsDisalbed)
                 .tabItem({
                     Image(systemName: .ListBulletRectangle)
                     Text("シフト一覧")
                 })
                 .tag(2)
             UserView()
+                .withAdmobBanner(isAdDisabled: isAdsDisalbed)
                 .tabItem({
                     Image(systemName: .Person)
                     Text("ユーザ")
