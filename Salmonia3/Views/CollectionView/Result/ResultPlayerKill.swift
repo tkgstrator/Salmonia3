@@ -12,58 +12,68 @@ import SwiftyUI
 
 struct ResultPlayerKills: View {
     let result: RealmCoopResult
+    let bossCounts: [Int]
+    let bossKillCounts: [[Int]]
+    let bossKillCountsTotal: [Int]
+    let foregroundColor = Color(hex: "FF7500")
+
+    init(result: RealmCoopResult) {
+        self.result = result
+        self.bossCounts = Array(result.bossCounts)
+        self.bossKillCountsTotal = sum(of: result.player.map({ Array($0.bossKillCounts)}))
+        self.bossKillCounts = (result.player.map({ Array($0.bossKillCounts) })).transposed()
+    }
 
     var body: some View {
-        ForEach(result.player) { player in
-            let bossCounts: [Int] = Array(result.bossCounts)
-            ResultPlayerKill(player: player, bossCounts: bossCounts)
-                .frame(maxWidth: 356)
-        }
-        .padding(.horizontal)
+        LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: 0), count: 1), spacing: 10, content: {
+            ForEach(Range(0...8), id: \.self) { bossId in
+                HStack(content: {
+                    Image(BossId.allCases[bossId])
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 45)
+                        .background(Circle())
+                    ForEach(bossKillCounts[bossId], id: \.self) { bossKillCount in
+                        Text("x\(bossKillCount)")
+                            .font(systemName: .Splatfont2, size: 18)
+                            .frame(maxWidth: .infinity)
+                    }
+                    Text("\(bossKillCountsTotal[bossId])/\(bossCounts[bossId])")
+                        .font(systemName: .Splatfont2, size: 17, foregroundColor: bossCounts[bossId] == bossKillCountsTotal[bossId] ? Color.orange : Color.primary)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.8)
+                })
+                Divider()
+            }
+        })
+        .padding()
+        .background(Color.secondary.opacity(0.3))
     }
 }
 
-private struct ResultPlayerKill: View {
-    let player: RealmCoopPlayer
-    let bossCounts: [Int]
-    let foregroundColor = Color(hex: "FF7500")
-
-    var body: some View {
-        GeometryReader(content: { geometry in
-            let scale: CGFloat = geometry.width / 360
-            ZStack(alignment: .center, content: {
-                VStack(alignment: .center, content: {
-                    Text(player.name ?? "-")
-                        .font(systemName: .Splatfont2, size: 16 * scale, foregroundColor: .white)
-                        .shadow(color: .black, radius: 0, x: 1, y: 1)
-                        .frame(height: 16 * scale, alignment: .top)
-                        .padding(.bottom, 6 * scale)
-                    LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 60 * scale, maximum: 140 * scale)), count: 3), spacing: 8, content: {
-                        let bossKillCounts: [(BossId, Int)] = Array(zip(BossId.allCases, bossCounts))
-                        ForEach(bossKillCounts, id: \.0) { bossId, count in
-                            HStack(content: {
-                                Image(bossId)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .background(Circle().fill(Color.black))
-                                    .frame(width: 30 * scale, height: 30 * scale, alignment: .center)
-                                Text(String(format: "x%02d/%02d", player.bossKillCounts(bossId: bossId), count))
-                                    .font(systemName: .Splatfont2, size: 14 * scale, foregroundColor: .white)
-                                    .shadow(color: .black, radius: 0, x: 1, y: 1)
-                            })
-                        }
-                    })
-                })
-            })
-            .position(geometry.center)
-        })
-        .aspectRatio(300/130, contentMode: .fit)
-        .backgroundCard(foregroundColor, aspectRatio: 130/300)
+extension Collection where Self.Iterator.Element: RandomAccessCollection {
+    // PRECONDITION: `self` must be rectangular, i.e. every row has equal size.
+    func transposed() -> [[Self.Iterator.Element.Iterator.Element]] {
+        guard let firstRow = self.first else { return [] }
+        return firstRow.indices.map { index in
+            self.map{ $0[index] }
+        }
     }
+}
+
+private func sum<T: Numeric>(of arrays: Array<Array<T>>) -> Array<T> {
+    if let first = arrays.first {
+        var sum: [T] = Array(repeating: 0, count: first.count)
+        let _ = arrays.map({ sum = sum.add($0) })
+        return sum
+    }
+    return []
 }
 
 struct ResultPlayerKill_Previews: PreviewProvider {
     static var previews: some View {
-        ResultPlayerKill(player: RealmCoopPlayer(dummy: true), bossCounts: Array(repeating: 99, count: 9))
+        ResultPlayerKills(result: RealmCoopResult(dummy: true))
+            .previewLayout(.fixed(width: 390, height: 400))
     }
 }

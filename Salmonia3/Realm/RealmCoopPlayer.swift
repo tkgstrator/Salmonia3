@@ -27,13 +27,13 @@ final class RealmCoopPlayer: Object, ObjectKeyIdentifiable {
     public convenience init(dummy: Bool = false) {
         self.init()
         self.name = "ああああああああああ"
-        self.pid = "0000000000000000"
+        self.pid = String(String.randomString.prefix(16))
         self.deadCount = 99
         self.helpCount = 99
         self.goldenIkuraNum = 999
         self.ikuraNum = 9999
         self.specialId = .inkjet
-        self.bossKillCounts.append(objectsIn: Array(repeating: 0, count: 9))
+        self.bossKillCounts.append(objectsIn: Array(repeating: Int.random(in: 0...10), count: 9))
         self.weaponList.append(objectsIn: Array(repeating: .chargerSpark, count: 3))
         self.specialCounts.append(objectsIn: [0, 0, 0])
     }
