@@ -79,7 +79,7 @@ struct SettingView_StoreKit: View {
     }
     
     func getReceiptFromLocal() {
-        DDLogInfo(SwiftyStoreKit.localReceiptData?.base64EncodedString(options: []))
+        DDLogInfo(SwiftyStoreKit.localReceiptData?.base64EncodedString(options: []) ?? "")
     }
     
     func getReceiptFromApple() {
@@ -102,9 +102,9 @@ struct SettingView_StoreKit: View {
             case .success(let receiptData):
                 let purchaseResult = SwiftyStoreKit.verifySubscription(ofType: .autoRenewable, productId: productId, inReceipt: receiptData)
                 switch purchaseResult {
-                case .purchased(let expiryDate, let items):
+                case .purchased(let expiryDate, _):
                     DDLogInfo("Valid \(expiryDate)")
-                case .expired(let expiryDate, let items):
+                case .expired(let expiryDate, _):
                     DDLogInfo("Expired \(expiryDate)")
                 case .notPurchased:
                     DDLogInfo("Not purchased")

@@ -1,23 +1,23 @@
 {
   "images" : [
     {
-      "filename" : "d0c0eaf522960eccf8abc9b342afb611.png",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "d0c0eaf522960eccf8abc9b342afb611.png"
     },
     {
-      "filename" : "d0c0eaf522960eccf8abc9b342afb611-1.png",
       "idiom" : "universal",
+      "filename" : "d0c0eaf522960eccf8abc9b342afb611-1.png",
       "locale" : "en"
     },
     {
-      "filename" : "5d8237f16370e67838d2f82fe8a1e553.png",
       "idiom" : "universal",
+      "filename" : "5d8237f16370e67838d2f82fe8a1e553.png",
       "locale" : "ja"
     }
   ],
   "info" : {
-    "author" : "xcode",
-    "version" : 1
+    "version" : 1,
+    "author" : "xcode"
   },
   "properties" : {
     "localizable" : true

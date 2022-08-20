@@ -30,14 +30,14 @@
         <target>%lld</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="%lld/51" xml:space="preserve">
-        <source>%lld/51</source>
-        <target>%lld/51</target>
+      <trans-unit id="%lld/%lld" xml:space="preserve">
+        <source>%lld/%lld</source>
+        <target>%lld/%lld</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="%lld回" xml:space="preserve">
         <source>%lld回</source>
-        <target>%lld回</target>
+        <target>%lld</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="+" xml:space="preserve">
@@ -48,6 +48,11 @@
       <trans-unit id="-" xml:space="preserve">
         <source>-</source>
         <target>-</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="/51" xml:space="preserve">
+        <source>/51</source>
+        <target>/51</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="??.??%" xml:space="preserve">
@@ -202,7 +207,7 @@
       </trans-unit>
       <trans-unit id="Twitter連携" xml:space="preserve">
         <source>Twitter連携</source>
-        <target>Link Twitter</target>
+        <target>Twitter連携</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Upload Test Data" xml:space="preserve">
@@ -250,6 +255,11 @@
         <target>tkgling</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="x%lld" xml:space="preserve">
+        <source>x%lld</source>
+        <target>x%lld</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="↑" xml:space="preserve">
         <source>↑</source>
         <target>↑</target>
@@ -277,7 +287,7 @@
       </trans-unit>
       <trans-unit id="アカウント追加" xml:space="preserve">
         <source>アカウント追加</source>
-        <target>Link SplatNet2</target>
+        <target>Accounts</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="アプリ" xml:space="preserve">
@@ -287,7 +297,7 @@
       </trans-unit>
       <trans-unit id="アプリのバージョンなど" xml:space="preserve">
         <source>アプリのバージョンなど</source>
-        <target>Version</target>
+        <target>Application</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="アプリの外観を変更します" xml:space="preserve">
@@ -302,7 +312,7 @@
       </trans-unit>
       <trans-unit id="アプリを応援すると開発者のやる気が増えます" xml:space="preserve">
         <source>アプリを応援すると開発者のやる気が増えます</source>
-        <target>Support developers</target>
+        <target>Support</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="イカリング" xml:space="preserve">
@@ -312,12 +322,12 @@
       </trans-unit>
       <trans-unit id="オオモノシャケをたおした数 x%lld" xml:space="preserve">
         <source>オオモノシャケをたおした数 x%lld</source>
-        <target>Boss salmonids defeated x%lld</target>
+        <target>Boss Salmonids defeated x%lld</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="コンテンツを再有効化" xml:space="preserve">
         <source>コンテンツを再有効化</source>
-        <target>Restore contents</target>
+        <target>Activate contents</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="コンテンツを無効化" xml:space="preserve">
@@ -332,7 +342,7 @@
       </trans-unit>
       <trans-unit id="システムフォントを選択してください" xml:space="preserve">
         <source>システムフォントを選択してください</source>
-        <target>Set system fonts</target>
+        <target>System fonts</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="シフトスケジュール" xml:space="preserve">
@@ -342,12 +352,12 @@
       </trans-unit>
       <trans-unit id="シフト一覧" xml:space="preserve">
         <source>シフト一覧</source>
-        <target>Shifts</target>
+        <target>Schedules</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="シフト統計" xml:space="preserve">
         <source>シフト統計</source>
-        <target>Shift Stats</target>
+        <target>Schedule Stats</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ダッシュボード" xml:space="preserve">
@@ -357,7 +367,7 @@
       </trans-unit>
       <trans-unit id="ダークモードを使う" xml:space="preserve">
         <source>ダークモードを使う</source>
-        <target>Using Dark mode</target>
+        <target>Darkmode</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="タップで詳細を表示" xml:space="preserve">
@@ -377,17 +387,17 @@
       </trans-unit>
       <trans-unit id="ブキコンプリート" xml:space="preserve">
         <source>ブキコンプリート</source>
-        <target>Complete</target>
+        <target>Compolete</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="ユーザ" xml:space="preserve">
-        <source>ユーザ</source>
+      <trans-unit id="ユーザー" xml:space="preserve">
+        <source>ユーザー</source>
         <target>User</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ランダムブキ一覧" xml:space="preserve">
         <source>ランダムブキ一覧</source>
-        <target>Random Weapons</target>
+        <target>Random weapons</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="リザルト一覧" xml:space="preserve">
@@ -422,7 +432,7 @@
       </trans-unit>
       <trans-unit id="強制リザルト全件アップロード" xml:space="preserve">
         <source>強制リザルト全件アップロード</source>
-        <target>Force upload</target>
+        <target>Force fetch results</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="復元" xml:space="preserve">
@@ -432,22 +442,12 @@
       </trans-unit>
       <trans-unit id="推定所要バイト数" xml:space="preserve">
         <source>推定所要バイト数</source>
-        <target>Estimate shifts worked</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="支給回数" xml:space="preserve">
-        <source>支給回数</source>
-        <target>Supplied counts</target>
+        <target>Estimate works</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="支給済みブキ" xml:space="preserve">
         <source>支給済みブキ</source>
         <target>Supplied weapons</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="支給率" xml:space="preserve">
-        <source>支給率</source>
-        <target>Supplied ratio</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="未支給ブキ" xml:space="preserve">
@@ -457,12 +457,7 @@
       </trans-unit>
       <trans-unit id="未達成" xml:space="preserve">
         <source>未達成</source>
-        <target>Not completed</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="概要" xml:space="preserve">
-        <source>概要</source>
-        <target>Overview</target>
+        <target>Incomplete</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="機能の追加" xml:space="preserve">
@@ -472,32 +467,32 @@
       </trans-unit>
       <trans-unit id="無効化" xml:space="preserve">
         <source>無効化</source>
-        <target>Disabled</target>
+        <target>Disable</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="設定" xml:space="preserve">
         <source>設定</source>
-        <target>Setting</target>
+        <target>Settings</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="詳細データ閲覧" xml:space="preserve">
         <source>詳細データ閲覧</source>
-        <target>Detail</target>
+        <target>Details</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="購入履歴を初期化しました" xml:space="preserve">
         <source>購入履歴を初期化しました</source>
-        <target>Reset purchases</target>
+        <target>Deactivate contents</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="購入済みのコンテンツを復元しました" xml:space="preserve">
         <source>購入済みのコンテンツを復元しました</source>
-        <target>Restore purchases</target>
+        <target>Restore contents</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="追加機能" xml:space="preserve">
         <source>追加機能</source>
-        <target>Features</target>
+        <target>Add Features</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="達成" xml:space="preserve">
@@ -507,7 +502,7 @@
       </trans-unit>
       <trans-unit id="金イクラ納品数" xml:space="preserve">
         <source>金イクラ納品数</source>
-        <target>Golden Eggs</target>
+        <target>Golden eggs</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
     </body>

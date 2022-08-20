@@ -15,8 +15,9 @@ struct ProductView: View {
     @EnvironmentObject var service: StoreKitService
 
     var body: some View {
+        let columnCounts: Int = UIDevice.current.userInterfaceIdiom == .pad ? 3 : 2
         ScrollView(.vertical, showsIndicators: false, content: {
-            LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: nil, alignment: .top), count: 2), spacing: 0, content: {
+            LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 200), spacing: 0, alignment: .top), count: columnCounts), spacing: 0, content: {
                 ForEach(service.retrieveProducts) { product in
                     ProductItem(product: product)
                 }
@@ -44,6 +45,7 @@ extension ProductView {
             GeometryReader(content: { geometry in
                 VStack(content: {
                     let scale: CGFloat = geometry.width / 180
+                    let width: CGFloat = geometry.width / 180 * 100
                     Button(action: {
                         service.deactivateNonConsumableContents()
                     }, label: {
@@ -52,7 +54,7 @@ extension ProductView {
                             .scaledToFill()
                             .clipShape(Circle())
                             .background(Circle())
-                            .frame(width: 100, height: 100)
+                            .frame(width: width, height: width)
                     })
                     .font(systemName: .Splatfont2, size: 16 * scale)
                     .overlay(Circle().strokeBorder(lineWidth: 4, antialiased: true))
@@ -86,6 +88,7 @@ extension ProductView {
             GeometryReader(content: { geometry in
                 VStack(content: {
                     let scale: CGFloat = geometry.width / 180
+                    let width: CGFloat = geometry.width / 180 * 100
                     Button(action: {
                         cancellable = service.restorePurchasedProducts()
                             .sink(receiveValue: { result in
@@ -97,7 +100,7 @@ extension ProductView {
                             .scaledToFill()
                             .clipShape(Circle())
                             .background(Circle())
-                            .frame(width: 100, height: 100)
+                            .frame(width: width, height: width)
                     })
                     .font(systemName: .Splatfont2, size: 16 * scale)
                     .overlay(Circle().strokeBorder(lineWidth: 4, antialiased: true))
@@ -130,9 +133,11 @@ extension ProductView {
         let product: SKProduct
 
         var body: some View {
+            let localizedPrice: String = "\(product.localizedSubscriptionPeriod) \(product.localizedPrice ?? "-")"
             GeometryReader(content: { geometry in
                 VStack(content: {
                     let scale: CGFloat = geometry.width / 180
+                    let width: CGFloat = geometry.width / 180 * 100
                     Button(action: {
                         service.purchaseProduct(identifier: product.productIdentifier)
                     }, label: {
@@ -140,7 +145,7 @@ extension ProductView {
                             .resizable()
                             .clipShape(Circle())
                             .background(Circle())
-                            .frame(width: 100, height: 100)
+                            .frame(width: width, height: width)
                             .scaledToFit()
                     })
                     .disabled(isEnabled)
@@ -150,7 +155,7 @@ extension ProductView {
                         .foregroundColor(.primary)
                         .font(systemName: .Splatfont2, size: 16 * scale)
                         .frame(height: 16 * scale)
-                    Text(isEnabled ? "購入済み" : (product.localizedPrice ?? "-"))
+                    Text(isEnabled ? "購入済み" : localizedPrice)
                         .foregroundColor(.primary)
                         .font(systemName: .Splatfont2, size: 14 * scale)
                         .frame(height: 14 * scale)
@@ -166,6 +171,7 @@ struct SettingView_Product_Previews: PreviewProvider {
     static var previews: some View {
         ProductView()
             .preferredColorScheme(.dark)
+            .previewLayout(.fixed(width: 300, height: 400))
             .environmentObject(StoreKitService())
     }
 }

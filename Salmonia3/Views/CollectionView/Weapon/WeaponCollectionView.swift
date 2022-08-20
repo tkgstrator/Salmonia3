@@ -11,24 +11,17 @@ import SplatNet2
 
 struct WeaponCollectionView: View {
     @StateObject var stats: WeaponShiftStats
-    
+    let columnCounts: Int = UIDevice.current.userInterfaceIdiom == .pad ? 5 : 4
+
     init(shift: RealmCoopShift, nsaid: String?) {
         self._stats = StateObject(wrappedValue: WeaponShiftStats(schedule: shift, nsaid: nsaid))
     }
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false, content: {
-            LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 1), content: {
+            LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 120)), count: columnCounts), spacing: 0, content: {
                 Section(content: {
-                    WeaponOverview(stats: stats)
-                }, header: {
-                    Text("概要")
-                        .font(systemName: .Splatfont2, size: 14)
-                })
-            })
-            LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 4), content: {
-                Section(content: {
-                    ForEach(stats.suppliedWeaponList) { weapon in
+                    ForEach(stats.suppliedWeaponList.sorted(by: { $0.suppliedCount > $1.suppliedCount })) { weapon in
                         StatsWeaponDetail(weaponData: weapon)
                     }
                 }, header: {

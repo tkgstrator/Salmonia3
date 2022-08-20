@@ -170,7 +170,7 @@ final class LoadingService: SalmonStatsSessionDelegate, ObservableObject {
             }
             if let credential = credential {
                 Auth.auth().signIn(with: credential, completion: { result, error in
-                    if let user: FirebaseAuth.User = result?.user, let credential = result?.credential, let providerData = user.providerData.first {
+                    if let user: FirebaseAuth.User = result?.user, let _ = result?.credential, let providerData = user.providerData.first {
                         // 数値が入った方のID
                         let uid: String = providerData.uid
                         let displayName: String? = providerData.displayName

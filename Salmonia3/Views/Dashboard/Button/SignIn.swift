@@ -70,7 +70,6 @@ extension SignIn {
                         .font(systemName: .Splatfont2, size: 16 * scale)
                         .frame(height: 20 * scale)
                 })
-                .scaledToFit()
                 .position(geometry.center)
             })
             .scaledToFit()
@@ -88,7 +87,6 @@ extension SignIn {
                 }, label: {
                     Image(systemName: .PencilAndOutline)
                         .resizable()
-                        .padding()
                         .foregroundColor(.white)
                 })
         }
@@ -105,7 +103,6 @@ extension SignIn {
                 }, label: {
                     Image(systemName: .Switch2)
                         .resizable()
-                        .padding()
                         .foregroundColor(.white)
                 })
         }
@@ -162,7 +159,7 @@ extension SignIn {
                         splatoonToken: "",
                         iksmSession: "",
                         thumbnailURL: URL(unsafeString: "https://cdn-image-e0d67c509fb203858ebcb2fe3f88c2aa.baas.nintendo.com/1/07938e82b382e840"),
-                        nickname: "みなかみはちみ"
+                        nickname: "未ログイン"
                     )
                     user.resultCoop = CoopInfo(
                         jobNum: 99999,
