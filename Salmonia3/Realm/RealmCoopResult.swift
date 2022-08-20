@@ -210,3 +210,24 @@ extension RealmCoopResult {
         return realm.objects(RealmCoopShift.self).first(where: { $0.startTime == startTime })
     }
 }
+
+extension Optional where Wrapped == GradeId {
+    var localizedDescription: String {
+        switch self {
+            case .profreshional:
+                return "Profreshional"
+            case .overachiver:
+                return "Over achiver"
+            case .gogetter:
+                return "Go getter"
+            case .parttimer:
+                return "Part timer"
+            case .apparentice:
+                return "Apparentice"
+            case .intern:
+                return "Intern"
+            case .none:
+                return "Intern"
+        }
+    }
+}

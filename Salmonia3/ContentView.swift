@@ -42,7 +42,7 @@ struct ContentView: View {
                 .withAdmobBanner(isAdDisabled: isAdsDisalbed)
                 .tabItem({
                     Image(systemName: .Person)
-                    Text("ユーザ")
+                    Text("ユーザー")
                 })
                 .tag(3)
         })

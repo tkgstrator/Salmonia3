@@ -52,13 +52,11 @@ struct ResultOverview: View {
         HStack(alignment: .top, content: {
             LazyVStack(alignment: .leading, spacing: 0, content: {
                 LazyHStack(spacing: nil, content: {
-                    //                    Text("\(result.indexOfResults)")
-                    //                        .font(.Splatfont2, size: 13)
                     Text("Clear")
                         .font(systemName: .Splatfont2, size: 13, foregroundColor: .green)
                 })
                 LazyHStack(content: {
-                    Text(result.gradeId)
+                    Text(result.gradeId.localizedDescription)
                     Text(result.gradePoint)
                     Text("↑").font(systemName: .Splatfont, size: 14, foregroundColor: .red)
                 })

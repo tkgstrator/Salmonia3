@@ -1,0 +1,153 @@
+/* No comment provided by engineer. */
+"出現数 x%lld" = "Appearances x%lld";
+
+/* No comment provided by engineer. */
+"獲得数 x%lld" = "Collected x%lld";
+
+/* No comment provided by engineer. */
+"%lld回" = "%lld";
+
+/* No comment provided by engineer. */
+"WAVE一覧" = "Waves";
+
+/* No comment provided by engineer. */
+"アカウント追加" = "Accounts";
+
+/* No comment provided by engineer. */
+"あなた" = "You";
+
+/* No comment provided by engineer. */
+"アプリ" = "Application";
+
+/* No comment provided by engineer. */
+"アプリのバージョンなど" = "Application";
+
+/* No comment provided by engineer. */
+"アプリの外観を変更します" = "Appearances";
+
+/* No comment provided by engineer. */
+"アプリを応援する" = "Support";
+
+/* No comment provided by engineer. */
+"アプリを応援すると開発者のやる気が増えます" = "Support";
+
+/* No comment provided by engineer. */
+"イカリング" = "SplatNet2";
+
+/* No comment provided by engineer. */
+"オオモノシャケをたおした数 x%lld" = "Boss Salmonids defeated x%lld";
+
+/* No comment provided by engineer. */
+"コンテンツを再有効化" = "Activate contents";
+
+/* No comment provided by engineer. */
+"コンテンツを無効化" = "Deactivate contents";
+
+/* No comment provided by engineer. */
+"サポート" = "Support";
+
+/* No comment provided by engineer. */
+"システムフォントを選択してください" = "System fonts";
+
+/* No comment provided by engineer. */
+"シフトスケジュール" = "Schedules";
+
+/* No comment provided by engineer. */
+"シフト一覧" = "Schedules";
+
+/* No comment provided by engineer. */
+"シフト統計" = "Schedule Stats";
+
+/* No comment provided by engineer. */
+"ダークモードを使う" = "Darkmode";
+
+/* No comment provided by engineer. */
+"ダッシュボード" = "Dashboard";
+
+/* No comment provided by engineer. */
+"タップで詳細を表示" = "Details";
+
+/* No comment provided by engineer. */
+"バージョン" = "Version";
+
+/* No comment provided by engineer. */
+"バイト数" = "Shifts worked";
+
+/* No comment provided by engineer. */
+"ブキコンプリート" = "Compolete";
+
+/* No comment provided by engineer. */
+"みかた" = "Crew";
+
+/* No comment provided by engineer. */
+"ユーザー" = "User";
+
+/* No comment provided by engineer. */
+"ランダムブキ一覧" = "Random weapons";
+
+/* No comment provided by engineer. */
+"リザルト一覧" = "Results";
+
+/* No comment provided by engineer. */
+"レビューする" = "Review";
+
+/* No comment provided by engineer. */
+"レビューを書く" = "Write a review";
+
+/* No comment provided by engineer. */
+"了解" = "Confirm";
+
+/* No comment provided by engineer. */
+"外観" = "Theme";
+
+/* No comment provided by engineer. */
+"外観切り替え" = "Theme";
+
+/* No comment provided by engineer. */
+"強制リザルト全件アップロード" = "Force fetch results";
+
+/* No comment provided by engineer. */
+"復元" = "Restore";
+
+/* No comment provided by engineer. */
+"推定所要バイト数" = "Estimate works";
+
+/* No comment provided by engineer. */
+"支給済みブキ" = "Supplied weapons";
+
+/* No comment provided by engineer. */
+"未支給ブキ" = "Unsupplied weapons";
+
+/* No comment provided by engineer. */
+"未達成" = "Incomplete";
+
+/* No comment provided by engineer. */
+"機能の追加" = "Features";
+
+/* No comment provided by engineer. */
+"無効化" = "Disable";
+
+/* No comment provided by engineer. */
+"設定" = "Settings";
+
+/* No comment provided by engineer. */
+"詳細データ閲覧" = "Details";
+
+/* No comment provided by engineer. */
+"購入履歴を初期化しました" = "Deactivate contents";
+
+/* No comment provided by engineer. */
+"購入済みのコンテンツを復元しました" = "Restore contents";
+
+/* No comment provided by engineer. */
+"追加機能" = "Add Features";
+
+/* No comment provided by engineer. */
+"達成" = "Complete";
+
+/* No comment provided by engineer. */
+"金イクラ納品数" = "Golden eggs";
+
+/* No comment provided by engineer. */
+"Twitter連携" = "Link to Twitter";
+

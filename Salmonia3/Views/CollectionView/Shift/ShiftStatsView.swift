@@ -46,7 +46,7 @@ struct ShiftStatsView: View {
                 ForEach(stats.teamGoldenIkuraNum) { goldenIkuraNum in
 //                    NavigationLink(destination: RankingCollection(rank: rank), label: {
                         StatsCardHalf(score: goldenIkuraNum.score, caption: goldenIkuraNum.caption)
-                            .overlay(Text("タップで詳細を表示").underline().padding(.bottom, 4).font(systemName: .Splatfont2, size: 14), alignment: .bottom)
+//                            .overlay(Text("タップで詳細を表示").underline().padding(.bottom, 4).font(systemName: .Splatfont2, size: 14), alignment: .bottom)
 //                    })
                     .buttonStyle(.plain)
                 }

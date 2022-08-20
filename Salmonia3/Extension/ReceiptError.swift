@@ -21,9 +21,9 @@ extension SwiftyStoreKit {
                     let productId = "work.tkgstrator.apiupdate"
                     let purchaseResult = verifySubscription(ofType: .autoRenewable, productId: productId, inReceipt: receipt)
                     switch purchaseResult {
-                    case .purchased(let expiryDate, let items):
+                    case .purchased(_, _):
                         promise(.success(true))
-                    case .expired(let expiryDate, let items):
+                    case .expired(_, _):
                         promise(.success(false))
                     case .notPurchased:
                         promise(.success(false))
@@ -44,13 +44,13 @@ extension ReceiptError: LocalizedError {
             return "No valid receipt data."
         case .noRemoteData:
             return "No valid remote data."
-        case .requestBodyEncodeError(let error):
+        case .requestBodyEncodeError(_):
             return "Request body could not encoded."
-        case .networkError(let error):
+        case .networkError(_):
             return "Network error."
-        case .jsonDecodeError(let string):
+        case .jsonDecodeError(_):
             return "JSON Decoding error"
-        case .receiptInvalid(let receipt, let status):
+        case .receiptInvalid(_, let status):
             return "Invalid receipt \(status.rawValue)"
         }
     }

@@ -18,7 +18,7 @@ struct UserView: View {
     var body: some View {
         NavigationView(content: {
             ScrollView(content: {
-                LazyVGrid(columns: Array(repeating: .init(.adaptive(minimum: 100, maximum: 200), alignment: .top), count: 3), spacing: 24, content: {
+                LazyVGrid(columns: Array(repeating: .init(.flexible(minimum: 70, maximum: 200), alignment: .top), count: 3), spacing: 24, content: {
                     SignIn.User()
                     SignIn.SplatNet2()
                     SignIn.Twitter()

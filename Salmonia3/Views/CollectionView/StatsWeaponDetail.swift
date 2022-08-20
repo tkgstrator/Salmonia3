@@ -15,31 +15,23 @@ struct StatsWeaponDetail: View {
     
     var body: some View {
         GeometryReader(content: { geometry in
-            VStack(alignment: .leading, spacing: -6, content: {
+            let scale: CGFloat = geometry.width / 90
+            VStack(spacing: 0, content: {
                 Image(weaponData.weaponType)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 45, height: 45, alignment: .center)
-                Spacer()
-                Group(content: {
-                    HStack(content: {
-                        Text("支給回数")
-                        Spacer()
-                        Text("\(weaponData.suppliedCount)回")
-                    })
-                    HStack(content: {
-                        Text("支給率")
-                        Spacer()
-                        Text(String(format: "%5.2f%%", weaponData.suppliedProb * 100))
-                    })
-                })
-                    .padding(.horizontal, 4)
-                    .font(systemName: .Splatfont2, size: 10)
+                    .padding(8)
+                    .background(Circle().opacity(0.3))
+                Text(String(format: "%0.3f%%", weaponData.suppliedProb * 100))
+                    .font(systemName: .Splatfont2, size: 16 * scale)
             })
+            .padding(.horizontal, 8)
+            .overlay(Text("x\(weaponData.suppliedCount)")
+                .font(systemName: .Splatfont2, size: 18 * scale, foregroundColor: .orange)
+                .frame(height: 20)
+                .padding(5), alignment: .topTrailing)
         })
-            .padding(4)
-            .scaledToFit()
-            .background(RoundedRectangle(cornerRadius: 10).fill(Color.whitesmoke))
+        .scaledToFit()
     }
 }
                        
@@ -47,9 +39,13 @@ struct StatsWave_Previews: PreviewProvider {
     static let weaponData = WeaponStats(data: (WeaponType.slosherVase, 10), total: 50)
     
     static var previews: some View {
-        LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 4), content: {
+        LazyVGrid(columns: Array(repeating: .init(.flexible(maximum: 100), spacing: 0), count: 4), spacing: 0, content: {
+            StatsWeaponDetail(weaponData: weaponData)
+            StatsWeaponDetail(weaponData: weaponData)
+            StatsWeaponDetail(weaponData: weaponData)
             StatsWeaponDetail(weaponData: weaponData)
         })
-            .preferredColorScheme(.dark)
+        .previewLayout(.fixed(width: 400, height: 400))
+        .preferredColorScheme(.dark)
     }
 }

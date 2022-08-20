@@ -81,6 +81,8 @@
 		106E322C27F701D600778CAA /* ReceiptError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106E322B27F701D600778CAA /* ReceiptError.swift */; };
 		10805B2A27E7CB92001A8B68 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10805B2927E7CB92001A8B68 /* RealmSwift */; };
 		10805B2E27E7CBE7001A8B68 /* SwiftyUI in Frameworks */ = {isa = PBXBuildFile; productRef = 10805B2D27E7CBE7001A8B68 /* SwiftyUI */; };
+		1080DA5628ADDA0900220903 /* SplatInk2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1080DA5528ADDA0900220903 /* SplatInk2.swift */; };
+		1080DA5928ADFFAB00220903 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1080DA5728ADFFAB00220903 /* Localizable.strings */; };
 		1082F77B27D072A000044581 /* ResultShiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1082F77A27D072A000044581 /* ResultShiftView.swift */; };
 		1097978F27F5A97400EF771B /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097978E27F5A97400EF771B /* SignIn.swift */; };
 		1097979127F5AB2E00EF771B /* Hanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097979027F5AB2E00EF771B /* Hanger.swift */; };
@@ -239,6 +241,9 @@
 		106B7F8E27D3231800E6B528 /* RankId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankId.swift; sourceTree = "<group>"; };
 		106E322B27F701D600778CAA /* ReceiptError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptError.swift; sourceTree = "<group>"; };
 		10805B2C27E7CBDD001A8B68 /* SwiftyUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftyUI; path = ../SwiftyUI; sourceTree = "<group>"; };
+		1080DA5528ADDA0900220903 /* SplatInk2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplatInk2.swift; sourceTree = "<group>"; };
+		1080DA5828ADFFAB00220903 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1080DA5B28AE03B100220903 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1082F77A27D072A000044581 /* ResultShiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultShiftView.swift; sourceTree = "<group>"; };
 		1084DA1F27E7B0700082397A /* SplatNet2 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SplatNet2; path = ../SplatNet2; sourceTree = "<group>"; };
 		1097978E27F5A97400EF771B /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
@@ -422,6 +427,7 @@
 		101AED0F271E3109009556B2 /* Salmonia3 */ = {
 			isa = PBXGroup;
 			children = (
+				1080DA5728ADFFAB00220903 /* Localizable.strings */,
 				101AED10271E3109009556B2 /* Salmonia3App.swift */,
 				101AED12271E3109009556B2 /* ContentView.swift */,
 				102AD2FD277CE92200C1E181 /* Components */,
@@ -667,9 +673,10 @@
 				1006C12A27EC88E0007479CC /* Salmon.swift */,
 				1006C12C27ED80A6007479CC /* Wavecard.swift */,
 				1056E2F927EDCA4400ECE160 /* Water.swift */,
-				1056E2FB27EDF4C200ECE160 /* SplatInk.swift */,
 				1097979027F5AB2E00EF771B /* Hanger.swift */,
 				10A1FFE7286FC48500550A23 /* Squid.swift */,
+				1056E2FB27EDF4C200ECE160 /* SplatInk.swift */,
+				1080DA5528ADDA0900220903 /* SplatInk2.swift */,
 			);
 			path = SVG;
 			sourceTree = "<group>";
@@ -909,6 +916,7 @@
 				10B05AA028804EE0001F8665 /* GoogleService-Info.plist in Resources */,
 				109B546327CD688600FACC1A /* Configuration.storekit in Resources */,
 				101AED4B271E33EB009556B2 /* Splatfont1.ttf in Resources */,
+				1080DA5928ADFFAB00220903 /* Localizable.strings in Resources */,
 				10F38E87277E1E9900CD945F /* InfoPlist.strings in Resources */,
 				101AED4C271E33EB009556B2 /* Splatfont2.ttf in Resources */,
 				101AED18271E310B009556B2 /* Preview Assets.xcassets in Resources */,
@@ -971,6 +979,7 @@
 				101AED13271E3109009556B2 /* ContentView.swift in Sources */,
 				1027057E27D48E4200326B32 /* WeaponShiftStats.swift in Sources */,
 				101141B2278477060088DF4C /* UserStatsModel.swift in Sources */,
+				1080DA5628ADDA0900220903 /* SplatInk2.swift in Sources */,
 				109B546127CD64B000FACC1A /* SupportView.swift in Sources */,
 				1097979127F5AB2E00EF771B /* Hanger.swift in Sources */,
 				103168672750E3D10009070C /* ShiftView.swift in Sources */,
@@ -1068,6 +1077,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		1080DA5728ADFFAB00220903 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1080DA5828ADFFAB00220903 /* en */,
+				1080DA5B28AE03B100220903 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		10F38E89277E1E9900CD945F /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1211,7 +1229,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;
@@ -1246,7 +1264,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Salmonia3/Salmonia3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"Salmonia3/Preview Content\"";
 				DEVELOPMENT_TEAM = D9HU6JZF2Q;
 				ENABLE_PREVIEWS = YES;

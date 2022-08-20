@@ -5,10 +5,13 @@
 "??.??%" = "??.??%";
 
 /* No comment provided by engineer. */
+"/51" = "/51";
+
+/* No comment provided by engineer. */
 "%lld" = "%lld";
 
 /* No comment provided by engineer. */
-"%lld/51" = "%lld/51";
+"%lld/%lld" = "%lld/%lld";
 
 /* No comment provided by engineer. */
 "%lld回" = "%lld回";
@@ -143,6 +146,9 @@
 "WAVE一覧" = "WAVE一覧";
 
 /* No comment provided by engineer. */
+"x%lld" = "x%lld";
+
+/* No comment provided by engineer. */
 "アカウント追加" = "アカウント追加";
 
 /* No comment provided by engineer. */
@@ -212,7 +218,7 @@
 "みかた" = "みかた";
 
 /* No comment provided by engineer. */
-"ユーザ" = "ユーザ";
+"ユーザー" = "ユーザー";
 
 /* No comment provided by engineer. */
 "ランダムブキ一覧" = "ランダムブキ一覧";
@@ -245,22 +251,13 @@
 "推定所要バイト数" = "推定所要バイト数";
 
 /* No comment provided by engineer. */
-"支給回数" = "支給回数";
-
-/* No comment provided by engineer. */
 "支給済みブキ" = "支給済みブキ";
-
-/* No comment provided by engineer. */
-"支給率" = "支給率";
 
 /* No comment provided by engineer. */
 "未支給ブキ" = "未支給ブキ";
 
 /* No comment provided by engineer. */
 "未達成" = "未達成";
-
-/* No comment provided by engineer. */
-"概要" = "概要";
 
 /* No comment provided by engineer. */
 "機能の追加" = "機能の追加";
