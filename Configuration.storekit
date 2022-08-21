@@ -131,45 +131,6 @@
           "type" : "RecurringSubscription"
         }
       ]
-    },
-    {
-      "id" : "1E1B90FA",
-      "localizations" : [
-
-      ],
-      "name" : "work.tkgstrator",
-      "subscriptions" : [
-        {
-          "adHocOffers" : [
-
-          ],
-          "codeOffers" : [
-
-          ],
-          "displayPrice" : "500",
-          "familyShareable" : false,
-          "groupNumber" : 1,
-          "internalID" : "B965D128",
-          "introductoryOffer" : null,
-          "localizations" : [
-            {
-              "description" : "Support Salmon Stats developping",
-              "displayName" : "Premium",
-              "locale" : "en_US"
-            },
-            {
-              "description" : "Salmon Statsを応援します",
-              "displayName" : "プレミアムプラン",
-              "locale" : "ja"
-            }
-          ],
-          "productID" : "work.tkgstrator.premium",
-          "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "Premium",
-          "subscriptionGroupID" : "7382521F",
-          "type" : "RecurringSubscription"
-        }
-      ]
     }
   ],
   "version" : {

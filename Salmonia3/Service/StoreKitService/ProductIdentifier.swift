@@ -30,7 +30,7 @@ enum ProductIdentifier {
         var id: String { rawValue }
 
         case apiupdate = "work.tkgstrator.upgradeapi"
-        case premium   = "work.tkgstrator.premium"
+//        case premium   = "work.tkgstrator.premium"
     }
 
     enum Renewable: String, CaseIterable {
@@ -52,9 +52,9 @@ extension Image {
             case .apiupdate:
                 self.init(StickersType.squid)
                 return
-            case .premium:
-                self.init(StickersType.squid)
-                return
+//            case .premium:
+//                self.init(StickersType.squid)
+//                return
             }
         }
         if let product = ProductIdentifier.NonConsumable(rawValue: productId) {
